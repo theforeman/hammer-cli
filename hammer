@@ -1,0 +1,137 @@
+#!/usr/bin/env ruby
+# Copyright (C) 2011 Vijay Brian Gupta brian.gupta@brandorr.com
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
+# USA.
+
+require "rubygems"
+require "rest_client"
+require "json"
+require "yaml"
+require "clamp"
+
+module Hammer
+
+  class HammerCommand < Clamp::Command
+
+    option ["-d", "--debug"], :flag, "Output more information"
+    option ["-u", "--user"], "USER", "Foreman user"
+    option ["-p", "--pass"], "PASSWORD", "Foreman password"
+    option ["-s", "--server"], "URL", "Foreman Server URL"
+    option "--json", :flag, "JSON output"
+    option "--yaml", :flag, "YAML output"
+    option "--version", :flag, "show version" do
+      puts "hammer-1.0.0"
+      exit(0)
+    end
+  end
+
+  class DomainListCommand < HammerCommand
+    def execute
+      puts "Domain list here."
+      #raise NotImplementedError
+    end
+  end
+
+  class DomainShowCommand < HammerCommand
+    def execute
+      puts "Domain show here."
+      #raise NotImplementedError
+    end
+  end
+
+  class DomainCreateCommand < HammerCommand
+    def execute
+      puts "Domain create here."
+      #raise NotImplementedError
+    end
+  end
+
+  class DomainDeleteCommand < HammerCommand
+    def execute
+      puts "Domain delete here."
+      #raise NotImplementedError
+    end
+  end
+
+  class DomainUpdateCommand < HammerCommand
+    def execute
+      puts "Domain update here."
+      #raise NotImplementedError
+    end
+  end
+
+  class DomainCommand < HammerCommand
+    subcommand "list", "List domains.", DomainListCommand
+    subcommand "show", "Show domains.", DomainShowCommand
+    subcommand "create", "Create domains.", DomainCreateCommand
+    subcommand "delete", "Delete domains.", DomainDeleteCommand
+    subcommand "update", "Update domains.", DomainUpdateCommand
+  end
+
+  class EnvironmentListCommand < HammerCommand
+    def execute
+      puts "Domain list here."
+      #raise NotImplementedError
+    end
+  end
+
+  class EnvironmentShowCommand < HammerCommand
+    def execute
+      puts "Domain show here."
+      #raise NotImplementedError
+    end
+  end
+
+  class EnvironmentCreateCommand < HammerCommand
+    def execute
+      puts "Domain create here."
+      #raise NotImplementedError
+    end
+  end
+
+  class EnvironmentDeleteCommand < HammerCommand
+    def execute
+      puts "Domain delete here."
+      #raise NotImplementedError
+    end
+  end
+
+  class EnvironmentUpdateCommand < HammerCommand
+    def execute
+      puts "Domain update here."
+      #raise NotImplementedError
+    end
+  end
+
+  class EnvironmentCommand < HammerCommand
+    subcommand "list", "List environments.", EnvironmentListCommand
+    subcommand "show", "Show environments.", EnvironmentShowCommand
+    subcommand "create", "Create environments.", EnvironmentCreateCommand
+    subcommand "delete", "Delete environments.", EnvironmentDeleteCommand
+    subcommand "update", "Update environments.", EnvironmentUpdateCommand
+  end
+
+  class MainCommand < HammerCommand
+
+    subcommand "domain", "Work with domains.", DomainCommand
+    subcommand "environment", "Work with environments.", EnvironmentCommand
+#    subcommand "hostgroup", "Work with hostgroups.", HostgroupCommand
+
+  end
+
+end
+
+Hammer::MainCommand.run
