@@ -124,11 +124,65 @@ module Hammer
     subcommand "update", "Update environments.", EnvironmentUpdateCommand
   end
 
+  class HostListCommand < HammerCommand
+    def execute
+      puts "Host list here."
+      #raise NotImplementedError
+    end
+  end
+
+  class HostShowCommand < HammerCommand
+    def execute
+      puts "Host show here."
+      #raise NotImplementedError
+    end
+  end
+
+  class HostCreateCommand < HammerCommand
+    def execute
+      puts "Host create here."
+      #raise NotImplementedError
+    end
+  end
+
+  class HostDeleteCommand < HammerCommand
+    def execute
+      puts "Host delete here."
+      #raise NotImplementedError
+    end
+  end
+
+  class HostUpdateCommand < HammerCommand
+    def execute
+      puts "Host update here."
+      #raise NotImplementedError
+    end
+  end
+
+  class HostCommand < HammerCommand
+    subcommand "list", "List hosts.", EnvironmentListCommand
+    subcommand "show", "Show hosts.", EnvironmentShowCommand
+    subcommand "create", "Create hosts.", EnvironmentCreateCommand
+    subcommand "delete", "Delete hosts.", EnvironmentDeleteCommand
+    subcommand "update", "Update hosts.", EnvironmentUpdateCommand
+  end
+
+
   class MainCommand < HammerCommand
 
     subcommand "domain", "Work with domains.", DomainCommand
     subcommand "environment", "Work with environments.", EnvironmentCommand
-#    subcommand "hostgroup", "Work with hostgroups.", HostgroupCommand
+    subcommand "host", "Work with hosts.", HostCommand
+#    subcommand "exec", "Work with hostgroups.", HostgroupCommand
+#    subcommand "help", "Work with hostgroups.", HostgroupCommand
+#    subcommand "search", "Work with hostgroups.", HostgroupCommand
+#    subcommand "status", "Work with hostgroups.", HostgroupCommand
+#    subcommand "dns", "Work with hostgroups.", HostgroupCommand
+#    subcommand "dhcp", "Work with hostgroups.", HostgroupCommand
+#    subcommand "tftp", "Work with hostgroups.", HostgroupCommand
+#    subcommand "puppetca", "Work with hostgroups.", HostgroupCommand
+#    subcommand "puppet", "Work with hostgroups.", HostgroupCommand
+#    subcommand "server", "Work with hostgroups.", HostgroupCommand
 
   end
 
