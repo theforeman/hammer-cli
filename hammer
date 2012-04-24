@@ -40,11 +40,13 @@ module Hammer
     end
 
     def self.print_response(response, options={})
-      def format(options)
+#puts JSON.pretty_generate(options)
+      def self.format(options)
         return "json" if options[:json]
         return "yaml" if options[:yaml]
       end
 
+puts "Hello"
       puts(case format(options)
         when "json"
           JSON.pretty_generate(response)
@@ -187,7 +189,7 @@ module Hammer
   class HostListCommand < HammerCommand
     def execute
       puts "Host list here."
-      ForemanResource::print_response(ForemanResource::get_collection('hosts', {:foreman_url => server, :foreman_user => user, :foreman_pass => pass}, :json => json?, :yaml => yaml?))
+      ForemanResource::print_response(ForemanResource::get_collection('hosts', {:foreman_url => server, :foreman_user => user, :foreman_pass => pass}), {:json => json?, :yaml => yaml?})
       #raise NotImplementedError
     end
   end
