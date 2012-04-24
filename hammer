@@ -24,11 +24,11 @@ require "clamp"
 
 module Hammer
 
-  class ForemanConfig
-    def configinit
-      
-    end
-  end
+#  class ForemanConfig
+#    def configinit
+#      
+#    end
+#  end
 
   class ForemanResource
     
