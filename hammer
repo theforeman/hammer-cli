@@ -32,10 +32,10 @@ module Hammer
 
   class ForemanResource
     
-    def self.get_collection(path, options = {})
+    def self.get_collection(path, foreman_config = {}, options = {})
       JSON.parse(RestClient::Request.new({:method  => :get,
-                                     :url     => "#{@foreman_url}/#{path.to_s.chomp('/')}",
-                                     :user    => @foreman_user, :password => @foreman_pass,
+                                     :url     => "#{foreman_config[:foreman_url]}/#{path.to_s.chomp('/')}",
+                                     :user    => foreman_config[:foreman_user], :password => foreman_config[:foreman_pass],
                                      :headers => { :accept => :json, :content_type => :json }}.merge(options)).execute.to_s)
     end
 
@@ -161,7 +161,7 @@ module Hammer
   class HostListCommand < HammerCommand
     def execute
       puts "Host list here."
-      puts ForemanResource::get_collection('hosts')
+      puts ForemanResource::get_collection('hosts', {:foreman_url => server, :foreman_user => user, :foreman_pass => pass})
       puts "json" if json?
       #raise NotImplementedError
     end
