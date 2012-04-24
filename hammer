@@ -41,15 +41,9 @@ module Hammer
                                      :headers => { :accept => :json, :content_type => :json }}.merge(options)).execute.to_s)
     end
 
-    def self.print_response(response, options={})
-#puts JSON.pretty_generate(options)
-      def self.format(options)
-        return "json" if options[:json]
-        return "yaml" if options[:yaml]
-      end
+    def self.print_response(response, format)
 
-
-      puts(case format(options)
+      puts(case format
         when "json"
           JSON.pretty_generate(response)
         when "yaml"
@@ -81,8 +75,7 @@ module Hammer
     option ["-u", "--user"], "USER", "Foreman user"
     option ["-p", "--pass"], "PASSWORD", "Foreman password"
     option ["-s", "--server"], "URL", "Foreman Server URL", :default => "http://localhost/"
-    option "--json", :flag, "JSON output"
-    option "--yaml", :flag, "YAML output"
+    option "--format", "FORMAT", "Output format", :default => "json"
     option "--version", :flag, "show version" do
       puts "hammer-1.0.0"
       exit(0)
@@ -189,17 +182,18 @@ module Hammer
   end
 
   class HostListCommand < HammerCommand
+    option "--format", "FORMAT", "Output format", :default => "text"
+
     def execute
-      ForemanResource::print_response(ForemanResource::get_collection('hosts', {:foreman_url => server, :foreman_user => user, :foreman_pass => pass, :debug => debug?}), {:json => json?, :yaml => yaml?})
+      ForemanResource::print_response(ForemanResource::get_collection('hosts', {:foreman_url => server, :foreman_user => user, :foreman_pass => pass, :debug => debug?}), format)
     end
   end
 
   class HostShowCommand < HammerCommand
     parameter "FQDN", "host to show"
-    option "--json", :flag, "JSON output", :default => true
 
     def execute
-      ForemanResource::print_response(ForemanResource::get_collection('hosts'+"/"+fqdn, {:foreman_url => server, :foreman_user => user, :foreman_pass => pass, :debug => debug?}), {:json => json?, :yaml => yaml?})
+      ForemanResource::print_response(ForemanResource::get_collection('hosts'+"/"+fqdn, {:foreman_url => server, :foreman_user => user, :foreman_pass => pass, :debug => debug?}), format)
     end
   end
 
