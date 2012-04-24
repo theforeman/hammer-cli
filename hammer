@@ -32,7 +32,7 @@ module Hammer
 
   class ForemanResource
     
-    def get_collection(path, options = {})
+    def self.get_collection(path, options = {})
       JSON.parse(RestClient::Request.new({:method  => :get,
                                      :url     => "#{@foreman_url}/#{path.to_s.chomp('/')}",
                                      :user    => @foreman_user, :password => @foreman_pass,
