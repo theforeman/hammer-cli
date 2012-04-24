@@ -24,6 +24,12 @@ require "clamp"
 
 module Hammer
 
+  class ForemanConfig
+    def configinit
+      
+    end
+  end
+
   class ForemanResource
     
     def get_collection(path, options = {})
