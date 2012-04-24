@@ -161,7 +161,7 @@ module Hammer
   class HostListCommand < HammerCommand
     def execute
       puts "Host list here."
-      puts user
+      puts ForemanResource::get_collection('hosts')
       puts "json" if json?
       #raise NotImplementedError
     end
