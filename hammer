@@ -32,7 +32,9 @@ module Hammer
 
   class ForemanResource
     
+
     def self.get_collection(path, foreman_config = {}, options = {})
+      RestClient.log = 'stdout' if foreman_config[:debug]
       JSON.parse(RestClient::Request.new({:method  => :get,
                                      :url     => "#{foreman_config[:foreman_url]}/#{path.to_s.chomp('/')}",
                                      :user    => foreman_config[:foreman_user], :password => foreman_config[:foreman_pass],
@@ -46,7 +48,7 @@ module Hammer
         return "yaml" if options[:yaml]
       end
 
-puts "Hello"
+
       puts(case format(options)
         when "json"
           JSON.pretty_generate(response)
@@ -188,16 +190,16 @@ puts "Hello"
 
   class HostListCommand < HammerCommand
     def execute
-      puts "Host list here."
-      ForemanResource::print_response(ForemanResource::get_collection('hosts', {:foreman_url => server, :foreman_user => user, :foreman_pass => pass}), {:json => json?, :yaml => yaml?})
-      #raise NotImplementedError
+      ForemanResource::print_response(ForemanResource::get_collection('hosts', {:foreman_url => server, :foreman_user => user, :foreman_pass => pass, :debug => debug?}), {:json => json?, :yaml => yaml?})
     end
   end
 
   class HostShowCommand < HammerCommand
+    parameter "FQDN", "host to show"
+    option "--json", :flag, "JSON output", :default => true
+
     def execute
-      puts "Host show here."
-      #raise NotImplementedError
+      ForemanResource::print_response(ForemanResource::get_collection('hosts'+"/"+fqdn, {:foreman_url => server, :foreman_user => user, :foreman_pass => pass, :debug => debug?}), {:json => json?, :yaml => yaml?})
     end
   end
 
