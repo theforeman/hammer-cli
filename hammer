@@ -36,6 +36,17 @@ module Hammer
       puts "hammer-1.0.0"
       exit(0)
     end
+
+    def execute
+      @foreman_user = user
+#      @foreman_pass = pass
+#      @foreman_url  = server
+#      @usejson      = if json?
+#      @useyaml      = if yaml?
+
+      RestClient.log = 'stdout' if debug?
+      puts @foreman_user
+    end
   end
 
   class DomainListCommand < HammerCommand
@@ -83,35 +94,35 @@ module Hammer
 
   class EnvironmentListCommand < HammerCommand
     def execute
-      puts "Domain list here."
+      puts "Environment list here."
       #raise NotImplementedError
     end
   end
 
   class EnvironmentShowCommand < HammerCommand
     def execute
-      puts "Domain show here."
+      puts "Environment show here."
       #raise NotImplementedError
     end
   end
 
   class EnvironmentCreateCommand < HammerCommand
     def execute
-      puts "Domain create here."
+      puts "Environment create here."
       #raise NotImplementedError
     end
   end
 
   class EnvironmentDeleteCommand < HammerCommand
     def execute
-      puts "Domain delete here."
+      puts "Environment delete here."
       #raise NotImplementedError
     end
   end
 
   class EnvironmentUpdateCommand < HammerCommand
     def execute
-      puts "Domain update here."
+      puts "Environment update here."
       #raise NotImplementedError
     end
   end
@@ -127,6 +138,7 @@ module Hammer
   class HostListCommand < HammerCommand
     def execute
       puts "Host list here."
+#      puts "User is: ", user
       #raise NotImplementedError
     end
   end
@@ -160,11 +172,11 @@ module Hammer
   end
 
   class HostCommand < HammerCommand
-    subcommand "list", "List hosts.", EnvironmentListCommand
-    subcommand "show", "Show hosts.", EnvironmentShowCommand
-    subcommand "create", "Create hosts.", EnvironmentCreateCommand
-    subcommand "delete", "Delete hosts.", EnvironmentDeleteCommand
-    subcommand "update", "Update hosts.", EnvironmentUpdateCommand
+    subcommand "list", "List hosts.", HostListCommand
+    subcommand "show", "Show hosts.", HostShowCommand
+    subcommand "create", "Create hosts.", HostCreateCommand
+    subcommand "delete", "Delete hosts.", HostDeleteCommand
+    subcommand "update", "Update hosts.", HostUpdateCommand
   end
 
 
