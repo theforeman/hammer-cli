@@ -24,12 +24,15 @@ require "clamp"
 
 module Hammer
 
+  class ForemanResource
+  end
+
   class HammerCommand < Clamp::Command
 
     option ["-d", "--debug"], :flag, "Output more information"
     option ["-u", "--user"], "USER", "Foreman user"
     option ["-p", "--pass"], "PASSWORD", "Foreman password"
-    option ["-s", "--server"], "URL", "Foreman Server URL"
+    option ["-s", "--server"], "URL", "Foreman Server URL", :default => "http://localhost/"
     option "--json", :flag, "JSON output"
     option "--yaml", :flag, "YAML output"
     option "--version", :flag, "show version" do
@@ -37,16 +40,18 @@ module Hammer
       exit(0)
     end
 
-    def execute
-      @foreman_user = user
+#    def initialize
+#      @foreman_user = user
 #      @foreman_pass = pass
 #      @foreman_url  = server
-#      @usejson      = if json?
-#      @useyaml      = if yaml?
+#      @usejson      = json?
+#      @useyaml      = yaml?
 
-      RestClient.log = 'stdout' if debug?
-      puts @foreman_user
-    end
+#      RestClient.log = 'stdout' if debug?
+#debugging lines
+#      puts @foreman_user
+#      puts "json" if @usejson
+#    end
   end
 
   class DomainListCommand < HammerCommand
@@ -138,7 +143,8 @@ module Hammer
   class HostListCommand < HammerCommand
     def execute
       puts "Host list here."
-#      puts "User is: ", user
+      puts user
+      puts "json" if json?
       #raise NotImplementedError
     end
   end
