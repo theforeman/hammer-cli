@@ -71,19 +71,26 @@ module Hammer
 
   class HammerCommand < Clamp::Command
 
+    ALLOWED_CONTENT_TYPES = %w[ json yaml text ]
+
     option ["-d", "--debug"], :flag, "Output more information"
     option ["-u", "--user"], "USER", "Foreman user"
     option ["-p", "--pass"], "PASSWORD", "Foreman password"
     option ["-s", "--server"], "URL", "Foreman Server URL", :default => "http://localhost/"
-    option "--format", "FORMAT", "Output format", :default => "json" do |s|
-      unless ['json', 'yaml', 'text'].include?(s)
-        raise ArgumentError, "must be one of: ['json', 'yaml', 'text']"
-      end
-      s
-    end
+    option "--format", "FORMAT", "Output format", :default => "json"# do |s|
+#      unless ['json', 'yaml', 'text'].include?(s)
+#        raise ArgumentError, "must be one of: ['json', 'yaml', 'text']"
+#      end
+#      s
+#    end
     option "--version", :flag, "show version" do
       puts "hammer-1.0.0"
       exit(0)
+    end
+
+    def format= s
+      raise ArgumentError, "must be one of: #{ALLOWED_CONTENT_TYPES.join(', ')}" unless ALLOWED_CONTENT_TYPES.include?(s)
+      @format = s
     end
 
 #    def initialize
@@ -187,15 +194,7 @@ module Hammer
   end
 
   class HostListCommand < HammerCommand
-#    option "--format", "FORMAT", "Output format", :default => "text" do |s|
-#      ['text', 'json', 'yaml'].include? s
-#    end
-    option "--format", "FORMAT", "Output format", :default => "text" do |s|
-      unless ['json', 'yaml', 'text'].include?(s)
-        raise ArgumentError, "must be one of: ['json', 'yaml', 'text']"
-      end
-      s
-    end
+
 
     def execute
       ForemanResource::print_response(ForemanResource::get_collection('hosts', {:foreman_url => server, :foreman_user => user, :foreman_pass => pass, :debug => debug?}), format)
@@ -203,16 +202,10 @@ module Hammer
   end
 
   class HostShowCommand < HammerCommand
+
+    ALLOWED_CONTENT_TYPES = %w[ json yaml ]
+
     parameter "FQDN", "host to show"
-#    option "--format", "FORMAT", "Output format", :default => "json" do |s|
-#      ['json', 'yaml'].include? s
-#    end
-    option "--format", "FORMAT", "Output format", :default => "json" do |s|
-      unless ['json', 'yaml'].include?(s)
-        raise ArgumentError, "must be one of: ['json', 'yaml']"
-      end
-      s
-    end
 
     def execute
       ForemanResource::print_response(ForemanResource::get_collection('hosts'+"/"+fqdn, {:foreman_url => server, :foreman_user => user, :foreman_pass => pass, :debug => debug?}), format)
