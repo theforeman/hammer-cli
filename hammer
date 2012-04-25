@@ -93,7 +93,7 @@ module Hammer
     end
 
     def format= s
-      raise ArgumentError, "must be one of: ", allowed_content_types.join(', ') unless allowed_content_types.include?(s)
+      raise ArgumentError, "must be one of: #{allowed_content_types.join(', ')}" unless allowed_content_types.include?(s)
       @format = s
     end
 
