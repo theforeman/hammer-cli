@@ -190,6 +190,13 @@ module Hammer
 #    option "--format", "FORMAT", "Output format", :default => "text" do |s|
 #      ['text', 'json', 'yaml'].include? s
 #    end
+    option "--format", "FORMAT", "Output format", :default => "text" do |s|
+      unless ['json', 'yaml', 'text'].include?(s)
+        raise ArgumentError, "must be one of: ['json', 'yaml', 'text']"
+      end
+      s
+    end
+
     def execute
       ForemanResource::print_response(ForemanResource::get_collection('hosts', {:foreman_url => server, :foreman_user => user, :foreman_pass => pass, :debug => debug?}), format)
     end
@@ -200,6 +207,12 @@ module Hammer
 #    option "--format", "FORMAT", "Output format", :default => "json" do |s|
 #      ['json', 'yaml'].include? s
 #    end
+    option "--format", "FORMAT", "Output format", :default => "json" do |s|
+      unless ['json', 'yaml'].include?(s)
+        raise ArgumentError, "must be one of: ['json', 'yaml']"
+      end
+      s
+    end
 
     def execute
       ForemanResource::print_response(ForemanResource::get_collection('hosts'+"/"+fqdn, {:foreman_url => server, :foreman_user => user, :foreman_pass => pass, :debug => debug?}), format)
