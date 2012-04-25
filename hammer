@@ -71,7 +71,7 @@ module Hammer
 
   class HammerCommand < Clamp::Command
 
-    ALLOWED_CONTENT_TYPES = %w[ json yaml text ]
+#    ALLOWED_CONTENT_TYPES = %w[ json yaml text ]
 
     option ["-d", "--debug"], :flag, "Output more information"
     option ["-u", "--user"], "USER", "Foreman user"
@@ -88,8 +88,12 @@ module Hammer
       exit(0)
     end
 
+    def allowed_content_types
+      return [ "json", "yaml", "text" ]
+    end
+
     def format= s
-      raise ArgumentError, "must be one of: #{ALLOWED_CONTENT_TYPES.join(', ')}" unless ALLOWED_CONTENT_TYPES.include?(s)
+      raise ArgumentError, "must be one of: ", allowed_content_types.join(', ') unless allowed_content_types.include?(s)
       @format = s
     end
 
@@ -203,9 +207,13 @@ module Hammer
 
   class HostShowCommand < HammerCommand
 
-    ALLOWED_CONTENT_TYPES = %w[ json yaml ]
+#    ALLOWED_CONTENT_TYPES = %w[ json yaml ]
 
     parameter "FQDN", "host to show"
+
+    def allowed_content_types
+      return [ "json", "yaml" ]
+    end
 
     def execute
       ForemanResource::print_response(ForemanResource::get_collection('hosts'+"/"+fqdn, {:foreman_url => server, :foreman_user => user, :foreman_pass => pass, :debug => debug?}), format)
