@@ -92,6 +92,8 @@ module Hammer
       return [ "json", "yaml", "text" ]
     end
 
+    private
+
     def format= s
       raise ArgumentError, "must be one of: #{allowed_content_types.join(', ')}" unless allowed_content_types.include?(s)
       @format = s
@@ -206,8 +208,6 @@ module Hammer
   end
 
   class HostShowCommand < HammerCommand
-
-#    ALLOWED_CONTENT_TYPES = %w[ json yaml ]
 
     parameter "FQDN", "host to show"
 
