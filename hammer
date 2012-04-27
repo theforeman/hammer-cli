@@ -75,7 +75,7 @@ module Hammer
     option ["-u", "--user"], "USER", "Foreman user"
     option ["-p", "--pass"], "PASSWORD", "Foreman password"
     option ["-s", "--server"], "URL", "Foreman Server URL", :default => "http://localhost/"
-    option "--format", "FORMAT", "Output format", :default => "json"# do |s|
+#    option "--format", "FORMAT", "Output format", :default => "json"# do |s|
 #      unless ['json', 'yaml', 'text'].include?(s)
 #        raise ArgumentError, "must be one of: ['json', 'yaml', 'text']"
 #      end
@@ -187,6 +187,11 @@ module Hammer
 
   class HostListCommand < HammerCommand
 
+    option "--format", "FORMAT", "Output format", :default => "json"# do |s|
+
+    def allowed_content_types
+      return [ "json", "yaml", "text" ]
+    end
 
     def execute
       ForemanResource::print_response(ForemanResource::get_collection('hosts', {:foreman_url => server, :foreman_user => user, :foreman_pass => pass, :debug => debug?}), format)
@@ -196,6 +201,8 @@ module Hammer
   class HostShowCommand < HammerCommand
 
     parameter "FQDN", "host to show"
+
+    option "--format", "FORMAT", "Output format", :default => "json"# do |s|
 
     def allowed_content_types
       return [ "json", "yaml" ]
