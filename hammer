@@ -71,8 +71,6 @@ module Hammer
 
   class HammerCommand < Clamp::Command
 
-#    ALLOWED_CONTENT_TYPES = %w[ json yaml text ]
-
     option ["-d", "--debug"], :flag, "Output more information"
     option ["-u", "--user"], "USER", "Foreman user"
     option ["-p", "--pass"], "PASSWORD", "Foreman password"
@@ -99,18 +97,6 @@ module Hammer
       @format = s
     end
 
-#    def initialize
-#      @foreman_user = user
-#      @foreman_pass = pass
-#      @foreman_url  = server
-#      @usejson      = json?
-#      @useyaml      = yaml?
-
-#      RestClient.log = 'stdout' if debug?
-#debugging lines
-#      puts @foreman_user
-#      puts "json" if @usejson
-#    end
   end
 
   class DomainListCommand < HammerCommand
