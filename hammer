@@ -90,11 +90,8 @@ module Hammer
       return [ "json", "yaml", "text" ]
     end
 
-    private
-
-    def format= s
-      raise ArgumentError, "must be one of: #{allowed_content_types.join(', ')}" unless allowed_content_types.include?(s)
-      @format = s
+    def default_content_type
+      return "json"
     end
 
   end
@@ -187,25 +184,32 @@ module Hammer
 
   class HostListCommand < HammerCommand
 
-    option "--format", "FORMAT", "Output format", :default => "json"# do |s|
+    option "--format", "FORMAT", "Output format", :default => "#{default_content_type}"
 
-    def allowed_content_types
-      return [ "json", "yaml", "text" ]
+    def format= s
+      raise ArgumentError, "must be one of: #{allowed_content_types.join(', ')}" unless allowed_content_types.include?(s)
+      @format = s
     end
 
     def execute
       ForemanResource::print_response(ForemanResource::get_collection('hosts', {:foreman_url => server, :foreman_user => user, :foreman_pass => pass, :debug => debug?}), format)
     end
+
   end
 
   class HostShowCommand < HammerCommand
 
     parameter "FQDN", "host to show"
 
-    option "--format", "FORMAT", "Output format", :default => "json"# do |s|
+    option "--format", "FORMAT", "Output format", :default => "#{default_content_type}"
 
     def allowed_content_types
       return [ "json", "yaml" ]
+    end
+
+    def format= s
+      raise ArgumentError, "must be one of: #{allowed_content_types.join(', ')}" unless allowed_content_types.include?(s)
+      @format = s
     end
 
     def execute
@@ -241,7 +245,6 @@ module Hammer
     subcommand "delete", "Delete hosts.", HostDeleteCommand
     subcommand "update", "Update hosts.", HostUpdateCommand
   end
-
 
   class MainCommand < HammerCommand
 
