@@ -184,7 +184,11 @@ module Hammer
 
   class HostListCommand < HammerCommand
 
-    option "--format", "FORMAT", "Output format", :default => "#{default_content_type()}"
+    option "--format", "FORMAT", "Output format"
+
+    def default_format
+       default_content_type
+    end
 
     def format= s
       raise ArgumentError, "must be one of: #{allowed_content_types.join(', ')}" unless allowed_content_types.include?(s)
@@ -201,10 +205,14 @@ module Hammer
 
     parameter "FQDN", "host to show"
 
-    option "--format", "FORMAT", "Output format", :default => "#{default_content_type()}"
+    option "--format", "FORMAT", "Output format"
 
     def allowed_content_types
       return [ "json", "yaml" ]
+    end
+
+    def default_format
+       default_content_type
     end
 
     def format= s
