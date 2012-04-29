@@ -186,6 +186,10 @@ module Hammer
 
     option "--format", "FORMAT", "Output format"
 
+    def default_content_type
+      return "text"
+    end
+
     def default_format
        default_content_type
     end
