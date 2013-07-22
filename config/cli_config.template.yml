@@ -1,0 +1,8 @@
+:modules:
+    - hammer-cli-foreman
+    - hammer-cli-katello
+    - hammer-cli-signo
+
+:host: 'https://localhost/'
+:username: 'admin'
+:password: 'changeme'

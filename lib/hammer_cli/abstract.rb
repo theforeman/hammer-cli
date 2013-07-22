@@ -1,0 +1,95 @@
+require 'hammer_cli/autocompletion'
+require 'hammer_cli/exception_handler'
+require 'clamp'
+
+module HammerCLI
+
+  CFG_PATH = ['./config/cli_config.yml', '~/.foreman/cli_config.yml', '/etc/foreman/cli_config.yml']
+
+  class AbstractCommand < Clamp::Command
+
+
+    extend Autocompletion
+    class << self
+      attr_accessor :validation_block
+    end
+
+    def run(arguments)
+      load_settings
+      exit_code = super(arguments)
+      raise "exit code must be integer" unless exit_code.is_a? Integer
+      return exit_code
+    rescue => e
+      handle_exception e
+    end
+
+    def parse(arguments)
+      super(arguments)
+      validate_options
+    rescue HammerCLI::Validator::ValidationError => e
+      signal_usage_error e.message
+    end
+
+    def execute
+      0
+    end
+
+    def self.validate_options &block
+      self.validation_block = block
+    end
+
+    def validate_options
+      validator.run &self.class.validation_block if self.class.validation_block
+    end
+
+    def config_path
+      HammerCLI::CFG_PATH
+    end
+
+    def load_settings
+      context[:settings] = HammerCLI::Settings.load_from_file config_path
+    end
+
+    def output
+      @output ||= HammerCLI::Output::Output.new
+    end
+
+    def exception_handler
+      @exception_handler ||= exception_handler_class.new :output => output
+    end
+
+    protected
+
+    def validator
+      options = self.class.recognised_options.collect{|opt| opt.of(self)}
+      @validator ||= HammerCLI::Validator.new(options)
+    end
+
+    def handle_exception e
+      exception_handler.handle_exception(e)
+    end
+
+    def exception_handler_class
+      #search for exception handler class in parent modules/classes
+      module_list = self.class.name.to_s.split('::').inject([Object]) do |mod, class_name|
+        mod << mod[-1].const_get(class_name)
+      end
+      module_list.reverse.each do |mod|
+        return mod.send(:exception_handler_class) if mod.respond_to? :exception_handler_class
+      end
+      return HammerCLI::ExceptionHandler
+    end
+
+    def all_options
+      self.class.recognised_options.inject({}) do |h, opt|
+        h[opt.attribute_name] = send(opt.read_method)
+        h
+      end
+    end
+
+    def options
+      all_options.reject {|key, value| value.nil? }
+    end
+
+  end
+end

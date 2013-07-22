@@ -1,0 +1,13 @@
+#
+# Hammer CLI bash completion script
+#
+# vim:ts=2:sw=2:et:
+#
+
+_hammer() {
+  COMPREPLY=($(bundle exec "hammer --autocomplete '${COMP_WORDS[*]}'"))
+  return 0
+}
+
+complete -F _hammer hammer
+
