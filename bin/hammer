@@ -1,15 +1,13 @@
 #! /usr/bin/env ruby
 
-# $:.unshift(File.expand_path("../../lib", __FILE__))
-# $:.unshift(File.expand_path("../../../hammer_cli_foreman/lib", __FILE__))
-
 require 'rubygems'
-
 require 'hammer_cli'
 
+CFG_PATH = ['./config/cli_config.yml', '~/.foreman/cli_config.yml', '/etc/foreman/cli_config.yml']
+
 # load modules set in config
-settings = HammerCLI::Settings.load_from_file HammerCLI::CFG_PATH
-modules = settings[:modules] || []
+HammerCLI::Settings.load_from_file CFG_PATH
+modules = HammerCLI::Settings[:modules] || []
 modules.each { |m| require m }
 
 exit HammerCLI::MainCommand.run || 0

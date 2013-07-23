@@ -39,32 +39,5 @@ describe HammerCLI::AbstractCommand do
     end
   end
 
-  context "settings loader" do
-
-    module ModA
-      module ModB
-        class TestCmd < HammerCLI::AbstractCommand
-          def config_path
-            settings = Tempfile.new 'settings'
-            settings << ":host: 'https://localhost.localdomain/'\n"
-            settings.close
-            [settings.to_path]
-          end
-        end
-      end
-    end
-
-    it "should load settings and override based on priority" do
-
-      cmd = ModA::ModB::TestCmd.new ""
-      cmd.expects(:execute).returns(0) do
-        assert_equals 'https://localhost.localdomain/', context[:settings]["host"]
-      end
-      cmd.run([])
-
-    end
-
-  end
-
 end
 

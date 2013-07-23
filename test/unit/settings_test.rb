@@ -2,8 +2,12 @@ require_relative 'test_helper'
 
 describe HammerCLI::Settings do
 
+  after :each do
+    # clean up global settings
+    HammerCLI::Settings.clear
+  end
   
-  let(:settings) { HammerCLI::Settings.new }
+  let(:settings) { HammerCLI::Settings }
 
   it "returns nil when nothing is loaded" do
     settings[:a].must_be_nil

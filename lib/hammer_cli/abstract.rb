@@ -4,10 +4,7 @@ require 'clamp'
 
 module HammerCLI
 
-  CFG_PATH = ['./config/cli_config.yml', '~/.foreman/cli_config.yml', '/etc/foreman/cli_config.yml']
-
   class AbstractCommand < Clamp::Command
-
 
     extend Autocompletion
     class << self
@@ -15,7 +12,6 @@ module HammerCLI
     end
 
     def run(arguments)
-      load_settings
       exit_code = super(arguments)
       raise "exit code must be integer" unless exit_code.is_a? Integer
       return exit_code
@@ -42,13 +38,6 @@ module HammerCLI
       validator.run &self.class.validation_block if self.class.validation_block
     end
 
-    def config_path
-      HammerCLI::CFG_PATH
-    end
-
-    def load_settings
-      context[:settings] = HammerCLI::Settings.load_from_file config_path
-    end
 
     def output
       @output ||= HammerCLI::Output::Output.new
