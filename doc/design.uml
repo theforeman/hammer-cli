@@ -1,0 +1,24 @@
+@startuml
+
+
+[Foreman API] as FAPI
+FAPI -up-> [Foreman Server]
+[Foreman Commands Plugin] as FCP
+FCP -up-> FAPI
+
+[Katello CLI via system call] as KCLI
+KCLI -up-> [Katello Server]
+[Katello Commands Plugin] as KCP
+KCP -up-> KCLI
+
+package "CLI Framework" {
+  () "Command Plugins" as CP
+  [Shell]
+  [Autocompletion]
+}
+
+CP -up-> [Other Commands Plugin(s)]
+CP -up-> FCP
+CP -up-> KCP
+
+@enduml

@@ -1,7 +1,6 @@
 :modules:
-    - hammer-cli-foreman
-    - hammer-cli-katello
-    - hammer-cli-signo
+#    - hammer_cli_foreman
+#    - hammer-cli-katello-bridge
 
 :host: 'https://localhost/'
 :username: 'admin'
