@@ -15,11 +15,9 @@ module HammerCLI::Apipie
 
     def resource_config
       config = {}
-      if context[:settings]
-        config[:base_url] = context[:settings][:host]
-        config[:username] = context[:settings][:username]
-        config[:password] = context[:settings][:password]
-      end
+      config[:base_url] = HammerCLI::Settings[:host]
+      config[:username] = HammerCLI::Settings[:username]
+      config[:password] = HammerCLI::Settings[:password]
       config
     end
 
