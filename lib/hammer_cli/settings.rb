@@ -1,3 +1,5 @@
+require 'yaml'
+
 module HammerCLI
 
   class Settings
@@ -8,8 +10,9 @@ module HammerCLI
 
     def self.load_from_file files
       files.reverse.each do |path|
-        if File.exists? path
-          config = YAML::load(File.open(path))
+        full_path = File.expand_path path
+        if File.exists? full_path
+          config = YAML::load(File.open(full_path))
           load(config)
         end
       end
