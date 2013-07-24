@@ -7,8 +7,6 @@ require 'hammer_cli/main'
 require 'hammer_cli/output'
 require 'hammer_cli/apipie'
 
-require 'pry'
-
 # extend MainCommand
 require 'hammer_cli/shell'
 

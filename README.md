@@ -21,8 +21,7 @@ If you are interested you can help us by sending patches or filing bugs and feat
 How to run
 ----------
 
-The work is in progress and there are still no builds ready, but instaling from sources is easy. You will need rake, bundler, pry, pry-debugger.
-
+The work is in progress and there are still no builds ready, but instaling from sources is easy. You will need rake, bundler.
 Clone and install CLI core
 
     $ git clone git@github.com:theforeman/hammer-cli.git
