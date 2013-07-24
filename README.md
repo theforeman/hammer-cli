@@ -21,7 +21,7 @@ If you are interested you can help us by sending patches or filing bugs and feat
 How to run
 ----------
 
-The work is in progress and there are still no builds ready, but instaling from sources is easy
+The work is in progress and there are still no builds ready, but instaling from sources is easy. You will need rake, bundler, pry, pry-debugger.
 
 Clone and install CLI core
 
@@ -40,7 +40,7 @@ clone plugin with foreman commands
     
 configure
 
-    $ echo <<EOF > ~/.foreman/cli_config.yml
+    $ cat <<EOF > ~/.foreman/cli_config.yml
     :modules:
         - hammer_cli_foreman
     :host: 'https://localhost/'
