@@ -2,10 +2,9 @@ source "http://rubygems.org"
 
 gemspec
 
-gem 'hammer-cli', :path => '.'
-#gem 'hammer-cli-foreman', :path => '../hammer-cli-foreman'
-#gem 'hammer-cli-katello', :path => '../hammer-cli-katello'
-#gem 'hammer-cli-signo', :path => '../hammer-cli-signo'
+#gem 'hammer_cli_foreman', :path => '../hammer-cli-foreman'
+#gem 'hammer_cli_katello', :path => '../hammer-cli-katello'
+#gem 'hammer_cli_signo', :path => '../hammer-cli-signo'
 
 gem 'pry'
 gem 'pry-debugger'

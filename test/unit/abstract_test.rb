@@ -21,7 +21,7 @@ describe HammerCLI::AbstractCommand do
       end
     end
 
-    it "should return instance of hammer-cli exception handler by default" do
+    it "should return instance of hammer cli exception handler by default" do
       cmd = ModA::ModB::TestCmd.new ""
       cmd.exception_handler.must_be_instance_of HammerCLI::ExceptionHandler
     end

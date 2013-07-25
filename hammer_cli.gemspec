@@ -4,7 +4,7 @@ require "hammer_cli/version"
 
 Gem::Specification.new do |s|
 
-  s.name          = "hammer-cli"
+  s.name          = "hammer_cli"
   s.version       = HammerCLI.version.dup
   s.platform      = Gem::Platform::RUBY
   s.authors       = ["Martin Bačovský", "Tomáš Strachota"]
@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.summary       = %q{Universal command-line interface}
   s.description   = <<EOF
-Hammer-cli provides universal extendable CLI interface for ruby apps
+Hammer cli provides universal extendable CLI interface for ruby apps
 EOF
 
   # s.files         = `git ls-files`.split("\n")

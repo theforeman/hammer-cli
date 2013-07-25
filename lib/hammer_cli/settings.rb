@@ -13,7 +13,7 @@ module HammerCLI
         full_path = File.expand_path path
         if File.exists? full_path
           config = YAML::load(File.open(full_path))
-          load(config)
+          load(config) if config
         end
       end
     end
