@@ -16,3 +16,5 @@ require "mocha/setup"
 
 require 'hammer_cli'
 
+Logging.logger.root.appenders = Logging::Appenders['__test__'] || Logging::Appenders::StringIo.new('__test__')
+

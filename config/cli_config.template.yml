@@ -1,7 +1,10 @@
 :modules:
 #    - hammer_cli_foreman
-#    - hammer-cli-katello-bridge
+#    - hammer_cli_katello_bridge
 
 :host: 'https://localhost/'
 :username: 'admin'
 :password: 'changeme'
+
+:log_dir: '/var/log/foreman'
+:log_level: 'error'
