@@ -1,6 +1,12 @@
 require_relative 'test_helper'
 
+
 describe HammerCLI::ExceptionHandler do
+
+  before(:each) do
+    @log_output = Logging::Appenders['__test__']
+    @log_output.reset
+  end
 
   let(:output) { HammerCLI::Output::Output.new }
   let(:handler) { HammerCLI::ExceptionHandler.new :output => output }
@@ -16,6 +22,13 @@ describe HammerCLI::ExceptionHandler do
     output.expects(:print_error).with(heading, ex.message)
     handler.handle_exception(ex, :heading => heading)
   end
+
+  it "should log the error" do 
+    ex = RestClient::ResourceNotFound.new
+    output.stubs(:print_error).returns('')
+    handler.handle_exception(ex)
+    @log_output.readline.strip.must_equal 'ERROR  Exception : Resource Not Found'
+  end 
 
 end
 

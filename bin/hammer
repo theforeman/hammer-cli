@@ -1,13 +1,45 @@
 #! /usr/bin/env ruby
 
 require 'rubygems'
-require 'hammer_cli'
+require 'clamp'
+
+# create fake command instance to use some global args before we start
+class PreParser < Clamp::Command
+  option ["-v", "--verbose"], :flag, "be verbose"
+end
+
+preparser = PreParser.new File.basename($0), {}
+begin
+  preparser.parse ARGV
+rescue Clamp::UsageError => e
+end
+
+
+# load user's settings
+require 'hammer_cli/settings'
 
 CFG_PATH = ['./config/cli_config.yml', '~/.foreman/cli_config.yml', '/etc/foreman/cli_config.yml']
 
-# load modules set in config
 HammerCLI::Settings.load_from_file CFG_PATH
+
+
+# setup logging
+require 'hammer_cli/logger'
+logger = Logging.logger['Init']
+
+if preparser.verbose?
+  root_logger = Logging.logger.root
+  root_logger.appenders = root_logger.appenders << ::Logging.appenders.stdout(:layout => HammerCLI::Logger::COLOR_LAYOUT)
+end
+
+# load hammer core
+require 'hammer_cli'
+
+# load modules set in config
 modules = HammerCLI::Settings[:modules] || []
-modules.each { |m| require m }
+modules.each do |m| 
+  require m 
+  logger.info "Module #{m} loaded"
+end
 
 exit HammerCLI::MainCommand.run || 0
