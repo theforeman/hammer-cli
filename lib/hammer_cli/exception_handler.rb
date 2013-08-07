@@ -1,10 +1,12 @@
 require 'rest_client'
+require 'logging'
 
 module HammerCLI
   class ExceptionHandler
 
     def initialize options={}
       @output = options[:output] or raise "Missing option output"
+      @logger = Logging.logger['Exception']
     end
 
     def mappings
@@ -26,6 +28,7 @@ module HammerCLI
 
     def print_error error
       error = error.join("\n") if error.kind_of? Array
+      @logger.error error
 
       if @options[:heading]
         @output.print_error @options[:heading], error
@@ -34,14 +37,22 @@ module HammerCLI
       end
     end
 
+    def log_full_error e
+      backtrace = e.backtrace || []
+      @logger.error "\n\n#{e.class} (#{e.message}):\n    " + 
+        backtrace.join("\n    ")
+        "\n\n"
+    end 
 
     def handle_not_found e
       print_error e.message
+      log_full_error e
       32
     end
 
     def handle_unauthorized e
       print_error "Invalid username or password"
+      log_full_error e
       32
     end
 
