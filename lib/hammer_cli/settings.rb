@@ -1,4 +1,5 @@
 require 'yaml'
+require 'logging'
 
 module HammerCLI
 
@@ -13,7 +14,10 @@ module HammerCLI
         full_path = File.expand_path path
         if File.exists? full_path
           config = YAML::load(File.open(full_path))
-          load(config) if config
+          if config
+            load(config)
+            path_history << full_path
+          end
         end
       end
     end
@@ -24,6 +28,12 @@ module HammerCLI
 
     def self.clear
       settings.clear
+      path_history.clear
+    end
+
+    def self.path_history
+      @path_history ||= []
+      @path_history 
     end
 
     private

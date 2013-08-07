@@ -35,6 +35,11 @@ if preparser.verbose?
   root_logger.appenders = root_logger.appenders << ::Logging.appenders.stdout(:layout => HammerCLI::Logger::COLOR_LAYOUT)
 end
 
+# log which config was loaded (now when we have logging)
+HammerCLI::Settings.path_history.each do |path|
+  logger.info "Configuration from the file #{path} has been loaded"
+end
+
 # load hammer core
 require 'hammer_cli'
 
@@ -42,7 +47,7 @@ require 'hammer_cli'
 modules = HammerCLI::Settings[:modules] || []
 modules.each do |m| 
   require m 
-  logger.info "Module #{m} loaded"
+  logger.info "Extension module #{m} loaded"
 end
 
 exit HammerCLI::MainCommand.run || 0
