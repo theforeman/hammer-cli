@@ -2,7 +2,7 @@ require_relative 'test_helper'
 
 describe HammerCLI::Settings do
 
-  after :each do
+  before :each do
     # clean up global settings
     HammerCLI::Settings.clear
   end
@@ -50,19 +50,40 @@ describe HammerCLI::Settings do
     settings[:b].must_be_nil
   end
 
+  context "load from file" do 
 
-  it "loads settings from file" do
-    settings1 = Tempfile.new 'settings'
-    settings1 << ":host: 'https://localhost/'\n"
-    settings1 << ":username: 'admin'\n"
-    settings1.close
-    settings2 = Tempfile.new 'settings2'
-    settings2 << ":host: 'https://localhost.localdomain/'\n"
-    settings2.close
-    settings.load_from_file [settings2.to_path, settings1.to_path]
-    settings[:host].must_equal 'https://localhost.localdomain/'
-    settings[:username].must_equal 'admin'
+    let(:config1) do
+      config1 = Tempfile.new 'config'
+      config1 << ":host: 'https://localhost/'\n"
+      config1 << ":username: 'admin'\n"
+      config1.close
+      config1
+    end 
+
+    let(:config2) do
+      config2 = Tempfile.new 'config2'
+      config2 << ":host: 'https://localhost.localdomain/'\n"
+      config2.close
+      config2
+    end
+
+    it "loads settings from file" do
+      settings.load_from_file [config2.to_path, config1.to_path]
+      settings[:host].must_equal 'https://localhost.localdomain/'
+      settings[:username].must_equal 'admin'
+    end
+
+    it "clears path history on clear invokation" do
+      settings.load_from_file [config2.to_path]
+      settings.clear
+      settings.path_history.must_equal []
+    end
+
+    it "store config path history" do
+      settings.load_from_file [config2.to_path, config1.to_path]
+      settings.path_history.must_equal [config1.to_path, config2.to_path]
+    end
+
   end
-
 end
 
