@@ -23,19 +23,11 @@ module HammerCLI
     end
 
     def password=(password)
-      @@password = password
-    end
-
-    def self.password
-      @@password
+      context[:password] = password
     end
 
     def username=(username)
-      @@username = username
-    end
-
-    def self.username
-      @@username
+      context[:username] = username
     end
 
   end
