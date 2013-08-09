@@ -39,5 +39,46 @@ describe HammerCLI::AbstractCommand do
     end
   end
 
+  context "logging" do
+
+    before :each do
+      @log_output = Logging::Appenders['__test__']
+      @log_output.reset
+    end
+
+    it "should log what has been executed" do
+      test_command = Class.new(HammerCLI::AbstractCommand).new("")
+      test_command.run []
+      @log_output.readline.strip.must_equal "INFO  HammerCLI::AbstractCommand : Called with options: {}"
+    end
+
+    class TestLogCmd < HammerCLI::AbstractCommand
+      def execute
+        logger.error "Test"
+        0
+      end
+    end
+
+    it "should have logger named by the class by default" do
+      test_command = Class.new(TestLogCmd).new("")
+      test_command.run []
+      @log_output.read.must_include "ERROR  TestLogCmd : Test"
+    end
+
+    class TestLogCmd2 < HammerCLI::AbstractCommand
+      def execute
+        logger('My logger').error "Test"
+        0
+      end
+    end
+
+    it "should have logger that accepts custom name" do
+      test_command = Class.new(TestLogCmd2).new("")
+      test_command.run []
+      @log_output.read.must_include "ERROR  My logger : Test"
+    end
+
+  end
+
 end
 

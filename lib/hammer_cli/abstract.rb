@@ -1,6 +1,7 @@
 require 'hammer_cli/autocompletion'
 require 'hammer_cli/exception_handler'
 require 'clamp'
+require 'logging'
 
 module HammerCLI
 
@@ -22,6 +23,7 @@ module HammerCLI
     def parse(arguments)
       super(arguments)
       validate_options
+      logger.info "Called with options: %s" % options.inspect
     rescue HammerCLI::Validator::ValidationError => e
       signal_usage_error e.message
     end
@@ -48,6 +50,10 @@ module HammerCLI
     end
 
     protected
+
+    def logger name=self.class
+      logger = Logging.logger[name]
+    end
 
     def validator
       options = self.class.recognised_options.collect{|opt| opt.of(self)}
