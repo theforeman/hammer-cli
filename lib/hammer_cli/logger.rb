@@ -32,7 +32,9 @@ module HammerCLI
       logger.appenders = ::Logging.appenders.rolling_file('configure',
                                                           :filename => filename,
                                                           :layout   => NOCOLOR_LAYOUT,
-                                                          :truncate => true)
+                                                          :truncate => false,
+                                                          :keep     => 5,
+                                                          :size     => HammerCLI::Settings[:log_size] || 1024*1024) # 1MB
       # set owner and group (it's ignored if attribute is nil)
       FileUtils.chown HammerCLI::Settings[:log_owner], HammerCLI::Settings[:log_group], filename
     rescue ArgumentError => e
