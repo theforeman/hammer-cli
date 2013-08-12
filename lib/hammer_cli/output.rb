@@ -1,6 +1,6 @@
-require_relative 'output/output'
-require_relative 'output/adapter'
-require_relative 'output/definition'
-require_relative 'output/definition_interpreter'
-require_relative 'output/dsl'
+require File.join(File.dirname(__FILE__), 'output/output')
+require File.join(File.dirname(__FILE__), 'output/adapter')
+require File.join(File.dirname(__FILE__), 'output/definition')
+require File.join(File.dirname(__FILE__), 'output/definition_interpreter')
+require File.join(File.dirname(__FILE__), 'output/dsl')
 

@@ -1,5 +1,5 @@
-require_relative '../test_helper'
-require_relative 'fake_api'
+require File.join(File.dirname(__FILE__), '../test_helper')
+require File.join(File.dirname(__FILE__), 'fake_api')
 
 describe HammerCLI::Apipie::WriteCommand do
 
