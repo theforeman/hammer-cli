@@ -83,6 +83,10 @@ Development of almost all the code was test driven.
 
 should work in any of the cli related repos. Generated coverage reports are stored in ./coverage directory.
 
+License
+-------
+
+This project is licensed under the GPLv3+.
 
 
 Acknowledgements
