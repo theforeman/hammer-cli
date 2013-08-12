@@ -84,9 +84,8 @@ module HammerCLI::Apipie
         # FIXME: There is a bug in apipie, it does not produce correct expected type for Arrays
         # When it's fixed, we should test param["expected_type"] == "array"
         if param["validator"].include? "Array"
-          return lambda do |val|
-            return val.split "," if val.is_a? String
-            return []
+          lambda do |val|
+            val.is_a?(String) ? val.split(",") : []
           end
         end
       end
