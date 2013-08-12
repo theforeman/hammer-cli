@@ -1,6 +1,6 @@
-require_relative 'adapter/abstract'
-require_relative 'adapter/base'
-require_relative 'adapter/table'
-require_relative 'adapter/silent'
+require File.join(File.dirname(__FILE__), 'adapter/abstract')
+require File.join(File.dirname(__FILE__), 'adapter/base')
+require File.join(File.dirname(__FILE__), 'adapter/table')
+require File.join(File.dirname(__FILE__), 'adapter/silent')
 
 

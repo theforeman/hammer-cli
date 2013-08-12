@@ -1,5 +1,5 @@
-require_relative 'options'
-require_relative 'resource'
+require File.join(File.dirname(__FILE__), 'options')
+require File.join(File.dirname(__FILE__), 'resource')
 
 module HammerCLI::Apipie
 
