@@ -68,20 +68,20 @@ describe HammerCLI::Settings do
     end
 
     it "loads settings from file" do
-      settings.load_from_file [config2.to_path, config1.to_path]
+      settings.load_from_file [config2.path, config1.path]
       settings[:host].must_equal 'https://localhost.localdomain/'
       settings[:username].must_equal 'admin'
     end
 
     it "clears path history on clear invokation" do
-      settings.load_from_file [config2.to_path]
+      settings.load_from_file [config2.path]
       settings.clear
       settings.path_history.must_equal []
     end
 
     it "store config path history" do
-      settings.load_from_file [config2.to_path, config1.to_path]
-      settings.path_history.must_equal [config1.to_path, config2.to_path]
+      settings.load_from_file [config2.path, config1.path]
+      settings.path_history.must_equal [config1.path, config2.path]
     end
 
   end

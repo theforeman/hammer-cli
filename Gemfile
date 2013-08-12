@@ -7,7 +7,7 @@ gemspec
 #gem 'hammer_cli_signo', :path => '../hammer-cli-signo'
 
 gem 'pry'
-gem 'pry-debugger'
+gem 'pry-debugger', :platforms => [:ruby_19]
 
 group :test do
   gem 'thor'
@@ -16,6 +16,6 @@ group :test do
   gem 'simplecov'
   gem 'mocha'
   gem 'rake'
-  gem 'psych'
+  gem 'psych', :platforms => [:ruby_19]
   gem 'netrc'
 end
