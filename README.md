@@ -37,15 +37,13 @@ clone plugin with foreman commands
     $ rake install
     $ cd ..
     
-configure
+and configure. Configuration is by default looked for in ~/.foreman/ or in /etc/foreman/. 
+Optionally you can put your configuration in ./config/ or point hammer 
+to some other location using -c CONF_FILE option
 
-    $ cat <<EOF > ~/.foreman/cli_config.yml
-    :modules:
-        - hammer_cli_foreman
-    :host: 'https://localhost/'
-    :username: 'admin'
-    :password: 'changeme'
-    EOF
+You can start with config file template we created for you and update it to suit your needs. E.g.:
+
+    $ cp hammer-cli/config/cli_config.template.yaml ~/.foreman/cli_config.yml
 
 and run 
 

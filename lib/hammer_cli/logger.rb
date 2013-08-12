@@ -16,18 +16,20 @@ module HammerCLI
                          :file   => :yellow,
                          :method => :yellow)
 
-    pattern        = "[%5l %d %c] %m\n"
-    COLOR_LAYOUT   = Logging::Layouts::Pattern.new(:pattern => pattern, :color_scheme => 'bright')
-    NOCOLOR_LAYOUT = Logging::Layouts::Pattern.new(:pattern => pattern, :color_scheme => nil)
+    pattern         = "[%5l %d %c] %m\n"
+    COLOR_LAYOUT    = Logging::Layouts::Pattern.new(:pattern => pattern, :color_scheme => 'bright')
+    NOCOLOR_LAYOUT  = Logging::Layouts::Pattern.new(:pattern => pattern, :color_scheme => nil)
+    DEFAULT_LOG_DIR = '/var/log/foreman'
 
+    log_dir = File.expand_path(HammerCLI::Settings[:log_dir] || DEFAULT_LOG_DIR)
     begin
-      FileUtils.mkdir_p(HammerCLI::Settings[:log_dir], :mode => 0750)
+      FileUtils.mkdir_p(log_dir, :mode => 0750)
     rescue Errno::EACCES => e
-      puts "No permissions to create log dir #{HammerCLI::Settings[:log_dir]}"
+      puts "No permissions to create log dir #{log_dir}"
     end
 
     logger   = Logging.logger.root
-    filename = "#{HammerCLI::Settings[:log_dir]}/hammer.log"
+    filename = "#{log_dir}/hammer.log"
     begin
       logger.appenders = ::Logging.appenders.rolling_file('configure',
                                                           :filename => filename,
