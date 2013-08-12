@@ -1,4 +1,4 @@
-require_relative '../test_helper'
+require File.join(File.dirname(__FILE__), '../test_helper')
 
 
 describe HammerCLI::Output::Definition do

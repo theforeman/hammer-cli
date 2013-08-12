@@ -1,3 +1,3 @@
-require_relative './apipie/command'
-require_relative './apipie/read_command'
-require_relative './apipie/write_command'
+require File.join(File.dirname(__FILE__), './apipie/command')
+require File.join(File.dirname(__FILE__), './apipie/read_command')
+require File.join(File.dirname(__FILE__), './apipie/write_command')
