@@ -78,6 +78,46 @@ describe HammerCLI::AbstractCommand do
       @log_output.read.must_include "ERROR  My logger : Test"
     end
 
+    class TestLogCmd3 < HammerCLI::AbstractCommand
+      def execute
+        logger.watch "Test", {}
+        0
+      end
+    end
+
+    it "should have logger that can inspect object" do
+      test_command = Class.new(TestLogCmd3).new("")
+      test_command.run []
+      @log_output.read.must_include "DEBUG  TestLogCmd3 : Test\n{}"
+    end
+
+    class TestLogCmd4 < HammerCLI::AbstractCommand
+      def execute
+        logger.watch "Test", { :a => 'a' }, { :plain => true }
+        0
+      end
+    end
+
+    it "should have logger.watch output without colors" do
+      test_command = Class.new(TestLogCmd4).new("")
+      test_command.run []
+      @log_output.read.must_include "DEBUG  TestLogCmd4 : Test\n{\n  :a => \"a\"\n}"
+    end
+
+    class TestLogCmd5 < HammerCLI::AbstractCommand
+      def execute
+        logger.watch "Test", { :a => 'a' }
+        0
+      end
+    end
+
+    it "should have logger.watch colorized output switch in settings" do
+      test_command = Class.new(TestLogCmd5).new("")
+      HammerCLI::Settings.clear
+      HammerCLI::Settings.load(:watch_plain => true)
+      test_command.run []
+      @log_output.read.must_include "DEBUG  TestLogCmd5 : Test\n{\n  :a => \"a\"\n}"
+    end
   end
 
 end

@@ -16,6 +16,7 @@ module HammerCLI::Apipie
 
       def execute
         d = retrieve_data
+        logger.watch "Retrieved data: ", d
         print_records d
         return 0
       end
