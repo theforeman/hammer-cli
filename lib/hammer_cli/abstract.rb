@@ -1,5 +1,6 @@
 require 'hammer_cli/autocompletion'
 require 'hammer_cli/exception_handler'
+require 'hammer_cli/logger_watch'
 require 'clamp'
 require 'logging'
 
@@ -53,6 +54,8 @@ module HammerCLI
 
     def logger name=self.class
       logger = Logging.logger[name]
+      logger.extend(HammerCLI::Logger::Watch) if not logger.respond_to? :watch
+      logger
     end
 
     def validator

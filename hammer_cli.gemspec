@@ -27,5 +27,6 @@ EOF
   s.add_dependency 'terminal-table'
   s.add_dependency 'rest-client'
   s.add_dependency 'logging'
+  s.add_dependency 'awesome_print'
 
 end
