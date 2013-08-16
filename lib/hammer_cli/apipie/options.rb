@@ -1,3 +1,5 @@
+require 'hammer_cli/option_formatters'
+
 module HammerCLI::Apipie
   module Options
 
@@ -84,9 +86,7 @@ module HammerCLI::Apipie
         # FIXME: There is a bug in apipie, it does not produce correct expected type for Arrays
         # When it's fixed, we should test param["expected_type"] == "array"
         if param["validator"].include? "Array"
-          lambda do |val|
-            val.is_a?(String) ? val.split(",") : []
-          end
+          HammerCLI::OptionFormatters.method(:list)
         end
       end
 
