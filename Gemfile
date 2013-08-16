@@ -18,4 +18,5 @@ group :test do
   gem 'rake'
   gem 'psych', :platforms => [:ruby_19]
   gem 'netrc'
+  gem 'ci_reporter'
 end

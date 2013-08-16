@@ -1,0 +1,6 @@
+# Ruby + project files
+Gemfile.lock
+
+# Tests
+test/reports/*
+coverage/*
