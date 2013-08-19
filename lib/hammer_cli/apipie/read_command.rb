@@ -17,7 +17,7 @@ module HammerCLI::Apipie
       def execute
         d = retrieve_data
         logger.watch "Retrieved data: ", d
-        print_records d
+        print_data d
         return 0
       end
 
@@ -27,7 +27,7 @@ module HammerCLI::Apipie
         resource.send(action, request_params)[0]
       end
 
-      def print_records(records)
+      def print_data(records)
         output.print_records(records, self.class.output_heading)
       end
 
