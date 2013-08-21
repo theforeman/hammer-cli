@@ -8,21 +8,12 @@ describe HammerCLI::Output::Output do
 
     @definition = HammerCLI::Output::Definition.new
 
-    @interpreter = HammerCLI::Output::DefinitionInterpreter.new :definition => @definition
-    @interpreter.stubs(:fields).returns(:fields)
-
-    @out = HammerCLI::Output::Output.new :adapter => @adapter,
-                                      :interpreter => @interpreter,
-                                      :definition => @definition
+    @out = HammerCLI::Output::Output.new :adapter => @adapter, :definition => @definition
   end
 
   context "dependency injection" do
 
     let(:fake) { Object.new }
-
-    it "should assign interpreter" do
-      @out.interpreter.must_equal @interpreter
-    end
 
     it "should assign definition" do
       @out.definition.must_equal @definition
@@ -35,10 +26,6 @@ describe HammerCLI::Output::Output do
     context "default instances" do
 
       let(:new_instance) { HammerCLI::Output::Output.new }
-
-      it "interpreter" do
-        new_instance.interpreter.must_be_instance_of HammerCLI::Output::DefinitionInterpreter
-      end
 
       it "definition" do
         new_instance.definition.must_be_instance_of HammerCLI::Output::Definition
@@ -85,22 +72,22 @@ describe HammerCLI::Output::Output do
 
     context "prints single resource" do
       it "without header" do
-        @adapter.expects(:print_records).with(:fields, [item1], nil)
+        @adapter.expects(:print_records).with([], [item1], nil)
         @out.print_records(item1)
       end
       it "with header" do
-        @adapter.expects(:print_records).with(:fields, [item1], heading)
+        @adapter.expects(:print_records).with([], [item1], heading)
         @out.print_records(item1, heading)
       end
     end
 
     context "prints array of resources" do
       it "without header" do
-        @adapter.expects(:print_records).with(:fields, collection, nil)
+        @adapter.expects(:print_records).with([], collection, nil)
         @out.print_records(collection)
       end
       it "with header" do
-        @adapter.expects(:print_records).with(:fields, collection, heading)
+        @adapter.expects(:print_records).with([], collection, heading)
         @out.print_records(collection, heading)
       end
     end

@@ -8,7 +8,7 @@ module HammerCLI::Output::Adapter
       headings = fields.collect{|f| f.label.to_s}
       rows = data.collect do |d|
         fields.collect do |f|
-          d[f.key].to_s
+          f.get_value(d).to_s
         end
       end
 
