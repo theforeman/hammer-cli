@@ -4,10 +4,26 @@ module HammerCLI::Apipie
 
   class ReadCommand < Command
 
-      extend HammerCLI::Output::Dsl
+      def self.output definition=nil, &block
+        dsl = HammerCLI::Output::Dsl.new
+        dsl.build &block
+
+        output_definition.append definition.fields unless definition.nil?
+        output_definition.append dsl.fields
+      end
+
+      def self.heading heading=nil
+        @heading = heading if heading
+        @heading
+      end
 
       def output_definition
         self.class.output_definition
+      end
+
+      def self.output_definition
+        @output_definition ||= HammerCLI::Output::Definition.new
+        @output_definition
       end
 
       def output
@@ -28,7 +44,7 @@ module HammerCLI::Apipie
       end
 
       def print_data(records)
-        output.print_records(records, self.class.output_heading)
+        output.print_records(records, self.class.heading)
       end
 
       def request_params

@@ -20,6 +20,32 @@ describe HammerCLI::Apipie::ReadCommand do
     cmd.output_definition.must_be_instance_of HammerCLI::Output::Definition
   end
 
+  it "sets output header" do
+    header_msg = "TEST HEADER"
+    cmd_class.heading(header_msg)
+    cmd_class.heading.must_equal header_msg
+  end
+
+  context "output" do
+    it "can append existing definition" do
+      definition = HammerCLI::Output::Definition.new
+      definition.fields << HammerCLI::Output::Field.new
+      definition.fields << HammerCLI::Output::Field.new
+
+      cmd_class.output(definition) do
+      end
+      cmd_class.output_definition.fields.length.must_equal definition.fields.length
+    end
+
+    it "can define fields" do
+      cmd_class.output do
+        field :test_1, "test 1"
+        field :test_2, "test 2"
+      end
+      cmd_class.output_definition.fields.length.must_equal 2
+    end
+  end
+
   context "resource defined" do
 
     before :each do
