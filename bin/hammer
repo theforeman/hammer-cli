@@ -32,7 +32,7 @@ logger = Logging.logger['Init']
 
 if preparser.verbose?
   root_logger = Logging.logger.root
-  root_logger.appenders = root_logger.appenders << ::Logging.appenders.stdout(:layout => HammerCLI::Logger::COLOR_LAYOUT)
+  root_logger.appenders = root_logger.appenders << ::Logging.appenders.stderr(:layout => HammerCLI::Logger::COLOR_LAYOUT)
 end
 
 # log which config was loaded (now when we have logging)
