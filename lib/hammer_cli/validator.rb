@@ -84,7 +84,7 @@ module HammerCLI
         @to_check.each do |opt|
           return true if option_passed?(opt)
         end
-        return false
+        return @to_check.empty?
       end
     end
 

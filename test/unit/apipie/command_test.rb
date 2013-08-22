@@ -11,6 +11,58 @@ describe HammerCLI::Apipie::Command do
     cmd.output.must_be_instance_of HammerCLI::Output::Output
   end
 
+  context "setting identifiers" do
+
+    let(:option_switches) { cmd_class.declared_options.map(&:switches) }
+    let(:option_attribute_names) { cmd_class.declared_options.map(&:attribute_name) }
+
+    class Cmd1 < HammerCLI::Apipie::Command
+      identifiers :id, :name, :label
+    end
+
+    class Cmd2 < Cmd1
+      identifiers :id
+    end
+
+    it "must not set any option by default" do
+      cmd
+      cmd_class.declared_options.must_equal []
+    end
+
+    it "can set option --id" do
+      cmd_class.identifiers :id
+      cmd
+      option_switches.must_equal [["--id"]]
+      option_attribute_names.must_equal ["id"]
+    end
+
+    it "can set option --name" do
+      cmd_class.identifiers :name
+      cmd
+      option_switches.must_equal [["--name"]]
+      option_attribute_names.must_equal ["name"]
+    end
+
+    it "can set option --label" do
+      cmd_class.identifiers :label
+      cmd
+      option_switches.must_equal [["--label"]]
+      option_attribute_names.must_equal ["label"]
+    end
+
+    it "can set multiple identifiers" do
+      cmd_class.identifiers :id, :name, :label
+      cmd
+      option_switches.must_equal [["--id"], ["--name"], ["--label"]]
+      option_attribute_names.must_equal ["id", "name", "label"]
+    end
+
+    it "can override inentifiers in inherrited classes" do
+      Cmd2.new("").class.declared_options.map(&:switches).must_equal [["--id"]]
+    end
+
+  end
+
   context "setting resources" do
 
     it "should set resource and action together" do
@@ -139,6 +191,11 @@ describe HammerCLI::Apipie::Command do
 
       it "should skip filtered options" do
         cmd_class.apipie_options :without => ["provider", "name"]
+        cmd_class.declared_options.map(&:attribute_name).sort.must_equal ["array_param"]
+      end
+
+      it "should skip filtered options defined as symbols" do
+        cmd_class.apipie_options :without => [:provider, :name]
         cmd_class.declared_options.map(&:attribute_name).sort.must_equal ["array_param"]
       end
 
