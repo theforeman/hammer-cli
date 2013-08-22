@@ -34,7 +34,7 @@ module HammerCLI::Apipie
         raise "Specify apipie resource first." unless resource_defined?
 
         filter = options[:without] || []
-        filter = [filter] unless filter.kind_of? Array
+        filter = Array(filter)
 
         options_for_params(method_doc["params"], filter)
       end
@@ -43,7 +43,7 @@ module HammerCLI::Apipie
 
       def options_for_params params, filter
         params.each do |p|
-          next if filter.include? p["name"]
+          next if filter.include? p["name"].to_s or filter.include? p["name"].to_sym
           if p["expected_type"] == "hash"
             options_for_params(p["params"], filter)
           else

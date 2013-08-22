@@ -95,6 +95,12 @@ describe "constraints" do
     let(:cls) { HammerCLI::Validator::AllConstraint }
 
     describe "exist?" do
+
+      it "should return true when no options are passed" do
+        constraint = cls.new(options, [])
+        constraint.exist?.must_equal true
+      end
+
       it "should return true when all the options exist" do
         constraint = cls.new(options, [:option_a, :option_b, :option_c])
         constraint.exist?.must_equal true
@@ -113,6 +119,12 @@ describe "constraints" do
     let(:cls) { HammerCLI::Validator::AnyConstraint }
 
     describe "exist?" do
+
+      it "should return true when no options are passed" do
+        constraint = cls.new(options, [])
+        constraint.exist?.must_equal true
+      end
+
       it "should return true when one of the options exist" do
         constraint = cls.new(options, [:option_a, :option_d, :option_e])
         constraint.exist?.must_equal true
