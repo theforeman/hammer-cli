@@ -20,8 +20,10 @@ module HammerCLI::Apipie
       params.each do |p|
         if p["expected_type"] == "hash"
           opts[p["name"]] = method_options_for_params(p["params"], include_nil)
+        elsif respond_to?(p["name"], true)
+          opts[p["name"]] = send(p["name"])
         else
-          opts[p["name"]] = send(p["name"]) rescue nil
+          opts[p["name"]] = nil
         end
       end
       opts.reject! {|key, value| value.nil? } unless include_nil
