@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.authors       = ["Martin Bačovský", "Tomáš Strachota"]
   s.email         = "mbacovsk@redhat.com"
   s.homepage      = "http://github.com/theforeman/hammer-cli"
+  s.license       = "GPL-3"
 
   s.summary       = %q{Universal command-line interface}
   s.description   = <<EOF
@@ -20,6 +21,7 @@ EOF
   s.files = Dir['lib/**/*.rb'] + Dir['bin/*']
   # s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.test_files = Dir.glob('test/tc_*.rb')
+  s.extra_rdoc_files = ['README.md', 'LICENSE', 'hammer_cli_complete'] + Dir['config/*template*'] + Dir['doc/*']
   s.require_paths = ["lib"]
   s.executables = ['hammer']
 
