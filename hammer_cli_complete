@@ -4,8 +4,10 @@
 # vim:ts=2:sw=2:et:
 #
 
+_HAMMER_BUNDLER_CMD="bundle exec"
+
 _hammer() {
-  COMPREPLY=($(bundle exec "hammer --autocomplete '${COMP_WORDS[*]}'"))
+  COMPREPLY=($($_HAMMER_BUNDLER_CMD hammer --autocomplete '${COMP_WORDS[*]}'))
   return 0
 }
 
