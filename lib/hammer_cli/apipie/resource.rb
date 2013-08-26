@@ -6,7 +6,8 @@ module HammerCLI::Apipie
     end
 
     def resource
-      self.class.resource.new resource_config
+      @resource ||= self.class.resource.new resource_config
+      @resource
     end
 
     def action
