@@ -13,8 +13,8 @@ describe HammerCLI::Apipie::Command do
 
   context "setting identifiers" do
 
-    let(:option_switches) { cmd_class.declared_options.map(&:switches) }
-    let(:option_attribute_names) { cmd_class.declared_options.map(&:attribute_name) }
+    let(:option_switches) { cmd_class.declared_options.map(&:switches).sort }
+    let(:option_attribute_names) { cmd_class.declared_options.map(&:attribute_name).sort }
 
     class Cmd1 < HammerCLI::Apipie::Command
       identifiers :id, :name, :label
@@ -53,8 +53,15 @@ describe HammerCLI::Apipie::Command do
     it "can set multiple identifiers" do
       cmd_class.identifiers :id, :name, :label
       cmd
-      option_switches.must_equal [["--id"], ["--name"], ["--label"]]
-      option_attribute_names.must_equal ["id", "name", "label"]
+      option_switches.must_equal [["--id"], ["--label"], ["--name"]]
+      option_attribute_names.must_equal ["id", "label", "name"]
+    end
+
+    it "can change option reader" do
+      cmd_class.identifiers :name, :id => :id_read_method
+      cmd
+      option_switches.must_equal [["--id"], ["--name"]]
+      option_attribute_names.must_equal ["id_read_method", "name"]
     end
 
     it "can override inentifiers in inherrited classes" do
