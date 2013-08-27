@@ -73,6 +73,16 @@ and run
         -h, --help                    print help
 
 
+Autocompletion
+--------------
+
+It is necessary to copy script hammer_cli_complete to the bash_completion.d directory. 
+
+    $ sudo cp hammer-cli/hammer_cli_complete /etc/bash_completion.d/
+
+Then in new shell the completion should work.
+
+
 How to test
 ------------
 
