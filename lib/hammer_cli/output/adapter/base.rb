@@ -1,5 +1,3 @@
-require 'terminal-table'
-
 module HammerCLI::Output::Adapter
   class Base < Abstract
 
