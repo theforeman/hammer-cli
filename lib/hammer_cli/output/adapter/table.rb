@@ -3,8 +3,7 @@ require 'terminal-table'
 module HammerCLI::Output::Adapter
   class Table < Abstract
 
-    def print_records fields, data, heading=nil
-
+    def print_records(fields, data, heading=nil)
       headings = fields.collect{|f| f.label.to_s}
       rows = data.collect do |d|
         fields.collect do |f|
@@ -12,10 +11,13 @@ module HammerCLI::Output::Adapter
         end
       end
 
-      table = Terminal::Table.new :title => heading,
-                                  :headings => headings,
+      table = Terminal::Table.new(:headings => headings,
                                   :rows => rows,
-                                  :style => { :border_y => '', :border_i => '', :border_x => '-' }
+                                  :style => {
+                                    :border_y => '',
+                                    :border_i => '',
+                                    :border_x => '-'
+                                  })
       puts table
     end
 
