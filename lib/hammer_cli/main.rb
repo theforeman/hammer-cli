@@ -23,11 +23,11 @@ module HammerCLI
     end
 
     def password=(password)
-      context[:password] = password
+      context[:password] = password.nil? ? ENV['FOREMAN_PASSWORD'] : password
     end
 
     def username=(username)
-      context[:username] = username
+      context[:username] = username.nil? ? ENV['FOREMAN_USERNAME'] : username
     end
 
   end

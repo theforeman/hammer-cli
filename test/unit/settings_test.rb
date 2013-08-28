@@ -6,7 +6,7 @@ describe HammerCLI::Settings do
     # clean up global settings
     HammerCLI::Settings.clear
   end
-  
+
   let(:settings) { HammerCLI::Settings }
 
   it "returns nil when nothing is loaded" do
@@ -65,6 +65,13 @@ describe HammerCLI::Settings do
       config2 << ":host: 'https://localhost.localdomain/'\n"
       config2.close
       config2
+    end
+
+    let(:config_without_creds) do
+      config_without_creds = Tempfile.new('config_without_creds')
+      config_without_creds << ":host: 'https://localhost.localdomain/'\n"
+      config_without_creds.close
+      config_without_creds
     end
 
     it "loads settings from file" do
