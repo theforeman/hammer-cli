@@ -26,9 +26,9 @@ EOF
   s.executables = ['hammer']
 
   s.add_dependency 'clamp'
-  s.add_dependency 'terminal-table'
   s.add_dependency 'rest-client'
   s.add_dependency 'logging'
   s.add_dependency 'awesome_print'
+  s.add_dependency 'table_print'
 
 end
