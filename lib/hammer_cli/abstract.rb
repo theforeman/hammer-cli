@@ -30,7 +30,7 @@ module HammerCLI
     end
 
     def execute
-      0
+      HammerCLI::EX_OK
     end
 
     def self.validate_options &block

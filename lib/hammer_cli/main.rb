@@ -1,4 +1,3 @@
-
 module HammerCLI
 
   class MainCommand < AbstractCommand
@@ -11,7 +10,7 @@ module HammerCLI
 
     option "--version", :flag, "show version" do
       puts "hammer-%s" % HammerCLI.version
-      exit(0)
+      exit(HammerCLI::EX_OK)
     end
 
     option "--autocomplete", "LINE", "Get list of possible endings" do |line|
@@ -19,7 +18,7 @@ module HammerCLI
       line.shift
       endings = self.class.autocomplete(line).map { |l| l[0] }
       puts endings.join(' ')
-      exit(0)
+      exit(HammerCLI::EX_OK)
     end
 
     def password=(password)
