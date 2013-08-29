@@ -10,17 +10,17 @@ module HammerCLI
     end
 
     def mappings
-      {
-        RestClient::ResourceNotFound => :handle_not_found,
-        RestClient::Unauthorized => :handle_unauthorized
-      }
+      [
+        [Exception, :handle_general_exception], # catch all
+        [RestClient::ResourceNotFound, :handle_not_found],
+        [RestClient::Unauthorized, :handle_unauthorized],
+      ]
     end
 
     def handle_exception e, options={}
       @options = options
-
-      handler = mappings[e.class]
-      return send(handler, e) if handler
+      handler = mappings.reverse.find { |m| e.class.respond_to?(:"<=") ? e.class <= m[0] : false }
+      return send(handler[1], e) if handler
       raise e
     end
 
@@ -43,6 +43,12 @@ module HammerCLI
         backtrace.join("\n    ")
         "\n\n"
     end 
+
+    def handle_general_exception e
+      print_error "Error: " + e.message
+      log_full_error e
+      HammerCLI::EX_SOFTWARE
+    end
 
     def handle_not_found e
       print_error e.message

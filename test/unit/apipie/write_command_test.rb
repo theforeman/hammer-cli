@@ -7,7 +7,8 @@ describe HammerCLI::Apipie::WriteCommand do
   let(:cmd_run) { cmd.run([]) }
 
   it "should raise exception when no action is defined" do
-    proc { cmd_run }.must_raise RuntimeError
+    cmd.stubs(:handle_exception).returns(HammerCLI::EX_SOFTWARE)
+    cmd_run.must_equal HammerCLI::EX_SOFTWARE
   end
 
   context "resource defined" do
