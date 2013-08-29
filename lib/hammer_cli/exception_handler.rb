@@ -47,13 +47,13 @@ module HammerCLI
     def handle_not_found e
       print_error e.message
       log_full_error e
-      32
+      HammerCLI::EX_NOT_FOUND
     end
 
     def handle_unauthorized e
       print_error "Invalid username or password"
       log_full_error e
-      32
+      HammerCLI::EX_UNAUTHORIZED
     end
 
   end
