@@ -34,7 +34,7 @@ module HammerCLI::Apipie
         d = retrieve_data
         logger.watch "Retrieved data: ", d
         print_data d
-        return 0
+        return HammerCLI::EX_OK
       end
 
       protected
