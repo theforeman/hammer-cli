@@ -1,3 +1,5 @@
+require 'highline/import'
+
 module HammerCLI
 
   class MainCommand < AbstractCommand
@@ -11,6 +13,11 @@ module HammerCLI
     option "--version", :flag, "show version" do
       puts "hammer-%s" % HammerCLI.version
       exit(HammerCLI::EX_OK)
+    end
+
+    option ["-P", "--ask-pass"], :flag, "Ask for password" do 
+      context[:password] = get_password()
+      ''
     end
 
     option "--autocomplete", "LINE", "Get list of possible endings" do |line|
@@ -28,6 +35,14 @@ module HammerCLI
     def username=(username)
       context[:username] = username.nil? ? ENV['FOREMAN_USERNAME'] : username
     end
+
+    private
+
+    def get_password(prompt="Enter Password ")
+      ask(prompt) {|q| q.echo = false}
+    end
+
+
 
   end
 

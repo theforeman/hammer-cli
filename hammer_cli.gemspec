@@ -30,5 +30,6 @@ EOF
   s.add_dependency 'logging'
   s.add_dependency 'awesome_print'
   s.add_dependency 'table_print'
+  s.add_dependency 'highline'
 
 end
