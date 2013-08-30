@@ -13,7 +13,8 @@ describe HammerCLI::Apipie::ReadCommand do
   end
 
   it "should raise exception when no action is defined" do
-    proc { cmd_run }.must_raise RuntimeError
+    cmd.stubs(:handle_exception).returns(HammerCLI::EX_SOFTWARE)
+    cmd_run.must_equal HammerCLI::EX_SOFTWARE
   end
 
   it "should hold instance of output definition" do

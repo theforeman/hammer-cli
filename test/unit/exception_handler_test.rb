@@ -17,6 +17,17 @@ describe HammerCLI::ExceptionHandler do
     handler.handle_exception(RestClient::Unauthorized.new, :heading => heading)
   end
 
+  it "should handle general exception" do
+    output.expects(:print_error).with(heading, "Error: message")
+    handler.handle_exception(Exception.new('message'), :heading => heading)
+  end
+
+  it "should handle unknown exception" do
+    output.expects(:print_error).with(heading, "Error: message")
+    MyException = Class.new(Exception)
+    handler.handle_exception(MyException.new('message'), :heading => heading)
+  end
+
   it "should handle resource not found" do
     ex = RestClient::ResourceNotFound.new
     output.expects(:print_error).with(heading, ex.message)

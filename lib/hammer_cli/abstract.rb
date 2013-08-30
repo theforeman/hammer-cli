@@ -18,6 +18,8 @@ module HammerCLI
       raise "exit code must be integer" unless exit_code.is_a? Integer
       return exit_code
     rescue => e
+      # do not catch Clamp errors
+      raise if e.class <= Clamp::UsageError || e.class <= Clamp::HelpWanted
       handle_exception e
     end
 

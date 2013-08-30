@@ -9,7 +9,7 @@ module HammerCLI::Apipie
     def execute
       send_request
       print_message
-      return 0
+      return HammerCLI::EX_OK
     end
 
     protected
