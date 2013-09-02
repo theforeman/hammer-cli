@@ -43,7 +43,6 @@ module HammerCLI
       validator.run &self.class.validation_block if self.class.validation_block
     end
 
-
     def output
       @output ||= HammerCLI::Output::Output.new
     end
@@ -78,6 +77,23 @@ module HammerCLI
         return mod.send(:exception_handler_class) if mod.respond_to? :exception_handler_class
       end
       return HammerCLI::ExceptionHandler
+    end
+
+    def self.desc(desc=nil)
+      @desc = desc if desc
+      @desc
+    end
+
+    def self.command_name(name=nil)
+      @name = name if name
+      @name
+    end
+
+    def self.autoload_subcommands
+      commands = constants.map { |c| const_get(c) }.select { |c| c <= HammerCLI::AbstractCommand }
+      commands.each do |cls|
+        subcommand cls.command_name, cls.desc, cls
+      end
     end
 
     def all_options

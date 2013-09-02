@@ -35,6 +35,12 @@ module HammerCLI::Apipie
       validator.any(*self.class.declared_identifiers.values).required
     end
 
+    def self.desc(desc=nil)
+      super(desc) || method_doc["apis"][0]["short_description"]
+    rescue
+      " "
+    end
+
     protected
 
     def get_identifier
