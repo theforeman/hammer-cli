@@ -10,6 +10,10 @@ module HammerCLI::Apipie
       @resource
     end
 
+    def resource_name
+      self.class.resource.name.split("::")[-1].downcase
+    end
+
     def action
       self.class.action
     end
@@ -29,23 +33,24 @@ module HammerCLI::Apipie
         @api_resource = resource unless resource.nil?
         @api_action = action unless action.nil?
         return @api_resource if @api_resource
-        return superclass.resource
+        return superclass.resource if superclass.respond_to? :resource
       end
 
       def action action=nil
         @api_action = action unless action.nil?
-        @api_action
+        return @api_action if @api_action
+        return superclass.action if superclass.respond_to? :action
       end
 
       def method_doc
-        @api_resource.doc["methods"].each do |method|
-          return method if method["name"] == @api_action.to_s
+        resource.doc["methods"].each do |method|
+          return method if method["name"] == action.to_s
         end
-        raise "No method documentation found for #{@api_resource}##{@api_action}"
+        raise "No method documentation found for #{resource}##{action}"
       end
 
       def resource_defined?
-        not (@api_resource.nil? or @api_action.nil?)
+        not (resource.nil? or action.nil?)
       end
 
     end
