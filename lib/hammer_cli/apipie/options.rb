@@ -8,11 +8,11 @@ module HammerCLI::Apipie
     end
 
     def all_method_options
-      method_options_for_params(self.class.method_doc["params"], true)
+      method_options_for_params(resource.docs_for(action)["params"], true)
     end
 
     def method_options
-      method_options_for_params(self.class.method_doc["params"], false)
+      method_options_for_params(resource.docs_for(action)["params"], false)
     end
 
     def method_options_for_params params, include_nil=true
@@ -38,7 +38,7 @@ module HammerCLI::Apipie
         filter = options[:without] || []
         filter = Array(filter)
 
-        options_for_params(method_doc["params"], filter)
+        options_for_params(resource.docs_for(action)["params"], filter)
       end
 
       protected

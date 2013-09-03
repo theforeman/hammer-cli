@@ -36,7 +36,7 @@ module HammerCLI::Apipie
     end
 
     def self.desc(desc=nil)
-      super(desc) || method_doc["apis"][0]["short_description"]
+      super(desc) || resource.docs_for(action)["apis"][0]["short_description"]
     rescue
       " "
     end

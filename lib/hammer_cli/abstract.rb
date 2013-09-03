@@ -14,7 +14,7 @@ module HammerCLI
     end
 
     def run(arguments)
-      exit_code = super(arguments)
+      exit_code = super
       raise "exit code must be integer" unless exit_code.is_a? Integer
       return exit_code
     rescue => e
@@ -24,7 +24,7 @@ module HammerCLI
     end
 
     def parse(arguments)
-      super(arguments)
+      super
       validate_options
       logger.info "Called with options: %s" % options.inspect
     rescue HammerCLI::Validator::ValidationError => e
@@ -49,6 +49,16 @@ module HammerCLI
 
     def exception_handler
       @exception_handler ||= exception_handler_class.new :output => output
+    end
+
+    def initialize(*args)
+      super
+      context[:path] ||= []
+      context[:path] << self
+    end
+
+    def parent_command
+      context[:path][-2]
     end
 
     protected
