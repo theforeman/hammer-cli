@@ -33,7 +33,12 @@ module HammerCLI::Apipie
         @api_resource = resource unless resource.nil?
         @api_action = action unless action.nil?
         return @api_resource if @api_resource
-        return superclass.resource if superclass.respond_to? :resource
+
+        enclosing_module = self.name.split("::")[0..-2].inject(Object) { |mod, cls| mod.const_get cls }
+
+        if enclosing_module.respond_to? :resource
+          enclosing_module.resource
+        end
       end
 
       def action action=nil
