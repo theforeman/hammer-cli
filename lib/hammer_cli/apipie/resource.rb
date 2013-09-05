@@ -74,7 +74,7 @@ module HammerCLI::Apipie
 
     module ClassMethods
 
-      def resource resource_class=nil, action=nil
+      def resource(resource_class=nil, action=nil)
         @api_resource = ResourceDefinition.new(resource_class) unless resource_class.nil?
         @api_action = action unless action.nil?
         return @api_resource if @api_resource
@@ -88,7 +88,7 @@ module HammerCLI::Apipie
         end
       end
 
-      def action action=nil
+      def action(action=nil)
         @api_action = action unless action.nil?
         return @api_action if @api_action
         return superclass.action if superclass.respond_to? :action

@@ -15,7 +15,7 @@ module HammerCLI::Apipie
       method_options_for_params(resource.docs_for(action)["params"], false)
     end
 
-    def method_options_for_params params, include_nil=true
+    def method_options_for_params(params, include_nil=true)
       opts = {}
       params.each do |p|
         if p["expected_type"] == "hash"
@@ -32,7 +32,7 @@ module HammerCLI::Apipie
 
     module ClassMethods
 
-      def apipie_options options={}
+      def apipie_options(options={})
         raise "Specify apipie resource first." unless resource_defined?
 
         filter = options[:without] || []
@@ -43,7 +43,7 @@ module HammerCLI::Apipie
 
       protected
 
-      def options_for_params params, filter
+      def options_for_params(params, filter)
         params.each do |p|
           next if filter.include? p["name"].to_s or filter.include? p["name"].to_sym
           if p["expected_type"] == "hash"
@@ -54,7 +54,7 @@ module HammerCLI::Apipie
         end
       end
 
-      def create_option param
+      def create_option(param)
         option(
           option_switches(param),
           option_type(param),
@@ -64,27 +64,27 @@ module HammerCLI::Apipie
         )
       end
 
-      def option_switches param
+      def option_switches(param)
         '--' + param["name"].gsub('_', '-')
       end
 
-      def option_type param
+      def option_type(param)
         param["name"].upcase.gsub('-', '_')
       end
 
-      def option_desc param
+      def option_desc(param)
         desc = param["description"].gsub(/<\/?[^>]+?>/, "")
         return " " if desc.empty?
         return desc
       end
 
-      def option_opts param
+      def option_opts(param)
         opts = {}
         opts[:required] = true if param["required"]
         return opts
       end
 
-      def option_formatter param
+      def option_formatter(param)
         # FIXME: There is a bug in apipie, it does not produce correct expected type for Arrays
         # When it's fixed, we should test param["expected_type"] == "array"
         if param["validator"].include? "Array"

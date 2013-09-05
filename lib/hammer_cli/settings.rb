@@ -5,11 +5,11 @@ module HammerCLI
 
   class Settings
 
-    def self.[] key
+    def self.[](key)
       settings[key.to_sym]
     end
 
-    def self.load_from_file files
+    def self.load_from_file(files)
       files.reverse.each do |path|
         full_path = File.expand_path path
         if File.exists? full_path
@@ -22,7 +22,7 @@ module HammerCLI
       end
     end
 
-    def self.load settings_hash
+    def self.load(settings_hash)
       settings.merge! settings_hash.inject({}){ |sym_hash,(k,v)| sym_hash[k.to_sym] = v; sym_hash }
     end
 
@@ -33,7 +33,7 @@ module HammerCLI
 
     def self.path_history
       @path_history ||= []
-      @path_history 
+      @path_history
     end
 
     private

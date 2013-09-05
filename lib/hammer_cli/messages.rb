@@ -6,7 +6,7 @@ module HammerCLI
       base.extend(ClassMethods)
     end
 
-    def success_message_for action
+    def success_message_for(action)
       self.class.success_message_for action
     end
 
@@ -14,7 +14,7 @@ module HammerCLI
       self.class.success_message
     end
 
-    def failure_message_for action
+    def failure_message_for(action)
       self.class.failure_message_for action
     end
 
@@ -22,28 +22,28 @@ module HammerCLI
       self.class.failure_message
     end
 
-    def handle_exception e
+    def handle_exception(e)
       exception_handler.handle_exception e, :heading => failure_message
     end
 
     module ClassMethods
-      def success_message_for action, msg=nil
+      def success_message_for(action, msg=nil)
         @success_message ||= {}
         @success_message[action] = msg unless msg.nil?
         @success_message[action]
       end
 
-      def success_message msg=nil
+      def success_message(msg=nil)
         success_message_for :default, msg
       end
 
-      def failure_message_for action, msg=nil
+      def failure_message_for(action, msg=nil)
         @failure_message ||= {}
         @failure_message[action] = msg unless msg.nil?
         @failure_message[action]
       end
 
-      def failure_message msg=nil
+      def failure_message(msg=nil)
         failure_message_for :default, msg
       end
     end

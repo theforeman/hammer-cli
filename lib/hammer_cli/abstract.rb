@@ -35,7 +35,7 @@ module HammerCLI
       HammerCLI::EX_OK
     end
 
-    def self.validate_options &block
+    def self.validate_options(&block)
       self.validation_block = block
     end
 
@@ -63,7 +63,7 @@ module HammerCLI
 
     protected
 
-    def logger name=self.class
+    def logger(name=self.class)
       logger = Logging.logger[name]
       logger.extend(HammerCLI::Logger::Watch) if not logger.respond_to? :watch
       logger
@@ -74,7 +74,7 @@ module HammerCLI
       @validator ||= HammerCLI::Validator.new(options)
     end
 
-    def handle_exception e
+    def handle_exception(e)
       exception_handler.handle_exception(e)
     end
 

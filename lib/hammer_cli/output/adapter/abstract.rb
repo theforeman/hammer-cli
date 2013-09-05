@@ -3,7 +3,7 @@ module HammerCLI::Output::Adapter
 
   class Abstract
 
-    def print_message msg
+    def print_message(msg)
       puts msg
     end
 

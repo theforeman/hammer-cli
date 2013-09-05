@@ -4,7 +4,7 @@ module HammerCLI::Apipie
 
   class ReadCommand < Command
 
-      def self.output definition=nil, &block
+      def self.output(definition=nil, &block)
         dsl = HammerCLI::Output::Dsl.new
         dsl.build &block if block_given?
 
@@ -12,7 +12,7 @@ module HammerCLI::Apipie
         output_definition.append dsl.fields
       end
 
-      def self.heading heading=nil
+      def self.heading(heading=nil)
         @heading = heading if heading
         @heading
       end
