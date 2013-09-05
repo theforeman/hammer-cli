@@ -4,15 +4,15 @@ module HammerCLI::Apipie
 
   class ReadCommand < Command
 
-      def self.output definition=nil, &block
+      def self.output(definition=nil, &block)
         dsl = HammerCLI::Output::Dsl.new
-        dsl.build &block
+        dsl.build &block if block_given?
 
         output_definition.append definition.fields unless definition.nil?
         output_definition.append dsl.fields
       end
 
-      def self.heading heading=nil
+      def self.heading(heading=nil)
         @heading = heading if heading
         @heading
       end
@@ -40,7 +40,7 @@ module HammerCLI::Apipie
       protected
       def retrieve_data
         raise "resource or action not defined" unless self.class.resource_defined?
-        resource.send(action, request_params)[0]
+        resource.call(action, request_params)[0]
       end
 
       def print_data(records)

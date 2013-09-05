@@ -14,7 +14,7 @@ module HammerCLI
     end
 
     def run(arguments)
-      exit_code = super(arguments)
+      exit_code = super
       raise "exit code must be integer" unless exit_code.is_a? Integer
       return exit_code
     rescue => e
@@ -24,7 +24,7 @@ module HammerCLI
     end
 
     def parse(arguments)
-      super(arguments)
+      super
       validate_options
       logger.info "Called with options: %s" % options.inspect
     rescue HammerCLI::Validator::ValidationError => e
@@ -35,14 +35,13 @@ module HammerCLI
       HammerCLI::EX_OK
     end
 
-    def self.validate_options &block
+    def self.validate_options(&block)
       self.validation_block = block
     end
 
     def validate_options
       validator.run &self.class.validation_block if self.class.validation_block
     end
-
 
     def output
       @output ||= HammerCLI::Output::Output.new
@@ -52,9 +51,19 @@ module HammerCLI
       @exception_handler ||= exception_handler_class.new :output => output
     end
 
+    def initialize(*args)
+      super
+      context[:path] ||= []
+      context[:path] << self
+    end
+
+    def parent_command
+      context[:path][-2]
+    end
+
     protected
 
-    def logger name=self.class
+    def logger(name=self.class)
       logger = Logging.logger[name]
       logger.extend(HammerCLI::Logger::Watch) if not logger.respond_to? :watch
       logger
@@ -65,7 +74,7 @@ module HammerCLI
       @validator ||= HammerCLI::Validator.new(options)
     end
 
-    def handle_exception e
+    def handle_exception(e)
       exception_handler.handle_exception(e)
     end
 
@@ -78,6 +87,23 @@ module HammerCLI
         return mod.send(:exception_handler_class) if mod.respond_to? :exception_handler_class
       end
       return HammerCLI::ExceptionHandler
+    end
+
+    def self.desc(desc=nil)
+      @desc = desc if desc
+      @desc
+    end
+
+    def self.command_name(name=nil)
+      @name = name if name
+      @name
+    end
+
+    def self.autoload_subcommands
+      commands = constants.map { |c| const_get(c) }.select { |c| c <= HammerCLI::AbstractCommand }
+      commands.each do |cls|
+        subcommand cls.command_name, cls.desc, cls
+      end
     end
 
     def all_options

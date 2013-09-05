@@ -4,6 +4,17 @@ require File.join(File.dirname(__FILE__), 'fake_api')
 
 describe HammerCLI::Apipie::Command do
 
+  class ParentCommand < HammerCLI::Apipie::Command
+    action :show
+  end
+
+  class CommandA < HammerCLI::Apipie::Command
+    resource FakeApi::Resources::Architecture, :index
+
+    class CommandB < ParentCommand
+    end
+  end
+
   let(:cmd_class) { HammerCLI::Apipie::Command.dup }
   let(:cmd) { cmd_class.new("") }
 
@@ -75,8 +86,8 @@ describe HammerCLI::Apipie::Command do
     it "should set resource and action together" do
       cmd_class.resource FakeApi::Resources::Architecture, :index
 
-      cmd.resource.must_be_instance_of FakeApi::Resources::Architecture
-      cmd_class.resource.must_equal FakeApi::Resources::Architecture
+      cmd.resource.resource_class.must_equal FakeApi::Resources::Architecture
+      cmd_class.resource.resource_class.must_equal FakeApi::Resources::Architecture
 
       cmd.action.must_equal :index
       cmd_class.action.must_equal :index
@@ -85,8 +96,8 @@ describe HammerCLI::Apipie::Command do
     it "should set resource alone" do
       cmd_class.resource FakeApi::Resources::Architecture
 
-      cmd.resource.must_be_instance_of FakeApi::Resources::Architecture
-      cmd_class.resource.must_equal FakeApi::Resources::Architecture
+      cmd.resource.resource_class.must_equal FakeApi::Resources::Architecture
+      cmd_class.resource.resource_class.must_equal FakeApi::Resources::Architecture
 
       cmd.action.must_equal nil
       cmd_class.action.must_equal nil
@@ -96,11 +107,23 @@ describe HammerCLI::Apipie::Command do
       cmd_class.resource FakeApi::Resources::Architecture
       cmd_class.action :index
 
-      cmd.resource.must_be_instance_of FakeApi::Resources::Architecture
-      cmd_class.resource.must_equal FakeApi::Resources::Architecture
+      cmd.resource.resource_class.must_equal FakeApi::Resources::Architecture
+      cmd_class.resource.resource_class.must_equal FakeApi::Resources::Architecture
 
       cmd.action.must_equal :index
       cmd_class.action.must_equal :index
+    end
+
+    it "inherits action from a parent class" do
+      cmd_b = CommandA::CommandB.new("")
+      cmd_b.action.must_equal :show
+      cmd_b.class.action.must_equal :show
+    end
+
+    it "looks up resource in the class' modules" do
+      cmd_b = CommandA::CommandB.new("")
+      cmd_b.resource.resource_class.must_equal FakeApi::Resources::Architecture
+      cmd_b.class.resource.resource_class.must_equal FakeApi::Resources::Architecture
     end
 
   end
