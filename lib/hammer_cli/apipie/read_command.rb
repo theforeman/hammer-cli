@@ -6,7 +6,7 @@ module HammerCLI::Apipie
 
       def self.output definition=nil, &block
         dsl = HammerCLI::Output::Dsl.new
-        dsl.build &block
+        dsl.build &block if block_given?
 
         output_definition.append definition.fields unless definition.nil?
         output_definition.append dsl.fields
