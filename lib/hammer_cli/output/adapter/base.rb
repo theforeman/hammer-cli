@@ -5,7 +5,7 @@ module HammerCLI::Output::Adapter
     GROUP_INDENT = " "*2
     LABEL_DIVIDER = ": "
 
-    def print_records fields, data, heading=nil
+    def print_records(fields, data, heading=nil)
       self.fields = fields
 
       puts "-"*HEADING_LINE_WIDTH

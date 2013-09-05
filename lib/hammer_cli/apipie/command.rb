@@ -19,7 +19,7 @@ module HammerCLI::Apipie
       self.class.identifier_option(:label, "resource label")
     end
 
-    def self.identifiers *keys
+    def self.identifiers(*keys)
       @identifiers ||= {}
       keys.each do |key|
         if key.is_a? Hash
@@ -35,6 +35,12 @@ module HammerCLI::Apipie
       validator.any(*self.class.declared_identifiers.values).required
     end
 
+    def self.desc(desc=nil)
+      super(desc) || resource.docs_for(action)["apis"][0]["short_description"]
+    rescue
+      " "
+    end
+
     protected
 
     def get_identifier
@@ -45,7 +51,7 @@ module HammerCLI::Apipie
       [nil, nil]
     end
 
-    def self.identifier? key
+    def self.identifier?(key)
       if @identifiers
         return true if @identifiers.keys.include? key
       else

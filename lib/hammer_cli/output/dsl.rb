@@ -2,7 +2,7 @@ module HammerCLI::Output
 
   class Dsl
 
-    def initialize options={}
+    def initialize(options={})
       @current_path = options[:path] || []
     end
 
@@ -11,37 +11,37 @@ module HammerCLI::Output
       @fields
     end
 
-    def build &block
+    def build(&block)
       self.instance_eval &block
     end
 
     protected
 
-    def field key, label, type=nil, options={}, &block
+    def field(key, label, type=nil, options={}, &block)
       options[:path] = current_path.clone << key
       options[:label] = label
       type ||= HammerCLI::Output::DataField
       custom_field type, options, &block
     end
 
-    def custom_field type, options={}, &block
+    def custom_field(type, options={}, &block)
       self.fields << type.new(options, &block)
     end
 
-    def label label, &block
+    def label(label, &block)
       options = {}
       options[:path] = current_path.clone
       options[:label] = label
       custom_field HammerCLI::Output::Fields::Label, options, &block
     end
 
-    def from key
+    def from(key)
       self.current_path.push key
       yield if block_given?
       self.current_path.pop
     end
 
-    def collection key, label, options={}, &block
+    def collection(key, label, options={}, &block)
       field key, label,  HammerCLI::Output::Fields::Collection, options, &block
     end
 

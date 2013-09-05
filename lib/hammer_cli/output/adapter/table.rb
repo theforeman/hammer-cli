@@ -4,7 +4,7 @@ module HammerCLI::Output::Adapter
 
   class Table < Base
 
-    def print_records fields, data, heading=nil
+    def print_records(fields, data, heading=nil)
 
       rows = data.collect do |d|
         row = {}
@@ -28,7 +28,7 @@ module HammerCLI::Output::Adapter
       puts dashes[1] if dashes
     end
 
-    def print_heading heading, size
+    def print_heading(heading, size)
       size = heading.size if heading.size > size
       puts '-' * size
       puts ' ' * ((size-heading.size)/2) + heading
@@ -38,12 +38,12 @@ module HammerCLI::Output::Adapter
   end
 
   class Formatter
-    def initialize adapter, method
+    def initialize(adapter, method)
       @adapter = adapter
       @method = method
     end
 
-    def format value
+    def format(value)
       if @adapter.respond_to?(@method, true)
         value = @adapter.send(@method, value)
       end
