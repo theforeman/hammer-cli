@@ -5,7 +5,7 @@ module HammerCLI
     module Watch
       def watch(label, obj, options={})
         if debug?
-          options = { :plain => HammerCLI::Settings[:watch_plain], :indent => -2 }.merge(options)
+          options = { :plain => HammerCLI::Settings.get(:watch_plain), :indent => -2 }.merge(options)
           debug label + "\n" + obj.ai(options)
         end
       end

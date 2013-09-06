@@ -46,9 +46,9 @@ end
 require 'hammer_cli'
 
 # load modules set in config
-modules = HammerCLI::Settings[:modules] || []
-modules.each do |m| 
-  require m 
+modules = HammerCLI::Settings.get(:modules) || []
+modules.each do |m|
+  require m
   logger.info "Extension module #{m} loaded"
 end
 

@@ -2,9 +2,10 @@
 #    - hammer_cli_foreman
 #    - hammer_cli_katello_bridge
 
-:host: 'https://localhost/'
-:username: 'admin'
-:password: 'changeme'
+:foreman:
+  :host: 'https://localhost/'
+  :username: 'admin'
+  :password: 'changeme'
 
 # :watch_plain: true disables color output of logger.watch in Clamp commands
 :watch_plain: false
