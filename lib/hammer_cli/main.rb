@@ -15,7 +15,7 @@ module HammerCLI
       exit(HammerCLI::EX_OK)
     end
 
-    option ["-P", "--ask-pass"], :flag, "Ask for password" do 
+    option ["-P", "--ask-pass"], :flag, "Ask for password" do
       context[:password] = get_password()
       ''
     end
@@ -28,12 +28,18 @@ module HammerCLI
       exit(HammerCLI::EX_OK)
     end
 
-    def password=(password)
-      context[:password] = password.nil? ? ENV['FOREMAN_PASSWORD'] : password
+    def run(*args)
+      super
     end
 
-    def username=(username)
-      context[:username] = username.nil? ? ENV['FOREMAN_USERNAME'] : username
+    def password=(p)
+      @password = p
+      context[:password] = p
+    end
+
+    def username=(u)
+      @username = u
+      context[:username] = u
     end
 
     private
