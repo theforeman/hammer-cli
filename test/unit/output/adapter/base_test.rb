@@ -14,10 +14,6 @@ describe HammerCLI::Output::Adapter::Base do
       :name => "John Doe"
     }]}
 
-    it "should print header" do
-      proc { adapter.print_records([], [], "HEADER") }.must_output(/.*HEADER.*/, "")
-    end
-
     it "should print field name" do
       proc { adapter.print_records(fields, data) }.must_output(/.*Name[ ]*:.*/, "")
     end

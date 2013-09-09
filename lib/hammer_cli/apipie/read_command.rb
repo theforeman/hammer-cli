@@ -12,11 +12,6 @@ module HammerCLI::Apipie
         output_definition.append dsl.fields
       end
 
-      def self.heading(heading=nil)
-        @heading = heading if heading
-        @heading
-      end
-
       def output_definition
         self.class.output_definition
       end
@@ -44,7 +39,7 @@ module HammerCLI::Apipie
       end
 
       def print_data(records)
-        output.print_records(records, self.class.heading)
+        output.print_records(records)
       end
 
       def request_params

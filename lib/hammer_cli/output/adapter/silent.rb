@@ -9,7 +9,7 @@ module HammerCLI::Output::Adapter
     def print_error(msg, details=[])
     end
 
-    def print_records(fields, data, heading=nil)
+    def print_records(fields, data)
     end
 
   end
