@@ -17,10 +17,10 @@ module HammerCLI::Output
       adapter.print_error(msg.to_s, details)
     end
 
-    def print_records(records, heading=nil)
+    def print_records(records)
       records = [records] unless records.kind_of?(Array)
 
-      adapter.print_records(definition.fields, records, heading)
+      adapter.print_records(definition.fields, records)
     end
 
   end

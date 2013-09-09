@@ -1,16 +1,11 @@
 module HammerCLI::Output::Adapter
   class Base < Abstract
 
-    HEADING_LINE_WIDTH = 80
     GROUP_INDENT = " "*2
     LABEL_DIVIDER = ": "
 
-    def print_records(fields, data, heading=nil)
+    def print_records(fields, data)
       self.fields = fields
-
-      puts "-"*HEADING_LINE_WIDTH
-      puts "  " + heading.to_s
-      puts "-"*HEADING_LINE_WIDTH
 
       data.each do |d|
         fields.collect do |f|
@@ -52,7 +47,8 @@ module HammerCLI::Output::Adapter
       puts
       indent = indent.to_s + " "*(label_width_for_list(self.fields)+LABEL_DIVIDER.size)
 
-      field.get_value(data).each do |d|
+      data = field.get_value(data) || []
+      data.each do |d|
         field.output_definition.fields.collect do |f|
           render_field(f, d, indent)
         end
@@ -94,9 +90,9 @@ module HammerCLI::Output::Adapter
     def render_label(field, indent="")
       if field.label
         w = label_width_for_list(self.fields) - indent.size + 1
-        print indent.to_s+" %#{-w}s" % (field.label.to_s+LABEL_DIVIDER)
+        print indent.to_s+"%#{-w}s" % (field.label.to_s+LABEL_DIVIDER)
       else
-        print indent.to_s+" "
+        print indent.to_s
       end
     end
 

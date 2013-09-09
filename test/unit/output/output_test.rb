@@ -65,31 +65,18 @@ describe HammerCLI::Output::Output do
 
   context "data" do
 
-    let(:heading) { "Some Heading" }
     let(:item1) { {} }
     let(:item2) { {} }
     let(:collection) { [item1, item2] }
 
-    context "prints single resource" do
-      it "without header" do
-        @adapter.expects(:print_records).with([], [item1], nil)
-        @out.print_records(item1)
-      end
-      it "with header" do
-        @adapter.expects(:print_records).with([], [item1], heading)
-        @out.print_records(item1, heading)
-      end
+    it "prints single resource" do
+      @adapter.expects(:print_records).with([], [item1], nil)
+      @out.print_records(item1)
     end
 
-    context "prints array of resources" do
-      it "without header" do
-        @adapter.expects(:print_records).with([], collection, nil)
-        @out.print_records(collection)
-      end
-      it "with header" do
-        @adapter.expects(:print_records).with([], collection, heading)
-        @out.print_records(collection, heading)
-      end
+    it "prints array of resources" do
+      @adapter.expects(:print_records).with([], collection, nil)
+      @out.print_records(collection)
     end
 
   end

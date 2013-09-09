@@ -7,7 +7,7 @@ module HammerCLI::Output::Adapter
       puts msg
     end
 
-    def print_error msg, details=nil
+    def print_error(msg, details=nil)
       details = details.split("\n") if details.kind_of? String
 
       if details
@@ -19,7 +19,7 @@ module HammerCLI::Output::Adapter
       end
     end
 
-    def print_records fields, data, heading=nil
+    def print_records(fields, data)
       raise NotImplementedError
     end
 
