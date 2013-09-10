@@ -5,7 +5,7 @@ require 'tempfile'
 describe HammerCLI::AbstractCommand do
 
   context "output" do
-      
+
     let(:command) { HammerCLI::AbstractCommand.new("") }
     it "should define adapter" do
       command.adapter.must_equal :base
@@ -196,6 +196,26 @@ describe HammerCLI::AbstractCommand do
       end
 
     end
+  end
+
+  describe "options" do
+
+    class TestOptionCmd < HammerCLI::AbstractCommand
+      option "--test", "TEST", "Test option"
+      option "--test-format", "TEST_FORMAT", "Test option with a formatter",
+        :format => HammerCLI::Options::Normalizers::List.new
+    end
+
+    it "should create instances of hammer options" do
+      opt = TestOptionCmd.find_option("--test")
+      opt.kind_of?(HammerCLI::Options::OptionDefinition).must_equal true
+    end
+
+    it "should set options' formatters" do
+      opt = TestOptionCmd.find_option("--test-format")
+      opt.value_formatter.kind_of?(HammerCLI::Options::Normalizers::List).must_equal true
+    end
+
   end
 
 end

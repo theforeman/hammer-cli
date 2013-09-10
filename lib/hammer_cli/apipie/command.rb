@@ -9,8 +9,8 @@ module HammerCLI::Apipie
     include HammerCLI::Apipie::Options
 
     def initialize(*args)
+      super
       setup_identifier_options
-      super(*args)
     end
 
     def setup_identifier_options

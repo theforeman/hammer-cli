@@ -1,4 +1,3 @@
-require 'hammer_cli/option_formatters'
 
 module HammerCLI::Apipie
   module Options
@@ -59,8 +58,7 @@ module HammerCLI::Apipie
           option_switches(param),
           option_type(param),
           option_desc(param),
-          option_opts(param),
-          &option_formatter(param)
+          option_opts(param)
         )
       end
 
@@ -81,15 +79,10 @@ module HammerCLI::Apipie
       def option_opts(param)
         opts = {}
         opts[:required] = true if param["required"]
-        return opts
-      end
-
-      def option_formatter(param)
         # FIXME: There is a bug in apipie, it does not produce correct expected type for Arrays
         # When it's fixed, we should test param["expected_type"] == "array"
-        if param["validator"].include? "Array"
-          HammerCLI::OptionFormatters.method(:list)
-        end
+        opts[:format] = HammerCLI::Options::Normalizers::List.new if param["validator"].include? "Array"
+        return opts
       end
 
     end

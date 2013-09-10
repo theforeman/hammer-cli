@@ -1,6 +1,7 @@
 require 'hammer_cli/autocompletion'
 require 'hammer_cli/exception_handler'
 require 'hammer_cli/logger_watch'
+require 'hammer_cli/options/option_definition'
 require 'clamp'
 require 'logging'
 
@@ -136,6 +137,19 @@ module HammerCLI
       commands = constants.map { |c| const_get(c) }.select { |c| c <= HammerCLI::AbstractCommand }
       commands.each do |cls|
         subcommand cls.command_name, cls.desc, cls
+      end
+    end
+
+    def self.option(switches, type, description, opts = {}, &block)
+      formatter = opts.delete(:format)
+
+      HammerCLI::Options::OptionDefinition.new(switches, type, description, opts).tap do |option|
+        declared_options << option
+
+        option.value_formatter = formatter
+        block ||= option.default_conversion_block
+
+        define_accessors_for(option, &block)
       end
     end
 
