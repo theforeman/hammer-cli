@@ -21,12 +21,6 @@ describe HammerCLI::Apipie::ReadCommand do
     cmd.output_definition.must_be_instance_of HammerCLI::Output::Definition
   end
 
-  it "sets output header" do
-    header_msg = "TEST HEADER"
-    cmd_class.heading(header_msg)
-    cmd_class.heading.must_equal header_msg
-  end
-
   context "output" do
     it "can append existing definition" do
       definition = HammerCLI::Output::Definition.new

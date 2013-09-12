@@ -4,7 +4,7 @@ module HammerCLI::Output::Adapter
 
   class Table < Base
 
-    def print_records(fields, data, heading=nil)
+    def print_records(fields, data)
 
       rows = data.collect do |d|
         row = {}

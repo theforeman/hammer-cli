@@ -34,12 +34,12 @@ describe HammerCLI::ExceptionHandler do
     handler.handle_exception(ex, :heading => heading)
   end
 
-  it "should log the error" do 
+  it "should log the error" do
     ex = RestClient::ResourceNotFound.new
     output.stubs(:print_error).returns('')
     handler.handle_exception(ex)
     @log_output.readline.strip.must_equal 'ERROR  Exception : Resource Not Found'
-  end 
+  end
 
 end
 
