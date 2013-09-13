@@ -120,5 +120,68 @@ describe HammerCLI::AbstractCommand do
     end
   end
 
+
+
+  context "subcommand behavior" do
+
+    class Subcommand1 < HammerCLI::AbstractCommand; end
+    class Subcommand2 < HammerCLI::AbstractCommand; end
+
+    let(:main_cmd) { HammerCLI::AbstractCommand.dup }
+
+    before :each do
+      @log_output = Logging::Appenders['__test__']
+      @log_output.reset
+
+      main_cmd.recognised_subcommands.clear
+      main_cmd.subcommand("some_command", "description", Subcommand1)
+      main_cmd.subcommand("ping", "description", Subcommand1)
+    end
+
+    describe "subcommand!" do
+
+      it "should replace commands with the same name" do
+        main_cmd.subcommand!("ping", "description", Subcommand2)
+        main_cmd.find_subcommand("some_command").wont_be_nil
+        main_cmd.find_subcommand("ping").wont_be_nil
+        main_cmd.find_subcommand("ping").subcommand_class.must_equal Subcommand2
+        main_cmd.recognised_subcommands.count.must_equal 2
+      end
+
+      it "should write a message to log when replacing subcommand" do
+        main_cmd.subcommand!("ping", "description", Subcommand2)
+        @log_output.readline.strip.must_equal "INFO  Clamp::Command : subcommand ping (Subcommand1) replaced with ping (Subcommand2)"
+      end
+
+      it "should add the subcommand" do
+        main_cmd.subcommand!("new_command", "description", Subcommand2)
+        main_cmd.find_subcommand("new_command").wont_be_nil
+        main_cmd.find_subcommand("some_command").wont_be_nil
+        main_cmd.find_subcommand("ping").wont_be_nil
+        main_cmd.recognised_subcommands.count.must_equal 3
+      end
+
+    end
+
+
+    describe "subcommand" do
+
+      it "should throw an exception for conflicting commands" do
+        proc do
+          main_cmd.subcommand("ping", "description", Subcommand2)
+        end.must_raise HammerCLI::CommandConflict
+      end
+
+      it "should add the subcommand" do
+        main_cmd.subcommand("new_command", "description", Subcommand2)
+        main_cmd.find_subcommand("new_command").wont_be_nil
+        main_cmd.find_subcommand("some_command").wont_be_nil
+        main_cmd.find_subcommand("ping").wont_be_nil
+        main_cmd.recognised_subcommands.count.must_equal 3
+      end
+
+    end
+  end
+
 end
 

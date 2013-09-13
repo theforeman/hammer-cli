@@ -6,6 +6,8 @@ require 'logging'
 
 module HammerCLI
 
+  class CommandConflict < StandardError; end
+
   class AbstractCommand < Clamp::Command
 
     extend Autocompletion
@@ -59,6 +61,26 @@ module HammerCLI
 
     def parent_command
       context[:path][-2]
+    end
+
+    def self.subcommand!(name, description, subcommand_class = self, &block)
+      self.recognised_subcommands.delete_if do |sc|
+        if sc.is_called?(name)
+          Logging.logger[self].info "subcommand #{name} (#{sc.subcommand_class}) replaced with #{name} (#{subcommand_class})"
+          true
+        else
+          false
+        end
+      end
+      self.subcommand(name, description, subcommand_class, &block)
+    end
+
+    def self.subcommand(name, description, subcommand_class = self, &block)
+      existing = find_subcommand(name)
+      if existing
+        raise HammerCLI::CommandConflict, "can't replace subcommand #{name} (#{existing.subcommand_class}) with #{name} (#{subcommand_class})"
+      end
+      super
     end
 
     protected
