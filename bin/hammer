@@ -2,6 +2,8 @@
 
 require 'rubygems'
 require 'clamp'
+require 'highline'
+HighLine.color_scheme = HighLine::SampleColorScheme.new
 
 # create fake command instance to use some global args before we start
 class PreParser < Clamp::Command
