@@ -25,7 +25,7 @@ describe HammerCLI::Output::Dsl do
       dsl.build do
         field :f, "F"
       end
-      first_field.class.must_equal HammerCLI::Output::DataField
+      first_field.class.must_equal Fields::DataField
     end
 
     it "should create DataField of desired type" do

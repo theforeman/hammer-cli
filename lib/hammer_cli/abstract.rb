@@ -46,7 +46,7 @@ module HammerCLI
     end
 
     def output
-      @output ||= HammerCLI::Output::Output.new
+      @output ||= HammerCLI::Output::Output.new(:context => context)
     end
 
     def exception_handler

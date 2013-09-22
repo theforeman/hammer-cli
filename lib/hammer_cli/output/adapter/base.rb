@@ -62,25 +62,13 @@ module HammerCLI::Output::Adapter
       puts field.attributes.collect{|attr| data[attr] }.join(" ")
     end
 
-    def format_Date(string_date)
-      t = DateTime.parse(string_date.to_s)
-      t.strftime("%Y/%m/%d %H:%M:%S")
-    rescue ArgumentError
-      ""
+    def find_renderer(field)
+      field.class.ancestors.each do |cls|
+        render_method = "render_"+field_type(cls)
+        return method(render_method) if respond_to?(render_method, true)
+      end
+      raise "No renderer found for field %s" % field.class
     end
-
-    def format_List(list)
-      list.join(", ") if list
-    end
-
-    def format_OSName(os)
-      "%{name} %{major}.%{minor}" % os
-    end
-
-    def format_Server(server)
-      "%{name} (%{url})" % server
-    end
-
 
     def render_field(field, data, indent="")
       renderer = find_renderer(field)
@@ -100,16 +88,9 @@ module HammerCLI::Output::Adapter
       format_method = "format_"+field_type(field.class)
 
       value = field.get_value(data)
-      value = send(format_method, value) if respond_to?(format_method, true)
+      formatter = @formatters.formatter_for_type(field.class)
+      value = formatter.format(value) if formatter
       value
-    end
-
-    def find_renderer(field)
-      field.class.ancestors.each do |cls|
-        render_method = "render_"+field_type(cls)
-        return method(render_method) if respond_to?(render_method, true)
-      end
-      raise "No renderer found for field %s" % field.class
     end
 
     def field_type(field_class)
