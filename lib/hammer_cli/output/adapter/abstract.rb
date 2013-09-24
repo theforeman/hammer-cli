@@ -3,6 +3,11 @@ module HammerCLI::Output::Adapter
 
   class Abstract
 
+    def initialize(context={}, formatters=HammerCLI::Output::Formatters::FormatterLibrary.new)
+      @context = context
+      @formatters = formatters
+    end
+
     def print_message(msg)
       puts msg
     end

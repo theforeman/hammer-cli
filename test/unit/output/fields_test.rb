@@ -1,9 +1,9 @@
 require File.join(File.dirname(__FILE__), '../test_helper')
 
 
-describe HammerCLI::Output::Field do
+describe Fields::Field do
 
-  let(:field) { HammerCLI::Output::Field.new }
+  let(:field) { Fields::Field.new }
 
   describe "get_value" do
     it "should exist" do
@@ -17,10 +17,10 @@ describe HammerCLI::Output::Field do
 
 end
 
-describe HammerCLI::Output::LabeledField do
+describe Fields::LabeledField do
 
   let(:label) { "Some Label" }
-  let(:field) { HammerCLI::Output::LabeledField.new :label => label }
+  let(:field) { Fields::LabeledField.new :label => label }
 
   context "labels" do
     it "has label" do
@@ -34,7 +34,7 @@ describe HammerCLI::Output::LabeledField do
 
 end
 
-describe HammerCLI::Output::DataField do
+describe Fields::DataField do
 
   let(:symbol_data) {{
     :name => "John Doe",
@@ -60,7 +60,7 @@ describe HammerCLI::Output::DataField do
 
   let(:label) { "Some Label" }
   let(:path) { [:address, :city, :name] }
-  let(:field) { HammerCLI::Output::DataField.new :label => label, :path => path }
+  let(:field) { Fields::DataField.new :label => label, :path => path }
 
   it "stores label from constructor" do
     field.label.must_equal label
@@ -71,7 +71,7 @@ describe HammerCLI::Output::DataField do
   end
 
   it "default path should be empty array" do
-    HammerCLI::Output::DataField.new.path.must_equal []
+    Fields::DataField.new.path.must_equal []
   end
 
   context "getting data" do

@@ -2,7 +2,7 @@ require 'table_print'
 
 module HammerCLI::Output::Adapter
 
-  class Table < Base
+  class Table < Abstract
 
     def print_records(fields, data)
 
@@ -15,8 +15,8 @@ module HammerCLI::Output::Adapter
       end
 
       options = fields.collect do |f|
-        { f.label.to_sym => {
-            :formatters => [ Formatter.new(self, "format_"+field_type(f.class)) ] } }
+        next if f.class <= Fields::Id && !@context[:show_ids]
+        { f.label.to_sym => { :formatters => Array(@formatters.formatter_for_type(f.class)) } }
       end
 
       printer = TablePrint::Printer.new(rows, options)
@@ -35,20 +35,6 @@ module HammerCLI::Output::Adapter
       puts '-' * size
     end
 
-  end
-
-  class Formatter
-    def initialize(adapter, method)
-      @adapter = adapter
-      @method = method
-    end
-
-    def format(value)
-      if @adapter.respond_to?(@method, true)
-        value = @adapter.send(@method, value)
-      end
-      value
-    end
   end
 
 end

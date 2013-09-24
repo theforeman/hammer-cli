@@ -5,7 +5,9 @@ module HammerCLI::Output
     attr_reader :definition
 
     def initialize(options={})
-      @adapter = options[:adapter] || HammerCLI::Output::Adapter::Base.new
+      @context = options[:context] || {}
+      @adapter = options[:adapter] || HammerCLI::Output::Adapter::Base.new(
+        @context, HammerCLI::Output::Formatters::DEFAULT_FORMATTERS)
       @definition = options[:definition] || HammerCLI::Output::Definition.new
     end
 

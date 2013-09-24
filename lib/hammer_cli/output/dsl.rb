@@ -20,7 +20,7 @@ module HammerCLI::Output
     def field(key, label, type=nil, options={}, &block)
       options[:path] = current_path.clone << key
       options[:label] = label
-      type ||= HammerCLI::Output::DataField
+      type ||= Fields::DataField
       custom_field type, options, &block
     end
 
@@ -32,7 +32,7 @@ module HammerCLI::Output
       options = {}
       options[:path] = current_path.clone
       options[:label] = label
-      custom_field HammerCLI::Output::Fields::Label, options, &block
+      custom_field Fields::Label, options, &block
     end
 
     def from(key)
@@ -42,7 +42,7 @@ module HammerCLI::Output
     end
 
     def collection(key, label, options={}, &block)
-      field key, label,  HammerCLI::Output::Fields::Collection, options, &block
+      field key, label, Fields::Collection, options, &block
     end
 
 
