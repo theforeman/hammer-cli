@@ -24,8 +24,8 @@ describe HammerCLI::Apipie::ReadCommand do
   context "output" do
     it "can append existing definition" do
       definition = HammerCLI::Output::Definition.new
-      definition.fields << HammerCLI::Output::Field.new
-      definition.fields << HammerCLI::Output::Field.new
+      definition.fields << Fields::Field.new
+      definition.fields << Fields::Field.new
 
       cmd_class.output(definition) do
       end
@@ -34,8 +34,8 @@ describe HammerCLI::Apipie::ReadCommand do
 
     it "can append existing definition without passing a block" do
       definition = HammerCLI::Output::Definition.new
-      definition.fields << HammerCLI::Output::Field.new
-      definition.fields << HammerCLI::Output::Field.new
+      definition.fields << Fields::Field.new
+      definition.fields << Fields::Field.new
 
       cmd_class.output(definition)
       cmd_class.output_definition.fields.length.must_equal definition.fields.length

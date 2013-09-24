@@ -6,7 +6,7 @@ describe HammerCLI::Output::Adapter::Base do
 
   context "print_records" do
 
-    let(:field_name) { HammerCLI::Output::DataField.new(:path => [:name], :label => "Name") }
+    let(:field_name) { Fields::DataField.new(:path => [:name], :label => "Name") }
     let(:fields) {
       [field_name]
     }

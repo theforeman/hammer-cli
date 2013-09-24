@@ -15,6 +15,8 @@ module HammerCLI
       exit(HammerCLI::EX_OK)
     end
 
+    option ["--show-ids"], :flag, "Show ids of associated resources"
+
     option ["-P", "--ask-pass"], :flag, "Ask for password" do 
       context[:password] = get_password()
       ''
@@ -26,6 +28,10 @@ module HammerCLI
       endings = self.class.autocomplete(line).map { |l| l[0] }
       puts endings.join(' ')
       exit(HammerCLI::EX_OK)
+    end
+
+    def show_ids=(show_ids)
+      context[:show_ids] = show_ids
     end
 
     def password=(password)

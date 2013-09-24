@@ -1,7 +1,6 @@
 require 'hammer_cli/output/dsl'
 
-module HammerCLI::Output
-
+module Fields
 
   class Field
 
@@ -61,66 +60,58 @@ module HammerCLI::Output
 
   end
 
+  class Date < DataField
+  end
 
-  module Fields
+  class Id < DataField
+  end
+
+  class List < DataField
+  end
+
+  class KeyValue < DataField
+  end
 
 
-    class Date < HammerCLI::Output::DataField
+  class Joint < DataField
+    def initialize(options={}, &block)
+      super(options)
+      @attributes = options[:attributes] || []
     end
 
-    class OSName < HammerCLI::Output::DataField
+    attr_reader :attributes
+  end
+
+  class Label < LabeledField
+
+    def initialize(options={}, &block)
+      super(options)
+      dsl = HammerCLI::Output::Dsl.new :path => options[:path]
+      dsl.build &block if block_given?
+
+      self.output_definition.append dsl.fields
     end
 
-    class List < HammerCLI::Output::DataField
+    def output_definition
+      @output_definition ||= HammerCLI::Output::Definition.new
+      @output_definition
     end
 
-    class KeyValue < HammerCLI::Output::DataField
+  end
+
+  class Collection < DataField
+
+    def initialize(options={}, &block)
+      super(options)
+      dsl = HammerCLI::Output::Dsl.new
+      dsl.build &block if block_given?
+
+      self.output_definition.append dsl.fields
     end
 
-    class Server < HammerCLI::Output::DataField
-    end
-
-    class Joint < HammerCLI::Output::DataField
-      def initialize(options={}, &block)
-        super(options)
-        @attributes = options[:attributes] || []
-      end
-
-      attr_reader :attributes
-    end
-
-    class Label < HammerCLI::Output::LabeledField
-
-      def initialize(options={}, &block)
-        super(options)
-        dsl = HammerCLI::Output::Dsl.new :path => options[:path]
-        dsl.build &block if block_given?
-
-        self.output_definition.append dsl.fields
-      end
-
-      def output_definition
-        @output_definition ||= HammerCLI::Output::Definition.new
-        @output_definition
-      end
-
-    end
-
-    class Collection < HammerCLI::Output::DataField
-
-      def initialize(options={}, &block)
-        super(options)
-        dsl = HammerCLI::Output::Dsl.new
-        dsl.build &block if block_given?
-
-        self.output_definition.append dsl.fields
-      end
-
-      def output_definition
-        @output_definition ||= HammerCLI::Output::Definition.new
-        @output_definition
-      end
-
+    def output_definition
+      @output_definition ||= HammerCLI::Output::Definition.new
+      @output_definition
     end
 
   end
