@@ -66,9 +66,9 @@ module HammerCLI::Apipie
 
     def resource_config
       config = {}
-      config[:base_url] = HammerCLI::Settings[:host]
-      config[:username] = context[:username] || HammerCLI::Settings[:username] || ENV['FOREMAN_USERNAME']
-      config[:password] = context[:password] || HammerCLI::Settings[:password] || ENV['FOREMAN_PASSWORD']
+      config[:base_url] = HammerCLI::Settings.get(:foreman, :host)
+      config[:username] = context[:username] || ENV['FOREMAN_USERNAME'] || HammerCLI::Settings.get(:foreman, :username)
+      config[:password] = context[:password] || ENV['FOREMAN_PASSWORD'] || HammerCLI::Settings.get(:foreman, :password)
       config
     end
 

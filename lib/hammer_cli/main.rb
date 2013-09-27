@@ -16,8 +16,7 @@ module HammerCLI
     end
 
     option ["--show-ids"], :flag, "Show ids of associated resources"
-
-    option ["-P", "--ask-pass"], :flag, "Ask for password" do 
+    option ["-P", "--ask-pass"], :flag, "Ask for password" do
       context[:password] = get_password()
       ''
     end
@@ -34,12 +33,18 @@ module HammerCLI
       context[:show_ids] = show_ids
     end
 
-    def password=(password)
-      context[:password] = password.nil? ? ENV['FOREMAN_PASSWORD'] : password
+    def run(*args)
+      super
     end
 
-    def username=(username)
-      context[:username] = username.nil? ? ENV['FOREMAN_USERNAME'] : username
+    def password=(p)
+      @password = p
+      context[:password] = p
+    end
+
+    def username=(u)
+      @username = u
+      context[:username] = u
     end
 
     private

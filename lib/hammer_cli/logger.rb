@@ -21,7 +21,7 @@ module HammerCLI
     NOCOLOR_LAYOUT  = Logging::Layouts::Pattern.new(:pattern => pattern, :color_scheme => nil)
     DEFAULT_LOG_DIR = '/var/log/foreman'
 
-    log_dir = File.expand_path(HammerCLI::Settings[:log_dir] || DEFAULT_LOG_DIR)
+    log_dir = File.expand_path(HammerCLI::Settings.get(:log_dir) || DEFAULT_LOG_DIR)
     begin
       FileUtils.mkdir_p(log_dir, :mode => 0750)
     rescue Errno::EACCES => e
@@ -36,15 +36,15 @@ module HammerCLI
                                                           :layout   => NOCOLOR_LAYOUT,
                                                           :truncate => false,
                                                           :keep     => 5,
-                                                          :size     => HammerCLI::Settings[:log_size] || 1024*1024) # 1MB
+                                                          :size     => HammerCLI::Settings.get(:log_size) || 1024*1024) # 1MB
       # set owner and group (it's ignored if attribute is nil)
-      FileUtils.chown HammerCLI::Settings[:log_owner], HammerCLI::Settings[:log_group], filename
+      FileUtils.chown HammerCLI::Settings.get(:log_owner), HammerCLI::Settings.get(:log_group), filename
     rescue ArgumentError => e
       puts "File #{filename} not writeable, won't log anything to file!"
     end
 
-    logger.level = HammerCLI::Settings[:log_level]
+    logger.level = HammerCLI::Settings.get(:log_level)
 
-  end 
+  end
 
 end
