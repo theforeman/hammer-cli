@@ -16,7 +16,13 @@ module HammerCLI
     end
 
     option ["--show-ids"], :flag, "Show ids of associated resources"
-    option ["-P", "--ask-pass"], :flag, "Ask for password" do
+
+    option ["--csv"], :flag, "Output as CSV (same as --adapter=csv)"
+    option ["--output"], "ADAPTER", "Set output format. One of [%s]" % 
+        HammerCLI::Output::Output.adapters.keys.join(', ')
+    option ["--csv-separator"], "SEPARATOR", "Character to separate the values"
+
+    option ["-P", "--ask-pass"], :flag, "Ask for password" do 
       context[:password] = get_password()
       ''
     end
@@ -42,6 +48,18 @@ module HammerCLI
       context[:password] = p
     end
 
+    def csv=(csv)
+      context[:adapter] = :csv
+    end
+
+    def csv_separator=(separator)
+      context[:csv_separator] = separator
+    end
+
+    def output=(adapter)
+      context[:adapter] = adapter
+    end
+
     def username=(u)
       @username = u
       context[:username] = u
@@ -52,8 +70,6 @@ module HammerCLI
     def get_password(prompt="Enter Password ")
       ask(prompt) {|q| q.echo = false}
     end
-
-
 
   end
 

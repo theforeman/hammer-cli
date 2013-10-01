@@ -15,9 +15,19 @@ describe HammerCLI::Output::Formatters::FormatterLibrary do
 end
 
 describe HammerCLI::Output::Formatters::FieldFormatter do
+  let(:formatter) { HammerCLI::Output::Formatters::FieldFormatter.new }
   it "has format method" do
-    formatter = HammerCLI::Output::Formatters::FieldFormatter.new
     formatter.respond_to?(:format).must_equal true
+  end
+
+  it "has tags" do
+    formatter.tags.must_be_kind_of Array
+  end
+
+  it "should know if it has matching tags" do
+    formatter.stubs(:tags).returns([:tag])
+    formatter.match?([:tag]).must_equal true
+    formatter.match?([:notag]).must_equal false
   end
 end
 

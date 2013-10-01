@@ -5,8 +5,9 @@ module HammerCLI
   class ExceptionHandler
 
     def initialize(options={})
-      @output = options[:output] or raise "Missing option output"
       @logger = Logging.logger['Exception']
+      @context = options[:context] || {}
+      @adapter = options[:adapter] || :base
     end
 
     def mappings
@@ -31,9 +32,9 @@ module HammerCLI
       @logger.error error
 
       if @options[:heading]
-        @output.print_error @options[:heading], error
+        HammerCLI::Output::Output.print_error @options[:heading], error, @context, :adapter => @adapter
       else
-        @output.print_error error
+        HammerCLI::Output::Output.print_error error, nil, @context, :adapter => @adapter
       end
     end
 

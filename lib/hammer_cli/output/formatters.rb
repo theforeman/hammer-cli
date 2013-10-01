@@ -4,9 +4,10 @@ module HammerCLI::Output
     # Registry for formatters    
     class FormatterLibrary
       def initialize(formatter_map={})
+
         @_formatters = {}
         formatter_map.each do |type, formatters| 
-          register_formatter(type, formatters)
+          register_formatter(type, *Array(formatters))
         end
       end
 
@@ -23,8 +24,25 @@ module HammerCLI::Output
       end
     end
 
+    # Tags:
+    # All the tags the formatter has, needs to be present in the addapter.
+    # Otherwise the formatter won't apply. Formatters with :flat tag are used first
+    # as we expect them to serialize the value.
+    #
+    #   - by format: :flat x :data
+    #   - by output: :file X :screen 
+
     # abstract formatter
     class FieldFormatter
+
+      def tags
+        []
+      end
+
+      def match?(other_tags)
+        tags & other_tags == tags
+      end
+
       def format(data)
         data
       end
@@ -51,12 +69,21 @@ module HammerCLI::Output
         @color = color
       end
 
+      def tags
+        [:screen, :flat]
+      end
+
       def format(data)
         c = HighLine.color(data.to_s, @color)
       end
     end
 
     class DateFormatter < FieldFormatter
+
+      def tags
+        [:flat]
+      end
+
       def format(string_date)
         t = DateTime.parse(string_date.to_s)
         t.strftime("%Y/%m/%d %H:%M:%S")
@@ -66,14 +93,18 @@ module HammerCLI::Output
     end
 
     class ListFormatter < FieldFormatter
+
+      def tags
+        [:flat]
+      end
+
       def format(list)
         list.join(", ") if list
       end
     end
 
-    DEFAULT_FORMATTERS = FormatterLibrary.new( 
-      :Date => DateFormatter.new, 
-      :List => ListFormatter.new)
+    HammerCLI::Output::Output.register_formatter(DateFormatter.new, :Date)
+    HammerCLI::Output::Output.register_formatter(ListFormatter.new, :List)
 
   end
 end

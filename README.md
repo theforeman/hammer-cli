@@ -69,9 +69,10 @@ Confirm your setup by running ```$ hammer -h``` and see if the desired commands 
 You will also most likely want to change the url of the Foreman server.
 
 ```yaml
-:host: 'https://localhost/'
-:username: 'admin'
-:password: 'changeme'
+:foreman:
+    :host: 'https://localhost/'
+    :username: 'admin'
+    :password: 'changeme'
 ```
 
 Done. Your hammer client is configured and ready to use.
