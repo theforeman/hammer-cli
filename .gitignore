@@ -4,3 +4,8 @@ Gemfile.lock
 # Tests
 test/reports/*
 coverage/*
+
+# RVM
+.rvmrc
+.ruby-version
+.ruby-gemset
