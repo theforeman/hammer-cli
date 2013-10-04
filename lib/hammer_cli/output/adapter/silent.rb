@@ -1,7 +1,7 @@
 
 module HammerCLI::Output::Adapter
 
-  class Silent
+  class Silent < Abstract
 
     def print_message(msg)
     end
@@ -13,5 +13,7 @@ module HammerCLI::Output::Adapter
     end
 
   end
+
+  HammerCLI::Output::Output.register_adapter(:silent, Silent)
 
 end

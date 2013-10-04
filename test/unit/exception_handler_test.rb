@@ -8,29 +8,36 @@ describe HammerCLI::ExceptionHandler do
     @log_output.reset
   end
 
-  let(:output) { HammerCLI::Output::Output.new }
-  let(:handler) { HammerCLI::ExceptionHandler.new :output => output }
+  let(:output) { HammerCLI::Output::Output }
+  let(:handler) { HammerCLI::ExceptionHandler.new(:adapter => :silent)}
   let(:heading) { "Something went wrong" }
 
+  it "should pass context" do
+    context = { :test => :value }
+    eh = HammerCLI::ExceptionHandler.new(:adapter => :silent, :context => context)
+    output.expects(:print_error).with(heading, "Invalid username or password", context, { :adapter => :silent })
+    eh.handle_exception(RestClient::Unauthorized.new, :heading => heading)
+  end
+
   it "should handle unauthorized" do
-    output.expects(:print_error).with(heading, "Invalid username or password")
+    output.expects(:print_error).with(heading, "Invalid username or password", {}, { :adapter => :silent })
     handler.handle_exception(RestClient::Unauthorized.new, :heading => heading)
   end
 
   it "should handle general exception" do
-    output.expects(:print_error).with(heading, "Error: message")
+    output.expects(:print_error).with(heading, "Error: message", {}, { :adapter => :silent })
     handler.handle_exception(Exception.new('message'), :heading => heading)
   end
 
   it "should handle unknown exception" do
-    output.expects(:print_error).with(heading, "Error: message")
+    output.expects(:print_error).with(heading, "Error: message", {}, { :adapter => :silent })
     MyException = Class.new(Exception)
     handler.handle_exception(MyException.new('message'), :heading => heading)
   end
 
   it "should handle resource not found" do
     ex = RestClient::ResourceNotFound.new
-    output.expects(:print_error).with(heading, ex.message)
+    output.expects(:print_error).with(heading, ex.message, {}, { :adapter => :silent })
     handler.handle_exception(ex, :heading => heading)
   end
 

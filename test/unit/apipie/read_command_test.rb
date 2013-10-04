@@ -5,12 +5,8 @@ require File.join(File.dirname(__FILE__), 'fake_api')
 describe HammerCLI::Apipie::ReadCommand do
 
   let(:cmd_class) { HammerCLI::Apipie::ReadCommand.dup }
-  let(:cmd) { cmd_class.new("") }
+  let(:cmd) { cmd_class.new("", { :adapter => :silent }) }
   let(:cmd_run) { cmd.run([]) }
-
-  before :each do
-    cmd.output.adapter = HammerCLI::Output::Adapter::Silent.new
-  end
 
   it "should raise exception when no action is defined" do
     cmd.stubs(:handle_exception).returns(HammerCLI::EX_SOFTWARE)

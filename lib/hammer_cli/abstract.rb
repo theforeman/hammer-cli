@@ -15,6 +15,10 @@ module HammerCLI
       attr_accessor :validation_block
     end
 
+    def adapter
+      :base
+    end
+
     def run(arguments)
       exit_code = super
       raise "exit code must be integer" unless exit_code.is_a? Integer
@@ -45,12 +49,8 @@ module HammerCLI
       validator.run &self.class.validation_block if self.class.validation_block
     end
 
-    def output
-      @output ||= HammerCLI::Output::Output.new(:context => context)
-    end
-
     def exception_handler
-      @exception_handler ||= exception_handler_class.new :output => output
+      @exception_handler ||= exception_handler_class.new(:context=>context, :adapter=>adapter)
     end
 
     def initialize(*args)
@@ -84,6 +84,15 @@ module HammerCLI
     end
 
     protected
+
+    def print_records(definition, records)
+      HammerCLI::Output::Output.print_records(definition, records, context,
+        :adapter => adapter)
+    end
+
+    def print_message(msg)
+      HammerCLI::Output::Output.print_message(msg, context, :adapter=>adapter)
+    end
 
     def logger(name=self.class)
       logger = Logging.logger[name]

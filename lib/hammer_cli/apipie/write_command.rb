@@ -8,15 +8,15 @@ module HammerCLI::Apipie
 
     def execute
       send_request
-      print_message
+      print_success_message 
       return HammerCLI::EX_OK
     end
 
     protected
 
-    def print_message
+    def print_success_message
       msg = success_message
-      output.print_message msg unless msg.nil?
+      print_message(msg) unless msg.nil?
     end
 
     def send_request
