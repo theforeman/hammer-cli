@@ -21,10 +21,6 @@ module HammerCLI::Apipie
         @output_definition
       end
 
-      def output
-        @output ||= HammerCLI::Output::Output.new :definition => output_definition
-      end
-
       def execute
         d = retrieve_data
         logger.watch "Retrieved data: ", d
@@ -39,7 +35,7 @@ module HammerCLI::Apipie
       end
 
       def print_data(records)
-        output.print_records(records)
+        print_records(output_definition, records)
       end
 
       def request_params

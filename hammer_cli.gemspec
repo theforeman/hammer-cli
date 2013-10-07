@@ -31,5 +31,6 @@ EOF
   s.add_dependency 'awesome_print'
   s.add_dependency 'table_print'
   s.add_dependency 'highline'
+  s.add_dependency 'fastercsv' if RUBY_VERSION < "1.9.0"
 
 end

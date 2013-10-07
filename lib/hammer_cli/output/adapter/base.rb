@@ -4,6 +4,10 @@ module HammerCLI::Output::Adapter
     GROUP_INDENT = " "*2
     LABEL_DIVIDER = ": "
 
+    def tags
+      [:flat, :screen]
+    end
+
     def print_records(fields, data)
       self.fields = fields
 
@@ -117,4 +121,6 @@ module HammerCLI::Output::Adapter
     attr_accessor :fields
 
   end
+
+  HammerCLI::Output::Output.register_adapter(:base, Base)
 end

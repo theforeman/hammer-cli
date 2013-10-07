@@ -4,6 +4,10 @@ module HammerCLI::Output::Adapter
 
   class Table < Abstract
 
+    def tags
+      [:screen, :flat]
+    end
+
     def print_records(fields, data)
 
       rows = data.collect do |d|
@@ -36,5 +40,7 @@ module HammerCLI::Output::Adapter
     end
 
   end
+
+  HammerCLI::Output::Output.register_adapter(:table, Table)
 
 end

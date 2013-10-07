@@ -18,10 +18,6 @@ describe HammerCLI::Apipie::Command do
   let(:cmd_class) { HammerCLI::Apipie::Command.dup }
   let(:cmd) { cmd_class.new("") }
 
-  it "should hold instance of output" do
-    cmd.output.must_be_instance_of HammerCLI::Output::Output
-  end
-
   context "setting identifiers" do
 
     let(:option_switches) { cmd_class.declared_options.map(&:switches).sort }

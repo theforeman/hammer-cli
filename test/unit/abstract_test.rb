@@ -4,6 +4,15 @@ require 'tempfile'
 
 describe HammerCLI::AbstractCommand do
 
+  context "output" do
+      
+    let(:command) { HammerCLI::AbstractCommand.new("") }
+    it "should define adapter" do
+      command.adapter.must_equal :base
+    end
+
+  end
+
   context "exception handler" do
 
     class Handler
@@ -119,8 +128,6 @@ describe HammerCLI::AbstractCommand do
       @log_output.read.must_include "DEBUG  TestLogCmd5 : Test\n{\n  :a => \"a\"\n}"
     end
   end
-
-
 
   context "subcommand behavior" do
 
