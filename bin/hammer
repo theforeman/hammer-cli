@@ -48,8 +48,15 @@ require 'hammer_cli'
 # load modules set in config
 modules = HammerCLI::Settings.get(:modules) || []
 modules.each do |m|
-  require m
+  begin
+    require m
+  rescue => e
+    logger.error "Error while loading module #{m}"
+    handler = HammerCLI::ExceptionHandler.new(:context => {}, :adapter => :base)
+    handler.handle_exception(e)
+    exit HammerCLI::EX_SOFTWARE
+  end
   logger.info "Extension module #{m} loaded"
 end
 
-exit HammerCLI::MainCommand.run || 0
+exit HammerCLI::MainCommand.run || HammerCLI::EX_OK
