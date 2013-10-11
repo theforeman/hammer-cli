@@ -32,7 +32,9 @@ module HammerCLI
     def parse(arguments)
       super
       validate_options
-      logger.info "Called with options: %s" % options.inspect
+      safe_options = options.dup
+      safe_options.keys.each { |k| safe_options[k] = '***' if k.end_with?('password') }
+      logger.info "Called with options: %s" % safe_options.inspect
     rescue HammerCLI::Validator::ValidationError => e
       signal_usage_error e.message
     end
