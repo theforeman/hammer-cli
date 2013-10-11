@@ -61,6 +61,14 @@ describe HammerCLI::AbstractCommand do
       @log_output.readline.strip.must_equal "INFO  HammerCLI::AbstractCommand : Called with options: {}"
     end
 
+    it "password should be hidden in logs" do
+      test_command_class = Class.new(HammerCLI::AbstractCommand)
+      test_command_class.option(['--password'], 'PASSWORD', 'Password')
+      test_command = test_command_class.new("")
+      test_command.run ['--password=pass']
+      @log_output.readline.strip.must_equal "INFO  HammerCLI::AbstractCommand : Called with options: {\"password\"=>\"***\"}"
+    end
+
     class TestLogCmd < HammerCLI::AbstractCommand
       def execute
         logger.error "Test"
