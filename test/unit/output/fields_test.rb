@@ -84,6 +84,12 @@ describe Fields::DataField do
       field.get_value(string_data).must_equal string_data["address"]["city"]["name"]
     end
 
+    it "should pick correct value even if data contains empty key (#3352)" do
+      string_data[''] = {}
+      field.get_value(string_data).must_equal string_data["address"]["city"]["name"]
+    end
+
+
   end
 
 end
