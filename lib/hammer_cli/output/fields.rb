@@ -50,7 +50,11 @@ module Fields
 
     def symbolize_hash_keys(h)
       if h.is_a? Hash
-        return h.inject({}){|result,(k,v)| result.update k.to_sym => symbolize_hash_keys(v)}
+        return h.inject({}) do |result,(k,v)|
+          # symbolizing empty string fails in ruby 1.8
+          result.update k.to_sym => symbolize_hash_keys(v) unless k.to_s.empty?
+          result
+        end
       elsif h.is_a? Array
         return h.collect{|item| symbolize_hash_keys(item)}
       else
