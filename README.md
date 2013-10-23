@@ -330,6 +330,12 @@ It is necessary to copy the hammer_cli_complete script to the bash_completion.d 
 Then after starting a new shell the completion should work.
 
 
+Further reading
+---------------
+If you're interested in hammer and want to develop some plugins for Foreman 
+or use it as a base for your own cli, read 
+[the developer docs](doc/developer_docs.md#hammer-developer-docs).
+
 License
 -------
 
