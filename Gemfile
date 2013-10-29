@@ -2,6 +2,8 @@ source "http://rubygems.org"
 
 gemspec
 
+gem 'mime-types', '< 2.0.0', :platforms => [:ruby_18]
+
 #gem 'hammer_cli_foreman', :path => '../hammer-cli-foreman'
 #gem 'hammer_cli_katello', :path => '../hammer-cli-katello'
 #gem 'hammer_cli_signo', :path => '../hammer-cli-signo'
