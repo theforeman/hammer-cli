@@ -16,7 +16,7 @@ module HammerCLI::Apipie
       resource_class.doc["methods"].each do |method|
         return method if method["name"] == method_name.to_s
       end
-      raise "No method documentation found for #{resource_class}##{action}"
+      raise "No method documentation found for #{resource_class}##{method_name}"
     end
 
   end

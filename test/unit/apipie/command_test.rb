@@ -75,6 +75,24 @@ describe HammerCLI::Apipie::Command do
       Cmd2.new("").class.declared_options.map(&:switches).must_equal [["--id"]]
     end
 
+    context "require identifiers" do
+
+      it "must require one of declared identifiers" do
+        cmd_class.identifiers :id, :name
+        cmd.run(["--id=1"]).must_equal HammerCLI::EX_OK
+      end
+
+      it "must raise exception when no attribute is passed" do
+        cmd_class.identifiers :id, :name
+        proc { cmd.run([]) }.must_raise Clamp::UsageError
+      end
+
+      it "must run without error when no identifiers are declared" do
+        cmd.run([]).must_equal HammerCLI::EX_OK
+      end
+
+    end
+
   end
 
   context "setting resources" do

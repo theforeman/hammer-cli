@@ -24,6 +24,8 @@ module HammerCLI::Output::Adapter
       end
 
       printer = TablePrint::Printer.new(rows, options)
+      TablePrint::Config.max_width = 40
+
       output = printer.table_print
       dashes = /\n([-|]+)\n/.match(output)
 

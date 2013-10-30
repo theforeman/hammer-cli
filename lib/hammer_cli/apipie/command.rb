@@ -32,7 +32,9 @@ module HammerCLI::Apipie
 
     def validate_options
       super
-      validator.any(*self.class.declared_identifiers.values).required
+      if self.class.declared_identifiers
+        validator.any(*self.class.declared_identifiers.values).required
+      end
     end
 
     def self.desc(desc=nil)
