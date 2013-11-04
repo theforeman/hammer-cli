@@ -20,7 +20,6 @@ module HammerCLI::Apipie
     end
 
     def send_request
-      raise "resource or action not defined" unless self.class.resource_defined?
       resource.call(action, request_params)[0]
     end
 
