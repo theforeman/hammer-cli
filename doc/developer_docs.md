@@ -462,35 +462,40 @@ Imagine there's an API of some service that returns list of users:
 
 We can create an output definition that selects and formats some of the fields:
 ```ruby
-dsl = HammerCLI::Output::Dsl.new
-dsl.build do
+class Command < HammerCLI::AbstractCommand
 
-  # Simple field with a label. The first parameter is key in the printed hash.
-  field :id, 'ID'
+  output do
+    # Simple field with a label. The first parameter is key in the printed hash.
+    field :id, 'ID'
 
-  # Fields can have types. The type determines how the field is printed.
-  # All available types are listed below.
-  # Here we want the roles to act as list.
-  field :roles, 'System Roles', Fields::List
+    # Fields can have types. The type determines how the field is printed.
+    # All available types are listed below.
+    # Here we want the roles to act as list.
+    field :roles, 'System Roles', Fields::List
 
-  # Label is used for grouping fields.
-  label 'Contacts' do
-    field :email, 'Email'
-    field :phone, 'Phone No.'
+    # Label is used for grouping fields.
+    label 'Contacts' do
+      field :email, 'Email'
+      field :phone, 'Phone No.'
+    end
+
+    # From is used for accessing nested fields.
+    from :timestamps do
+      # See how date gets formatted in the output
+      field :created, 'Created At', Fields::Date
+    end
   end
 
-  # From is used for accessing nested fields.
-  from :timestamps do
-    # See how date gets formatted in the output
-    field :created, 'Created At', Fields::Date
+  def execute
+    records = retrieve_data
+    print_records(         # <- printing utility of AbstractCommand
+      output_definition,   # <- method for accessing fields defined in the block 'output'
+      records              # <- the data to print
+    )
+    return HammerCLI::EX_OK
   end
+
 end
-
-definition = HammerCLI::Output::Definition.new
-definition.append(dsl.fields)
-
-print_records(definition, data)
-
 ```
 
 Using the base adapter the output will look like:
@@ -511,6 +516,21 @@ Contacts:
   Phone No.:   123456222
 Created At:    2012/12/18 15:25:00
 ```
+
+You can optionally use output definition from another command as a base and extend it with
+additional fields. This is helpful when there are two commands, one listing brief data and
+another one showing details. Typically it's list and show.
+```ruby
+class ShowCommand < HammerCLI::AbstractCommand
+
+  output ListCommand.output_definition do
+    # additional fields
+  end
+
+  # ...
+end
+```
+
 
 All Hammer field types are:
  * __Date__
