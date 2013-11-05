@@ -253,29 +253,50 @@ end
 
 ```
 
-#### Option formatters
-Another option-related feature is a set of formatters for specific option types:
+#### Option normalizers
+Another option-related feature is a set of normalizers for specific option types. They validate and preprocess
+option values. Each normalizer has a description of the format it accepts. This description is printed
+in commands' help.
 
-* _HammerCLI::OptionFormatters.list_
+##### _List_
 
 Parses comma separated strings to a list of values.
 
-Usage:
 ```ruby
-option "--users", "USER_NAMES", "List of user names", &HammerCLI::OptionFormatters.method(:list)
+option "--users", "USER_NAMES", "List of user names",
+  :format => HammerCLI::Options::Normalizers::List.new
 ```
 `--users='J.R.,Gary,Bobby'` -> `['J.R.', 'Gary', 'Bobby']`
 
-* _HammerCLI::OptionFormatters.file_
+##### _File_
 
 Loads contents of a file and returns it as a value of the option.
 
-Usage:
 ```ruby
-option "--poem", "PATH_TO_POEM", "File containing the text of your poem", &HammerCLI::OptionFormatters.method(:file)
+option "--poem", "PATH_TO_POEM", "File containing the text of your poem",
+  :format => HammerCLI::Options::Normalizers::File.new
 ```
 `--poem=~/verlaine/les_poetes_maudits.txt` -> content of the file
 
+##### _Bool_
+
+Case insensitive true/false values. Translates _yes,y,true,t,1_ to `true` and _no,n,false,f,0_ to `false`.
+
+```ruby
+option "--start", "START", "Start the action",
+  :format => HammerCLI::Options::Normalizers::Bool.new
+```
+`--start=yes` -> `true`
+
+##### _KeyValueList_
+
+Parses a comma separated list of key=value pairs. Can be used for naming attributes with vague structure.
+
+```ruby
+option "--attributes", "ATTRIBUTES", "Values of various attributes",
+  :format => HammerCLI::Options::Normalizers::KeyValueList.new
+```
+`--attributes="material=unoptanium,thickness=3"` -> `{'material' => 'unoptanium', 'thickness' => '3'}`
 
 ### Adding subcommands
 Commands in the cli can be structured into a tree of parent commands (nodes) and subcommands (leaves).
