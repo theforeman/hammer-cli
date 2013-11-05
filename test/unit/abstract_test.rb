@@ -6,11 +6,42 @@ describe HammerCLI::AbstractCommand do
 
   context "output" do
 
-    let(:command) { HammerCLI::AbstractCommand.new("") }
+    let(:cmd_class) { HammerCLI::AbstractCommand.dup }
+    let(:cmd) { cmd_class.new("", { :adapter => :silent }) }
     it "should define adapter" do
-      command.adapter.must_equal :base
+      cmd.adapter.must_equal :base
     end
 
+    it "should hold instance of output definition" do
+      cmd.output_definition.must_be_instance_of HammerCLI::Output::Definition
+    end
+
+    it "can append existing definition" do
+      definition = HammerCLI::Output::Definition.new
+      definition.fields << Fields::Field.new
+      definition.fields << Fields::Field.new
+
+      cmd_class.output(definition) do
+      end
+      cmd_class.output_definition.fields.length.must_equal definition.fields.length
+    end
+
+    it "can append existing definition without passing a block" do
+      definition = HammerCLI::Output::Definition.new
+      definition.fields << Fields::Field.new
+      definition.fields << Fields::Field.new
+
+      cmd_class.output(definition)
+      cmd_class.output_definition.fields.length.must_equal definition.fields.length
+    end
+
+    it "can define fields" do
+      cmd_class.output do
+        field :test_1, "test 1"
+        field :test_2, "test 2"
+      end
+      cmd_class.output_definition.fields.length.must_equal 2
+    end
   end
 
   context "exception handler" do

@@ -86,6 +86,23 @@ module HammerCLI
       super
     end
 
+    def self.output(definition=nil, &block)
+      dsl = HammerCLI::Output::Dsl.new
+      dsl.build &block if block_given?
+
+      output_definition.append definition.fields unless definition.nil?
+      output_definition.append dsl.fields
+    end
+
+    def output_definition
+      self.class.output_definition
+    end
+
+    def self.output_definition
+      @output_definition ||= HammerCLI::Output::Definition.new
+      @output_definition
+    end
+
     protected
 
     def print_records(definition, records)
