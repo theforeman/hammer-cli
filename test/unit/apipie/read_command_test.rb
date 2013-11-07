@@ -13,39 +13,6 @@ describe HammerCLI::Apipie::ReadCommand do
     cmd_run.must_equal HammerCLI::EX_SOFTWARE
   end
 
-  it "should hold instance of output definition" do
-    cmd.output_definition.must_be_instance_of HammerCLI::Output::Definition
-  end
-
-  context "output" do
-    it "can append existing definition" do
-      definition = HammerCLI::Output::Definition.new
-      definition.fields << Fields::Field.new
-      definition.fields << Fields::Field.new
-
-      cmd_class.output(definition) do
-      end
-      cmd_class.output_definition.fields.length.must_equal definition.fields.length
-    end
-
-    it "can append existing definition without passing a block" do
-      definition = HammerCLI::Output::Definition.new
-      definition.fields << Fields::Field.new
-      definition.fields << Fields::Field.new
-
-      cmd_class.output(definition)
-      cmd_class.output_definition.fields.length.must_equal definition.fields.length
-    end
-
-    it "can define fields" do
-      cmd_class.output do
-        field :test_1, "test 1"
-        field :test_2, "test 2"
-      end
-      cmd_class.output_definition.fields.length.must_equal 2
-    end
-  end
-
   context "resource defined" do
 
     before :each do
