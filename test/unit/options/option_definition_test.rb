@@ -29,7 +29,12 @@ describe HammerCLI::Options::OptionDefinition do
       opt = TestOptionFormattersCmd.find_option("--test-format")
 
       opt_instance = opt.of(TestOptionFormattersCmd.new([]))
-      opt_instance.write('B')
+      # clamp api changed in 0.6.2
+      if opt_instance.respond_to? :write 
+        opt_instance.write('B')
+      else
+        opt_instance.take('B')
+      end
       opt_instance.read.must_equal '>>>B<<<'
     end
   end
