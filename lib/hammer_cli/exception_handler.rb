@@ -6,8 +6,7 @@ module HammerCLI
 
     def initialize(options={})
       @logger = Logging.logger['Exception']
-      @context = options[:context] || {}
-      @adapter = options[:adapter] || :base
+      @output = options[:output]
     end
 
     def mappings
@@ -25,6 +24,10 @@ module HammerCLI
       raise e
     end
 
+    def output
+      @output || HammerCLI::Output::Output.new
+    end
+
     protected
 
     def print_error(error)
@@ -32,9 +35,9 @@ module HammerCLI
       @logger.error error
 
       if @options[:heading]
-        HammerCLI::Output::Output.print_error @options[:heading], error, @context, :adapter => @adapter
+        output.print_error(@options[:heading], error)
       else
-        HammerCLI::Output::Output.print_error error, nil, @context, :adapter => @adapter
+        output.print_error(error)
       end
     end
 

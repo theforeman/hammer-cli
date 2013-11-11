@@ -53,7 +53,7 @@ module HammerCLI
     end
 
     def exception_handler
-      @exception_handler ||= exception_handler_class.new(:context=>context, :adapter=>adapter)
+      @exception_handler ||= exception_handler_class.new(:output => output)
     end
 
     def initialize(*args)
@@ -94,6 +94,10 @@ module HammerCLI
       output_definition.append dsl.fields
     end
 
+    def output
+      @output ||= HammerCLI::Output::Output.new(context, :default_adapter => adapter)
+    end
+
     def output_definition
       self.class.output_definition
     end
@@ -106,12 +110,11 @@ module HammerCLI
     protected
 
     def print_records(definition, records)
-      HammerCLI::Output::Output.print_records(definition, records, context,
-        :adapter => adapter)
+      output.print_records(definition, records)
     end
 
-    def print_message(msg)
-      HammerCLI::Output::Output.print_message(msg, context, :adapter=>adapter)
+    def print_message(msg, msg_params={})
+      output.print_message(msg, msg_params)
     end
 
     def logger(name=self.class)

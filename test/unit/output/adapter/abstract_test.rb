@@ -45,8 +45,16 @@ describe HammerCLI::Output::Adapter::Abstract do
     adapter = adapter_class.new({}, {:type => [formatter1, formatter2]})
   end
 
-  it "should print message to stdout" do
-    proc { adapter.print_message("MESSAGE") }.must_output(/.*MESSAGE.*/, "")
+
+  context "messages" do
+    it "should print message to stdout" do
+      proc { adapter.print_message("MESSAGE") }.must_output(/.*MESSAGE.*/, "")
+    end
+
+    it "should print formatted message with parameters" do
+      proc { adapter.print_message("MESSAGE %{a}s, %{b}s", :a => 'A', :b => 'B') }.must_output(/.*MESSAGE A, B.*/, "")
+    end
+
   end
 
   it "should raise not implemented on print_records" do
@@ -64,12 +72,23 @@ describe HammerCLI::Output::Adapter::Abstract do
                             "  details\n"
     }
 
+    let(:expected_formatted_output) { "MESSAGE A, B:\n"+
+                                      "  error A\n"+
+                                      "  error B\n"
+    }
+
     it "should print list details of error to stderr" do
       proc { adapter.print_error("MESSAGE", ["error", "message", "details"]) }.must_output("", expected_output)
     end
 
     it "should print string details of error to stderr" do
       proc { adapter.print_error("MESSAGE", "error\nmessage\ndetails") }.must_output("", expected_output)
+    end
+
+    it "should print formatted message with parameters" do
+      proc {
+        adapter.print_error("MESSAGE %{a}s, %{b}s", ["error %{a}s", "error %{b}s"], :a => 'A', :b => 'B')
+      }.must_output("", expected_formatted_output)
     end
 
   end

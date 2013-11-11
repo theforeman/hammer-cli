@@ -12,6 +12,10 @@ describe HammerCLI::AbstractCommand do
       cmd.adapter.must_equal :base
     end
 
+    it "should provide instance of output with default adapter set" do
+      cmd.output.default_adapter.must_equal cmd.adapter
+    end
+
     it "should hold instance of output definition" do
       cmd.output_definition.must_be_instance_of HammerCLI::Output::Definition
     end

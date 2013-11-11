@@ -2,38 +2,47 @@ require File.join(File.dirname(__FILE__), '../test_helper')
 
 describe HammerCLI::Output::Output do
 
+  let(:adapter) { HammerCLI::Output::Adapter::Silent }
+  let(:definition) { HammerCLI::Output::Definition.new }
 
-  before :each do
-    @adapter = HammerCLI::Output::Adapter::Silent
-
-    @definition = HammerCLI::Output::Definition.new
-
-    @out = HammerCLI::Output::Output
-  end
+  let(:context) { { :adapter => :silent } }
+  let(:out_class) { HammerCLI::Output::Output }
+  let(:out) { out_class.new(context) }
 
   context "messages" do
 
     let(:msg) { "Some message" }
     let(:details) { "Some\nmessage\ndetails" }
+    let(:msg_arg) { {:a => 'A'} }
 
     it "prints info message via adapter" do
-      @adapter.any_instance.expects(:print_message).with(msg)
-      @out.print_message(msg, {}, { :adapter => :silent })
+      adapter.any_instance.expects(:print_message).with(msg, {})
+      out.print_message(msg)
+    end
+
+    it "prints info message via adapter with arguments" do
+      adapter.any_instance.expects(:print_message).with(msg, msg_arg)
+      out.print_message(msg, msg_arg)
     end
 
     it "prints error message via adapter" do
-      @adapter.any_instance.expects(:print_error).with(msg, nil)
-      @out.print_error(msg, nil, {}, { :adapter => :silent })
+      adapter.any_instance.expects(:print_error).with(msg, nil, {})
+      out.print_error(msg, nil)
+    end
+
+    it "prints error message via adapter with arguments" do
+      adapter.any_instance.expects(:print_error).with(msg, nil, msg_arg)
+      out.print_error(msg, nil, msg_arg)
     end
 
     it "prints error message with details via adapter" do
-      @adapter.any_instance.expects(:print_error).with(msg, details)
-      @out.print_error(msg, details, {}, { :adapter => :silent })
+      adapter.any_instance.expects(:print_error).with(msg, details, {})
+      out.print_error(msg, details)
     end
 
     it "prints error message from exception via adapter" do
-      @adapter.any_instance.expects(:print_error).with(msg, nil)
-      @out.print_error(Exception.new(msg), nil, {}, { :adapter => :silent })
+      adapter.any_instance.expects(:print_error).with(msg, nil, {})
+      out.print_error(Exception.new(msg), nil)
     end
   end
 
@@ -44,42 +53,50 @@ describe HammerCLI::Output::Output do
     let(:collection) { [item1, item2] }
 
     it "prints single resource" do
-      @adapter.any_instance.expects(:print_records).with([], [{}])
-      @out.print_records(@definition, item1, {}, { :adapter => :silent })
+      adapter.any_instance.expects(:print_records).with([], [{}])
+      out.print_records(definition, item1)
     end
 
     it "prints array of resources" do
-      @adapter.any_instance.expects(:print_records).with([], collection)
-      @out.print_records(@definition, collection, {}, { :adapter => :silent })
+      adapter.any_instance.expects(:print_records).with([], collection)
+      out.print_records(definition, collection)
     end
 
   end
 
   context "adapters" do
     it "should register adapter" do
-      @out.register_adapter(:test, HammerCLI::Output::Adapter::Silent)
-      @out.adapters[:test].must_equal(HammerCLI::Output::Adapter::Silent)
+      out_class.register_adapter(:test, HammerCLI::Output::Adapter::Silent)
+      out_class.adapters[:test].must_equal(HammerCLI::Output::Adapter::Silent)
     end
 
-    it "should return requested adapter" do
-      @out.adapter(:silent, {}).must_be_instance_of HammerCLI::Output::Adapter::Silent
+    it "should return required default adapter" do
+      out = out_class.new({}, {:default_adapter => :silent})
+      out.adapter.must_be_instance_of HammerCLI::Output::Adapter::Silent
     end
 
-    it "should return requested adapter with priority for context" do
-      @out.adapter(:silent, {:adapter => :table}).must_be_instance_of HammerCLI::Output::Adapter::Table
+    it "should use adapter form context" do
+      out = out_class.new({:adapter => :silent})
+      out.adapter.must_be_instance_of HammerCLI::Output::Adapter::Silent
     end
 
-    it "should return requested adapter with fallback to base" do
-      @out.adapter(:unknown, {}).must_be_instance_of HammerCLI::Output::Adapter::Base
+    it "should prioritize adapter from the context" do
+      out = out_class.new({:adapter => :table}, {:default_adapter => :silent})
+      out.adapter.must_be_instance_of HammerCLI::Output::Adapter::Table
+    end
+
+    it "should use base adapter if the requested default was not found" do
+      out = out_class.new({}, {:default_adapter => :unknown})
+      out.adapter.must_be_instance_of HammerCLI::Output::Adapter::Base
     end
   end
 
   context "formatters" do
     it "should register formatter" do
       formatter = HammerCLI::Output::Formatters::FieldFormatter.new
-      @out.register_formatter(formatter, :type1, :type2)
-      @out.formatters[:type1].must_equal([formatter])
-      @out.formatters[:type2].must_equal([formatter])
+      out_class.register_formatter(formatter, :type1, :type2)
+      out_class.formatters[:type1].must_equal([formatter])
+      out_class.formatters[:type2].must_equal([formatter])
     end
   end
 

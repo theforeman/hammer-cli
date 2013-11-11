@@ -17,14 +17,12 @@ module HammerCLI::Output::Adapter
     end
 
     def print_records(fields, data)
-      csv_string = CSV.generate(
-          :col_sep => @context[:csv_separator] || ',', 
-          :encoding => 'utf-8') do |csv|
+      csv_string = generate do |csv|
         # labels
         csv << fields.select{ |f| !(f.class <= Fields::Id) || @context[:show_ids] }.map { |f| f.label }
         # data
         data.each do |d|
-          csv << fields.inject([]) do |row, f| 
+          csv << fields.inject([]) do |row, f|
             unless f.class <= Fields::Id && !@context[:show_ids]
               value = (f.get_value(d) || '')
               formatter = @formatters.formatter_for_type(f.class)
@@ -36,6 +34,41 @@ module HammerCLI::Output::Adapter
       end
       puts csv_string
     end
+
+    def print_message(msg, msg_params={})
+      csv_string = generate do |csv|
+        id = msg_params["id"] || msg_params[:id]
+        name = msg_params["name"] || msg_params[:name]
+
+        labels = ["Message"]
+        data = [msg.format(msg_params)]
+
+        if id
+          labels << "Id"
+          data << id
+        end
+
+        if name
+          labels << "Name"
+          data << name
+        end
+
+        csv << labels
+        csv << data
+      end
+      puts csv_string
+    end
+
+    private
+
+    def generate(&block)
+      CSV.generate(
+        :col_sep => @context[:csv_separator] || ',',
+        :encoding => 'utf-8',
+        &block
+      )
+    end
+
   end
 
   HammerCLI::Output::Output.register_adapter(:csv, CSValues)
