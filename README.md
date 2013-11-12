@@ -2,7 +2,7 @@ Hammer - the CLI tool (not only) for Foreman
 ============================================
 
 
-Hammer is a generic [clamp-based](https://github.com/mdub/clamp) CLI framework. 
+Hammer is a generic [clamp-based](https://github.com/mdub/clamp) CLI framework.
 Hammer-cli provides just the core functionality. The core is extensible using plugins that contain application-specific commands.
 
 This architecture allows for easy customization according to your application. Nearly any Ruby script can be turned into a Hammer command, so the possibilities are endless.
@@ -244,7 +244,7 @@ Use the hammer
 Confirm your setup by running ```$ hammer -h``` and check that the desired commands are listed.
 
 ```
-$ hammer -h 
+$ hammer -h
 Usage:
     hammer [OPTIONS] SUBCOMMAND [ARG] ...
 
@@ -332,9 +332,9 @@ Then after starting a new shell the completion should work.
 
 Further reading
 ---------------
-If you're interested in hammer and want to develop some plugins for Foreman 
-or use it as a base for your own cli, read 
-[the developer docs](doc/developer_docs.md#hammer-developer-docs).
+If you're interested in hammer and want to develop some plugins for Foreman
+or use it as a base for your own cli, read
+[the developer docs](doc/developer_docs.md#hammer-development-docs).
 
 License
 -------
