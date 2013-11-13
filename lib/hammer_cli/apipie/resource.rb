@@ -52,7 +52,7 @@ module HammerCLI::Apipie
 
     def resource
       # if the resource definition is not available in this command's class
-      # try to look it up in parent command's class
+      # or its superclass try to look it up in parent command's class
       if self.class.resource
         return ResourceInstance.from_definition(self.class.resource, resource_config)
       else
@@ -74,18 +74,26 @@ module HammerCLI::Apipie
 
     module ClassMethods
 
-      def resource(resource_class=nil, action=nil)
-        @api_resource = ResourceDefinition.new(resource_class) unless resource_class.nil?
-        @api_action = action unless action.nil?
+      def class_resource
         return @api_resource if @api_resource
+        return superclass.class_resource if superclass.respond_to? :class_resource
+      end
 
-        # if the resource definition is not available in this class
-        # try to look it up in it's enclosing module/class
+      def module_resource
         enclosing_module = self.name.split("::")[0..-2].inject(Object) { |mod, cls| mod.const_get cls }
 
         if enclosing_module.respond_to? :resource
           enclosing_module.resource
         end
+      end
+
+      def resource(resource_class=nil, action=nil)
+        @api_resource = ResourceDefinition.new(resource_class) unless resource_class.nil?
+        @api_action = action unless action.nil?
+
+        # if the resource definition is not available in this class
+        # try to look it up in it's enclosing module/class
+        return class_resource || module_resource
       end
 
       def action(action=nil)

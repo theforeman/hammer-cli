@@ -14,6 +14,10 @@ describe HammerCLI::Apipie::Command do
     class CommandB < ParentCommand
     end
   end
+  
+  class CommandC < CommandA
+  end
+
 
   let(:cmd_class) { HammerCLI::Apipie::Command.dup }
   let(:cmd) { cmd_class.new("") }
@@ -140,6 +144,11 @@ describe HammerCLI::Apipie::Command do
       cmd_b.class.resource.resource_class.must_equal FakeApi::Resources::Architecture
     end
 
+    it "looks up resource in the superclass" do
+      cmd_c = CommandC.new("")
+      cmd_c.resource.resource_class.must_equal FakeApi::Resources::Architecture
+      cmd_c.class.resource.resource_class.must_equal FakeApi::Resources::Architecture
+    end
   end
 
   context "apipie generated options" do
