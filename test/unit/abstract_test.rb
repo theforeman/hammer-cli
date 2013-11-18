@@ -6,7 +6,7 @@ describe HammerCLI::AbstractCommand do
 
   context "output" do
 
-    let(:cmd_class) { HammerCLI::AbstractCommand.dup }
+    let(:cmd_class) { Class.new(HammerCLI::AbstractCommand) }
     let(:cmd) { cmd_class.new("", { :adapter => :silent }) }
     it "should define adapter" do
       cmd.adapter.must_equal :base
@@ -251,6 +251,31 @@ describe HammerCLI::AbstractCommand do
       opt.value_formatter.kind_of?(HammerCLI::Options::Normalizers::List).must_equal true
     end
 
+  end
+
+  it "should inherit command_name" do
+    class CmdName1 < HammerCLI::AbstractCommand
+      command_name 'cmd'
+    end
+
+    class CmdName2 < CmdName1
+    end
+
+    CmdName2.command_name.must_equal 'cmd'
+  end
+
+  it "should inherit output definition" do
+    class CmdOD1 < HammerCLI::AbstractCommand
+      output do
+        label 'Label' do
+        end        
+      end
+    end
+
+    class CmdOD2 < CmdOD1
+    end
+
+    CmdOD2.output_definition.fields.length.must_equal 1
   end
 
 end

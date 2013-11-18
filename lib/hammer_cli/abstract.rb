@@ -89,7 +89,6 @@ module HammerCLI
     def self.output(definition=nil, &block)
       dsl = HammerCLI::Output::Dsl.new
       dsl.build &block if block_given?
-
       output_definition.append definition.fields unless definition.nil?
       output_definition.append dsl.fields
     end
@@ -102,8 +101,17 @@ module HammerCLI
       self.class.output_definition
     end
 
+    def self.inherited_output_definition
+      od = nil
+      if superclass.respond_to? :output_definition
+        od_super = superclass.output_definition
+        od = od_super.dup unless od_super.nil?
+      end
+      od
+    end
+
     def self.output_definition
-      @output_definition ||= HammerCLI::Output::Definition.new
+      @output_definition = @output_definition || inherited_output_definition || HammerCLI::Output::Definition.new
       @output_definition
     end
 
@@ -150,7 +158,7 @@ module HammerCLI
 
     def self.command_name(name=nil)
       @name = name if name
-      @name
+      @name || (superclass.respond_to?(:command_name) ? superclass.command_name : nil)
     end
 
     def self.autoload_subcommands
