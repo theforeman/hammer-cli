@@ -7,16 +7,24 @@ module HammerCLI::Apipie
     include HammerCLI::Messages
 
     def execute
-      send_request
-      print_success_message 
+      response = send_request
+      print_success_message(response)
       return HammerCLI::EX_OK
     end
 
     protected
 
-    def print_success_message
-      msg = success_message
-      print_message(msg) unless msg.nil?
+    def success_message_params(response)
+      response
+    end
+
+    def print_success_message(response)
+      if success_message
+        print_message(
+          success_message,
+          success_message_params(response)
+        )
+      end
     end
 
     def send_request

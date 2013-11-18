@@ -1,30 +1,33 @@
 module HammerCLI::Output
   class Output
 
-    def self.print_message(msg, context, options={})
-      adapter(options[:adapter], context).print_message(msg.to_s)
+    def initialize(context={}, options={})
+      self.context = context
+      self.default_adapter = options[:default_adapter]
     end
 
-    def self.print_error(msg, details=nil, context={}, options={})
-      adapter(options[:adapter], context).print_error(msg.to_s, details)
+    attr_accessor :default_adapter
+
+    def print_message(msg, msg_params={})
+      adapter.print_message(msg.to_s, msg_params)
     end
 
-    def self.print_records(definition, records, context, options={})
-      adapter(options[:adapter], context).print_records(definition.fields, [records].flatten(1))
+    def print_error(msg, details=nil, msg_params={})
+      adapter.print_error(msg.to_s, details, msg_params)
     end
 
-    def self.adapter(req_adapter, context)
-      if context[:adapter]
-        adapter_name = context[:adapter].to_sym
-      else
-        adapter_name = req_adapter
-      end
+    def print_records(definition, records)
+      adapter.print_records(definition.fields, [records].flatten(1))
+    end
+
+    def adapter
+      adapter_name = context[:adapter] || default_adapter
 
       begin
-        init_adapter(adapter_name, context)
+        init_adapter(adapter_name.to_sym)
       rescue NameError
-        Logging.logger[self.name].warn("Required adapter '#{adapter_name}' was not found, using 'base' instead")
-        init_adapter(:base, context)
+        Logging.logger[self.class.name].warn("Required adapter '#{adapter_name}' was not found, using 'base' instead")
+        init_adapter(:base)
       end
     end
 
@@ -51,10 +54,12 @@ module HammerCLI::Output
     end
 
     private
-    
-    def self.init_adapter(adapter_name, context)
-      raise NameError unless adapters.has_key? adapter_name
-      adapters[adapter_name].new(context, formatters)
+
+    attr_accessor :context
+
+    def init_adapter(adapter_name)
+      raise NameError unless self.class.adapters.has_key? adapter_name
+      self.class.adapters[adapter_name].new(context, self.class.formatters)
     end
 
   end

@@ -8,42 +8,35 @@ describe HammerCLI::ExceptionHandler do
     @log_output.reset
   end
 
-  let(:output) { HammerCLI::Output::Output }
-  let(:handler) { HammerCLI::ExceptionHandler.new(:adapter => :silent)}
+  let(:output) { HammerCLI::Output::Output.new }
+  let(:handler) { HammerCLI::ExceptionHandler.new(:output => output)}
   let(:heading) { "Something went wrong" }
 
-  it "should pass context" do
-    context = { :test => :value }
-    eh = HammerCLI::ExceptionHandler.new(:adapter => :silent, :context => context)
-    output.expects(:print_error).with(heading, "Invalid username or password", context, { :adapter => :silent })
-    eh.handle_exception(RestClient::Unauthorized.new, :heading => heading)
-  end
-
   it "should handle unauthorized" do
-    output.expects(:print_error).with(heading, "Invalid username or password", {}, { :adapter => :silent })
+    output.expects(:print_error).with(heading, "Invalid username or password")
     handler.handle_exception(RestClient::Unauthorized.new, :heading => heading)
   end
 
   it "should handle general exception" do
-    output.expects(:print_error).with(heading, "Error: message", {}, { :adapter => :silent })
+    output.expects(:print_error).with(heading, "Error: message")
     handler.handle_exception(Exception.new('message'), :heading => heading)
   end
 
   it "should handle unknown exception" do
-    output.expects(:print_error).with(heading, "Error: message", {}, { :adapter => :silent })
+    output.expects(:print_error).with(heading, "Error: message")
     MyException = Class.new(Exception)
     handler.handle_exception(MyException.new('message'), :heading => heading)
   end
 
   it "should handle resource not found" do
     ex = RestClient::ResourceNotFound.new
-    output.expects(:print_error).with(heading, ex.message, {}, { :adapter => :silent })
+    output.expects(:print_error).with(heading, ex.message)
     handler.handle_exception(ex, :heading => heading)
   end
 
   it "should log the error" do
     ex = RestClient::ResourceNotFound.new
-    output.stubs(:print_error).returns('')
+    output.default_adapter = :silent
     handler.handle_exception(ex)
     @log_output.readline.strip.must_equal 'ERROR  Exception : Resource Not Found'
   end

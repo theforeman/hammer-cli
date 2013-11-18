@@ -44,7 +44,7 @@ describe HammerCLI::Output::Adapter::CSValues do
     end
 
     context "formatters" do
-      it "should apply formatters" do 
+      it "should apply formatters" do
         class DotFormatter < HammerCLI::Output::Formatters::FieldFormatter
           def format(data)
             '-DOT-'
@@ -56,6 +56,20 @@ describe HammerCLI::Output::Adapter::CSValues do
         out.must_match(/.*-DOT-.*/)
       end
     end
+  end
+
+  context "print message" do
+
+    it "shoud print a message" do
+      proc { adapter.print_message("SOME MESSAGE") }.must_output("Message\nSOME MESSAGE\n", "")
+    end
+
+    it "should print message, id and name of created/updated record" do
+      proc {
+        adapter.print_message("SOME MESSAGE", "id" => 83, "name" => "new_record")
+      }.must_output("Message,Id,Name\nSOME MESSAGE,83,new_record\n", "")
+    end
+
   end
 
 end

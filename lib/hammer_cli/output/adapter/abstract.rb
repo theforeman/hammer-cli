@@ -11,27 +11,27 @@ module HammerCLI::Output::Adapter
       @formatters = HammerCLI::Output::Formatters::FormatterLibrary.new(filter_formatters(formatters))
     end
 
-    def print_message(msg)
-      puts msg
+    def print_message(msg, msg_params={})
+      puts msg.format(msg_params)
     end
 
-    def print_error(msg, details=nil)
+    def print_error(msg, details=nil, msg_params={})
       details = details.split("\n") if details.kind_of? String
 
       if details
         indent = "  "
-        $stderr.puts msg+":"
-        $stderr.puts indent + details.join("\n"+indent)
-      else
-        $stderr.puts msg
+        msg += ":\n"
+        msg += indent + details.join("\n"+indent)
       end
+
+      $stderr.puts msg.format(msg_params)
     end
 
     def print_records(fields, data)
       raise NotImplementedError
     end
 
-    private 
+    private
 
     def filter_formatters(formatters_map)
       formatters_map ||= {}
