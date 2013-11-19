@@ -2,9 +2,6 @@ source "http://rubygems.org"
 
 gemspec
 
-gem 'mime-types', '< 2.0.0', :platforms => [:ruby_18]
-
-
 group :test do
   gem 'rake'
   gem 'thor'
