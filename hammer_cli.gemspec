@@ -17,11 +17,9 @@ Gem::Specification.new do |s|
 Hammer cli provides universal extendable CLI interface for ruby apps
 EOF
 
-  # s.files         = `git ls-files`.split("\n")
-  s.files = Dir['lib/**/*.rb'] + Dir['bin/*']
-  # s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.test_files = Dir.glob('test/tc_*.rb')
-  s.extra_rdoc_files = ['README.md', 'LICENSE', 'hammer_cli_complete'] + Dir['config/*template*'] + Dir['doc/*']
+  s.files            = `git ls-files -- {lib,bin,doc,config,test}/* README*`.split("\n")
+  s.test_files       = `git ls-files -- test/*`.split("\n")
+  s.extra_rdoc_files = `git ls-files -- {doc,config}/* README*`.split("\n")
   s.require_paths = ["lib"]
   s.executables = ['hammer']
 
@@ -31,7 +29,9 @@ EOF
   s.add_dependency 'awesome_print'
   s.add_dependency 'table_print'
   s.add_dependency 'highline'
-  s.add_dependency 'fastercsv' if RUBY_VERSION < "1.9.0"
-  s.add_dependency 'mime-types', '< 2.0.0' if RUBY_VERSION < "1.9.0"
+
+  # required for ruby < 1.9.0:
+  s.add_dependency 'fastercsv'             #fastercsv is default for ruby >=1.9 but it's missing in 1.8.X
+  s.add_dependency 'mime-types', '< 2.0.0' #newer versions of mime-types are not 1.8 compatible
 
 end

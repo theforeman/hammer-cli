@@ -4,21 +4,17 @@ gemspec
 
 gem 'mime-types', '< 2.0.0', :platforms => [:ruby_18]
 
-#gem 'hammer_cli_foreman', :path => '../hammer-cli-foreman'
-#gem 'hammer_cli_katello', :path => '../hammer-cli-katello'
-#gem 'hammer_cli_signo', :path => '../hammer-cli-signo'
-
-gem 'pry'
-gem 'pry-debugger', :platforms => [:ruby_19]
 
 group :test do
+  gem 'rake'
   gem 'thor'
   gem 'minitest', '4.7.4'
   gem 'minitest-spec-context'
   gem 'simplecov'
   gem 'mocha'
-  gem 'rake'
-  gem 'psych', :platforms => [:ruby_19]
-  gem 'netrc'
   gem 'ci_reporter'
 end
+
+# load local gemfile
+local_gemfile = File.join(File.dirname(__FILE__), 'Gemfile.local')
+self.instance_eval(Bundler.read_file(local_gemfile)) if File.exist?(local_gemfile)

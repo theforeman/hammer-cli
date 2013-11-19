@@ -1,9 +1,11 @@
 # Ruby + project files
 Gemfile.lock
+Gemfile.local
+pkg
 
 # Tests
-test/reports/*
-coverage/*
+test/reports
+coverage
 
 # RVM
 .rvmrc
