@@ -71,6 +71,32 @@ module HammerCLI
         end
       end
 
+
+      class Enum < AbstractNormalizer
+
+        def initialize(allowed_values)
+          @allowed_values = allowed_values
+        end
+
+        def description
+          "One of %s" % quoted_values
+        end
+
+        def format(value)
+          if @allowed_values.include? value
+            value
+          else 
+            raise ArgumentError, "value must be one of '%s'" % quoted_values
+          end
+        end
+
+        private 
+
+        def quoted_values
+          @allowed_values.map { |v| "'#{v}'" }.join(', ')
+        end
+      end
+
     end
   end
 end

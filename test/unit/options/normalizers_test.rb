@@ -118,5 +118,23 @@ describe HammerCLI::Options::Normalizers do
     end
   end
 
+  describe 'enum' do
+
+    let(:formatter) { HammerCLI::Options::Normalizers::Enum.new ['a', 'b'] }
+
+    it "should return return value when in the list" do
+      formatter.format("a").must_equal("a")
+    end
+
+    it "should rise argument error when the value is not in the list" do
+      proc { formatter.format("c") }.must_raise ArgumentError
+    end
+
+    it "should list allowed values in description" do
+      formatter.description.must_equal("One of 'a', 'b'")
+    end
+
+  end
+
 end
 
