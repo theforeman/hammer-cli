@@ -18,7 +18,9 @@ module HammerCLI::Output
     protected
 
     def field(key, label, type=nil, options={}, &block)
-      options[:path] = current_path.clone << key
+      options[:path] = current_path.clone
+      options[:path] << key if !key.nil?
+
       options[:label] = label
       type ||= Fields::DataField
       custom_field type, options, &block

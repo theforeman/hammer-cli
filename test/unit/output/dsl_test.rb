@@ -87,6 +87,15 @@ describe HammerCLI::Output::Dsl do
       last_field.path.must_equal [:key1, :email]
     end
 
+    it "path can be nil to handle the parent structure" do
+      dsl.build do
+        from :key1 do
+          field nil, "Email"
+        end
+      end
+      last_field.path.must_equal [:key1]
+    end
+
     it "from can be nested" do
       dsl.build do
         from :key1 do
