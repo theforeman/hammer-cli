@@ -200,7 +200,8 @@ describe HammerCLI::AbstractCommand do
 
       it "should write a message to log when replacing subcommand" do
         main_cmd.subcommand!("ping", "description", Subcommand2)
-        @log_output.readline.strip.must_equal "INFO  Clamp::Command : subcommand ping (Subcommand1) replaced with ping (Subcommand2)"
+        @log_output.readline.strip.must_equal "INFO  Clamp::Command : subcommand ping (Subcommand1) was removed."
+        @log_output.readline.strip.must_equal "INFO  Clamp::Command : subcommand ping (Subcommand2) was created."
       end
 
       it "should add the subcommand" do
@@ -228,6 +229,19 @@ describe HammerCLI::AbstractCommand do
         main_cmd.find_subcommand("some_command").wont_be_nil
         main_cmd.find_subcommand("ping").wont_be_nil
         main_cmd.recognised_subcommands.count.must_equal 3
+      end
+
+    end
+
+    describe "remove_subcommand" do
+      it "should remove the subcommand" do
+        main_cmd.remove_subcommand('ping')
+        main_cmd.find_subcommand("ping").must_be_nil
+      end
+
+      it "should write a message to log when removing subcommand" do
+        main_cmd.remove_subcommand('ping')
+        @log_output.readline.strip.must_equal "INFO  Clamp::Command : subcommand ping (Subcommand1) was removed."
       end
 
     end

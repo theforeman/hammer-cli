@@ -66,16 +66,21 @@ module HammerCLI
       context[:path][-2]
     end
 
-    def self.subcommand!(name, description, subcommand_class = self, &block)
+    def self.remove_subcommand(name)
       self.recognised_subcommands.delete_if do |sc|
         if sc.is_called?(name)
-          Logging.logger[self].info "subcommand #{name} (#{sc.subcommand_class}) replaced with #{name} (#{subcommand_class})"
+          logger.info "subcommand #{name} (#{sc.subcommand_class}) was removed."
           true
         else
           false
         end
       end
+    end
+
+    def self.subcommand!(name, description, subcommand_class = self, &block)
+      remove_subcommand(name)
       self.subcommand(name, description, subcommand_class, &block)
+      logger.info "subcommand #{name} (#{subcommand_class}) was created."
     end
 
     def self.subcommand(name, description, subcommand_class = self, &block)
@@ -125,10 +130,14 @@ module HammerCLI
       output.print_message(msg, msg_params)
     end
 
-    def logger(name=self.class)
+    def self.logger(name=self)
       logger = Logging.logger[name]
       logger.extend(HammerCLI::Logger::Watch) if not logger.respond_to? :watch
       logger
+    end
+
+    def logger(name=self.class)
+      self.class.logger(name)
     end
 
     def validator
