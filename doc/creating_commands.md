@@ -302,6 +302,16 @@ This method does not throw exceptions, replaces the original subcommand, and lea
 a message in a log for debugging purposes.
 
 
+### Removing subcommands
+If your plugin needs to disable existing subcommand, you can use `remove_subcommand` for this. 
+
+```ruby
+  HammerCLI::MainCommand.remove_subcommand 'say'
+```
+
+Call to this action is automatically logged.
+
+
 ### Printing some output
 We've mentioned above that it's not recommended practice to print output
 directly with `puts` in Hammer. The reason is we separate definition
