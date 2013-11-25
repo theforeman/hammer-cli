@@ -53,6 +53,7 @@ module HammerCLI
         end
 
         def format(bool)
+          bool = bool.to_s
           if bool.downcase.match(/^(true|t|yes|y|1)$/i)
             return true
           elsif bool.downcase.match(/^(false|f|no|n|0)$/i)
@@ -85,12 +86,12 @@ module HammerCLI
         def format(value)
           if @allowed_values.include? value
             value
-          else 
+          else
             raise ArgumentError, "value must be one of '%s'" % quoted_values
           end
         end
 
-        private 
+        private
 
         def quoted_values
           @allowed_values.map { |v| "'#{v}'" }.join(', ')

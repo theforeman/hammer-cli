@@ -113,6 +113,10 @@ describe HammerCLI::Options::Normalizers do
       formatter.format("0").must_equal(false)
     end
 
+    it "should raise exception on nil" do
+      proc { formatter.format(nil) }.must_raise ArgumentError
+    end
+
     it "should raise exception on other values" do
       proc { formatter.format('unknown') }.must_raise ArgumentError
     end
@@ -124,6 +128,10 @@ describe HammerCLI::Options::Normalizers do
 
     it "should return return value when in the list" do
       formatter.format("a").must_equal("a")
+    end
+
+    it "should rise argument error when the value is nil" do
+      proc { formatter.format(nil) }.must_raise ArgumentError
     end
 
     it "should rise argument error when the value is not in the list" do
