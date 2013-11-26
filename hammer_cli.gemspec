@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 Hammer cli provides universal extendable CLI interface for ruby apps
 EOF
 
-  s.files            = `git ls-files -- {lib,bin,doc,config,test}/* README*`.split("\n")
+  s.files            = `git ls-files -- {lib,bin,doc,config,test}/* README* LICENSE hammer_cli_complete`.split("\n")
   s.test_files       = `git ls-files -- test/*`.split("\n")
   s.extra_rdoc_files = `git ls-files -- {doc,config}/* README*`.split("\n")
   s.require_paths = ["lib"]
