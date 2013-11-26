@@ -14,13 +14,13 @@ describe HammerCLI::Apipie::Command do
     class CommandB < ParentCommand
     end
   end
-  
+
   class CommandC < CommandA
   end
 
 
   let(:cmd_class) { HammerCLI::Apipie::Command.dup }
-  let(:cmd) { cmd_class.new("") }
+  let(:cmd) { cmd_class.new("", { :adapter => :silent }) }
 
   context "setting identifiers" do
 
@@ -88,7 +88,7 @@ describe HammerCLI::Apipie::Command do
 
       it "must raise exception when no attribute is passed" do
         cmd_class.identifiers :id, :name
-        proc { cmd.run([]) }.must_raise Clamp::UsageError
+        cmd.run([]).must_equal HammerCLI::EX_USAGE
       end
 
       it "must run without error when no identifiers are declared" do

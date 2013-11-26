@@ -12,6 +12,8 @@ module HammerCLI
     def mappings
       [
         [Exception, :handle_general_exception], # catch all
+        [Clamp::HelpWanted, :handle_help_wanted],
+        [Clamp::UsageError, :handle_usage_exception],
         [RestClient::ResourceNotFound, :handle_not_found],
         [RestClient::Unauthorized, :handle_unauthorized],
       ]
@@ -41,6 +43,10 @@ module HammerCLI
       end
     end
 
+    def print_message(msg)
+      output.print_message(msg)
+    end
+
     def log_full_error(e)
       backtrace = e.backtrace || []
       @logger.error "\n\n#{e.class} (#{e.message}):\n    " +
@@ -52,6 +58,17 @@ module HammerCLI
       print_error "Error: " + e.message
       log_full_error e
       HammerCLI::EX_SOFTWARE
+    end
+
+    def handle_usage_exception(e)
+      print_error "Error: %s\n\nSee: '%s --help'" % [e.message, e.command.invocation_path]
+      log_full_error e
+      HammerCLI::EX_USAGE
+    end
+
+    def handle_help_wanted(e)
+      print_message e.command.help
+      HammerCLI::EX_OK
     end
 
     def handle_not_found(e)

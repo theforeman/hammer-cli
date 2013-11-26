@@ -11,6 +11,7 @@ describe HammerCLI::ExceptionHandler do
   let(:output) { HammerCLI::Output::Output.new }
   let(:handler) { HammerCLI::ExceptionHandler.new(:output => output)}
   let(:heading) { "Something went wrong" }
+  let(:cmd) { Class.new(HammerCLI::AbstractCommand).new("command_name") }
 
   it "should handle unauthorized" do
     output.expects(:print_error).with(heading, "Invalid username or password")
@@ -26,6 +27,18 @@ describe HammerCLI::ExceptionHandler do
     output.expects(:print_error).with(heading, "Error: message")
     MyException = Class.new(Exception)
     handler.handle_exception(MyException.new('message'), :heading => heading)
+  end
+
+  it "should handle help request" do
+    output.expects(:print_message).with(cmd.help)
+    handler.handle_exception(Clamp::HelpWanted.new(cmd), :heading => heading)
+
+  end
+
+  it "should handle usage error" do
+    output.expects(:print_error).with(heading, "Error: wrong_usage\n\nSee: 'command_name --help'")
+    handler.handle_exception(Clamp::UsageError.new('wrong_usage', cmd), :heading => heading)
+
   end
 
   it "should handle resource not found" do

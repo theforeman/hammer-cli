@@ -44,10 +44,6 @@ module HammerCLI
       context[:show_ids] = show_ids
     end
 
-    def run(*args)
-      super
-    end
-
     def password=(p)
       @password = p
       context[:password] = p

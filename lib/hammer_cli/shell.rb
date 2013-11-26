@@ -12,9 +12,12 @@ module HammerCLI
 
       stty_save = `stty -g`.chomp
 
+
       begin
+        puts "Welcome to the hammer interactive shell"
+        puts "Type 'help' for usage information"
         while line = Readline.readline('hammer> ', true)
-          HammerCLI::MainCommand.run('hammer', line.split) unless line.start_with? 'shell'
+          HammerCLI::MainCommand.run('', line.split) unless line.start_with? 'shell' or line.strip.empty?
         end
       rescue Interrupt => e
         puts
