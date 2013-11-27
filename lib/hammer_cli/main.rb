@@ -27,10 +27,6 @@ module HammerCLI
         HammerCLI::Output::Output.adapters.keys.join(', ')
     option ["--csv-separator"], "SEPARATOR", "Character to separate the values"
 
-    option ["-P", "--ask-pass"], :flag, "Ask for password" do
-      context[:password] = get_password()
-      ''
-    end
 
     option "--autocomplete", "LINE", "Get list of possible endings" do |line|
       line = line.split
@@ -64,12 +60,6 @@ module HammerCLI
     def username=(u)
       @username = u
       context[:username] = u
-    end
-
-    private
-
-    def get_password(prompt="Enter Password ")
-      ask(prompt) {|q| q.echo = false}
     end
 
   end

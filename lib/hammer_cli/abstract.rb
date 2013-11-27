@@ -120,6 +120,30 @@ module HammerCLI
 
     protected
 
+    def interactive?
+      STDOUT.tty? && (HammerCLI::Settings.get(:ui, :interactive) != false)
+    end
+
+    def ask_username
+      ask("Username: ") if interactive?
+    end
+
+    def ask_password
+      ask("Password for '%s': " % username) {|q| q.echo = false} if interactive?
+    end
+
+    def username(ask_interactively=true)
+      context[:username] ||= ENV['FOREMAN_USERNAME'] || HammerCLI::Settings.get(:foreman, :username)
+      context[:username] ||= ask_username if ask_interactively
+      context[:username]
+    end
+
+    def password(ask_interactively=true)
+      context[:password] ||= ENV['FOREMAN_PASSWORD'] || HammerCLI::Settings.get(:foreman, :password)
+      context[:password] ||= ask_password if ask_interactively
+      context[:password]
+    end
+
     def print_record(definition, record)
       output.print_record(definition, record)
     end

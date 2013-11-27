@@ -26,6 +26,57 @@ module HammerCLI
       end
     end
 
+    class AuthCommand < AbstractCommand
+      command_name "auth"
+      desc "Login and logout actions"
+
+      class LoginCommand < AbstractCommand
+        command_name "login"
+        desc "Set credentials"
+
+        def execute
+          context[:username] = ask_username
+          context[:password] = ask_password
+          HammerCLI::EX_OK
+        end
+      end
+
+      class LogoutCommand < AbstractCommand
+        command_name "logout"
+        desc "Wipe your credentials"
+
+        def execute
+          context[:username] = nil
+          context[:password] = nil
+
+          if username(false)
+            print_message("Credentials deleted, using defaults now.")
+            print_message("You are logged in as [ %s ]." % username(false))
+          else
+            print_message("Credentials deleted.")
+          end
+          HammerCLI::EX_OK
+        end
+      end
+
+      class InfoCommand < AbstractCommand
+        command_name "status"
+        desc "Information about current user"
+
+        def execute
+          if username(false)
+            print_message("You are logged in as [ %s ]." % username(false))
+          else
+            print_message("You are currently not logged in.\nUse 'auth login' to set credentials.")
+          end
+          HammerCLI::EX_OK
+        end
+      end
+
+      autoload_subcommands
+    end
+
+
     def self.load_commands(main_cls)
       cmds = main_cls.recognised_subcommands.select do |sub_cmd|
         !(sub_cmd.subcommand_class <= HammerCLI::ShellCommand)
@@ -49,7 +100,7 @@ module HammerCLI
         print_welcome_message
         ShellMainCommand.load_commands(HammerCLI::MainCommand)
         while line = Readline.readline(prompt, true)
-          ShellMainCommand.run('', line.split) unless line.start_with? 'shell' or line.strip.empty?
+          ShellMainCommand.run('', line.split, context) unless line.start_with? 'shell' or line.strip.empty?
         end
       rescue Interrupt => e
         puts
@@ -65,8 +116,8 @@ module HammerCLI
     end
 
     def print_welcome_message
-      puts "Welcome to the hammer interactive shell"
-      puts "Type 'help' for usage information"
+      print_message("Welcome to the hammer interactive shell")
+      print_message("Type 'help' for usage information")
     end
 
     def common_prefix(results)
