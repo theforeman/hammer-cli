@@ -90,15 +90,16 @@ module HammerCLI
   class ShellCommand < AbstractCommand
 
     def execute
+      ShellMainCommand.load_commands(HammerCLI::MainCommand)
+
       Readline.completion_append_character = " "
-      Readline.completer_word_break_characters = ''
+      Readline.completer_word_break_characters = ' '
       Readline.completion_proc = complete_proc
 
       stty_save = `stty -g`.chomp
 
       begin
         print_welcome_message
-        ShellMainCommand.load_commands(HammerCLI::MainCommand)
         while line = Readline.readline(prompt, true)
           ShellMainCommand.run('', line.split, context) unless line.start_with? 'shell' or line.strip.empty?
         end
@@ -125,16 +126,9 @@ module HammerCLI
     end
 
     def complete_proc
-      Proc.new do |cpl|
-        res = HammerCLI::MainCommand.autocomplete(cpl.split)
-        # if there is one result or if results have common prefix
-        # readline tries to replace current input with results
-        # thus we should join the results with the start of the line
-        if res.length == 1 || common_prefix(res)
-          res.map { |r| r.delete_if{ |e| e == '' }.reverse.join(' ') }
-        else
-          res.map{ |e| e[0] }
-        end
+      completer = Completer.new(ShellMainCommand)
+      Proc.new do |last_word|
+        completer.complete(Readline.line_buffer)
       end
     end
 
