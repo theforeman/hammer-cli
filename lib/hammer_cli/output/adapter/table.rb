@@ -8,11 +8,16 @@ module HammerCLI::Output::Adapter
       [:screen, :flat]
     end
 
-    def print_records(fields, data)
+    def print_record(fields, record)
+      print_collection(fields, [record].flatten(1))
+    end
 
-      rows = data.collect do |d|
+    def print_collection(fields, collection)
+
+      rows = collection.collect do |d|
         row = {}
         fields.each do |f|
+
           row[f.label.to_sym] = f.get_value(d) || ""
         end
         row

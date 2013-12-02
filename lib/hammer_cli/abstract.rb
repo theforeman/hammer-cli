@@ -122,8 +122,12 @@ module HammerCLI
 
     protected
 
-    def print_records(definition, records)
-      output.print_records(definition, records)
+    def print_record(definition, record)
+      output.print_record(definition, record)
+    end
+
+    def print_collection(definition, collection)
+      output.print_collection(definition, collection)
     end
 
     def print_message(msg, msg_params={})

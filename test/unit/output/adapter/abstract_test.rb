@@ -57,8 +57,8 @@ describe HammerCLI::Output::Adapter::Abstract do
 
   end
 
-  it "should raise not implemented on print_records" do
-    proc { adapter.print_records([], []) }.must_raise NotImplementedError
+  it "should raise not implemented on print_collection" do
+    proc { adapter.print_collection([], HammerCLI::Output::RecordCollection.new([])) }.must_raise NotImplementedError
   end
 
   context "error messages" do

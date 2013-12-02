@@ -4,22 +4,22 @@ describe HammerCLI::Output::Adapter::Table do
 
   let(:adapter) { HammerCLI::Output::Adapter::Table.new }
 
-  context "print_records" do
+  context "print_collection" do
 
     let(:field_name) { Fields::DataField.new(:path => [:name], :label => "Name") }
     let(:fields) {
       [field_name]
     }
-    let(:data) {[{
+    let(:data) { HammerCLI::Output::RecordCollection.new [{
       :name => "John Doe"
     }]}
 
-    it "should print column name" do
-      proc { adapter.print_records(fields, data) }.must_output(/.*NAME.*/, "")
+    it "should print column name " do
+      proc { adapter.print_collection(fields, data) }.must_output(/.*NAME.*/, "")
     end
 
     it "should print field value" do
-      proc { adapter.print_records(fields, data) }.must_output(/.*John Doe.*/, "")
+      proc { adapter.print_collection(fields, data) }.must_output(/.*John Doe.*/, "")
     end
 
     context "handle ids" do
@@ -29,19 +29,19 @@ describe HammerCLI::Output::Adapter::Table do
       }
 
       it "should ommit column of type Id by default" do
-        out, err = capture_io { adapter.print_records(fields, data) }
+        out, err = capture_io { adapter.print_collection(fields, data) }
         out.wont_match(/.*ID.*/)
       end
 
       it "should print column of type Id when --show-ids is set" do
         adapter = HammerCLI::Output::Adapter::Table.new( { :show_ids => true } )
-        out, err = capture_io { adapter.print_records(fields, data) }
+        out, err = capture_io { adapter.print_collection(fields, data) }
         out.must_match(/.*ID.*/)
       end
     end
 
     context "formatters" do
-      it "should apply formatters" do 
+      it "should apply formatters" do
         class DotFormatter < HammerCLI::Output::Formatters::FieldFormatter
           def format(data)
             '-DOT-'
@@ -49,7 +49,7 @@ describe HammerCLI::Output::Adapter::Table do
         end
 
         adapter = HammerCLI::Output::Adapter::Table.new({}, { :DataField => [ DotFormatter.new ]})
-        out, err = capture_io { adapter.print_records(fields, data) }
+        out, err = capture_io { adapter.print_collection(fields, data) }
         out.must_match(/.*-DOT-.*/)
       end
     end

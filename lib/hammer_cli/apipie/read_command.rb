@@ -6,7 +6,7 @@ module HammerCLI::Apipie
 
       def execute
         d = retrieve_data
-        logger.watch "Retrieved data: ", d
+        logger.debug "Retrieved data: " + d.ai(:raw => true) if HammerCLI::Settings.get(:log_api_calls)
         print_data d
         return HammerCLI::EX_OK
       end
@@ -18,7 +18,7 @@ module HammerCLI::Apipie
       end
 
       def print_data(records)
-        print_records(output_definition, records)
+        print_collection(output_definition, records)
       end
 
       def request_params

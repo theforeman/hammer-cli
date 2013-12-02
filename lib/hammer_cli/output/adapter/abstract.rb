@@ -27,7 +27,11 @@ module HammerCLI::Output::Adapter
       $stderr.puts msg.format(msg_params)
     end
 
-    def print_records(fields, data)
+    def print_record(fields, record)
+      raise NotImplementedError
+    end
+
+    def print_collection(fields, collection)
       raise NotImplementedError
     end
 
