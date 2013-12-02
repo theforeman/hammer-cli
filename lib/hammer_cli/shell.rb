@@ -92,7 +92,7 @@ module HammerCLI
     def execute
       ShellMainCommand.load_commands(HammerCLI::MainCommand)
 
-      Readline.completion_append_character = " "
+      Readline.completion_append_character = ''
       Readline.completer_word_break_characters = ' '
       Readline.completion_proc = complete_proc
 

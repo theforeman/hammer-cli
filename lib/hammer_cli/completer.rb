@@ -50,7 +50,7 @@ module HammerCLI
 
     def complete_attribute(attribute, value)
       if attribute.respond_to?(:complete)
-        attribute.complete(value)
+        filter(attribute.complete(value), value)
       else
         []
       end
@@ -117,8 +117,13 @@ module HammerCLI
       cmd = @command
       subcommands = sub_command_map(cmd)
 
+      # if the last word is not finished we have to select it's parent
+      # -> shorten the line
+      words = line.dup
+      words.pop unless line.finished?
+
       cmd_idx = 0
-      line.each_with_index do |word, idx|
+      words.each_with_index do |word, idx|
         unless word.start_with?('-')
           break unless subcommands.has_key? word
 
@@ -128,6 +133,7 @@ module HammerCLI
         end
       end
 
+      # cut processed part of the line and return remaining
       remaining = line.dup
       remaining.shift(cmd_idx) if cmd_idx > 0
       return [cmd, remaining]
@@ -138,6 +144,7 @@ module HammerCLI
       completions = []
       completions += sub_command_names(command)
       completions += command_options(command)
+      completions = Completer::finalize_completions(completions)
 
       if remaining.finished?
         return completions
@@ -148,7 +155,16 @@ module HammerCLI
 
 
     def filter(completions, last_word)
-      completions.select{|name| name.start_with? last_word }
+      if last_word.to_s != ""
+        completions.select{|name| name.start_with? last_word }
+      else
+        completions
+      end
+    end
+
+
+    def self.finalize_completions(completions)
+      completions.collect{|name| name+' ' }
     end
 
 
