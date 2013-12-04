@@ -37,12 +37,11 @@ module HammerCLI
 
 
     option "--autocomplete", "LINE", "Get list of possible endings" do |line|
-      # line = line.split
-      # line.shift
-      # endings = self.class.autocomplete(line).map { |l| l[0] }
-      # puts endings.join(' ')
-      completer = Completer.new(MainCommand)
-      puts completer.complete(line.to_s).join("\n")
+      # get rid of word 'hammer' on the line
+      line = line.to_s.gsub(/^\S+/, '')
+
+      completer = Completer.new(HammerCLI::MainCommand)
+      puts completer.complete(line).join(" ")
       exit(HammerCLI::EX_OK)
     end
 

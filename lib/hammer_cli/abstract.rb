@@ -1,4 +1,3 @@
-require 'hammer_cli/autocompletion'
 require 'hammer_cli/exception_handler'
 require 'hammer_cli/logger_watch'
 require 'hammer_cli/options/option_definition'
@@ -11,7 +10,6 @@ module HammerCLI
 
   class AbstractCommand < Clamp::Command
 
-    extend Autocompletion
     class << self
       attr_accessor :validation_block
     end
