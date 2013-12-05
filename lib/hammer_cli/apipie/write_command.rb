@@ -7,9 +7,7 @@ module HammerCLI::Apipie
     include HammerCLI::Messages
 
     def execute
-      response = send_request
-      logger.watch "Retrieved data: ", response
-      print_success_message(response)
+      print_success_message(send_request)
       return HammerCLI::EX_OK
     end
 

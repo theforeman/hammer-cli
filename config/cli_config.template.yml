@@ -10,6 +10,8 @@
 # :watch_plain: true disables color output of logger.watch in Clamp commands
 :watch_plain: false
 
+
 #:log_dir: '/var/log/foreman'
 :log_dir: '~/.foreman/log'
 :log_level: 'error'
+:log_api_calls: false

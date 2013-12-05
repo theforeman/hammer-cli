@@ -16,12 +16,16 @@ module HammerCLI::Output::Adapter
       [:flat]
     end
 
-    def print_records(fields, data)
+    def print_record(fields, record)
+      print_collection(fields, [record].flatten(1))
+    end
+
+    def print_collection(fields, collection)
       csv_string = generate do |csv|
         # labels
         csv << fields.select{ |f| !(f.class <= Fields::Id) || @context[:show_ids] }.map { |f| f.label }
         # data
-        data.each do |d|
+        collection.each do |d|
           csv << fields.inject([]) do |row, f|
             unless f.class <= Fields::Id && !@context[:show_ids]
               value = (f.get_value(d) || '')

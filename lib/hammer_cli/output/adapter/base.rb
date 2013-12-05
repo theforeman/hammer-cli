@@ -8,10 +8,14 @@ module HammerCLI::Output::Adapter
       [:flat, :screen]
     end
 
-    def print_records(fields, data)
+    def print_record(fields, record)
+      print_collection(fields, [record].flatten(1))
+    end
+
+    def print_collection(fields, collection)
       self.fields = fields
 
-      data.each do |d|
+      collection.each do |d|
         fields.collect do |f|
           render_field(f, d)
         end

@@ -16,8 +16,15 @@ module HammerCLI::Output
       adapter.print_error(msg.to_s, details, msg_params)
     end
 
-    def print_records(definition, records)
-      adapter.print_records(definition.fields, [records].flatten(1))
+    def print_record(definition, record)
+      adapter.print_record(definition.fields, record)
+    end
+
+    def print_collection(definition, collection)
+      unless collection.class <= HammerCLI::Output::RecordCollection
+        collection = HammerCLI::Output::RecordCollection.new([collection].flatten(1))
+      end
+      adapter.print_collection(definition.fields, collection)
     end
 
     def adapter
