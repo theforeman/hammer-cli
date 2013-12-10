@@ -14,6 +14,8 @@ describe HammerCLI::Options::OptionDefinition do
     option "--test-format", "TEST_FORMAT", "Test option with a formatter",
       :format => FakeFormatter.new,
       :default => "A"
+    option "--test-context", "CONTEXT", "Option saved into context",
+      :context_target => :test_option
   end
 
   describe "formatters" do
@@ -30,7 +32,7 @@ describe HammerCLI::Options::OptionDefinition do
 
       opt_instance = opt.of(TestOptionFormattersCmd.new([]))
       # clamp api changed in 0.6.2
-      if opt_instance.respond_to? :write 
+      if opt_instance.respond_to? :write
         opt_instance.write('B')
       else
         opt_instance.take('B')
@@ -39,5 +41,13 @@ describe HammerCLI::Options::OptionDefinition do
     end
   end
 
+  describe "context" do
+    it "should save option to context" do
+      context = {}
+      cmd = TestOptionFormattersCmd.new("", context)
+      cmd.run(["--test-context=VALUE"])
+      context[:test_option].must_equal "VALUE"
+    end
+  end
 end
 

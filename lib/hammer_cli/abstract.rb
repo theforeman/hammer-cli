@@ -121,7 +121,11 @@ module HammerCLI
     protected
 
     def interactive?
-      STDOUT.tty? && (HammerCLI::Settings.get(:ui, :interactive) != false)
+      if context[:interactive].nil?
+        return STDOUT.tty? && (HammerCLI::Settings.get(:ui, :interactive) != false)
+      else
+        return context[:interactive]
+      end
     end
 
     def ask_username
@@ -203,13 +207,25 @@ module HammerCLI
       end
     end
 
+    def self.define_simple_writer_for(attribute, &block)
+      define_method(attribute.write_method) do |value|
+        value = instance_exec(value, &block) if block
+        if attribute.respond_to?(:context_target) && attribute.context_target
+          context[attribute.context_target] = value
+        end
+        attribute.of(self).set(value)
+      end
+    end
+
     def self.option(switches, type, description, opts = {}, &block)
       formatter = opts.delete(:format)
+      context_target = opts.delete(:context_target)
 
       HammerCLI::Options::OptionDefinition.new(switches, type, description, opts).tap do |option|
         declared_options << option
 
         option.value_formatter = formatter
+        option.context_target = context_target
         block ||= option.default_conversion_block
 
         define_accessors_for(option, &block)

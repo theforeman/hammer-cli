@@ -6,6 +6,7 @@ module HammerCLI
     class OptionDefinition < Clamp::Option::Definition
 
       attr_accessor :value_formatter
+      attr_accessor :context_target
 
       def help_lhs
         super
