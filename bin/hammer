@@ -37,6 +37,9 @@ if preparser.verbose?
   root_logger.appenders = root_logger.appenders << ::Logging.appenders.stderr(:layout => HammerCLI::Logger::COLOR_LAYOUT)
 end
 
+hammer_version = Gem.loaded_specs['hammer_cli'].version.to_s
+logger.info "Initialization of Hammer CLI (#{hammer_version}) has started..."
+
 # log which config was loaded (now when we have logging)
 HammerCLI::Settings.path_history.each do |path|
   logger.info "Configuration from the file #{path} has been loaded"
@@ -56,7 +59,8 @@ modules.each do |m|
     handler.handle_exception(e)
     exit HammerCLI::EX_SOFTWARE
   end
-  logger.info "Extension module #{m} loaded"
+  module_version = Gem.loaded_specs[m].version.to_s
+  logger.info "Extension module #{m} (#{module_version}) loaded"
 end
 
 exit HammerCLI::MainCommand.run || HammerCLI::EX_OK

@@ -11,18 +11,23 @@ module HammerCLI
     option ["-p", "--password"], "PASSWORD", "password to access the remote system"
 
     option "--version", :flag, "show version" do
-      puts "hammer-%s" % HammerCLI.version
+      puts "hammer (%s)" % HammerCLI.version
+      modules = HammerCLI::Settings.get(:modules) || []
+      modules.each do |m|
+        module_version = Gem.loaded_specs[m].version.to_s
+        puts " * #{m} (#{module_version})"
+      end
       exit(HammerCLI::EX_OK)
     end
 
     option ["--show-ids"], :flag, "Show ids of associated resources"
 
     option ["--csv"], :flag, "Output as CSV (same as --adapter=csv)"
-    option ["--output"], "ADAPTER", "Set output format. One of [%s]" % 
+    option ["--output"], "ADAPTER", "Set output format. One of [%s]" %
         HammerCLI::Output::Output.adapters.keys.join(', ')
     option ["--csv-separator"], "SEPARATOR", "Character to separate the values"
 
-    option ["-P", "--ask-pass"], :flag, "Ask for password" do 
+    option ["-P", "--ask-pass"], :flag, "Ask for password" do
       context[:password] = get_password()
       ''
     end
