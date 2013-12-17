@@ -14,13 +14,14 @@ describe HammerCLI::Apipie::Command do
     class CommandB < ParentCommand
     end
   end
-  
+
   class CommandC < CommandA
   end
 
 
+  let(:ctx) { { :adapter => :silent, :interactive => false } }
   let(:cmd_class) { HammerCLI::Apipie::Command.dup }
-  let(:cmd) { cmd_class.new("") }
+  let(:cmd) { cmd_class.new("", ctx) }
 
   context "setting identifiers" do
 
@@ -88,7 +89,7 @@ describe HammerCLI::Apipie::Command do
 
       it "must raise exception when no attribute is passed" do
         cmd_class.identifiers :id, :name
-        proc { cmd.run([]) }.must_raise Clamp::UsageError
+        cmd.run([]).must_equal HammerCLI::EX_USAGE
       end
 
       it "must run without error when no identifiers are declared" do
@@ -133,19 +134,19 @@ describe HammerCLI::Apipie::Command do
     end
 
     it "inherits action from a parent class" do
-      cmd_b = CommandA::CommandB.new("")
+      cmd_b = CommandA::CommandB.new("", ctx)
       cmd_b.action.must_equal :show
       cmd_b.class.action.must_equal :show
     end
 
     it "looks up resource in the class' modules" do
-      cmd_b = CommandA::CommandB.new("")
+      cmd_b = CommandA::CommandB.new("", ctx)
       cmd_b.resource.resource_class.must_equal FakeApi::Resources::Architecture
       cmd_b.class.resource.resource_class.must_equal FakeApi::Resources::Architecture
     end
 
     it "looks up resource in the superclass" do
-      cmd_c = CommandC.new("")
+      cmd_c = CommandC.new("", ctx)
       cmd_c.resource.resource_class.must_equal FakeApi::Resources::Architecture
       cmd_c.class.resource.resource_class.must_equal FakeApi::Resources::Architecture
     end

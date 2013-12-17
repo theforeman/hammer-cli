@@ -5,6 +5,7 @@ require 'hammer_cli/settings'
 require 'hammer_cli/validator'
 require 'hammer_cli/output'
 require 'hammer_cli/options/normalizers'
+require 'hammer_cli/completer'
 require 'hammer_cli/abstract'
 require 'hammer_cli/main'
 

@@ -6,6 +6,15 @@ module HammerCLI
     class OptionDefinition < Clamp::Option::Definition
 
       attr_accessor :value_formatter
+      attr_accessor :context_target
+
+      def complete(value)
+        if value_formatter.nil?
+          []
+        else
+          value_formatter.complete(value)
+        end
+      end
 
       def help_lhs
         super

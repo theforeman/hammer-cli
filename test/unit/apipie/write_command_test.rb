@@ -3,7 +3,9 @@ require File.join(File.dirname(__FILE__), 'fake_api')
 
 describe HammerCLI::Apipie::WriteCommand do
 
-  let(:cmd) { HammerCLI::Apipie::WriteCommand.new("") }
+
+  let(:ctx) { { :interactive => false } }
+  let(:cmd) { HammerCLI::Apipie::WriteCommand.new("", ctx) }
   let(:cmd_run) { cmd.run([]) }
 
   it "should raise exception when no action is defined" do

@@ -1,4 +1,3 @@
-require 'hammer_cli/autocompletion'
 require 'hammer_cli/exception_handler'
 require 'hammer_cli/logger_watch'
 require 'hammer_cli/options/option_definition'
@@ -11,7 +10,6 @@ module HammerCLI
 
   class AbstractCommand < Clamp::Command
 
-    extend Autocompletion
     class << self
       attr_accessor :validation_block
     end
@@ -25,8 +23,6 @@ module HammerCLI
       raise "exit code must be integer" unless exit_code.is_a? Integer
       return exit_code
     rescue => e
-      # do not catch Clamp errors
-      raise if e.class <= Clamp::UsageError || e.class <= Clamp::HelpWanted
       handle_exception e
     end
 
@@ -122,6 +118,34 @@ module HammerCLI
 
     protected
 
+    def interactive?
+      if context[:interactive].nil?
+        return STDOUT.tty? && (HammerCLI::Settings.get(:ui, :interactive) != false)
+      else
+        return context[:interactive]
+      end
+    end
+
+    def ask_username
+      ask("Username: ") if interactive?
+    end
+
+    def ask_password
+      ask("Password for '%s': " % username) {|q| q.echo = false} if interactive?
+    end
+
+    def username(ask_interactively=true)
+      context[:username] ||= ENV['FOREMAN_USERNAME'] || HammerCLI::Settings.get(:foreman, :username)
+      context[:username] ||= ask_username if ask_interactively
+      context[:username]
+    end
+
+    def password(ask_interactively=true)
+      context[:password] ||= ENV['FOREMAN_PASSWORD'] || HammerCLI::Settings.get(:foreman, :password)
+      context[:password] ||= ask_password if ask_interactively
+      context[:password]
+    end
+
     def print_record(definition, record)
       output.print_record(definition, record)
     end
@@ -181,13 +205,25 @@ module HammerCLI
       end
     end
 
+    def self.define_simple_writer_for(attribute, &block)
+      define_method(attribute.write_method) do |value|
+        value = instance_exec(value, &block) if block
+        if attribute.respond_to?(:context_target) && attribute.context_target
+          context[attribute.context_target] = value
+        end
+        attribute.of(self).set(value)
+      end
+    end
+
     def self.option(switches, type, description, opts = {}, &block)
       formatter = opts.delete(:format)
+      context_target = opts.delete(:context_target)
 
       HammerCLI::Options::OptionDefinition.new(switches, type, description, opts).tap do |option|
         declared_options << option
 
         option.value_formatter = formatter
+        option.context_target = context_target
         block ||= option.default_conversion_block
 
         define_accessors_for(option, &block)

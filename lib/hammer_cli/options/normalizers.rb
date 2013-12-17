@@ -11,6 +11,10 @@ module HammerCLI
         def format(val)
           raise NotImplementedError, "Class #{self.class.name} must implement method format."
         end
+
+        def complete(val)
+          []
+        end
       end
 
 
@@ -62,6 +66,10 @@ module HammerCLI
             raise ArgumentError, "value must be one of true/false, yes/no, 1/0"
           end
         end
+
+        def complete(value)
+          ["yes ", "no "]
+        end
       end
 
 
@@ -69,6 +77,16 @@ module HammerCLI
 
         def format(path)
           ::File.read(::File.expand_path(path))
+        end
+
+        def complete(value)
+          Dir[value.to_s+'*'].collect do |file|
+            if ::File.directory?(file)
+              file+'/'
+            else
+              file+' '
+            end
+          end
         end
       end
 
@@ -89,6 +107,10 @@ module HammerCLI
           else
             raise ArgumentError, "value must be one of '%s'" % quoted_values
           end
+        end
+
+        def complete(value)
+          Completer::finalize_completions(@allowed_values)
         end
 
         private

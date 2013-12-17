@@ -5,7 +5,7 @@ describe HammerCLI::Output::Output do
   let(:adapter) { HammerCLI::Output::Adapter::Silent }
   let(:definition) { HammerCLI::Output::Definition.new }
 
-  let(:context) { { :adapter => :silent } }
+  let(:context) { { :adapter => :silent, :interactive => false } }
   let(:out_class) { HammerCLI::Output::Output }
   let(:out) { out_class.new(context) }
 
