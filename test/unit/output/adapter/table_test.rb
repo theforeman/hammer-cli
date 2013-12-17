@@ -53,6 +53,25 @@ describe HammerCLI::Output::Adapter::Table do
         out.must_match(/.*-DOT-.*/)
       end
     end
+
+    context "sort_columns" do
+      let(:field_firstname) { Fields::DataField.new(:path => [:firstname], :label => "Firstname") }
+      let(:field_lastname) { Fields::DataField.new(:path => [:lastname], :label => "Lastname") }
+      let(:fields) {
+        [field_firstname, field_lastname]
+      }
+      let(:data) { HammerCLI::Output::RecordCollection.new [{
+        :firstname => "John",
+        :lastname => "Doe"
+      }]}
+
+      it "should sort output" do
+        TablePrint::Printer.any_instance.stubs(:table_print).returns(
+          "LASTNAME | FIRSTNAME\n---------|----------\nDoe      | John     \n")
+        proc { adapter.print_collection(fields, data) }.must_output(
+          "----------|---------\nFIRSTNAME | LASTNAME\n----------|---------\nJohn      | Doe     \n----------|---------\n")
+      end
+    end
   end
 
 end
