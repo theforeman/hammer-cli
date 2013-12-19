@@ -14,9 +14,8 @@ module HammerCLI
 
     option "--version", :flag, "show version" do
       puts "hammer (%s)" % HammerCLI.version
-      modules = HammerCLI::Settings.get(:modules) || []
-      modules.each do |m|
-        module_version = Gem.loaded_specs[m].version.to_s
+      HammerCLI::Modules.names.each do |m|
+        module_version = HammerCLI::Modules.find_by_name(m).version
         puts " * #{m} (#{module_version})"
       end
       exit(HammerCLI::EX_OK)

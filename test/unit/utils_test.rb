@@ -31,5 +31,18 @@ describe String do
 
   end
 
+
+  context "camelize" do
+
+    it "should camelize string with underscores" do
+      "one_two_three".camelize.must_equal "OneTwoThree"
+    end
+
+    it "should not camelize string with dashes" do
+      "one-two-three".camelize.must_equal "One-two-three"
+    end
+
+  end
+
 end
 
