@@ -1,5 +1,6 @@
 require 'hammer_cli/utils'
 require 'hammer_cli/version'
+require 'hammer_cli/modules'
 require 'hammer_cli/exit_codes'
 require 'hammer_cli/settings'
 require 'hammer_cli/validator'
