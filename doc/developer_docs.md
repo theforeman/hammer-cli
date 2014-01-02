@@ -10,3 +10,4 @@ Contents:
  - [Creating commands](creating_commands.md#create-your-first-command)
  - [Creating ApiPie commands](creating_apipie_commands.md#creating-commands-for-restful-api-with-apipie)
  - [Development tips](development_tips.md#development-tips)
+ - [Option normalizers](option_normalizers.md#option-normalizers)

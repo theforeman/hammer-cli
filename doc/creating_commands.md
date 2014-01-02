@@ -159,6 +159,8 @@ Another option-related feature is a set of normalizers for specific option types
 option values. Each normalizer has a description of the format it accepts. This description is printed
 in commands' help.
 
+See [our tutorial](option_normalizers.md#option-normalizers) if you want to create your custom normalizer.
+
 ##### _List_
 
 Parses comma separated strings to a list of values.
@@ -303,7 +305,7 @@ a message in a log for debugging purposes.
 
 
 ### Removing subcommands
-If your plugin needs to disable existing subcommand, you can use `remove_subcommand` for this. 
+If your plugin needs to disable existing subcommand, you can use `remove_subcommand` for this.
 
 ```ruby
   HammerCLI::MainCommand.remove_subcommand 'say'
