@@ -7,20 +7,20 @@ module HammerCLI::Apipie
     end
 
     def all_method_options
-      method_options_for_params(resource.docs_for(action)["params"], true)
+      method_options_for_params(resource.action(action).params, true)
     end
 
     def method_options
-      method_options_for_params(resource.docs_for(action)["params"], false)
+      method_options_for_params(resource.action(action).params, false)
     end
 
     def method_options_for_params(params, include_nil=true)
       opts = {}
       params.each do |p|
-        if p["expected_type"] == "hash"
-          opts[p["name"]] = method_options_for_params(p["params"], include_nil)
+        if p.expected_type == :hash
+          opts[p.name] = method_options_for_params(p.params, include_nil)
         else
-          opts[p["name"]] = get_option_value(p["name"])
+          opts[p.name] = get_option_value(p.name)
         end
       end
       opts.reject! {|key, value| value.nil? } unless include_nil
@@ -44,7 +44,7 @@ module HammerCLI::Apipie
           filter = Array(filter)
           filter += declared_identifiers.keys
 
-          options_for_params(resource.docs_for(action)["params"], filter)
+          options_for_params(resource.action(action).params, filter)
         end
       end
 
@@ -52,9 +52,9 @@ module HammerCLI::Apipie
 
       def options_for_params(params, filter)
         params.each do |p|
-          next if filter.include? p["name"].to_s or filter.include? p["name"].to_sym
-          if p["expected_type"] == "hash"
-            options_for_params(p["params"], filter)
+          next if filter.include?(p.name) || filter.include?(p.name.to_sym)
+          if p.expected_type == :hash
+            options_for_params(p.params, filter)
           else
             create_option p
           end
@@ -71,25 +71,23 @@ module HammerCLI::Apipie
       end
 
       def option_switches(param)
-        '--' + param["name"].gsub('_', '-')
+        '--' + param.name.gsub('_', '-')
       end
 
       def option_type(param)
-        param["name"].upcase.gsub('-', '_')
+        param.name.upcase.gsub('-', '_')
       end
 
       def option_desc(param)
-        desc = param["description"].gsub(/<\/?[^>]+?>/, "")
-        return " " if desc.empty?
-        return desc
+        param.description || " "
       end
 
       def option_opts(param)
         opts = {}
-        opts[:required] = true if param["required"]
+        opts[:required] = true if param.required?
         # FIXME: There is a bug in apipie, it does not produce correct expected type for Arrays
         # When it's fixed, we should test param["expected_type"] == "array"
-        opts[:format] = HammerCLI::Options::Normalizers::List.new if param["validator"].include? "Array"
+        opts[:format] = HammerCLI::Options::Normalizers::List.new if param.validator.include? "Array"
         return opts
       end
 

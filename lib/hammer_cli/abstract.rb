@@ -129,12 +129,13 @@ module HammerCLI
       @output_definition
     end
 
-    protected
 
     def interactive?
       HammerCLI.interactive?
     end
 
+
+    protected
 
     def print_record(definition, record)
       output.print_record(definition, record)

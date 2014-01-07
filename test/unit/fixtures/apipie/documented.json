@@ -1,0 +1,79 @@
+{
+    "docs": {
+        "name": "Documented",
+        "api_url": "/api",
+        "version": "v2",
+        "short_description": null,
+        "full_description": null,
+        "doc_url": "/apidoc/v2/documented",
+        "resources": {
+            "documented": {
+                "methods": [
+                    {
+                        "name": "index",
+                        "examples": [],
+                        "errors": [],
+                        "params": [
+                            {
+                                "allow_null": false,
+                                "name": "se_arch_val-ue",
+                                "full_name": "se_arch_val-ue_full_name",
+                                "validator": "Must be String",
+                                "description": "<p>filter results</p>",
+                                "expected_type": "string",
+                                "required": false
+                            }
+                        ],
+                        "full_description": ""
+                    },
+                    {
+                        "name": "create",
+                        "examples": [],
+                        "errors": [],
+                        "params": [
+                            {
+                                "allow_null": false,
+                                "name": "documented",
+                                "full_name": "documented",
+                                "validator": "Must be a Hash",
+                                "description": "",
+                                "expected_type": "hash",
+                                "required": true,
+                                "params": [
+                                    {
+                                        "name": "name",
+                                        "allow_null": false,
+                                        "full_name": "documented[name]",
+                                        "validator": "Must be String",
+                                        "expected_type": "string",
+                                        "description": "",
+                                        "required": false
+                                    },
+                                    {
+                                        "name": "provider",
+                                        "allow_null": false,
+                                        "full_name": "documented[provider]",
+                                        "validator": "Must be String",
+                                        "expected_type": "string",
+                                        "description": "<p>Providers include Libvirt, Ovirt, EC2, Vmware, Openstack, Rackspace</p>",
+                                        "required": false
+                                    },
+                                    {
+                                        "name": "array_param",
+                                        "allow_null": false,
+                                        "full_name": "documented[array_param]",
+                                        "validator": "Must be Array",
+                                        "expected_type": "string",
+                                        "description": "",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ],
+                        "full_description": ""
+                    }
+                ]
+            }
+        }
+    }
+}

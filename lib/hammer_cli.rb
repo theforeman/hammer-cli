@@ -1,5 +1,5 @@
 require 'hammer_cli/i18n'
-
+require 'hammer_cli/exceptions'
 require 'hammer_cli/utils'
 require 'hammer_cli/version'
 require 'hammer_cli/modules'

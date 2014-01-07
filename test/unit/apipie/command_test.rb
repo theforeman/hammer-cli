@@ -1,15 +1,20 @@
 require File.join(File.dirname(__FILE__), '../test_helper')
-require File.join(File.dirname(__FILE__), 'fake_api')
 
 
 describe HammerCLI::Apipie::Command do
 
-  class ParentCommand < HammerCLI::Apipie::Command
+  class TestCommand < HammerCLI::Apipie::Command
+    def self.resource_config
+      { :apidoc_cache_dir => 'test/unit/fixtures/apipie', :apidoc_cache_name => 'architectures' }
+    end
+  end
+
+  class ParentCommand < TestCommand
     action :show
   end
 
-  class CommandA < HammerCLI::Apipie::Command
-    resource FakeApi::Resources::Architecture, :index
+  class CommandA < TestCommand
+    resource :architectures, :index
 
     class CommandB < ParentCommand
     end
@@ -18,17 +23,20 @@ describe HammerCLI::Apipie::Command do
   class CommandC < CommandA
   end
 
-
   let(:ctx) { { :adapter => :silent, :interactive => false } }
-  let(:cmd_class) { HammerCLI::Apipie::Command.dup }
+  let(:cmd_class) { TestCommand.dup }
   let(:cmd) { cmd_class.new("", ctx) }
+
+  before :each do
+    HammerCLI::Connection.drop_all
+  end
 
   context "setting identifiers" do
 
     let(:option_switches) { cmd_class.declared_options.map(&:switches).sort }
     let(:option_attribute_names) { cmd_class.declared_options.map(&:attribute_name).sort }
 
-    class Cmd1 < HammerCLI::Apipie::Command
+    class Cmd1 < TestCommand
       identifiers :id, :name, :label
       apipie_options
     end
@@ -107,31 +115,31 @@ describe HammerCLI::Apipie::Command do
   context "setting resources" do
 
     it "should set resource and action together" do
-      cmd_class.resource FakeApi::Resources::Architecture, :index
+      cmd_class.resource :architectures, :index
 
-      cmd.resource.resource_class.must_equal FakeApi::Resources::Architecture
-      cmd_class.resource.resource_class.must_equal FakeApi::Resources::Architecture
+      cmd.resource.name.must_equal :architectures
+      cmd_class.resource.name.must_equal :architectures
 
       cmd.action.must_equal :index
       cmd_class.action.must_equal :index
     end
 
     it "should set resource alone" do
-      cmd_class.resource FakeApi::Resources::Architecture
+      cmd_class.resource :architectures
 
-      cmd.resource.resource_class.must_equal FakeApi::Resources::Architecture
-      cmd_class.resource.resource_class.must_equal FakeApi::Resources::Architecture
+      cmd.resource.name.must_equal :architectures
+      cmd_class.resource.name.must_equal :architectures
 
       cmd.action.must_equal nil
       cmd_class.action.must_equal nil
     end
 
     it "should set resource and action alone" do
-      cmd_class.resource FakeApi::Resources::Architecture
+      cmd_class.resource :architectures
       cmd_class.action :index
 
-      cmd.resource.resource_class.must_equal FakeApi::Resources::Architecture
-      cmd_class.resource.resource_class.must_equal FakeApi::Resources::Architecture
+      cmd.resource.name.must_equal :architectures
+      cmd_class.resource.name.must_equal :architectures
 
       cmd.action.must_equal :index
       cmd_class.action.must_equal :index
@@ -145,25 +153,34 @@ describe HammerCLI::Apipie::Command do
 
     it "looks up resource in the class' modules" do
       cmd_b = CommandA::CommandB.new("", ctx)
-      cmd_b.resource.resource_class.must_equal FakeApi::Resources::Architecture
-      cmd_b.class.resource.resource_class.must_equal FakeApi::Resources::Architecture
+      cmd_b.resource.name.must_equal :architectures
+      cmd_b.class.resource.name.must_equal :architectures
     end
 
     it "looks up resource in the superclass" do
       cmd_c = CommandC.new("", ctx)
-      cmd_c.resource.resource_class.must_equal FakeApi::Resources::Architecture
-      cmd_c.class.resource.resource_class.must_equal FakeApi::Resources::Architecture
+      cmd_c.resource.name.must_equal :architectures
+      cmd_c.class.resource.name.must_equal :architectures
     end
   end
 
   context "apipie generated options" do
+
+    class DocumentedCommand < HammerCLI::Apipie::Command
+      def self.resource_config
+        { :apidoc_cache_dir => 'test/unit/fixtures/apipie', :apidoc_cache_name => 'documented' }
+      end
+    end
+
+    let(:cmd_class) { DocumentedCommand.dup }
+    let(:cmd) { cmd_class.new("", ctx) }
 
     context "with one simple param" do
 
       let(:option) { cmd_class.declared_options[0] }
 
       before :each do
-        cmd_class.resource FakeApi::Resources::Documented, :index
+        cmd_class.resource :documented, :index
         cmd_class.apipie_options
       end
 
@@ -186,7 +203,7 @@ describe HammerCLI::Apipie::Command do
 
     context "required options" do
       before :each do
-        cmd_class.resource FakeApi::Resources::Documented, :create
+        cmd_class.resource :documented, :create
         cmd_class.apipie_options
       end
 
@@ -199,7 +216,7 @@ describe HammerCLI::Apipie::Command do
 
     context "with hash params" do
       before :each do
-        cmd_class.resource FakeApi::Resources::Documented, :create
+        cmd_class.resource :documented, :create
         cmd_class.apipie_options
       end
 
@@ -214,7 +231,7 @@ describe HammerCLI::Apipie::Command do
 
     context "array params" do
       before :each do
-        cmd_class.resource FakeApi::Resources::Documented, :create
+        cmd_class.resource :documented, :create
         cmd_class.apipie_options
       end
 
@@ -244,7 +261,7 @@ describe HammerCLI::Apipie::Command do
 
     context "filtering options" do
       before :each do
-        cmd_class.resource FakeApi::Resources::Documented, :create
+        cmd_class.resource :documented, :create
       end
 
       it "should skip filtered options" do
