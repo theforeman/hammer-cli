@@ -19,16 +19,28 @@ module HammerCLI
       return nil
     end
 
-    def self.load(name)
+    def self.load!(name)
       begin
         require_module(name)
+      rescue LoadError => e
+        logger.error "Module #{name} not found"
+        raise e
       rescue Exception => e
         logger.error "Error while loading module #{name}"
+        logger.error e
+        puts "Warning: An error occured while loading module #{name}"
         raise e
       end
 
       version = find_by_name(name).version
       logger.info "Extension module #{name} (#{version}) loaded"
+      true
+    end
+
+    def self.load(name)
+      load! name
+    rescue Exception => e
+      false
     end
 
     def self.require_module(name)
