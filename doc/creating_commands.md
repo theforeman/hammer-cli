@@ -97,7 +97,9 @@ for the full list of available exit codes.
 Our new command has only one option so far. It's `-h` which is built in for every command by default.
 Option declaration is the same as in clamp so please read it's
 [documentation](https://github.com/mdub/clamp/#declaring-options)
-on that topic.
+on that topic. However unlike in Clamp, the option accessors in Hammer are created with prefix 'option_', to avoid
+conflict with methods of the commands. So to access value of an `--name` option you have to call `option_name()`
+
 
 Example option usage could go like this:
 ```ruby
@@ -106,7 +108,7 @@ class HelloCommand < HammerCLI::AbstractCommand
   option '--name', "NAME", "Name of the person you want to greet"
 
   def execute
-    print_message "Hello %s!" % (name || "World")
+    print_message "Hello %s!" % (option_name || "World")
     HammerCLI::EX_OK
   end
 end
@@ -135,20 +137,20 @@ Hammer provides extended functionality for validating options.
 First of all there is a dsl for validating combinations of options:
 ```ruby
 validate_options do
-  all(:name, :surname).required  # requires all the options
-  option(:age).required          # requires a single option,
+  all(:option_name, :option_surname).required  # requires all the options
+  option(:option_age).required          # requires a single option,
                                  # equivalent of :required => true in option declaration
-  any(:email, :phone).required   # requires at least one of the options
+  any(:option_email, :option_phone).required   # requires at least one of the options
 
   # Tt is possible to create more complicated constructs.
   # This example requires either the full address or nothing
-  if any(:street, :city, :zip).exist?
-    all(:street, :city, :zip).required
+  if any(:option_street, :option_city, :option_zip).exist?
+    all(:option_street, :option_city, :option_zip).required
   end
 
   # Here you can reject all address related option when --no-address is passed
-  if option(:no_address).exist?
-    all(:street, :city, :zip).rejected
+  if option(:option_no_address).exist?
+    all(:option_street, :option_city, :option_zip).rejected
   end
 end
 
@@ -222,7 +224,7 @@ module HammerCLIHello
       option '--name', "NAME", "Name of the person you want to greet"
 
       def execute
-        print_message "Hello %s!" % (name || "World")
+        print_message "Hello %s!" % (option_ name || "World")
         HammerCLI::EX_OK
       end
     end

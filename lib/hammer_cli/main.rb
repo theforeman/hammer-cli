@@ -27,7 +27,7 @@ module HammerCLI
       :format => HammerCLI::Options::Normalizers::Bool.new,
       :context_target => :interactive
 
-    option ["--csv"], :flag, "Output as CSV (same as --adapter=csv)"
+    option ["--csv"], :flag, "Output as CSV (same as --output=csv)"
     option ["--output"], "ADAPTER", "Set output format. One of [%s]" %
       HammerCLI::Output::Output.adapters.keys.join(', '),
       :context_target => :adapter
@@ -44,7 +44,7 @@ module HammerCLI
       exit(HammerCLI::EX_OK)
     end
 
-    def csv=(csv)
+    def option_csv=(csv)
       context[:adapter] = :csv
     end
 

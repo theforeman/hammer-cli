@@ -94,7 +94,7 @@ module HammerCLI
     end
 
     def all(*to_check)
-      AllConstraint.new(@options, to_check)
+      AllConstraint.new(@options, to_check.flatten(1))
     end
 
     def option(to_check)
@@ -102,7 +102,7 @@ module HammerCLI
     end
 
     def any(*to_check)
-      AnyConstraint.new(@options, to_check)
+      AnyConstraint.new(@options, to_check.flatten(1))
     end
 
     def run(&block)

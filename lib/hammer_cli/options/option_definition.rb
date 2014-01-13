@@ -1,6 +1,19 @@
 require 'clamp'
 
 module HammerCLI
+
+  def self.option_accessor_name(*name)
+    if name.length > 1
+      name.map { |n| _option_accessor_name(n) }
+    else
+      _option_accessor_name(name.first)
+    end
+  end
+
+  def self._option_accessor_name(name)
+    "option_#{name.to_s}".gsub('-', '_')
+  end
+
   module Options
 
     class OptionDefinition < Clamp::Option::Definition
@@ -69,6 +82,12 @@ module HammerCLI
         elsif multivalued?
           []
         end
+      end
+
+      private
+
+      def infer_attribute_name
+        HammerCLI.option_accessor_name(super)
       end
 
     end
