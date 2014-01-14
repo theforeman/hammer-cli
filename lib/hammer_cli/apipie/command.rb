@@ -1,3 +1,4 @@
+require File.join(File.dirname(__FILE__), '../abstract')
 require File.join(File.dirname(__FILE__), 'options')
 require File.join(File.dirname(__FILE__), 'resource')
 
@@ -7,17 +8,6 @@ module HammerCLI::Apipie
 
     include HammerCLI::Apipie::Resource
     include HammerCLI::Apipie::Options
-
-    def initialize(*args)
-      super
-      setup_identifier_options
-    end
-
-    def setup_identifier_options
-      self.class.identifier_option(:id, "resource id")
-      self.class.identifier_option(:name, "resource name")
-      self.class.identifier_option(:label, "resource label")
-    end
 
     def self.identifiers(*keys)
       @identifiers ||= {}
@@ -73,6 +63,12 @@ module HammerCLI::Apipie
     end
 
     private
+
+    def self.setup_identifier_options
+      identifier_option(:id, "resource id")
+      identifier_option(:name, "resource name")
+      identifier_option(:label, "resource label")
+    end
 
     def self.identifier_option(name, desc)
       attr_name = declared_identifiers[name]

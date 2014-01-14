@@ -83,6 +83,7 @@ module HammerCLI::Apipie
       end
 
       def module_resource
+        return nil unless self.name
         enclosing_module = self.name.split("::")[0..-2].inject(Object) { |mod, cls| mod.const_get cls }
 
         if enclosing_module.respond_to? :resource

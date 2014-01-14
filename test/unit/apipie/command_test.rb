@@ -30,48 +30,50 @@ describe HammerCLI::Apipie::Command do
 
     class Cmd1 < HammerCLI::Apipie::Command
       identifiers :id, :name, :label
+      apipie_options
     end
 
     class Cmd2 < Cmd1
       identifiers :id
+      apipie_options
     end
 
     it "must not set any option by default" do
-      cmd
+      cmd_class.apipie_options
       cmd_class.declared_options.must_equal []
     end
 
     it "can set option --id" do
       cmd_class.identifiers :id
-      cmd
+      cmd_class.apipie_options
       option_switches.must_equal [["--id"]]
       option_attribute_names.must_equal ["id"]
     end
 
     it "can set option --name" do
       cmd_class.identifiers :name
-      cmd
+      cmd_class.apipie_options
       option_switches.must_equal [["--name"]]
       option_attribute_names.must_equal ["name"]
     end
 
     it "can set option --label" do
       cmd_class.identifiers :label
-      cmd
+      cmd_class.apipie_options
       option_switches.must_equal [["--label"]]
       option_attribute_names.must_equal ["label"]
     end
 
     it "can set multiple identifiers" do
       cmd_class.identifiers :id, :name, :label
-      cmd
+      cmd_class.apipie_options
       option_switches.must_equal [["--id"], ["--label"], ["--name"]]
       option_attribute_names.must_equal ["id", "label", "name"]
     end
 
     it "can change option reader" do
       cmd_class.identifiers :name, :id => :id_read_method
-      cmd
+      cmd_class.apipie_options
       option_switches.must_equal [["--id"], ["--name"]]
       option_attribute_names.must_equal ["id_read_method", "name"]
     end
@@ -84,11 +86,13 @@ describe HammerCLI::Apipie::Command do
 
       it "must require one of declared identifiers" do
         cmd_class.identifiers :id, :name
+        cmd_class.apipie_options
         cmd.run(["--id=1"]).must_equal HammerCLI::EX_OK
       end
 
       it "must raise exception when no attribute is passed" do
         cmd_class.identifiers :id, :name
+        cmd_class.apipie_options
         cmd.run([]).must_equal HammerCLI::EX_USAGE
       end
 
