@@ -61,22 +61,72 @@ describe HammerCLI::Modules do
   end
 
   describe "load a module" do
-    it "must require a module" do
-      HammerCLI::Modules.expects(:require_module).with("hammer_cli_tom")
-      HammerCLI::Modules.load("hammer_cli_tom")
+    describe "success" do
+      before :each do
+        HammerCLI::Modules.stubs(:require_module)
+      end
+
+      it "must require a module" do
+        HammerCLI::Modules.expects(:require_module).with("hammer_cli_tom")
+        HammerCLI::Modules.load("hammer_cli_tom")
+      end
+
+      it "must log module's name and version" do
+        HammerCLI::Modules.expects(:require_module).with("hammer_cli_tom")
+        HammerCLI::Modules.load("hammer_cli_tom")
+        @log_output.readline.strip.must_equal "INFO  Modules : Extension module hammer_cli_tom (0.0.1) loaded"
+      end
+
+      it "must return true when load succeeds" do
+        HammerCLI::Modules.load("hammer_cli_tom").must_equal true
+      end
+
+      it "must return true when load! succeeds" do
+        HammerCLI::Modules.load!("hammer_cli_tom").must_equal true
+      end
     end
 
-    it "must log module's name and version" do
-      HammerCLI::Modules.expects(:require_module).with("hammer_cli_tom")
-      HammerCLI::Modules.load("hammer_cli_tom")
-      @log_output.readline.strip.must_equal "INFO  Modules : Extension module hammer_cli_tom (0.0.1) loaded"
+    describe "module not found" do
+      before :each do
+        HammerCLI::Modules.stubs(:require_module).raises(LoadError)
+      end
+
+      it "must log an error if the load! fails" do
+        proc { HammerCLI::Modules.load!("hammer_cli_tom") }.must_raise LoadError
+        @log_output.readline.strip.must_equal "ERROR  Modules : Module hammer_cli_tom not found"
+      end
+
+      it "must log an error if the load fails" do
+        HammerCLI::Modules.load("hammer_cli_tom")
+        @log_output.readline.strip.must_equal "ERROR  Modules : Module hammer_cli_tom not found"
+      end
+
+      it "must return false when load fails" do
+        HammerCLI::Modules.load("hammer_cli_tom").must_equal false
+      end
     end
+
+    describe "module runtime exception" do
+      before :each do
+        HammerCLI::Modules.stubs(:require_module).raises(RuntimeError)
+      end
+
+      it "must log an error if the load! fails" do
+        proc { HammerCLI::Modules.load!("hammer_cli_tom") }.must_raise RuntimeError
+        @log_output.readline.strip.must_equal "ERROR  Modules : Error while loading module hammer_cli_tom"
+      end
+
+      it "must log an error if the load fails" do
+        HammerCLI::Modules.load("hammer_cli_tom")
+        @log_output.readline.strip.must_equal "ERROR  Modules : Error while loading module hammer_cli_tom"
+      end
+
+      it "must return false when load fails" do
+        HammerCLI::Modules.load("hammer_cli_tom").must_equal false
+      end
+    end
+
   end
-
-    it "must log an error if the load fails" do
-      proc { HammerCLI::Modules.load("hammer_cli_tom") }.must_raise LoadError
-      @log_output.readline.strip.must_equal "ERROR  Modules : Error while loading module hammer_cli_tom"
-    end
 
 end
 
