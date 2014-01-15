@@ -89,16 +89,17 @@ describe HammerCLI::Modules do
     describe "module not found" do
       before :each do
         HammerCLI::Modules.stubs(:require_module).raises(LoadError)
+        @error_msg = "ERROR  Modules : Module hammer_cli_tom not found"
       end
 
       it "must log an error if the load! fails" do
         proc { HammerCLI::Modules.load!("hammer_cli_tom") }.must_raise LoadError
-        @log_output.readline.strip.must_equal "ERROR  Modules : Module hammer_cli_tom not found"
+        @log_output.readline.strip.must_equal @error_msg
       end
 
       it "must log an error if the load fails" do
         HammerCLI::Modules.load("hammer_cli_tom")
-        @log_output.readline.strip.must_equal "ERROR  Modules : Module hammer_cli_tom not found"
+        @log_output.readline.strip.must_equal @error_msg
       end
 
       it "must return false when load fails" do
@@ -109,20 +110,30 @@ describe HammerCLI::Modules do
     describe "module runtime exception" do
       before :each do
         HammerCLI::Modules.stubs(:require_module).raises(RuntimeError)
+        @error_msg = "ERROR  Modules : Error while loading module hammer_cli_tom"
+        @warning_msg = "Warning: An error occured while loading module hammer_cli_tom"
       end
 
       it "must log an error if the load! fails" do
-        proc { HammerCLI::Modules.load!("hammer_cli_tom") }.must_raise RuntimeError
-        @log_output.readline.strip.must_equal "ERROR  Modules : Error while loading module hammer_cli_tom"
+        proc {
+          proc {
+            HammerCLI::Modules.load!("hammer_cli_tom")
+          }.must_output("#{@warning_msg}\n", "")
+        }.must_raise RuntimeError
+        @log_output.readline.strip.must_equal @error_msg
       end
 
       it "must log an error if the load fails" do
-        HammerCLI::Modules.load("hammer_cli_tom")
-        @log_output.readline.strip.must_equal "ERROR  Modules : Error while loading module hammer_cli_tom"
+        proc {
+          HammerCLI::Modules.load("hammer_cli_tom")
+        }.must_output("#{@warning_msg}\n", "")
+        @log_output.readline.strip.must_equal @error_msg
       end
 
       it "must return false when load fails" do
-        HammerCLI::Modules.load("hammer_cli_tom").must_equal false
+        proc {
+          HammerCLI::Modules.load("hammer_cli_tom").must_equal false
+        }.must_output("#{@warning_msg}\n", "")
       end
     end
 
