@@ -32,12 +32,14 @@ module HammerCLI::Apipie
     module ClassMethods
 
       def apipie_options(options={})
-        raise "Specify apipie resource first." unless resource_defined?
+        setup_identifier_options
+        if resource_defined?
+          filter = options[:without] || []
+          filter = Array(filter)
+          filter += declared_identifiers.keys
 
-        filter = options[:without] || []
-        filter = Array(filter)
-
-        options_for_params(resource.docs_for(action)["params"], filter)
+          options_for_params(resource.docs_for(action)["params"], filter)
+        end
       end
 
       protected
