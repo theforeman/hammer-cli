@@ -15,7 +15,7 @@ module HammerCLI::Apipie
         if key.is_a? Hash
           @identifiers.merge!(key)
         else
-          @identifiers.update(key => key)
+          @identifiers.update(key => HammerCLI.option_accessor_name(key))
         end
       end
     end

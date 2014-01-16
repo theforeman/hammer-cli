@@ -240,6 +240,5 @@ module HammerCLI
     def options
       all_options.reject {|key, value| value.nil? }
     end
-
   end
 end
