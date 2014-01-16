@@ -28,46 +28,39 @@ module HammerCLI
 
     class AuthCommand < AbstractCommand
       command_name "auth"
-      desc "Login and logout actions"
-
-      class LoginCommand < AbstractCommand
-        command_name "login"
-        desc "Set credentials"
-
-        def execute
-          context[:username] = ask_username
-          context[:password] = ask_password
-          HammerCLI::EX_OK
-        end
-      end
+      desc "User's cerdentials actions"
 
       class LogoutCommand < AbstractCommand
         command_name "logout"
         desc "Wipe your credentials"
 
-        def execute
-          context[:username] = nil
-          context[:password] = nil
+        option '--service', 'SERVICE', "Service to log out from"
 
-          if username(false)
-            print_message("Credentials deleted, using defaults now.")
-            print_message("You are logged in as [ %s ]." % username(false))
+        def execute
+
+          if option_service
+            HammerCLI::Connection.clean_credentials(option_service)
           else
-            print_message("Credentials deleted.")
+            HammerCLI::Connection.clean_all_credentials
           end
+          HammerCLI::Connection.drop_all
+          print_message("Credentials deleted.")
           HammerCLI::EX_OK
         end
       end
 
       class InfoCommand < AbstractCommand
         command_name "status"
-        desc "Information about current user"
+        desc "Information about current connections"
 
         def execute
-          if username(false)
-            print_message("You are logged in as [ %s ]." % username(false))
+          if HammerCLI::Connection.credentials.keys.length > 0
+            print_message("You are logged in:")
+            HammerCLI::Connection.credentials.each do |service, creds|
+              print_message("  - #{service} as [ #{creds[:username]} ]")
+            end
           else
-            print_message("You are currently not logged in.\nUse 'auth login' to set credentials.")
+            print_message("You are currently not logged in to any service.\nUse the service to set credentials.")
           end
           HammerCLI::EX_OK
         end

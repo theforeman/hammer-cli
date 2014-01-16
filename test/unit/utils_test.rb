@@ -44,5 +44,12 @@ describe String do
 
   end
 
+  describe "interactive?" do
+    it "should be true when called in tty" do
+
+    end
+
+  end
+
 end
 

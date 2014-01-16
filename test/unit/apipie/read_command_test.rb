@@ -16,7 +16,9 @@ describe HammerCLI::Apipie::ReadCommand do
   context "resource defined" do
 
     before :each do
-      cmd_class.resource FakeApi::Resources::Architecture, "some_action"
+      HammerCLI::AskPass.any_instance.stubs(:get).returns({ :username => 'admin', :password => 'changeme' })
+      cmd_class.resource FakeApi::Resources::Architecture, 'some_action'
+      HammerCLI::Connection.drop_all
 
       arch = FakeApi::Resources::Architecture.new
       arch.expects(:some_action).returns([])

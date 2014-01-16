@@ -21,3 +21,13 @@ class String
   end
 
 end
+
+module HammerCLI
+
+  def self.interactive?
+    return false unless STDOUT.tty?
+    return HammerCLI::Settings.get(:_params, :interactive) unless HammerCLI::Settings.get(:_params, :interactive).nil?
+    HammerCLI::Settings.get(:ui, :interactive) != false
+  end
+
+end

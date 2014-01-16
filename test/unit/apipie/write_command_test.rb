@@ -16,6 +16,8 @@ describe HammerCLI::Apipie::WriteCommand do
   context "resource defined" do
 
     before :each do
+      HammerCLI::AskPass.any_instance.stubs(:get).returns({ :username => 'admin', :password => 'changeme' })
+      HammerCLI::Connection.drop_all
       cmd.class.resource FakeApi::Resources::Architecture, "some_action"
 
       arch = FakeApi::Resources::Architecture.new

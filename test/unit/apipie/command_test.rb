@@ -4,6 +4,11 @@ require File.join(File.dirname(__FILE__), 'fake_api')
 
 describe HammerCLI::Apipie::Command do
 
+  before :each do
+    HammerCLI::AskPass.any_instance.stubs(:get).returns({ :usernmae => 'admin', :password => 'changeme' })
+  end
+
+
   class ParentCommand < HammerCLI::Apipie::Command
     action :show
   end

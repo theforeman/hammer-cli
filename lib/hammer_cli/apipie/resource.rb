@@ -50,7 +50,7 @@ module HammerCLI::Apipie
 
     def call(method_name, params=nil, headers=nil)
       Logging.logger[resource_class.name].debug "Calling '#{method_name}' with params #{params.ai}" if HammerCLI::Settings.get(:log_api_calls)
-      result = instance.send(method_name, params, headers)
+      result = @instance.send(method_name, params, headers)
       Logging.logger[resource_class.name].debug "Method '#{method_name}' responded with #{result[0].ai}" if HammerCLI::Settings.get(:log_api_calls)
       result
     end
@@ -58,6 +58,20 @@ module HammerCLI::Apipie
     private
 
     attr_reader :instance
+
+  end
+
+
+  class ApipieConnector < HammerCLI::Apipie::ResourceInstance
+
+    def initialize(params)
+      definition = params.delete(:definition)
+      if definition
+        super(definition.resource_class, params)
+      else
+        raise ArgumentError.new('ApipieConnector: Resource definition not set')
+      end
+    end
 
   end
 
@@ -72,9 +86,18 @@ module HammerCLI::Apipie
       # if the resource definition is not available in this command's class
       # or its superclass try to look it up in parent command's class
       if self.class.resource
-        return ResourceInstance.from_definition(self.class.resource, resource_config)
+        resource_def = self.class.resource
       else
-        return ResourceInstance.from_definition(self.parent_command.class.resource, resource_config)
+        resource_def = self.parent_command.class.resource
+      end
+      HammerCLI::Connection.get(connection_name(resource_def.resource_class), resource_config.merge(:definition => resource_def), connection_options)
+    end
+
+    def connection_name(resource_class)
+      if resource_class.respond_to? :name
+        resource_class.name.split('::').last
+      else
+        resource_class.to_s
       end
     end
 
@@ -83,14 +106,24 @@ module HammerCLI::Apipie
     end
 
     def resource_config
-      config = {}
-      config[:base_url] = HammerCLI::Settings.get(:foreman, :host)
-      config[:username] = username
-      config[:password] = password
-      config
+      self.class.resource_config
+    end
+
+    def connection_options
+      self.class.connection_options
     end
 
     module ClassMethods
+
+      def resource_config
+        {}
+      end
+
+      def connection_options
+        {
+          :connector => HammerCLI::Apipie::ApipieConnector
+        }
+      end
 
       def class_resource
         return @api_resource if @api_resource
