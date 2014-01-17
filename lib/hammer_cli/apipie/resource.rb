@@ -33,9 +33,9 @@ module HammerCLI::Apipie
       self.new(definition.resource_class, config)
     end
 
-    def call(method_name, params=nil)
+    def call(method_name, params=nil, headers=nil)
       Logging.logger[resource_class.name].debug "Calling '#{method_name}' with params #{params.ai}" if HammerCLI::Settings.get(:log_api_calls)
-      result = instance.send(method_name, params)
+      result = instance.send(method_name, params, headers)
       Logging.logger[resource_class.name].debug "Method '#{method_name}' responded with #{result[0].ai}" if HammerCLI::Settings.get(:log_api_calls)
       result
     end
