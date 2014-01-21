@@ -43,7 +43,7 @@ describe HammerCLI::Output::Formatters::FormatterContainer do
     container = HammerCLI::Output::Formatters::FormatterContainer.new(TestFormatter.new)
     container.format('').must_equal '.'
   end
-    
+
   it "has format method" do
     container = HammerCLI::Output::Formatters::FormatterContainer.new
     container.respond_to?(:format).must_equal true
@@ -72,12 +72,22 @@ describe HammerCLI::Output::Formatters::DateFormatter do
   it "returns empty string on wrong value" do
     formatter = HammerCLI::Output::Formatters::DateFormatter.new
     formatter.format('wrong value').must_equal ""
-  end  
+  end
 end
 
 describe HammerCLI::Output::Formatters::ListFormatter do
   it "serializes the value" do
     formatter = HammerCLI::Output::Formatters::ListFormatter.new
     formatter.format([1, 2]).must_equal '1, 2'
+  end
+
+  it "returns empty string when the input is nil" do
+    formatter = HammerCLI::Output::Formatters::ListFormatter.new
+    formatter.format(nil).must_equal ''
+  end
+
+  it "returns string value when the input is not a list" do
+    formatter = HammerCLI::Output::Formatters::ListFormatter.new
+    formatter.format('some string').must_equal 'some string'
   end
 end

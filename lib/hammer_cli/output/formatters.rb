@@ -1,12 +1,12 @@
 module HammerCLI::Output
   module Formatters
 
-    # Registry for formatters    
+    # Registry for formatters
     class FormatterLibrary
       def initialize(formatter_map={})
 
         @_formatters = {}
-        formatter_map.each do |type, formatters| 
+        formatter_map.each do |type, formatters|
           register_formatter(type, *Array(formatters))
         end
       end
@@ -14,7 +14,7 @@ module HammerCLI::Output
       def register_formatter(type, *formatters)
         if @_formatters[type].nil?
           @_formatters[type] = FormatterContainer.new *formatters
-        else 
+        else
           formatters.each { |f| @_formatters[type].add_formatter(f) }
         end
       end
@@ -30,7 +30,7 @@ module HammerCLI::Output
     # as we expect them to serialize the value.
     #
     #   - by format: :flat x :data
-    #   - by output: :file X :screen 
+    #   - by output: :file X :screen
 
     # abstract formatter
     class FieldFormatter
@@ -99,7 +99,13 @@ module HammerCLI::Output
       end
 
       def format(list)
-        list.join(", ") if list
+        if list.is_a? Array
+          list.join(", ")
+        elsif list
+          list.to_s
+        else
+          ""
+        end
       end
     end
 
