@@ -144,5 +144,31 @@ describe HammerCLI::Options::Normalizers do
 
   end
 
+  describe 'datetime' do
+
+    let(:formatter) { HammerCLI::Options::Normalizers::DateTime.new }
+
+    it "should raise argument error when the value is nil" do
+      proc { formatter.format(nil) }.must_raise ArgumentError
+    end
+
+    it "should raise argument error when the value is not a date" do
+      proc { formatter.format("not a date") }.must_raise ArgumentError
+    end
+
+    it "should accept and parse iso8601" do
+      formatter.format("1986-01-01T08:30:20").must_equal("1986-01-01T08:30:20+00:00")
+    end
+
+    it "should accept and parse YYYY-MM-DD HH:MM:SS" do
+      formatter.format("1986-01-01 08:30:20").must_equal("1986-01-01T08:30:20+00:00")
+    end
+
+    it "should accept and parse YYYY/MM/DD HH:MM:SS" do
+      formatter.format("1986/01/01 08:30:20").must_equal("1986-01-01T08:30:20+00:00")
+    end
+
+  end
+
 end
 
