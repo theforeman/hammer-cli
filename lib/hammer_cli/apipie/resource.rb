@@ -66,6 +66,10 @@ module HammerCLI::Apipie
 
     def initialize(params)
       definition = params.delete(:definition)
+      credentials = params.delete(:credentials)
+      params[:username] = credentials.username
+      params[:password] = credentials.password
+
       if definition
         super(definition.resource_class, params)
       else
@@ -90,7 +94,7 @@ module HammerCLI::Apipie
       else
         resource_def = self.parent_command.class.resource
       end
-      HammerCLI::Connection.get(connection_name(resource_def.resource_class), resource_config.merge(:definition => resource_def), connection_options)
+      HammerCLI::Connection.create(connection_name(resource_def.resource_class), resource_config.merge(:definition => resource_def), connection_options)
     end
 
     def connection_name(resource_class)

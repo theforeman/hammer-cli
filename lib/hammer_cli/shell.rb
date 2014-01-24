@@ -26,23 +26,33 @@ module HammerCLI
       end
     end
 
+    #NOTE: all auth commands should be moved to HammerCliForeman
+    #      there's also some place for making them dry
     class AuthCommand < AbstractCommand
       command_name "auth"
       desc "User's cerdentials actions"
+
+
+      class LoginCommand < AbstractCommand
+        command_name "login"
+        desc "Set credentials"
+
+        def execute
+          HammerCLIForeman.credentials.clear
+          HammerCLI::Connection.drop_all
+          HammerCLIForeman.credentials.username
+          HammerCLIForeman.credentials.password
+          HammerCLI::EX_OK
+        end
+      end
 
       class LogoutCommand < AbstractCommand
         command_name "logout"
         desc "Wipe your credentials"
 
-        option '--service', 'SERVICE', "Service to log out from"
-
         def execute
-
-          if option_service
-            HammerCLI::Connection.clean_credentials(option_service)
-          else
-            HammerCLI::Connection.clean_all_credentials
-          end
+          #NOTE: we will change that to drop(:foreman) once dynamic bindings are implemented
+          HammerCLIForeman.credentials.clear
           HammerCLI::Connection.drop_all
           print_message("Credentials deleted.")
           HammerCLI::EX_OK
@@ -54,11 +64,8 @@ module HammerCLI
         desc "Information about current connections"
 
         def execute
-          if HammerCLI::Connection.credentials.keys.length > 0
-            print_message("You are logged in:")
-            HammerCLI::Connection.credentials.each do |service, creds|
-              print_message("  - #{service} as [ #{creds[:username]} ]")
-            end
+          unless HammerCLIForeman.credentials.empty?
+            print_message("You are logged in as '%s'" % HammerCLIForeman.credentials.username)
           else
             print_message("You are currently not logged in to any service.\nUse the service to set credentials.")
           end
