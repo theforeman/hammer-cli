@@ -33,9 +33,9 @@ HammerCLI::Settings.load_from_file CFG_PATH
 
 # store username and password in settings
 HammerCLI::Settings.load({
-  :username => preparser.username,
-  :password => preparser.password,
   :_params => {
+    :username => preparser.username,
+    :password => preparser.password,
     :interactive => preparser.interactive
   }})
 

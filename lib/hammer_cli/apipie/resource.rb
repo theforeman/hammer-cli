@@ -62,13 +62,31 @@ module HammerCLI::Apipie
   end
 
 
+  class AbstractCredentials
+
+    def to_params
+      {}
+    end
+
+    private
+
+    def ask_user(prompt, silent=false)
+      if silent
+        ask(prompt) {|q| q.echo = false}
+      else
+        ask(prompt)
+      end
+    end
+
+  end
+
+
   class ApipieConnector < HammerCLI::Apipie::ResourceInstance
 
     def initialize(params)
       definition = params.delete(:definition)
       credentials = params.delete(:credentials)
-      params[:username] = credentials.username
-      params[:password] = credentials.password
+      params.merge!(credentials.to_params) if credentials
 
       if definition
         super(definition.resource_class, params)

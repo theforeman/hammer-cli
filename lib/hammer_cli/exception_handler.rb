@@ -53,7 +53,6 @@ module HammerCLI
         backtrace.join("\n    ")
         "\n\n"
       @logger.error error
-      # puts error
     end
 
     def handle_general_exception(e)

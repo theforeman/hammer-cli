@@ -26,7 +26,7 @@ module HammerCLI
     end
 
     def self.exist?(name)
-      get(name).nil?
+      !get(name).nil?
     end
 
     def self.get(name)
