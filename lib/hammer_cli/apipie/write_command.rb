@@ -27,7 +27,11 @@ module HammerCLI::Apipie
     end
 
     def send_request
-      resource.call(action, request_params)[0]
+      resource.call(action, request_params, request_headers)[0]
+    end
+
+    def request_headers
+      {}
     end
 
     def request_params
