@@ -12,6 +12,21 @@ module HammerCLI::Apipie
       resource_class.name.split("::")[-1].downcase
     end
 
+    def plural_name
+      irregular_names = {
+        "statistics" => "statistics",
+        "home" => "home",
+        "host_class" => "host_classes",
+        "medium" => "media",
+        "puppetclass" => "puppetclasses",
+        "dashboard" => "dashboard",
+        "smart_proxy" => "smart_proxies",
+        "settings" => "settings",
+        "hostgroup_class" => "hostgroup_classes"
+      }
+      irregular_names[name] || "%ss" % name
+    end
+
     def docs_for(method_name)
       resource_class.doc["methods"].each do |method|
         return method if method["name"] == method_name.to_s
