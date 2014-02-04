@@ -1,3 +1,5 @@
+require 'json'
+
 module HammerCLI
   module Options
     module Normalizers
@@ -88,6 +90,23 @@ module HammerCLI
             end
           end
         end
+      end
+
+      class JSONInput < File
+
+        def format(val)
+          # The JSON input can be either the path to a file whose contents are
+          # JSON or a JSON string.  For example:
+          #   /my/path/to/file.json
+          # or
+          #   '{ "units":[ { "name":"zip", "version":"9.0", "inclusion":"false" } ] }')
+          json_string = ::File.exist?(::File.expand_path(val)) ? super(val) : val
+          ::JSON.parse(json_string)
+
+        rescue ::JSON::ParserError => e
+          raise ArgumentError, "Unable to parse JSON input"
+        end
+
       end
 
 
