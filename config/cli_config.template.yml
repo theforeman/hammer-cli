@@ -1,6 +1,6 @@
 :modules:
 #    - hammer_cli_foreman
-#    - hammer_cli_katello_bridge
+#    - hammer_cli_katello
 
 :foreman:
   :host: 'https://localhost/'
