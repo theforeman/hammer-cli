@@ -122,6 +122,33 @@ describe HammerCLI::Options::Normalizers do
     end
   end
 
+  describe 'json input' do
+    let(:formatter) { HammerCLI::Options::Normalizers::JSONInput.new }
+
+    it "should return a hash on valid json file" do
+      file = File.join(File.dirname(__FILE__), '../fixtures/json_input/valid.json')
+      formatter.format(file).must_equal({ "units" => [ { "name" => "zip", "version" => "10.0" },
+                                        { "name" => "zap", "version" => "9.0" }] })
+    end
+
+    it "should raise exception on invalid json file contents" do
+      file = File.join(File.dirname(__FILE__), '../fixtures/json_input/invalid.json')
+      proc { formatter.format(file) }.must_raise ArgumentError
+    end
+
+    it "should return a hash on valid json string" do
+      json_string = '{ "units":[{ "name":"zip", "version":"10.0" }, { "name":"zap", "version":"9.0" }] }'
+      formatter.format(json_string).must_equal({ "units" => [ { "name" => "zip", "version" => "10.0" },
+                                                              { "name" => "zap", "version" => "9.0" }] })
+    end
+
+    it "should raise exception on invalid json string" do
+      json_string = "{ units:[{ name:zip, version:10.0 }, { name:zap, version:9.0 }] }"
+      proc { formatter.format(json_string) }.must_raise ArgumentError
+    end
+
+  end
+
   describe 'enum' do
 
     let(:formatter) { HammerCLI::Options::Normalizers::Enum.new ['a', 'b'] }

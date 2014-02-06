@@ -31,6 +31,7 @@ EOF
   s.add_dependency 'highline'
 
   # required for ruby < 1.9.0:
+  s.add_dependency 'json'
   s.add_dependency 'fastercsv'             #fastercsv is default for ruby >=1.9 but it's missing in 1.8.X
   s.add_dependency 'mime-types', '~> 1.0' #newer versions of mime-types are not 1.8 compatible
 
