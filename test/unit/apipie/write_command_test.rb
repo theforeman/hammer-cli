@@ -16,6 +16,7 @@ describe HammerCLI::Apipie::WriteCommand do
   context "resource defined" do
 
     before :each do
+      HammerCLI::Connection.drop_all
       cmd.class.resource FakeApi::Resources::Architecture, "some_action"
 
       arch = FakeApi::Resources::Architecture.new

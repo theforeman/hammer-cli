@@ -44,5 +44,38 @@ describe String do
 
   end
 
+  describe "interactive?" do
+
+    before :each do
+      @tty = STDOUT.tty?
+      STDOUT.stubs(:'tty?').returns(true)
+    end
+
+    after :each do
+      STDOUT.stubs(:'tty?').returns(@tty)
+    end
+
+    it "should be true when called in tty" do
+      HammerCLI::Settings.load({
+        :ui => { :interactive => nil },
+        :_params => { :interactive => nil } })
+      HammerCLI::interactive?.must_equal true
+    end
+
+    it "should by false when cli arg set" do
+      HammerCLI::Settings.load({
+        :ui => { :interactive => nil },
+        :_params => { :interactive => false } })
+      HammerCLI::interactive?.must_equal false
+    end
+
+    it "should by false when turned off in cfg" do
+      HammerCLI::Settings.load({
+        :ui => { :interactive => false },
+        :_params => { :interactive => nil } })
+      HammerCLI::interactive?.must_equal false
+    end
+  end
+
 end
 

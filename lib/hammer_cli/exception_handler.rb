@@ -49,9 +49,10 @@ module HammerCLI
 
     def log_full_error(e)
       backtrace = e.backtrace || []
-      @logger.error "\n\n#{e.class} (#{e.message}):\n    " +
+      error = "\n\n#{e.class} (#{e.message}):\n    " +
         backtrace.join("\n    ")
         "\n\n"
+      @logger.error error
     end
 
     def handle_general_exception(e)

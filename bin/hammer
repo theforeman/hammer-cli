@@ -9,6 +9,9 @@ HighLine.color_scheme = HighLine::SampleColorScheme.new
 class PreParser < Clamp::Command
   option ["-v", "--verbose"], :flag, "be verbose"
   option ["-c", "--config"], "CFG_FILE", "path to custom config file"
+  option ["-u", "--username"], "USERNAME", "username to access the remote system"
+  option ["-p", "--password"], "PASSWORD", "password to access the remote system"
+  option ["--interactive"], "INTERACTIVE", "Explicitly turn interactive mode on/off"
 end
 
 preparser = PreParser.new File.basename($0), {}
@@ -27,6 +30,14 @@ if preparser.config
 end
 
 HammerCLI::Settings.load_from_file CFG_PATH
+
+# store username and password in settings
+HammerCLI::Settings.load({
+  :_params => {
+    :username => preparser.username,
+    :password => preparser.password,
+    :interactive => preparser.interactive
+  }})
 
 # setup logging
 require 'hammer_cli/logger'
