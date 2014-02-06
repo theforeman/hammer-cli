@@ -83,7 +83,7 @@ module HammerCLI
       ShellMainCommand.load_commands(HammerCLI::MainCommand)
 
       Readline.completion_append_character = ''
-      Readline.completer_word_break_characters = ' '
+      Readline.completer_word_break_characters = ' ='
       Readline.completion_proc = complete_proc
 
       stty_save = `stty -g`.chomp
@@ -92,12 +92,12 @@ module HammerCLI
 
       begin
         print_welcome_message
-
         while line = Readline.readline(prompt)
 
           history.push(line)
 
-          ShellMainCommand.run('', line.split, context) unless line.start_with? 'shell' or line.strip.empty?
+          line = HammerCLI::CompleterLine.new(line)
+          ShellMainCommand.run('', line, context) unless line.empty?
         end
       rescue Interrupt => e
         puts
