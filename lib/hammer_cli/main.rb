@@ -4,7 +4,7 @@ module HammerCLI
 
   class MainCommand < AbstractCommand
 
-    option ["-v", "--verbose"], :flag, "be verbose"
+    option ["-v", "--verbose"], :flag, "be verbose", :context_target => :verbose
     option ["-c", "--config"], "CFG_FILE", "path to custom config file"
 
     option ["-u", "--username"], "USERNAME", "username to access the remote system",
