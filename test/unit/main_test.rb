@@ -41,6 +41,15 @@ describe HammerCLI::MainCommand do
     end
 
 
+    describe "verbose" do
+
+      it "stores into context" do
+        cmd.run(["-v"])
+        context[:verbose].must_equal true
+      end
+
+    end
+
   end
 
 end
