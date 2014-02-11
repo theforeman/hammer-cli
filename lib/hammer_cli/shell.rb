@@ -36,7 +36,48 @@ module HammerCLI
     autoload_subcommands
   end
 
+
+  class ShellHistory
+
+    def initialize(history_file_path)
+      @file_path = history_file_path
+      load
+    end
+
+    def push(line)
+      line.strip!
+      return if line.empty? or ingonred_commands.include?(line)
+
+      Readline::HISTORY.push(line)
+      File.open(file_path, "a") do |f|
+        f.puts(line)
+      end
+    end
+
+    def ingonred_commands
+      ["exit"]
+    end
+
+    protected
+
+    def file_path
+      File.expand_path(@file_path)
+    end
+
+    def load
+      if File.exist?(file_path)
+        File.readlines(file_path).each do |line|
+          Readline::HISTORY.push(line.strip)
+        end
+      end
+    end
+
+  end
+
+
   class ShellCommand < AbstractCommand
+
+    DEFAULT_HISTORY_FILE = "~/.hammer_history"
 
     def execute
       ShellMainCommand.load_commands(HammerCLI::MainCommand)
@@ -47,9 +88,15 @@ module HammerCLI
 
       stty_save = `stty -g`.chomp
 
+      history = ShellHistory.new(Settings.get(:ui, :history_file) || DEFAULT_HISTORY_FILE)
+
       begin
         print_welcome_message
-        while line = Readline.readline(prompt, true)
+
+        while line = Readline.readline(prompt)
+
+          history.push(line)
+
           ShellMainCommand.run('', line.split, context) unless line.start_with? 'shell' or line.strip.empty?
         end
       rescue Interrupt => e

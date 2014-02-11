@@ -7,11 +7,19 @@
   :username: 'admin'
   :password: 'changeme'
 
-# :watch_plain: true disables color output of logger.watch in Clamp commands
+
+:ui:
+  :interactive: true
+  :per_page: 20
+  :history_file: '~/.foreman/history'
+
+
+# enable/disable color output of logger in Clamp commands
 :watch_plain: false
 
-
-#:log_dir: '/var/log/foreman'
 :log_dir: '~/.foreman/log'
 :log_level: 'error'
 :log_api_calls: false
+#:log_owner: 'foreman'
+#:log_group: 'foreman'
+#:log_size: 5 #MB
