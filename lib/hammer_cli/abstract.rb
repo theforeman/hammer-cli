@@ -87,6 +87,19 @@ module HammerCLI
       super
     end
 
+    class SortedBuilder < Clamp::Help::Builder
+      def add_list(heading, items)
+        items.sort! do |a, b|
+          a.help[0] <=> b.help[0]
+        end
+        super(heading, items)
+      end
+    end
+
+    def help
+      self.class.help(invocation_path, SortedBuilder.new)
+    end
+
     def self.output(definition=nil, &block)
       dsl = HammerCLI::Output::Dsl.new
       dsl.build &block if block_given?
