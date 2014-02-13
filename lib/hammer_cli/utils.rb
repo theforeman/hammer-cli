@@ -20,6 +20,12 @@ class String
     split('_').map{|e| e.capitalize}.join
   end
 
+  def dasherize
+    gsub(/([A-Z]+)([A-Z][a-z])/,'\1-\2').
+      gsub(/([a-z\d])([A-Z])/,'\1-\2').
+      tr("_", "-").downcase
+  end
+
 end
 
 module HammerCLI

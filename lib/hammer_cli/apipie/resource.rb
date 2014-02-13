@@ -9,7 +9,7 @@ module HammerCLI::Apipie
     end
 
     def name
-      resource_class.name.split("::")[-1].downcase
+      resource_class.name.split("::")[-1].dasherize
     end
 
     def plural_name
