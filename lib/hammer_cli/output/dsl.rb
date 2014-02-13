@@ -17,11 +17,11 @@ module HammerCLI::Output
 
     protected
 
-    def field(key, label, type=nil, options={}, &block)
+    def field(key, label=nil, type=nil, options={}, &block)
       options[:path] = current_path.clone
       options[:path] << key if !key.nil?
 
-      options[:label] = label
+      options[:label] = label || key.to_s.split("_").map(&:capitalize).join
       type ||= Fields::DataField
       custom_field type, options, &block
     end
