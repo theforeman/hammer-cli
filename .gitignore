@@ -11,3 +11,6 @@ coverage
 .rvmrc
 .ruby-version
 .ruby-gemset
+
+# Editors
+tags
