@@ -139,6 +139,22 @@ module HammerCLI
         end
       end
 
+
+      class DateTime < AbstractNormalizer
+
+        def description
+          "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
+        end
+
+        def format(date)
+          raise ArgumentError unless date
+          ::DateTime.parse(date).to_s
+        rescue ArgumentError
+          raise ArgumentError, "'%s' is not a valid date" % date
+        end
+      end
+
+
     end
   end
 end
