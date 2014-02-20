@@ -7,15 +7,15 @@ describe HammerCLI::Output::Adapter::Base do
 
   context "print_collection" do
 
-    let(:name)          { Fields::DataField.new(:path => [:name], :label => "Name") }
-    let(:unlabeled)     { Fields::DataField.new(:path => [:name]) }
-    let(:surname)       { Fields::DataField.new(:path => [:surname], :label => "Surname") }
-    let(:address_city)  { Fields::DataField.new(:path => [:address, :city], :label => "City") }
-    let(:city)          { Fields::DataField.new(:path => [:city], :label => "City") }
+    let(:name)          { Fields::Field.new(:path => [:name], :label => "Name") }
+    let(:unlabeled)     { Fields::Field.new(:path => [:name]) }
+    let(:surname)       { Fields::Field.new(:path => [:surname], :label => "Surname") }
+    let(:address_city)  { Fields::Field.new(:path => [:address, :city], :label => "City") }
+    let(:city)          { Fields::Field.new(:path => [:city], :label => "City") }
     let(:label_address) { Fields::Label.new(:path => [:address], :label => "Address") }
     let(:contacts)      { Fields::Collection.new(:path => [:contacts], :label => "Contacts") }
-    let(:desc)          { Fields::DataField.new(:path => [:desc], :label => "Description") }
-    let(:contact)       { Fields::DataField.new(:path => [:contact], :label => "Contact") }
+    let(:desc)          { Fields::Field.new(:path => [:desc], :label => "Description") }
+    let(:contact)       { Fields::Field.new(:path => [:contact], :label => "Contact") }
     let(:params)        { Fields::KeyValueList.new(:path => [:params], :label => "Parameters") }
     let(:params_collection) { Fields::Collection.new(:path => [:params], :label => "Parameters") }
     let(:param)             { Fields::KeyValue.new(:path => nil, :label => nil) }

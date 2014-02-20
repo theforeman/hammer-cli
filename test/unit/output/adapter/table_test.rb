@@ -6,7 +6,7 @@ describe HammerCLI::Output::Adapter::Table do
 
   context "print_collection" do
 
-    let(:field_name) { Fields::DataField.new(:path => [:name], :label => "Name") }
+    let(:field_name) { Fields::Field.new(:path => [:name], :label => "Name") }
     let(:fields) {
       [field_name]
     }
@@ -48,15 +48,15 @@ describe HammerCLI::Output::Adapter::Table do
           end
         end
 
-        adapter = HammerCLI::Output::Adapter::Table.new({}, { :DataField => [ DotFormatter.new ]})
+        adapter = HammerCLI::Output::Adapter::Table.new({}, { :Field => [ DotFormatter.new ]})
         out, err = capture_io { adapter.print_collection(fields, data) }
         out.must_match(/.*-DOT-.*/)
       end
     end
 
     context "sort_columns" do
-      let(:field_firstname) { Fields::DataField.new(:path => [:firstname], :label => "Firstname") }
-      let(:field_lastname) { Fields::DataField.new(:path => [:lastname], :label => "Lastname") }
+      let(:field_firstname) { Fields::Field.new(:path => [:firstname], :label => "Firstname") }
+      let(:field_lastname) { Fields::Field.new(:path => [:lastname], :label => "Lastname") }
       let(:fields) {
         [field_firstname, field_lastname]
       }

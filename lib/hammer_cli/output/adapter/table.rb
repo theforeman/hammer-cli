@@ -19,7 +19,7 @@ module HammerCLI::Output::Adapter
       rows = collection.collect do |d|
         row = {}
         fields.each do |f|
-          row[f.label.to_sym] = f.get_value(d) || ""
+          row[f.label.to_sym] = data_for_field(f, d) || ""
         end
         row
       end

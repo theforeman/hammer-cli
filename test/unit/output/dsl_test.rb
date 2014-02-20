@@ -21,11 +21,11 @@ describe HammerCLI::Output::Dsl do
   end
 
   describe "fields" do
-    it "should create DataField as default field type" do
+    it "should create Field as default field type" do
       dsl.build do
         field :f, "F"
       end
-      first_field.class.must_equal Fields::DataField
+      first_field.class.must_equal Fields::Field
     end
 
     it "should create field of desired type" do

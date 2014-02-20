@@ -73,20 +73,6 @@ module HammerCLI::Output::Adapter
       lines.gsub(/^/, GROUP_INDENT)
     end
 
-    def data_for_field(field, record)
-      path = field.path
-
-      path.inject(record) do |record, path_key|
-        if record.has_key? path_key.to_sym
-          record[path_key.to_sym]
-        elsif record.has_key? path_key.to_s
-          record[path_key.to_s]
-        else
-          return nil
-        end
-      end
-    end
-
   end
 
   HammerCLI::Output::Output.register_adapter(:base, Base)

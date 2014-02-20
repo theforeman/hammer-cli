@@ -39,60 +39,16 @@ module Fields
 
   end
 
-
-  class DataField < Field
-
-    attr_reader :path
-
-    def initialize(options={})
-      @path = options[:path] || []
-      super(options)
-    end
-
-    def get_value(data)
-      follow_path(data, path || [])
-    end
-
-    private
-
-    def follow_path(record, path)
-      record = symbolize_hash_keys(record)
-
-      path.inject(record) do |record, path_key|
-        if record.has_key? path_key.to_sym
-          record[path_key.to_sym]
-        else
-          return nil
-        end
-      end
-    end
-
-    def symbolize_hash_keys(h)
-      if h.is_a? Hash
-        return h.inject({}) do |result,(k,v)|
-          # symbolizing empty string fails in ruby 1.8
-          result.update k.to_sym => symbolize_hash_keys(v) unless k.to_s.empty?
-          result
-        end
-      elsif h.is_a? Array
-        return h.collect{|item| symbolize_hash_keys(item)}
-      else
-        h
-      end
-    end
-
+  class Date < Field
   end
 
-  class Date < DataField
+  class Id < Field
   end
 
-  class Id < DataField
+  class List < Field
   end
 
-  class List < DataField
-  end
-
-  class KeyValue < DataField
+  class KeyValue < Field
   end
 
   class Label < ContainerField
