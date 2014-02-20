@@ -91,3 +91,29 @@ describe HammerCLI::Output::Formatters::ListFormatter do
     formatter.format('some string').must_equal 'some string'
   end
 end
+
+
+describe HammerCLI::Output::Formatters::KeyValueFormatter do
+
+  let(:params) {
+    {
+      :name => "Name",
+      "value" => "Value",
+    }
+  }
+
+  it "serializes the value" do
+    formatter = HammerCLI::Output::Formatters::KeyValueFormatter.new
+    formatter.format(params).must_equal 'Name => Value'
+  end
+
+  it "returns empty string when the input is nil" do
+    formatter = HammerCLI::Output::Formatters::KeyValueFormatter.new
+    formatter.format(nil).must_equal ''
+  end
+
+  it "returns empty string value when the input is not a hash" do
+    formatter = HammerCLI::Output::Formatters::KeyValueFormatter.new
+    formatter.format('some string').must_equal ''
+  end
+end

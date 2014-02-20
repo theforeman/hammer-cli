@@ -109,10 +109,29 @@ module HammerCLI::Output
       end
     end
 
+    class KeyValueFormatter < FieldFormatter
+
+      def tags
+        [:screen, :flat]
+      end
+
+      def format(params)
+        if params.is_a? Hash
+          name = params[:name] || params["name"]
+          value = params[:value] || params["value"]
+          "#{name} => #{value}"
+        else
+          ""
+        end
+      end
+    end
+
     HammerCLI::Output::Output.register_formatter(DateFormatter.new, :Date)
     HammerCLI::Output::Output.register_formatter(ListFormatter.new, :List)
+    HammerCLI::Output::Output.register_formatter(KeyValueFormatter.new, :KeyValue)
 
   end
 end
+
 
 

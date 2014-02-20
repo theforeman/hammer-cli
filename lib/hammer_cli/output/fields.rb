@@ -5,8 +5,10 @@ module Fields
   class Field
 
     attr_reader :label
+    attr_reader :path
 
     def initialize(options={})
+      @path = options[:path] || []
       @label = options[:label]
     end
 
@@ -93,48 +95,10 @@ module Fields
   class KeyValue < DataField
   end
 
-
-  class Joint < DataField
-    def initialize(options={}, &block)
-      super(options)
-      @attributes = options[:attributes] || []
-    end
-
-    attr_reader :attributes
-  end
-
-  class Label < ContainerField # TODO: coupled field
-
-    # def initialize(options={}, &block)
-    #   super(options)
-    #   dsl = HammerCLI::Output::Dsl.new :path => options[:path]
-    #   dsl.build &block if block_given?
-
-    #   self.output_definition.append dsl.fields
-    # end
-
-    # def output_definition
-    #   @output_definition ||= HammerCLI::Output::Definition.new
-    #   @output_definition
-    # end
-
+  class Label < ContainerField
   end
 
   class Collection < ContainerField
-
-    # def initialize(options={}, &block)
-    #   super(options)
-    #   dsl = HammerCLI::Output::Dsl.new
-    #   dsl.build &block if block_given?
-
-    #   self.output_definition.append dsl.fields
-    # end
-
-    # def output_definition
-    #   @output_definition ||= HammerCLI::Output::Definition.new
-    #   @output_definition
-    # end
-
   end
 
 end

@@ -2,18 +2,23 @@ require File.join(File.dirname(__FILE__), '../../test_helper')
 
 describe HammerCLI::Output::Adapter::Base do
 
-  let(:adapter) { HammerCLI::Output::Adapter::Base.new }
+  let(:context) {{}}
+  let(:adapter) { HammerCLI::Output::Adapter::Base.new(context, HammerCLI::Output::Output.formatters) }
 
   context "print_collection" do
 
     let(:name)          { Fields::DataField.new(:path => [:name], :label => "Name") }
+    let(:unlabeled)     { Fields::DataField.new(:path => [:name]) }
     let(:surname)       { Fields::DataField.new(:path => [:surname], :label => "Surname") }
     let(:address_city)  { Fields::DataField.new(:path => [:address, :city], :label => "City") }
     let(:city)          { Fields::DataField.new(:path => [:city], :label => "City") }
-    let(:label_address) { Fields::Label.new(:path => [:address], :label => "Adress") }
-    let(:contacts)      { Fields::Collection.new(:path => [:address], :label => "Contacts") }
+    let(:label_address) { Fields::Label.new(:path => [:address], :label => "Address") }
+    let(:contacts)      { Fields::Collection.new(:path => [:contacts], :label => "Contacts") }
     let(:desc)          { Fields::DataField.new(:path => [:desc], :label => "Description") }
     let(:contact)       { Fields::DataField.new(:path => [:contact], :label => "Contact") }
+    let(:params)        { Fields::KeyValueList.new(:path => [:params], :label => "Parameters") }
+    let(:params_collection) { Fields::Collection.new(:path => [:params], :label => "Parameters") }
+    let(:param)             { Fields::KeyValue.new(:path => nil, :label => nil) }
 
     let(:data) { HammerCLI::Output::RecordCollection.new [{
       :name => "John",
@@ -30,24 +35,45 @@ describe HammerCLI::Output::Adapter::Base do
           :desc => 'telephone',
           :contact => '123456789'
         }
+      ],
+      :params => [
+        {
+          :name => 'weight',
+          :value => '83'
+        },
+        {
+          :name => 'size',
+          :value => '32'
+        }
       ]
     }]}
 
     it "should print one field" do
       fields = [name]
       expected_output = [
-        "Name:  John",
+        "Name: John",
         "\n"
       ].join("\n")
 
       proc { adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
-    it "should align two fields" do
-      fields = [name, surname]
+    it "doesn't print label when it's nil" do
+      fields = [unlabeled]
       expected_output = [
-        "Name:     John",
-        "Surname:  Doe",
+        "John",
+        "\n"
+      ].join("\n")
+
+      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
+
+    it "aligns multiple fields" do
+      fields = [name, surname, unlabeled]
+      expected_output = [
+        "Name:    John",
+        "Surname: Doe",
+        "John",
         "\n"
       ].join("\n")
 
@@ -57,7 +83,7 @@ describe HammerCLI::Output::Adapter::Base do
     it "should field with nested data" do
       fields = [address_city]
       expected_output = [
-        "City:  New York",
+        "City: New York",
         "\n"
       ].join("\n")
 
@@ -69,8 +95,8 @@ describe HammerCLI::Output::Adapter::Base do
       fields = [label_address]
 
       expected_output = [
-        "Address",
-        "  City:  New York",
+        "Address: ",
+        "  City: New York",
         "\n"
       ].join("\n")
 
@@ -79,21 +105,36 @@ describe HammerCLI::Output::Adapter::Base do
 
 
     it "should print collection" do
-      contacts.output_definition.append [contact, desc]
+      contacts.output_definition.append [desc, contact]
       fields = [contacts]
 
       expected_output = [
-        "Contacts",
-        "  Description:  personal email",
-        "  Contact:  john.doe@doughnut.com",
-        "  Description:  telephone",
-        "  Contact:  123456789",
+        "Contacts: ",
+        "  Description: personal email",
+        "  Contact:     john.doe@doughnut.com",
+        "  Description: telephone",
+        "  Contact:     123456789",
         "\n"
       ].join("\n")
 
       proc { adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
+    it "should print key -> value" do
+      fields = [params]
+
+      params_collection.output_definition.append [param]
+      fields = [params_collection]
+
+      expected_output = [
+        "Parameters: ",
+        "  weight => 83",
+        "  size => 32",
+        "\n"
+      ].join("\n")
+
+      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
 
   end
 
