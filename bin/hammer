@@ -5,13 +5,18 @@ require 'clamp'
 require 'highline'
 HighLine.color_scheme = HighLine::SampleColorScheme.new
 
+
+require 'hammer_cli/options/normalizers'
 # create fake command instance to use some global args before we start
 class PreParser < Clamp::Command
   option ["-v", "--verbose"], :flag, "be verbose"
   option ["-c", "--config"], "CFG_FILE", "path to custom config file"
   option ["-u", "--username"], "USERNAME", "username to access the remote system"
   option ["-p", "--password"], "PASSWORD", "password to access the remote system"
-  option ["--interactive"], "INTERACTIVE", "Explicitly turn interactive mode on/off"
+  option ["--interactive"], "INTERACTIVE", "Explicitly turn interactive mode on/off" do |value|
+    bool_normalizer = HammerCLI::Options::Normalizers::Bool.new
+    bool_normalizer.format(value)
+  end
 end
 
 preparser = PreParser.new File.basename($0), {}
