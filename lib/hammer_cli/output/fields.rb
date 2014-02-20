@@ -8,11 +8,23 @@ module Fields
     attr_reader :path
 
     def initialize(options={})
+      @hide_blank = options[:hide_blank].nil? ? false : options[:hide_blank]
       @path = options[:path] || []
       @label = options[:label]
     end
 
-    def get_value(data)
+    def hide_blank?
+      @hide_blank
+    end
+
+    def display?(value)
+      if not hide_blank?
+        true
+      elsif value.nil?
+        false
+      else
+        true
+      end
     end
 
   end
@@ -37,6 +49,15 @@ module Fields
       @output_definition.fields
     end
 
+    def display?(value)
+      if not hide_blank?
+        true
+      elsif value.nil? || value.empty?
+        false
+      else
+        true
+      end
+    end
   end
 
   class Date < Field

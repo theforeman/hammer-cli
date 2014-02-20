@@ -35,7 +35,11 @@ module HammerCLI::Output::Adapter
       raise NotImplementedError
     end
 
-    private
+    protected
+
+    def field_filter
+      HammerCLI::Output::FieldFilter.new
+    end
 
     def data_for_field(field, record)
       path = field.path
@@ -50,6 +54,8 @@ module HammerCLI::Output::Adapter
         end
       end
     end
+
+    private
 
     def filter_formatters(formatters_map)
       formatters_map ||= {}

@@ -7,6 +7,7 @@ describe HammerCLI::Output::Adapter::Base do
 
   context "print_collection" do
 
+    let(:id)            { Fields::Id.new(:path => [:id], :label => "Id") }
     let(:name)          { Fields::Field.new(:path => [:name], :label => "Name") }
     let(:unlabeled)     { Fields::Field.new(:path => [:name]) }
     let(:surname)       { Fields::Field.new(:path => [:surname], :label => "Surname") }
@@ -19,8 +20,10 @@ describe HammerCLI::Output::Adapter::Base do
     let(:params)        { Fields::KeyValueList.new(:path => [:params], :label => "Parameters") }
     let(:params_collection) { Fields::Collection.new(:path => [:params], :label => "Parameters") }
     let(:param)             { Fields::KeyValue.new(:path => nil, :label => nil) }
+    let(:blank)             { Fields::Field.new(:path => [:blank], :label => "Blank", :hide_blank => true) }
 
     let(:data) { HammerCLI::Output::RecordCollection.new [{
+      :id => 112,
       :name => "John",
       :surname => "Doe",
       :address => {
@@ -120,9 +123,27 @@ describe HammerCLI::Output::Adapter::Base do
       proc { adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
-    it "should print key -> value" do
-      fields = [params]
+    it "hides ids by default" do
+      fields = [id, name]
+      expected_output = [
+        "Name: John",
+        "\n"
+      ].join("\n")
 
+      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
+
+    it "skips blank values" do
+      fields = [name, blank]
+      expected_output = [
+        "Name: John",
+        "\n"
+      ].join("\n")
+
+      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
+
+    it "should print key -> value" do
       params_collection.output_definition.append [param]
       fields = [params_collection]
 
@@ -134,6 +155,23 @@ describe HammerCLI::Output::Adapter::Base do
       ].join("\n")
 
       proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
+
+    context "show ids" do
+
+      let(:context) { {:show_ids => true} }
+
+      it "shows ids if it's required in the context" do
+        fields = [id, name]
+        expected_output = [
+          "Id:   112",
+          "Name: John",
+          "\n"
+        ].join("\n")
+
+        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      end
+
     end
 
   end

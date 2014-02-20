@@ -13,8 +13,7 @@ module HammerCLI::Output::Adapter
     end
 
     def print_collection(all_fields, collection)
-
-      fields = all_fields.reject { |f| f.class <= Fields::Id && !@context[:show_ids] }
+      fields = field_filter.filter(all_fields)
 
       rows = collection.collect do |d|
         row = {}
@@ -41,11 +40,12 @@ module HammerCLI::Output::Adapter
       puts dashes[1] if dashes
     end
 
-    def print_heading(heading, size)
-      size = heading.size if heading.size > size
-      puts '-' * size
-      puts ' ' * ((size-heading.size)/2) + heading
-      puts '-' * size
+    protected
+
+    def field_filter
+      filtered = [Fields::ContainerField]
+      filtered << Fields::Id unless @context[:show_ids]
+      HammerCLI::Output::FieldFilter.new(filtered)
     end
 
     private
