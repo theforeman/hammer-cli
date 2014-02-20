@@ -1,9 +1,11 @@
 require File.join(File.dirname(__FILE__), '../test_helper')
 
 
+
 describe Fields::Field do
 
-  let(:field) { Fields::Field.new }
+  let(:label) { "Some Label" }
+  let(:field) { Fields::Field.new :label => label }
 
   describe "get_value" do
     it "should exist" do
@@ -14,13 +16,6 @@ describe Fields::Field do
       field.method(:get_value).arity.must_equal 1
     end
   end
-
-end
-
-describe Fields::LabeledField do
-
-  let(:label) { "Some Label" }
-  let(:field) { Fields::LabeledField.new :label => label }
 
   context "labels" do
     it "has label" do
@@ -60,7 +55,9 @@ describe Fields::DataField do
 
   let(:label) { "Some Label" }
   let(:path) { [:address, :city, :name] }
+  let(:wrong_path) { [:address, :city, :wrong_key] }
   let(:field) { Fields::DataField.new :label => label, :path => path }
+  let(:blank_field) { Fields::DataField.new :label => label, :path => wrong_path, :skip_blank => true }
 
   it "stores label from constructor" do
     field.label.must_equal label
@@ -91,6 +88,30 @@ describe Fields::DataField do
 
 
   end
+
+  # describe "blank?" do
+
+  #   it "returns true when the data under the path is nil" do
+  #     blank_field.blank?.must_equal true
+  #   end
+
+  #   it "returns false when there is some data under the path" do
+  #     field.blank?.must_equal false
+  #   end
+
+  # end
+
+  # describe "skip_blank?" do
+
+  #   it "defaults to false" do
+  #     field.skip_blank?.must_equal false
+  #   end
+
+  #   it "can be set to true in the constructor" do
+  #     blank_field.skip_blank?.must_equal false
+  #   end
+
+  # end
 
 end
 

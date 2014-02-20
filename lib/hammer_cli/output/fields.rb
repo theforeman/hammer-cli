@@ -4,7 +4,10 @@ module Fields
 
   class Field
 
+    attr_reader :label
+
     def initialize(options={})
+      @label = options[:label]
     end
 
     def get_value(data)
@@ -12,16 +15,8 @@ module Fields
 
   end
 
-  class LabeledField < Field
 
-    attr_reader :label
-
-    def initialize(options={})
-      @label = options[:label]
-    end
-  end
-
-  class DataField < LabeledField
+  class DataField < Field
 
     attr_reader :path
 
@@ -86,7 +81,7 @@ module Fields
     attr_reader :attributes
   end
 
-  class Label < LabeledField
+  class Label < Field # TODO: coupled field
 
     def initialize(options={}, &block)
       super(options)

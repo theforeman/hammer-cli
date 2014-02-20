@@ -26,7 +26,8 @@ module HammerCLI::Output::Adapter
     protected
 
     def render_Field(field, data, indent="")
-      puts indent.to_s+" "+format_value(field, data).to_s
+      render_label(field, indent)
+      puts format_value(field, data).to_s
     end
 
     def render_Label(field, data, indent="")
@@ -37,11 +38,6 @@ module HammerCLI::Output::Adapter
       field.output_definition.fields.collect do |f|
         render_field(f, data, indent)
       end
-    end
-
-    def render_LabeledField(field, data, indent="")
-      render_label(field, indent)
-      puts format_value(field, data).to_s
     end
 
     def render_KeyValue(field, data, indent="")
