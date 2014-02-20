@@ -16,6 +16,28 @@ module Fields
   end
 
 
+  class ContainerField < Field
+
+    def initialize(options={}, &block)
+      super(options)
+      dsl = HammerCLI::Output::Dsl.new
+      dsl.build &block if block_given?
+
+      self.output_definition.append dsl.fields
+    end
+
+    def output_definition
+      @output_definition ||= HammerCLI::Output::Definition.new
+      @output_definition
+    end
+
+    def fields
+      @output_definition.fields
+    end
+
+  end
+
+
   class DataField < Field
 
     attr_reader :path
@@ -81,37 +103,37 @@ module Fields
     attr_reader :attributes
   end
 
-  class Label < Field # TODO: coupled field
+  class Label < ContainerField # TODO: coupled field
 
-    def initialize(options={}, &block)
-      super(options)
-      dsl = HammerCLI::Output::Dsl.new :path => options[:path]
-      dsl.build &block if block_given?
+    # def initialize(options={}, &block)
+    #   super(options)
+    #   dsl = HammerCLI::Output::Dsl.new :path => options[:path]
+    #   dsl.build &block if block_given?
 
-      self.output_definition.append dsl.fields
-    end
+    #   self.output_definition.append dsl.fields
+    # end
 
-    def output_definition
-      @output_definition ||= HammerCLI::Output::Definition.new
-      @output_definition
-    end
+    # def output_definition
+    #   @output_definition ||= HammerCLI::Output::Definition.new
+    #   @output_definition
+    # end
 
   end
 
-  class Collection < DataField
+  class Collection < ContainerField
 
-    def initialize(options={}, &block)
-      super(options)
-      dsl = HammerCLI::Output::Dsl.new
-      dsl.build &block if block_given?
+    # def initialize(options={}, &block)
+    #   super(options)
+    #   dsl = HammerCLI::Output::Dsl.new
+    #   dsl.build &block if block_given?
 
-      self.output_definition.append dsl.fields
-    end
+    #   self.output_definition.append dsl.fields
+    # end
 
-    def output_definition
-      @output_definition ||= HammerCLI::Output::Definition.new
-      @output_definition
-    end
+    # def output_definition
+    #   @output_definition ||= HammerCLI::Output::Definition.new
+    #   @output_definition
+    # end
 
   end
 
