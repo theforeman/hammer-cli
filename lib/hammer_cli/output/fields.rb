@@ -11,6 +11,7 @@ module Fields
       @hide_blank = options[:hide_blank].nil? ? false : options[:hide_blank]
       @path = options[:path] || []
       @label = options[:label]
+      @options = options
     end
 
     def hide_blank?
@@ -25,6 +26,10 @@ module Fields
       else
         true
       end
+    end
+
+    def parameters
+      @options
     end
 
   end

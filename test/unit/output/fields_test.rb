@@ -6,7 +6,7 @@ describe Fields::Field do
 
   let(:label) { "Some Label" }
   let(:path) { [:address, :city, :name] }
-  let(:field) { Fields::Field.new :label => label, :path => path }
+  let(:field) { Fields::Field.new :label => label, :path => path, :some => :parameter }
   let(:blank_field) { Fields::Field.new :label => label, :path => path, :hide_blank => true }
 
 
@@ -22,6 +22,18 @@ describe Fields::Field do
     Fields::Field.new.path.must_equal []
   end
 
+  describe "parameters" do
+
+    it "returns all parameters passed to a filed" do
+      expected_params = {
+        :label => label,
+        :path => path,
+        :some => :parameter
+      }
+      field.parameters.must_equal expected_params
+    end
+
+  end
 
   describe "display?" do
 
