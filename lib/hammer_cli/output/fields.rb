@@ -74,6 +74,9 @@ module Fields
   class List < Field
   end
 
+  class LongText < Field
+  end
+
   class KeyValue < Field
   end
 

@@ -117,3 +117,24 @@ describe HammerCLI::Output::Formatters::KeyValueFormatter do
     formatter.format('some string').must_equal ''
   end
 end
+
+
+
+describe HammerCLI::Output::Formatters::LongTextFormatter do
+
+  it "prepends new line" do
+    formatter = HammerCLI::Output::Formatters::LongTextFormatter.new
+    formatter.format("Some\nmultiline\ntext").must_equal "\n  Some\n  multiline\n  text"
+  end
+
+  it "accepts nil" do
+    formatter = HammerCLI::Output::Formatters::LongTextFormatter.new
+    formatter.format(nil).must_equal "\n  "
+  end
+
+  it "enables to switch indentation off" do
+    formatter = HammerCLI::Output::Formatters::LongTextFormatter.new(:indent => false)
+    formatter.format("Some\nmultiline\ntext").must_equal "\nSome\nmultiline\ntext"
+  end
+
+end

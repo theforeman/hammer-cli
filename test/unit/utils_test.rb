@@ -44,6 +44,18 @@ describe String do
 
   end
 
+  describe "indent" do
+
+    it "indents single line string" do
+      "line one".indent("  ").must_equal "  line one"
+    end
+
+    it "indents multi line string" do
+      "line one\nline two".indent("  ").must_equal "  line one\n  line two"
+    end
+
+  end
+
   describe "interactive?" do
 
     before :each do

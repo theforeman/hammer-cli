@@ -1,4 +1,4 @@
-  module HammerCLI::Output::Adapter
+module HammerCLI::Output::Adapter
   class Base < Abstract
 
     GROUP_INDENT = " "*2
@@ -58,7 +58,7 @@
 
         data = [data] unless data.is_a? Array
         data.each do |d|
-          output += indent_lines(render_fields(field.fields, d))
+          output += render_fields(field.fields, d).indent(GROUP_INDENT)
           output += "\n"
         end
 
@@ -88,10 +88,6 @@
         width = f.label.to_s.size + LABEL_DIVIDER.size
         (width > result) ? width : result
       end
-    end
-
-    def indent_lines(lines)
-      lines.gsub(/^/, GROUP_INDENT)
     end
 
   end

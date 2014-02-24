@@ -126,9 +126,28 @@ module HammerCLI::Output
       end
     end
 
+    class LongTextFormatter < FieldFormatter
+
+      INDENT = "  "
+
+      def initialize(options = {})
+        @indent = options[:indent].nil? ? true : options[:indent]
+      end
+
+      def tags
+        [:screen]
+      end
+
+      def format(text)
+        text = text.to_s.indent(INDENT) if @indent
+        "\n#{text}"
+      end
+    end
+
     HammerCLI::Output::Output.register_formatter(DateFormatter.new, :Date)
     HammerCLI::Output::Output.register_formatter(ListFormatter.new, :List)
     HammerCLI::Output::Output.register_formatter(KeyValueFormatter.new, :KeyValue)
+    HammerCLI::Output::Output.register_formatter(LongTextFormatter.new, :LongText)
 
   end
 end
