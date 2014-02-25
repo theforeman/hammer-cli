@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 Hammer cli provides universal extendable CLI interface for ruby apps
 EOF
 
-  s.files            = Dir['{lib,test,bin,doc,config}/**/*', 'LICENSE', 'README*', 'hammer_cli_complete']
+  s.files            = Dir['{lib,test,bin,doc,config,locale}/**/*', 'LICENSE', 'README*', 'hammer_cli_complete']
   s.test_files       = Dir['test/**/*']
   s.extra_rdoc_files = Dir['{doc,config}/**/*', 'README*']
   s.require_paths = ["lib"]
@@ -29,10 +29,12 @@ EOF
   s.add_dependency 'awesome_print'
   s.add_dependency 'table_print'
   s.add_dependency 'highline'
+  s.add_dependency 'fast_gettext'
+  s.add_dependency 'locale', '<= 2.0.9'
 
   # required for ruby < 1.9.0:
   s.add_dependency 'json'
   s.add_dependency 'fastercsv'             #fastercsv is default for ruby >=1.9 but it's missing in 1.8.X
-  s.add_dependency 'mime-types', '~> 1.0' #newer versions of mime-types are not 1.8 compatible
+  s.add_dependency 'mime-types', '~> 1.0'  #newer versions of mime-types are not 1.8 compatible
 
 end

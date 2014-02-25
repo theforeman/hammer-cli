@@ -4,15 +4,15 @@ module HammerCLI
 
   class MainCommand < AbstractCommand
 
-    option ["-v", "--verbose"], :flag, "be verbose", :context_target => :verbose
-    option ["-c", "--config"], "CFG_FILE", "path to custom config file"
+    option ["-v", "--verbose"], :flag, _("be verbose"), :context_target => :verbose
+    option ["-c", "--config"], "CFG_FILE", _("path to custom config file")
 
-    option ["-u", "--username"], "USERNAME", "username to access the remote system",
+    option ["-u", "--username"], "USERNAME", _("username to access the remote system"),
       :context_target => :username
-    option ["-p", "--password"], "PASSWORD", "password to access the remote system",
+    option ["-p", "--password"], "PASSWORD", _("password to access the remote system"),
       :context_target => :password
 
-    option "--version", :flag, "show version" do
+    option "--version", :flag, _("show version") do
       puts "hammer (%s)" % HammerCLI.version
       HammerCLI::Modules.names.each do |m|
         module_version = HammerCLI::Modules.find_by_name(m).version
@@ -21,21 +21,21 @@ module HammerCLI
       exit(HammerCLI::EX_OK)
     end
 
-    option ["--show-ids"], :flag, "Show ids of associated resources",
+    option ["--show-ids"], :flag, _("Show ids of associated resources"),
       :context_target => :show_ids
-    option ["--interactive"], "INTERACTIVE", "Explicitly turn interactive mode on/off",
+    option ["--interactive"], "INTERACTIVE", _("Explicitly turn interactive mode on/off"),
       :format => HammerCLI::Options::Normalizers::Bool.new,
       :context_target => :interactive
 
-    option ["--csv"], :flag, "Output as CSV (same as --output=csv)"
-    option ["--output"], "ADAPTER", "Set output format. One of [%s]" %
+    option ["--csv"], :flag, _("Output as CSV (same as --output=csv)")
+    option ["--output"], "ADAPTER", _("Set output format. One of [%s]") %
       HammerCLI::Output::Output.adapters.keys.join(', '),
       :context_target => :adapter
-    option ["--csv-separator"], "SEPARATOR", "Character to separate the values",
+    option ["--csv-separator"], "SEPARATOR", _("Character to separate the values"),
       :context_target => :csv_separator
 
 
-    option "--autocomplete", "LINE", "Get list of possible endings" do |line|
+    option "--autocomplete", "LINE", _("Get list of possible endings") do |line|
       # get rid of word 'hammer' on the line
       line = line.to_s.gsub(/^\S+/, '')
 

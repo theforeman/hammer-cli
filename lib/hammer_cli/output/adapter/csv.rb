@@ -44,16 +44,16 @@ module HammerCLI::Output::Adapter
         id = msg_params["id"] || msg_params[:id]
         name = msg_params["name"] || msg_params[:name]
 
-        labels = ["Message"]
+        labels = [_("Message")]
         data = [msg.format(msg_params)]
 
         if id
-          labels << "Id"
+          labels << _("Id")
           data << id
         end
 
         if name
-          labels << "Name"
+          labels << _("Name")
           data << name
         end
 

@@ -28,7 +28,7 @@ module HammerCLI
       rescue Exception => e
         logger.error "Error while loading module #{name}"
         logger.error e
-        puts "Warning: An error occured while loading module #{name}"
+        puts _("Warning: An error occured while loading module %s") % name
         raise e
       end
 

@@ -25,7 +25,7 @@ module HammerCLI
     begin
       FileUtils.mkdir_p(log_dir, :mode => 0750)
     rescue Errno::EACCES => e
-      puts "No permissions to create log dir #{log_dir}"
+      puts _("No permissions to create log dir %s") % log_dir
     end
 
     logger   = Logging.logger.root
@@ -40,7 +40,7 @@ module HammerCLI
       # set owner and group (it's ignored if attribute is nil)
       FileUtils.chown HammerCLI::Settings.get(:log_owner), HammerCLI::Settings.get(:log_group), filename
     rescue ArgumentError => e
-      puts "File #{filename} not writeable, won't log anything to file!"
+      puts _("File %s not writeable, won't log anything to the file!") % filename
     end
 
     logger.level = HammerCLI::Settings.get(:log_level)

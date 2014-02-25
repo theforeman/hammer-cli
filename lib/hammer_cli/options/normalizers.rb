@@ -23,7 +23,7 @@ module HammerCLI
       class KeyValueList < AbstractNormalizer
 
         def description
-          "Comma-separated list of key=value."
+          _("Comma-separated list of key=value.")
         end
 
         def format(val)
@@ -32,7 +32,7 @@ module HammerCLI
           val.split(",").inject({}) do |result, item|
             parts = item.split("=")
             if parts.size != 2
-              raise ArgumentError, "value must be defined as a comma-separated list of key=value"
+              raise ArgumentError, _("value must be defined as a comma-separated list of key=value")
             end
             result.update(parts[0] => parts[1])
           end
@@ -43,7 +43,7 @@ module HammerCLI
       class List < AbstractNormalizer
 
         def description
-          "Comma separated list of values."
+          _("Comma separated list of values.")
         end
 
         def format(val)
@@ -55,7 +55,7 @@ module HammerCLI
       class Bool < AbstractNormalizer
 
         def description
-          "One of true/false, yes/no, 1/0."
+          _("One of true/false, yes/no, 1/0.")
         end
 
         def format(bool)
@@ -65,7 +65,7 @@ module HammerCLI
           elsif bool.downcase.match(/^(false|f|no|n|0)$/i)
             return false
           else
-            raise ArgumentError, "value must be one of true/false, yes/no, 1/0"
+            raise ArgumentError, _("value must be one of true/false, yes/no, 1/0")
           end
         end
 
@@ -104,7 +104,7 @@ module HammerCLI
           ::JSON.parse(json_string)
 
         rescue ::JSON::ParserError => e
-          raise ArgumentError, "Unable to parse JSON input"
+          raise ArgumentError, _("Unable to parse JSON input")
         end
 
       end
@@ -117,14 +117,14 @@ module HammerCLI
         end
 
         def description
-          "One of %s" % quoted_values
+          _("One of %s") % quoted_values
         end
 
         def format(value)
           if @allowed_values.include? value
             value
           else
-            raise ArgumentError, "value must be one of '%s'" % quoted_values
+            raise ArgumentError, _("value must be one of '%s'") % quoted_values
           end
         end
 
@@ -143,14 +143,14 @@ module HammerCLI
       class DateTime < AbstractNormalizer
 
         def description
-          "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
+          _("Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format")
         end
 
         def format(date)
           raise ArgumentError unless date
           ::DateTime.parse(date).to_s
         rescue ArgumentError
-          raise ArgumentError, "'%s' is not a valid date" % date
+          raise ArgumentError, _("'%s' is not a valid date") % date
         end
       end
 
