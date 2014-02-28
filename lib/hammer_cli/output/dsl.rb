@@ -22,7 +22,7 @@ module HammerCLI::Output
       options[:path] << key if !key.nil?
 
       options[:label] = label
-      type ||= Fields::DataField
+      type ||= Fields::Field
       custom_field type, options, &block
     end
 

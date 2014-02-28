@@ -6,12 +6,20 @@ describe HammerCLI::Output::Adapter::Table do
 
   context "print_collection" do
 
-    let(:field_name) { Fields::DataField.new(:path => [:name], :label => "Name") }
+    let(:field_name) { Fields::Field.new(:path => [:fullname], :label => "Name") }
+    let(:field_firstname) { Fields::Field.new(:path => [:firstname], :label => "Firstname") }
+    let(:field_lastname) { Fields::Field.new(:path => [:lastname], :label => "Lastname") }
+
     let(:fields) {
       [field_name]
     }
+
     let(:data) { HammerCLI::Output::RecordCollection.new [{
-      :name => "John Doe"
+      :id => 1,
+      :firstname => "John",
+      :lastname => "Doe",
+      :fullname => "John Doe",
+      :long => "SomeVeryLongString"
     }]}
 
     it "should print column name " do
@@ -40,6 +48,74 @@ describe HammerCLI::Output::Adapter::Table do
       end
     end
 
+    context "column width" do
+
+      it "truncates string when it exceeds maximum width" do
+        first_field = Fields::Field.new(:path => [:long], :label => "Long", :max_width => 10)
+        fields = [first_field, field_lastname]
+
+        expected_output = [
+          "-----------|---------",
+          "LONG       | LASTNAME",
+          "-----------|---------",
+          "SomeVer... | Doe     ",
+          "-----------|---------",
+          ""
+        ].join("\n")
+
+        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      end
+
+      it "truncates string when it exceeds width" do
+        first_field = Fields::Field.new(:path => [:long], :label => "Long", :width => 10)
+        fields = [first_field, field_lastname]
+
+        expected_output = [
+          "-----------|---------",
+          "LONG       | LASTNAME",
+          "-----------|---------",
+          "SomeVer... | Doe     ",
+          "-----------|---------",
+          ""
+        ].join("\n")
+
+        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      end
+
+      it "sets certain width" do
+        first_field = Fields::Field.new(:path => [:long], :label => "Long", :width => 25)
+        fields = [first_field, field_lastname]
+
+        expected_output = [
+          "--------------------------|---------",
+          "LONG                      | LASTNAME",
+          "--------------------------|---------",
+          "SomeVeryLongString        | Doe     ",
+          "--------------------------|---------",
+          ""
+        ].join("\n")
+
+        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      end
+
+      it "gives preference to width over maximal width" do
+        first_field = Fields::Field.new(:path => [:long], :label => "Long", :width => 25, :max_width => 10)
+        fields = [first_field, field_lastname]
+
+        expected_output = [
+          "--------------------------|---------",
+          "LONG                      | LASTNAME",
+          "--------------------------|---------",
+          "SomeVeryLongString        | Doe     ",
+          "--------------------------|---------",
+          ""
+        ].join("\n")
+
+        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      end
+
+    end
+
     context "formatters" do
       it "should apply formatters" do
         class DotFormatter < HammerCLI::Output::Formatters::FieldFormatter
@@ -48,28 +124,36 @@ describe HammerCLI::Output::Adapter::Table do
           end
         end
 
-        adapter = HammerCLI::Output::Adapter::Table.new({}, { :DataField => [ DotFormatter.new ]})
+        adapter = HammerCLI::Output::Adapter::Table.new({}, { :Field => [ DotFormatter.new ]})
         out, err = capture_io { adapter.print_collection(fields, data) }
         out.must_match(/.*-DOT-.*/)
       end
     end
 
     context "sort_columns" do
-      let(:field_firstname) { Fields::DataField.new(:path => [:firstname], :label => "Firstname") }
-      let(:field_lastname) { Fields::DataField.new(:path => [:lastname], :label => "Lastname") }
       let(:fields) {
         [field_firstname, field_lastname]
       }
-      let(:data) { HammerCLI::Output::RecordCollection.new [{
-        :firstname => "John",
-        :lastname => "Doe"
-      }]}
 
       it "should sort output" do
-        TablePrint::Printer.any_instance.stubs(:table_print).returns(
-          "LASTNAME | FIRSTNAME\n---------|----------\nDoe      | John     \n")
-        proc { adapter.print_collection(fields, data) }.must_output(
-          "----------|---------\nFIRSTNAME | LASTNAME\n----------|---------\nJohn      | Doe     \n----------|---------\n")
+
+        table_print_output = [
+          "LASTNAME | FIRSTNAME",
+          "---------|----------",
+          "Doe      | John     "
+        ].join("\n")
+
+        expected_output = [
+          "----------|---------",
+          "FIRSTNAME | LASTNAME",
+          "----------|---------",
+          "John      | Doe     ",
+          "----------|---------",
+          ""
+        ].join("\n")
+
+        TablePrint::Printer.any_instance.stubs(:table_print).returns(table_print_output)
+        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
       end
     end
   end

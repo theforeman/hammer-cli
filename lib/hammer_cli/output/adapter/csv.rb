@@ -28,7 +28,7 @@ module HammerCLI::Output::Adapter
         collection.each do |d|
           csv << fields.inject([]) do |row, f|
             unless f.class <= Fields::Id && !@context[:show_ids]
-              value = (f.get_value(d) || '')
+              value = (data_for_field(f, d) || '')
               formatter = @formatters.formatter_for_type(f.class)
               row << (formatter ? formatter.format(value) : value)
             end

@@ -1,66 +1,14 @@
 require File.join(File.dirname(__FILE__), '../test_helper')
 
 
+
 describe Fields::Field do
-
-  let(:field) { Fields::Field.new }
-
-  describe "get_value" do
-    it "should exist" do
-      assert field.respond_to? :get_value
-    end
-
-    it "should take data as a parameter" do
-      field.method(:get_value).arity.must_equal 1
-    end
-  end
-
-end
-
-describe Fields::LabeledField do
-
-  let(:label) { "Some Label" }
-  let(:field) { Fields::LabeledField.new :label => label }
-
-  context "labels" do
-    it "has label" do
-      assert field.respond_to? :label
-    end
-
-    it "is possible to set label in constructor" do
-      field.label.must_equal label
-    end
-  end
-
-end
-
-describe Fields::DataField do
-
-  let(:symbol_data) {{
-    :name => "John Doe",
-    :email => "john.doe@example.com",
-    :address => {
-      :city => {
-        :name => "New York",
-        :zip => "1234"
-      }
-    }
-  }}
-
-  let(:string_data) {{
-    "name" => "Eric Doe",
-    "email" => "eric.doe@example.com",
-    "address" => {
-      "city" => {
-        "name" => "Boston",
-        "zip" => "6789"
-      }
-    }
-  }}
 
   let(:label) { "Some Label" }
   let(:path) { [:address, :city, :name] }
-  let(:field) { Fields::DataField.new :label => label, :path => path }
+  let(:field) { Fields::Field.new :label => label, :path => path, :some => :parameter }
+  let(:blank_field) { Fields::Field.new :label => label, :path => path, :hide_blank => true }
+
 
   it "stores label from constructor" do
     field.label.must_equal label
@@ -71,27 +19,110 @@ describe Fields::DataField do
   end
 
   it "default path should be empty array" do
-    Fields::DataField.new.path.must_equal []
+    Fields::Field.new.path.must_equal []
   end
 
-  context "getting data" do
+  describe "parameters" do
 
-    it "should pick correct value" do
-      field.get_value(symbol_data).must_equal symbol_data[:address][:city][:name]
+    it "returns all parameters passed to a filed" do
+      expected_params = {
+        :label => label,
+        :path => path,
+        :some => :parameter
+      }
+      field.parameters.must_equal expected_params
     end
 
-    it "should pick correct value independent of key type" do
-      field.get_value(string_data).must_equal string_data["address"]["city"]["name"]
+  end
+
+  describe "display?" do
+
+    context "blank is allowed" do
+
+      it "returns false the value is nil" do
+        field.display?(nil).must_equal true
+      end
+
+      it "returns true when there is some data under the path" do
+        field.display?("some value").must_equal true
+      end
     end
 
-    it "should pick correct value even if data contains empty key (#3352)" do
-      string_data[''] = {}
-      field.get_value(string_data).must_equal string_data["address"]["city"]["name"]
+
+    context "blank is not allowed" do
+
+      it "returns false the value is nil" do
+        blank_field.display?(nil).must_equal false
+      end
+
+      it "returns true when there is some data under the path" do
+        blank_field.display?("some value").must_equal true
+      end
     end
 
+  end
+
+  describe "hide_blank?" do
+
+    it "defaults to false" do
+      Fields::Field.new.hide_blank?.must_equal false
+    end
+
+    it "can be set to true in the constructor" do
+      blank_field.hide_blank?.must_equal true
+    end
 
   end
 
 end
 
 
+describe Fields::ContainerField do
+
+  describe "display?" do
+
+    context "blank is allowed" do
+      let(:field) { Fields::ContainerField.new :label => "Label" }
+
+      it "returns false the value is nil" do
+        field.display?(nil).must_equal true
+      end
+
+      it "returns false the value is empty array" do
+        field.display?([]).must_equal true
+      end
+
+      it "returns false the value is empty hash" do
+        field.display?({}).must_equal true
+      end
+
+      it "returns true when there is some data under the path" do
+        field.display?(["some value"]).must_equal true
+      end
+
+    end
+
+    context "blank is not allowed" do
+      let(:field) { Fields::ContainerField.new :label => "Label", :hide_blank => true }
+
+      it "returns false the value is nil" do
+        field.display?(nil).must_equal false
+      end
+
+      it "returns false the value is empty array" do
+        field.display?([]).must_equal false
+      end
+
+      it "returns false the value is empty hash" do
+        field.display?({}).must_equal false
+      end
+
+      it "returns true when there is some data under the path" do
+        field.display?(["some value"]).must_equal true
+      end
+
+    end
+
+  end
+
+end

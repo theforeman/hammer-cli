@@ -4,6 +4,9 @@ module HammerCLI::Output::Adapter
 
   class Table < Abstract
 
+    MAX_COLUMN_WIDTH = 80
+    MIN_COLUMN_WIDTH = 5
+
     def tags
       [:screen, :flat]
     end
@@ -13,25 +16,29 @@ module HammerCLI::Output::Adapter
     end
 
     def print_collection(all_fields, collection)
-
-      fields = all_fields.reject { |f| f.class <= Fields::Id && !@context[:show_ids] }
+      fields = field_filter.filter(all_fields)
 
       rows = collection.collect do |d|
         row = {}
         fields.each do |f|
-          row[f.label.to_sym] = f.get_value(d) || ""
+          row[label_for(f)] = data_for_field(f, d) || ""
         end
         row
       end
 
       options = fields.collect do |f|
-        { f.label.to_sym => { :formatters => Array(@formatters.formatter_for_type(f.class)) } }
+        { label_for(f) => {
+            :formatters => Array(@formatters.formatter_for_type(f.class)),
+            :width => max_width_for(f)
+          }
+        }
       end
 
       sort_order = fields.map { |f| f.label.upcase }
 
       printer = TablePrint::Printer.new(rows, options)
-      TablePrint::Config.max_width = 40
+      TablePrint::Config.max_width = MAX_COLUMN_WIDTH
+      TablePrint::Config.multibyte = true
 
       output = sort_columns(printer.table_print, sort_order)
       dashes = /\n([-|]+)\n/.match(output)
@@ -41,14 +48,38 @@ module HammerCLI::Output::Adapter
       puts dashes[1] if dashes
     end
 
-    def print_heading(heading, size)
-      size = heading.size if heading.size > size
-      puts '-' * size
-      puts ' ' * ((size-heading.size)/2) + heading
-      puts '-' * size
+    protected
+
+    def field_filter
+      filtered = [Fields::ContainerField]
+      filtered << Fields::Id unless @context[:show_ids]
+      HammerCLI::Output::FieldFilter.new(filtered)
     end
 
     private
+
+    def label_for(field)
+      width = width_for(field)
+      if width
+        "%-#{width}s" % field.label.to_s
+      else
+        field.label.to_s
+      end
+    end
+
+    def max_width_for(field)
+      width = width_for(field)
+      width ||= field.parameters[:max_width]
+      width = MIN_COLUMN_WIDTH if width && width < MIN_COLUMN_WIDTH
+      width
+    end
+
+    def width_for(field)
+      width = field.parameters[:width]
+      width = MIN_COLUMN_WIDTH if width && width < MIN_COLUMN_WIDTH
+      width
+    end
+
 
     def sort_columns(output, sort_order)
       return output if sort_order.length == 1 # don't sort one column

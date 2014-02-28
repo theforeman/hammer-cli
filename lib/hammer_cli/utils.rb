@@ -20,6 +20,10 @@ class String
     split('_').map{|e| e.capitalize}.join
   end
 
+  def indent(indent_str)
+    gsub(/^/, indent_str)
+  end
+
 end
 
 module HammerCLI

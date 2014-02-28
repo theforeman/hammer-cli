@@ -6,8 +6,8 @@ describe HammerCLI::Output::Adapter::CSValues do
 
   context "print_collection" do
 
-    let(:field_name) { Fields::DataField.new(:path => [:name], :label => "Name") }
-    let(:field_started_at) { Fields::DataField.new(:path => [:started_at], :label => "Started At") }
+    let(:field_name) { Fields::Field.new(:path => [:name], :label => "Name") }
+    let(:field_started_at) { Fields::Field.new(:path => [:started_at], :label => "Started At") }
     let(:fields) {
       [field_name, field_started_at]
     }
@@ -52,7 +52,7 @@ describe HammerCLI::Output::Adapter::CSValues do
           end
         end
 
-        adapter = HammerCLI::Output::Adapter::CSValues.new({}, { :DataField => [ DotFormatter.new ]})
+        adapter = HammerCLI::Output::Adapter::CSValues.new({}, { :Field => [ DotFormatter.new ]})
         out, err = capture_io { adapter.print_collection(fields, data) }
         out.must_match(/.*-DOT-.*/)
       end

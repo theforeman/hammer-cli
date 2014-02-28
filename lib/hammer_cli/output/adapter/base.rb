@@ -13,116 +13,82 @@ module HammerCLI::Output::Adapter
     end
 
     def print_collection(fields, collection)
-      self.fields = fields
-
-      collection.each do |d|
-        fields.collect do |f|
-          render_field(f, d)
-        end
+      collection.each do |data|
+        puts render_fields(fields, data)
         puts
       end
     end
 
     protected
 
-    def render_Field(field, data, indent="")
-      puts indent.to_s+" "+format_value(field, data).to_s
+    def field_filter
+      filtered = []
+      filtered << Fields::Id unless @context[:show_ids]
+      HammerCLI::Output::FieldFilter.new(filtered)
     end
 
-    def render_Label(field, data, indent="")
-      render_label(field, indent)
-      puts
-      indent = indent.to_s + GROUP_INDENT
-
-      field.output_definition.fields.collect do |f|
-        render_field(f, data, indent)
+    def filter_fields(fields, data)
+      field_filter.filter(fields).reject do |field|
+        field_data = data_for_field(field, data)
+        not field.display?(field_data)
       end
     end
 
-    def render_LabeledField(field, data, indent="")
-      render_label(field, indent)
-      puts format_value(field, data).to_s
+    def render_fields(fields, data)
+      output = ""
+
+      fields = filter_fields(fields, data)
+
+      label_width = label_width(fields)
+
+      fields.collect do |field|
+        field_data = data_for_field(field, data)
+
+        next unless field.display?(field_data)
+        output += render_field(field, field_data, label_width)
+        output += "\n"
+      end
+      output.rstrip
     end
 
-    def render_KeyValue(field, data, indent="")
-      render_label(field, indent)
-      params = field.get_value(data) || []
-      print "%{name} => %{value}" % params
-    end
+    def render_field(field, data, label_width)
 
-    def render_Collection(field, data, indent="")
-      render_label(field, indent)
-      puts
-      indent = indent.to_s + " "*(label_width_for_list(self.fields)+LABEL_DIVIDER.size)
+      if field.is_a? Fields::ContainerField
+        output = ""
 
-      data = field.get_value(data) || []
-      data.each do |d|
-        field.output_definition.fields.collect do |f|
-          render_field(f, d, indent)
+        data = [data] unless data.is_a? Array
+        data.each do |d|
+          output += render_fields(field.fields, d).indent(GROUP_INDENT)
+          output += "\n"
         end
-        puts
+
+        render_label(field, label_width) + "\n" + output.rstrip
+      else
+        render_label(field, label_width) +
+        render_value(field, data)
       end
     end
 
-    def render_Joint(field, data, indent="")
-      render_label(field, indent)
-      data = field.get_value(data)
-      puts field.attributes.collect{|attr| data[attr] }.join(" ")
-    end
-
-    def find_renderer(field)
-      field.class.ancestors.each do |cls|
-        render_method = "render_"+field_type(cls)
-        return method(render_method) if respond_to?(render_method, true)
-      end
-      raise "No renderer found for field %s" % field.class
-    end
-
-    def render_field(field, data, indent="")
-      renderer = find_renderer(field)
-      renderer.call(field, data, indent)
-    end
-
-    def render_label(field, indent="")
+    def render_label(field, width)
       if field.label
-        w = label_width_for_list(self.fields) - indent.size + 1
-        print indent.to_s+"%#{-w}s" % (field.label.to_s+LABEL_DIVIDER)
+        "%-#{width}s" % (field.label.to_s + LABEL_DIVIDER)
       else
-        print indent.to_s
+        ""
       end
     end
 
-    def format_value(field, data)
-      format_method = "format_"+field_type(field.class)
-
-      value = field.get_value(data)
+    def render_value(field, data)
       formatter = @formatters.formatter_for_type(field.class)
-      value = formatter.format(value) if formatter
-      value
+      data = formatter.format(data) if formatter
+      data.to_s
     end
 
-    def field_type(field_class)
-      field_class.name.split("::")[-1]
-    end
-
-    def label_width_for(field)
-      if field.respond_to?(:output_definition)
-        label_width_for_list(field.output_definition.fields)+GROUP_INDENT.size
-      elsif field.respond_to?(:label)
-        field.label.size+LABEL_DIVIDER.size rescue 0
-      else
-        0
-      end
-    end
-
-    def label_width_for_list(fields)
+    def label_width(fields)
       fields.inject(0) do |result, f|
-        width = label_width_for(f)
+        width = f.label.to_s.size + LABEL_DIVIDER.size
         (width > result) ? width : result
       end
     end
-
-    attr_accessor :fields
 
   end
 

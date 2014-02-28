@@ -35,6 +35,26 @@ module HammerCLI::Output::Adapter
       raise NotImplementedError
     end
 
+    protected
+
+    def field_filter
+      HammerCLI::Output::FieldFilter.new
+    end
+
+    def data_for_field(field, record)
+      path = field.path
+
+      path.inject(record) do |record, path_key|
+        if record.has_key? path_key.to_sym
+          record[path_key.to_sym]
+        elsif record.has_key? path_key.to_s
+          record[path_key.to_s]
+        else
+          return nil
+        end
+      end
+    end
+
     private
 
     def filter_formatters(formatters_map)

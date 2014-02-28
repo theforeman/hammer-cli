@@ -91,3 +91,50 @@ describe HammerCLI::Output::Formatters::ListFormatter do
     formatter.format('some string').must_equal 'some string'
   end
 end
+
+
+describe HammerCLI::Output::Formatters::KeyValueFormatter do
+
+  let(:params) {
+    {
+      :name => "Name",
+      "value" => "Value",
+    }
+  }
+
+  it "serializes the value" do
+    formatter = HammerCLI::Output::Formatters::KeyValueFormatter.new
+    formatter.format(params).must_equal 'Name => Value'
+  end
+
+  it "returns empty string when the input is nil" do
+    formatter = HammerCLI::Output::Formatters::KeyValueFormatter.new
+    formatter.format(nil).must_equal ''
+  end
+
+  it "returns empty string value when the input is not a hash" do
+    formatter = HammerCLI::Output::Formatters::KeyValueFormatter.new
+    formatter.format('some string').must_equal ''
+  end
+end
+
+
+
+describe HammerCLI::Output::Formatters::LongTextFormatter do
+
+  it "prepends new line" do
+    formatter = HammerCLI::Output::Formatters::LongTextFormatter.new
+    formatter.format("Some\nmultiline\ntext").must_equal "\n  Some\n  multiline\n  text"
+  end
+
+  it "accepts nil" do
+    formatter = HammerCLI::Output::Formatters::LongTextFormatter.new
+    formatter.format(nil).must_equal "\n  "
+  end
+
+  it "enables to switch indentation off" do
+    formatter = HammerCLI::Output::Formatters::LongTextFormatter.new(:indent => false)
+    formatter.format("Some\nmultiline\ntext").must_equal "\nSome\nmultiline\ntext"
+  end
+
+end
