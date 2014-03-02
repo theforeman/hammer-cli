@@ -189,6 +189,7 @@ Configuration
 Configuration is set based on the following files, loaded in this order:
 
  - ```/etc/foreman/cli_config.yml```.
+ - ```/usr/local/etc/foreman/cli_config.yml```.
  - ```~/.foreman/cli_config.yml```
  - ```./config/cli_config.yml``` (config dir in CWD)
  - custom location specified on command line - ```-c CONF_FILE_PATH```
