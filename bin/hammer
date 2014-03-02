@@ -20,7 +20,7 @@ end
 # load user's settings
 require 'hammer_cli/settings'
 
-CFG_PATH = ['./config/cli_config.yml', '~/.foreman/cli_config.yml', '/etc/foreman/cli_config.yml']
+CFG_PATH = ['./config/cli_config.yml', '~/.foreman/cli_config.yml', '/usr/local/etc/foreman/cli_config.yml', '/etc/foreman/cli_config.yml']
 
 if preparser.config
   CFG_PATH.unshift preparser.config
