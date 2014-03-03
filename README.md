@@ -188,7 +188,8 @@ Configuration
 
 Configuration is set based on the following files, loaded in this order:
 
- - ```/etc/foreman/cli_config.yml```.
+ - ```RbConfig::CONFIG['sysconfdir']/foreman/cli_config.yml``` (The actual value depends on your operatingsystem and ruby defaults.)
+ - ```/etc/foreman/cli_config.yml```
  - ```~/.foreman/cli_config.yml```
  - ```./config/cli_config.yml``` (config dir in CWD)
  - custom location specified on command line - ```-c CONF_FILE_PATH```
