@@ -139,7 +139,7 @@ module HammerCLI::Output
       end
 
       def format(text)
-        text = text.to_s.indent(INDENT) if @indent
+        text = text.to_s.indent_with(INDENT) if @indent
         "\n#{text}"
       end
     end

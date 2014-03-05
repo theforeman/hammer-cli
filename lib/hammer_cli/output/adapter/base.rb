@@ -58,7 +58,7 @@ module HammerCLI::Output::Adapter
 
         data = [data] unless data.is_a? Array
         data.each do |d|
-          output += render_fields(field.fields, d).indent(GROUP_INDENT)
+          output += render_fields(field.fields, d).indent_with(GROUP_INDENT)
           output += "\n"
         end
 
