@@ -4,7 +4,22 @@ module HammerCLI
   class Modules
 
     def self.names
-      HammerCLI::Settings.get(:modules) || []
+
+      # legacy modules config
+      modules = HammerCLI::Settings.get(:modules) || []
+      logger.warn _("Legacy configuration of modules detected. Check section about configuration in user manual") unless modules.empty?
+
+      HammerCLI::Settings.dump.inject(modules) do |names, (mod_name, mod_config)|
+        if mod_config.kind_of?(Hash) && !mod_config[:enable_module].nil?
+          mod = ["hammer_cli_#{mod_name}"]
+          if mod_config[:enable_module]
+            names += mod
+          else
+            names -= mod # disable when enabled in legacy config
+          end
+        end
+        names
+      end
     end
 
     def self.find_by_name(name)

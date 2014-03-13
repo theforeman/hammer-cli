@@ -12,15 +12,28 @@ module HammerCLI
       end
     end
 
-    def self.load_from_file(files)
+    def self.load_from_paths(files)
       files.reverse.each do |path|
         full_path = File.expand_path path
-        if File.exists? full_path
-          config = YAML::load(File.open(full_path))
-          if config
-            load(config)
-            path_history << full_path
+        if File.file? full_path
+          load_from_file(full_path)
+        elsif File.directory? full_path
+          # check for cli_config.yml
+          load_from_file(File.join(full_path, 'cli_config.yml'))
+          # load config for modules
+          Dir.glob(File.join(full_path, 'hammer.modules.d/*.yml')).sort.each do |f|
+            load_from_file(f)
           end
+        end
+      end
+    end
+
+    def self.load_from_file(file_path)
+      if File.file? file_path
+        config = YAML::load(File.open(file_path))
+        if config
+          load(config)
+          path_history << file_path
         end
       end
     end
@@ -32,6 +45,10 @@ module HammerCLI
     def self.clear
       settings.clear
       path_history.clear
+    end
+
+    def self.dump
+      settings
     end
 
     def self.path_history
