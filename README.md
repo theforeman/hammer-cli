@@ -8,8 +8,8 @@ Hammer-cli provides just the core functionality. The core is extensible using pl
 This architecture allows for easy customization according to your application. Nearly any Ruby script can be turned into a Hammer command, so the possibilities are endless.
 
 Available plugins are currently:
-  - [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman)  - commands corresponding to Foreman API
-  - [hammer-cli-katello-bridge](https://github.com/theforeman/hammer-cli-katello-bridge) - set of commands provided by Katello CLI
+  - [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman) - commands corresponding to Foreman API
+  - [hammer-cli-katello](https://github.com/theforeman/hammer-cli-katello) - commands for managing Katello
 
 You also can easily add custom commands for your specific use, such as bulk actions or admin tasks.
 

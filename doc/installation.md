@@ -54,10 +54,10 @@ Currently, there are two plugins, both available as rpm packages.
 yum install rubygem-hammer_cli_foreman
 ```
 
- - 1:1 bridge to [katello cli](https://github.com/Katello/katello)
+ - commands for katello [katello cli](https://github.com/Katello/katello)
 
 ```bash
-yum install rubygem-hammer_cli_katello_bridge
+yum install rubygem-hammer_cli_katello
 ```
 
 To install any other hammer plugin just make sure the appropriate gem is installed and follow with the configuration.
@@ -107,7 +107,7 @@ $ apt-get install ruby-hammer-cli-foreman
  - 1:1 bridge to [katello cli](https://github.com/Katello/katello)
 
 ```bash
-$ apt-get install ruby-hammer-cli-katello-bridge
+$ apt-get install ruby-hammer-cli-katello
 ```
 
 To install any other hammer plugin just make sure the appropriate gem is installed and follow with the configuration.
@@ -135,7 +135,7 @@ $ gem install hammer_cli_foreman
  - 1:1 bridge to [katello cli](https://github.com/Katello/katello)
 
 ```bash
-$ gem install hammer_cli_katello_bridge
+$ gem install hammer_cli_katello
 ```
 
 To install any other hammer plugin just install the appropriate gem and follow with the configuration.
@@ -208,15 +208,12 @@ Plugin specific configuration should be nested under plugin's name.
 ```yaml
 :modules:
     - hammer_cli_foreman
-    - hammer_cli_katello_bridge
+    - hammer_cli_katello
 
 :foreman:
     :host: 'https://localhost/'
     :username: 'admin'
     :password: 'changeme'
-
-:katello_bridge:
-    :cli_description: '/home/mbacovsk/work/theforeman/hammer-cli-katello-bridge/katello.json'
 
 
 :log_dir: '/var/log/foreman/'
@@ -238,67 +235,55 @@ Parameters:
     [ARG] ...                     subcommand arguments
 
 Subcommands:
-    architecture                  Manipulate Foreman's architectures.
-    global_parameter              Manipulate Foreman's global parameters.
-    compute_resource              Manipulate Foreman's compute resources.
-    domain                        Manipulate Foreman's domains.
-    fact                          Search Foreman's facts.
+    activation-key                Manipulate activation keys.
+    architecture                  Manipulate architectures.
+    compute_resource              Manipulate compute resources.
+    domain                        Manipulate domains.
+    environment                   Manipulate environments.
+    fact                          Search facts.
+    global_parameter              Manipulate global parameters.
+    gpg                           manipulate GPG Key actions on the server
+    host                          Manipulate hosts.
+    hostgroup                     Manipulate hostgroups.
+    lifecycle-environment         manipulate lifecycle_environments on the server
+    location                      Manipulate locations.
+    medium                        Manipulate installation media.
+    model                         Manipulate hardware models.
+    organization                  Manipulate organizations
+    os                            Manipulate operating system.
+    partition_table               Manipulate partition tables.
+    ping                          get the status of the server
+    product                       Manipulate products.
+    provider                      Manipulate providers
+    proxy                         Manipulate smart proxies.
+    puppet_class                  Search puppet modules.
     report                        Browse and read reports.
-    puppet_class                  Browse and read reports.
-    host                          Manipulate Foreman's hosts.
-    hostgroup                     Manipulate Foreman's hostgroups.
-    location                      Manipulate Foreman's locations.
-    medium                        Manipulate Foreman's installation media.
-    model                         Manipulate Foreman's hardware models.
-    os                            Manipulate Foreman's operating system.
-    organization                  Manipulate Foreman's organizations.
-    partition_table               Manipulate Foreman's partition tables.
-    proxy                         Manipulate Foreman's smart proxies.
-    subnet                        Manipulate Foreman's subnets.
-    template                      Manipulate Foreman's config templates.
-    about                         status of the katello server and its subcomponents
-    activation_key                activation key specific actions in the katello server
-    admin                         various administrative actions
-    changeset                     changeset specific actions in the katello server
-    client                        client specific actions in the katello server
-    content                       content namespace command
-    distribution                  repo specific actions in the katello server
-    distributor                   distributor specific actions in the katello server
-    environment                   environment specific actions in the katello server
-    errata                        errata specific actions in the katello server
-    gpg_key                       GPG key specific actions in the katello server
-    node                          node specific actions in the katello server
-    org                           organization specific actions in the katello server
-    package                       package specific actions in the katello server
-    package_group                 package group specific actions in the katello server
-    permission                    permission specific actions in the katello server
-    ping                          get the status of the katello server
-    product                       product specific actions in the katello server
-    provider                      provider specific actions in the katello server
-    puppet_module                 puppet module specific actions in the katello server
-    repo                          repo specific actions in the katello server
-    shell                         run the cli as a shell
-    sync_plan                     synchronization plan specific actions in the katello server
-    system                        system specific actions in the katello server
-    system_group                  system group specific actions in the katello server
-    task                          commands for retrieving task information
-    user                          user specific actions in the katello server
-    user_role                     user role specific actions in the katello server
-    version                       get the version of the katello server
+    repository                    Manipulate repositories
+    repository-set                manipulate repository sets on the server
+    sc_param                      Manipulate smart class parameters.
+    shell                         Interactive shell
+    subnet                        Manipulate subnets.
+    subscription                  Manipulate subscriptions.
+    system                        manipulate systems on the server
+    systemgroup                   Manipulate system groups
+    task                          Tasks related actions.
+    template                      Manipulate config templates.
+    user                          Manipulate users.
 
 Options:
-    -v, --verbose                 be verbose
-    -c, --config CFG_FILE         path to custom config file
-    -u, --username USERNAME       username to access the remote system
-    -p, --password PASSWORD       password to access the remote system
-    --version                     show version
-    --show-ids                    Show ids of associated resources
-    --csv                         Output as CSV (same as --adapter=csv)
-    --output ADAPTER              Set output format. One of [base, table, silent, csv]
-    --csv-separator SEPARATOR     Character to separate the values
-    -P, --ask-pass                Ask for password
     --autocomplete LINE           Get list of possible endings
+    --csv                         Output as CSV (same as --output=csv)
+    --csv-separator SEPARATOR     Character to separate the values
+    --interactive INTERACTIVE     Explicitly turn interactive mode on/off
+                                  One of true/false, yes/no, 1/0.
+    --output ADAPTER              Set output format. One of [base, table, silent, csv]
+    --show-ids                    Show ids of associated resources
+    --version                     show version
+    -c, --config CFG_FILE         path to custom config file
     -h, --help                    print help
+    -p, --password PASSWORD       password to access the remote system
+    -u, --username USERNAME       username to access the remote system
+    -v, --verbose                 be verbose
 ```
 
 
