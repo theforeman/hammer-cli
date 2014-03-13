@@ -82,9 +82,13 @@ module HammerCLI
     def execute
       ShellMainCommand.load_commands(HammerCLI::MainCommand)
 
-      Readline.completion_append_character = ''
-      Readline.completer_word_break_characters = ' ='
-      Readline.completion_proc = complete_proc
+      if RUBY_VERSION >= "1.9"
+        Readline.completion_append_character = ''
+        Readline.completer_word_break_characters = ' ='
+        Readline.completion_proc = complete_proc
+      else
+        Readline.completion_proc = lambda {}
+      end
 
       stty_save = `stty -g`.chomp
 
@@ -115,6 +119,7 @@ module HammerCLI
     def print_welcome_message
       print_message(_("Welcome to the hammer interactive shell"))
       print_message(_("Type 'help' for usage information"))
+      print_message(_("Command completion is disabled on ruby < 1.9 due to compatibility problems.")) if RUBY_VERSION < "1.9"
     end
 
     def common_prefix(results)
