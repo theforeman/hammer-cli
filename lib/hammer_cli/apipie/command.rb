@@ -65,9 +65,9 @@ module HammerCLI::Apipie
     private
 
     def self.setup_identifier_options
-      identifier_option(:id, "resource id", declared_identifiers[:id]) if identifier? :id
-      identifier_option(:name, "resource name", declared_identifiers[:name]) if identifier? :name
-      identifier_option(:label, "resource label", declared_identifiers[:label]) if identifier? :label
+      identifier_option(:id, _("resource id"), declared_identifiers[:id]) if identifier? :id
+      identifier_option(:name, _("resource name"), declared_identifiers[:name]) if identifier? :name
+      identifier_option(:label, _("resource label"), declared_identifiers[:label]) if identifier? :label
     end
 
     def self.identifier_option(name, desc, attr_name)
@@ -85,8 +85,14 @@ module HammerCLI::Apipie
     def name_to_id(name, option_name, resource)
       results = resource.call(:index, :search => "#{option_name} = #{name}")[0]
       results = HammerCLIForeman.collection_to_common_format(results)
-      raise "#{resource.name} with #{option_name} '#{name}' not found" if results.empty?
-      raise "#{resource.name} with #{option_name} '#{name}' found more than once" if results.count > 1
+
+      msg_opts = {
+        :resource => resource.name,
+        :option => option_name,
+        :value => name
+      }
+      raise _("%{resource} with %{option} '%{value}' not found") % msg_opts if results.empty?
+      raise _("%{resource} with %{option} '%{value}' found more than once") % msg_opts if results.count > 1
       results[0]['id']
     end
 

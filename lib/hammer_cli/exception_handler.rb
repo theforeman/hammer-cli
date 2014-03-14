@@ -56,13 +56,13 @@ module HammerCLI
     end
 
     def handle_general_exception(e)
-      print_error "Error: " + e.message
+      print_error _("Error: %s") % e.message
       log_full_error e
       HammerCLI::EX_SOFTWARE
     end
 
     def handle_usage_exception(e)
-      print_error "Error: %s\n\nSee: '%s --help'" % [e.message, e.command.invocation_path]
+      print_error _("Error: %{message}\n\nSee: '%{path} --help'") % {:message => e.message, :path => e.command.invocation_path}
       log_full_error e
       HammerCLI::EX_USAGE
     end
@@ -79,7 +79,7 @@ module HammerCLI
     end
 
     def handle_unauthorized(e)
-      print_error "Invalid username or password"
+      print_error _("Invalid username or password")
       log_full_error e
       HammerCLI::EX_UNAUTHORIZED
     end

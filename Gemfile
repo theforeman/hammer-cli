@@ -2,6 +2,9 @@ source "http://rubygems.org"
 
 gemspec
 
+# for generating i18n files, gettext > 3.0 dropped ruby 1.8 support
+gem 'gettext', '~> 2.0'
+
 group :test do
   gem 'rake'
   gem 'thor'

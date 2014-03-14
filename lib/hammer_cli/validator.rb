@@ -38,7 +38,7 @@ module HammerCLI
 
       def get_option(name)
         name = name.to_s
-        raise "Unknown option name '%s'" % name unless @options.has_key? name
+        raise _("Unknown option name '%s'") % name unless @options.has_key? name
         @options[name]
       end
 
@@ -59,8 +59,8 @@ module HammerCLI
 
       def initialize(options, to_check)
         super(options, to_check)
-        @rejected_msg = "You can't set all options %s at one time"
-        @required_msg = "Options %s are required"
+        @rejected_msg = _("You can't set all options %s at one time")
+        @required_msg = _("Options %s are required")
       end
 
       def exist?
@@ -76,8 +76,8 @@ module HammerCLI
 
       def initialize(options, to_check)
         super(options, to_check)
-        @rejected_msg = "You can't set any of options %s"
-        @required_msg = "At least one of options %s is required"
+        @rejected_msg = _("You can't set any of options %s")
+        @required_msg = _("At least one of options %s is required")
       end
 
       def exist?

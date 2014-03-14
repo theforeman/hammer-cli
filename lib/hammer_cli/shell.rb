@@ -7,7 +7,7 @@ module HammerCLI
 
     class HelpCommand < AbstractCommand
       command_name "help"
-      desc "Print help for commands"
+      desc _("Print help for commands")
 
       parameter "[COMMAND] ...", "command"
 
@@ -19,7 +19,7 @@ module HammerCLI
 
     class ExitCommand < AbstractCommand
       command_name "exit"
-      desc "Exit interactive shell"
+      desc _("Exit interactive shell")
 
       def execute
         exit HammerCLI::EX_OK
@@ -82,9 +82,13 @@ module HammerCLI
     def execute
       ShellMainCommand.load_commands(HammerCLI::MainCommand)
 
-      Readline.completion_append_character = ''
-      Readline.completer_word_break_characters = ' ='
-      Readline.completion_proc = complete_proc
+      if RUBY_VERSION >= "1.9"
+        Readline.completion_append_character = ''
+        Readline.completer_word_break_characters = ' ='
+        Readline.completion_proc = complete_proc
+      else
+        Readline.completion_proc = lambda {}
+      end
 
       stty_save = `stty -g`.chomp
 
@@ -113,8 +117,9 @@ module HammerCLI
     end
 
     def print_welcome_message
-      print_message("Welcome to the hammer interactive shell")
-      print_message("Type 'help' for usage information")
+      print_message(_("Welcome to the hammer interactive shell"))
+      print_message(_("Type 'help' for usage information"))
+      print_message(_("Command completion is disabled on ruby < 1.9 due to compatibility problems.")) if RUBY_VERSION < "1.9"
     end
 
     def common_prefix(results)
@@ -130,5 +135,5 @@ module HammerCLI
 
   end
 
-  HammerCLI::MainCommand.subcommand "shell", "Interactive shell", HammerCLI::ShellCommand
+  HammerCLI::MainCommand.subcommand "shell", _("Interactive shell"), HammerCLI::ShellCommand
 end

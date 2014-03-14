@@ -1,0 +1,203 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the hammer-cli package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: hammer-cli 0.0.18\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-05 20:36+0000\n"
+"PO-Revision-Date: 2014-03-04 16:38+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: lib/hammer_cli/modules.rb:31
+msgid "Warning: An error occured while loading module %s"
+msgstr ""
+
+#: lib/hammer_cli/output/adapter/csv.rb:47
+msgid "Message"
+msgstr ""
+
+#: lib/hammer_cli/output/adapter/csv.rb:51
+msgid "Id"
+msgstr ""
+
+#: lib/hammer_cli/output/adapter/csv.rb:56
+msgid "Name"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:10
+msgid "Print help for commands"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:22
+msgid "Exit interactive shell"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:116
+msgid "Welcome to the hammer interactive shell"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:117
+msgid "Type 'help' for usage information"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:133
+msgid "Interactive shell"
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:26
+msgid "Comma-separated list of key=value."
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:35
+msgid "value must be defined as a comma-separated list of key=value"
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:46
+msgid "Comma separated list of values."
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:58
+msgid "One of true/false, yes/no, 1/0."
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:68
+msgid "value must be one of true/false, yes/no, 1/0"
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:107
+msgid "Unable to parse JSON input"
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:120
+msgid "One of %s"
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:127
+msgid "value must be one of '%s'"
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:146
+msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:153
+msgid "'%s' is not a valid date"
+msgstr ""
+
+#: lib/hammer_cli/options/option_definition.rb:62
+msgid "Can be specified multiple times. "
+msgstr ""
+
+#: lib/hammer_cli/options/option_definition.rb:63
+msgid "Default: "
+msgstr ""
+
+#: lib/hammer_cli/options/option_definition.rb:63
+msgid ", or "
+msgstr ""
+
+#: lib/hammer_cli/apipie/command.rb:68
+msgid "resource id"
+msgstr ""
+
+#: lib/hammer_cli/apipie/command.rb:69
+msgid "resource name"
+msgstr ""
+
+#: lib/hammer_cli/apipie/command.rb:70
+msgid "resource label"
+msgstr ""
+
+#: lib/hammer_cli/apipie/command.rb:94
+msgid "%{resource} with %{option} '%{value}' not found"
+msgstr ""
+
+#: lib/hammer_cli/apipie/command.rb:95
+msgid "%{resource} with %{option} '%{value}' found more than once"
+msgstr ""
+
+#: lib/hammer_cli/validator.rb:41
+msgid "Unknown option name '%s'"
+msgstr ""
+
+#: lib/hammer_cli/validator.rb:62
+msgid "You can't set all options %s at one time"
+msgstr ""
+
+#: lib/hammer_cli/validator.rb:63
+msgid "Options %s are required"
+msgstr ""
+
+#: lib/hammer_cli/validator.rb:79
+msgid "You can't set any of options %s"
+msgstr ""
+
+#: lib/hammer_cli/validator.rb:80
+msgid "At least one of options %s is required"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:7
+msgid "be verbose"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:8
+msgid "path to custom config file"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:10
+msgid "username to access the remote system"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:12
+msgid "password to access the remote system"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:15
+msgid "show version"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:24
+msgid "Show ids of associated resources"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:26
+msgid "Explicitly turn interactive mode on/off"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:30
+msgid "Output as CSV (same as --output=csv)"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:31
+msgid "Set output format. One of [%s]"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:34
+msgid "Character to separate the values"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:38
+msgid "Get list of possible endings"
+msgstr ""
+
+#: lib/hammer_cli/exception_handler.rb:59
+msgid "Error: %s"
+msgstr ""
+
+#: lib/hammer_cli/exception_handler.rb:65
+msgid "Error: %s\\n\\nSee: '%s --help'"
+msgstr ""
+
+#: lib/hammer_cli/exception_handler.rb:82
+msgid "Invalid username or password"
+msgstr ""

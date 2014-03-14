@@ -5,15 +5,17 @@ require 'clamp'
 require 'highline'
 HighLine.color_scheme = HighLine::SampleColorScheme.new
 
+# load i18n to get translations
+require 'hammer_cli/i18n'
 
 require 'hammer_cli/options/normalizers'
 # create fake command instance to use some global args before we start
 class PreParser < Clamp::Command
-  option ["-v", "--verbose"], :flag, "be verbose"
-  option ["-c", "--config"], "CFG_FILE", "path to custom config file"
-  option ["-u", "--username"], "USERNAME", "username to access the remote system"
-  option ["-p", "--password"], "PASSWORD", "password to access the remote system"
-  option ["--interactive"], "INTERACTIVE", "Explicitly turn interactive mode on/off" do |value|
+  option ["-v", "--verbose"], :flag, _("be verbose")
+  option ["-c", "--config"], "CFG_FILE", _("path to custom config file")
+  option ["-u", "--username"], "USERNAME", _("username to access the remote system")
+  option ["-p", "--password"], "PASSWORD", _("password to access the remote system")
+  option ["--interactive"], "INTERACTIVE", _("Explicitly turn interactive mode on/off") do |value|
     bool_normalizer = HammerCLI::Options::Normalizers::Bool.new
     bool_normalizer.format(value)
   end
@@ -56,6 +58,8 @@ end
 require 'hammer_cli/version'
 hammer_version = HammerCLI.version.to_s
 logger.info "Initialization of Hammer CLI (#{hammer_version}) has started..."
+logger.debug "Running at ruby #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
+
 
 # log which config was loaded (now when we have logging)
 HammerCLI::Settings.path_history.each do |path|
@@ -72,6 +76,12 @@ rescue => e
   handler = HammerCLI::ExceptionHandler.new(:context => {}, :adapter => :base)
   handler.handle_exception(e)
   exit HammerCLI::EX_SOFTWARE
+end
+
+# log information about locale
+logger.debug "Using locale '#{HammerCLI::I18n.locale}'"
+HammerCLI::I18n.domains.each do |domain|
+  logger.debug "'#{domain.type}' files for locale domain '#{domain.domain_name}' loaded from '#{File.expand_path(domain.locale_dir)}'"
 end
 
 exit HammerCLI::MainCommand.run || HammerCLI::EX_OK
