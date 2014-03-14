@@ -56,6 +56,19 @@ describe HammerCLI::Output::Adapter::CSValues do
         out, err = capture_io { adapter.print_collection(fields, data) }
         out.must_match(/.*-DOT-.*/)
       end
+
+      it "should not replace nil with empty string before it applies formatters" do
+        class NilFormatter < HammerCLI::Output::Formatters::FieldFormatter
+          def format(data)
+            'NIL' if data.nil?
+          end
+        end
+
+        adapter = HammerCLI::Output::Adapter::CSValues.new({}, { :Field => [ NilFormatter.new ]})
+        nil_data = HammerCLI::Output::RecordCollection.new [{ :name => nil }]
+        out, err = capture_io { adapter.print_collection([field_name], nil_data) }
+        out.must_match(/.*NIL.*/)
+      end
     end
   end
 
