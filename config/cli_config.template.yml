@@ -1,13 +1,3 @@
-:modules:
-#    - hammer_cli_foreman
-#    - hammer_cli_katello
-
-:foreman:
-  :host: 'https://localhost/'
-  :username: 'admin'
-  :password: 'changeme'
-
-
 :ui:
   :interactive: true
   :per_page: 20

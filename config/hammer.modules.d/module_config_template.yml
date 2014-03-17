@@ -1,0 +1,4 @@
+# :sample_module:
+#   :enable_module: false
+#   :some_config:   'some_value'
+

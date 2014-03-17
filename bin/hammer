@@ -30,13 +30,13 @@ end
 # load user's settings
 require 'hammer_cli/settings'
 
-CFG_PATH = ['./config/cli_config.yml', '~/.foreman/cli_config.yml', '/etc/foreman/cli_config.yml', "#{::RbConfig::CONFIG['sysconfdir']}/foreman/cli_config.yml"].uniq
+CFG_PATH = ['./config/', '~/.foreman/', '/etc/foreman/', "#{::RbConfig::CONFIG['sysconfdir']}/foreman/"].uniq
 
 if preparser.config
   CFG_PATH.unshift preparser.config
 end
 
-HammerCLI::Settings.load_from_file CFG_PATH
+HammerCLI::Settings.load_from_paths CFG_PATH
 
 # store username and password in settings
 HammerCLI::Settings.load({

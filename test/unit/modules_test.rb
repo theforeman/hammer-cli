@@ -18,7 +18,8 @@ describe HammerCLI::Modules do
   before :each do
     HammerCLI::Settings.clear
     HammerCLI::Settings.load({
-      :modules => ["hammer_cli_tom", "hammer_cli_jerry"]
+      :tom => { :enable_module => true },
+      :jerry => { :enable_module => true },
     })
 
     @log_output = Logging::Appenders['__test__']
@@ -27,12 +28,21 @@ describe HammerCLI::Modules do
 
   describe "names" do
     it "must return list of modules" do
-      HammerCLI::Modules.names.must_equal ["hammer_cli_tom", "hammer_cli_jerry"]
+      HammerCLI::Modules.names.sort.must_equal ["hammer_cli_tom", "hammer_cli_jerry"].sort
     end
 
     it "must return empty array by default" do
       HammerCLI::Settings.clear
       HammerCLI::Modules.names.must_equal []
+    end
+
+    it "must work with old modules config" do
+      HammerCLI::Settings.clear
+      HammerCLI::Settings.load({
+        :tom => {},
+        :modules => ['hammer_cli_tom', 'hammer_cli_jerry'],
+      })
+      HammerCLI::Modules.names.sort.must_equal ["hammer_cli_tom", "hammer_cli_jerry"].sort
     end
   end
 

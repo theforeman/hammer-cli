@@ -43,6 +43,12 @@ describe HammerCLI::Settings do
     settings.get(:b).must_equal 2
   end
 
+  it "dumps all settings" do
+    data = {:a => 1, :b => 2}
+    settings.load(data)
+    settings.dump.must_equal data
+  end
+
   it "merges settings on second load" do
     settings.load({:a => 1, :b => 2, :d => {:e => 4, :f => 5}})
     settings.load({:b => 'B', :c => 'C', :d => {:e => 'E'}})
@@ -60,7 +66,7 @@ describe HammerCLI::Settings do
     settings.get(:b).must_be_nil
   end
 
-  context "load from file" do
+  context "load from paths" do
 
     let(:config1) do
       config1 = Tempfile.new 'config'
@@ -85,22 +91,47 @@ describe HammerCLI::Settings do
     end
 
     it "loads settings from file" do
-      settings.load_from_file [config2.path, config1.path]
+      settings.load_from_paths [config2.path, config1.path]
       settings.get(:host).must_equal 'https://localhost.localdomain/'
       settings.get(:username).must_equal 'admin'
     end
 
     it "clears path history on clear invokation" do
-      settings.load_from_file [config2.path]
+      settings.load_from_paths [config2.path]
       settings.clear
       settings.path_history.must_equal []
     end
 
     it "store config path history" do
-      settings.load_from_file [config2.path, config1.path]
+      settings.load_from_paths [config2.path, config1.path]
       settings.path_history.must_equal [config1.path, config2.path]
     end
 
+    it "loads settings from dir" do
+      dir = Dir.mktmpdir
+      begin
+        File.open(File.join(dir, "cli_config.yml"), "w") do |f|
+          f.write(":param1: 'value1'\n")
+        end
+        module_dir = File.join(dir, 'hammer.modules.d')
+        Dir.mkdir(module_dir)
+        File.open(File.join(module_dir, "cli_config.yml"), "w") do |f|
+          f.write(":module:\n")
+          f.write("  :param2: 'value2'\n")
+        end
+
+        settings.load_from_paths [config1.path, dir]
+
+        settings.get(:host).must_equal 'https://localhost/'
+        settings.get(:username).must_equal 'admin'
+        settings.get(:param1).must_equal 'value1'
+        settings.get(:module, :param2).must_equal 'value2'
+
+      ensure
+        FileUtils.remove_entry dir
+      end
+
+    end
   end
 end
 

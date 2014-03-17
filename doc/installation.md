@@ -168,31 +168,31 @@ and optionally other plugins via any of the methods mentioned above.
 Configuration
 -------------
 
-### Format and locations
+### Locations
 
-Configuration is set based on the following files, loaded in this order:
+Configuration is by default looked for in the following directories, loaded in this order:
 
- - ```RbConfig::CONFIG['sysconfdir']/foreman/cli_config.yml``` (The actual value depends on your operatingsystem and ruby defaults.)
- - ```/etc/foreman/cli_config.yml```
- - ```~/.foreman/cli_config.yml```
- - ```./config/cli_config.yml``` (config dir in CWD)
- - custom location specified on command line - ```-c CONF_FILE_PATH```
+ - ```RbConfig::CONFIG['sysconfdir']/foreman/``` (The actual value depends on your operatingsystem and ruby defaults.)
+ - ```/etc/foreman/```
+ - ```~/.foreman/```
+ - ```./config/``` (config dir in CWD)
+ - custom location (file or directory) specified on command line - ```-c CONF_FILE_PATH```
 
-Later files have precedence if they redefines the same option.
+In each of these directories hammer is trying to load ```cli_config.yml``` and anything in
+the ```hammer.modules.d``` subdirectory which is place for specific configuration of hammer modules.
 
-Hammer uses yaml formatting for its configuration. The config file template is contained in the hammer_cli gem
+Later directories and files have precedence if they redefine the same option. Files from ```hammer.modules.d```
+are loaded in alphabetical order.
+
+### Format
+
+Hammer uses yaml formatting for its configuration. The configuration templates are contained in the hammer_cli gem
 
  ```bash
-gem contents hammer_cli|grep cli_config.template.yml
+gem contents hammer_cli|grep template.yml
 ```
 and can be copied to one of the locations above and changed as needed. The packaged version of hammer copies the template to /etc for you.
 
-
-### Plugins
-
-Plugins are disabled by default. You have to edit the config file and enable them manually under ```modules``` option, as can be seen in the sample config below.
-
-Plugin specific configuration should be nested under plugin's name.
 
 ### Options
 
@@ -201,23 +201,44 @@ Plugin specific configuration should be nested under plugin's name.
  - ```:log_owner: <owner>``` - logfile owner
  - ```:log_group: <group>``` - logfile group
  - ```:log_size: 1048576``` - size in bytes, when exceeded the log rotates. Default is 1MB
- - ```:watch_plain: false``` - turn on/off syntax highlighting of data being logged in debug mode
+ - ```:watch_plain: <bool>``` - turn on/off syntax highlighting of data being logged in debug mode
+ - ```:log_api_calls: <bool>``` - turn on logging of the communication with API (data sent and received)
 
-### Sample config
+In the ```:ui``` section there is
+
+ - ```:interactive: <bool>``` - whether to ask user for input (pagination, passwords)
+ - ```:per_page: <records>``` - number of records per page if server sends paginated data
+ - ```:history_file: <path>``` - file where the hammer shell store its history
+
+
+#### Sample config
 
 ```yaml
-:modules:
-    - hammer_cli_foreman
-    - hammer_cli_katello
+:ui:
+  :interactive: true
+  :per_page: 20
+  :history_file: '~/.foreman/history'
 
+:watch_plain: false
+
+:log_dir: '~/.foreman/log'
+:log_level: 'error'
+:log_api_calls: false
+```
+
+### Plugins
+
+Plugins are disabled by default. To enable plugin create configuration file in ```hammer.modules.d``` and add```:enable_plugin: true``` in it. Plugin specific configuration should be nested under plugin's name (without the ```hammer_cli_``` prefix).
+
+In the example we assume the gem ```hammer_cli_foreman``` with the Foreman plugin is installed. Then the plugin configuration
+in ```~/.foreman/hammer.plugins.d/foreman.yml``` should look as follows:
+
+```yaml
 :foreman:
+    :enable_module: true
     :host: 'https://localhost/'
     :username: 'admin'
     :password: 'changeme'
-
-
-:log_dir: '/var/log/foreman/'
-:log_level: 'debug'
 ```
 
 Use the hammer
