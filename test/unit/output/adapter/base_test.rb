@@ -99,7 +99,7 @@ describe HammerCLI::Output::Adapter::Base do
 
       expected_output = [
         "Address: ",
-        "  City: New York",
+        "    City: New York",
         "\n"
       ].join("\n")
 
@@ -113,10 +113,10 @@ describe HammerCLI::Output::Adapter::Base do
 
       expected_output = [
         "Contacts: ",
-        "  Description: personal email",
-        "  Contact:     john.doe@doughnut.com",
-        "  Description: telephone",
-        "  Contact:     123456789",
+        " 1) Description: personal email",
+        "    Contact:     john.doe@doughnut.com",
+        " 2) Description: telephone",
+        "    Contact:     123456789",
         "\n"
       ].join("\n")
 
@@ -149,8 +149,8 @@ describe HammerCLI::Output::Adapter::Base do
 
       expected_output = [
         "Parameters: ",
-        "  weight => 83",
-        "  size => 32",
+        " 1) weight => 83",
+        " 2) size => 32",
         "\n"
       ].join("\n")
 
