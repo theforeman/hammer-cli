@@ -14,7 +14,6 @@ module HammerCLI::Apipie
       protected
       def retrieve_data
         raise "resource or action not defined" unless self.class.resource_defined?
-        logger.debug request_params.ai
         if resource && resource.has_action?(action)
           resource.call(action, request_params, request_headers)
         else
