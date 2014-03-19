@@ -1,7 +1,7 @@
 module HammerCLI::Output::Adapter
   class Base < Abstract
 
-    GROUP_INDENT = " "*2
+    GROUP_INDENT = " "*4
     LABEL_DIVIDER = ": "
 
     def tags
@@ -56,9 +56,14 @@ module HammerCLI::Output::Adapter
       if field.is_a? Fields::ContainerField
         output = ""
 
+        idx = 0
         data = [data] unless data.is_a? Array
         data.each do |d|
-          output += render_fields(field.fields, d).indent_with(GROUP_INDENT)
+          idx += 1
+          fields_output = render_fields(field.fields, d).indent_with(GROUP_INDENT)
+          fields_output = fields_output.sub(/^[ ]{4}/, " %-3s" % "#{idx})") if field.is_a? Fields::Collection
+
+          output += fields_output
           output += "\n"
         end
 
