@@ -14,7 +14,12 @@ module HammerCLI::Apipie
       protected
       def retrieve_data
         raise "resource or action not defined" unless self.class.resource_defined?
-        resource.call(action, request_params, request_headers)[0]
+        logger.debug request_params.ai
+        if resource && resource.has_action?(action)
+          resource.call(action, request_params, request_headers)
+        else
+          raise HammerCLI::OperationNotSupportedError, "The server does not support such operation."
+        end
       end
 
       def print_data(records)

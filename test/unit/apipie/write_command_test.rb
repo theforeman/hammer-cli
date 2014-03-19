@@ -1,11 +1,14 @@
 require File.join(File.dirname(__FILE__), '../test_helper')
-require File.join(File.dirname(__FILE__), 'fake_api')
 
 describe HammerCLI::Apipie::WriteCommand do
 
+  class TestWriteCommand < HammerCLI::Apipie::WriteCommand
+    def self.resource_config
+      { :apidoc_cache_dir => 'test/unit/fixtures/apipie', :apidoc_cache_name => 'architectures' }
+    end
+  end
 
-  let(:ctx) { { :interactive => false } }
-  let(:cmd) { HammerCLI::Apipie::WriteCommand.new("", ctx) }
+  let(:cmd) { TestWriteCommand.new("") }
   let(:cmd_run) { cmd.run([]) }
 
   it "should raise exception when no action is defined" do
@@ -17,11 +20,8 @@ describe HammerCLI::Apipie::WriteCommand do
 
     before :each do
       HammerCLI::Connection.drop_all
-      cmd.class.resource FakeApi::Resources::Architecture, "some_action"
-
-      arch = FakeApi::Resources::Architecture.new
-      arch.expects(:some_action).returns([])
-      FakeApi::Resources::Architecture.stubs(:new).returns(arch)
+      ApipieBindings::API.any_instance.stubs(:call).returns([])
+      cmd.class.resource :architectures, :index
     end
 
     it "should perform a call to api when resource is defined" do

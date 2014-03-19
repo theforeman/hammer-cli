@@ -83,7 +83,7 @@ module HammerCLI::Apipie
     end
 
     def name_to_id(name, option_name, resource)
-      results = resource.call(:index, :search => "#{option_name} = #{name}")[0]
+      results = resource.call(:index, :search => "#{option_name} = #{name}")
       results = HammerCLIForeman.collection_to_common_format(results)
 
       msg_opts = {

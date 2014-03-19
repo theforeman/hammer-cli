@@ -1,0 +1,153 @@
+{
+    "docs": {
+        "api_url": "/api",
+        "copyright": "",
+        "doc_url": "/apidoc/v2",
+        "info": "Another API description",
+        "name": "Foreman",
+        "resources": {
+            "architectures": {
+                "api_url": "/api",
+                "doc_url": "/apidoc/v2/architectures",
+                "formats": null,
+                "full_description": null,
+                "methods": [
+                    {
+                        "apis": [
+                            {
+                                "api_url": "/api/architectures",
+                                "http_method": "GET",
+                                "short_description": "List all architectures."
+                            }
+                        ],
+                        "doc_url": "/apidoc/v2/architectures/index",
+                        "errors": [],
+                        "examples": [
+                            "GET /api/architectures\n200\n[\n  {\n    \"architecture\": {\n      \"name\": \"s390\",\n      \"id\": 381564594,\n      \"updated_at\": \"2012-12-18T15:24:42Z\",\n      \"operatingsystem_ids\": [],\n      \"created_at\": \"2012-12-18T15:24:42Z\"\n    }\n  },\n  {\n    \"architecture\": {\n      \"name\": \"sparc\",\n      \"id\": 331892513,\n      \"updated_at\": \"2012-12-18T15:24:42Z\",\n      \"operatingsystem_ids\": [\n        442321401\n      ],\n      \"created_at\": \"2012-12-18T15:24:42Z\"\n    }\n  },\n  {\n    \"architecture\": {\n      \"name\": \"x86_64\",\n      \"id\": 501905019,\n      \"updated_at\": \"2012-12-18T15:24:42Z\",\n      \"operatingsystem_ids\": [\n        331303656,\n        309172073,\n        1073012828\n      ],\n      \"created_at\": \"2012-12-18T15:24:42Z\"\n    }\n  }\n]"
+                        ],
+                        "formats": null,
+                        "full_description": "",
+                        "name": "index",
+                        "params": [
+                            {
+                                "allow_nil": false,
+                                "description": "\n<p>filter results</p>\n",
+                                "expected_type": "string",
+                                "full_name": "search",
+                                "name": "search",
+                                "required": false,
+                                "validator": "Must be String"
+                            },
+                            {
+                                "allow_nil": false,
+                                "description": "\n<p>sort results</p>\n",
+                                "expected_type": "string",
+                                "full_name": "order",
+                                "name": "order",
+                                "required": false,
+                                "validator": "Must be String"
+                            },
+                            {
+                                "allow_nil": false,
+                                "description": "\n<p>paginate results</p>\n",
+                                "expected_type": "string",
+                                "full_name": "page",
+                                "name": "page",
+                                "required": false,
+                                "validator": "Must be String"
+                            },
+                            {
+                                "allow_nil": false,
+                                "description": "\n<p>number of entries per request</p>\n",
+                                "expected_type": "string",
+                                "full_name": "per_page",
+                                "name": "per_page",
+                                "required": false,
+                                "validator": "Must be String"
+                            }
+                        ],
+                        "see": []
+                    },
+                    {
+                        "apis": [
+                            {
+                                "api_url": "/api/architectures/:id",
+                                "http_method": "GET",
+                                "short_description": "Show an architecture."
+                            }
+                        ],
+                        "doc_url": "/apidoc/v2/architectures/show",
+                        "errors": [],
+                        "examples": [
+                            "GET /api/architectures/x86_64\n200\n{\n  \"architecture\": {\n    \"name\": \"x86_64\",\n    \"id\": 501905019,\n    \"updated_at\": \"2012-12-18T15:24:42Z\",\n    \"operatingsystem_ids\": [\n      309172073,\n      1073012828,\n      331303656\n    ],\n    \"created_at\": \"2012-12-18T15:24:42Z\"\n  }\n}"
+                        ],
+                        "formats": null,
+                        "full_description": "",
+                        "name": "show",
+                        "params": [
+                            {
+                                "allow_nil": false,
+                                "description": "",
+                                "expected_type": "string",
+                                "full_name": "id",
+                                "name": "id",
+                                "required": true,
+                                "validator": "Must be an identifier, string from 1 to 128 characters containing only alphanumeric characters, space, underscore(_), hypen(-) with no leading or trailing space."
+                            }
+                        ],
+                        "see": []
+                    },
+                    {
+                        "apis": [
+                            {
+                                "api_url": "/api/architectures",
+                                "http_method": "POST",
+                                "short_description": "Create an architecture."
+                            }
+                        ],
+                        "doc_url": "/apidoc/v2/architectures/create",
+                        "errors": [],
+                        "examples": [
+                            "POST /api/architectures\n{\n  \"architecture\": {\n    \"name\": \"i386\"\n  }\n}\n200\n{\n  \"architecture\": {\n    \"name\": \"i386\",\n    \"id\": 501905020,\n    \"updated_at\": \"2012-12-18T15:24:43Z\",\n    \"operatingsystem_ids\": [],\n    \"created_at\": \"2012-12-18T15:24:43Z\"\n  }\n}"
+                        ],
+                        "formats": null,
+                        "full_description": "",
+                        "name": "create",
+                        "params": [
+                            {
+                                "allow_nil": false,
+                                "description": "",
+                                "expected_type": "hash",
+                                "full_name": "architecture",
+                                "name": "architecture",
+                                "params": [
+                                    {
+                                        "allow_nil": false,
+                                        "description": "",
+                                        "expected_type": "string",
+                                        "full_name": "architecture[name]",
+                                        "name": "name",
+                                        "required": true,
+                                        "validator": "Must be String"
+                                    },
+                                    {
+                                        "allow_nil": false,
+                                        "description": "\n<p>Operatingsystem ID\u2019s</p>\n",
+                                        "expected_type": "array",
+                                        "full_name": "architecture[operatingsystem_ids]",
+                                        "name": "operatingsystem_ids",
+                                        "required": false,
+                                        "validator": "Must be Array"
+                                    }
+                                ],
+                                "required": true,
+                                "validator": "Must be a Hash"
+                            }
+                        ],
+                        "see": []
+                    }
+                ]
+            }
+        }
+    }
+}

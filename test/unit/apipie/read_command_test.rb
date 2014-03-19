@@ -1,10 +1,15 @@
 require File.join(File.dirname(__FILE__), '../test_helper')
-require File.join(File.dirname(__FILE__), 'fake_api')
 
 
 describe HammerCLI::Apipie::ReadCommand do
 
-  let(:cmd_class) { HammerCLI::Apipie::ReadCommand.dup }
+  class TestReadCommand < HammerCLI::Apipie::ReadCommand
+    def self.resource_config
+      { :apidoc_cache_dir => 'test/unit/fixtures/apipie', :apidoc_cache_name => 'architectures' }
+    end
+  end
+
+  let(:cmd_class) { TestReadCommand.dup }
   let(:cmd) { cmd_class.new("", { :adapter => :silent, :interactive => false }) }
   let(:cmd_run) { cmd.run([]) }
 
@@ -16,12 +21,9 @@ describe HammerCLI::Apipie::ReadCommand do
   context "resource defined" do
 
     before :each do
-      cmd_class.resource FakeApi::Resources::Architecture, 'some_action'
       HammerCLI::Connection.drop_all
-
-      arch = FakeApi::Resources::Architecture.new
-      arch.expects(:some_action).returns([])
-      FakeApi::Resources::Architecture.stubs(:new).returns(arch)
+      ApipieBindings::API.any_instance.stubs(:call).returns([])
+      cmd_class.resource :architectures, :index
     end
 
     it "should perform a call to api when resource is defined" do

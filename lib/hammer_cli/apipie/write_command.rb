@@ -27,7 +27,11 @@ module HammerCLI::Apipie
     end
 
     def send_request
-      resource.call(action, request_params, request_headers)[0]
+      if resource && resource.has_action?(action)
+        resource.call(action, request_params, request_headers)
+      else
+        raise HammerCLI::OperationNotSupportedError, "The server does not support such operation."
+      end
     end
 
     def request_headers
