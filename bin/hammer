@@ -30,13 +30,23 @@ end
 # load user's settings
 require 'hammer_cli/settings'
 
-CFG_PATH = ['./config/', '~/.foreman/', '/etc/foreman/', "#{::RbConfig::CONFIG['sysconfdir']}/foreman/"].uniq
-
-if preparser.config
-  CFG_PATH.unshift preparser.config
+CFG_PATH_LEGACY = ['~/.foreman/', '/etc/foreman/', "#{::RbConfig::CONFIG['sysconfdir']}/foreman/"].uniq
+HammerCLI::Settings.load_from_paths CFG_PATH_LEGACY
+if HammerCLI::Settings.path_history.empty?
+  CFG_PATH = ['~/.hammer/', '/etc/hammer/', "#{::RbConfig::CONFIG['sysconfdir']}/hammer/"].uniq
+  HammerCLI::Settings.load_from_paths CFG_PATH
+else
+  warn _("Warning: Legacy config paths detected, move the following files")
+  HammerCLI::Settings.path_history.each { |p| warn "    #{p} -> #{p.gsub('hammer.modules.d', 'cli.modules.d').gsub('foreman/', 'hammer/')}"}
 end
 
-HammerCLI::Settings.load_from_paths CFG_PATH
+CFG_PATH_LOCAL = ['./config/']
+
+if preparser.config
+  CFG_PATH_LOCAL.unshift preparser.config
+end
+
+HammerCLI::Settings.load_from_paths CFG_PATH_LOCAL
 
 # store username and password in settings
 HammerCLI::Settings.load({

@@ -172,16 +172,16 @@ Configuration
 
 Configuration is by default looked for in the following directories, loaded in this order:
 
- - ```RbConfig::CONFIG['sysconfdir']/foreman/``` (The actual value depends on your operatingsystem and ruby defaults.)
- - ```/etc/foreman/```
- - ```~/.foreman/```
+ - ```RbConfig::CONFIG['sysconfdir']/hammer/``` (The actual value depends on your operatingsystem and ruby defaults.)
+ - ```/etc/hammer/```
+ - ```~/.hammer/```
  - ```./config/``` (config dir in CWD)
  - custom location (file or directory) specified on command line - ```-c CONF_FILE_PATH```
 
 In each of these directories hammer is trying to load ```cli_config.yml``` and anything in
-the ```hammer.modules.d``` subdirectory which is place for specific configuration of hammer modules.
+the ```cli.modules.d``` subdirectory which is place for specific configuration of hammer modules.
 
-Later directories and files have precedence if they redefine the same option. Files from ```hammer.modules.d```
+Later directories and files have precedence if they redefine the same option. Files from ```cli.modules.d```
 are loaded in alphabetical order.
 
 ### Format
@@ -196,7 +196,7 @@ and can be copied to one of the locations above and changed as needed. The packa
 
 ### Options
 
- - ```:log_dir: <path>``` - directory where the logs are stored. The default is ```/var/log/foreman/``` and the log file is named ```hammer.log```
+ - ```:log_dir: <path>``` - directory where the logs are stored. The default is ```/var/log/hammer/``` and the log file is named ```hammer.log```
  - ```:log_level: <level>``` - logging level. One of ```debug```, ```info```, ```warning```, ```error```, ```fatal```
  - ```:log_owner: <owner>``` - logfile owner
  - ```:log_group: <group>``` - logfile group
@@ -208,7 +208,7 @@ In the ```:ui``` section there is
 
  - ```:interactive: <bool>``` - whether to ask user for input (pagination, passwords)
  - ```:per_page: <records>``` - number of records per page if server sends paginated data
- - ```:history_file: <path>``` - file where the hammer shell store its history
+ - ```:history_file: <path>``` - file where the hammer shell store its history (default is ```~/.hammer_history```)
 
 
 #### Sample config
@@ -217,21 +217,21 @@ In the ```:ui``` section there is
 :ui:
   :interactive: true
   :per_page: 20
-  :history_file: '~/.foreman/history'
+  :history_file: '~/.hammer/history'
 
 :watch_plain: false
 
-:log_dir: '~/.foreman/log'
+:log_dir: '~/.hammer/log'
 :log_level: 'error'
 :log_api_calls: false
 ```
 
 ### Plugins
 
-Plugins are disabled by default. To enable plugin create configuration file in ```hammer.modules.d``` and add```:enable_plugin: true``` in it. Plugin specific configuration should be nested under plugin's name (without the ```hammer_cli_``` prefix).
+Plugins are disabled by default. To enable plugin create configuration file in ```cli.modules.d``` and add```:enable_plugin: true``` in it. Plugin specific configuration should be nested under plugin's name (without the ```hammer_cli_``` prefix).
 
 In the example we assume the gem ```hammer_cli_foreman``` with the Foreman plugin is installed. Then the plugin configuration
-in ```~/.foreman/hammer.plugins.d/foreman.yml``` should look as follows:
+in ```~/.hammer/cli.plugins.d/foreman.yml``` should look as follows:
 
 ```yaml
 :foreman:

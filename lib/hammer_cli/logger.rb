@@ -19,7 +19,7 @@ module HammerCLI
     pattern         = "[%5l %d %c] %m\n"
     COLOR_LAYOUT    = Logging::Layouts::Pattern.new(:pattern => pattern, :color_scheme => 'bright')
     NOCOLOR_LAYOUT  = Logging::Layouts::Pattern.new(:pattern => pattern, :color_scheme => nil)
-    DEFAULT_LOG_DIR = '/var/log/foreman'
+    DEFAULT_LOG_DIR = '/var/log/hammer'
 
     log_dir = File.expand_path(HammerCLI::Settings.get(:log_dir) || DEFAULT_LOG_DIR)
     begin
