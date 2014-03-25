@@ -1,13 +1,13 @@
 :ui:
   :interactive: true
   :per_page: 20
-  :history_file: '~/.foreman/history'
+  :history_file: '~/.hammer/history'
 
 
 # enable/disable color output of logger in Clamp commands
 :watch_plain: false
 
-:log_dir: '~/.foreman/log'
+:log_dir: '~/.hammer/log'
 :log_level: 'error'
 :log_api_calls: false
 #:log_owner: 'foreman'
