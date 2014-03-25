@@ -53,7 +53,8 @@ HammerCLI::Settings.load({
   :_params => {
     :username => preparser.username,
     :password => preparser.password,
-    :interactive => preparser.interactive
+    :interactive => preparser.interactive,
+    :verbose => preparser.verbose?
   }})
 
 # setup logging
@@ -63,6 +64,7 @@ logger = Logging.logger['Init']
 if preparser.verbose?
   root_logger = Logging.logger.root
   root_logger.appenders = root_logger.appenders << ::Logging.appenders.stderr(:layout => HammerCLI::Logger::COLOR_LAYOUT)
+  root_logger.level = 'debug'
 end
 
 require 'hammer_cli/version'
