@@ -113,7 +113,7 @@ describe HammerCLI::Settings do
         File.open(File.join(dir, "cli_config.yml"), "w") do |f|
           f.write(":param1: 'value1'\n")
         end
-        module_dir = File.join(dir, 'hammer.modules.d')
+        module_dir = File.join(dir, 'cli.modules.d')
         Dir.mkdir(module_dir)
         File.open(File.join(module_dir, "cli_config.yml"), "w") do |f|
           f.write(":module:\n")

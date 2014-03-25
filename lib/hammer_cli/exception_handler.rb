@@ -16,6 +16,7 @@ module HammerCLI
         [Clamp::UsageError, :handle_usage_exception],
         [RestClient::ResourceNotFound, :handle_not_found],
         [RestClient::Unauthorized, :handle_unauthorized],
+        [ApipieBindings::DocLoadingError, :handle_apipie_docloading_error],
       ]
     end
 
@@ -82,6 +83,15 @@ module HammerCLI
       print_error _("Invalid username or password")
       log_full_error e
       HammerCLI::EX_UNAUTHORIZED
+    end
+
+    def handle_apipie_docloading_error(e)
+      rake_command = "rake apipie:cache"
+      print_error _("Could not load API description from the server\n"\
+          "  - is your server down?\n"\
+          "  - was \"#{rake_command}\" run on the server when using apipie cache? (typical production settings))\n")
+      log_full_error e
+      HammerCLI::EX_CONFIG
     end
 
   end
