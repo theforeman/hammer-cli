@@ -99,21 +99,27 @@ describe HammerCLI::Modules do
     describe "module not found" do
       before :each do
         HammerCLI::Modules.stubs(:require_module).raises(LoadError)
-        @error_msg = "ERROR  Modules : Module hammer_cli_tom not found"
+        @error_msg = "ERROR  Modules : Error while loading module hammer_cli_tom"
       end
 
       it "must log an error if the load! fails" do
-        proc { HammerCLI::Modules.load!("hammer_cli_tom") }.must_raise LoadError
+        capture_io do
+          proc { HammerCLI::Modules.load!("hammer_cli_tom") }.must_raise LoadError
+        end
         @log_output.readline.strip.must_equal @error_msg
       end
 
       it "must log an error if the load fails" do
-        HammerCLI::Modules.load("hammer_cli_tom")
+        capture_io do
+          HammerCLI::Modules.load("hammer_cli_tom")
+        end
         @log_output.readline.strip.must_equal @error_msg
       end
 
       it "must return false when load fails" do
-        HammerCLI::Modules.load("hammer_cli_tom").must_equal false
+        capture_io do
+          HammerCLI::Modules.load("hammer_cli_tom").must_equal false
+        end
       end
     end
 

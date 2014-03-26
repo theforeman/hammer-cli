@@ -37,13 +37,11 @@ module HammerCLI
     def self.load!(name)
       begin
         require_module(name)
-      rescue LoadError => e
-        logger.error "Module #{name} not found"
-        raise e
       rescue Exception => e
         logger.error "Error while loading module #{name}"
-        logger.error e
         puts _("Warning: An error occured while loading module %s") % name
+        # with ModuleLoadingError we assume the error is already logged by the issuer
+        logger.error e unless e.is_a?(HammerCLI::ModuleLoadingError)
         raise e
       end
 
