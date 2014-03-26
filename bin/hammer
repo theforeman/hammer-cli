@@ -12,6 +12,7 @@ require 'hammer_cli/options/normalizers'
 # create fake command instance to use some global args before we start
 class PreParser < Clamp::Command
   option ["-v", "--verbose"], :flag, _("be verbose")
+  option ["-d", "--debug"], :flag, _("show debugging output")
   option ["-c", "--config"], "CFG_FILE", _("path to custom config file")
   option ["-u", "--username"], "USERNAME", _("username to access the remote system")
   option ["-p", "--password"], "PASSWORD", _("password to access the remote system")
@@ -54,17 +55,17 @@ HammerCLI::Settings.load({
     :username => preparser.username,
     :password => preparser.password,
     :interactive => preparser.interactive,
-    :verbose => preparser.verbose?
+    :verbose => preparser.verbose? || preparser.debug?
   }})
 
 # setup logging
 require 'hammer_cli/logger'
 logger = Logging.logger['Init']
 
-if preparser.verbose?
+if preparser.verbose? || preparser.debug?
   root_logger = Logging.logger.root
   root_logger.appenders = root_logger.appenders << ::Logging.appenders.stderr(:layout => HammerCLI::Logger::COLOR_LAYOUT)
-  root_logger.level = 'debug'
+  root_logger.level = 'debug' if preparser.debug?
 end
 
 require 'hammer_cli/version'
