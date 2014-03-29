@@ -13,7 +13,7 @@ touch ./lib/hammer_cli_hello/hello_world.rb
 # ./lib/hammer_cli_hello/hello_world.rb
 require 'hammer_cli'
 
-# it's a good practise to nest commands into modules
+# it's a good practice to nest commands into modules
 module HammerCLIHello
 
   # hammer commands must be descendants of AbstractCommand
@@ -97,7 +97,7 @@ for the full list of available exit codes.
 Our new command has only one option so far. It's `-h` which is built in for every command by default.
 Option declaration is the same as in clamp so please read it's
 [documentation](https://github.com/mdub/clamp/#declaring-options)
-on that topic. However unlike in Clamp, the option accessors in Hammer are created with prefix 'option_', to avoid
+on that topic. However, unlike in Clamp, the option accessors in Hammer are created with prefix 'option_', to avoid
 conflict with methods of the commands. So to access value of an `--name` option you have to call `option_name()`
 
 
@@ -139,10 +139,10 @@ First of all there is a dsl for validating combinations of options:
 validate_options do
   all(:option_name, :option_surname).required  # requires all the options
   option(:option_age).required          # requires a single option,
-                                 # equivalent of :required => true in option declaration
+                                        # equivalent of :required => true in option declaration
   any(:option_email, :option_phone).required   # requires at least one of the options
 
-  # Tt is possible to create more complicated constructs.
+  # It is possible to create more complicated constructs.
   # This example requires either the full address or nothing
   if any(:option_street, :option_city, :option_zip).exist?
     all(:option_street, :option_city, :option_zip).required
@@ -204,7 +204,7 @@ option "--attributes", "ATTRIBUTES", "Values of various attributes",
 `--attributes="material=unoptanium,thickness=3"` -> `{'material' => 'unoptanium', 'thickness' => '3'}`
 
 ### Adding subcommands
-Commands in the cli can be structured into a tree of parent commands (nodes) and subcommands (leaves).
+Commands in the CLI can be structured into a tree of parent commands (nodes) and subcommands (leaves).
 Neither the number of subcommands nor the nesting is limited. Please note that no parent command
 can perform any action and therefore it's useless to define `execute` method for them. This limit
 comes from Clamp's implementation of the command hierarchy.
@@ -247,7 +247,7 @@ Hello World!
 This is very typical usage of subcommands. When you create more of them it may feel a bit
 duplicit to always define the subcommand structure at the end of the class definition.
 Hammer provides utility methods for subcommand autoloading. This is handy especially
-when you have growing number of subcommands. See how it works in the following example:
+when you have a growing number of subcommands. See how it works in the following example:
 
 ```ruby
 module HammerCLIHello
@@ -307,7 +307,7 @@ a message in a log for debugging purposes.
 
 
 ### Removing subcommands
-If your plugin needs to disable existing subcommand, you can use `remove_subcommand` for this.
+If your plugin needs to disable an existing subcommand, you can use `remove_subcommand` for this.
 
 ```ruby
   HammerCLI::MainCommand.remove_subcommand 'say'
@@ -337,13 +337,13 @@ print_message(msg)
 ```
 
 #### Printing hash records
-Typical usage of a cli is interaction with some api. In many cases it's listing
-some records returned by the api.
+Typical usage of a CLI is interaction with some API. In many cases it's listing
+some records returned by the API.
 
 Hammer comes with support for selecting and formatting of hash record fields.
-You first create so called _output definition_ that you apply on your data. The result
-is a collection of fields each having its type. The collection is then passed to some
-_output adapter_ which handles the actuall formatting and printing.
+You first create a _output definition_ that you apply to your data. The result
+is a collection of fields, each having its type. The collection is then passed to an
+_output adapter_ which handles the actual formatting and printing.
 
 Hammer provides a DSL for defining the output. Next rather complex example will
 explain how to use it in action.
@@ -380,7 +380,7 @@ We can create an output definition that selects and formats some of the fields:
 class Command < HammerCLI::AbstractCommand
 
   output do
-    # Simple field with a label. The first parameter is key in the printed hash.
+    # Simple field with a label. The first parameter is the key in the printed hash.
     field :id, 'ID'
 
     # Fields can have types. The type determines how the field is printed.
@@ -403,7 +403,7 @@ class Command < HammerCLI::AbstractCommand
 
   def execute
     records = retrieve_data
-    print_records(         # <- printing utility of AbstractCommand
+    print_record(          # <- printing utility of AbstractCommand
       output_definition,   # <- method for accessing fields defined in the block 'output'
       records              # <- the data to print
     )
@@ -432,7 +432,7 @@ Contacts:
 Created At:    2012/12/18 15:25:00
 ```
 
-You can optionally use output definition from another command as a base and extend it with
+You can optionally use the output definition from another command as a base and extend it with
 additional fields. This is helpful when there are two commands, one listing brief data and
 another one showing details. Typically it's list and show.
 ```ruby
@@ -455,7 +455,7 @@ All Hammer field types are:
  * __KeyValue__ - Formats hashes containing `:name` and `:value`
  * __Collection__ - Enables to render subcollections. Takes a block with another output definition.
 
-The default adapter for every command is Base adapter. It is possible to override
+The default adapter for every command is the Base adapter. It is possible to override
 the default one by redefining command's method `adapter`.
 
 ```ruby
@@ -523,7 +523,7 @@ require 'hammer_cli_hello/hello_world'
 ```
 
 Centralized exception handling implies that you should raise exceptions on error states in your command
-rather than handle it and return error codes. This approach guarrantees that error messages are logged and
+rather than handle it and return error codes. This approach guarantees that error messages are logged and
 printed consistently and correct exit codes are returned.
 
 
@@ -546,6 +546,6 @@ HammerCLI::Settings.get(:log_dir)             # get a value
 HammerCLI::Settings.get(:hello_world, :name)  # get a nested value
 ```
 
-There's more ways where to place your config file for hammer.
+There are more possibilities where to place your config file for hammer.
 Read more in [the settings howto](https://github.com/theforeman/hammer-cli#configuration).
 

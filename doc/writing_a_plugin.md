@@ -4,7 +4,7 @@ Writing your own Hammer plugin
 In this tutorial we will create a simple hello world plugin.
 
 Hammer plugins are nothing but gems. Details on how to build a gem can be found for example at [rubygems.org](http://guides.rubygems.org/make-your-own-gem/).
-In the first part of this tutorial we will briefly guide you through the process of creating a very simple gem. First of all you will need rubygems package installed on your system.
+In the first part of this tutorial we will briefly guide you through the process of creating a very simple gem. First of all you will need the rubygems package installed on your system.
 
 Create the basic gem structure in a project subdirectory of your choice:
 ```
@@ -44,7 +44,7 @@ end
 ```
 More details about the gemspec structure is again at [rubygems.org](http://guides.rubygems.org/specification-reference/).
 
-We'll have to specify the plugins version in `lib/hammer_cli_hello/version.rb`:
+We'll have to specify the plugin version in `lib/hammer_cli_hello/version.rb`:
 ```ruby
 module HammerCLIHello
   def self.version
@@ -80,7 +80,7 @@ You should see a message saying that your module was loaded (second line in the 
 [ INFO 2013-10-16 11:19:06 HammerCLI::MainCommand] Called with options: {"verbose"=>true}
 ```
 
-Done. Your first hammer plugin is installed. Unfortunatelly it does not contain any commands yet. So let's start adding some to finally enjoy real results.
+Done. Your first hammer plugin is installed. Unfortunately it does not contain any commands yet. So let's start adding some to finally enjoy real results.
 
 Optionally you can add a Rakefile and build and install the gem with `rake install`
 ```ruby

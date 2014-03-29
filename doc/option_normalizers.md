@@ -15,7 +15,7 @@ option "--enabled", "ENABLED", "Should the host be enabled?",
 ```
 
 #### Description of valid values
-There is method `description` that should return a help string. It's value is used in output of `-h`,
+There is a method `description` that should return a help string. It's value is used in the output of `-h`,
 which can then look for example like this:
 
 ```
@@ -23,15 +23,15 @@ which can then look for example like this:
                               One of true/false, yes/no, 1/0.
 ```
 
-Abstract normalizer returns empty string by default.
+Abstract normalizer returns an empty string by default.
 
 
 #### Check and format passed values
 
 Normalizer's method `format` is used for such checks. The method behaves as a filter taking
-string value as it's input and returning value of any type.
+a string value as it's input and returning a value of any type.
 
-If the value is not valid `ArgumentError` with an appropriate message should be risen.
+If the value is not valid, `ArgumentError` with an appropriate message should be risen.
 Implementation in `Bool` normalizer is a good example of such functionality:
 
 ```ruby
@@ -50,7 +50,7 @@ end
 
 #### Value completion
 
-Normalizers can also provide completion of option values via method `complete`. It takes one argument - current option value at the time the completion was requested. In the simplest cases the method returns array of all possible values. More complex completions can use the current value argument for building the return values.
+Normalizers can also provide completion of option values via method `complete`. It takes one argument - the current option value at the time the completion was requested. In the simplest cases the method returns array of all possible values. More complex completions can use the current value argument for building the return values.
 
 We distinguish two types of offered completion strings:
 

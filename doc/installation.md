@@ -186,7 +186,7 @@ are loaded in alphabetical order.
 
 ### Format
 
-Hammer uses yaml formatting for its configuration. The configuration templates are contained in the hammer_cli gem
+Hammer uses YAML formatting for its configuration. The configuration templates are contained in the hammer_cli gem
 
  ```bash
 gem contents hammer_cli|grep template.yml
@@ -308,7 +308,7 @@ Options:
 ```
 
 
-And you are Done. Your hammer client is configured and ready to use.
+And you are done. Your hammer client is configured and ready to use.
 
 
 Autocompletion
