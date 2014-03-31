@@ -37,6 +37,10 @@ module HammerCLI
         :mo
       end
 
+      def available?
+        File.exist?(locale_dir)
+      end
+
       attr_reader :locale_dir, :domain_name
     end
 
@@ -76,11 +80,19 @@ module HammerCLI
       @domains
     end
 
+
     def self.add_domain(domain)
-      domains << domain
-      FastGettext.add_text_domain(domain.domain_name, :path => domain.locale_dir, :type => domain.type, :report_warning => false)
+      if domain.available?
+        domains << domain
+        FastGettext.add_text_domain(domain.domain_name, :path => domain.locale_dir, :type => domain.type, :report_warning => false)
+      end
     end
 
+
+    def self.clear
+      FastGettext.translation_repositories.clear
+      domains.clear
+    end
 
     Encoding.default_external='UTF-8' if defined? Encoding
     FastGettext.locale = locale
