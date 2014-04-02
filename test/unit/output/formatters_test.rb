@@ -138,3 +138,19 @@ describe HammerCLI::Output::Formatters::LongTextFormatter do
   end
 
 end
+
+describe HammerCLI::Output::Formatters::BooleanFormatter do
+
+  it "says yes for true like objects" do
+    formatter = HammerCLI::Output::Formatters::BooleanFormatter.new
+    formatter.format(true).must_equal "yes"
+    formatter.format("yes").must_equal "yes"
+  end
+
+  it "says no for false and nil and empty string" do
+    formatter = HammerCLI::Output::Formatters::BooleanFormatter.new
+    formatter.format(nil).must_equal "no"
+    formatter.format(false).must_equal "no"
+    formatter.format("").must_equal "no"
+  end
+end

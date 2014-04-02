@@ -144,10 +144,22 @@ module HammerCLI::Output
       end
     end
 
+    class BooleanFormatter < FieldFormatter
+
+      def tags
+        [:flat, :screen]
+      end
+
+      def format(value)
+        !value || value == "" ? _("no") : _("yes")
+      end
+    end
+
     HammerCLI::Output::Output.register_formatter(DateFormatter.new, :Date)
     HammerCLI::Output::Output.register_formatter(ListFormatter.new, :List)
     HammerCLI::Output::Output.register_formatter(KeyValueFormatter.new, :KeyValue)
     HammerCLI::Output::Output.register_formatter(LongTextFormatter.new, :LongText)
+    HammerCLI::Output::Output.register_formatter(BooleanFormatter.new, :Boolean)
 
   end
 end
