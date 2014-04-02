@@ -86,4 +86,7 @@ module Fields
   class Collection < ContainerField
   end
 
+  class Boolean < Field
+  end
+
 end
