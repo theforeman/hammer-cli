@@ -1,26 +1,26 @@
 Creating commands for RESTful API with ApiPie
 ---------------------------------------------
 
-CLIs binded to a rest api do simillar things for most of the resources. Typically it's
+CLIs bound to a REST API do simillar things for most of the resources. Typically there are
 CRUD actions that appear for nearly every resource. Actions differ with parameters
 accross resources but the operations remain the same.
 
 Hammer is optimised for usage with [ApiPie](https://github.com/Pajk/apipie-rails)
-and generated api bindings and tries to reduce the effort neccessary for a command creation.
+and generated API bindings and tries to reduce the effort neccessary for a command creation.
 
 
 ### ApiPie and bindings
 
 [ApiPie](https://github.com/Pajk/apipie-rails) is a documentation library for RESTful APIs.
-Unlike traditional tools ApiPie uses DSL for api description. This brings many advantages. See its
+Unlike traditional tools ApiPie uses DSL for API descriptions. This brings many advantages. See its
 documentation for details.
 
 Foreman comes with [ruby bindings](https://github.com/theforeman/foreman_api) automatically generated
 from the information provided by ApiPie. Every resource (eg. Architecture, User) has it's own
-class with methods for each available action (eg. create, show, index, destroy).
-Apart from that it contains also full api documentation with parameters for the actions.
-This enables to reuse the documentation on client side for automatic option definition
-and reduce the amount of custom code per CLI action.
+class with methods for each available action (e.g. create, show, index, destroy).
+Apart from that it contains also full API documentation with parameters for the actions.
+This allows to reuse the documentation on the client side for automatic option definition
+and to reduce the amount of custom code per CLI action.
 
 
 ### ApiPie commands in Hammer
@@ -29,12 +29,12 @@ Hammer identifies two basic types of ApiPie commands:
 
 -  __ReadCommand__
   - should be used for actions that print records
-  - retrieves the data and prints them in given format (uses output definition)
+  - retrieves the data and prints it in given format (uses output definition)
   - typical actions in rails terminology: _index, show_
 
 - __WriteCommand__
-  - should used for actions that modify records
-  - sends modifying request and prints the result
+  - should be used for actions that modify records
+  - sends modifying requests and prints the results
   - typical actions in rails terminology: _create, update, destroy_
 
 Both command classes are single resource related and expect the resource and an action to be defined.
@@ -57,7 +57,7 @@ end
 
 #### Options definition
 
-When the resource-action pair is defined we can take the advantage of automatic option definition.
+When the resource-action pair is defined we can take advantage of automatic option definition.
 There's a class method `apipie_options` for this purpose.
 
 ```ruby
@@ -70,7 +70,7 @@ end
 
 If we plug the command into an existing command tree and check the help we will see there
 are four parameters defined from the ApiPie docs. Compare the result with
-[online api documentation](http://www.theforeman.org/api/apidoc/architectures/index.html).
+[online API documentation](http://www.theforeman.org/api/apidoc/architectures/index.html).
 ```
 $ hammer architecture list -h
 Usage:
@@ -85,7 +85,7 @@ Options:
 ```
 
 It is possible to combine apipie options with custom ones. If the generated options
-doesn't suit your needs for any reason, you can always skip and redefine them by hand.
+don't suit your needs for any reason, you can always skip and redefine them by hand.
 See following example.
 ```ruby
 class ListCommand < HammerCLI::Apipie::ReadCommand
@@ -116,9 +116,9 @@ Automatic options reflect:
 
 #### Write commands
 
-Write commands are expected to print result of the api action. There are
+Write commands are expected to print the result of the API action. There are
 two class methods for setting success and failure messages. Messages are
-printed according to the http status code the api returned.
+printed according to the HTTP status code the API returned.
 
 ```ruby
 success_message "The user has been created"
@@ -179,7 +179,7 @@ class InfoCommand < HammerCLI::Apipie::ReadCommand
   resource ForemanApi::Resources::Architecture, :show
 
   # It's a good practice to reuse output definition from list commands
-  # and add more details. It helps avoiding duplicities.
+  # and add more details. This helps avoiding duplicities.
   output ListCommand.output_definition do
     from "architecture" do
       field :operatingsystem_ids, "OS ids", Fields::List
@@ -214,7 +214,7 @@ Updated at:  2013/06/08 19:17:43
 
 #### Tips
 
-When you define more command like we've shown above you find yourself repeating
+When you define more commands like we've shown above you find yourself repeating
 `resource ...` in every one of them. As the commands are usually grouped by
 the resource it is handy to extract the resource definition one level up to
 the encapsulating command.
@@ -245,8 +245,8 @@ the resource of the parent command is used at runtime. This is useful for contex
 shared commands.
 
 The following example shows a common subcommand that can be attached to
-any parent of which resource implements method `add_tag`. Please note that this example
-is fictitious. There's no tags in Foreman's architectures and users.
+any parent which has a resource implementing the method `add_tag`. Please note that this example
+is fictitious. There are no tags in Foreman's architectures and users.
 ```ruby
 module Tags
   class AddTag < HammerCLI::Apipie::WriteCommand

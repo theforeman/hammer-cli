@@ -22,7 +22,7 @@ We build rpms, debs and gems. Alternatively you can install hammer form a git ch
 Further reading
 ---------------
 If you're interested in hammer and want to develop some plugins for Foreman
-or use it as a base for your own cli, read
+or use it as a base for your own CLI, read
 [the developer docs](doc/developer_docs.md#hammer-development-docs).
 
 License
