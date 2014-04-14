@@ -12,6 +12,10 @@ module HammerCLI::Output
       @fields += fields
     end
 
+    def empty?
+      @fields.empty?
+    end
+
   end
 
 end
