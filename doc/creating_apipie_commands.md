@@ -25,32 +25,22 @@ and to reduce the amount of custom code per CLI action.
 
 ### ApiPie commands in Hammer
 
-Hammer identifies two basic types of ApiPie commands:
+Hammer provides `HammerCLI::Apipie::Command` base class for apipie actions.
+The command class is single resource related and expect the resource and an action to be defined.
 
--  __ReadCommand__
-  - should be used for actions that print records
-  - retrieves the data and prints it in given format (uses output definition)
-  - typical actions in rails terminology: _index, show_
-
-- __WriteCommand__
-  - should be used for actions that modify records
-  - sends modifying requests and prints the results
-  - typical actions in rails terminology: _create, update, destroy_
-
-Both command classes are single resource related and expect the resource and an action to be defined.
 There's a simple DSL for that:
 
 ```ruby
-class ListCommand < HammerCLI::Apipie::ReadCommand
+class ListCommand < HammerCLI::Apipie::Command
   # define resource and the action together
-  resource ForemanApi::Resources::Architecture, :index
+  resource :architectures, :index
 end
 
 # or
 
-class ListCommand2 < HammerCLI::Apipie::ReadCommand
+class ListCommand2 < HammerCLI::Apipie::Command
   # define them separately
-  resource ForemanApi::Resources::Architecture
+  resource :architectures
   action :index
 end
 ```
@@ -58,13 +48,16 @@ end
 #### Options definition
 
 When the resource-action pair is defined we can take advantage of automatic option definition.
-There's a class method `apipie_options` for this purpose.
+There's an [option builder](https://github.com/theforeman/hammer-cli/blob/master/lib/hammer_cli/apipie/option_builder.rb)
+for apipie parameters pre-set in the apipie command's base class.
+You can read details about the option builder principles [here](option_builders.md#option-builders).
+
 
 ```ruby
-class ListCommand < HammerCLI::Apipie::ReadCommand
-  resource ForemanApi::Resources::Architecture, :index
+class ListCommand < HammerCLI::Apipie::Command
+  resource :architectures, :index
 
-  apipie_options
+  build_options
 end
 ```
 
@@ -85,14 +78,18 @@ Options:
 ```
 
 It is possible to combine apipie options with custom ones. If the generated options
-don't suit your needs for any reason, you can always skip and redefine them by hand.
+don't suit your needs for any reason, you can always redefine them by hand or just skip them.
+
 See following example.
 ```ruby
-class ListCommand < HammerCLI::Apipie::ReadCommand
-  resource ForemanApi::Resources::Architecture, :index
+class ListCommand < HammerCLI::Apipie::Command
+  resource :architectures, :index
 
-  apipie_options :without => [:search, :order]
+  # first created option takes precedence
   option '--search', 'QUERY', "search query"
+
+  # use option :without to define what options should be skipped
+  build_options :without => [:order]
 end
 ```
 
@@ -109,14 +106,14 @@ Options:
 ```
 Note that the `--search` description has changed and `--order` disappeared.
 
-Automatic options reflect:
+Automaticaly generated options reflect:
 - parameter names and descriptions
 - required parameters
 - parameter types - the only supported type is array, which is translated to option normalizer `List`
 
-#### Write commands
+#### Status messages
 
-Write commands are expected to print the result of the API action. There are
+Some commands are expected to print result of the API action. There are
 two class methods for setting success and failure messages. Messages are
 printed according to the HTTP status code the API returned.
 
@@ -129,14 +126,14 @@ failure_message "Could not create the user"
 #### Example 1: Create an architecture
 
 ```ruby
-class CreateCommand < HammerCLI::Apipie::WriteCommand
+class CreateCommand < HammerCLI::Apipie::Command
   command_name "create"
-  resource ForemanApi::Resources::Architecture, :create
+  resource :architectures, :create
 
   success_message "Architecture created"
   failure_message "Could not create the architecture"
 
-  apipie_options
+  build_options
 end
 ```
 
@@ -174,9 +171,9 @@ Could not create the architecture:
 #### Example 2: Show an architecture
 
 ```ruby
-class InfoCommand < HammerCLI::Apipie::ReadCommand
+class InfoCommand < HammerCLI::Apipie::Command
   command_name "info"
-  resource ForemanApi::Resources::Architecture, :show
+  resource :architectures, :show
 
   # It's a good practice to reuse output definition from list commands
   # and add more details. This helps avoiding duplicities.
@@ -188,7 +185,7 @@ class InfoCommand < HammerCLI::Apipie::ReadCommand
     end
   end
 
-  apipie_options
+  build_options
 end
 ```
 
@@ -222,15 +219,15 @@ the encapsulating command.
 ```ruby
  class Architecture < HammerCLI::Apipie::Command
 
-    resource ForemanApi::Resources::Architecture
+    resource :architectures
 
-    class ListCommand < HammerCLI::Apipie::ReadCommand
+    class ListCommand < HammerCLI::Apipie::Command
       action :index
       # ...
     end
 
 
-    class InfoCommand < HammerCLI::Apipie::ReadCommand
+    class InfoCommand < HammerCLI::Apipie::Command
       action :show
       # ...
     end
@@ -253,12 +250,12 @@ module Tags
     option '--id', 'ID', 'ID of the resource'
     option '--tag', 'TAG', 'Name of the tag to add'
     action :add_tag
-    command_name 'add_tag'
+    command_name 'add-tag'
   end
 end
 
 class Architecture < HammerCLI::Apipie::Command
-  resource ForemanApi::Resources::Architecture
+  resource :architectures
   # ...
   include Tags
   autoload_subcommands
@@ -273,9 +270,9 @@ end
 ```
 
 ```
-$ hammer architecture add_tag -h
+$ hammer architecture add-tag -h
 Usage:
-    hammer architecture add_tag [OPTIONS]
+    hammer architecture add-tag [OPTIONS]
 
 Options:
     --id ID                       ID of the resource
@@ -284,9 +281,9 @@ Options:
 ```
 
 ```
-$ hammer user add_tag -h
+$ hammer user add-tag -h
 Usage:
-    hammer user add_tag [OPTIONS]
+    hammer user add-tag [OPTIONS]
 
 Options:
     --id ID                       ID of the resource

@@ -129,6 +129,9 @@ $ hammer hello --name 'Foreman'
 Hello Foreman!
 ```
 
+### Option builders
+Hammer commands offer option builders that can be used for automatic option generation.
+See [documentation page](option_builders.md#option-builders) dedicated to this topic for more details.
 
 ### Option validation
 Hammer provides extended functionality for validating options.
@@ -532,7 +535,7 @@ Values form config files are accesible via class `HammerCLI::Settings`.
 It's method `get` returns either the value or nil when it's not found.
 
 Config values belonging to a specific plugin must be nested under
-the plugin's name in config files.
+the plugin's name (without the prefix 'hammer_cli_') in config files.
 
 ```yaml
 #cli_config.yml
@@ -546,6 +549,9 @@ HammerCLI::Settings.get(:log_dir)             # get a value
 HammerCLI::Settings.get(:hello_world, :name)  # get a nested value
 ```
 
-There are more possibilities where to place your config file for hammer.
+There are more ways where to place your config file for hammer.
+The best practice is to place module's configuration into a separate file named by
+the module. In this example it would be `~/.hammer/cli.modules.d/hello_world.yml`.
+
 Read more in [the settings howto](https://github.com/theforeman/hammer-cli#configuration).
 
