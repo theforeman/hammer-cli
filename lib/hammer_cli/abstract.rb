@@ -1,7 +1,7 @@
 require 'hammer_cli/exception_handler'
 require 'hammer_cli/logger_watch'
 require 'hammer_cli/options/option_definition'
-require 'clamp'
+require 'hammer_cli/clamp'
 require 'logging'
 
 module HammerCLI
