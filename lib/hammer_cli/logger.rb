@@ -36,7 +36,7 @@ module HammerCLI
                                                           :layout   => NOCOLOR_LAYOUT,
                                                           :truncate => false,
                                                           :keep     => 5,
-                                                          :size     => HammerCLI::Settings.get(:log_size) || 1024*1024) # 1MB
+                                                          :size     => (HammerCLI::Settings.get(:log_size) || 1)*1024*1024) # 1MB
       # set owner and group (it's ignored if attribute is nil)
       FileUtils.chown HammerCLI::Settings.get(:log_owner), HammerCLI::Settings.get(:log_group), filename
     rescue ArgumentError => e
