@@ -52,7 +52,7 @@ describe HammerCLI::Output::Adapter::Abstract do
     end
 
     it "should print formatted message with parameters" do
-      proc { adapter.print_message("MESSAGE %{a}s, %{b}s", :a => 'A', :b => 'B') }.must_output(/.*MESSAGE A, B.*/, "")
+      proc { adapter.print_message("MESSAGE %{a}, %{b}", :a => 'A', :b => 'B') }.must_output(/.*MESSAGE A, B.*/, "")
     end
 
   end
@@ -87,7 +87,7 @@ describe HammerCLI::Output::Adapter::Abstract do
 
     it "should print formatted message with parameters" do
       proc {
-        adapter.print_error("MESSAGE %{a}s, %{b}s", ["error %{a}s", "error %{b}s"], :a => 'A', :b => 'B')
+        adapter.print_error("MESSAGE %{a}, %{b}", ["error %{a}", "error %{b}"], :a => 'A', :b => 'B')
       }.must_output("", expected_formatted_output)
     end
 

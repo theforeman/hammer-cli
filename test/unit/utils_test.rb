@@ -6,7 +6,7 @@ describe String do
   context "formatting" do
 
     let(:str) { "AA%<a>s BB%<b>s" }
-    let(:curly_str) { "AA%{a}s BB%{b}s" }
+    let(:curly_str) { "AA%{a} BB%{b}" }
     let(:pos_str) { "AA%s BB%s" }
 
     it "should not fail without expected parameters" do
