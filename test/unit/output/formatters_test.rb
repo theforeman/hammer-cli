@@ -34,7 +34,7 @@ end
 describe HammerCLI::Output::Formatters::FormatterContainer do
 
   class TestFormatter
-    def format(data)
+    def format(data, field_params={})
       data+'.'
     end
   end

@@ -11,7 +11,7 @@ describe HammerCLI::Output::Adapter::Abstract do
   end
 
   class UnknownTestFormatter < HammerCLI::Output::Formatters::FieldFormatter
-    def format(data)
+    def format(data, field_params={})
       data+'.'
     end
 

@@ -43,7 +43,7 @@ module HammerCLI::Output
         tags & other_tags == tags
       end
 
-      def format(data)
+      def format(data, field_params={})
         data
       end
     end
@@ -58,8 +58,8 @@ module HammerCLI::Output
         @formatters += formatters
       end
 
-      def format(data)
-        @formatters.inject(data) { |d,f| f.format(d) }
+      def format(data, field_params={})
+        @formatters.inject(data) { |d,f| f.format(d, field_params) }
       end
 
     end
@@ -73,7 +73,7 @@ module HammerCLI::Output
         [:screen, :flat]
       end
 
-      def format(data)
+      def format(data, field_params={})
         c = HighLine.color(data.to_s, @color)
       end
     end
@@ -84,7 +84,7 @@ module HammerCLI::Output
         [:flat]
       end
 
-      def format(string_date)
+      def format(string_date, field_params={})
         t = DateTime.parse(string_date.to_s)
         t.strftime("%Y/%m/%d %H:%M:%S")
       rescue ArgumentError
@@ -98,7 +98,7 @@ module HammerCLI::Output
         [:flat]
       end
 
-      def format(list)
+      def format(list, field_params={})
         if list.is_a? Array
           list.join(", ")
         elsif list
@@ -115,7 +115,7 @@ module HammerCLI::Output
         [:screen, :flat]
       end
 
-      def format(params)
+      def format(params, field_params={})
         if params.is_a? Hash
           name = params[:name] || params["name"]
           value = params[:value] || params["value"]
@@ -138,7 +138,7 @@ module HammerCLI::Output
         [:screen]
       end
 
-      def format(text)
+      def format(text, field_params={})
         text = text.to_s.indent_with(INDENT) if @indent
         "\n#{text}"
       end
@@ -150,7 +150,7 @@ module HammerCLI::Output
         [:flat, :screen]
       end
 
-      def format(value)
+      def format(value, field_params={})
         !value || value == "" ? _("no") : _("yes")
       end
     end

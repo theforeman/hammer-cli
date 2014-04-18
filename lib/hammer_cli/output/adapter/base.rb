@@ -52,7 +52,6 @@ module HammerCLI::Output::Adapter
     end
 
     def render_field(field, data, label_width)
-
       if field.is_a? Fields::ContainerField
         output = ""
 
@@ -61,7 +60,9 @@ module HammerCLI::Output::Adapter
         data.each do |d|
           idx += 1
           fields_output = render_fields(field.fields, d).indent_with(GROUP_INDENT)
-          fields_output = fields_output.sub(/^[ ]{4}/, " %-3s" % "#{idx})") if field.is_a? Fields::Collection
+          if field.is_a?(Fields::Collection) && field.parameters[:numbered]
+            fields_output = fields_output.sub(/^[ ]{4}/, " %-3s" % "#{idx})")
+          end
 
           output += fields_output
           output += "\n"
@@ -84,7 +85,9 @@ module HammerCLI::Output::Adapter
 
     def render_value(field, data)
       formatter = @formatters.formatter_for_type(field.class)
-      data = formatter.format(data) if formatter
+      parameters = field.parameters
+      parameters[:context] = @context
+      data = formatter.format(data, field.parameters) if formatter
       data.to_s
     end
 
