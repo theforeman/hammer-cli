@@ -267,6 +267,28 @@ describe HammerCLI::AbstractCommand do
 
   end
 
+  describe "option builder" do
+
+    it "uses builder container as default" do
+      HammerCLI::AbstractCommand.option_builder.class.must_equal HammerCLI::OptionBuilderContainer
+    end
+
+    it "Default builder container is empty" do
+      HammerCLI::AbstractCommand.option_builder.builders.empty?.must_equal true
+    end
+
+    it "can be initialized with custom builder" do
+      cmd = Class.new(HammerCLI::AbstractCommand) do
+        def self.custom_option_builders
+          [:builder_1, :builder_2]
+        end
+      end
+
+      cmd.option_builder.builders.must_equal [:builder_1, :builder_2]
+    end
+
+  end
+
   describe "build options" do
 
     class TestOptionBuilder

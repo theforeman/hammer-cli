@@ -26,6 +26,7 @@ describe HammerCLI::Apipie::Command do
   let(:ctx) { { :adapter => :silent, :interactive => false } }
   let(:cmd_class) { TestCommand.dup }
   let(:cmd) { cmd_class.new("", ctx) }
+  let(:cmd_run) { cmd.run([]) }
 
   before :each do
     HammerCLI::Connection.drop_all
@@ -83,6 +84,24 @@ describe HammerCLI::Apipie::Command do
     end
   end
 
+  it "should raise exception when no action is defined" do
+    cmd.stubs(:handle_exception).returns(HammerCLI::EX_SOFTWARE)
+    cmd_run.must_equal HammerCLI::EX_SOFTWARE
+  end
+
+  context "resource defined" do
+
+    before :each do
+      HammerCLI::Connection.drop_all
+      ApipieBindings::API.any_instance.stubs(:call).returns([])
+      cmd.class.resource :architectures, :index
+    end
+
+    it "should perform a call to api when resource is defined" do
+      cmd_run.must_equal 0
+    end
+
+  end
 
 end
 

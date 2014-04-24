@@ -33,7 +33,6 @@ describe HammerCLI::Apipie::OptionBuilder do
       options[0].switches.must_be :include?, '--se-arch-val-ue'
     end
 
-    # TODO: test HammerCLI.option_accessor_name
     it "should set correct attribute name" do
       options[0].attribute_name.must_equal HammerCLI.option_accessor_name('se_arch_val_ue')
     end
