@@ -9,7 +9,7 @@ class String
         params[name.to_s] || params[name.to_sym]
       end
 
-      self.gsub(/%[<{]([^>}]*)[>}]/, '%') % array_params
+      self.gsub(/%[<]([^>]*)[>]/, '%').gsub(/%[{]([^}]*)[}]/, '%s') % array_params
     else
       self % params
     end

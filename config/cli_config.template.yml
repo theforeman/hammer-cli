@@ -17,10 +17,6 @@
 # Logging level. One of debug, info, warning, error, fatal
 :log_level: 'error'
 
-# Turn on logging of the communication with API (data sent and received)
-:log_api_calls: false
-
-# Logfile ownership
 #:log_owner: 'foreman'
 #:log_group: 'foreman'
 

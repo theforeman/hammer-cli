@@ -134,6 +134,26 @@ module HammerCLI
       HammerCLI.interactive?
     end
 
+    def self.option_builder
+      @option_builder ||= OptionBuilderContainer.new
+      @option_builder.builders = custom_option_builders
+      @option_builder
+    end
+
+    def self.custom_option_builders
+      []
+    end
+
+    def self.build_options(builder_params={})
+      option_builder.build(builder_params).each do |option|
+        # skip switches that are already defined
+        next if option.nil? or option.switches.any? {|s| find_option(s) }
+
+        declared_options << option
+        block ||= option.default_conversion_block
+        define_accessors_for(option, &block)
+      end
+    end
 
     protected
 
@@ -207,16 +227,9 @@ module HammerCLI
     end
 
     def self.option(switches, type, description, opts = {}, &block)
-      formatter = opts.delete(:format)
-      context_target = opts.delete(:context_target)
-
       HammerCLI::Options::OptionDefinition.new(switches, type, description, opts).tap do |option|
         declared_options << option
-
-        option.value_formatter = formatter
-        option.context_target = context_target
         block ||= option.default_conversion_block
-
         define_accessors_for(option, &block)
       end
     end

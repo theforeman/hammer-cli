@@ -59,12 +59,10 @@ $ gem build ./hammer_cli_hello.gemspec
 $ gem install hammer_cli_hello-0.0.1.gem
 ```
 
-Update the hammer config to enable your plugin.
+Place your module's config file into `~/.hammer/cli.modules.d/`.
 ```yaml
-:modules:
-  - hammer_cli_hello
-# - hammer_cli_foreman
-# - hammer_cli_katello_bridge
+:hello:
+  :enable_module: true
 ```
 
 
@@ -75,8 +73,10 @@ $ hammer -v > /dev/null
 
 You should see a message saying that your module was loaded (second line in the sample output).
 ```
-[ INFO 2013-10-16 11:19:06 Init] Configuration from the file /etc/foreman/cli_config.yml has been loaded
+[ INFO 2013-10-16 11:19:06 Init] Initialization of Hammer CLI (0.1.0) has started...
 [ INFO 2013-10-16 11:19:06 Init] Extension module hammer_cli_hello loaded
+[ INFO 2013-10-16 11:19:06 Init] Configuration from the file /root/.hammer/cli_config.yml has been loaded
+[ INFO 2013-10-16 11:19:06 Init] Configuration from the file /root/.hammer/cli.modiles.d/hello.yml has been loaded
 [ INFO 2013-10-16 11:19:06 HammerCLI::MainCommand] Called with options: {"verbose"=>true}
 ```
 

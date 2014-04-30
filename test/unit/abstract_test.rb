@@ -267,6 +267,68 @@ describe HammerCLI::AbstractCommand do
 
   end
 
+  describe "option builder" do
+
+    it "uses builder container as default" do
+      HammerCLI::AbstractCommand.option_builder.class.must_equal HammerCLI::OptionBuilderContainer
+    end
+
+    it "Default builder container is empty" do
+      HammerCLI::AbstractCommand.option_builder.builders.empty?.must_equal true
+    end
+
+    it "can be initialized with custom builder" do
+      cmd = Class.new(HammerCLI::AbstractCommand) do
+        def self.custom_option_builders
+          [:builder_1, :builder_2]
+        end
+      end
+
+      cmd.option_builder.builders.must_equal [:builder_1, :builder_2]
+    end
+
+  end
+
+  describe "build options" do
+
+    class TestOptionBuilder
+
+      def build(build_options={})
+        [
+          HammerCLI::Options::OptionDefinition.new(["--test"], "TEST", "test"),
+          HammerCLI::Options::OptionDefinition.new(["--test2"], "TEST2", "test2")
+        ]
+      end
+
+    end
+
+    class TestBuilderCmd < HammerCLI::AbstractCommand
+
+      def self.option_builder
+        TestOptionBuilder.new
+      end
+
+    end
+
+    before :each do
+      # define implicit options and clear them all
+      TestBuilderCmd.recognised_options
+      TestBuilderCmd.declared_options.clear
+    end
+
+    it "should use option builder" do
+      TestBuilderCmd.build_options
+      TestBuilderCmd.recognised_options.map(&:switches).flatten.sort.must_equal ["--test", "--test2"].sort
+    end
+
+    it "should skip options that already exist" do
+      TestBuilderCmd.option(["--test"], "TEST", "original_test")
+      TestBuilderCmd.build_options
+      TestBuilderCmd.recognised_options.map(&:description).flatten.sort.must_equal ["original_test", "test2"].sort
+    end
+
+  end
+
   it "should inherit command_name" do
     class CmdName1 < HammerCLI::AbstractCommand
       command_name 'cmd'

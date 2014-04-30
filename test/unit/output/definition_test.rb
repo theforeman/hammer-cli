@@ -8,6 +8,19 @@ describe HammerCLI::Output::Definition do
   let(:last_field) { definition.fields[-1] }
   let(:field_count) { definition.fields.length }
 
+  describe "empty?" do
+
+    it "returns true for empty definition" do
+      definition.empty?.must_equal true
+    end
+
+    it "returns false for definition with fields" do
+      definition.fields << Fields::Field.new
+      definition.empty?.must_equal false
+    end
+
+  end
+
   it "should be able to add field" do
     definition.fields << Fields::Field.new
     field_count.must_equal 1
