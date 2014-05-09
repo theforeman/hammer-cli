@@ -45,9 +45,9 @@ module HammerCLI::Output::Adapter
       path = field.path
 
       path.inject(record) do |record, path_key|
-        if record.has_key? path_key.to_sym
+        if record && record.kind_of?(Hash) && record.has_key?(path_key.to_sym)
           record[path_key.to_sym]
-        elsif record.has_key? path_key.to_s
+        elsif record && record.kind_of?(Hash) && record.has_key?(path_key.to_s)
           record[path_key.to_s]
         else
           return nil
