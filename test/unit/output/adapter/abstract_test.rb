@@ -93,4 +93,27 @@ describe HammerCLI::Output::Adapter::Abstract do
 
   end
 
+  context "test data_for_field" do
+    let(:field) { Fields::Field.new(:path => [:field1]) }
+
+    it "returns nil if the record is nil" do
+      record = nil
+      assert_nil adapter.send(:data_for_field, field, record)
+    end
+
+    it "returns nil if the record is not a hash" do
+      record = []
+      assert_nil adapter.send(:data_for_field, field, record)
+    end
+
+    it "returns nil, if the data does not exist for the field" do
+      record = { :field2 => :value2 }
+      assert_nil adapter.send(:data_for_field, field, record)
+    end
+
+    it "returns the value, if data exists for the field" do
+      record = { :field1 => :value1, :field2 => :value2 }
+      assert_equal adapter.send(:data_for_field, field, record), :value1
+    end
+  end
 end
