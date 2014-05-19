@@ -119,7 +119,7 @@ describe HammerCLI::Output::Adapter::Table do
     context "formatters" do
       it "should apply formatters" do
         class DotFormatter < HammerCLI::Output::Formatters::FieldFormatter
-          def format(data)
+          def format(data, field_params={})
             '-DOT-'
           end
         end

@@ -47,7 +47,7 @@ describe HammerCLI::Output::Adapter::CSValues do
     context "formatters" do
       it "should apply formatters" do
         class DotFormatter < HammerCLI::Output::Formatters::FieldFormatter
-          def format(data)
+          def format(data, field_params={})
             '-DOT-'
           end
         end
@@ -59,7 +59,7 @@ describe HammerCLI::Output::Adapter::CSValues do
 
       it "should not replace nil with empty string before it applies formatters" do
         class NilFormatter < HammerCLI::Output::Formatters::FieldFormatter
-          def format(data)
+          def format(data, field_params={})
             'NIL' if data.nil?
           end
         end

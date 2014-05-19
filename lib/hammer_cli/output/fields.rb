@@ -84,6 +84,12 @@ module Fields
   end
 
   class Collection < ContainerField
+
+    def initialize(options={}, &block)
+      options[:numbered] = true if options[:numbered].nil?
+      super(options, &block)
+    end
+
   end
 
   class Boolean < Field

@@ -2,6 +2,23 @@ require 'table_print'
 
 module HammerCLI::Output::Adapter
 
+  class WrapperFormatter
+
+    def initialize(formatter, params)
+      @formatter = formatter
+      @params = params
+    end
+
+    def format(value)
+      if @formatter
+        @formatter.format(value, @params)
+      else
+        value
+      end
+    end
+
+  end
+
   class Table < Abstract
 
     MAX_COLUMN_WIDTH = 80
@@ -28,7 +45,7 @@ module HammerCLI::Output::Adapter
 
       options = fields.collect do |f|
         { label_for(f) => {
-            :formatters => Array(@formatters.formatter_for_type(f.class)),
+            :formatters => Array(WrapperFormatter.new(@formatters.formatter_for_type(f.class), f.parameters)),
             :width => max_width_for(f)
           }
         }

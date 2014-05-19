@@ -14,7 +14,8 @@ describe HammerCLI::Output::Adapter::Base do
     let(:address_city)  { Fields::Field.new(:path => [:address, :city], :label => "City") }
     let(:city)          { Fields::Field.new(:path => [:city], :label => "City") }
     let(:label_address) { Fields::Label.new(:path => [:address], :label => "Address") }
-    let(:contacts)      { Fields::Collection.new(:path => [:contacts], :label => "Contacts") }
+    let(:num_contacts)  { Fields::Collection.new(:path => [:contacts], :label => "Contacts") }
+    let(:contacts)      { Fields::Collection.new(:path => [:contacts], :label => "Contacts", :numbered => false) }
     let(:desc)          { Fields::Field.new(:path => [:desc], :label => "Description") }
     let(:contact)       { Fields::Field.new(:path => [:contact], :label => "Contact") }
     let(:params)        { Fields::KeyValueList.new(:path => [:params], :label => "Parameters") }
@@ -108,14 +109,30 @@ describe HammerCLI::Output::Adapter::Base do
 
 
     it "should print collection" do
-      contacts.output_definition.append [desc, contact]
-      fields = [contacts]
+      num_contacts.output_definition.append [desc, contact]
+      fields = [num_contacts]
 
       expected_output = [
         "Contacts: ",
         " 1) Description: personal email",
         "    Contact:     john.doe@doughnut.com",
         " 2) Description: telephone",
+        "    Contact:     123456789",
+        "\n"
+      ].join("\n")
+
+      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
+
+    it "should print unnumbered collection" do
+      contacts.output_definition.append [desc, contact]
+      fields = [contacts]
+
+      expected_output = [
+        "Contacts: ",
+        "    Description: personal email",
+        "    Contact:     john.doe@doughnut.com",
+        "    Description: telephone",
         "    Contact:     123456789",
         "\n"
       ].join("\n")
