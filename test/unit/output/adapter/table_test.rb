@@ -9,6 +9,7 @@ describe HammerCLI::Output::Adapter::Table do
     let(:field_name) { Fields::Field.new(:path => [:fullname], :label => "Name") }
     let(:field_firstname) { Fields::Field.new(:path => [:firstname], :label => "Firstname") }
     let(:field_lastname) { Fields::Field.new(:path => [:lastname], :label => "Lastname") }
+    let(:field_long) { Fields::Field.new(:path => [:long], :label => "Full") }
 
     let(:fields) {
       [field_name]
@@ -128,6 +129,28 @@ describe HammerCLI::Output::Adapter::Table do
         out, err = capture_io { adapter.print_collection(fields, data) }
         out.must_match(/.*-DOT-.*/)
       end
+
+      it "should not break formatting" do
+        class SliceFormatter < HammerCLI::Output::Formatters::FieldFormatter
+          def format(data, field_params={})
+            data[0..5]
+          end
+        end
+
+        adapter = HammerCLI::Output::Adapter::Table.new({}, { :Field => [ SliceFormatter.new ]})
+
+        expected_output = [
+          "------",
+          "FULL  ",
+          "------",
+          "SomeVe",
+          "------",
+          ""
+        ].join("\n")
+
+        proc { adapter.print_collection([field_long], data) }.must_output(expected_output)
+      end
+
     end
 
     context "sort_columns" do

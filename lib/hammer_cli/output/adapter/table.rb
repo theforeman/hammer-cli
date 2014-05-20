@@ -38,14 +38,14 @@ module HammerCLI::Output::Adapter
       rows = collection.collect do |d|
         row = {}
         fields.each do |f|
-          row[label_for(f)] = data_for_field(f, d) || ""
+          row[label_for(f)] = WrapperFormatter.new(
+            @formatters.formatter_for_type(f.class), f.parameters).format(data_for_field(f, d) || "")
         end
         row
       end
 
       options = fields.collect do |f|
         { label_for(f) => {
-            :formatters => Array(WrapperFormatter.new(@formatters.formatter_for_type(f.class), f.parameters)),
             :width => max_width_for(f)
           }
         }
