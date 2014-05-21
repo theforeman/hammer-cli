@@ -12,6 +12,7 @@ Available plugins are currently:
 
 You also can easily add custom commands for your specific use, such as bulk actions or admin tasks.
 
+Check out the [release notes](doc/release_notes.md#release-notes) to see what's new in the latest version.
 
 Installation
 ------------
