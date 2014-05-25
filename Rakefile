@@ -22,3 +22,8 @@ namespace :gettext do
   end
 
 end
+
+namespace :pkg do
+  desc 'Generate package source gem'
+  task :generate_source => :build
+end
