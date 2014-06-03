@@ -277,16 +277,6 @@ describe HammerCLI::AbstractCommand do
       HammerCLI::AbstractCommand.option_builder.builders.empty?.must_equal true
     end
 
-    it "can be initialized with custom builder" do
-      cmd = Class.new(HammerCLI::AbstractCommand) do
-        def self.custom_option_builders
-          [:builder_1, :builder_2]
-        end
-      end
-
-      cmd.option_builder.builders.must_equal [:builder_1, :builder_2]
-    end
-
   end
 
   describe "build options" do
@@ -304,7 +294,7 @@ describe HammerCLI::AbstractCommand do
 
     class TestBuilderCmd < HammerCLI::AbstractCommand
 
-      def self.option_builder
+      def self.create_option_builder
         TestOptionBuilder.new
       end
 
@@ -325,6 +315,21 @@ describe HammerCLI::AbstractCommand do
       TestBuilderCmd.option(["--test"], "TEST", "original_test")
       TestBuilderCmd.build_options
       TestBuilderCmd.recognised_options.map(&:description).flatten.sort.must_equal ["original_test", "test2"].sort
+    end
+
+    it "passes params to the builders" do
+      @params = {:param1 => 1, :param2 => :value}
+      TestBuilderCmd.option_builder.expects(:build).with(@params).returns([])
+      # require 'pry'; binding.pry
+      TestBuilderCmd.build_options(@params)
+    end
+
+    it "accepts block" do
+      @params = {:param1 => 1, :param2 => :value}
+      TestBuilderCmd.option_builder.expects(:build).with(@params).returns([])
+      TestBuilderCmd.build_options do |params|
+        @params
+      end
     end
 
   end
