@@ -17,12 +17,12 @@ module HammerCLI::Apipie
       " "
     end
 
-    def self.custom_option_builders
-      builders = super
-      builders += [
+    def self.create_option_builder
+      builder = super
+      builder.builders += [
         OptionBuilder.new(resource.action(action), :require_options => false)
       ] if resource_defined?
-      builders
+      builder
     end
 
     def self.apipie_options(*args)

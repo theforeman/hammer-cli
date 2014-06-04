@@ -135,16 +135,13 @@ module HammerCLI
     end
 
     def self.option_builder
-      @option_builder ||= OptionBuilderContainer.new
-      @option_builder.builders = custom_option_builders
+      @option_builder ||= create_option_builder
       @option_builder
     end
 
-    def self.custom_option_builders
-      []
-    end
-
     def self.build_options(builder_params={})
+      builder_params = yield(builder_params) if block_given?
+
       option_builder.build(builder_params).each do |option|
         # skip switches that are already defined
         next if option.nil? or option.switches.any? {|s| find_option(s) }
@@ -156,6 +153,10 @@ module HammerCLI
     end
 
     protected
+
+    def self.create_option_builder
+      OptionBuilderContainer.new
+    end
 
     def print_record(definition, record)
       output.print_record(definition, record)
