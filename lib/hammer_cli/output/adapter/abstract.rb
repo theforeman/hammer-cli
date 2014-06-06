@@ -41,7 +41,7 @@ module HammerCLI::Output::Adapter
       HammerCLI::Output::FieldFilter.new
     end
 
-    def data_for_field(field, record)
+    def self.data_for_field(field, record)
       path = field.path
 
       path.inject(record) do |record, path_key|
@@ -53,6 +53,10 @@ module HammerCLI::Output::Adapter
           return nil
         end
       end
+    end
+
+    def data_for_field(field, record)
+      Abstract.data_for_field(field, record)
     end
 
     private
