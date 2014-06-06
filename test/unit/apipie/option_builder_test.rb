@@ -106,5 +106,27 @@ describe HammerCLI::Apipie::OptionBuilder do
     end
 
   end
+
+  context "aliasing resources" do
+    let(:action) {api.resource(:documented).action(:action_with_ids)}
+    let(:builder_options) { {:resource_mapping => {:organization => 'company', 'compute_resource' => :compute_provider}} }
+
+    it "renames options" do
+      # builder_options[:resource_mapping] = {:organization => 'company', 'compute_resource' => :compute_provider}
+      options.map(&:long_switch).sort.must_equal ["--company-id", "--company-ids", "--compute-provider-id", "--name"]
+    end
+
+    it "renames option types" do
+      # builder_options[:resource_mapping] = {:organization => 'company', 'compute_resource' => :compute_provider}
+      options.map(&:type).sort.must_equal ["COMPANY_ID", "COMPANY_IDS", "COMPUTE_PROVIDER_ID", "NAME"]
+    end
+
+    it "keeps option accessor the same" do
+      # builder_options[:resource_mapping] = {:organization => 'company', 'compute_resource' => :compute_provider}
+      options.map(&:attribute_name).sort.must_equal HammerCLI.option_accessor_name("compute_resource_id", "name", "organization_id", "organization_ids")
+    end
+
+  end
+
 end
 

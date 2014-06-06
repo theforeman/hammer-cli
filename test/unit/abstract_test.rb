@@ -320,7 +320,6 @@ describe HammerCLI::AbstractCommand do
     it "passes params to the builders" do
       @params = {:param1 => 1, :param2 => :value}
       TestBuilderCmd.option_builder.expects(:build).with(@params).returns([])
-      # require 'pry'; binding.pry
       TestBuilderCmd.build_options(@params)
     end
 
