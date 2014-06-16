@@ -16,6 +16,7 @@ class PreParser < Clamp::Command
   option ["-c", "--config"], "CFG_FILE", _("path to custom config file")
   option ["-u", "--username"], "USERNAME", _("username to access the remote system")
   option ["-p", "--password"], "PASSWORD", _("password to access the remote system")
+  option ["-s", "--server"], "SERVER", _("remote system address")
   option ["--interactive"], "INTERACTIVE", _("Explicitly turn interactive mode on/off") do |value|
     bool_normalizer = HammerCLI::Options::Normalizers::Bool.new
     bool_normalizer.format(value)
@@ -54,6 +55,7 @@ HammerCLI::Settings.load({
   :_params => {
     :username => preparser.username,
     :password => preparser.password,
+    :host => preparser.server,
     :interactive => preparser.interactive,
     :verbose => preparser.verbose? || preparser.debug?
   }})
