@@ -27,6 +27,50 @@
                         "full_description": ""
                     },
                     {
+                        "name": "action_with_ids",
+                        "examples": [],
+                        "errors": [],
+                        "params": [
+                            {
+                                "name": "name",
+                                "allow_null": false,
+                                "full_name": "name",
+                                "validator": "Must be String",
+                                "expected_type": "string",
+                                "description": "",
+                                "required": false
+                            },
+                            {
+                                "name": "organization_id",
+                                "allow_null": false,
+                                "full_name": "organization_id",
+                                "validator": "Must be number",
+                                "expected_type": "number",
+                                "description": "",
+                                "required": false
+                            },
+                            {
+                                "name": "organization_ids",
+                                "allow_null": false,
+                                "full_name": "organization_ids",
+                                "validator": "Array of numbers",
+                                "expected_type": "Array",
+                                "description": "",
+                                "required": false
+                            },
+                            {
+                                "name": "compute_resource_id",
+                                "allow_null": false,
+                                "full_name": "compute_resource_id",
+                                "validator": "Must be number",
+                                "expected_type": "number",
+                                "description": "",
+                                "required": false
+                            }
+                        ],
+                        "full_description": ""
+                    },
+                    {
                         "name": "create",
                         "examples": [],
                         "errors": [],
