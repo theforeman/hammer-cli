@@ -171,6 +171,41 @@ describe HammerCLI::Options::Normalizers do
 
   end
 
+  describe 'enumlist' do
+
+    let (:formatter) { HammerCLI::Options::Normalizers::EnumList.new ['1', '2', 'a', 'b'] }
+
+    it "should return array of values when the values are allowed" do
+      formatter.format("a,b,1").must_equal(['a', 'b', '1'])
+    end
+
+    it "should raise argument error when any of the values isn't in the list" do
+      proc { formatter.format("c,d") }.must_raise ArgumentError
+      proc { formatter.format('1,x') }.must_raise ArgumentError
+    end
+
+    it "should remove duplicate values" do
+      formatter.format("a,a,a,a,a").must_equal ['a']
+    end
+
+    it "should not change order of the values" do
+      formatter.format("a,b,2,1").must_equal ['a', 'b', '2', '1']
+    end
+
+    it "should return empty array on nil" do
+      formatter.format(nil).must_equal []
+    end
+
+    it "should return empty array on empty string" do
+      formatter.format("").must_equal []
+    end
+
+    it "should list allowed values in description" do
+      formatter.description.must_equal("Any combination (comma separated list) of ''1', '2', 'a', 'b''")
+    end
+
+  end
+
   describe 'datetime' do
 
     let(:formatter) { HammerCLI::Options::Normalizers::DateTime.new }

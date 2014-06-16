@@ -161,7 +161,7 @@ module HammerCLI
         end
 
         def description
-          _("Any combination (comma separated list) of %s") % quoted_values
+          _("Any combination (comma separated list) of '%s'") % quoted_values
         end
 
         def format(value)
