@@ -154,7 +154,38 @@ module HammerCLI
         end
       end
 
+      class EnumList < AbstractNormalizer
 
+        def initialize(allowed_values)
+          @allowed_values = allowed_values
+        end
+
+        def description
+          _("Any combination (comma separated list) of %s") % quoted_values
+        end
+
+        def format(value)
+          value.is_a?(String) ? parse(value) : []
+        end
+
+        def complete(value)
+          Completer::finalize_completions(@allowed_values)
+        end
+
+        private
+
+        def quoted_values
+          @allowed_values.map { |v| "'#{v}'" }.join(', ')
+        end
+
+        def parse(arr)
+          arr.split(",").uniq.tap do |values|
+            unless values.inject(true) { |acc, cur| acc & (@allowed_values.include? cur) }
+              raise ArgumentError, _("value must be a combination of '%s'") % quoted_values
+            end
+          end
+        end
+      end
     end
   end
 end
