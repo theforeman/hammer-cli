@@ -115,7 +115,6 @@ describe HammerCLI::Output::Adapter::CSValues do
       ]}
 
       it "should print collection column name" do
-        adapter.print_collection(fields, data)
         out, err = capture_io { adapter.print_collection(fields, data) }
 
         lines = out.split("\n")
@@ -133,6 +132,16 @@ describe HammerCLI::Output::Adapter::CSValues do
 
         err.must_match //
       end
+
+      it "should handle empty collection" do
+        out, err = capture_io { adapter.print_collection(fields, []) }
+        lines = out.split("\n")
+
+        lines[0].must_equal 'Name,Started At,Items'
+
+        err.must_match //
+      end
+
     end
 
     context "formatters" do
