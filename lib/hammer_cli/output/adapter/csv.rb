@@ -150,9 +150,12 @@ module HammerCLI::Output::Adapter
 
     def print_collection(fields, collection)
       rows = row_data(fields, collection)
+      # get headers using columns heuristic
       headers = rows.map{ |r| Cell.headers(r, @context) }.max_by{ |headers| headers.size }
+      # or use headers from output definition
+      headers ||= default_headers(fields)
       csv_string = generate do |csv|
-        csv << headers
+        csv << headers if headers
         rows.each do |row|
           csv << Cell.values(headers, row)
         end
@@ -192,6 +195,10 @@ module HammerCLI::Output::Adapter
         :encoding => 'utf-8',
         &block
       )
+    end
+
+    def default_headers(fields)
+      fields.select{ |f| !(f.class <= Fields::Id) || @context[:show_ids] }.map { |f| f.label }
     end
 
   end
