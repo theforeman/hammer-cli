@@ -60,7 +60,7 @@ Plugins are disabled by default. To enable plugin create configuration file in `
 Plugin specific configuration must be nested under plugin's name (without the ```hammer_cli_``` prefix).
 
 In the example we assume the gem ```hammer_cli_foreman``` with the Foreman plugin is installed. Then the plugin configuration
-in ```~/.hammer/cli.plugins.d/foreman.yml``` should look as follows:
+in ```~/.hammer/cli.modules.d/foreman.yml``` should look as follows:
 
 ```yaml
 :foreman:
