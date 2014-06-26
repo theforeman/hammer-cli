@@ -50,7 +50,7 @@ module HammerCLI::Apipie
     end
 
     def request_params
-      method_options
+      method_options(options)
     end
 
     def print_data(data)
