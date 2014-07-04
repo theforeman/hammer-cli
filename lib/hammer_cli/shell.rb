@@ -103,11 +103,11 @@ module HammerCLI
           line = HammerCLI::CompleterLine.new(line)
           ShellMainCommand.run('', line, context) unless line.empty?
         end
-      rescue Interrupt => e
-        puts
-        system('stty', stty_save) # Restore
-        exit
-      end
+      rescue Interrupt; end
+
+      puts
+      system('stty', stty_save) # Restore
+      HammerCLI::EX_OK
     end
 
     private
