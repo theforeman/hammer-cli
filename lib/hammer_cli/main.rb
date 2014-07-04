@@ -12,7 +12,7 @@ module HammerCLI
       :context_target => :username
     option ["-p", "--password"], "PASSWORD", _("password to access the remote system"),
       :context_target => :password
-    option ["-s", "--server"], "PASSWORD", _("remote system address"),
+    option ["-s", "--server"], "SERVER", _("remote system address"),
       :context_target => :uri
 
     option "--version", :flag, _("show version") do
