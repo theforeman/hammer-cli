@@ -24,7 +24,7 @@ EOF
   s.executables = ['hammer']
 
   s.add_dependency 'clamp'
-  s.add_dependency 'rest-client', '<= 1.7.0' #higher versions are not ruby 1.8 compatible
+  s.add_dependency 'rest-client', '< 1.7.0' #higher versions are not ruby 1.8 compatible
   s.add_dependency 'logging'
   s.add_dependency 'awesome_print'
   s.add_dependency 'table_print'
