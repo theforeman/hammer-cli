@@ -10,7 +10,7 @@ group :test do
   gem 'thor'
   gem 'minitest', '4.7.4'
   gem 'minitest-spec-context'
-  gem 'simplecov'
+  gem 'simplecov', '< 0.9.0' # 0.9.0 is not compatible with Ruby 1.8.x
   gem 'mocha'
   gem 'ci_reporter'
 end
