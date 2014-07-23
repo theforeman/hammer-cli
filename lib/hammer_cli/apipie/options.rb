@@ -2,25 +2,27 @@
 module HammerCLI::Apipie
   module Options
 
-    def all_method_options
-      method_options_for_params(resource.action(action).params, true)
+    def method_options(options)
+      method_options_for_params(resource.action(action).params, options)
     end
 
-    def method_options
-      method_options_for_params(resource.action(action).params, false)
-    end
-
-    def method_options_for_params(params, include_nil=true)
+    def method_options_for_params(params, options)
       opts = {}
+
       params.each do |p|
         if p.expected_type == :hash
-          opts[p.name] = method_options_for_params(p.params, include_nil)
+          opts[p.name] = method_options_for_params(p.params, options)
         else
-          opts[p.name] = get_option_value(p.name)
+          p_name = HammerCLI.option_accessor_name(p.name)
+          if options.has_key?(p_name)
+            opts[p.name] = options[p_name]
+          elsif respond_to?(p_name, true)
+            opt = send(p_name)
+            opts[p.name] = opt unless opt.nil?
+          end
         end
       end
 
-      opts.reject! {|key, value| value.nil? } unless include_nil
       opts
     end
 

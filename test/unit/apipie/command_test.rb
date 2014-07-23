@@ -13,6 +13,19 @@ describe HammerCLI::Apipie::Command do
     action :show
   end
 
+  class OptionCommand < TestCommand
+    resource :architectures, :create
+
+    def option_name
+      'test_name'
+    end
+
+    def option_operatingsystem_ids
+      nil
+    end
+
+  end
+
   class CommandA < TestCommand
     resource :architectures, :index
 
@@ -103,5 +116,20 @@ describe HammerCLI::Apipie::Command do
 
   end
 
-end
+  context "options" do
 
+    it "should collect method options from given options" do
+      cmd_opt = OptionCommand.new("", ctx)
+      params = cmd_opt.class.resource.action(:create).params
+      cmd_opt.method_options_for_params(params, {'option_name' => 'name'}).must_equal({"architecture" => {"name" => "name"}})
+    end
+
+    it "should collect method options from methods" do
+      cmd_opt = OptionCommand.new("", ctx)
+      params = cmd_opt.class.resource.action(:create).params
+      cmd_opt.method_options_for_params(params, {}).must_equal({"architecture"=>{"name"=>"test_name"}})
+    end
+
+  end
+
+end
