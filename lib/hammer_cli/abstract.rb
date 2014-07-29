@@ -2,13 +2,13 @@ require 'hammer_cli/exception_handler'
 require 'hammer_cli/logger_watch'
 require 'hammer_cli/options/option_definition'
 require 'hammer_cli/clamp'
+require 'hammer_cli/subcommand'
 require 'logging'
 
 module HammerCLI
 
-  class CommandConflict < StandardError; end
-
   class AbstractCommand < Clamp::Command
+    include HammerCLI::Subcommand
 
     class << self
       attr_accessor :validation_block
@@ -60,31 +60,6 @@ module HammerCLI
 
     def parent_command
       context[:path][-2]
-    end
-
-    def self.remove_subcommand(name)
-      self.recognised_subcommands.delete_if do |sc|
-        if sc.is_called?(name)
-          logger.info "subcommand #{name} (#{sc.subcommand_class}) was removed."
-          true
-        else
-          false
-        end
-      end
-    end
-
-    def self.subcommand!(name, description, subcommand_class = self, &block)
-      remove_subcommand(name)
-      self.subcommand(name, description, subcommand_class, &block)
-      logger.info "subcommand #{name} (#{subcommand_class}) was created."
-    end
-
-    def self.subcommand(name, description, subcommand_class = self, &block)
-      existing = find_subcommand(name)
-      if existing
-        raise HammerCLI::CommandConflict, "can't replace subcommand #{name} (#{existing.subcommand_class}) with #{name} (#{subcommand_class})"
-      end
-      super
     end
 
     class SortedBuilder < Clamp::Help::Builder
@@ -191,10 +166,7 @@ module HammerCLI
 
     def exception_handler_class
       #search for exception handler class in parent modules/classes
-      module_list = self.class.name.to_s.split('::').inject([Object]) do |mod, class_name|
-        mod << mod[-1].const_get(class_name)
-      end
-      module_list.reverse.each do |mod|
+      HammerCLI.constant_path(self.class.name.to_s).reverse.each do |mod|
         return mod.send(:exception_handler_class) if mod.respond_to? :exception_handler_class
       end
       return HammerCLI::ExceptionHandler

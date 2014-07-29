@@ -1,6 +1,13 @@
 require File.join(File.dirname(__FILE__), 'test_helper')
 
 
+module Constant
+  module Test
+    class X
+    end
+  end
+end
+
 describe String do
 
   context "formatting" do
@@ -56,6 +63,35 @@ describe String do
 
   end
 
+  describe "constantize" do
+
+    it "raises NameError for empty string" do
+      proc {
+        "".constantize
+      }.must_raise NameError
+    end
+
+    it "raises NameError for unknown constant" do
+      proc {
+        "UnknownClass".constantize
+      }.must_raise NameError
+    end
+
+    it "returns correct constant" do
+      "Object".constantize.must_equal Object
+    end
+
+    it "returns correct namespaced constant" do
+      "Constant::Test::X".constantize.must_equal Constant::Test::X
+    end
+  end
+
+end
+
+
+
+describe HammerCLI do
+
   describe "interactive?" do
 
     before :each do
@@ -86,6 +122,28 @@ describe String do
         :ui => { :interactive => false },
         :_params => { :interactive => nil } })
       HammerCLI::interactive?.must_equal false
+    end
+  end
+
+
+  describe "constant_path" do
+
+    it "returns empty array for empty string" do
+      HammerCLI.constant_path("").must_equal []
+    end
+
+    it "raises NameError for unknown constant" do
+      proc {
+        HammerCLI.constant_path("UnknownClass")
+      }.must_raise NameError
+    end
+
+    it "returns single constant" do
+      HammerCLI.constant_path("Object").must_equal [Object]
+    end
+
+    it "returns correct path for namespaced constant" do
+      HammerCLI.constant_path("Constant::Test::X").must_equal [Constant, Constant::Test, Constant::Test::X]
     end
   end
 

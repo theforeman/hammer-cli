@@ -28,7 +28,7 @@ module HammerCLI
 
     def self.load_commands(main_cls)
       cmds = main_cls.recognised_subcommands.select do |sub_cmd|
-        !(sub_cmd.subcommand_class <= HammerCLI::ShellCommand)
+        !sub_cmd.is_called?("shell")
       end
       self.recognised_subcommands.push(*cmds)
     end
