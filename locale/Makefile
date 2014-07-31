@@ -48,17 +48,14 @@ tx-pull:
 	-git commit -a -m "i18n - extracting new, pulling from tx"
 
 extract-strings:
-	bundle exec rake locale:find DOMAIN=$(DOMAIN) SKIP_MODEL=1
+	bundle exec rake gettext:find
 
-tx-update: tx-pull extract-strings
-	# merging po files is unnecessary when using transifex.com (amend that)
+reset-po:
+	# merging po files is unnecessary when using transifex.com
 	git checkout -- ../locale/*/*po
+
+tx-update: tx-pull extract-strings reset-po $(MOFILES)
+	# amend mo files
+	git add ../locale/*/LC_MESSAGES
 	git commit -a --amend -m "i18n - extracting new, pulling from tx"
 	-echo Changes commited!
-
-# Remove all MO files
-clean:
-	-rm -f messages.mo
-	find . \( -name "*.mo" -o -name "*.pox" \) -exec rm -f '{}' ';'
-	find . -path *LC_MESSAGES | xargs rm -rf
-

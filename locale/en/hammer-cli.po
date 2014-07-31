@@ -1,0 +1,227 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the hammer-cli package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: hammer-cli 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-09 16:07-0400\n"
+"PO-Revision-Date: 2014-03-04 16:38+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: lib/hammer_cli/validator.rb:41
+msgid "Unknown option name '%s'"
+msgstr ""
+
+#: lib/hammer_cli/validator.rb:62
+msgid "You can't set all options %s at one time"
+msgstr ""
+
+#: lib/hammer_cli/validator.rb:63
+msgid "Options %s are required"
+msgstr ""
+
+#: lib/hammer_cli/validator.rb:79
+msgid "You can't set any of options %s"
+msgstr ""
+
+#: lib/hammer_cli/validator.rb:80
+msgid "At least one of options %s is required"
+msgstr ""
+
+#: lib/hammer_cli/output/formatters.rb:154
+msgid "no"
+msgstr ""
+
+#: lib/hammer_cli/output/formatters.rb:154
+msgid "yes"
+msgstr ""
+
+#: lib/hammer_cli/output/adapter/csv.rb:47
+msgid "Message"
+msgstr ""
+
+#: lib/hammer_cli/output/adapter/csv.rb:51
+msgid "Id"
+msgstr ""
+
+#: lib/hammer_cli/output/adapter/csv.rb:56
+msgid "Name"
+msgstr ""
+
+#: lib/hammer_cli/exception_handler.rb:60
+msgid "Error: %s"
+msgstr ""
+
+#: lib/hammer_cli/exception_handler.rb:66
+msgid "Error: %{message}\\n\\nSee: '%{path} --help'"
+msgstr ""
+
+#: lib/hammer_cli/exception_handler.rb:83
+msgid "Invalid username or password"
+msgstr ""
+
+#: lib/hammer_cli/exception_handler.rb:90
+msgid ""
+"Could not load API description from the server\\n  - is your server down?\\n"
+"\\\\n          \"  - was \\\"#{rake_command}\\\" run on the server when "
+"using apipie cache? (typical production settings))\\n\""
+msgstr ""
+
+#: lib/hammer_cli/logger.rb:28
+msgid "No permissions to create log dir %s"
+msgstr ""
+
+#: lib/hammer_cli/logger.rb:43
+msgid "File %s not writeable, won't log anything to the file!"
+msgstr ""
+
+#: lib/hammer_cli/modules.rb:10
+msgid ""
+"Legacy configuration of modules detected. Check section about configuration "
+"in user manual"
+msgstr ""
+
+#: lib/hammer_cli/modules.rb:42
+msgid "Warning: An error occured while loading module %s"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:10
+msgid "Print help for commands"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:22
+msgid "Exit interactive shell"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:120
+msgid "Welcome to the hammer interactive shell"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:121
+msgid "Type 'help' for usage information"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:122
+msgid ""
+"Command completion is disabled on ruby < 1.9 due to compatibility problems."
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:138
+msgid "Interactive shell"
+msgstr ""
+
+#: lib/hammer_cli/options/option_definition.rb:68
+msgid "Can be specified multiple times. "
+msgstr ""
+
+#: lib/hammer_cli/options/option_definition.rb:69
+msgid "Default: "
+msgstr ""
+
+#: lib/hammer_cli/options/option_definition.rb:69
+msgid ", or "
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:26
+msgid "Comma-separated list of key=value."
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:35
+msgid "value must be defined as a comma-separated list of key=value"
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:46
+msgid "Comma separated list of values."
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:58
+msgid "One of true/false, yes/no, 1/0."
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:68
+msgid "value must be one of true/false, yes/no, 1/0"
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:107
+msgid "Unable to parse JSON input"
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:120
+msgid "One of %s"
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:127
+msgid "value must be one of '%s'"
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:146
+msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:153
+msgid "'%s' is not a valid date"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:7
+msgid "be verbose"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:8
+msgid "show debugging output "
+msgstr ""
+
+#: lib/hammer_cli/main.rb:9
+msgid "path to custom config file"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:11
+msgid "username to access the remote system"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:13
+msgid "password to access the remote system"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:16
+msgid "show version"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:25
+msgid "Show ids of associated resources"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:27
+msgid "Explicitly turn interactive mode on/off"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:31
+msgid "Output as CSV (same as --output=csv)"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:32
+msgid "Set output format. One of [%s]"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:35
+msgid "Character to separate the values"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:39
+msgid "Get list of possible endings"
+msgstr ""
+
+#: lib/hammer_cli/settings.rb:28
+msgid ""
+"Warning: location hammer.modules.d is deprecated, move your module "
+"configurations to cli.modules.d"
+msgstr ""
