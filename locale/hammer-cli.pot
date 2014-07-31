@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.1.0\n"
+"Project-Id-Version: hammer-cli 0.1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-09 16:07-0400\n"
+"POT-Creation-Date: 2014-07-31 10:48+0200\n"
 "PO-Revision-Date: 2014-03-04 16:38+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,106 +18,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: lib/hammer_cli/validator.rb:41
-msgid "Unknown option name '%s'"
+#: lib/hammer_cli/clamp.rb:5
+msgid "too many arguments"
 msgstr ""
 
-#: lib/hammer_cli/validator.rb:62
-msgid "You can't set all options %s at one time"
+#: lib/hammer_cli/clamp.rb:6
+msgid "option '%<option>s' is required"
 msgstr ""
 
-#: lib/hammer_cli/validator.rb:63
-msgid "Options %s are required"
+#: lib/hammer_cli/clamp.rb:7
+msgid "option '%<option>s' (or env %<env>s) is required"
 msgstr ""
 
-#: lib/hammer_cli/validator.rb:79
-msgid "You can't set any of options %s"
+#: lib/hammer_cli/clamp.rb:8
+msgid "option '%<switch>s': %<message>s"
 msgstr ""
 
-#: lib/hammer_cli/validator.rb:80
-msgid "At least one of options %s is required"
+#: lib/hammer_cli/clamp.rb:9
+msgid "parameter '%<param>s': %<message>s"
 msgstr ""
 
-#: lib/hammer_cli/output/formatters.rb:154
-msgid "no"
+#: lib/hammer_cli/clamp.rb:10
+msgid "%<env>s: %<message>s"
 msgstr ""
 
-#: lib/hammer_cli/output/formatters.rb:154
-msgid "yes"
+#: lib/hammer_cli/clamp.rb:11
+msgid "Unrecognised option '%<switch>s'"
 msgstr ""
 
-#: lib/hammer_cli/output/adapter/csv.rb:47
-msgid "Message"
+#: lib/hammer_cli/clamp.rb:12
+msgid "No such sub-command '%<name>s'"
 msgstr ""
 
-#: lib/hammer_cli/output/adapter/csv.rb:51
-msgid "Id"
-msgstr ""
-
-#: lib/hammer_cli/output/adapter/csv.rb:56
-msgid "Name"
-msgstr ""
-
-#: lib/hammer_cli/exception_handler.rb:60
-msgid "Error: %s"
-msgstr ""
-
-#: lib/hammer_cli/exception_handler.rb:66
-msgid "Error: %{message}\\n\\nSee: '%{path} --help'"
-msgstr ""
-
-#: lib/hammer_cli/exception_handler.rb:83
-msgid "Invalid username or password"
-msgstr ""
-
-#: lib/hammer_cli/exception_handler.rb:90
-msgid ""
-"Could not load API description from the server\\n  - is your server down?\\n"
-"\\\\n          \"  - was \\\"#{rake_command}\\\" run on the server when "
-"using apipie cache? (typical production settings))\\n\""
-msgstr ""
-
-#: lib/hammer_cli/logger.rb:28
-msgid "No permissions to create log dir %s"
-msgstr ""
-
-#: lib/hammer_cli/logger.rb:43
-msgid "File %s not writeable, won't log anything to the file!"
-msgstr ""
-
-#: lib/hammer_cli/modules.rb:10
-msgid ""
-"Legacy configuration of modules detected. Check section about configuration "
-"in user manual"
-msgstr ""
-
-#: lib/hammer_cli/modules.rb:42
-msgid "Warning: An error occured while loading module %s"
-msgstr ""
-
-#: lib/hammer_cli/shell.rb:10
-msgid "Print help for commands"
-msgstr ""
-
-#: lib/hammer_cli/shell.rb:22
-msgid "Exit interactive shell"
-msgstr ""
-
-#: lib/hammer_cli/shell.rb:120
-msgid "Welcome to the hammer interactive shell"
-msgstr ""
-
-#: lib/hammer_cli/shell.rb:121
-msgid "Type 'help' for usage information"
-msgstr ""
-
-#: lib/hammer_cli/shell.rb:122
-msgid ""
-"Command completion is disabled on ruby < 1.9 due to compatibility problems."
-msgstr ""
-
-#: lib/hammer_cli/shell.rb:138
-msgid "Interactive shell"
+#: lib/hammer_cli/clamp.rb:13
+msgid "no value provided"
 msgstr ""
 
 #: lib/hammer_cli/options/option_definition.rb:68
@@ -172,6 +106,22 @@ msgstr ""
 msgid "'%s' is not a valid date"
 msgstr ""
 
+#: lib/hammer_cli/options/normalizers.rb:164
+msgid "Any combination (comma separated list) of '%s'"
+msgstr ""
+
+#: lib/hammer_cli/options/normalizers.rb:184
+msgid "value must be a combination of '%s'"
+msgstr ""
+
+#: lib/hammer_cli/logger.rb:28
+msgid "No permissions to create log dir %s"
+msgstr ""
+
+#: lib/hammer_cli/logger.rb:43
+msgid "File %s not writeable, won't log anything to the file!"
+msgstr ""
+
 #: lib/hammer_cli/main.rb:7
 msgid "be verbose"
 msgstr ""
@@ -192,31 +142,35 @@ msgstr ""
 msgid "password to access the remote system"
 msgstr ""
 
-#: lib/hammer_cli/main.rb:16
+#: lib/hammer_cli/main.rb:15
+msgid "remote system address"
+msgstr ""
+
+#: lib/hammer_cli/main.rb:18
 msgid "show version"
 msgstr ""
 
-#: lib/hammer_cli/main.rb:25
+#: lib/hammer_cli/main.rb:27
 msgid "Show ids of associated resources"
 msgstr ""
 
-#: lib/hammer_cli/main.rb:27
+#: lib/hammer_cli/main.rb:29
 msgid "Explicitly turn interactive mode on/off"
 msgstr ""
 
-#: lib/hammer_cli/main.rb:31
+#: lib/hammer_cli/main.rb:33
 msgid "Output as CSV (same as --output=csv)"
 msgstr ""
 
-#: lib/hammer_cli/main.rb:32
+#: lib/hammer_cli/main.rb:34
 msgid "Set output format. One of [%s]"
 msgstr ""
 
-#: lib/hammer_cli/main.rb:35
+#: lib/hammer_cli/main.rb:37
 msgid "Character to separate the values"
 msgstr ""
 
-#: lib/hammer_cli/main.rb:39
+#: lib/hammer_cli/main.rb:41
 msgid "Get list of possible endings"
 msgstr ""
 
@@ -224,4 +178,98 @@ msgstr ""
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module "
 "configurations to cli.modules.d"
+msgstr ""
+
+#: lib/hammer_cli/modules.rb:10
+msgid ""
+"Legacy configuration of modules detected. Check section about configuration "
+"in user manual"
+msgstr ""
+
+#: lib/hammer_cli/modules.rb:42
+msgid "Warning: An error occured while loading module %s"
+msgstr ""
+
+#: lib/hammer_cli/exception_handler.rb:60
+msgid "Error: %s"
+msgstr ""
+
+#: lib/hammer_cli/exception_handler.rb:66
+msgid "Error: %{message}\\n\\nSee: '%{path} --help'"
+msgstr ""
+
+#: lib/hammer_cli/exception_handler.rb:83
+msgid "Invalid username or password"
+msgstr ""
+
+#: lib/hammer_cli/exception_handler.rb:90
+msgid ""
+"Could not load API description from the server\\n  - is your server down?\\n"
+"\\\\n          \"  - was \\\"#{rake_command}\\\" run on the server when "
+"using apipie cache? (typical production settings))\\n\""
+msgstr ""
+
+#: lib/hammer_cli/validator.rb:41
+msgid "Unknown option name '%s'"
+msgstr ""
+
+#: lib/hammer_cli/validator.rb:62
+msgid "You can't set all options %s at one time"
+msgstr ""
+
+#: lib/hammer_cli/validator.rb:63
+msgid "Options %s are required"
+msgstr ""
+
+#: lib/hammer_cli/validator.rb:79
+msgid "You can't set any of options %s"
+msgstr ""
+
+#: lib/hammer_cli/validator.rb:80
+msgid "At least one of options %s is required"
+msgstr ""
+
+#: lib/hammer_cli/output/adapter/csv.rb:171
+msgid "Message"
+msgstr ""
+
+#: lib/hammer_cli/output/adapter/csv.rb:175
+msgid "Id"
+msgstr ""
+
+#: lib/hammer_cli/output/adapter/csv.rb:180
+msgid "Name"
+msgstr ""
+
+#: lib/hammer_cli/output/formatters.rb:154
+msgid "no"
+msgstr ""
+
+#: lib/hammer_cli/output/formatters.rb:154
+msgid "yes"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:10
+msgid "Print help for commands"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:22
+msgid "Exit interactive shell"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:120
+msgid "Welcome to the hammer interactive shell"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:121
+msgid "Type 'help' for usage information"
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:122
+msgid ""
+"Command completion is disabled on ruby < 1.9 due to compatibility problems."
+msgstr ""
+
+#: lib/hammer_cli/shell.rb:138
+msgid "Interactive shell"
 msgstr ""
