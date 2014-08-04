@@ -60,6 +60,10 @@ HammerCLI::Settings.load({
     :verbose => preparser.verbose? || preparser.debug?
   }})
 
+if HammerCLI::Settings.get(:mark_translated)
+  include HammerCLI::I18n::Debug
+end
+
 # setup logging
 require 'hammer_cli/logger'
 logger = Logging.logger['Init']

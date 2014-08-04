@@ -22,3 +22,6 @@
 
 # Maximum log size in bytes. Log rotates when the value gets exceeded
 #:log_size: 5 #in MB
+
+# Mark translated strings with X characters (for developers)
+#:mark_translated: false
