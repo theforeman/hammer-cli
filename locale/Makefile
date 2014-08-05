@@ -7,6 +7,7 @@
 # make clean - clean everything
 #
 DOMAIN = hammer-cli
+VERSION = $(shell ruby -e 'require "rubygems";spec = Gem::Specification::load("../hammer_cli.gemspec");puts spec.version')
 POTFILE = $(DOMAIN).pot
 MOFILE = $(DOMAIN).mo
 POFILES = $(shell find . -name '*.po')
@@ -45,6 +46,9 @@ uniq-po:
 
 tx-pull:
 	tx pull -f
+	for f in $(POFILES) ; do \
+		sed -i 's/^\("Project-Id-Version: \).*$$/\1$(DOMAIN) $(VERSION)\\n"/' $$f; \
+	done
 	-git commit -a -m "i18n - extracting new, pulling from tx"
 
 extract-strings:
