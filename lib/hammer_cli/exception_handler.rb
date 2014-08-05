@@ -63,7 +63,8 @@ module HammerCLI
     end
 
     def handle_usage_exception(e)
-      print_error _("Error: %{message}\n\nSee: '%{path} --help'") % {:message => e.message, :path => e.command.invocation_path}
+      print_error (_("Error: %{message}") + "\n\n" +
+                   _("See: '%{path} --help'")) % {:message => e.message, :path => e.command.invocation_path}
       log_full_error e
       HammerCLI::EX_USAGE
     end
