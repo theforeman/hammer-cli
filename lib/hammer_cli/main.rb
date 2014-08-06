@@ -55,6 +55,4 @@ module HammerCLI
 
 end
 
-# extend MainCommand
-require 'hammer_cli/shell'
 

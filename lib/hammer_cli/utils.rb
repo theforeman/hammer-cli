@@ -24,6 +24,11 @@ class String
     gsub(/^/, indent_str)
   end
 
+  def constantize
+    raise NameError, "Can't constantize empty string" if self.empty?
+    HammerCLI.constant_path(self)[-1]
+  end
+
 end
 
 module HammerCLI
@@ -32,6 +37,14 @@ module HammerCLI
     return false unless STDOUT.tty?
     return HammerCLI::Settings.get(:_params, :interactive) unless HammerCLI::Settings.get(:_params, :interactive).nil?
     HammerCLI::Settings.get(:ui, :interactive) != false
+  end
+
+  def self.constant_path(name)
+    path = name.to_s.split('::').inject([Object]) do |mod, class_name|
+      mod << mod[-1].const_get(class_name)
+    end
+    path.shift
+    path
   end
 
 end

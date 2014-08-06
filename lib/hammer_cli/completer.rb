@@ -189,7 +189,7 @@ module HammerCLI
         unless word.start_with?('-')
           break unless subcommands.has_key? word
 
-          cmd = subcommands[word]
+          cmd = subcommands[word].subcommand_class
           cmd_idx = idx+1
           subcommands = sub_command_map(cmd)
         end
@@ -229,7 +229,7 @@ module HammerCLI
     def sub_command_map(cmd_class)
       cmd_class.recognised_subcommands.inject({}) do |cmd_map, cmd|
         cmd.names.each do |name|
-          cmd_map.update(name => cmd.subcommand_class)
+          cmd_map.update(name => cmd)
         end
         cmd_map
       end

@@ -319,6 +319,25 @@ If your plugin needs to disable an existing subcommand, you can use `remove_subc
 Call to this action is automatically logged.
 
 
+### Lazy-loaded subcommands
+In some cases it's beneficial to load the command classes lazily at the time when they
+are really needed. It can save some time in CLIs containing many commands with time-consuming
+initialization.
+
+Such commands have to be placed in a separate file (`hammer_cli_hello/say.rb` in our case).
+Following construct registers the command as lazy-loaded. CLI then requires the file
+when it needs the command class for the first time.
+
+```ruby
+HammerCLI::MainCommand.lazy_subcommand(
+  'say',                        # command's name
+  'Say something',              # description
+  'HammerCLIHello::SayCommand', # command's class in a string
+  'hammer_cli_hello/say'        # require path of the file
+)
+```
+
+
 ### Printing some output
 We've mentioned above that it's not recommended practice to print output
 directly with `puts` in Hammer. The reason is we separate definition
