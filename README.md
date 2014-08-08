@@ -16,7 +16,7 @@ Check out the [release notes](doc/release_notes.md#release-notes) to see what's 
 
 Installation
 ------------
-We build rpms, debs and gems. Alternatively you can install hammer form a git checkout.
+We build rpms, debs and gems. Alternatively you can install hammer from a git checkout.
 See our [installation and configuration instuctions](doc/installation.md#installation).
 
 
@@ -26,7 +26,7 @@ If one of hammer commands doesn't work as you would expect, you can run `hammer 
 full debug output from the loggers. It should give you an idea what went wrong.
 
 If you have questions, don't hesitate to contact us on `foreman-users@googlegroups.com` or
-`FreeNode#foreman` irc channel.
+the `Freenode#theforeman` IRC channel.
 
 
 Further reading
