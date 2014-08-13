@@ -6,10 +6,10 @@
 # Sergio Ocón <sergio@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.1.1\n"
+"Project-Id-Version: hammer-cli 0.1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 10:48+0200\n"
-"PO-Revision-Date: 2014-08-01 08:41+0000\n"
+"POT-Creation-Date: 2014-08-01 12:42+0200\n"
+"PO-Revision-Date: 2014-08-06 09:30+0000\n"
 "Last-Translator: Sergio Ocón <sergio@redhat.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/foreman/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -32,27 +32,27 @@ msgstr "la opción '%<option>s'  (or entorno %<env>s) es obligatoria"
 
 #: lib/hammer_cli/clamp.rb:8
 msgid "option '%<switch>s': %<message>s"
-msgstr ""
+msgstr "opción '%<switch>s': %<message>s"
 
 #: lib/hammer_cli/clamp.rb:9
 msgid "parameter '%<param>s': %<message>s"
-msgstr ""
+msgstr "parámetro '%<param>s': %<message>s"
 
 #: lib/hammer_cli/clamp.rb:10
 msgid "%<env>s: %<message>s"
-msgstr ""
+msgstr "%<env>s: %<message>s"
 
 #: lib/hammer_cli/clamp.rb:11
 msgid "Unrecognised option '%<switch>s'"
-msgstr ""
+msgstr "Opción desconocida '%<switch>s'"
 
 #: lib/hammer_cli/clamp.rb:12
 msgid "No such sub-command '%<name>s'"
-msgstr ""
+msgstr "Subcomando no existe  '%<name>s'"
 
 #: lib/hammer_cli/clamp.rb:13
 msgid "no value provided"
-msgstr ""
+msgstr "no se proporcionó un valor"
 
 #: lib/hammer_cli/options/option_definition.rb:68
 msgid "Can be specified multiple times. "
@@ -108,11 +108,11 @@ msgstr "'%s' no es una fecha válida"
 
 #: lib/hammer_cli/options/normalizers.rb:164
 msgid "Any combination (comma separated list) of '%s'"
-msgstr ""
+msgstr "Cualquier combinación (lista separada por comas) de '%s'"
 
 #: lib/hammer_cli/options/normalizers.rb:184
 msgid "value must be a combination of '%s'"
-msgstr ""
+msgstr "el valor debe ser una combinación de '%s'"
 
 #: lib/hammer_cli/logger.rb:28
 msgid "No permissions to create log dir %s"
@@ -144,7 +144,7 @@ msgstr "palabra clave de acceso al sistema remoto"
 
 #: lib/hammer_cli/main.rb:15
 msgid "remote system address"
-msgstr ""
+msgstr "dirección del sistema remoto"
 
 #: lib/hammer_cli/main.rb:18
 msgid "show version"

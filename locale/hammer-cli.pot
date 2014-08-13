@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.1.1\n"
+"Project-Id-Version: hammer-cli 0.1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-01 12:42+0200\n"
+"POT-Creation-Date: 2014-08-13 16:09+0200\n"
 "PO-Revision-Date: 2014-03-04 16:38+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -195,18 +195,29 @@ msgid "Error: %s"
 msgstr ""
 
 #: lib/hammer_cli/exception_handler.rb:66
-msgid "Error: %{message}\\n\\nSee: '%{path} --help'"
+msgid "Error: %{message}"
 msgstr ""
 
-#: lib/hammer_cli/exception_handler.rb:83
+#: lib/hammer_cli/exception_handler.rb:67
+msgid "See: '%{path} --help'"
+msgstr ""
+
+#: lib/hammer_cli/exception_handler.rb:84
 msgid "Invalid username or password"
 msgstr ""
 
-#: lib/hammer_cli/exception_handler.rb:90
+#: lib/hammer_cli/exception_handler.rb:91
+msgid "Could not load the API description from the server"
+msgstr ""
+
+#: lib/hammer_cli/exception_handler.rb:92
+msgid "is the server down?"
+msgstr ""
+
+#: lib/hammer_cli/exception_handler.rb:93
 msgid ""
-"Could not load API description from the server\\n  - is your server down?\\n"
-"\\\\n          \"  - was \\\"#{rake_command}\\\" run on the server when "
-"using apipie cache? (typical production settings))\\n\""
+"was '%s' run on the server when using apipie cache? (typical production "
+"settings)"
 msgstr ""
 
 #: lib/hammer_cli/validator.rb:41
@@ -272,4 +283,10 @@ msgstr ""
 
 #: lib/hammer_cli/shell.rb:138
 msgid "Interactive shell"
+msgstr ""
+
+#: lib/hammer_cli/subcommand.rb:56
+msgid ""
+"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
+"(%<new_class>s)"
 msgstr ""
