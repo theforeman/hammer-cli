@@ -1,6 +1,32 @@
 Release notes
 =============
 
+### 0.1.2
+* Allow override of request options, e.g. :response => :raw
+* Lazy loaded subcommands ([#6761](http://projects.theforeman.org/issues/6761))
+* I18n - fixed error message + docs
+* I18n - fix apipie warning string to be properly extracted
+* I18n - add mark_translated to highlight extracted strings
+* I18n - add en_GB locale
+* I18n - extracting new, pulling from tx
+* Project-Id-Version is fixed after tx pull
+* Restrict ci_reporter gem to less than 2.0.0 to fix CI ([#6779](http://projects.theforeman.org/issues/6779))
+* Fixed dependency on simplecov
+* Parameters are not wrapped ([#6343](http://projects.theforeman.org/issues/6343))
+* Rest-client > 1.7 does not support ruby 1.8 ([#6534](http://projects.theforeman.org/issues/6534))
+* Exit cleanly when EOF/ctrl+d given in shell ([#6148](http://projects.theforeman.org/issues/6148))
+* Fix incorrect --server help text ([#6219](http://projects.theforeman.org/issues/6219))
+* Fixed wrong config file path in installation docs
+* Empty list in csv adapter does not work ([#6238](http://projects.theforeman.org/issues/6238))
+* Resource name mapping ([#6092](http://projects.theforeman.org/issues/6092))
+* Tests for EnumList normalizer, fixed missing quotes in description
+* ListEnum normalizer
+* Add --server cli option ([#6219](http://projects.theforeman.org/issues/6219))
+* CSV handles collection or container ([#5111](http://projects.theforeman.org/issues/5111))
+* build_options configurable with block ([#5747](http://projects.theforeman.org/issues/5747))
+* Add pkg:generate_source task to generate gem ([#5793](http://projects.theforeman.org/issues/5793))
+
+
 ### 0.1.1
 * Removed `log_api_calls` setting
 * Updated documentation
