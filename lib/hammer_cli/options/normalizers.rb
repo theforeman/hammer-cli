@@ -28,14 +28,25 @@ module HammerCLI
 
         def format(val)
           return {} unless val.is_a?(String)
+          return {} if val.empty?
 
-          val.split(",").inject({}) do |result, item|
-            parts = item.split("=")
-            if parts.size != 2
-              raise ArgumentError, _("value must be defined as a comma-separated list of key=value")
-            end
-            result.update(parts[0] => parts[1])
+          result = {}
+
+          pair_re = '([^,]+)=([^,\[]+|\[[^\[\]]*\])'
+          full_re = "^((%s)[,]?)+$" % pair_re
+
+          unless Regexp.new(full_re).match(val)
+            raise ArgumentError, _("value must be defined as a comma-separated list of key=value")
           end
+
+          val.scan(Regexp.new(pair_re)) do |key, value|
+            value = value.strip
+            value = value.scan(/[^,\[\]]+/) if value.start_with?('[')
+
+            result[key.strip]=value
+          end
+          return result
+
         end
       end
 
