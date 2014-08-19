@@ -59,9 +59,9 @@ module HammerCLI::Apipie
     def option_opts(param)
       opts = {}
       opts[:required] = true if (param.required? and require_options?)
-      # FIXME: There is a bug in apipie, it does not produce correct expected type for Arrays
-      # When it's fixed, we should test param["expected_type"] == "array"
-      opts[:format] = HammerCLI::Options::Normalizers::List.new if param.validator.include? "Array"
+      if param.expected_type == :array || param.validator =~ /Array/i
+        opts[:format] = HammerCLI::Options::Normalizers::List.new
+      end
       opts[:attribute_name] = HammerCLI.option_accessor_name(param.name)
       return opts
     end
