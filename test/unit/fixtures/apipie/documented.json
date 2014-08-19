@@ -54,7 +54,7 @@
                                 "allow_null": false,
                                 "full_name": "organization_ids",
                                 "validator": "Array of numbers",
-                                "expected_type": "Array",
+                                "expected_type": "array",
                                 "description": "",
                                 "required": false
                             },
@@ -107,7 +107,7 @@
                                         "allow_null": false,
                                         "full_name": "documented[array_param]",
                                         "validator": "Must be Array",
-                                        "expected_type": "string",
+                                        "expected_type": "array",
                                         "description": "",
                                         "required": true
                                     }
