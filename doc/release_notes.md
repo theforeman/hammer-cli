@@ -1,6 +1,13 @@
 Release notes
 =============
 
+### 0.1.3
+* Fixed detection of list type options  ([#7144](http://projects.theforeman.org/issues/7144))
+* Key-value normalizer accepts arrays ([#7133](http://projects.theforeman.org/issues/7133))
+* Make the zanata settings consistent ([#7111](http://projects.theforeman.org/issues/7111))
+* Adding system locale domain ([#7083](http://projects.theforeman.org/issues/7083))
+
+
 ### 0.1.2
 * Allow override of request options, e.g. :response => :raw
 * Lazy loaded subcommands ([#6761](http://projects.theforeman.org/issues/6761))
