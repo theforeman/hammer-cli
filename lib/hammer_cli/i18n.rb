@@ -102,6 +102,14 @@ module HammerCLI
 
     end
 
+    class SystemLocaleDomain < LocaleDomain
+
+      def locale_dir
+        '/usr/share/locale'
+      end
+
+    end
+
 
     def self.locale
       lang_variant = Locale.current.to_simple.to_str
@@ -145,4 +153,5 @@ include FastGettext::Translation
 include HammerCLI::I18n::AllDomains
 
 HammerCLI::I18n.add_domain(HammerCLI::I18n::LocaleDomain.new)
+HammerCLI::I18n.add_domain(HammerCLI::I18n::SystemLocaleDomain.new)
 
