@@ -56,6 +56,18 @@ describe HammerCLI::Options::Normalizers do
       formatter.format("a=1,b=2,c=3").must_equal({'a' => '1', 'b' => '2', 'c' => '3'})
     end
 
+    it "should parse arrays" do
+      formatter.format("a=1,b=[1,2,3],c=3").must_equal({'a' => '1', 'b' => ['1', '2', '3'], 'c' => '3'})
+    end
+
+    it "should parse array with one item" do
+      formatter.format("a=1,b=[abc],c=3").must_equal({'a' => '1', 'b' => ['abc'], 'c' => '3'})
+    end
+
+    it "should parse empty array" do
+      formatter.format("a=1,b=[],c=3").must_equal({'a' => '1', 'b' => [], 'c' => '3'})
+    end
+
     it "should parse a comma separated string 2" do
       proc { formatter.format("a=1,b,c=3") }.must_raise ArgumentError
     end
