@@ -63,11 +63,29 @@ module HammerCLI
     end
 
     class SortedBuilder < Clamp::Help::Builder
+
+      DEFAULT_LABEL_INDENT = 29
+
       def add_list(heading, items)
         items.sort! do |a, b|
           a.help[0] <=> b.help[0]
         end
-        super(heading, items)
+
+        puts "\n#{heading}:"
+
+        label_width = DEFAULT_LABEL_INDENT
+        items.each do |item|
+          label, description = item.help
+          label_width = label.size if label.size > label_width
+        end
+
+        items.each do |item|
+          label, description = item.help
+          description.each_line do |line|
+            puts " %-#{label_width}s %s" % [label, line]
+            label = ''
+          end
+        end
       end
     end
 
