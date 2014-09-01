@@ -572,5 +572,5 @@ There are more ways where to place your config file for hammer.
 The best practice is to place module's configuration into a separate file named by
 the module. In this example it would be `~/.hammer/cli.modules.d/hello_world.yml`.
 
-Read more in [the settings howto](https://github.com/theforeman/hammer-cli#configuration).
+Read more about configuration locations in [the settings howto](installation.md#configuration).
 

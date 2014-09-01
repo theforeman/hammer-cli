@@ -59,7 +59,7 @@ $ gem build ./hammer_cli_hello.gemspec
 $ gem install hammer_cli_hello-0.0.1.gem
 ```
 
-Place your module's config file into `~/.hammer/cli.modules.d/`.
+Place your module's config file into `~/.hammer/cli.modules.d/hello_world.yml`.
 ```yaml
 :hello:
   :enable_module: true
