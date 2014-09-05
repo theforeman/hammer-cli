@@ -115,6 +115,32 @@
                             }
                         ],
                         "full_description": ""
+                    },
+                    {
+                        "name": "typed_params",
+                        "examples": [],
+                        "errors": [],
+                        "params": [
+                            {
+                                "name": "array_param",
+                                "allow_null": false,
+                                "full_name": "documented[array_param]",
+                                "validator": "Must be Array",
+                                "expected_type": "array",
+                                "description": "",
+                                "required": true
+                            },
+                            {
+                                "name": "boolean_param",
+                                "allow_null": false,
+                                "full_name": "documented[boolean_param]",
+                                "validator": "Must be Boolean",
+                                "expected_type": "boolean",
+                                "description": "",
+                                "required": false
+                            }
+                        ],
+                        "full_description": ""
                     }
                 ]
             }
