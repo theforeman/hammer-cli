@@ -72,11 +72,16 @@ describe HammerCLI::Apipie::OptionBuilder do
   end
 
   context "setting correct normalizers" do
-    let(:action) {api.resource(:documented).action(:create)}
+    let(:action) {api.resource(:documented).action(:typed_params)}
 
     it "should set array normalizer" do
       array_option = options.find {|o| o.attribute_name == HammerCLI.option_accessor_name("array_param") }
       array_option.value_formatter.class.must_equal HammerCLI::Options::Normalizers::List
+    end
+
+    it "should set boolean normalizer" do
+      boolean_option = options.find {|o| o.attribute_name == HammerCLI.option_accessor_name("boolean_param") }
+      boolean_option.value_formatter.class.must_equal HammerCLI::Options::Normalizers::Bool
     end
 
   end
