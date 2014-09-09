@@ -36,7 +36,7 @@ module HammerCLI
       end
 
       def help_lhs
-        super
+        @required ? super : "#{super} (optional)"
       end
 
       def help_rhs

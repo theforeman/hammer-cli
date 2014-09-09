@@ -20,7 +20,7 @@ module HammerCLI::Apipie
     def self.create_option_builder
       builder = super
       builder.builders += [
-        OptionBuilder.new(resource.action(action), :require_options => false)
+        OptionBuilder.new(resource.action(action), :require_options => true)
       ] if resource_defined?
       builder
     end
