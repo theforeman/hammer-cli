@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hammer-cli 0.1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-13 16:09+0200\n"
+"POT-Creation-Date: 2014-08-20 13:02+0200\n"
 "PO-Revision-Date: 2014-08-19 12:01+0000\n"
 "Last-Translator: Claer <transiblu@claer.hammock.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/foreman/language/fr/)\n"
@@ -71,47 +71,47 @@ msgstr ", ou"
 msgid "Comma-separated list of key=value."
 msgstr "Liste de clef=valeur séparées par des virgules."
 
-#: lib/hammer_cli/options/normalizers.rb:35
+#: lib/hammer_cli/options/normalizers.rb:39
 msgid "value must be defined as a comma-separated list of key=value"
 msgstr "la valeur doit être définie comme liste de clef=valeur séparées par des virgules"
 
-#: lib/hammer_cli/options/normalizers.rb:46
+#: lib/hammer_cli/options/normalizers.rb:57
 msgid "Comma separated list of values."
 msgstr "Liste de valeurs séparées par des virgules."
 
-#: lib/hammer_cli/options/normalizers.rb:58
+#: lib/hammer_cli/options/normalizers.rb:69
 msgid "One of true/false, yes/no, 1/0."
 msgstr "Au choix parmi true/false, yes/no, 1/0."
 
-#: lib/hammer_cli/options/normalizers.rb:68
+#: lib/hammer_cli/options/normalizers.rb:79
 msgid "value must be one of true/false, yes/no, 1/0"
 msgstr "La valeur doit être un de ces choix : true/false, yes/no, 1/0"
 
-#: lib/hammer_cli/options/normalizers.rb:107
+#: lib/hammer_cli/options/normalizers.rb:118
 msgid "Unable to parse JSON input"
 msgstr "Impossible d'analyser l'entrée JSON"
 
-#: lib/hammer_cli/options/normalizers.rb:120
+#: lib/hammer_cli/options/normalizers.rb:131
 msgid "One of %s"
 msgstr "Choisir parmi %s"
 
-#: lib/hammer_cli/options/normalizers.rb:127
+#: lib/hammer_cli/options/normalizers.rb:138
 msgid "value must be one of '%s'"
 msgstr "la valeur doit être choisie parmi '%s'"
 
-#: lib/hammer_cli/options/normalizers.rb:146
+#: lib/hammer_cli/options/normalizers.rb:157
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "Date et heure suivant YYYY-MM-DD HH:MM:SS ou format ISO 8601"
 
-#: lib/hammer_cli/options/normalizers.rb:153
+#: lib/hammer_cli/options/normalizers.rb:164
 msgid "'%s' is not a valid date"
 msgstr "'%s' n'est pas une date valide"
 
-#: lib/hammer_cli/options/normalizers.rb:164
+#: lib/hammer_cli/options/normalizers.rb:175
 msgid "Any combination (comma separated list) of '%s'"
 msgstr "Toute combinaison (liste séparée par des virgules) de '%s'"
 
-#: lib/hammer_cli/options/normalizers.rb:184
+#: lib/hammer_cli/options/normalizers.rb:195
 msgid "value must be a combination of '%s'"
 msgstr "la valeur doit être une combinaison de '%s'"
 
