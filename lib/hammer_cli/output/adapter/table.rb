@@ -44,6 +44,12 @@ module HammerCLI::Output::Adapter
         row
       end
 
+      if rows.empty?
+        keys = fields.map { |f| [label_for(f), ''] }
+        rows = [Hash[keys]]
+        @header_only = true
+      end
+
       options = fields.collect do |f|
         { label_for(f) => {
             :width => max_width_for(f)
@@ -59,6 +65,10 @@ module HammerCLI::Output::Adapter
 
       output = sort_columns(printer.table_print, sort_order)
       dashes = /\n([-|]+)\n/.match(output)
+
+      if @header_only
+        output = output.lines.first
+      end
 
       puts dashes[1] if dashes
       puts output
