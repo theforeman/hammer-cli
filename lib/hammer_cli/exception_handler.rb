@@ -17,6 +17,7 @@ module HammerCLI
         [RestClient::ResourceNotFound, :handle_not_found],
         [RestClient::Unauthorized, :handle_unauthorized],
         [ApipieBindings::DocLoadingError, :handle_apipie_docloading_error],
+        [ApipieBindings::MissingArgumentsError, :handle_apipie_missing_arguments_error]
       ]
     end
 
@@ -48,10 +49,10 @@ module HammerCLI
       output.print_message(msg)
     end
 
-    def log_full_error(e)
+    def log_full_error(e, message = e.message)
       backtrace = e.backtrace || []
-      error = "\n\n#{e.class} (#{e.message}):\n    " +
-        backtrace.join("\n    ")
+      error = "\n\n#{e.class} (#{message}):\n    " +
+        backtrace.join("\n    ") +
         "\n\n"
       @logger.error error
     end
@@ -93,6 +94,13 @@ module HammerCLI
                   _("was '%s' run on the server when using apipie cache? (typical production settings)") % rake_command
       log_full_error e
       HammerCLI::EX_CONFIG
+    end
+
+    def handle_apipie_missing_arguments_error(e)
+      message = _("Missing arguments for %s") % "'#{e.params.join("', '")}'"
+      print_error message
+      log_full_error e, message
+      HammerCLI::EX_USAGE
     end
 
   end
