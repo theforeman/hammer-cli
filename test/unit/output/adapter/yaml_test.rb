@@ -15,7 +15,9 @@ describe HammerCLI::Output::Adapter::Yaml do
     let(:city)          { Fields::Field.new(:path => [:city], :label => "City") }
     let(:label_address) { Fields::Label.new(:path => [:address], :label => "Address") }
     let(:num_contacts)  { Fields::Collection.new(:path => [:contacts], :label => "Contacts") }
+    let(:num_one_contact)  { Fields::Collection.new(:path => [:one_contact], :label => "Contacts") }
     let(:contacts)      { Fields::Collection.new(:path => [:contacts], :label => "Contacts", :numbered => false) }
+    let(:one_contact)      { Fields::Collection.new(:path => [:one_contact], :label => "Contacts", :numbered => false) }
     let(:desc)          { Fields::Field.new(:path => [:desc], :label => "Description") }
     let(:contact)       { Fields::Field.new(:path => [:contact], :label => "Contact") }
     let(:params)        { Fields::KeyValueList.new(:path => [:params], :label => "Parameters") }
@@ -38,6 +40,12 @@ describe HammerCLI::Output::Adapter::Yaml do
         {
           :desc => 'telephone',
           :contact => '123456789'
+        }
+      ],
+      :one_contact => [
+        {
+          :desc => 'personal email',
+          :contact => 'john.doe@doughnut.com'
         }
       ],
       :params => [
@@ -96,6 +104,22 @@ describe HammerCLI::Output::Adapter::Yaml do
       proc { adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
+    it "should print collection with one element" do
+      num_one_contact.output_definition.append [desc, contact]
+      fields = [num_one_contact]
+      hash = [{
+                'Contacts' => {
+                  1 => {
+                    'Description' => 'personal email',
+                    'Contact' => 'john.doe@doughnut.com'
+                  }
+                }
+              }]
+
+      expected_output = YAML.dump(hash)
+      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
+
     it "should print unnumbered collection" do
       contacts.output_definition.append [desc, contact]
       fields = [contacts]
@@ -114,6 +138,22 @@ describe HammerCLI::Output::Adapter::Yaml do
       expected_output = YAML.dump(hash)
       proc { adapter.print_collection(fields, data) }.must_output(expected_output)
     end
+
+    it "should print unnumbered collection with one element" do
+      one_contact.output_definition.append [desc, contact]
+      fields = [one_contact]
+      hash = [{
+                'Contacts' => [
+                               {
+                                 'Description' => 'personal email',
+                                 'Contact' => 'john.doe@doughnut.com'
+                               }]
+              }]
+
+      expected_output = YAML.dump(hash)
+      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
+
 
     it "hides ids by default" do
       fields = [id, name]
