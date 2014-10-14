@@ -44,12 +44,14 @@ module HammerCLI::Output::Adapter
     end
 
     def render_data(field, data)
-      if field.is_a?(Fields::Collection) && field.parameters[:numbered]
-        numbered_data(data)
-      elsif data.length == 1
-        data.first
+      if field.is_a?(Fields::Collection)
+        if(field.parameters[:numbered])
+          numbered_data(data)
+        else # necislovana kolekce je pole
+          data
+        end
       else
-        data
+        data.first
       end
     end
 
