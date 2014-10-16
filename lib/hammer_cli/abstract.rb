@@ -3,6 +3,7 @@ require 'hammer_cli/logger_watch'
 require 'hammer_cli/options/option_definition'
 require 'hammer_cli/clamp'
 require 'hammer_cli/subcommand'
+require 'hammer_cli/options/matcher'
 require 'logging'
 
 module HammerCLI
@@ -108,14 +109,6 @@ module HammerCLI
       self.class.output_definition
     end
 
-    def self.inherited_output_definition
-      od = nil
-      if superclass.respond_to? :output_definition
-        od_super = superclass.output_definition
-        od = od_super.dup unless od_super.nil?
-      end
-      od
-    end
 
     def self.output_definition
       @output_definition = @output_definition || inherited_output_definition || HammerCLI::Output::Definition.new
@@ -146,6 +139,20 @@ module HammerCLI
     end
 
     protected
+
+    def self.find_options(switch_filter, other_filters={})
+      filters = other_filters
+      if switch_filter.is_a? Hash
+        filters.merge!(switch_filter)
+      else
+        filters[:long_switch] = switch_filter
+      end
+
+      m = HammerCLI::Options::Matcher.new(filters)
+      recognised_options.find_all do |opt|
+        m.matches? opt
+      end
+    end
 
     def self.create_option_builder
       OptionBuilderContainer.new
@@ -235,5 +242,17 @@ module HammerCLI
     def options
       all_options.reject {|key, value| value.nil? }
     end
+
+    private
+
+    def self.inherited_output_definition
+      od = nil
+      if superclass.respond_to? :output_definition
+        od_super = superclass.output_definition
+        od = od_super.dup unless od_super.nil?
+      end
+      od
+    end
+
   end
 end
