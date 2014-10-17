@@ -1,36 +1,14 @@
 require 'apipie_bindings'
 module HammerCLI::Apipie
 
-  class AbstractCredentials
-
-    def to_params
-      {}
-    end
-
-    private
-
-    def ask_user(prompt, silent=false)
-      if silent
-        ask(prompt) {|q| q.echo = false}
-      else
-        ask(prompt)
-      end
-    end
-
-  end
-
 
   class ApipieConnector < HammerCLI::AbstractConnector
 
     attr_reader :api
 
     def initialize(params)
-      credentials = params.delete(:credentials)
-      params.merge!(credentials.to_params) if credentials
-
       @api = ApipieBindings::API.new(params)
     end
-
   end
 
 
