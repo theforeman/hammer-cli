@@ -23,6 +23,8 @@ describe HammerCLI::Output::Adapter::Table do
       :long => "SomeVeryLongString"
     }]}
 
+    let(:empty_data) { HammerCLI::Output::RecordCollection.new [] }
+
     it "should print column name " do
       proc { adapter.print_collection(fields, data) }.must_output(/.*NAME.*/, "")
     end
@@ -42,10 +44,31 @@ describe HammerCLI::Output::Adapter::Table do
         out.wont_match(/.*ID.*/)
       end
 
+      it "should ommit column of type Id by default but no data" do
+        expected_output = [
+                           "----",
+                           "NAME",
+                           "----",
+                           ""
+                          ].join("\n")
+        proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
+      end
+
       it "should print column of type Id when --show-ids is set" do
         adapter = HammerCLI::Output::Adapter::Table.new( { :show_ids => true } )
         out, err = capture_io { adapter.print_collection(fields, data) }
         out.must_match(/.*ID.*/)
+      end
+
+      it "should print column of type ID when --show-ids is set but no data" do
+        expected_output = [
+                           "-----|---",
+                           "NAME | ID",
+                           "-----|---",
+                           "",
+                          ].join("\n")
+        adapter = HammerCLI::Output::Adapter::Table.new( { :show_ids => true } )
+        proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
       end
     end
 
@@ -83,6 +106,19 @@ describe HammerCLI::Output::Adapter::Table do
         proc { adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
+    it "sets width to the longest column name when no data" do
+      first_field = Fields::Field.new(:path => [:long], :label => "VeryLongTableHeaderName")
+      fields = [first_field, field_lastname]
+
+      expected_output = [
+                         "------------------------|---------",
+                         "VERYLONGTABLEHEADERNAME | LASTNAME",
+                         "------------------------|---------",
+                         ""
+                        ].join("\n")
+      proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
+    end
+
       it "sets certain width" do
         first_field = Fields::Field.new(:path => [:long], :label => "Long", :width => 25)
         fields = [first_field, field_lastname]
@@ -99,6 +135,21 @@ describe HammerCLI::Output::Adapter::Table do
         proc { adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
+      it "sets certain width when no data" do
+        first_field = Fields::Field.new(:path => [:long], :label => "Long", :width => 25)
+        fields = [first_field, field_lastname]
+
+        expected_output = [
+          "--------------------------|---------",
+          "LONG                      | LASTNAME",
+          "--------------------------|---------",
+          ""
+        ].join("\n")
+
+        proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
+      end
+
+
       it "gives preference to width over maximal width" do
         first_field = Fields::Field.new(:path => [:long], :label => "Long", :width => 25, :max_width => 10)
         fields = [first_field, field_lastname]
@@ -114,6 +165,21 @@ describe HammerCLI::Output::Adapter::Table do
 
         proc { adapter.print_collection(fields, data) }.must_output(expected_output)
       end
+
+      it "gives preference to width over maximal width when no data" do
+        first_field = Fields::Field.new(:path => [:long], :label => "Long", :width => 25, :max_width => 10)
+        fields = [first_field, field_lastname]
+
+        expected_output = [
+          "--------------------------|---------",
+          "LONG                      | LASTNAME",
+          "--------------------------|---------",
+          ""
+        ].join("\n")
+
+        proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
+      end
+
 
     end
 
