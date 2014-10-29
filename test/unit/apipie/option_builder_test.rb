@@ -47,6 +47,7 @@ describe HammerCLI::Apipie::OptionBuilder do
 
     let(:action) {api.resource(:documented).action(:create)}
     let(:required_options) { builder.build.reject{|opt| !opt.required?} }
+    let(:optional_options) { builder.build.reject{|opt| opt.required?} }
 
     it "should set required flag for the required options" do
       required_options.map(&:attribute_name).sort.must_equal [HammerCLI.option_accessor_name("array_param")]
@@ -55,6 +56,12 @@ describe HammerCLI::Apipie::OptionBuilder do
     it "should not require any option when requirements are disabled" do
       builder.require_options = false
       required_options.map(&:attribute_name).sort.must_equal []
+    end
+
+    it "should state optional if option is not required" do
+      optional_options.each do |o|
+        o.help_lhs.include? "optional"
+      end
     end
   end
 
