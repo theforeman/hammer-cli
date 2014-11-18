@@ -6,6 +6,8 @@ module HammerCLI
 
     option ["-v", "--verbose"], :flag, _("be verbose"), :context_target => :verbose
     option ["-d", "--debug"], :flag, _("show debugging output "), :context_target => :debug
+    option ["-r", "--reload-cache"], :flag, _("force reload of Apipie cache")
+
     option ["-c", "--config"], "CFG_FILE", _("path to custom config file")
 
     option ["-u", "--username"], "USERNAME", _("username to access the remote system"),

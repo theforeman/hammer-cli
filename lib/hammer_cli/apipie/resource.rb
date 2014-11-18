@@ -8,6 +8,10 @@ module HammerCLI::Apipie
 
     def initialize(params)
       @api = ApipieBindings::API.new(params)
+      if HammerCLI::Settings.get(:_params, :reload_cache) || HammerCLI::Settings.get(:reload_cache)
+        @api.clean_cache
+        Logging.logger['Init'].debug 'Apipie cache was cleared'
+      end
     end
   end
 
