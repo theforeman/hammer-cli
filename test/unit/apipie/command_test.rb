@@ -113,6 +113,28 @@ describe HammerCLI::Apipie::Command do
     it "should perform a call to api when resource is defined" do
       cmd_run.must_equal 0
     end
+  end
+
+  context "reload apipie cache" do
+
+    before :each do
+      HammerCLI::Connection.drop_all
+      ApipieBindings::API.any_instance.stubs(:call).returns([])
+    end
+
+    it "clears the cache on init when required from config" do
+      HammerCLI::Settings.load({ :reload_cache => true })
+      ApipieBindings::API.any_instance.expects(:clean_cache).returns(nil)
+      cmd.class.resource :architectures, :index
+      HammerCLI::Settings.load({ :reload_cache => false })
+    end
+
+    it "clears the cache on init when required from CLI" do
+      HammerCLI::Settings.load({ :_params => { :reload_cache => true }})
+      ApipieBindings::API.any_instance.expects(:clean_cache).returns(nil)
+      cmd.class.resource :architectures, :index
+      HammerCLI::Settings.load({ :_params => { :reload_cache => false }})
+    end
 
   end
 
