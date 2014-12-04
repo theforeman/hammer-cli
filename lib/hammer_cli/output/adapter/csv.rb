@@ -8,6 +8,8 @@ else
   # CSV is now FasterCSV in ruby 1.9
 end
 
+require File.join(File.dirname(__FILE__), 'wrapper_formatter')
+
 module HammerCLI::Output::Adapter
 
   class CSValues < Abstract
@@ -37,8 +39,9 @@ module HammerCLI::Output::Adapter
       end
 
       def formatted_value
-        formatter = @formatters.formatter_for_type(@field_wrapper.field.class)
-        formatter ? formatter.format(value) : value.to_s
+        WrapperFormatter.new(
+            @formatters.formatter_for_type(@field_wrapper.field.class),
+            @field_wrapper.field.parameters).format(value || "")
       end
 
       def self.values(headers, cells)
