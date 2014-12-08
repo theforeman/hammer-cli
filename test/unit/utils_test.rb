@@ -51,6 +51,23 @@ describe String do
 
   end
 
+
+  describe "underscore" do
+
+    it "converts camelized string to underscore" do
+      "OneTwoThree".underscore.must_equal "one_two_three"
+    end
+
+    it "converts full class path name to underscore with slashes" do
+      "HammerCLI::SomeClass".underscore.must_equal "hammer_cli/some_class"
+    end
+
+    it "converts dashes to underscores" do
+      "Re-Read".underscore.must_equal "re_read"
+    end
+
+  end
+
   describe "indent" do
 
     it "indents single line string" do

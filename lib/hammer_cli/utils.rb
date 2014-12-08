@@ -24,6 +24,16 @@ class String
     gsub(/^/, indent_str)
   end
 
+  def underscore
+    word = self.dup
+    word.gsub!(/::/, '/')
+    word.gsub!(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
+    word.gsub!(/([a-z\d])([A-Z])/,'\1_\2')
+    word.tr!("-", "_")
+    word.downcase!
+    word
+  end
+
   def constantize
     raise NameError, "Can't constantize empty string" if self.empty?
     HammerCLI.constant_path(self)[-1]
