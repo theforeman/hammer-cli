@@ -17,7 +17,9 @@ module HammerCLI
         [RestClient::ResourceNotFound, :handle_not_found],
         [RestClient::Unauthorized, :handle_unauthorized],
         [ApipieBindings::DocLoadingError, :handle_apipie_docloading_error],
-        [ApipieBindings::MissingArgumentsError, :handle_apipie_missing_arguments_error]
+        [ApipieBindings::MissingArgumentsError, :handle_apipie_missing_arguments_error],
+        [HammerCLI::ModuleCircularDependency, :handle_generic_config_error],
+        [HammerCLI::ModuleDisabledButRequired, :handle_generic_config_error]
       ]
     end
 
@@ -103,8 +105,11 @@ module HammerCLI
       HammerCLI::EX_USAGE
     end
 
+    def handle_generic_config_error(e)
+      print_error e.message
+      log_full_error e
+      HammerCLI::EX_CONFIG
+    end
+
   end
 end
-
-
-

@@ -28,7 +28,8 @@ describe HammerCLI::Modules do
 
   describe "names" do
     it "must return list of modules" do
-      HammerCLI::Modules.names.sort.must_equal ["hammer_cli_tom", "hammer_cli_jerry"].sort
+      HammerCLI::Modules.stubs(:dependencies_for).returns([])
+      HammerCLI::Modules.names.must_equal ["hammer_cli_jerry", "hammer_cli_tom"]
     end
 
     it "must return empty array by default" do
@@ -42,7 +43,51 @@ describe HammerCLI::Modules do
         :tom => {},
         :modules => ['hammer_cli_tom', 'hammer_cli_jerry'],
       })
-      HammerCLI::Modules.names.sort.must_equal ["hammer_cli_tom", "hammer_cli_jerry"].sort
+      HammerCLI::Modules.stubs(:dependencies_for).returns([])
+      HammerCLI::Modules.names.must_equal ["hammer_cli_jerry", "hammer_cli_tom"]
+    end
+
+    it "must resolve module depndences" do
+      HammerCLI::Modules.stubs(:dependencies_for).returns([])
+      HammerCLI::Modules.stubs(:dependencies_for).with('hammer_cli_jerry').returns(['hammer_cli_tom'])
+      HammerCLI::Modules.names.must_equal ["hammer_cli_tom", "hammer_cli_jerry"]
+    end
+
+    it "must detect circular dependences" do
+      HammerCLI::Modules.stubs(:dependencies_for).with('hammer_cli_jerry').returns(['hammer_cli_tom'])
+      HammerCLI::Modules.stubs(:dependencies_for).with('hammer_cli_tom').returns(['hammer_cli_jerry'])
+      proc { HammerCLI::Modules.names }.must_raise HammerCLI::ModuleCircularDependency
+    end
+
+    it "must sort modules with dependency depth > 1" do
+      HammerCLI::Settings.clear
+      HammerCLI::Settings.load({
+        :tom => { :enable_module => true },
+        :jerry => { :enable_module => true },
+        :cherie => { :enable_module => true }
+      })
+      HammerCLI::Modules.stubs(:dependencies_for).returns([])
+      HammerCLI::Modules.stubs(:dependencies_for).with('hammer_cli_jerry').returns(['hammer_cli_tom'])
+      HammerCLI::Modules.stubs(:dependencies_for).with('hammer_cli_cherie').returns(['hammer_cli_jerry'])
+      HammerCLI::Modules.names.must_equal ["hammer_cli_tom", "hammer_cli_jerry", "hammer_cli_cherie"]
+    end
+
+    it "must handle dependency on module not mentioned in configuration" do
+      HammerCLI::Modules.stubs(:dependencies_for).returns([])
+      HammerCLI::Modules.stubs(:dependencies_for).with('hammer_cli_jerry').returns(['hammer_cli_tom', 'hammer_cli_cherie'])
+      HammerCLI::Modules.stubs(:dependencies_for).with('hammer_cli_cherie').returns(['hammer_cli_quacker'])
+      HammerCLI::Modules.names.must_equal ["hammer_cli_quacker", "hammer_cli_cherie", "hammer_cli_tom", "hammer_cli_jerry"]
+    end
+
+    it "must detect dependency on disabled module" do
+      HammerCLI::Settings.clear
+      HammerCLI::Settings.load({
+        :tom => { :enable_module => false },
+        :jerry => { :enable_module => true },
+      })
+      HammerCLI::Modules.stubs(:dependencies_for).returns([])
+      HammerCLI::Modules.stubs(:dependencies_for).with('hammer_cli_jerry').returns(['hammer_cli_tom'])
+      proc { HammerCLI::Modules.names }.must_raise HammerCLI::ModuleDisabledButRequired
     end
   end
 
@@ -63,6 +108,7 @@ describe HammerCLI::Modules do
   describe "load all modules" do
 
     it "must call load for each module" do
+      HammerCLI::Modules.stubs(:dependencies_for).returns([])
       HammerCLI::Modules.expects(:load).with("hammer_cli_tom")
       HammerCLI::Modules.expects(:load).with("hammer_cli_jerry")
       HammerCLI::Modules.load_all

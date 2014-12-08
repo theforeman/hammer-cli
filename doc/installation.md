@@ -29,10 +29,10 @@ Configuration is by default looked for in the following directories, loaded in t
  - custom location (file or directory) specified on command line - ```-c CONF_FILE_PATH```
 
 In each of these directories hammer is trying to load ```cli_config.yml``` and anything in
-the ```cli.modules.d``` subdirectory which is place for specific configuration of hammer modules.
+the ```cli.modules.d``` subdirectory which is place for specific configuration of hammer modules a.k.a. plugins.
 
 Later directories and files have precedence if they redefine the same option. Files from ```cli.modules.d```
-are loaded in alphabetical order.
+are loaded in alphabetical order. The modules are loaded in alphabetical order which can be overriden with explicit dependences set in module ```gemspec```.
 
 ### Manual installation
 The packaged version of hammer copies the template to `/etc/hammer` for you.
@@ -69,6 +69,7 @@ in ```~/.hammer/cli.modules.d/foreman.yml``` should look as follows:
     :username: 'admin'
     :password: 'changeme'
 ```
+
 
 Use the hammer
 --------------
