@@ -51,7 +51,11 @@ module HammerCLI
     end
 
     def self.dependencies_for(module_name)
-      mod = Gem::Specification.find_by_name(module_name)
+      mod = if Gem::Specification.respond_to? :find_by_name
+              Gem::Specification.find_by_name(module_name)
+            else
+              Gem.source_index.search(Gem::Dependency.new(module_name, Gem::Requirement.default)).first
+            end
       mod.dependencies.select{ |dep| dep.name =~ /^hammer_cli_.*/ }.map(&:name)
     end
 
