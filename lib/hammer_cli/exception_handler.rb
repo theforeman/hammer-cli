@@ -18,7 +18,6 @@ module HammerCLI
         [RestClient::Unauthorized, :handle_unauthorized],
         [ApipieBindings::DocLoadingError, :handle_apipie_docloading_error],
         [ApipieBindings::MissingArgumentsError, :handle_apipie_missing_arguments_error],
-        [HammerCLI::ModuleCircularDependency, :handle_generic_config_error],
         [HammerCLI::ModuleDisabledButRequired, :handle_generic_config_error]
       ]
     end

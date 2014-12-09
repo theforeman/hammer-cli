@@ -32,7 +32,7 @@ In each of these directories hammer is trying to load ```cli_config.yml``` and a
 the ```cli.modules.d``` subdirectory which is place for specific configuration of hammer modules a.k.a. plugins.
 
 Later directories and files have precedence if they redefine the same option. Files from ```cli.modules.d```
-are loaded in alphabetical order. The modules are loaded in alphabetical order which can be overriden with explicit dependences set in module ```gemspec```.
+are loaded in alphabetical order. The modules are loaded in alphabetical order which can be overriden with explicit requirement of dependences in the modules.
 
 ### Manual installation
 The packaged version of hammer copies the template to `/etc/hammer` for you.

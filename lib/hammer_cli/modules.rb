@@ -1,58 +1,9 @@
-require 'tsort'
 module HammerCLI
-
-  class ModulesList < Hash
-    include TSort
-
-    def tsort_each_node(&block)
-      each_key.sort.each(&block)
-    end
-
-    def tsort_each_child(node, &block)
-      fetch(node).each(&block)
-    end
-  end
 
   class Modules
 
     def self.names
-      # add dependencies
-      modules = find_dependencies({}, enabled_modules)
-      # sort with the deps in mind
-      ModulesList[modules].tsort
-    rescue TSort::Cyclic => e
-      raise HammerCLI::ModuleCircularDependency.new(_("Unable to load modules: Circular dependency detected (%s)") % e.message)
-    end
-
-
-    def self.find_dependencies(dependencies, module_list)
-      new_deps = []
-
-      # add inspected modules in current level (depth)
-      dependencies.merge(Hash[module_list.map{ |m| [m, []] }])
-
-      # lookup dependencies
-      module_list.each do |mod|
-        deps = dependencies_for(mod)
-        logger.debug(_("Module depenedency detected: %{mod} requires %{deps}") % { :mod => mod, :deps => deps.join(', ') }) unless deps.empty?
-        dependencies[mod] = deps # update deps
-        # check new/disabled deps
-        deps.each do |dep|
-          if !dependencies.has_key?(dep)
-            if HammerCLI::Settings.get(dep.gsub(/^hammer_cli_/, ''), :enable_module) == false
-              raise HammerCLI::ModuleDisabledButRequired.new(_("Module %{mod} depends on module %{dep} which is disabled in configuration") % { :mod => mod, :dep => dep })
-            end
-            new_deps << dep
-          end
-        end
-      end
-      dependencies = find_dependencies(dependencies, new_deps) unless new_deps.empty?
-      dependencies
-    end
-
-    def self.dependencies_for(module_name)
-      mod = Gem::Specification.find_by_name(module_name)
-      mod.dependencies.select{ |dep| dep.name =~ /^hammer_cli_.*/ }.map(&:name)
+      enabled_modules.sort
     end
 
     def self.enabled_modules
@@ -71,6 +22,22 @@ module HammerCLI
         end
         names
       end
+    end
+
+    def self.disabled_modules
+      HammerCLI::Settings.dump.inject([]) do |names, (mod_name, mod_config)|
+        if is_module_config?(mod_config)
+          mod = "hammer_cli_#{mod_name}"
+          names << mod unless mod_config[:enable_module]
+        end
+        names
+      end
+    end
+
+    def self.loaded_modules
+      Object.constants. \
+        select{ |c| c.to_s =~ /\AHammerCLI[A-Z]./ && Object.const_get(c).class == Module }. \
+        map{ |m| m.to_s.underscore }
     end
 
     def self.find_by_name(name)
@@ -114,6 +81,11 @@ module HammerCLI
     def self.load_all
       HammerCLI::Modules.names.each do |m|
         Modules.load(m)
+      end
+      loaded_for_deps = loaded_modules & disabled_modules
+      unless loaded_for_deps.empty?
+        message = _("Error: Some of the required modules are disabled in configuration: %s ") % loaded_for_deps.join(', ')
+        raise HammerCLI::ModuleDisabledButRequired.new(message)
       end
     end
 
