@@ -1,6 +1,23 @@
 Release notes
 =============
 
+### 0.1.4 (2014-12-10)
+* hammer-cli CSV formatter doesn't properly format values with custom formatters, moving to correct implementation ([#8569](http://projects.theforeman.org/issues/8569))
+* added support for dependeces among modules ([#7566](http://projects.theforeman.org/issues/7566))
+* Add option forcing apipie cache reload ([#8430](http://projects.theforeman.org/issues/8430))
+* Missing search options error message ([#5556](http://projects.theforeman.org/issues/5556))
+* Adds YAML and JSON output adapters (BZ1122650) ([#6754](http://projects.theforeman.org/issues/6754))
+* Credentials interface definition moved to ApipieBindings ([#7408](http://projects.theforeman.org/issues/7408))
+* Catching apipie-bindings' MissingArgumentsError ([#6820](http://projects.theforeman.org/issues/6820))
+* Prints table headers when no data ([#7001](http://projects.theforeman.org/issues/7001))
+* i18n - add zh_CN language
+* i18n - add de, it, pt_BR, zh_TW, ru, ja, ko languages
+* Readable help for long options ([#5417](http://projects.theforeman.org/issues/5417))
+* Give usage information for boolean types ([#7284](http://projects.theforeman.org/issues/7284))
+* Minor updates in devel docs ([#5052](http://projects.theforeman.org/issues/5052))
+* Avoid locale domain name conflict ([#7262](http://projects.theforeman.org/issues/7262))
+
+
 ### 0.1.3
 * Fixed detection of list type options  ([#7144](http://projects.theforeman.org/issues/7144))
 * Key-value normalizer accepts arrays ([#7133](http://projects.theforeman.org/issues/7133))
