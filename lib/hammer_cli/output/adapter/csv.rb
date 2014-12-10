@@ -41,7 +41,7 @@ module HammerCLI::Output::Adapter
       def formatted_value
         WrapperFormatter.new(
             @formatters.formatter_for_type(@field_wrapper.field.class),
-            @field_wrapper.field.parameters).format(value || "")
+            @field_wrapper.field.parameters).format(value)
       end
 
       def self.values(headers, cells)
