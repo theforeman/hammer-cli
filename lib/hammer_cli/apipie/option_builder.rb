@@ -3,8 +3,9 @@ module HammerCLI::Apipie
 
   class OptionBuilder < HammerCLI::AbstractOptionBuilder
 
-    def initialize(action, options={})
+    def initialize(resource, action, options={})
       @action = action
+      @resource = resource
       @require_options = options[:require_options].nil? ? true : options[:require_options]
     end
 
@@ -21,6 +22,10 @@ module HammerCLI::Apipie
     end
 
     protected
+
+    def option(*args)
+      HammerCLI::Apipie::OptionDefinition.new(*args)
+    end
 
     def options_for_params(params, filter, resource_name_map)
       opts = []
@@ -45,11 +50,11 @@ module HammerCLI::Apipie
     end
 
     def option_switch(param, resource_name_map)
-      '--' + optionamize(aliased(param.name, resource_name_map))
+      '--' + optionamize(aliased(param, resource_name_map))
     end
 
     def option_type(param, resource_name_map)
-      aliased(param.name, resource_name_map).upcase.gsub('-', '_')
+      aliased(param, resource_name_map).upcase.gsub('-', '_')
     end
 
     def option_desc(param)
@@ -65,18 +70,29 @@ module HammerCLI::Apipie
         opts[:format] = HammerCLI::Options::Normalizers::Bool.new
       end
       opts[:attribute_name] = HammerCLI.option_accessor_name(param.name)
+      opts[:referenced_resource] = resource_name(param)
+
       return opts
     end
 
-    def aliased(name, resource_name_map)
-      resource_name = name.gsub(/_id[s]?$/, "")
-      resource_name = resource_name_map[resource_name.to_s] || resource_name_map[resource_name.to_sym] || resource_name
-      if name.end_with?("_id")
-        return "#{resource_name}_id"
-      elsif name.end_with?("_ids")
-        return "#{resource_name}_ids"
+    def aliased(param, resource_name_map)
+      resource_name = resource_name(param)
+
+      if resource_name.nil?
+        return param.name
       else
-        return name
+        aliased_name = resource_name_map[resource_name.to_s] || resource_name_map[resource_name.to_sym] || resource_name
+        return param.name.gsub(resource_name, aliased_name.to_s)
+      end
+    end
+
+    def resource_name(param)
+      if (param.name =~ /^id[s]?$/)
+        @resource.singular_name
+      elsif(param.name =~ /_id[s]?$/)
+        param.name.to_s.gsub(/_id[s]?$/, "")
+      else
+        nil
       end
     end
 

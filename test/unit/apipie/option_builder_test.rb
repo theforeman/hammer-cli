@@ -18,8 +18,9 @@ describe HammerCLI::Apipie::OptionBuilder do
     HammerCLI::I18n.clear
   end
 
-  let(:action) {api.resource(:documented).action(:index)}
-  let(:builder) { HammerCLI::Apipie::OptionBuilder.new(action) }
+  let(:resource) {api.resource(:documented)}
+  let(:action) {resource.action(:index)}
+  let(:builder) { HammerCLI::Apipie::OptionBuilder.new(resource, action) }
   let(:builder_options) { {} }
   let(:options) { builder.build(builder_options) }
 
@@ -45,7 +46,7 @@ describe HammerCLI::Apipie::OptionBuilder do
 
   context "required options" do
 
-    let(:action) {api.resource(:documented).action(:create)}
+    let(:action) {resource.action(:create)}
     let(:required_options) { builder.build.reject{|opt| !opt.required?} }
 
     it "should set required flag for the required options" do
@@ -60,7 +61,7 @@ describe HammerCLI::Apipie::OptionBuilder do
 
 
   context "with hash params" do
-    let(:action) {api.resource(:documented).action(:create)}
+    let(:action) {resource.action(:create)}
 
     it "should create options for all parameters except the hash" do
       options.map(&:attribute_name).sort.must_equal HammerCLI.option_accessor_name("array_param", "name", "provider")
@@ -72,7 +73,7 @@ describe HammerCLI::Apipie::OptionBuilder do
   end
 
   context "setting correct normalizers" do
-    let(:action) {api.resource(:documented).action(:typed_params)}
+    let(:action) {resource.action(:typed_params)}
 
     it "should set array normalizer" do
       array_option = options.find {|o| o.attribute_name == HammerCLI.option_accessor_name("array_param") }
@@ -88,7 +89,7 @@ describe HammerCLI::Apipie::OptionBuilder do
 
 
   context "filtering options" do
-    let(:action) {api.resource(:documented).action(:create)}
+    let(:action) {resource.action(:create)}
 
     it "should skip filtered options" do
       builder_options[:without] = ["provider", "name"]
@@ -113,7 +114,7 @@ describe HammerCLI::Apipie::OptionBuilder do
   end
 
   context "aliasing resources" do
-    let(:action) {api.resource(:documented).action(:action_with_ids)}
+    let(:action) {resource.action(:action_with_ids)}
     let(:builder_options) { {:resource_mapping => {:organization => 'company', 'compute_resource' => :compute_provider}} }
 
     it "renames options" do
@@ -131,6 +132,14 @@ describe HammerCLI::Apipie::OptionBuilder do
       options.map(&:attribute_name).sort.must_equal HammerCLI.option_accessor_name("compute_resource_id", "name", "organization_id", "organization_ids")
     end
 
+  end
+
+  context "setting referenced resources" do
+    let(:action) {resource.action(:action_with_ids)}
+
+    it "sets referenced resources" do
+      options.map(&:referenced_resource).map(&:to_s).sort.must_equal ["", "compute_resource", "organization", "organization"]
+    end
   end
 
 end

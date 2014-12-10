@@ -1,6 +1,7 @@
 require File.join(File.dirname(__FILE__), '../abstract')
 require File.join(File.dirname(__FILE__), '../messages')
 require File.join(File.dirname(__FILE__), 'options')
+require File.join(File.dirname(__FILE__), 'option_definition')
 require File.join(File.dirname(__FILE__), 'resource')
 
 module HammerCLI::Apipie
@@ -20,7 +21,7 @@ module HammerCLI::Apipie
     def self.create_option_builder
       builder = super
       builder.builders += [
-        OptionBuilder.new(resource.action(action), :require_options => false)
+        OptionBuilder.new(resource, resource.action(action), :require_options => false)
       ] if resource_defined?
       builder
     end
@@ -71,6 +72,14 @@ module HammerCLI::Apipie
         success_message,
         success_message_params(response)
       )
+    end
+
+    def self.option(switches, type, description, opts = {}, &block)
+      HammerCLI::Apipie::OptionDefinition.new(switches, type, description, opts).tap do |option|
+        declared_options << option
+        block ||= option.default_conversion_block
+        define_accessors_for(option, &block)
+      end
     end
 
   end
