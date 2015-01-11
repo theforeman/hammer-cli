@@ -29,7 +29,7 @@ EOF
   s.add_dependency 'awesome_print'
   s.add_dependency 'table_print'
   s.add_dependency 'highline'
-  s.add_dependency 'fast_gettext'
+  s.add_dependency 'fast_gettext', '0.9.0' #fast_gettext 0.9.1 is missing a file that causes runtime errors during tests
   s.add_dependency 'locale', '<= 2.0.9'
 
   # required for ruby < 1.9.0:
