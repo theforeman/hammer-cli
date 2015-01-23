@@ -4,13 +4,9 @@ Hammer - the CLI tool (not only) for Foreman
 Hammer is a generic [clamp-based](https://github.com/mdub/clamp) CLI framework.
 Hammer-cli provides just the core functionality. The core is extensible using plugins that contain application-specific commands.
 
-This architecture allows for easy customization according to your application. Nearly any Ruby script can be turned into a Hammer command, so the possibilities are endless.
+This architecture allows for easy customization according to your application. Nearly any Ruby script can be turned into a Hammer command, so the possibilities are endless. You also can easily add custom commands for your specific use, such as bulk actions or admin tasks.
 
-Available plugins are currently:
-  - [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman) - commands corresponding to Foreman API
-  - [hammer-cli-katello](https://github.com/theforeman/hammer-cli-katello) - commands for managing Katello
-
-You also can easily add custom commands for your specific use, such as bulk actions or admin tasks.
+Available plugins are listed on [the Foreman's wiki](http://projects.theforeman.org/projects/hammer-cli/wiki/List_of_Plugins).
 
 Check out the [release notes](doc/release_notes.md#release-notes) to see what's new in the latest version.
 
