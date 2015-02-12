@@ -10,9 +10,10 @@ DOMAIN = hammer-cli
 VERSION = $(shell ruby -e 'require "rubygems";spec = Gem::Specification::load("../hammer_cli.gemspec");puts spec.version')
 POTFILE = $(DOMAIN).pot
 MOFILE = $(DOMAIN).mo
-POFILES = $(shell find . -name '*.po')
+POFILES = $(shell find . -name '$(DOMAIN).po')
 MOFILES = $(patsubst %.po,%.mo,$(POFILES))
 POXFILES = $(patsubst %.po,%.pox,$(POFILES))
+EDITFILES = $(patsubst %.po,%.edit.po,$(POFILES))
 
 %.mo: %.po
 	mkdir -p $(shell dirname $@)/LC_MESSAGES
@@ -30,13 +31,6 @@ all-mo: $(MOFILES)
 	! grep -q msgid $@
 
 check: $(POXFILES)
-	msgfmt -c ${POTFILE}
-
-# Merge PO files
-update-po:
-	for f in $(shell find ./ -name "*.po") ; do \
-		msgmerge -N --backup=none -U $$f ${POTFILE} ; \
-	done
 
 # Unify duplicate translations
 uniq-po:
@@ -44,22 +38,20 @@ uniq-po:
 		msguniq $$f -o $$f ; \
 	done
 
-tx-pull:
+tx-pull: $(EDITFILES)
 	tx pull -f
 	for f in $(POFILES) ; do \
 		sed -i 's/^\("Project-Id-Version: \).*$$/\1$(DOMAIN) $(VERSION)\\n"/' $$f; \
 	done
-	-git commit -a -m "i18n - extracting new, pulling from tx"
 
+# Extract strings and update the .pot, prepare .edit.po files
 extract-strings:
 	bundle exec rake gettext:find
 
-reset-po:
-	# merging po files is unnecessary when using transifex.com
-	git checkout -- ../locale/*/*po
+# Merge .edit.po into .po
+update-po:
+	bundle exec rake gettext:find
 
-tx-update: tx-pull extract-strings reset-po $(MOFILES)
-	# amend mo files
-	git add ../locale/*/LC_MESSAGES
-	git commit -a --amend -m "i18n - extracting new, pulling from tx"
+tx-update: extract-strings tx-pull $(MOFILES)
+	git commit -m "i18n - extracting new, pulling from tx" ../locale
 	-echo Changes commited!

@@ -11,14 +11,25 @@ end
 
 namespace :gettext do
 
-  desc "Update pot file"
-  task :find do
+  task :setup do
     require "hammer_cli/version"
     require "hammer_cli/i18n"
-    require 'gettext/tools'
+    require 'gettext/tools/task'
 
     domain = HammerCLI::I18n::LocaleDomain.new
-    GetText.update_pofiles(domain.domain_name, domain.translated_files, "#{domain.domain_name} #{HammerCLI.version.to_s}", :po_root => domain.locale_dir)
+    GetText::Tools::Task.define do |task|
+      task.package_name = domain.domain_name
+      task.package_version = HammerCLI.version.dup
+      task.domain = domain.domain_name
+      task.mo_base_directory = domain.locale_dir
+      task.po_base_directory = domain.locale_dir
+      task.files = domain.translated_files
+    end
+  end
+
+  desc "Update pot file"
+  task :find => [:setup] do
+    Rake::Task["gettext:po:update"].invoke
   end
 
 end

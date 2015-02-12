@@ -2,8 +2,10 @@ source "http://rubygems.org"
 
 gemspec
 
-# for generating i18n files, gettext > 3.0 dropped ruby 1.8 support
-gem 'gettext', '~> 2.0'
+if RUBY_VERSION >= '1.9'
+  # for generating i18n files, gettext > 3.0 dropped ruby 1.8 support
+  gem 'gettext', '>= 3.1.3', '< 4.0.0'
+end
 
 group :test do
   gem 'rake', '~> 10.1.0'
