@@ -1,0 +1,23 @@
+hammer\-cli(1)
+==============
+:man source: hammer
+:man manual: Hammer CLI
+
+NAME
+----
+hammer - the CLI tool (not only) for Foreman
+
+SYNOPSIS
+--------
+**hammer** [OPTIONS] SUBCOMMAND [ARG]
+
+DESCRIPTION
+-----------
+
+Hammer is a generic [clamp-based](https://github.com/mdub/clamp) CLI framework.
+Hammer-cli provides just the core functionality. The core is extensible using plugins that contain application-specific commands.
+
+USAGE
+-----
+See ´hammer -h´ for help on available hammer subcommands
+

@@ -20,3 +20,7 @@ tags
 locale/*/*.edit.po
 locale/*/*.po.time_stamp
 .idea/*
+
+# Man
+man/hammer.1
+man/hammer.1.gz
