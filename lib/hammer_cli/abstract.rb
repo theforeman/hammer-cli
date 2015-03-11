@@ -65,7 +65,9 @@ module HammerCLI
 
     class SortedBuilder < Clamp::Help::Builder
 
-      DEFAULT_LABEL_INDENT = 29
+      def default_label_indent
+        29
+      end
 
       def add_list(heading, items)
         items.sort! do |a, b|
@@ -74,7 +76,7 @@ module HammerCLI
 
         puts "\n#{heading}:"
 
-        label_width = DEFAULT_LABEL_INDENT
+        label_width = default_label_indent
         items.each do |item|
           label, description = item.help
           label_width = label.size if label.size > label_width
