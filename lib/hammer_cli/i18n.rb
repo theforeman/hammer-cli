@@ -79,7 +79,7 @@ module HammerCLI
       end
 
       def available?
-        File.exist?(locale_dir)
+        Dir[File.join(locale_dir, '**', "#{domain_name}.#{type}")].any?
       end
 
       attr_reader :locale_dir, :domain_name
@@ -106,10 +106,6 @@ module HammerCLI
 
       def locale_dir
         '/usr/share/locale'
-      end
-
-      def domain_name
-        "#{super}@system"
       end
 
     end
@@ -156,6 +152,5 @@ end
 include FastGettext::Translation
 include HammerCLI::I18n::AllDomains
 
-HammerCLI::I18n.add_domain(HammerCLI::I18n::LocaleDomain.new)
-HammerCLI::I18n.add_domain(HammerCLI::I18n::SystemLocaleDomain.new)
-
+domain = [HammerCLI::I18n::LocaleDomain.new, HammerCLI::I18n::SystemLocaleDomain.new].find { |d| d.available? }
+HammerCLI::I18n.add_domain(domain) if domain
