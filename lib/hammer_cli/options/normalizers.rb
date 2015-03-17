@@ -32,7 +32,7 @@ module HammerCLI
 
           result = {}
 
-          pair_re = '([^,]+)=([^,\[]+|\[[^\[\]]*\])'
+          pair_re = '([^,=]+)=([^,\[]+|\[[^\[\]]*\])'
           full_re = "^((%s)[,]?)+$" % pair_re
 
           unless Regexp.new(full_re).match(val)
@@ -43,10 +43,26 @@ module HammerCLI
             value = value.strip
             value = value.scan(/[^,\[\]]+/) if value.start_with?('[')
 
-            result[key.strip]=value
+            result[key.strip] = strip_value(value)
           end
           return result
+        end
 
+        private
+
+        def strip_value(value)
+          if value.is_a? Array
+            value.map do |item|
+              strip_chars(item.strip, '"\'')
+            end
+          else
+            strip_chars(value.strip, '"\'')
+          end
+        end
+
+        def strip_chars(string, chars)
+          chars = Regexp.escape(chars)
+          string.gsub(/\A[#{chars}]+|[#{chars}]+\z/, '')
         end
       end
 
