@@ -126,3 +126,63 @@ describe Fields::ContainerField do
   end
 
 end
+
+
+describe Fields::Label do
+
+  describe "display?" do
+
+    context "blank is allowed" do
+      let(:field) do
+        Fields::Label.new :label => "Label" do
+          field :a, "A"
+          field :b, "B"
+        end
+      end
+
+      it "returns true when all the keys are present" do
+        field.display?({:a => 1, :b => 2}).must_equal true
+      end
+
+      it "returns true when some of the keys are present" do
+        field.display?({:a => 1}).must_equal true
+      end
+
+      it "returns true the hash is empty" do
+        field.display?({}).must_equal true
+      end
+
+      it "returns true the hash does not contain the required keys" do
+        field.display?({:c => 3}).must_equal true
+      end
+
+    end
+
+    context "blank is not allowed" do
+      let(:field) do
+        Fields::Label.new :label => "Label", :hide_blank => true do
+          field :a, "A", Fields::Field, :hide_blank => true
+          field :b, "B", Fields::Field, :hide_blank => true
+        end
+      end
+
+      it "returns true when all the keys are present" do
+        field.display?({:a => 1, :b => 2}).must_equal true
+      end
+
+      it "returns true when some of the keys are present" do
+        field.display?({:a => 1}).must_equal true
+      end
+
+      it "returns false when there are some displayed subfields" do
+        field.display?({}).must_equal false
+      end
+
+      it "returns false the hash does not contain the required keys" do
+        field.display?({:c => 3}).must_equal false
+      end
+
+    end
+
+  end
+end
