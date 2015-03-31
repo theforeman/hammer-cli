@@ -81,6 +81,15 @@ module Fields
   end
 
   class Label < ContainerField
+
+    def display?(value)
+      return true if not hide_blank?
+
+      fields.any? do |f|
+        f.display?(HammerCLI::Output::Adapter::Abstract.data_for_field(f, value))
+      end
+    end
+
   end
 
   class Collection < ContainerField

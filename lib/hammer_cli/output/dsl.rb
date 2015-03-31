@@ -30,8 +30,7 @@ module HammerCLI::Output
       self.fields << type.new(options, &block)
     end
 
-    def label(label, &block)
-      options = {}
+    def label(label, options={}, &block)
       options[:path] = current_path.clone
       options[:label] = label
       custom_field Fields::Label, options, &block
