@@ -30,7 +30,7 @@ EOF
   s.add_dependency 'table_print'
   s.add_dependency 'highline', '< 1.7.0' #higher versions are not ruby 1.8 compatible
   s.add_dependency 'fast_gettext'
-  s.add_dependency 'locale'
+  s.add_dependency 'locale', '>= 2.0.6'
 
   # required for ruby < 1.9.0:
   s.add_dependency 'json'
