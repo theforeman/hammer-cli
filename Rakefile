@@ -19,7 +19,7 @@ namespace :gettext do
     domain = HammerCLI::I18n::LocaleDomain.new
     GetText::Tools::Task.define do |task|
       task.package_name = domain.domain_name
-      task.package_version = HammerCLI.version.dup
+      task.package_version = HammerCLI.version.to_s
       task.domain = domain.domain_name
       task.mo_base_directory = domain.locale_dir
       task.po_base_directory = domain.locale_dir

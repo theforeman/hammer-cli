@@ -1,6 +1,20 @@
 Release notes
 =============
 
+### 0.2.0 (2015-04-23)
+* Rubygem locale pined to version >= 2.0.6 ([#10154](http://projects.theforeman.org/issues/10154))
+* Restricted logging version as in 2.0.0 ruby 1.8.7 support was dropped
+* Allow :hide_blank for labels ([#9925](http://projects.theforeman.org/issues/9925))
+* Only initialise text domains that have files in the dir ([#9648](http://projects.theforeman.org/issues/9648))
+* Version fails with error ([#9742](http://projects.theforeman.org/issues/9742))
+* Ignore spaces in key value formatting ([#9721](http://projects.theforeman.org/issues/9721))
+* Fixing warning of already initialized constant ([#9714](http://projects.theforeman.org/issues/9714))
+* Highline pinned to < 1.7 ([#9507](http://projects.theforeman.org/issues/9507))
+* Docs - link to slides from cfgmgmt camp
+* Update to gettext 3.x, unpin locale ([#8980](http://projects.theforeman.org/issues/8980))
+* Docs - link to available plugins listed on external wiki.
+
+
 ### 0.1.4 (2014-12-10)
 * hammer-cli CSV formatter doesn't properly format values with custom formatters, moving to correct implementation ([#8569](http://projects.theforeman.org/issues/8569))
 * added support for dependeces among modules ([#7566](http://projects.theforeman.org/issues/7566))
