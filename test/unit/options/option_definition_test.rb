@@ -18,6 +18,16 @@ describe HammerCLI::Options::OptionDefinition do
       :context_target => :test_option
   end
 
+  class TestDeprecatedOptionCmd < HammerCLI::AbstractCommand
+    option ["--test-option", "--deprecated"], "TEST_OPTION", "Test option",
+      :context_target => :test_option,
+      :deprecated => { "--deprecated" => "Use --test-option instead" }
+    option "--another-deprecated", "OLD_OPTION", "Test old option",
+      :context_target => :old_option,
+      :deprecated => "It is going to be removed"
+  end
+
+
   describe "formatters" do
 
     it "should use formatter to format a default value" do
@@ -38,6 +48,26 @@ describe HammerCLI::Options::OptionDefinition do
         opt_instance.take('B')
       end
       opt_instance.read.must_equal '>>>B<<<'
+    end
+  end
+
+  describe "deprecated options" do
+    it "prints deprecation warning" do
+      context = {}
+      cmd = TestDeprecatedOptionCmd.new("", context)
+
+      out, err = capture_io { cmd.run(["--another-deprecated=VALUE"]) }
+      err.must_match /Warning: Option --another-deprecated is deprecated. It is going to be removed/
+      context[:old_option].must_equal "VALUE"
+    end
+
+    it "prints deprecation warning (extended version)" do
+      context = {}
+      cmd = TestDeprecatedOptionCmd.new("", context)
+
+      out, err = capture_io { cmd.run(["--deprecated=VALUE"]) }
+      err.must_match /Warning: Option --deprecated is deprecated. Use --test-option instead/
+      context[:test_option].must_equal "VALUE"
     end
   end
 

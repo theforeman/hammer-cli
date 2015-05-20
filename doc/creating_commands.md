@@ -129,6 +129,26 @@ $ hammer hello --name 'Foreman'
 Hello Foreman!
 ```
 
+#### Deprecated options
+To mark an option as deprecated use the `:deprecated` option as follows:
+```ruby
+  option '--name', "NAME", "Name of the person you want to greet",
+    :deprecated => _('Use --alias instead')
+```
+It will ensure user is warned when deprecated option is used:
+```
+$ hammer hello --name 'Foreman'
+Warning: Option --name is deprecated. Use --alias instead
+Hello Foreman!
+```
+
+In cases when you want to deprecate just one of more possible switches use the extended syntax:
+```ruby
+  option ['--alias','--name'], "NAME", "Name of the person you want to greet",
+    :deprecated => { '--name' => _('Use --alias instead') }
+```
+
+
 ### Option builders
 Hammer commands offer option builders that can be used for automatic option generation.
 See [documentation page](option_builders.md#option-builders) dedicated to this topic for more details.

@@ -20,10 +20,12 @@ module HammerCLI
 
       attr_accessor :value_formatter
       attr_accessor :context_target
+      attr_accessor :deprecated_switches
 
       def initialize(switches, type, description, options = {})
         self.value_formatter = options.delete(:format)
         self.context_target = options.delete(:context_target)
+        self.deprecated_switches = options.delete(:deprecated)
         super
       end
 
@@ -48,6 +50,16 @@ module HammerCLI
 
         rhs = lines.reject(&:empty?).join("\n")
         rhs.empty? ? " " : rhs
+      end
+
+      def handles?(switch)
+        message = _("Warning: Option #{switch} is deprecated. %s")
+        if deprecated_switches.class <= String && switches.include?(switch)
+          warn(message % deprecated_switches)
+        elsif deprecated_switches.class <= Hash && deprecated_switches.keys.include?(switch)
+          warn(message % deprecated_switches[switch])
+        end
+        super(switch)
       end
 
       def format_description
