@@ -9,19 +9,26 @@ HighLine.color_scheme = HighLine::SampleColorScheme.new
 require 'hammer_cli/i18n'
 
 require 'hammer_cli/options/normalizers'
-# create fake command instance to use some global args before we start
+# Create fake command instance to use some global args before we start.
+# Option descriptions are never displayed and thus do not require translation.
 class PreParser < Clamp::Command
-  option ["-v", "--verbose"], :flag, _("be verbose")
-  option ["-d", "--debug"], :flag, _("show debugging output")
-  option ["-c", "--config"], "CFG_FILE", _("path to custom config file")
-  option ["-u", "--username"], "USERNAME", _("username to access the remote system")
-  option ["-p", "--password"], "PASSWORD", _("password to access the remote system")
-  option ["-s", "--server"], "SERVER", _("remote system address")
-  option ["-r", "--reload-cache"], :flag, _("force reload of Apipie cache")
-  option ["--interactive"], "INTERACTIVE", _("Explicitly turn interactive mode on/off") do |value|
+  option ["-v", "--verbose"], :flag, "be verbose"
+  option ["-d", "--debug"], :flag, "show debugging output"
+  option ["-c", "--config"], "CFG_FILE", "path to custom config file"
+  option ["-u", "--username"], "USERNAME", "username to access the remote system"
+  option ["-p", "--password"], "PASSWORD", "password to access the remote system"
+  option ["-s", "--server"], "SERVER", "remote system address"
+  option ["-r", "--reload-cache"], :flag, "force reload of Apipie cache"
+  option ["--interactive"], "INTERACTIVE", "Explicitly turn interactive mode on/off" do |value|
     bool_normalizer = HammerCLI::Options::Normalizers::Bool.new
     bool_normalizer.format(value)
   end
+  option ["--version"], :flag, "show version"
+  option ["--show-ids"], :flag, "Show ids of associated resources"
+  option ["--csv"], :flag, "Output as CSV (same as --output=csv)"
+  option ["--output"], "ADAPTER", "Set output format"
+  option ["--csv-separator"], "SEPARATOR", "Character to separate the values"
+  option ["--autocomplete"], "LINE", "Get list of possible endings"
 end
 
 preparser = PreParser.new File.basename($0), {}
