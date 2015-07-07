@@ -138,6 +138,15 @@
                                 "expected_type": "boolean",
                                 "description": "",
                                 "required": false
+                            },
+                            {
+                                "name": "enum_param",
+                                "full_name": "documented[enum_param]",
+                                "allow_nil": true,
+                                "validator": "Must be one of: one, two, three.",
+                                "expected_type": "string",
+                                "description": "",
+                                "required": false
                             }
                         ],
                         "full_description": ""

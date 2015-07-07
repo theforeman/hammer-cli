@@ -68,6 +68,8 @@ module HammerCLI::Apipie
         opts[:format] = HammerCLI::Options::Normalizers::List.new
       elsif param.expected_type == 'boolean' || param.validator =~ /Boolean/i
         opts[:format] = HammerCLI::Options::Normalizers::Bool.new
+      elsif param.validator =~ /Must be one of: (.*)\./
+        opts[:format] = HammerCLI::Options::Normalizers::Enum.new($1.split(/,\ ?/))
       end
       opts[:attribute_name] = HammerCLI.option_accessor_name(param.name)
       opts[:referenced_resource] = resource_name(param)

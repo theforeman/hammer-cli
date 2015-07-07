@@ -138,20 +138,26 @@ module HammerCLI
 
 
       class Enum < AbstractNormalizer
+        attr_reader :allowed_values
 
         def initialize(allowed_values)
           @allowed_values = allowed_values
         end
 
         def description
-          _("One of %s") % quoted_values
+          _("Possible value(s): %s") % quoted_values
         end
 
         def format(value)
           if @allowed_values.include? value
             value
           else
-            raise ArgumentError, _("value must be one of '%s'") % quoted_values
+            if allowed_values.count == 1
+              msg = _("value must be %s") % quoted_values
+            else
+              msg = _("value must be one of %s") % quoted_values
+            end
+            raise ArgumentError, msg
           end
         end
 

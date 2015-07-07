@@ -85,6 +85,12 @@ describe HammerCLI::Apipie::OptionBuilder do
       boolean_option.value_formatter.class.must_equal HammerCLI::Options::Normalizers::Bool
     end
 
+    it "should set enum normalizer" do
+      enum_option = options.find {|o| o.attribute_name == HammerCLI.option_accessor_name("enum_param") }
+      enum_option.value_formatter.class.must_equal HammerCLI::Options::Normalizers::Enum
+      enum_option.value_formatter.allowed_values.sort.must_equal ["one", "two", "three"].sort
+    end
+
   end
 
 
@@ -143,4 +149,3 @@ describe HammerCLI::Apipie::OptionBuilder do
   end
 
 end
-
