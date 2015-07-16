@@ -79,6 +79,23 @@ module HammerCLI
       end
 
 
+      class Number < AbstractNormalizer
+
+        def format(val)
+          if numeric?(val)
+            val.to_i
+          else
+            raise ArgumentError, _("numeric value is required")
+          end
+        end
+
+        def numeric?(val)
+          Integer(val) != nil rescue false
+        end
+
+      end
+
+
       class Bool < AbstractNormalizer
 
         def description

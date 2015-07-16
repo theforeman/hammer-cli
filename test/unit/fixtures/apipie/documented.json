@@ -147,6 +147,15 @@
                                 "expected_type": "string",
                                 "description": "",
                                 "required": false
+                            },
+                            {
+                                "name": "numeric_param",
+                                "allow_null": false,
+                                "full_name": "documented[numeric_param]",
+                                "validator": "Must be Number",
+                                "expected_type": "number",
+                                "description": "",
+                                "required": false
                             }
                         ],
                         "full_description": ""
