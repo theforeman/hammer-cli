@@ -101,6 +101,18 @@ describe HammerCLI::Options::Normalizers do
     end
   end
 
+  describe 'number' do
+    let(:formatter) { HammerCLI::Options::Normalizers::Number.new }
+
+    it "should return number on numeric values" do
+      formatter.format("1").must_equal 1
+    end
+
+    it "should raise ArgumentError on non-numeric values" do
+      proc { formatter.format("a") }.must_raise ArgumentError
+    end
+  end
+
   describe 'bool' do
 
     let(:formatter) { HammerCLI::Options::Normalizers::Bool.new }
@@ -206,7 +218,7 @@ describe HammerCLI::Options::Normalizers do
     end
 
     it "should list allowed values in description" do
-      formatter.description.must_equal("One of 'a', 'b'")
+      formatter.description.must_equal("Possible value(s): 'a', 'b'")
     end
 
   end
@@ -273,4 +285,3 @@ describe HammerCLI::Options::Normalizers do
   end
 
 end
-
