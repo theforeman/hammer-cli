@@ -18,3 +18,4 @@ tags
 # Locale files
 locale/*/*.edit.po
 locale/*/*.po.time_stamp
+.idea/*

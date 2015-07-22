@@ -18,6 +18,7 @@ module HammerCLI
         if File.directory? full_path
           # check for cli_config.yml
           load_from_file(File.join(full_path, 'cli_config.yml'))
+          load_from_file(File.join(full_path, 'defaults.yml'))
           # load config for modules
           Dir.glob(File.join(full_path, 'cli.modules.d/*.yml')).sort.each do |f|
             load_from_file(f)

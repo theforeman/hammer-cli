@@ -13,9 +13,11 @@ require 'hammer_cli/completer'
 require 'hammer_cli/option_builder'
 require 'hammer_cli/abstract'
 require 'hammer_cli/main'
+require 'hammer_cli/context'
 
 require 'hammer_cli/apipie'
 
 # extend MainCommand
 require 'hammer_cli/shell'
+require 'hammer_cli/defaults'
 
