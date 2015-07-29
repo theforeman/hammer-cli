@@ -1,6 +1,13 @@
 Release notes
 =============
 
+### 0.3.0 (2015-07-29)
+* Add normalizer converting id parameter values to numbers ([#11137](http://projects.theforeman.org/issues/11137))
+* Set Enum normalizer on enumerated values ([#11033](http://projects.theforeman.org/issues/11033))
+* Add missing options to preparser ([#10902](http://projects.theforeman.org/issues/10902))
+* Added support for deprecated options ([#10564](http://projects.theforeman.org/issues/10564))
+
+
 ### 0.2.0 (2015-04-23)
 * Rubygem locale pined to version >= 2.0.6 ([#10154](http://projects.theforeman.org/issues/10154))
 * Restricted logging version as in 2.0.0 ruby 1.8.7 support was dropped
