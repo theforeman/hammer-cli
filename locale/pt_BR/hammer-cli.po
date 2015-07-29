@@ -8,7 +8,7 @@
 # luizvasconcelos <luizvasconceloss@yahoo.com.br>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.2.0\n"
+"Project-Id-Version: hammer-cli 0.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-09-16 09:42+0000\n"
 "Last-Translator: Dominic Cleal <dcleal@redhat.com>\n"
@@ -103,6 +103,10 @@ msgstr "endereço de sistema remoto"
 msgid "show version"
 msgstr "exibir versão"
 
+#, fuzzy
+msgid "unknown version"
+msgstr "exibir versão"
+
 msgid "Show ids of associated resources"
 msgstr "Exibir ids de recursos associados"
 
@@ -143,6 +147,9 @@ msgstr "valor deve ser definido como uma lista separada por vírgulas de chave=v
 msgid "Comma separated list of values."
 msgstr "Lista de valores separada por vírgulas."
 
+msgid "numeric value is required"
+msgstr ""
+
 msgid "One of true/false, yes/no, 1/0."
 msgstr "Um entre verdadeiro/falso, sim/não, 1/0."
 
@@ -152,10 +159,15 @@ msgstr "valor deve ser um entre verdadeiro/falso, sim/não, 1/0"
 msgid "Unable to parse JSON input"
 msgstr "Incapaz de analizar entrada JSON"
 
-msgid "One of %s"
-msgstr "Um entre %s"
+msgid "Possible value(s): %s"
+msgstr ""
 
-msgid "value must be one of '%s'"
+#, fuzzy
+msgid "value must be %s"
+msgstr "valor deve ser um de '%s'"
+
+#, fuzzy
+msgid "value must be one of %s"
 msgstr "valor deve ser um de '%s'"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
@@ -169,6 +181,9 @@ msgstr "Qualquer combinação (lista separada por vírgula) de '%s'"
 
 msgid "value must be a combination of '%s'"
 msgstr "valor deve ser uma combinação de  '%s'"
+
+msgid "\"Warning: Option #{switch} is deprecated. %s\""
+msgstr ""
 
 msgid "Can be specified multiple times. "
 msgstr "Pode ser especificado diversas vezes."

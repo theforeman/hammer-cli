@@ -5,7 +5,7 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.2.0\n"
+"Project-Id-Version: hammer-cli 0.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-09-15 16:22+0000\n"
 "Last-Translator: Dominic Cleal <dcleal@redhat.com>\n"
@@ -100,6 +100,10 @@ msgstr "リモートシステムのアドレス"
 msgid "show version"
 msgstr "バージョンの表示"
 
+#, fuzzy
+msgid "unknown version"
+msgstr "バージョンの表示"
+
 msgid "Show ids of associated resources"
 msgstr "関連リソースの ID を表示"
 
@@ -138,6 +142,9 @@ msgstr "値は key=value のコンマ区切りの一覧として定義する必�
 msgid "Comma separated list of values."
 msgstr "コンマ区切りの値の一覧です。"
 
+msgid "numeric value is required"
+msgstr ""
+
 msgid "One of true/false, yes/no, 1/0."
 msgstr "true/false、yes/no、1/0 のいずれかです。"
 
@@ -147,10 +154,15 @@ msgstr "値を true/false、yes/no、1/0 のいずれかにする必要があり
 msgid "Unable to parse JSON input"
 msgstr "JSON 入力を解析できません"
 
-msgid "One of %s"
-msgstr "%s のいずれか"
+msgid "Possible value(s): %s"
+msgstr ""
 
-msgid "value must be one of '%s'"
+#, fuzzy
+msgid "value must be %s"
+msgstr "値を '%s' のいずれかにする必要があります"
+
+#, fuzzy
+msgid "value must be one of %s"
 msgstr "値を '%s' のいずれかにする必要があります"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
@@ -164,6 +176,9 @@ msgstr "'%s' の任意の組み合わせ (コンマ区切りの一覧)"
 
 msgid "value must be a combination of '%s'"
 msgstr "値を '%s' の組み合わせにする必要があります"
+
+msgid "\"Warning: Option #{switch} is deprecated. %s\""
+msgstr ""
 
 msgid "Can be specified multiple times. "
 msgstr "複数回指定することはできません。"

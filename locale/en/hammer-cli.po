@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.2.0\n"
+"Project-Id-Version: hammer-cli 0.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-03-04 16:38+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -99,6 +99,9 @@ msgstr ""
 msgid "show version"
 msgstr ""
 
+msgid "unknown version"
+msgstr ""
+
 msgid "Show ids of associated resources"
 msgstr ""
 
@@ -137,6 +140,9 @@ msgstr ""
 msgid "Comma separated list of values."
 msgstr ""
 
+msgid "numeric value is required"
+msgstr ""
+
 msgid "One of true/false, yes/no, 1/0."
 msgstr ""
 
@@ -146,10 +152,13 @@ msgstr ""
 msgid "Unable to parse JSON input"
 msgstr ""
 
-msgid "One of %s"
+msgid "Possible value(s): %s"
 msgstr ""
 
-msgid "value must be one of '%s'"
+msgid "value must be %s"
+msgstr ""
+
+msgid "value must be one of %s"
 msgstr ""
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
@@ -162,6 +171,9 @@ msgid "Any combination (comma separated list) of '%s'"
 msgstr ""
 
 msgid "value must be a combination of '%s'"
+msgstr ""
+
+msgid "\"Warning: Option #{switch} is deprecated. %s\""
 msgstr ""
 
 msgid "Can be specified multiple times. "

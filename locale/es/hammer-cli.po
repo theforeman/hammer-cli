@@ -7,7 +7,7 @@
 # Sergio Ocón <sergio.ocon@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.2.0\n"
+"Project-Id-Version: hammer-cli 0.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-09-16 09:51+0000\n"
 "Last-Translator: Dominic Cleal <dcleal@redhat.com>\n"
@@ -104,6 +104,10 @@ msgstr "dirección del sistema remoto"
 msgid "show version"
 msgstr "mostrar versión"
 
+#, fuzzy
+msgid "unknown version"
+msgstr "mostrar versión"
+
 msgid "Show ids of associated resources"
 msgstr "Mostrar id de recursos asociados"
 
@@ -146,6 +150,9 @@ msgstr ""
 msgid "Comma separated list of values."
 msgstr "Lista de valores separadas por comas."
 
+msgid "numeric value is required"
+msgstr ""
+
 msgid "One of true/false, yes/no, 1/0."
 msgstr "Uno de verdadero/falso, si/no, 1/0."
 
@@ -155,10 +162,15 @@ msgstr "el valor debe ser uno de verdadero/falso, si/no, 1/0"
 msgid "Unable to parse JSON input"
 msgstr "Imposible analizar la entrada JSON"
 
-msgid "One of %s"
-msgstr "Uno de %s"
+msgid "Possible value(s): %s"
+msgstr ""
 
-msgid "value must be one of '%s'"
+#, fuzzy
+msgid "value must be %s"
+msgstr "valor debe ser uno de '%s'"
+
+#, fuzzy
+msgid "value must be one of %s"
 msgstr "valor debe ser uno de '%s'"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
@@ -172,6 +184,9 @@ msgstr "Cualquier combinación (lista separada por comas) de '%s'"
 
 msgid "value must be a combination of '%s'"
 msgstr "el valor debe ser una combinación de '%s'"
+
+msgid "\"Warning: Option #{switch} is deprecated. %s\""
+msgstr ""
 
 msgid "Can be specified multiple times. "
 msgstr "Puede especificarse repetidamente."

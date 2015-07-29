@@ -10,7 +10,7 @@
 # Ulrich Habel <rhaen@pkgbox.de>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.2.0\n"
+"Project-Id-Version: hammer-cli 0.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-09-16 16:54+0000\n"
 "Last-Translator: Dominic Cleal <dcleal@redhat.com>\n"
@@ -105,6 +105,10 @@ msgstr "Adresse des entfernten Systems"
 msgid "show version"
 msgstr "Version anzeigen"
 
+#, fuzzy
+msgid "unknown version"
+msgstr "Version anzeigen"
+
 msgid "Show ids of associated resources"
 msgstr "IDs zugehöriger Ressourcen anzeigen"
 
@@ -145,6 +149,9 @@ msgstr "Wert muss als kommagetrennte Liste mit Schlüssel-Wert-Paaren definiert 
 msgid "Comma separated list of values."
 msgstr "Kommagetrennte Liste von Werten."
 
+msgid "numeric value is required"
+msgstr ""
+
 msgid "One of true/false, yes/no, 1/0."
 msgstr "Eines von true/false, yes/no, 1/0."
 
@@ -154,10 +161,15 @@ msgstr "Gültige Werte sind true/false, yes/no, 1/0"
 msgid "Unable to parse JSON input"
 msgstr "JSON Eingabe nicht lesbar"
 
-msgid "One of %s"
-msgstr "Einer von %s"
+msgid "Possible value(s): %s"
+msgstr ""
 
-msgid "value must be one of '%s'"
+#, fuzzy
+msgid "value must be %s"
+msgstr "Gültige Werte sind \"%s\""
+
+#, fuzzy
+msgid "value must be one of %s"
 msgstr "Gültige Werte sind \"%s\""
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
@@ -171,6 +183,9 @@ msgstr "Eine Kombination (kommagetrennte Liste) aus \"%s\""
 
 msgid "value must be a combination of '%s'"
 msgstr "Wert muss eine Kombination aus \"%s\" sein"
+
+msgid "\"Warning: Option #{switch} is deprecated. %s\""
+msgstr ""
 
 msgid "Can be specified multiple times. "
 msgstr "Kann mehrfach angegeben werden."

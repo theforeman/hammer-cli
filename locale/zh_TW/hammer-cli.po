@@ -6,7 +6,7 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.2.0\n"
+"Project-Id-Version: hammer-cli 0.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-09-16 13:21+0000\n"
 "Last-Translator: Dominic Cleal <dcleal@redhat.com>\n"
@@ -101,6 +101,10 @@ msgstr "遠端系統位址"
 msgid "show version"
 msgstr "顯示版本"
 
+#, fuzzy
+msgid "unknown version"
+msgstr "顯示版本"
+
 msgid "Show ids of associated resources"
 msgstr "顯示相聯資源的 id"
 
@@ -139,6 +143,9 @@ msgstr "值必須以一列逗號區隔開的 key=value 來定義"
 msgid "Comma separated list of values."
 msgstr "逗號區隔開的值。"
 
+msgid "numeric value is required"
+msgstr ""
+
 msgid "One of true/false, yes/no, 1/0."
 msgstr "true/false、yes/no、1/0 之一。"
 
@@ -148,10 +155,15 @@ msgstr "值必須是 true/false、yes/no、1/0 之一"
 msgid "Unable to parse JSON input"
 msgstr "無法叵析 JSON 輸入"
 
-msgid "One of %s"
-msgstr "%s 之一"
+msgid "Possible value(s): %s"
+msgstr ""
 
-msgid "value must be one of '%s'"
+#, fuzzy
+msgid "value must be %s"
+msgstr "值必須是「%s」之一"
+
+#, fuzzy
+msgid "value must be one of %s"
 msgstr "值必須是「%s」之一"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
@@ -165,6 +177,9 @@ msgstr "任何（以逗號隔開的）「%s」的組合"
 
 msgid "value must be a combination of '%s'"
 msgstr "值必須是「%s」的組合"
+
+msgid "\"Warning: Option #{switch} is deprecated. %s\""
+msgstr ""
 
 msgid "Can be specified multiple times. "
 msgstr "可指定多次。"

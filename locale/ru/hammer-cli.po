@@ -7,7 +7,7 @@
 # Dominic Cleal <dcleal@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.2.0\n"
+"Project-Id-Version: hammer-cli 0.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-09-16 09:42+0000\n"
 "Last-Translator: Dominic Cleal <dcleal@redhat.com>\n"
@@ -103,6 +103,10 @@ msgstr "адрес удаленной системы"
 msgid "show version"
 msgstr "показать версию"
 
+#, fuzzy
+msgid "unknown version"
+msgstr "показать версию"
+
 msgid "Show ids of associated resources"
 msgstr "Показать идентификаторы связанных ресурсов"
 
@@ -143,6 +147,9 @@ msgstr "значение должно содержать список пар «�
 msgid "Comma separated list of values."
 msgstr "Список значений через запятую"
 
+msgid "numeric value is required"
+msgstr ""
+
 msgid "One of true/false, yes/no, 1/0."
 msgstr "Может принимать значения: true/false, yes/no, 1/0."
 
@@ -152,10 +159,15 @@ msgstr "значение может быть равно true/false, yes/no, 1/0"
 msgid "Unable to parse JSON input"
 msgstr "Не удалось обработать ввод JSON"
 
-msgid "One of %s"
-msgstr "Одно из %s"
+msgid "Possible value(s): %s"
+msgstr ""
 
-msgid "value must be one of '%s'"
+#, fuzzy
+msgid "value must be %s"
+msgstr "может принимать значения «%s»"
+
+#, fuzzy
+msgid "value must be one of %s"
 msgstr "может принимать значения «%s»"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
@@ -169,6 +181,9 @@ msgstr "Любые комбинации «%s» через запятую"
 
 msgid "value must be a combination of '%s'"
 msgstr "значение должно содержать комбинацию «%s»"
+
+msgid "\"Warning: Option #{switch} is deprecated. %s\""
+msgstr ""
 
 msgid "Can be specified multiple times. "
 msgstr "Может быть указан повторно."
