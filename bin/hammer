@@ -52,11 +52,15 @@ end
 
 CFG_PATH_LOCAL = ['./config/']
 
-if preparser.config
-  CFG_PATH_LOCAL.unshift preparser.config
-end
-
 HammerCLI::Settings.load_from_paths CFG_PATH_LOCAL
+
+if preparser.config
+  if File.file? preparser.config
+    HammerCLI::Settings.load_from_file preparser.config
+  elsif File.directory? preparser.config
+    HammerCLI::Settings.load_from_paths [preparser.config]
+  end
+end
 
 # store username and password in settings
 HammerCLI::Settings.load({

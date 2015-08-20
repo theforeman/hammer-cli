@@ -15,9 +15,7 @@ module HammerCLI
     def self.load_from_paths(files)
       files.reverse.each do |path|
         full_path = File.expand_path path
-        if File.file? path
-          load_from_file(full_path)
-        elsif File.directory? path
+        if File.directory? full_path
           # check for cli_config.yml
           load_from_file(File.join(full_path, 'cli_config.yml'))
           # load config for modules
