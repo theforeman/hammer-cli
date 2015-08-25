@@ -91,7 +91,7 @@ describe HammerCLI::Settings do
     end
 
     it "loads settings from file" do
-      settings.load_from_paths [config2.path, config1.path]
+      [config1.path, config2.path].each { |config| settings.load_from_file config }
       settings.get(:host).must_equal 'https://localhost.localdomain/'
       settings.get(:username).must_equal 'admin'
     end
@@ -103,7 +103,7 @@ describe HammerCLI::Settings do
     end
 
     it "store config path history" do
-      settings.load_from_paths [config2.path, config1.path]
+      [config1.path, config2.path].each { |config| settings.load_from_file config }
       settings.path_history.must_equal [config1.path, config2.path]
     end
 
@@ -120,7 +120,8 @@ describe HammerCLI::Settings do
           f.write("  :param2: 'value2'\n")
         end
 
-        settings.load_from_paths [config1.path, dir]
+        settings.load_from_paths [dir]
+        settings.load_from_file config1.path
 
         settings.get(:host).must_equal 'https://localhost/'
         settings.get(:username).must_equal 'admin'
