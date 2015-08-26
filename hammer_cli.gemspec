@@ -24,13 +24,12 @@ EOF
   s.executables = ['hammer']
 
   s.add_dependency 'clamp', '>= 1.0.0'
-  s.add_dependency 'rest-client', '< 1.7.0' #higher versions are not ruby 1.8 compatible
   s.add_dependency 'logging'
   s.add_dependency 'awesome_print'
   s.add_dependency 'table_print'
   s.add_dependency 'highline'
   s.add_dependency 'fast_gettext'
   s.add_dependency 'locale', '>= 2.0.6'
-  s.add_dependency 'apipie-bindings', '~> 0.0.10'
+  s.add_dependency 'apipie-bindings', '~> 0.0.14'
 
 end
