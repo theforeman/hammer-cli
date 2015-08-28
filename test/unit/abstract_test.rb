@@ -86,6 +86,8 @@ describe HammerCLI::AbstractCommand do
   context "logging" do
 
     before :each do
+      HammerCLI::Settings.clear
+      HammerCLI::Settings.load(:watch_plain => false)
       @log_output = Logging::Appenders['__test__']
       @log_output.reset
     end
@@ -96,13 +98,6 @@ describe HammerCLI::AbstractCommand do
       @log_output.readline.strip.must_equal "INFO  HammerCLI::AbstractCommand : Called with options: {}"
     end
 
-    it "password should be hidden in logs" do
-      test_command_class = Class.new(HammerCLI::AbstractCommand)
-      test_command_class.option(['--password'], 'PASSWORD', 'Password')
-      test_command = test_command_class.new("")
-      test_command.run ['--password=pass']
-      @log_output.readline.strip.must_equal "INFO  HammerCLI::AbstractCommand : Called with options: {\"option_password\"=>\"***\"}"
-    end
 
     class TestLogCmd < HammerCLI::AbstractCommand
       def execute
@@ -169,6 +164,29 @@ describe HammerCLI::AbstractCommand do
       HammerCLI::Settings.load(:watch_plain => true)
       test_command.run []
       @log_output.read.must_include "DEBUG  TestLogCmd5 : Test\n{\n  :a => \"a\"\n}"
+    end
+
+    class TestLogCmd6 < HammerCLI::AbstractCommand
+      def execute
+        logger.watch "Test", { :password => 'password', "password" => "password" }
+        0
+      end
+    end
+
+    it "censors passwords from the debug logs" do
+      test_command = Class.new(TestLogCmd6).new("")
+      HammerCLI::Settings.clear
+      HammerCLI::Settings.load(:watch_plain => true)
+      test_command.run []
+      @log_output.read.must_include "DEBUG  TestLogCmd6 : Test\n{\n  :password  => \"***\",\n  \"password\" => \"***\"\n}"
+    end
+
+    it "password parameters should be hidden in logs" do
+      test_command_class = Class.new(HammerCLI::AbstractCommand)
+      test_command_class.option(['--password'], 'PASSWORD', 'Password')
+      test_command = test_command_class.new("")
+      test_command.run ['--password=pass']
+      @log_output.readline.strip.must_equal "INFO  HammerCLI::AbstractCommand : Called with options: {\"option_password\"=>\"***\"}"
     end
   end
 

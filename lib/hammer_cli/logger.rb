@@ -1,6 +1,35 @@
 require 'fileutils'
 require 'logging'
 
+module Logging
+  class LogEvent
+    alias_method :old_initialize, :initialize
+    def initialize( logger, level, data, caller_tracing )
+      # filter out the passwords
+      if data.kind_of? String
+        self.class.data_filters.each do |filter|
+          data = data.gsub(filter[0], filter[1])
+        end
+      end
+      old_initialize(logger, level, data, caller_tracing)
+    end
+
+    def self.add_data_filter(pattern, replacement)
+      data_filters << [pattern, replacement]
+    end
+
+    private
+
+    def self.data_filters
+      @filter_list ||= []
+      @filter_list
+    end
+  end
+end
+
+# add password filter: *password => "***"
+Logging::LogEvent.add_data_filter(/(password(\e\[0;\d{2}m|\e\[0m|\s|=>|")+\")[^\"]*\"/, '\1***"')
+
 module HammerCLI
   module Logger
 
