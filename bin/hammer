@@ -61,6 +61,10 @@ if preparser.config
     HammerCLI::Settings.load_from_file preparser.config
   elsif File.directory? preparser.config
     HammerCLI::Settings.load_from_paths [preparser.config]
+  else
+    $stderr.puts _('Error: Custom configuration file %s does not exist.') % preparser.config
+    require 'hammer_cli/exit_codes'
+    exit HammerCLI::EX_CONFIG
   end
 end
 
