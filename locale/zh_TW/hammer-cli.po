@@ -8,224 +8,314 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foreman\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-07-29 17:01+0200\n"
 "PO-Revision-Date: 2015-03-09 14:42+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
-"Language-Team: Chinese (Taiwan) (http://www.transifex.com/foreman/foreman/lang"
-"uage/zh_TW/)\n"
+"Language-Team: Chinese (Taiwan) (http://www.transifex.com/foreman/foreman/"
+"language/zh_TW/)\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: ../lib/hammer_cli/clamp.rb:5
 msgid "too many arguments"
 msgstr "引數過多"
 
+#: ../lib/hammer_cli/clamp.rb:6
 msgid "option '%<option>s' is required"
 msgstr "需要使用 '%<option>s' 選項"
 
+#: ../lib/hammer_cli/clamp.rb:7
 msgid "option '%<option>s' (or env %<env>s) is required"
 msgstr "需要使用 '%<option>s'（或是 %<env>s 環境）選項"
 
+#: ../lib/hammer_cli/clamp.rb:8
 msgid "option '%<switch>s': %<message>s"
 msgstr "選項 '%<switch>s'：%<message>s"
 
+#: ../lib/hammer_cli/clamp.rb:9
 msgid "parameter '%<param>s': %<message>s"
 msgstr "參數 '%<param>s'：%<message>s"
 
+#: ../lib/hammer_cli/clamp.rb:10
 msgid "%<env>s: %<message>s"
 msgstr "%<env>s：%<message>s"
 
+#: ../lib/hammer_cli/clamp.rb:11
 msgid "Unrecognised option '%<switch>s'"
 msgstr "無法辨識的選項 '%<switch>s'"
 
+#: ../lib/hammer_cli/clamp.rb:12
 msgid "No such sub-command '%<name>s'"
 msgstr "此類型的次指令不存在：'%<name>s'"
 
+#: ../lib/hammer_cli/clamp.rb:13
 msgid "no value provided"
 msgstr "未提供值"
 
+#: ../lib/hammer_cli/exception_handler.rb:62
 msgid "Error: %s"
 msgstr "錯誤：%s"
 
+#: ../lib/hammer_cli/exception_handler.rb:68
 msgid "Error: %{message}"
-msgstr ""
+msgstr "錯誤：%{message}"
 
+#: ../lib/hammer_cli/exception_handler.rb:69
 msgid "See: '%{path} --help'"
-msgstr ""
+msgstr "請參閱：'%{path} --help'"
 
+#: ../lib/hammer_cli/exception_handler.rb:86
 msgid "Invalid username or password"
 msgstr "無效的使用者名稱或密碼"
 
+#: ../lib/hammer_cli/exception_handler.rb:93
 msgid "Could not load the API description from the server"
-msgstr ""
+msgstr "無法從伺服器載入 API 描述"
 
+#: ../lib/hammer_cli/exception_handler.rb:94
 msgid "is the server down?"
-msgstr ""
+msgstr "伺服器是否沒有在運作？"
 
+#: ../lib/hammer_cli/exception_handler.rb:95
 msgid ""
-"was '%s' run on the server when using apipie cache? (typical production settin"
-"gs)"
-msgstr ""
+"was '%s' run on the server when using apipie cache? (typical production "
+"settings)"
+msgstr "使用 apipie 快取時 '%s' 是否有在伺服器上運作？（典型的生產設定）"
 
+#: ../lib/hammer_cli/exception_handler.rb:101
 msgid "Missing arguments for %s"
-msgstr ""
+msgstr "%s 缺少了引數"
 
+#: ../lib/hammer_cli/logger.rb:28
 msgid "No permissions to create log dir %s"
 msgstr "沒有建立日誌目錄 %s 的權限"
 
+#: ../lib/hammer_cli/logger.rb:43
 msgid "File %s not writeable, won't log anything to the file!"
 msgstr "%s 檔案不允許寫入，將不會記錄任何資料至此檔案中！"
 
+#: ../lib/hammer_cli/main.rb:7
 msgid "be verbose"
 msgstr "詳細提供資料"
 
+#: ../lib/hammer_cli/main.rb:8
 msgid "show debugging output "
 msgstr "顯示除錯輸出"
 
+#: ../lib/hammer_cli/main.rb:9
 msgid "force reload of Apipie cache"
-msgstr ""
+msgstr "強制重新載入 Apipie 快取"
 
+#: ../lib/hammer_cli/main.rb:11
 msgid "path to custom config file"
 msgstr "自訂配置檔案的路徑"
 
+#: ../lib/hammer_cli/main.rb:13
 msgid "username to access the remote system"
 msgstr "用來存取遠端系統的使用者名稱"
 
+#: ../lib/hammer_cli/main.rb:15
 msgid "password to access the remote system"
 msgstr "用來存取遠端系統的密碼"
 
+#: ../lib/hammer_cli/main.rb:17
 msgid "remote system address"
 msgstr "遠端系統位址"
 
+#: ../lib/hammer_cli/main.rb:20
 msgid "show version"
 msgstr "顯示版本"
 
+#: ../lib/hammer_cli/main.rb:23
+msgid "unknown version"
+msgstr "不明的版本"
+
+#: ../lib/hammer_cli/main.rb:29
 msgid "Show ids of associated resources"
 msgstr "顯示相聯資源的 id"
 
+#: ../lib/hammer_cli/main.rb:31
 msgid "Explicitly turn interactive mode on/off"
 msgstr "明確開啓或關閉互動式模式"
 
+#: ../lib/hammer_cli/main.rb:35
 msgid "Output as CSV (same as --output=csv)"
 msgstr "輸出為 CSV（與 --output=csv 相同）"
 
+#: ../lib/hammer_cli/main.rb:36
 msgid "Set output format. One of [%s]"
 msgstr "設定輸出模式。[%s] 之一"
 
+#: ../lib/hammer_cli/main.rb:39
 msgid "Character to separate the values"
 msgstr "用來隔開值的字元"
 
+#: ../lib/hammer_cli/main.rb:43
 msgid "Get list of possible endings"
 msgstr "取得一列可能的結尾"
 
+#: ../lib/hammer_cli/modules.rb:12
 msgid ""
-"Legacy configuration of modules detected. Check section about configuration in"
-" user manual"
+"Legacy configuration of modules detected. Check section about configuration "
+"in user manual"
 msgstr "偵測到了舊式的模組配置。請查看使用者指南中的配置部分"
 
+#: ../lib/hammer_cli/modules.rb:60
 msgid "Warning: An error occured while loading module %s"
 msgstr "警告：載入 %s 模組時發生了錯誤"
 
+#: ../lib/hammer_cli/modules.rb:87
 msgid "Error: Some of the required modules are disabled in configuration: %s "
-msgstr ""
+msgstr "錯誤：某些必要的模組在配置中已停用：%s "
 
+#: ../lib/hammer_cli/options/normalizers.rb:26
 msgid "Comma-separated list of key=value."
 msgstr "逗號區隔開的一列 key=value。"
 
+#: ../lib/hammer_cli/options/normalizers.rb:39
 msgid "value must be defined as a comma-separated list of key=value"
 msgstr "值必須以一列逗號區隔開的 key=value 來定義"
 
+#: ../lib/hammer_cli/options/normalizers.rb:73
 msgid "Comma separated list of values."
 msgstr "逗號區隔開的值。"
 
+#: ../lib/hammer_cli/options/normalizers.rb:88
+msgid "numeric value is required"
+msgstr ""
+
+#: ../lib/hammer_cli/options/normalizers.rb:102
 msgid "One of true/false, yes/no, 1/0."
 msgstr "true/false、yes/no、1/0 之一。"
 
+#: ../lib/hammer_cli/options/normalizers.rb:112
 msgid "value must be one of true/false, yes/no, 1/0"
 msgstr "值必須是 true/false、yes/no、1/0 之一"
 
+#: ../lib/hammer_cli/options/normalizers.rb:151
 msgid "Unable to parse JSON input"
 msgstr "無法叵析 JSON 輸入"
 
-msgid "One of %s"
-msgstr "%s 之一"
+#: ../lib/hammer_cli/options/normalizers.rb:165
+msgid "Possible value(s): %s"
+msgstr ""
 
-msgid "value must be one of '%s'"
+#: ../lib/hammer_cli/options/normalizers.rb:173
+#, fuzzy
+msgid "value must be %s"
 msgstr "值必須是「%s」之一"
 
+#: ../lib/hammer_cli/options/normalizers.rb:175
+#, fuzzy
+msgid "value must be one of %s"
+msgstr "值必須是「%s」之一"
+
+#: ../lib/hammer_cli/options/normalizers.rb:196
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "日期與時間，格式為 YYYY-MM-DD HH:MM:SS 或是 ISO 8601 格式"
 
+#: ../lib/hammer_cli/options/normalizers.rb:203
 msgid "'%s' is not a valid date"
 msgstr "「%s」不是個有效的日期"
 
+#: ../lib/hammer_cli/options/normalizers.rb:214
 msgid "Any combination (comma separated list) of '%s'"
 msgstr "任何（以逗號隔開的）「%s」的組合"
 
+#: ../lib/hammer_cli/options/normalizers.rb:234
 msgid "value must be a combination of '%s'"
 msgstr "值必須是「%s」的組合"
 
+#: ../lib/hammer_cli/options/option_definition.rb:56
+msgid "\"Warning: Option #{switch} is deprecated. %s\""
+msgstr ""
+
+#: ../lib/hammer_cli/options/option_definition.rb:80
 msgid "Can be specified multiple times. "
 msgstr "可指定多次。"
 
+#: ../lib/hammer_cli/options/option_definition.rb:81
 msgid ", or "
 msgstr "，或是"
 
+#: ../lib/hammer_cli/options/option_definition.rb:81
 msgid "Default: "
 msgstr "預設值："
 
+#: ../lib/hammer_cli/output/adapter/csv.rb:174
 msgid "Message"
 msgstr "訊息"
 
+#: ../lib/hammer_cli/output/adapter/csv.rb:178
 msgid "Id"
 msgstr "ID"
 
+#: ../lib/hammer_cli/output/adapter/csv.rb:183
 msgid "Name"
 msgstr "名稱"
 
+#: ../lib/hammer_cli/output/formatters.rb:154
 msgid "no"
 msgstr "否"
 
+#: ../lib/hammer_cli/output/formatters.rb:154
 msgid "yes"
 msgstr "是"
 
+#: ../lib/hammer_cli/settings.rb:28
 msgid ""
-"Warning: location hammer.modules.d is deprecated, move your module configurati"
-"ons to cli.modules.d"
-msgstr "警告：hammer.modules.d 這個位置已淘汰使用，請將您的模組配置移至 cli.modules.d"
+"Warning: location hammer.modules.d is deprecated, move your module "
+"configurations to cli.modules.d"
+msgstr ""
+"警告：hammer.modules.d 這個位置已淘汰使用，請將您的模組配置移至 cli.modules.d"
 
+#: ../lib/hammer_cli/shell.rb:10
 msgid "Print help for commands"
 msgstr "印出指令的說明"
 
+#: ../lib/hammer_cli/shell.rb:22
 msgid "Exit interactive shell"
 msgstr "退出互動式 shell"
 
+#: ../lib/hammer_cli/shell.rb:116
 msgid "Welcome to the hammer interactive shell"
 msgstr "歡迎使用 hammer 互動式 shell"
 
+#: ../lib/hammer_cli/shell.rb:117
 msgid "Type 'help' for usage information"
 msgstr "請輸入「help」以查看使用說明"
 
+#: ../lib/hammer_cli/shell.rb:133
 msgid "Interactive shell"
 msgstr "互動式 shell"
 
+#: ../lib/hammer_cli/subcommand.rb:56
 msgid ""
-"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
-"ass>s)"
+"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
+"(%<new_class>s)"
 msgstr ""
+"無法將次指令 %<name>s (%<existing_class>s) 替換為 %<name>s (%<new_class>s)"
 
+#: ../lib/hammer_cli/validator.rb:41
 msgid "Unknown option name '%s'"
 msgstr "不明選項名稱「%s」"
 
+#: ../lib/hammer_cli/validator.rb:62
 msgid "You can't set all options %s at one time"
 msgstr "您不可一次將所有選項設為 %s"
 
+#: ../lib/hammer_cli/validator.rb:63
 msgid "Options %s are required"
 msgstr "%s 選項乃必要的"
 
+#: ../lib/hammer_cli/validator.rb:79
 msgid "You can't set any of options %s"
 msgstr "您不可將任何選項設為 %s"
 
+#: ../lib/hammer_cli/validator.rb:80
 msgid "At least one of options %s is required"
 msgstr "需要至少一項 %s 選項"
+
