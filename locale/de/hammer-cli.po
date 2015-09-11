@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the hammer-cli package.
 #
 # Translators:
+# Christina Gurski <Gurski_christina@yahoo.de>, 2015
 # Dominic Cleal <dcleal@redhat.com>, 2014
 # Ettore Atalan <atalanttore@googlemail.com>, 2014
 # simon11 <simon.stieger.98@live.de>, 2014
@@ -10,12 +11,11 @@
 # Ulrich Habel <rhaen@pkgbox.de>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.3.0\n"
+"Project-Id-Version: Foreman\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2014-09-16 16:54+0000\n"
-"Last-Translator: Dominic Cleal <dcleal@redhat.com>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/foreman/language/de"
-"/)\n"
+"PO-Revision-Date: 2015-06-27 20:10+0000\n"
+"Last-Translator: Christina Gurski <Gurski_christina@yahoo.de>\n"
+"Language-Team: German (http://www.transifex.com/foreman/foreman/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -71,9 +71,11 @@ msgid ""
 "was '%s' run on the server when using apipie cache? (typical production settin"
 "gs)"
 msgstr ""
+"Wurde '%s' auf dem Server ausgeführt, während Apipe-Cache in Verwendung war? ("
+"typische Produktionseinstellungen)"
 
 msgid "Missing arguments for %s"
-msgstr ""
+msgstr "Argumente für %s nicht vorhanden"
 
 msgid "No permissions to create log dir %s"
 msgstr "Keine Berechtigung zum Anlegen von Protokollverzeichnis %s"
@@ -88,7 +90,7 @@ msgid "show debugging output "
 msgstr "Debugausgabe anzeigen"
 
 msgid "force reload of Apipie cache"
-msgstr ""
+msgstr "Neuladen des Apipie-Caches erzwingen"
 
 msgid "path to custom config file"
 msgstr "Pfad zur angepassten Konfigurationsdatei"
@@ -103,10 +105,6 @@ msgid "remote system address"
 msgstr "Adresse des entfernten Systems"
 
 msgid "show version"
-msgstr "Version anzeigen"
-
-#, fuzzy
-msgid "unknown version"
 msgstr "Version anzeigen"
 
 msgid "Show ids of associated resources"
@@ -139,6 +137,8 @@ msgstr "Warnung: Beim Laden von Modul %s ist ein Fehler aufgetreten"
 
 msgid "Error: Some of the required modules are disabled in configuration: %s "
 msgstr ""
+"Fehler: Einige der erforderlichen Module sind in der Konfiguration deaktiviert"
+": %s"
 
 msgid "Comma-separated list of key=value."
 msgstr "Kommagetrennte Liste mit Schlüssel-Wert-Paaren."
@@ -149,9 +149,6 @@ msgstr "Wert muss als kommagetrennte Liste mit Schlüssel-Wert-Paaren definiert 
 msgid "Comma separated list of values."
 msgstr "Kommagetrennte Liste von Werten."
 
-msgid "numeric value is required"
-msgstr ""
-
 msgid "One of true/false, yes/no, 1/0."
 msgstr "Eines von true/false, yes/no, 1/0."
 
@@ -161,15 +158,10 @@ msgstr "Gültige Werte sind true/false, yes/no, 1/0"
 msgid "Unable to parse JSON input"
 msgstr "JSON Eingabe nicht lesbar"
 
-msgid "Possible value(s): %s"
-msgstr ""
+msgid "One of %s"
+msgstr "Einer von %s"
 
-#, fuzzy
-msgid "value must be %s"
-msgstr "Gültige Werte sind \"%s\""
-
-#, fuzzy
-msgid "value must be one of %s"
+msgid "value must be one of '%s'"
 msgstr "Gültige Werte sind \"%s\""
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
@@ -183,9 +175,6 @@ msgstr "Eine Kombination (kommagetrennte Liste) aus \"%s\""
 
 msgid "value must be a combination of '%s'"
 msgstr "Wert muss eine Kombination aus \"%s\" sein"
-
-msgid "\"Warning: Option #{switch} is deprecated. %s\""
-msgstr ""
 
 msgid "Can be specified multiple times. "
 msgstr "Kann mehrfach angegeben werden."
@@ -237,6 +226,8 @@ msgid ""
 "can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
 "ass>s)"
 msgstr ""
+"Unterbefehl %<name>s (%<existing_class>s) kann nicht durch %<name>s (%<new_cla"
+"ss>s) ersetzt werden"
 
 msgid "Unknown option name '%s'"
 msgstr "Unbekannter Optionsname '%s'"

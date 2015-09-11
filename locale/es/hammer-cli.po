@@ -4,15 +4,16 @@
 #
 # Translators:
 # Dominic Cleal <dcleal@redhat.com>, 2014
+# francis <hackgo@gmail.com>, 2014
 # Sergio Ocón <sergio.ocon@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.3.0\n"
+"Project-Id-Version: Foreman\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2014-09-16 09:51+0000\n"
-"Last-Translator: Dominic Cleal <dcleal@redhat.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/foreman/language/e"
-"s/)\n"
+"PO-Revision-Date: 2015-03-09 14:42+0000\n"
+"Last-Translator: francis <hackgo@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/foreman/foreman/language/es/)"
+"\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -72,7 +73,7 @@ msgstr ""
 "de producción)"
 
 msgid "Missing arguments for %s"
-msgstr ""
+msgstr "Faltan argumentos para %s"
 
 msgid "No permissions to create log dir %s"
 msgstr "No tiene permiso para crear el directorio de log %s"
@@ -87,7 +88,7 @@ msgid "show debugging output "
 msgstr "muestra salida de depuración"
 
 msgid "force reload of Apipie cache"
-msgstr ""
+msgstr "recarga forzada de la caché Apipie"
 
 msgid "path to custom config file"
 msgstr "ruta al fichero de configuración personalizado"
@@ -102,10 +103,6 @@ msgid "remote system address"
 msgstr "dirección del sistema remoto"
 
 msgid "show version"
-msgstr "mostrar versión"
-
-#, fuzzy
-msgid "unknown version"
 msgstr "mostrar versión"
 
 msgid "Show ids of associated resources"
@@ -138,6 +135,8 @@ msgstr "Advertencia: Ha ocurrido un error al cargar el módulo %s"
 
 msgid "Error: Some of the required modules are disabled in configuration: %s "
 msgstr ""
+"Error: Algunos de los módulos requeridos están desactivados en la configuració"
+"n: %s"
 
 msgid "Comma-separated list of key=value."
 msgstr "Lista de pares llave=valor separados por comas."
@@ -150,9 +149,6 @@ msgstr ""
 msgid "Comma separated list of values."
 msgstr "Lista de valores separadas por comas."
 
-msgid "numeric value is required"
-msgstr ""
-
 msgid "One of true/false, yes/no, 1/0."
 msgstr "Uno de verdadero/falso, si/no, 1/0."
 
@@ -162,15 +158,10 @@ msgstr "el valor debe ser uno de verdadero/falso, si/no, 1/0"
 msgid "Unable to parse JSON input"
 msgstr "Imposible analizar la entrada JSON"
 
-msgid "Possible value(s): %s"
-msgstr ""
+msgid "One of %s"
+msgstr "Uno de %s"
 
-#, fuzzy
-msgid "value must be %s"
-msgstr "valor debe ser uno de '%s'"
-
-#, fuzzy
-msgid "value must be one of %s"
+msgid "value must be one of '%s'"
 msgstr "valor debe ser uno de '%s'"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
@@ -184,9 +175,6 @@ msgstr "Cualquier combinación (lista separada por comas) de '%s'"
 
 msgid "value must be a combination of '%s'"
 msgstr "el valor debe ser una combinación de '%s'"
-
-msgid "\"Warning: Option #{switch} is deprecated. %s\""
-msgstr ""
 
 msgid "Can be specified multiple times. "
 msgstr "Puede especificarse repetidamente."

@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the hammer-cli package.
 #
 # Translators:
+# Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.3.0\n"
+"Project-Id-Version: Foreman\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2014-09-15 16:22+0000\n"
-"Last-Translator: Dominic Cleal <dcleal@redhat.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/projects/p/foreman/language/"
-"ja/)\n"
+"PO-Revision-Date: 2015-03-22 20:15+0000\n"
+"Last-Translator: Shuji Yamada <uzy.exe@gmail.com>\n"
+"Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/ja/"
+")\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -48,27 +49,27 @@ msgid "Error: %s"
 msgstr "エラー: %s"
 
 msgid "Error: %{message}"
-msgstr ""
+msgstr "エラー: %{message}"
 
 msgid "See: '%{path} --help'"
-msgstr ""
+msgstr "参照: '%{path} --help'"
 
 msgid "Invalid username or password"
 msgstr "無効なユーザー名またはパスワード"
 
 msgid "Could not load the API description from the server"
-msgstr ""
+msgstr "サーバーから API の説明を読み込めませんでした"
 
 msgid "is the server down?"
-msgstr ""
+msgstr "サーバーがダウンしている?"
 
 msgid ""
 "was '%s' run on the server when using apipie cache? (typical production settin"
 "gs)"
-msgstr ""
+msgstr "'%s' はapipie キャッシュを使用するときにサーバー上で実行されましたか?  (典型的なプロビジョニングの設定)"
 
 msgid "Missing arguments for %s"
-msgstr ""
+msgstr "引数が不足しています %s"
 
 msgid "No permissions to create log dir %s"
 msgstr "ログディレクトリー %s を作成するパーミッションがありません"
@@ -83,7 +84,7 @@ msgid "show debugging output "
 msgstr "デバッグ出力の表示"
 
 msgid "force reload of Apipie cache"
-msgstr ""
+msgstr "Apipie キャッシュの強制リロード"
 
 msgid "path to custom config file"
 msgstr "カスタム設定ファイルのパス"
@@ -98,10 +99,6 @@ msgid "remote system address"
 msgstr "リモートシステムのアドレス"
 
 msgid "show version"
-msgstr "バージョンの表示"
-
-#, fuzzy
-msgid "unknown version"
 msgstr "バージョンの表示"
 
 msgid "Show ids of associated resources"
@@ -131,7 +128,7 @@ msgid "Warning: An error occured while loading module %s"
 msgstr "警告: モジュール %s のロード中にエラーが発生しました"
 
 msgid "Error: Some of the required modules are disabled in configuration: %s "
-msgstr ""
+msgstr "エラー: 必要なモジュールは設定で無効化されています: %s"
 
 msgid "Comma-separated list of key=value."
 msgstr "key=value のコンマ区切りの一覧です。"
@@ -142,9 +139,6 @@ msgstr "値は key=value のコンマ区切りの一覧として定義する必�
 msgid "Comma separated list of values."
 msgstr "コンマ区切りの値の一覧です。"
 
-msgid "numeric value is required"
-msgstr ""
-
 msgid "One of true/false, yes/no, 1/0."
 msgstr "true/false、yes/no、1/0 のいずれかです。"
 
@@ -154,15 +148,10 @@ msgstr "値を true/false、yes/no、1/0 のいずれかにする必要があり
 msgid "Unable to parse JSON input"
 msgstr "JSON 入力を解析できません"
 
-msgid "Possible value(s): %s"
-msgstr ""
+msgid "One of %s"
+msgstr "%s のいずれか"
 
-#, fuzzy
-msgid "value must be %s"
-msgstr "値を '%s' のいずれかにする必要があります"
-
-#, fuzzy
-msgid "value must be one of %s"
+msgid "value must be one of '%s'"
 msgstr "値を '%s' のいずれかにする必要があります"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
@@ -176,9 +165,6 @@ msgstr "'%s' の任意の組み合わせ (コンマ区切りの一覧)"
 
 msgid "value must be a combination of '%s'"
 msgstr "値を '%s' の組み合わせにする必要があります"
-
-msgid "\"Warning: Option #{switch} is deprecated. %s\""
-msgstr ""
 
 msgid "Can be specified multiple times. "
 msgstr "複数回指定することはできません。"
@@ -228,6 +214,8 @@ msgid ""
 "can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
 "ass>s)"
 msgstr ""
+"サブコマンドを置き換えることはできません: %<name>s (%<existing_class>s) with %<name>s (%<new_class"
+">s)"
 
 msgid "Unknown option name '%s'"
 msgstr "不明なオプション名 '%s'"
