@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the hammer-cli package.
 #
 # Translators:
+# Andi Chandler <andi@gowling.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.3.0\n"
+"Project-Id-Version: Foreman\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2014-08-14 09:42+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
-"Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/f"
-"oreman/language/en_GB/)\n"
+"PO-Revision-Date: 2015-08-30 02:01+0000\n"
+"Last-Translator: Andi Chandler <andi@gowling.com>\n"
+"Language-Team: English (United Kingdom) (http://www.transifex.com/foreman/fore"
+"man/language/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,225 +19,221 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "too many arguments"
-msgstr ""
+msgstr "too many arguments"
 
 msgid "option '%<option>s' is required"
-msgstr ""
+msgstr "option '%<option>s' is required"
 
 msgid "option '%<option>s' (or env %<env>s) is required"
-msgstr ""
+msgstr "option '%<option>s' (or env %<env>s) is required"
 
 msgid "option '%<switch>s': %<message>s"
-msgstr ""
+msgstr "option '%<switch>s': %<message>s"
 
 msgid "parameter '%<param>s': %<message>s"
-msgstr ""
+msgstr "parameter '%<param>s': %<message>s"
 
 msgid "%<env>s: %<message>s"
-msgstr ""
+msgstr "%<env>s: %<message>s"
 
 msgid "Unrecognised option '%<switch>s'"
-msgstr ""
+msgstr "Unrecognised option '%<switch>s'"
 
 msgid "No such sub-command '%<name>s'"
-msgstr ""
+msgstr "No such sub-command '%<name>s'"
 
 msgid "no value provided"
-msgstr ""
+msgstr "no value provided"
 
 msgid "Error: %s"
-msgstr ""
+msgstr "Error: %s"
 
 msgid "Error: %{message}"
-msgstr ""
+msgstr "Error: %{message}"
 
 msgid "See: '%{path} --help'"
-msgstr ""
+msgstr "See: '%{path} --help'"
 
 msgid "Invalid username or password"
-msgstr ""
+msgstr "Invalid username or password"
 
 msgid "Could not load the API description from the server"
-msgstr ""
+msgstr "Could not load the API description from the server"
 
 msgid "is the server down?"
-msgstr ""
+msgstr "is the server down?"
 
 msgid ""
 "was '%s' run on the server when using apipie cache? (typical production settin"
 "gs)"
 msgstr ""
+"was '%s' run on the server when using apipie cache? (typical production settin"
+"gs)"
 
 msgid "Missing arguments for %s"
-msgstr ""
+msgstr "Missing arguments for %s"
 
 msgid "No permissions to create log dir %s"
-msgstr ""
+msgstr "No permissions to create log dir %s"
 
 msgid "File %s not writeable, won't log anything to the file!"
-msgstr ""
+msgstr "File %s not writeable, won't log anything to the file!"
 
 msgid "be verbose"
-msgstr ""
+msgstr "be verbose"
 
 msgid "show debugging output "
-msgstr ""
+msgstr "show debugging output "
 
 msgid "force reload of Apipie cache"
-msgstr ""
+msgstr "force reload of Apipie cache"
 
 msgid "path to custom config file"
-msgstr ""
+msgstr "path to custom config file"
 
 msgid "username to access the remote system"
-msgstr ""
+msgstr "username to access the remote system"
 
 msgid "password to access the remote system"
-msgstr ""
+msgstr "password to access the remote system"
 
 msgid "remote system address"
-msgstr ""
+msgstr "remote system address"
 
 msgid "show version"
-msgstr ""
-
-msgid "unknown version"
-msgstr ""
+msgstr "show version"
 
 msgid "Show ids of associated resources"
-msgstr ""
+msgstr "Show ids of associated resources"
 
 msgid "Explicitly turn interactive mode on/off"
-msgstr ""
+msgstr "Explicitly turn interactive mode on/off"
 
 msgid "Output as CSV (same as --output=csv)"
-msgstr ""
+msgstr "Output as CSV (same as --output=csv)"
 
 msgid "Set output format. One of [%s]"
-msgstr ""
+msgstr "Set output format. One of [%s]"
 
 msgid "Character to separate the values"
-msgstr ""
+msgstr "Character to separate the values"
 
 msgid "Get list of possible endings"
-msgstr ""
+msgstr "Get list of possible endings"
 
 msgid ""
 "Legacy configuration of modules detected. Check section about configuration in"
 " user manual"
 msgstr ""
+"Legacy configuration of modules detected. Check section about configuration in"
+" user manual"
 
 msgid "Warning: An error occured while loading module %s"
-msgstr ""
+msgstr "Warning: An error occured while loading module %s"
 
 msgid "Error: Some of the required modules are disabled in configuration: %s "
-msgstr ""
+msgstr "Error: Some of the required modules are disabled in configuration: %s "
 
 msgid "Comma-separated list of key=value."
-msgstr ""
+msgstr "Comma-separated list of key=value."
 
 msgid "value must be defined as a comma-separated list of key=value"
-msgstr ""
+msgstr "value must be defined as a comma-separated list of key=value"
 
 msgid "Comma separated list of values."
-msgstr ""
-
-msgid "numeric value is required"
-msgstr ""
+msgstr "Comma separated list of values."
 
 msgid "One of true/false, yes/no, 1/0."
-msgstr ""
+msgstr "One of true/false, yes/no, 1/0."
 
 msgid "value must be one of true/false, yes/no, 1/0"
-msgstr ""
+msgstr "value must be one of true/false, yes/no, 1/0"
 
 msgid "Unable to parse JSON input"
-msgstr ""
+msgstr "Unable to parse JSON input"
 
-msgid "Possible value(s): %s"
-msgstr ""
+msgid "One of %s"
+msgstr "One of %s"
 
-msgid "value must be %s"
-msgstr ""
-
-msgid "value must be one of %s"
-msgstr ""
+msgid "value must be one of '%s'"
+msgstr "value must be one of '%s'"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
-msgstr ""
+msgstr "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 
 msgid "'%s' is not a valid date"
-msgstr ""
+msgstr "'%s' is not a valid date"
 
 msgid "Any combination (comma separated list) of '%s'"
-msgstr ""
+msgstr "Any combination (comma separated list) of '%s'"
 
 msgid "value must be a combination of '%s'"
-msgstr ""
-
-msgid "\"Warning: Option #{switch} is deprecated. %s\""
-msgstr ""
+msgstr "value must be a combination of '%s'"
 
 msgid "Can be specified multiple times. "
-msgstr ""
+msgstr "Can be specified multiple times. "
 
 msgid ", or "
-msgstr ""
+msgstr ", or "
 
 msgid "Default: "
-msgstr ""
+msgstr "Default: "
 
 msgid "Message"
-msgstr ""
+msgstr "Message"
 
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
 msgid "Name"
 msgstr "Name"
 
 msgid "no"
-msgstr ""
+msgstr "no"
 
 msgid "yes"
-msgstr ""
+msgstr "yes"
 
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
 "ons to cli.modules.d"
 msgstr ""
+"Warning: location hammer.modules.d is deprecated, move your module configurati"
+"ons to cli.modules.d"
 
 msgid "Print help for commands"
-msgstr ""
+msgstr "Print help for commands"
 
 msgid "Exit interactive shell"
-msgstr ""
+msgstr "Exit interactive shell"
 
 msgid "Welcome to the hammer interactive shell"
-msgstr ""
+msgstr "Welcome to the hammer interactive shell"
 
 msgid "Type 'help' for usage information"
-msgstr ""
+msgstr "Type 'help' for usage information"
 
 msgid "Interactive shell"
-msgstr ""
+msgstr "Interactive shell"
 
 msgid ""
 "can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
 "ass>s)"
 msgstr ""
+"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
+"ass>s)"
 
 msgid "Unknown option name '%s'"
-msgstr ""
+msgstr "Unknown option name '%s'"
 
 msgid "You can't set all options %s at one time"
-msgstr ""
+msgstr "You can't set all options %s at one time"
 
 msgid "Options %s are required"
-msgstr ""
+msgstr "Options %s are required"
 
 msgid "You can't set any of options %s"
-msgstr ""
+msgstr "You can't set any of options %s"
 
 msgid "At least one of options %s is required"
-msgstr ""
+msgstr "At least one of options %s is required"

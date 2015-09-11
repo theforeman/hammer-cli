@@ -6,241 +6,321 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.3.0\n"
+"Project-Id-Version: Foreman\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2014-09-16 10:01+0000\n"
-"Last-Translator: Dominic Cleal <dcleal@redhat.com>\n"
-"Language-Team: Korean (http://www.transifex.com/projects/p/foreman/language/ko"
-"/)\n"
+"POT-Creation-Date: 2015-07-29 17:01+0200\n"
+"PO-Revision-Date: 2015-03-09 14:42+0000\n"
+"Last-Translator: Lukáš Zapletal\n"
+"Language-Team: Korean (http://www.transifex.com/foreman/foreman/language/"
+"ko/)\n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: ../lib/hammer_cli/clamp.rb:5
 msgid "too many arguments"
 msgstr "인수가 너무 많습니다 "
 
+#: ../lib/hammer_cli/clamp.rb:6
 msgid "option '%<option>s' is required"
 msgstr " '%<option>s' 옵션이 필요합니다 "
 
+#: ../lib/hammer_cli/clamp.rb:7
 msgid "option '%<option>s' (or env %<env>s) is required"
 msgstr "'%<option>s' 옵션 (또는 env %<env>s) 이 필요합니다 "
 
+#: ../lib/hammer_cli/clamp.rb:8
 msgid "option '%<switch>s': %<message>s"
 msgstr "옵션 '%<switch>s': %<message>s"
 
+#: ../lib/hammer_cli/clamp.rb:9
 msgid "parameter '%<param>s': %<message>s"
 msgstr "매개변수 '%<param>s': %<message>s"
 
+#: ../lib/hammer_cli/clamp.rb:10
 msgid "%<env>s: %<message>s"
 msgstr "%<env>s: %<message>s"
 
+#: ../lib/hammer_cli/clamp.rb:11
 msgid "Unrecognised option '%<switch>s'"
 msgstr "인식할 수 없는 옵션 '%<switch>s'"
 
+#: ../lib/hammer_cli/clamp.rb:12
 msgid "No such sub-command '%<name>s'"
 msgstr "다음과 같은 서브 명령 '%<name>s'이(가) 없습니다"
 
+#: ../lib/hammer_cli/clamp.rb:13
 msgid "no value provided"
 msgstr "값이 지정되어 있지 않습니다 "
 
+#: ../lib/hammer_cli/exception_handler.rb:62
 msgid "Error: %s"
 msgstr "오류: %s"
 
+#: ../lib/hammer_cli/exception_handler.rb:68
 msgid "Error: %{message}"
-msgstr ""
+msgstr "오류: %{message}"
 
+#: ../lib/hammer_cli/exception_handler.rb:69
 msgid "See: '%{path} --help'"
-msgstr ""
+msgstr "참조: '%{path} --help'"
 
+#: ../lib/hammer_cli/exception_handler.rb:86
 msgid "Invalid username or password"
 msgstr "잘못된 사용자 이름 또는 암호 "
 
+#: ../lib/hammer_cli/exception_handler.rb:93
 msgid "Could not load the API description from the server"
-msgstr ""
+msgstr "서버에서 API 설명을 불러올 수 없습니다 "
 
+#: ../lib/hammer_cli/exception_handler.rb:94
 msgid "is the server down?"
-msgstr ""
+msgstr "서버가 중지되어 있습니까?"
 
+#: ../lib/hammer_cli/exception_handler.rb:95
 msgid ""
-"was '%s' run on the server when using apipie cache? (typical production settin"
-"gs)"
+"was '%s' run on the server when using apipie cache? (typical production "
+"settings)"
 msgstr ""
+"apipie 캐시를 사용할 때 서버에서 '%s'가 실행되었습니까? (일반 제품 설정)"
 
+#: ../lib/hammer_cli/exception_handler.rb:101
 msgid "Missing arguments for %s"
-msgstr ""
+msgstr "%s에 대한 인수가 누락되어 있습니다 "
 
+#: ../lib/hammer_cli/logger.rb:28
 msgid "No permissions to create log dir %s"
 msgstr "로그 디렉토리 %s을(를) 생성할 권한이 없습니다 "
 
+#: ../lib/hammer_cli/logger.rb:43
 msgid "File %s not writeable, won't log anything to the file!"
 msgstr "파일 %s은(는) 쓸 수 없기 때문에 파일에 아무것도 기록할 수 없습니다!"
 
+#: ../lib/hammer_cli/main.rb:7
 msgid "be verbose"
 msgstr "상세 설명 "
 
+#: ../lib/hammer_cli/main.rb:8
 msgid "show debugging output "
 msgstr "디버깅 출력 표시 "
 
+#: ../lib/hammer_cli/main.rb:9
 msgid "force reload of Apipie cache"
-msgstr ""
+msgstr "Apipie 캐시 다시 불러오기를 강제 "
 
+#: ../lib/hammer_cli/main.rb:11
 msgid "path to custom config file"
 msgstr "사용자 지정 설정 파일로의 경로 "
 
+#: ../lib/hammer_cli/main.rb:13
 msgid "username to access the remote system"
 msgstr "원격 시스템에 액세스하기 위한 사용자 이름 "
 
+#: ../lib/hammer_cli/main.rb:15
 msgid "password to access the remote system"
 msgstr "원격 시스템에 액세스하기 위한 암호 "
 
+#: ../lib/hammer_cli/main.rb:17
 msgid "remote system address"
 msgstr "원격 시스템 주소 "
 
+#: ../lib/hammer_cli/main.rb:20
 msgid "show version"
 msgstr "버전 표시 "
 
-#, fuzzy
+#: ../lib/hammer_cli/main.rb:23
 msgid "unknown version"
-msgstr "버전 표시 "
+msgstr "알 수 없는 버전"
 
+#: ../lib/hammer_cli/main.rb:29
 msgid "Show ids of associated resources"
 msgstr "관련 리소스의 ID 표시 "
 
+#: ../lib/hammer_cli/main.rb:31
 msgid "Explicitly turn interactive mode on/off"
 msgstr "대화식 모드를 명시적으로 켜기/끄기"
 
+#: ../lib/hammer_cli/main.rb:35
 msgid "Output as CSV (same as --output=csv)"
 msgstr "CSV로 출력 (--output=csv와 동일)"
 
+#: ../lib/hammer_cli/main.rb:36
 msgid "Set output format. One of [%s]"
 msgstr "출력 형식을 설정합니다. [%s] 중 하나입니다 "
 
+#: ../lib/hammer_cli/main.rb:39
 msgid "Character to separate the values"
 msgstr "값을 구분하기 위한 문자 "
 
+#: ../lib/hammer_cli/main.rb:43
 msgid "Get list of possible endings"
 msgstr "가능한 종료 목록 검색 "
 
+#: ../lib/hammer_cli/modules.rb:12
 msgid ""
-"Legacy configuration of modules detected. Check section about configuration in"
-" user manual"
-msgstr "모듈의 레거시 설정이 감지되었습니다. 사용자 설명서에서 설정에 대한 섹션을 확인하십시오"
+"Legacy configuration of modules detected. Check section about configuration "
+"in user manual"
+msgstr ""
+"모듈의 레거시 설정이 감지되었습니다. 사용자 설명서에서 설정에 대한 섹션을 확"
+"인하십시오"
 
+#: ../lib/hammer_cli/modules.rb:60
 msgid "Warning: An error occured while loading module %s"
 msgstr "경고: 모듈 %s을(를) 불러오는 도중 오류가 발생했습니다 "
 
+#: ../lib/hammer_cli/modules.rb:87
 msgid "Error: Some of the required modules are disabled in configuration: %s "
-msgstr ""
+msgstr "오류: 필요한 모듈 중 일부가 설정에서 비활성화되어 있습니다: %s "
 
+#: ../lib/hammer_cli/options/normalizers.rb:26
 msgid "Comma-separated list of key=value."
 msgstr "콤마로 구분된 key=value 목록입니다. "
 
+#: ../lib/hammer_cli/options/normalizers.rb:39
 msgid "value must be defined as a comma-separated list of key=value"
 msgstr "콤마로 구분된 key=value 목록으로 값을 지정해야 합니다 "
 
+#: ../lib/hammer_cli/options/normalizers.rb:73
 msgid "Comma separated list of values."
 msgstr "콤마로 구분된 값 목록입니다."
 
+#: ../lib/hammer_cli/options/normalizers.rb:88
 msgid "numeric value is required"
 msgstr ""
 
+#: ../lib/hammer_cli/options/normalizers.rb:102
 msgid "One of true/false, yes/no, 1/0."
 msgstr "true/false, yes/no, 1/0 중 하나입니다."
 
+#: ../lib/hammer_cli/options/normalizers.rb:112
 msgid "value must be one of true/false, yes/no, 1/0"
 msgstr "값을 true/false, yes/no, 1/0 중 하나로 해야 합니다 "
 
+#: ../lib/hammer_cli/options/normalizers.rb:151
 msgid "Unable to parse JSON input"
 msgstr "JSON 입력을 구문 분석할 수 없습니다 "
 
+#: ../lib/hammer_cli/options/normalizers.rb:165
 msgid "Possible value(s): %s"
 msgstr ""
 
+#: ../lib/hammer_cli/options/normalizers.rb:173
 #, fuzzy
 msgid "value must be %s"
 msgstr "값은 '%s' 중 하나로 해야 합니다 "
 
+#: ../lib/hammer_cli/options/normalizers.rb:175
 #, fuzzy
 msgid "value must be one of %s"
 msgstr "값은 '%s' 중 하나로 해야 합니다 "
 
+#: ../lib/hammer_cli/options/normalizers.rb:196
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "날짜 및 시간 (YYYY-MM-DD HH:MM:SS 또는 ISO 8601 형식으로)"
 
+#: ../lib/hammer_cli/options/normalizers.rb:203
 msgid "'%s' is not a valid date"
 msgstr "'%s'은(는) 유효한 날짜가 아닙니다 "
 
+#: ../lib/hammer_cli/options/normalizers.rb:214
 msgid "Any combination (comma separated list) of '%s'"
 msgstr "'%s'의 모든 조합 (콤마로 구분된 목록)"
 
+#: ../lib/hammer_cli/options/normalizers.rb:234
 msgid "value must be a combination of '%s'"
 msgstr "값은 '%s'의  조합이어야 합니다 "
 
+#: ../lib/hammer_cli/options/option_definition.rb:56
 msgid "\"Warning: Option #{switch} is deprecated. %s\""
 msgstr ""
 
+#: ../lib/hammer_cli/options/option_definition.rb:80
 msgid "Can be specified multiple times. "
 msgstr "여러 번 지정할 수 있습니다 "
 
+#: ../lib/hammer_cli/options/option_definition.rb:81
 msgid ", or "
 msgstr " 또는 "
 
+#: ../lib/hammer_cli/options/option_definition.rb:81
 msgid "Default: "
 msgstr "기본값:"
 
+#: ../lib/hammer_cli/output/adapter/csv.rb:174
 msgid "Message"
 msgstr "메세지 "
 
+#: ../lib/hammer_cli/output/adapter/csv.rb:178
 msgid "Id"
 msgstr "ID "
 
+#: ../lib/hammer_cli/output/adapter/csv.rb:183
 msgid "Name"
 msgstr "이름 "
 
+#: ../lib/hammer_cli/output/formatters.rb:154
 msgid "no"
 msgstr "no"
 
+#: ../lib/hammer_cli/output/formatters.rb:154
 msgid "yes"
 msgstr "yes"
 
+#: ../lib/hammer_cli/settings.rb:28
 msgid ""
-"Warning: location hammer.modules.d is deprecated, move your module configurati"
-"ons to cli.modules.d"
-msgstr "경고: hammer.modules.d 위치는 사용 중지되었습니다. 모듈 설정을 cli.modules.d로 옮기십시오 "
+"Warning: location hammer.modules.d is deprecated, move your module "
+"configurations to cli.modules.d"
+msgstr ""
+"경고: hammer.modules.d 위치는 사용 중지되었습니다. 모듈 설정을 cli.modules.d"
+"로 옮기십시오 "
 
+#: ../lib/hammer_cli/shell.rb:10
 msgid "Print help for commands"
 msgstr "명령의 help를 출력 "
 
+#: ../lib/hammer_cli/shell.rb:22
 msgid "Exit interactive shell"
 msgstr "대화식 쉘 종료 "
 
+#: ../lib/hammer_cli/shell.rb:116
 msgid "Welcome to the hammer interactive shell"
 msgstr "hammer 대화식 쉘에 오신 것을 환영합니다 "
 
+#: ../lib/hammer_cli/shell.rb:117
 msgid "Type 'help' for usage information"
 msgstr "사용법을 확인하려면 'help'를 입력하십시오 "
 
+#: ../lib/hammer_cli/shell.rb:133
 msgid "Interactive shell"
 msgstr "대화식 쉘 "
 
+#: ../lib/hammer_cli/subcommand.rb:56
 msgid ""
-"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
-"ass>s)"
+"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
+"(%<new_class>s)"
 msgstr ""
+"하위 명령 %<name>s (%<existing_class>s)을(를) %<name>s (%<new_class>s)로 대체"
+"할 수 없습니다 "
 
+#: ../lib/hammer_cli/validator.rb:41
 msgid "Unknown option name '%s'"
 msgstr "알 수 없는 옵션 이름 '%s'"
 
+#: ../lib/hammer_cli/validator.rb:62
 msgid "You can't set all options %s at one time"
 msgstr "한 번에 모든 옵션 %s을(를) 설정할 수 없습니다 "
 
+#: ../lib/hammer_cli/validator.rb:63
 msgid "Options %s are required"
 msgstr "옵션 %s이(가) 필요합니다 "
 
+#: ../lib/hammer_cli/validator.rb:79
 msgid "You can't set any of options %s"
 msgstr "옵션 %s을(를) 설정할 수 없습니다 "
 
+#: ../lib/hammer_cli/validator.rb:80
 msgid "At least one of options %s is required"
 msgstr "최소 하나의 옵션 %s이(가) 필요합니다 "
+
