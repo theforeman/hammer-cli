@@ -7,12 +7,12 @@
 # Dominic Cleal <dcleal@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.3.0\n"
+"Project-Id-Version: Foreman\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2014-09-16 09:51+0000\n"
-"Last-Translator: Dominic Cleal <dcleal@redhat.com>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/foreman/language/i"
-"t/)\n"
+"PO-Revision-Date: 2015-03-09 14:42+0000\n"
+"Last-Translator: Lukáš Zapletal\n"
+"Language-Team: Italian (http://www.transifex.com/foreman/foreman/language/it/)"
+"\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -104,10 +104,6 @@ msgstr "indirizzo sistema remoto"
 msgid "show version"
 msgstr "mostra versione"
 
-#, fuzzy
-msgid "unknown version"
-msgstr "mostra versione"
-
 msgid "Show ids of associated resources"
 msgstr "Mostra gli id delle risorse associate"
 
@@ -148,9 +144,6 @@ msgstr "definire un valore usando un formato key=value separato da virgole"
 msgid "Comma separated list of values."
 msgstr "Elenco di valori separati da virgole"
 
-msgid "numeric value is required"
-msgstr ""
-
 msgid "One of true/false, yes/no, 1/0."
 msgstr "Uno di vero/falso, si/no, 1/0."
 
@@ -160,15 +153,10 @@ msgstr "il valore deve essere uno tra vero/falso, si/no, 1/0"
 msgid "Unable to parse JSON input"
 msgstr "Impossibile analizzare l'input JSON"
 
-msgid "Possible value(s): %s"
-msgstr ""
+msgid "One of %s"
+msgstr "Uno di %s"
 
-#, fuzzy
-msgid "value must be %s"
-msgstr "il valore deve essere uno di '%s'"
-
-#, fuzzy
-msgid "value must be one of %s"
+msgid "value must be one of '%s'"
 msgstr "il valore deve essere uno di '%s'"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
@@ -182,9 +170,6 @@ msgstr "Qualsiasi combinazione (elenco separato da virgole) di '%s'"
 
 msgid "value must be a combination of '%s'"
 msgstr "il valore deve essere una combinazione di '%s'"
-
-msgid "\"Warning: Option #{switch} is deprecated. %s\""
-msgstr ""
 
 msgid "Can be specified multiple times. "
 msgstr "Può essere specificato molteplici volte."

@@ -4,16 +4,17 @@
 #
 # Translators:
 # Dominic Cleal <dcleal@redhat.com>, 2014
+# Fabio Dias <fabioqos@gmail.com>, 2015
 # luizvasconcelos <luizvasconceloss@yahoo.com.br>, 2014
 # luizvasconcelos <luizvasconceloss@yahoo.com.br>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.3.0\n"
+"Project-Id-Version: Foreman\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2014-09-16 09:42+0000\n"
-"Last-Translator: Dominic Cleal <dcleal@redhat.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/forema"
-"n/language/pt_BR/)\n"
+"PO-Revision-Date: 2015-08-15 01:46+0000\n"
+"Last-Translator: Fabio Dias <fabioqos@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/foreman/foreman/l"
+"anguage/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -51,27 +52,29 @@ msgid "Error: %s"
 msgstr "Erro: %s"
 
 msgid "Error: %{message}"
-msgstr ""
+msgstr "Erro: %{message}"
 
 msgid "See: '%{path} --help'"
-msgstr ""
+msgstr "Veja: '%{path} --help'"
 
 msgid "Invalid username or password"
 msgstr "nome de usuário ou senha inválidos"
 
 msgid "Could not load the API description from the server"
-msgstr ""
+msgstr "Não pode carregar a descrição da API do servidor"
 
 msgid "is the server down?"
-msgstr ""
+msgstr "O servidor está caído?"
 
 msgid ""
 "was '%s' run on the server when using apipie cache? (typical production settin"
 "gs)"
 msgstr ""
+"O '%s' estava rodando no servidor quando usava apipie cache? (Configurações tí"
+"picas em produção)"
 
 msgid "Missing arguments for %s"
-msgstr ""
+msgstr "Falta argumentos para %s"
 
 msgid "No permissions to create log dir %s"
 msgstr "Não há permissão para criar o diretório do log %s"
@@ -86,7 +89,7 @@ msgid "show debugging output "
 msgstr "exibir resultado de depuração"
 
 msgid "force reload of Apipie cache"
-msgstr ""
+msgstr "Force recarregar o cache do Apipie"
 
 msgid "path to custom config file"
 msgstr "caminho para arquivo de config padronizado"
@@ -101,10 +104,6 @@ msgid "remote system address"
 msgstr "endereço de sistema remoto"
 
 msgid "show version"
-msgstr "exibir versão"
-
-#, fuzzy
-msgid "unknown version"
 msgstr "exibir versão"
 
 msgid "Show ids of associated resources"
@@ -136,7 +135,7 @@ msgid "Warning: An error occured while loading module %s"
 msgstr "Warning: Um erro ocorreu ao carregar o módulo %s"
 
 msgid "Error: Some of the required modules are disabled in configuration: %s "
-msgstr ""
+msgstr "Erro: Alguns dos módulos requeridos estão desabilitados na configuração: %s"
 
 msgid "Comma-separated list of key=value."
 msgstr "Lista da chave=valor separada por vírgulas."
@@ -147,9 +146,6 @@ msgstr "valor deve ser definido como uma lista separada por vírgulas de chave=v
 msgid "Comma separated list of values."
 msgstr "Lista de valores separada por vírgulas."
 
-msgid "numeric value is required"
-msgstr ""
-
 msgid "One of true/false, yes/no, 1/0."
 msgstr "Um entre verdadeiro/falso, sim/não, 1/0."
 
@@ -159,15 +155,10 @@ msgstr "valor deve ser um entre verdadeiro/falso, sim/não, 1/0"
 msgid "Unable to parse JSON input"
 msgstr "Incapaz de analizar entrada JSON"
 
-msgid "Possible value(s): %s"
-msgstr ""
+msgid "One of %s"
+msgstr "Um entre %s"
 
-#, fuzzy
-msgid "value must be %s"
-msgstr "valor deve ser um de '%s'"
-
-#, fuzzy
-msgid "value must be one of %s"
+msgid "value must be one of '%s'"
 msgstr "valor deve ser um de '%s'"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
@@ -181,9 +172,6 @@ msgstr "Qualquer combinação (lista separada por vírgula) de '%s'"
 
 msgid "value must be a combination of '%s'"
 msgstr "valor deve ser uma combinação de  '%s'"
-
-msgid "\"Warning: Option #{switch} is deprecated. %s\""
-msgstr ""
 
 msgid "Can be specified multiple times. "
 msgstr "Pode ser especificado diversas vezes."
@@ -235,6 +223,8 @@ msgid ""
 "can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
 "ass>s)"
 msgstr ""
+"Não pode substituir o subcomando %<name>s (%<existing_class>s) com %<name>s (%"
+"<new_class>s)"
 
 msgid "Unknown option name '%s'"
 msgstr "Nome da opção desconhecido'%s'"
