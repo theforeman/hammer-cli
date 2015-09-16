@@ -1,246 +1,326 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the hammer-cli package.
-#
-# Translators:
-# Automatically generated, 2014
+# Leah Liu <lliu@redhat.com>, 2013. #zanata
+# Leah Liu <lliu@redhat.com>, 2014. #zanata
+# Leah Liu <lliu@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.3.0\n"
+"Project-Id-Version: hammer-cli 0.1.4.8\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2014-09-16 12:21+0000\n"
-"Last-Translator: Dominic Cleal <dcleal@redhat.com>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/foreman/la"
-"nguage/zh_CN/)\n"
+"POT-Creation-Date: 2015-07-29 17:01+0200\n"
+"PO-Revision-Date: 2015-04-27 01:22+0000\n"
+"Last-Translator: Leah Liu <lliu@redhat.com>\n"
+"Language-Team: Chinese (China)\n"
+"Language: zh-CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Zanata 3.6.0\n"
 
+#: ../lib/hammer_cli/clamp.rb:5
 msgid "too many arguments"
-msgstr "太多参数"
+msgstr "参数太多"
 
+#: ../lib/hammer_cli/clamp.rb:6
 msgid "option '%<option>s' is required"
-msgstr "需要选项 '%<option>s' "
+msgstr "需要选项 '%<option>s'"
 
+#: ../lib/hammer_cli/clamp.rb:7
 msgid "option '%<option>s' (or env %<env>s) is required"
 msgstr "需要选项 '%<option>s'（或者 env %<env>s）"
 
+#: ../lib/hammer_cli/clamp.rb:8
 msgid "option '%<switch>s': %<message>s"
 msgstr "选项 '%<switch>s': %<message>s"
 
+#: ../lib/hammer_cli/clamp.rb:9
 msgid "parameter '%<param>s': %<message>s"
 msgstr "参数 '%<param>s': %<message>s"
 
+#: ../lib/hammer_cli/clamp.rb:10
 msgid "%<env>s: %<message>s"
 msgstr "%<env>s: %<message>s"
 
+#: ../lib/hammer_cli/clamp.rb:11
 msgid "Unrecognised option '%<switch>s'"
-msgstr "未识别的选项 '%<switch>s' "
+msgstr "无法识别的选项 '%<switch>s'"
 
+#: ../lib/hammer_cli/clamp.rb:12
 msgid "No such sub-command '%<name>s'"
-msgstr "没有此子命令 '%<name>s'"
+msgstr "没有子命令 '%<name>s'"
 
+#: ../lib/hammer_cli/clamp.rb:13
 msgid "no value provided"
-msgstr "未提供值"
+msgstr "未提供数值"
 
+# translation auto-copied from project nm-applet, version 0.8.1, document nm-applet
+#: ../lib/hammer_cli/exception_handler.rb:62
 msgid "Error: %s"
 msgstr "错误：%s"
 
+#: ../lib/hammer_cli/exception_handler.rb:68
 msgid "Error: %{message}"
-msgstr ""
+msgstr "错误：%{message}"
 
+#: ../lib/hammer_cli/exception_handler.rb:69
 msgid "See: '%{path} --help'"
-msgstr ""
+msgstr "请查看： '%{path} --help'"
 
+#: ../lib/hammer_cli/exception_handler.rb:86
 msgid "Invalid username or password"
-msgstr "无效用户名或者密码"
+msgstr "无效用户名或密码"
 
+#: ../lib/hammer_cli/exception_handler.rb:93
 msgid "Could not load the API description from the server"
-msgstr ""
+msgstr "无法从服务器载入 API 描述"
 
+#: ../lib/hammer_cli/exception_handler.rb:94
 msgid "is the server down?"
-msgstr ""
+msgstr "服务器宕机了吗？"
 
+#: ../lib/hammer_cli/exception_handler.rb:95
 msgid ""
-"was '%s' run on the server when using apipie cache? (typical production settin"
-"gs)"
-msgstr ""
+"was '%s' run on the server when using apipie cache? (typical production "
+"settings)"
+msgstr "使用 apipie 缓存时服务器中是否运行了 '%s'？（典型产品设置）"
 
+#: ../lib/hammer_cli/exception_handler.rb:101
 msgid "Missing arguments for %s"
-msgstr ""
+msgstr "缺少 %s 的参数"
 
+#: ../lib/hammer_cli/logger.rb:28
 msgid "No permissions to create log dir %s"
-msgstr "没有生产日志目录 %s 的权限"
+msgstr "没有创建日志目录 %s 的权限"
 
+#: ../lib/hammer_cli/logger.rb:43
 msgid "File %s not writeable, won't log anything to the file!"
-msgstr "无法写入文件 %s，不会在该文件中记录任何信息！"
+msgstr "无法写入文件 %s，因此无法记录文件的任何变化！"
 
+#: ../lib/hammer_cli/main.rb:7
 msgid "be verbose"
-msgstr "详细输出"
+msgstr "更详细"
 
+#: ../lib/hammer_cli/main.rb:8
 msgid "show debugging output "
-msgstr "显示 debug 输出结果"
+msgstr "显示调试输出结果"
 
+#: ../lib/hammer_cli/main.rb:9
 msgid "force reload of Apipie cache"
-msgstr ""
+msgstr "强制重新载入 Apipie 缓存"
 
+#: ../lib/hammer_cli/main.rb:11
 msgid "path to custom config file"
-msgstr "定制配置文件路径"
+msgstr "到自定义配置文件的路径"
 
+#: ../lib/hammer_cli/main.rb:13
 msgid "username to access the remote system"
 msgstr "访问远程系统的用户名"
 
+#: ../lib/hammer_cli/main.rb:15
 msgid "password to access the remote system"
 msgstr "访问远程系统的密码"
 
+#: ../lib/hammer_cli/main.rb:17
 msgid "remote system address"
 msgstr "远程系统地址"
 
+# translation auto-copied from project libvirt, version 1.1.1, document libvirt
+#: ../lib/hammer_cli/main.rb:20
 msgid "show version"
 msgstr "显示版本"
 
-#, fuzzy
+#: ../lib/hammer_cli/main.rb:23
 msgid "unknown version"
-msgstr "显示版本"
+msgstr "未知版本"
 
+#: ../lib/hammer_cli/main.rb:29
 msgid "Show ids of associated resources"
 msgstr "显示关联资源的 id"
 
+#: ../lib/hammer_cli/main.rb:31
 msgid "Explicitly turn interactive mode on/off"
 msgstr "明确打开/关闭互动模式"
 
+#: ../lib/hammer_cli/main.rb:35
 msgid "Output as CSV (same as --output=csv)"
-msgstr "输出为 CSV（等同于 --output=csv）"
+msgstr "作为 CSV 输出（与 --output=csv 相同） "
 
+#: ../lib/hammer_cli/main.rb:36
 msgid "Set output format. One of [%s]"
-msgstr "设定输出格式。[%s] 之一。"
+msgstr "设定输出格式。[%s] 之一"
 
+#: ../lib/hammer_cli/main.rb:39
 msgid "Character to separate the values"
-msgstr "分开选项值的字符"
+msgstr "用来分开数值的字符"
 
+#: ../lib/hammer_cli/main.rb:43
 msgid "Get list of possible endings"
 msgstr "获取可能结尾的列表"
 
+#: ../lib/hammer_cli/modules.rb:12
 msgid ""
-"Legacy configuration of modules detected. Check section about configuration in"
-" user manual"
-msgstr "探测到模块继承配置。请在用户手册中查看有关配置的章节。"
+"Legacy configuration of modules detected. Check section about configuration "
+"in user manual"
+msgstr "探测到遗留的模块配置。请在用户手册中查看有关配置一节。"
 
+#: ../lib/hammer_cli/modules.rb:60
 msgid "Warning: An error occured while loading module %s"
 msgstr "警告：载入模块 %s 时出错"
 
+#: ../lib/hammer_cli/modules.rb:87
 msgid "Error: Some of the required modules are disabled in configuration: %s "
-msgstr ""
+msgstr "错误：在配置中禁用了一些要求的模块：%s"
 
+#: ../lib/hammer_cli/options/normalizers.rb:26
 msgid "Comma-separated list of key=value."
 msgstr "用逗号分开的 key=value 列表。"
 
+#: ../lib/hammer_cli/options/normalizers.rb:39
 msgid "value must be defined as a comma-separated list of key=value"
-msgstr "必须使用逗号分开的 key=value 定义该值"
+msgstr "必须使用以逗号分开的 key=value 列表定义数值"
 
+#: ../lib/hammer_cli/options/normalizers.rb:73
 msgid "Comma separated list of values."
 msgstr "逗号分开的数值列表。"
 
+#: ../lib/hammer_cli/options/normalizers.rb:88
 msgid "numeric value is required"
 msgstr ""
 
+#: ../lib/hammer_cli/options/normalizers.rb:102
 msgid "One of true/false, yes/no, 1/0."
-msgstr "true/false、yes/no、1/0 之一。"
+msgstr "从 true/false、yes/no、1/0 中选择一组。"
 
+#: ../lib/hammer_cli/options/normalizers.rb:112
 msgid "value must be one of true/false, yes/no, 1/0"
-msgstr "选项值必须是 true/false、yes/no、1/0 之一"
+msgstr "数值必须是 true/false、yes/no、1/0 中的一个"
 
+#: ../lib/hammer_cli/options/normalizers.rb:151
 msgid "Unable to parse JSON input"
 msgstr "无法解析 JSON 输入"
 
+#: ../lib/hammer_cli/options/normalizers.rb:165
 msgid "Possible value(s): %s"
 msgstr ""
 
+#: ../lib/hammer_cli/options/normalizers.rb:173
 #, fuzzy
 msgid "value must be %s"
-msgstr "选项值必须是 '%s' 之一 "
+msgstr "数值必须是 '%s' 中的一个"
 
+#: ../lib/hammer_cli/options/normalizers.rb:175
 #, fuzzy
 msgid "value must be one of %s"
-msgstr "选项值必须是 '%s' 之一 "
+msgstr "数值必须是 '%s' 中的一个"
 
+#: ../lib/hammer_cli/options/normalizers.rb:196
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "日期和时间格式为 YYYY-MM-DD HH:MM:SS 或者 ISO 8601 格式"
 
+#: ../lib/hammer_cli/options/normalizers.rb:203
 msgid "'%s' is not a valid date"
 msgstr "'%s' 不是有效日期"
 
+#: ../lib/hammer_cli/options/normalizers.rb:214
 msgid "Any combination (comma separated list) of '%s'"
-msgstr "'%s' 的任意组合（逗号分开的列表）"
+msgstr "'%s' 的任意组合（用逗号分开的列表）"
 
+#: ../lib/hammer_cli/options/normalizers.rb:234
 msgid "value must be a combination of '%s'"
-msgstr "选项值必须是 '%s' 组合之一"
+msgstr "数值必须为 '%s' 之一"
 
+#: ../lib/hammer_cli/options/option_definition.rb:56
 msgid "\"Warning: Option #{switch} is deprecated. %s\""
 msgstr ""
 
+#: ../lib/hammer_cli/options/option_definition.rb:80
 msgid "Can be specified multiple times. "
-msgstr "可多次指定。"
+msgstr "无法多次指定。"
 
+#: ../lib/hammer_cli/options/option_definition.rb:81
 msgid ", or "
 msgstr "，或者"
 
+# translation auto-copied from project control-center, version 3.8.6, document gnome-control-center-2.0
+#: ../lib/hammer_cli/options/option_definition.rb:81
 msgid "Default: "
 msgstr "默认："
 
+# translation auto-copied from project webkitgtk3, version 2.0.3, document webkitgtk3, author Leah Liu
+#: ../lib/hammer_cli/output/adapter/csv.rb:174
 msgid "Message"
 msgstr "信息"
 
+# translation auto-copied from project libvirt, version 1.1.1, document libvirt
+#: ../lib/hammer_cli/output/adapter/csv.rb:178
 msgid "Id"
 msgstr "Id"
 
+# translation auto-copied from project nm-applet, version 0.8.1, document nm-applet
+#: ../lib/hammer_cli/output/adapter/csv.rb:183
 msgid "Name"
 msgstr "名称"
 
+# translation auto-copied from project firstboot, version 19.6, document firstboot, author Leah Liu
+#: ../lib/hammer_cli/output/formatters.rb:154
 msgid "no"
 msgstr "否"
 
+# translation auto-copied from project NetworkManager, version 0.9.9.0, document NetworkManager
+#: ../lib/hammer_cli/output/formatters.rb:154
 msgid "yes"
 msgstr "是"
 
+#: ../lib/hammer_cli/settings.rb:28
 msgid ""
-"Warning: location hammer.modules.d is deprecated, move your module configurati"
-"ons to cli.modules.d"
-msgstr "警告：位置 hammer.modules.d 失效，请将模块配置转移到 cli.modules.d。"
+"Warning: location hammer.modules.d is deprecated, move your module "
+"configurations to cli.modules.d"
+msgstr ""
+"警告：位置 hammer.modules.d 已启用，请将您的模块配置移至 cli.modules.d。"
 
+#: ../lib/hammer_cli/shell.rb:10
 msgid "Print help for commands"
-msgstr "打印命令帮助信息"
+msgstr "输出命令帮助信息"
 
+#: ../lib/hammer_cli/shell.rb:22
 msgid "Exit interactive shell"
 msgstr "退出互动 shell"
 
+#: ../lib/hammer_cli/shell.rb:116
 msgid "Welcome to the hammer interactive shell"
 msgstr "欢迎使用 hammer 互动 shell"
 
+#: ../lib/hammer_cli/shell.rb:117
 msgid "Type 'help' for usage information"
-msgstr "输入‘help’查看用法信息"
+msgstr "输入 ‘help’ 获取用法信息"
 
+#: ../lib/hammer_cli/shell.rb:133
 msgid "Interactive shell"
 msgstr "互动 shell"
 
+#: ../lib/hammer_cli/subcommand.rb:56
 msgid ""
-"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
-"ass>s)"
+"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
+"(%<new_class>s)"
 msgstr ""
+"无法使用 %<name>s（%<new_class>s）替换子命令 %<name>s（%<existing_class>s）"
 
+#: ../lib/hammer_cli/validator.rb:41
 msgid "Unknown option name '%s'"
 msgstr "未知选项名称 '%s'"
 
+#: ../lib/hammer_cli/validator.rb:62
 msgid "You can't set all options %s at one time"
-msgstr "您无法一次设置所有选项 %s"
+msgstr "无法一次设置所有选项 %s"
 
+#: ../lib/hammer_cli/validator.rb:63
 msgid "Options %s are required"
-msgstr "必须提供选项 %s"
+msgstr "需要选项 %s"
 
+#: ../lib/hammer_cli/validator.rb:79
 msgid "You can't set any of options %s"
-msgstr "您无法设置任意选项 %s"
+msgstr "无法设置任意选项 %s"
 
+#: ../lib/hammer_cli/validator.rb:80
 msgid "At least one of options %s is required"
-msgstr "至少需要一个选项 %s"
+msgstr "至少需要选项 %s 中的一个"
+

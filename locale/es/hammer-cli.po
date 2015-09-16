@@ -5,253 +5,332 @@
 # Translators:
 # Dominic Cleal <dcleal@redhat.com>, 2014
 # Sergio Ocón <sergio.ocon@redhat.com>, 2014
+# gguerrer <gguerrer@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.3.0\n"
+"Project-Id-Version: hammer-cli 0.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2014-09-16 09:51+0000\n"
-"Last-Translator: Dominic Cleal <dcleal@redhat.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/foreman/language/e"
-"s/)\n"
+"POT-Creation-Date: 2015-07-29 17:01+0200\n"
+"PO-Revision-Date: 2015-04-27 06:26+0000\n"
+"Last-Translator: gguerrer <gguerrer@redhat.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/foreman/language/"
+"es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Zanata 3.6.0\n"
 
+#: ../lib/hammer_cli/clamp.rb:5
 msgid "too many arguments"
 msgstr "demasiados argumentos"
 
+#: ../lib/hammer_cli/clamp.rb:6
 msgid "option '%<option>s' is required"
 msgstr "la opción '%<option>s'  es obligatoria"
 
+#: ../lib/hammer_cli/clamp.rb:7
 msgid "option '%<option>s' (or env %<env>s) is required"
-msgstr "la opción '%<option>s'  (or entorno %<env>s) es obligatoria"
+msgstr "la opción '%<option>s'  (o entorno %<env>s) es obligatoria"
 
+#: ../lib/hammer_cli/clamp.rb:8
 msgid "option '%<switch>s': %<message>s"
 msgstr "opción '%<switch>s': %<message>s"
 
+#: ../lib/hammer_cli/clamp.rb:9
 msgid "parameter '%<param>s': %<message>s"
 msgstr "parámetro '%<param>s': %<message>s"
 
+#: ../lib/hammer_cli/clamp.rb:10
 msgid "%<env>s: %<message>s"
 msgstr "%<env>s: %<message>s"
 
+#: ../lib/hammer_cli/clamp.rb:11
 msgid "Unrecognised option '%<switch>s'"
 msgstr "Opción desconocida '%<switch>s'"
 
+#: ../lib/hammer_cli/clamp.rb:12
 msgid "No such sub-command '%<name>s'"
 msgstr "Subcomando no existe  '%<name>s'"
 
+#: ../lib/hammer_cli/clamp.rb:13
 msgid "no value provided"
 msgstr "no se proporcionó un valor"
 
+#: ../lib/hammer_cli/exception_handler.rb:62
 msgid "Error: %s"
 msgstr "Error: %s"
 
+#: ../lib/hammer_cli/exception_handler.rb:68
 msgid "Error: %{message}"
 msgstr "Error: %{message}"
 
+#: ../lib/hammer_cli/exception_handler.rb:69
 msgid "See: '%{path} --help'"
-msgstr "Mire: '%{path} --help'"
+msgstr "Ver: '%{path} --help'"
 
+#: ../lib/hammer_cli/exception_handler.rb:86
 msgid "Invalid username or password"
-msgstr "Nombre o password inválidos"
+msgstr "Nombre o contraseña inválidos"
 
+#: ../lib/hammer_cli/exception_handler.rb:93
 msgid "Could not load the API description from the server"
 msgstr "No se pudo cargar la descripción de la API desde el servidor"
 
+#: ../lib/hammer_cli/exception_handler.rb:94
 msgid "is the server down?"
-msgstr "está el servidor apagado?"
+msgstr "¿Está caído el servidor?"
 
+#: ../lib/hammer_cli/exception_handler.rb:95
 msgid ""
-"was '%s' run on the server when using apipie cache? (typical production settin"
-"gs)"
+"was '%s' run on the server when using apipie cache? (typical production "
+"settings)"
 msgstr ""
-"¿se ejecutó '%s' en el servidor al usar la caché apipe? (configuración típica "
+"¿Se ejecutó '%s' en el servidor al usar la caché apipe? (parámetros típicos  "
 "de producción)"
 
+#: ../lib/hammer_cli/exception_handler.rb:101
 msgid "Missing arguments for %s"
-msgstr ""
+msgstr "Faltan argumentos para %s"
 
+#: ../lib/hammer_cli/logger.rb:28
 msgid "No permissions to create log dir %s"
-msgstr "No tiene permiso para crear el directorio de log %s"
+msgstr "No tiene permiso para crear el directorio de registro %s"
 
+#: ../lib/hammer_cli/logger.rb:43
 msgid "File %s not writeable, won't log anything to the file!"
-msgstr "El archivo %s no tiene acceso de escritura, no se guardará ningún log en él!"
-
-msgid "be verbose"
-msgstr "dé más detalles"
-
-msgid "show debugging output "
-msgstr "muestra salida de depuración"
-
-msgid "force reload of Apipie cache"
 msgstr ""
+"El archivo %s no tiene acceso de escritura, no se registrará ningún "
+"contenidoen él!"
 
+#: ../lib/hammer_cli/main.rb:7
+msgid "be verbose"
+msgstr "ser más detallado"
+
+#: ../lib/hammer_cli/main.rb:8
+msgid "show debugging output "
+msgstr "mostrar salida de depuración"
+
+#: ../lib/hammer_cli/main.rb:9
+msgid "force reload of Apipie cache"
+msgstr "forzar recarga de la caché Apipe"
+
+#: ../lib/hammer_cli/main.rb:11
 msgid "path to custom config file"
-msgstr "ruta al fichero de configuración personalizado"
+msgstr "ruta al archivo de configuración personalizado"
 
+#: ../lib/hammer_cli/main.rb:13
 msgid "username to access the remote system"
-msgstr "nombre de usuario de acceso al sistema remoto"
+msgstr "nombre de usuario para acceder al sistema remoto"
 
+#: ../lib/hammer_cli/main.rb:15
 msgid "password to access the remote system"
-msgstr "palabra clave de acceso al sistema remoto"
+msgstr "palabra clave para acceder al sistema remoto"
 
+#: ../lib/hammer_cli/main.rb:17
 msgid "remote system address"
 msgstr "dirección del sistema remoto"
 
+#: ../lib/hammer_cli/main.rb:20
 msgid "show version"
 msgstr "mostrar versión"
 
-#, fuzzy
+#: ../lib/hammer_cli/main.rb:23
 msgid "unknown version"
-msgstr "mostrar versión"
+msgstr "Versión desconocida"
 
+#: ../lib/hammer_cli/main.rb:29
 msgid "Show ids of associated resources"
-msgstr "Mostrar id de recursos asociados"
+msgstr "Mostrar ID de recursos asociados"
 
+#: ../lib/hammer_cli/main.rb:31
 msgid "Explicitly turn interactive mode on/off"
-msgstr "Active/desactive el modo interactivo explícitamente"
+msgstr "Activar/desactivar explícitamente el modo interactivo"
 
+#: ../lib/hammer_cli/main.rb:35
 msgid "Output as CSV (same as --output=csv)"
-msgstr "Exporte como CSV (equivale a --output=csv)"
+msgstr "Exportar como CSV (equivale a --output=csv)"
 
+#: ../lib/hammer_cli/main.rb:36
 msgid "Set output format. One of [%s]"
-msgstr "Establece el formato de salida. Uno de [%s]"
+msgstr "Establecer formato de salida. Uno de [%s]"
 
+#: ../lib/hammer_cli/main.rb:39
 msgid "Character to separate the values"
 msgstr "Caracter de separación de valores"
 
+#: ../lib/hammer_cli/main.rb:43
 msgid "Get list of possible endings"
-msgstr "Obtenga lista de finales posibles"
+msgstr "Obtener lista finales posibles"
 
+#: ../lib/hammer_cli/modules.rb:12
 msgid ""
-"Legacy configuration of modules detected. Check section about configuration in"
-" user manual"
+"Legacy configuration of modules detected. Check section about configuration "
+"in user manual"
 msgstr ""
-"Se ha detectado una configuración de módulos arcaica. Mire la sección sobre co"
-"nfiguración en el manual de usuario "
+"Se ha detectado una configuración de módulos de legado. Revise la sección "
+"sobre configuración en el manual de usuario "
 
+#: ../lib/hammer_cli/modules.rb:60
 msgid "Warning: An error occured while loading module %s"
 msgstr "Advertencia: Ha ocurrido un error al cargar el módulo %s"
 
+#: ../lib/hammer_cli/modules.rb:87
 msgid "Error: Some of the required modules are disabled in configuration: %s "
 msgstr ""
+"Error: Algunos de los módulos requeridos se desactivan en esta "
+"configuración: %s "
 
+#: ../lib/hammer_cli/options/normalizers.rb:26
 msgid "Comma-separated list of key=value."
 msgstr "Lista de pares llave=valor separados por comas."
 
+#: ../lib/hammer_cli/options/normalizers.rb:39
 msgid "value must be defined as a comma-separated list of key=value"
 msgstr ""
-"el valor debe definirse como una lista de pares llave=valor separados por coma"
-"s"
+"el valor debe definirse como una lista de pares llave=valor separados por "
+"comas"
 
+#: ../lib/hammer_cli/options/normalizers.rb:73
 msgid "Comma separated list of values."
 msgstr "Lista de valores separadas por comas."
 
+#: ../lib/hammer_cli/options/normalizers.rb:88
 msgid "numeric value is required"
 msgstr ""
 
+#: ../lib/hammer_cli/options/normalizers.rb:102
 msgid "One of true/false, yes/no, 1/0."
 msgstr "Uno de verdadero/falso, si/no, 1/0."
 
+#: ../lib/hammer_cli/options/normalizers.rb:112
 msgid "value must be one of true/false, yes/no, 1/0"
-msgstr "el valor debe ser uno de verdadero/falso, si/no, 1/0"
+msgstr "el valor debe ser uno de verdadero/falso, sí/no, 1/0"
 
+#: ../lib/hammer_cli/options/normalizers.rb:151
 msgid "Unable to parse JSON input"
 msgstr "Imposible analizar la entrada JSON"
 
+#: ../lib/hammer_cli/options/normalizers.rb:165
 msgid "Possible value(s): %s"
 msgstr ""
 
+#: ../lib/hammer_cli/options/normalizers.rb:173
 #, fuzzy
 msgid "value must be %s"
 msgstr "valor debe ser uno de '%s'"
 
+#: ../lib/hammer_cli/options/normalizers.rb:175
 #, fuzzy
 msgid "value must be one of %s"
 msgstr "valor debe ser uno de '%s'"
 
+#: ../lib/hammer_cli/options/normalizers.rb:196
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
-msgstr "Fecha y hora en YYYY-MM-DD HH:MM:SS o formato ISO 8601"
+msgstr "Fecha y hora en AAAA-MM-DD HH:MM:SS o formato ISO 8601"
 
+#: ../lib/hammer_cli/options/normalizers.rb:203
 msgid "'%s' is not a valid date"
 msgstr "'%s' no es una fecha válida"
 
+#: ../lib/hammer_cli/options/normalizers.rb:214
 msgid "Any combination (comma separated list) of '%s'"
 msgstr "Cualquier combinación (lista separada por comas) de '%s'"
 
+#: ../lib/hammer_cli/options/normalizers.rb:234
 msgid "value must be a combination of '%s'"
 msgstr "el valor debe ser una combinación de '%s'"
 
+#: ../lib/hammer_cli/options/option_definition.rb:56
 msgid "\"Warning: Option #{switch} is deprecated. %s\""
 msgstr ""
 
+#: ../lib/hammer_cli/options/option_definition.rb:80
 msgid "Can be specified multiple times. "
-msgstr "Puede especificarse repetidamente."
+msgstr "Puede especificarse varias veces."
 
+#: ../lib/hammer_cli/options/option_definition.rb:81
 msgid ", or "
 msgstr ", o "
 
+#: ../lib/hammer_cli/options/option_definition.rb:81
 msgid "Default: "
-msgstr "Por defecto: "
+msgstr "Predeterminado: "
 
+#: ../lib/hammer_cli/output/adapter/csv.rb:174
 msgid "Message"
 msgstr "Mensaje"
 
+#: ../lib/hammer_cli/output/adapter/csv.rb:178
 msgid "Id"
-msgstr "Id"
+msgstr "ID"
 
+#: ../lib/hammer_cli/output/adapter/csv.rb:183
 msgid "Name"
 msgstr "Nombre"
 
+#: ../lib/hammer_cli/output/formatters.rb:154
 msgid "no"
 msgstr "no"
 
+#: ../lib/hammer_cli/output/formatters.rb:154
 msgid "yes"
 msgstr "sí"
 
+#: ../lib/hammer_cli/settings.rb:28
 msgid ""
-"Warning: location hammer.modules.d is deprecated, move your module configurati"
-"ons to cli.modules.d"
+"Warning: location hammer.modules.d is deprecated, move your module "
+"configurations to cli.modules.d"
 msgstr ""
-"Aviso: la localización hammer.modules.d está obsoleta, mueva sus módulos de co"
-"nfiguración a cli.modules.d"
+"Advertencia: la localización hammer.modules.d está obsoleta, desplace los  "
+"módulos de configuración a cli.modules.d"
 
+#: ../lib/hammer_cli/shell.rb:10
 msgid "Print help for commands"
-msgstr "Imprime ayuda de comandos"
+msgstr "Imprimir ayuda para comandos"
 
+#: ../lib/hammer_cli/shell.rb:22
 msgid "Exit interactive shell"
 msgstr "Salir del shell interactivo"
 
+#: ../lib/hammer_cli/shell.rb:116
 msgid "Welcome to the hammer interactive shell"
 msgstr "Bienvenido al shell interactivo de hammer"
 
+#: ../lib/hammer_cli/shell.rb:117
 msgid "Type 'help' for usage information"
-msgstr "Escriba 'help' para obtener información de uso"
+msgstr "Escribir 'help' para obtener información de uso"
 
+#: ../lib/hammer_cli/shell.rb:133
 msgid "Interactive shell"
 msgstr "Shell interactivo"
 
+#: ../lib/hammer_cli/subcommand.rb:56
 msgid ""
-"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
-"ass>s)"
+"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
+"(%<new_class>s)"
 msgstr ""
-"no es posible reemplazar el subcomando %<name>s (%<existing_class>s) con %<nam"
-"e>s (%<new_class>s)"
+"no es posible remplazar el subcomando %<name>s (%<existing_class>s) por "
+"%<name>s (%<new_class>s)"
 
+#: ../lib/hammer_cli/validator.rb:41
 msgid "Unknown option name '%s'"
 msgstr "Nombre de opción desconocida '%s'"
 
+#: ../lib/hammer_cli/validator.rb:62
 msgid "You can't set all options %s at one time"
-msgstr "No se puede establecer todas las opciones %s al mismo tiempo"
+msgstr "No se pueden establecer todas las opciones %s al mismo tiempo"
 
+#: ../lib/hammer_cli/validator.rb:63
 msgid "Options %s are required"
-msgstr "Se necesita las opciones %s"
+msgstr "Se necesitan las opciones %s"
 
+#: ../lib/hammer_cli/validator.rb:79
 msgid "You can't set any of options %s"
 msgstr "No se puede establecer ninguna de las opciones %s"
 
+#: ../lib/hammer_cli/validator.rb:80
 msgid "At least one of options %s is required"
 msgstr "Se necesita al menos una de las opciones %s"
+
