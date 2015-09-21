@@ -1,6 +1,14 @@
 Release notes
 =============
 
+### 0.4.0 (2015-09-21)
+* Pull in the downstream translations ([#11184](http://projects.theforeman.org/issues/11184))
+* Abort when custom config file is not found ([#11158](http://projects.theforeman.org/issues/11158))
+* Add filtering of the logs ([#7534](http://projects.theforeman.org/issues/7534))
+* Bump required apipie-bindings version ([#11452](http://projects.theforeman.org/issues/11452))
+* Prevents hammer from reading ./config file ([#11439](http://projects.theforeman.org/issues/11439))
+* Drop Ruby 1.8 support ([#11280](http://projects.theforeman.org/issues/11280))
+
 ### 0.3.0 (2015-07-29)
 * Add normalizer converting id parameter values to numbers ([#11137](http://projects.theforeman.org/issues/11137))
 * Set Enum normalizer on enumerated values ([#11033](http://projects.theforeman.org/issues/11033))
