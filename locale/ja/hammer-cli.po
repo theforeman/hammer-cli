@@ -6,13 +6,12 @@
 # asasaki <asasaki@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.1.4\n"
+"Project-Id-Version: hammer-cli 0.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-29 17:01+0200\n"
 "PO-Revision-Date: 2015-04-27 06:44+0000\n"
 "Last-Translator: asasaki <asasaki@redhat.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/projects/p/foreman/"
-"language/ja/)\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/foreman/language/"
+"ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,311 +19,228 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Zanata 3.6.0\n"
 
-#: ../lib/hammer_cli/clamp.rb:5
 msgid "too many arguments"
 msgstr "引数が多すぎます"
 
-#: ../lib/hammer_cli/clamp.rb:6
 msgid "option '%<option>s' is required"
 msgstr "オプション '%<option>s' は必須です"
 
-#: ../lib/hammer_cli/clamp.rb:7
 msgid "option '%<option>s' (or env %<env>s) is required"
 msgstr "オプション '%<option>s' (または env %<env>s) は必須です"
 
-#: ../lib/hammer_cli/clamp.rb:8
 msgid "option '%<switch>s': %<message>s"
 msgstr "オプション '%<switch>s': %<message>s"
 
-#: ../lib/hammer_cli/clamp.rb:9
 msgid "parameter '%<param>s': %<message>s"
 msgstr "パラメーター '%<param>s': %<message>s"
 
-#: ../lib/hammer_cli/clamp.rb:10
 msgid "%<env>s: %<message>s"
 msgstr "%<env>s: %<message>s"
 
-#: ../lib/hammer_cli/clamp.rb:11
 msgid "Unrecognised option '%<switch>s'"
 msgstr "認識されないオプション '%<switch>s'"
 
-#: ../lib/hammer_cli/clamp.rb:12
 msgid "No such sub-command '%<name>s'"
 msgstr "次のようなコマンドはありません: '%<name>s'"
 
-#: ../lib/hammer_cli/clamp.rb:13
 msgid "no value provided"
 msgstr "値が指定されていません"
 
-#: ../lib/hammer_cli/exception_handler.rb:62
 msgid "Error: %s"
 msgstr "エラー: %s"
 
-#: ../lib/hammer_cli/exception_handler.rb:68
 msgid "Error: %{message}"
 msgstr "エラー: %{message}"
 
-#: ../lib/hammer_cli/exception_handler.rb:69
 msgid "See: '%{path} --help'"
 msgstr "参照: '%{path} --help'"
 
-#: ../lib/hammer_cli/exception_handler.rb:86
 msgid "Invalid username or password"
 msgstr "無効なユーザー名またはパスワード"
 
-#: ../lib/hammer_cli/exception_handler.rb:93
 msgid "Could not load the API description from the server"
 msgstr "サーバーから API 記述をロードできませんでした"
 
-#: ../lib/hammer_cli/exception_handler.rb:94
 msgid "is the server down?"
 msgstr "サーバーは停止していますか?"
 
-#: ../lib/hammer_cli/exception_handler.rb:95
 msgid ""
-"was '%s' run on the server when using apipie cache? (typical production "
-"settings)"
-msgstr ""
-"apipie キャッシュの使用時に '%s' がサーバーで実行されましたか? (通常の本番設"
-"定)"
+"was '%s' run on the server when using apipie cache? (typical production settin"
+"gs)"
+msgstr "apipie キャッシュの使用時に '%s' がサーバーで実行されましたか? (通常の本番設定)"
 
-#: ../lib/hammer_cli/exception_handler.rb:101
 msgid "Missing arguments for %s"
 msgstr "%s の引数がありません"
 
-#: ../lib/hammer_cli/logger.rb:28
 msgid "No permissions to create log dir %s"
 msgstr "ログディレクトリー %s を作成するパーミッションがありません"
 
-#: ../lib/hammer_cli/logger.rb:43
 msgid "File %s not writeable, won't log anything to the file!"
-msgstr ""
-"ファイル %s は書き込み可能ではないため、このファイルにログの記録は行なわれま"
-"せん!"
+msgstr "ファイル %s は書き込み可能ではないため、このファイルにログの記録は行なわれません!"
 
-#: ../lib/hammer_cli/main.rb:7
 msgid "be verbose"
 msgstr "詳細"
 
-#: ../lib/hammer_cli/main.rb:8
 msgid "show debugging output "
 msgstr "デバッグ出力の表示"
 
-#: ../lib/hammer_cli/main.rb:9
 msgid "force reload of Apipie cache"
 msgstr "Apipie キャッシュの再ロードを強制"
 
-#: ../lib/hammer_cli/main.rb:11
 msgid "path to custom config file"
 msgstr "カスタム設定ファイルのパス"
 
-#: ../lib/hammer_cli/main.rb:13
 msgid "username to access the remote system"
 msgstr "リモートシステムにアクセスするためのユーザー名"
 
-#: ../lib/hammer_cli/main.rb:15
 msgid "password to access the remote system"
 msgstr "リモートシステムにアクセスするためのパスワード"
 
-#: ../lib/hammer_cli/main.rb:17
 msgid "remote system address"
 msgstr "リモートシステムのアドレス"
 
-#: ../lib/hammer_cli/main.rb:20
 msgid "show version"
 msgstr "バージョンの表示"
 
-#: ../lib/hammer_cli/main.rb:23
 msgid "unknown version"
 msgstr "不明なバージョン"
 
-#: ../lib/hammer_cli/main.rb:29
 msgid "Show ids of associated resources"
 msgstr "関連リソースの ID を表示"
 
-#: ../lib/hammer_cli/main.rb:31
 msgid "Explicitly turn interactive mode on/off"
 msgstr "インタラクティブモードを明示的にオン/オフにする"
 
-#: ../lib/hammer_cli/main.rb:35
 msgid "Output as CSV (same as --output=csv)"
 msgstr "CSV として出力 (--output=csv と同じ)"
 
-#: ../lib/hammer_cli/main.rb:36
 msgid "Set output format. One of [%s]"
 msgstr "出力形式を設定します。[%s] のいずれかになります。"
 
-#: ../lib/hammer_cli/main.rb:39
 msgid "Character to separate the values"
 msgstr "値を区切るための文字"
 
-#: ../lib/hammer_cli/main.rb:43
 msgid "Get list of possible endings"
 msgstr "使用できる終了部分の一覧を取得"
 
-#: ../lib/hammer_cli/modules.rb:12
 msgid ""
-"Legacy configuration of modules detected. Check section about configuration "
-"in user manual"
-msgstr ""
-"モジュールのレガシー設定が検出されました。ユーザーマニュアルの設定についての"
-"セクションを確認してください"
+"Legacy configuration of modules detected. Check section about configuration in"
+" user manual"
+msgstr "モジュールのレガシー設定が検出されました。ユーザーマニュアルの設定についてのセクションを確認してください"
 
-#: ../lib/hammer_cli/modules.rb:60
 msgid "Warning: An error occured while loading module %s"
 msgstr "警告: モジュール %s のロード中にエラーが発生しました"
 
-#: ../lib/hammer_cli/modules.rb:87
 msgid "Error: Some of the required modules are disabled in configuration: %s "
 msgstr "エラー: 必要なモジュールの一部は設定で無効にされています: %s "
 
-#: ../lib/hammer_cli/options/normalizers.rb:26
 msgid "Comma-separated list of key=value."
 msgstr "key=value のコンマ区切りの一覧です。"
 
-#: ../lib/hammer_cli/options/normalizers.rb:39
 msgid "value must be defined as a comma-separated list of key=value"
 msgstr "値は key=value のコンマ区切りの一覧として定義する必要があります。"
 
-#: ../lib/hammer_cli/options/normalizers.rb:73
 msgid "Comma separated list of values."
 msgstr "コンマ区切りの値の一覧です。"
 
-#: ../lib/hammer_cli/options/normalizers.rb:88
 msgid "numeric value is required"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:102
 msgid "One of true/false, yes/no, 1/0."
 msgstr "true/false、yes/no、1/0 のいずれかです。"
 
-#: ../lib/hammer_cli/options/normalizers.rb:112
 msgid "value must be one of true/false, yes/no, 1/0"
 msgstr "値を true/false、yes/no、1/0 のいずれかにする必要があります"
 
-#: ../lib/hammer_cli/options/normalizers.rb:151
 msgid "Unable to parse JSON input"
 msgstr "JSON 入力を解析できません"
 
-#: ../lib/hammer_cli/options/normalizers.rb:165
 msgid "Possible value(s): %s"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:173
 #, fuzzy
 msgid "value must be %s"
 msgstr "値を '%s' のいずれかにする必要があります"
 
-#: ../lib/hammer_cli/options/normalizers.rb:175
 #, fuzzy
 msgid "value must be one of %s"
 msgstr "値を '%s' のいずれかにする必要があります"
 
-#: ../lib/hammer_cli/options/normalizers.rb:196
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "日時 (YYYY-MM-DD HH:MM:SS または ISO 8601 形式)"
 
-#: ../lib/hammer_cli/options/normalizers.rb:203
 msgid "'%s' is not a valid date"
 msgstr "'%s' は有効な日付ではありません"
 
-#: ../lib/hammer_cli/options/normalizers.rb:214
 msgid "Any combination (comma separated list) of '%s'"
 msgstr "'%s' の任意の組み合わせ (コンマ区切りの一覧)"
 
-#: ../lib/hammer_cli/options/normalizers.rb:234
 msgid "value must be a combination of '%s'"
 msgstr "値を '%s' の組み合わせにする必要があります"
 
-#: ../lib/hammer_cli/options/option_definition.rb:56
 msgid "\"Warning: Option #{switch} is deprecated. %s\""
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:80
 msgid "Can be specified multiple times. "
 msgstr "複数回指定することはできません。"
 
-#: ../lib/hammer_cli/options/option_definition.rb:81
 msgid ", or "
 msgstr "または"
 
-#: ../lib/hammer_cli/options/option_definition.rb:81
 msgid "Default: "
 msgstr "デフォルト: "
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:174
 msgid "Message"
 msgstr "メッセージ"
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:178
 msgid "Id"
 msgstr "ID"
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:183
 msgid "Name"
 msgstr "名前"
 
-#: ../lib/hammer_cli/output/formatters.rb:154
 msgid "no"
 msgstr "no"
 
-#: ../lib/hammer_cli/output/formatters.rb:154
 msgid "yes"
 msgstr "yes"
 
-#: ../lib/hammer_cli/settings.rb:28
 msgid ""
-"Warning: location hammer.modules.d is deprecated, move your module "
-"configurations to cli.modules.d"
-msgstr ""
-"警告: hammer.modules.d の場所は廃止されます。モジュール設定を cli.modules.d "
-"に移行してください"
+"Warning: location hammer.modules.d is deprecated, move your module configurati"
+"ons to cli.modules.d"
+msgstr "警告: hammer.modules.d の場所は廃止されます。モジュール設定を cli.modules.d に移行してください"
 
-#: ../lib/hammer_cli/shell.rb:10
 msgid "Print help for commands"
 msgstr "コマンドについての help を出力"
 
-#: ../lib/hammer_cli/shell.rb:22
 msgid "Exit interactive shell"
 msgstr "インタラクティブシェルの終了"
 
-#: ../lib/hammer_cli/shell.rb:116
 msgid "Welcome to the hammer interactive shell"
 msgstr "hammer インタラクティブシェルへようこそ"
 
-#: ../lib/hammer_cli/shell.rb:117
 msgid "Type 'help' for usage information"
 msgstr "使用法の詳細を参照するには、'help' を入力してください"
 
-#: ../lib/hammer_cli/shell.rb:133
 msgid "Interactive shell"
 msgstr "インタラクティブシェル"
 
-#: ../lib/hammer_cli/subcommand.rb:56
 msgid ""
-"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
-"(%<new_class>s)"
-msgstr ""
-"サブコマンド %<name>s (%<existing_class>s) を %<name>s (%<new_class>s) に置き"
-"換えることができません"
+"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
+"ass>s)"
+msgstr "サブコマンド %<name>s (%<existing_class>s) を %<name>s (%<new_class>s) に置き換えることができません"
 
-#: ../lib/hammer_cli/validator.rb:41
 msgid "Unknown option name '%s'"
 msgstr "不明なオプション名 '%s'"
 
-#: ../lib/hammer_cli/validator.rb:62
 msgid "You can't set all options %s at one time"
 msgstr "1 度にすべてのオプション %s を設定することはできません"
 
-#: ../lib/hammer_cli/validator.rb:63
 msgid "Options %s are required"
 msgstr "オプション %s は必須です"
 
-#: ../lib/hammer_cli/validator.rb:79
 msgid "You can't set any of options %s"
 msgstr "オプション %s のいずれも設定できません"
 
-#: ../lib/hammer_cli/validator.rb:80
 msgid "At least one of options %s is required"
 msgstr "オプション %s が少なくとも 1 つ以上必要です"
-

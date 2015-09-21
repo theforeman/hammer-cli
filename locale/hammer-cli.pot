@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.3.0\n"
+"Project-Id-Version: hammer-cli 0.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-29 17:01+0200\n"
-"PO-Revision-Date: 2015-07-29 17:01+0200\n"
+"POT-Creation-Date: 2015-09-21 16:29+0200\n"
+"PO-Revision-Date: 2015-09-21 16:29+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -88,11 +88,11 @@ msgstr ""
 msgid "Missing arguments for %s"
 msgstr ""
 
-#: ../lib/hammer_cli/logger.rb:28
+#: ../lib/hammer_cli/logger.rb:57
 msgid "No permissions to create log dir %s"
 msgstr ""
 
-#: ../lib/hammer_cli/logger.rb:43
+#: ../lib/hammer_cli/logger.rb:72
 msgid "File %s not writeable, won't log anything to the file!"
 msgstr ""
 
@@ -262,7 +262,7 @@ msgstr ""
 msgid "yes"
 msgstr ""
 
-#: ../lib/hammer_cli/settings.rb:28
+#: ../lib/hammer_cli/settings.rb:26
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
 "ons to cli.modules.d"

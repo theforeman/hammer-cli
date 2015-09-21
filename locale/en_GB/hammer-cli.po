@@ -6,7 +6,7 @@
 # Andi Chandler <andi@gowling.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: Foreman\n"
+"Project-Id-Version: hammer-cli 0.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-08-30 02:01+0000\n"
 "Last-Translator: Andi Chandler <andi@gowling.com>\n"
@@ -103,6 +103,10 @@ msgstr "remote system address"
 msgid "show version"
 msgstr "show version"
 
+#, fuzzy
+msgid "unknown version"
+msgstr "show version"
+
 msgid "Show ids of associated resources"
 msgstr "Show ids of associated resources"
 
@@ -143,6 +147,9 @@ msgstr "value must be defined as a comma-separated list of key=value"
 msgid "Comma separated list of values."
 msgstr "Comma separated list of values."
 
+msgid "numeric value is required"
+msgstr ""
+
 msgid "One of true/false, yes/no, 1/0."
 msgstr "One of true/false, yes/no, 1/0."
 
@@ -152,10 +159,15 @@ msgstr "value must be one of true/false, yes/no, 1/0"
 msgid "Unable to parse JSON input"
 msgstr "Unable to parse JSON input"
 
-msgid "One of %s"
-msgstr "One of %s"
+msgid "Possible value(s): %s"
+msgstr ""
 
-msgid "value must be one of '%s'"
+#, fuzzy
+msgid "value must be %s"
+msgstr "value must be one of '%s'"
+
+#, fuzzy
+msgid "value must be one of %s"
 msgstr "value must be one of '%s'"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
@@ -169,6 +181,9 @@ msgstr "Any combination (comma separated list) of '%s'"
 
 msgid "value must be a combination of '%s'"
 msgstr "value must be a combination of '%s'"
+
+msgid "\"Warning: Option #{switch} is deprecated. %s\""
+msgstr ""
 
 msgid "Can be specified multiple times. "
 msgstr "Can be specified multiple times. "
