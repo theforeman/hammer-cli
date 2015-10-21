@@ -5,6 +5,34 @@ describe HammerCLI::Output::Adapter::Yaml do
   let(:context) {{}}
   let(:adapter) { HammerCLI::Output::Adapter::Yaml.new(context, HammerCLI::Output::Output.formatters) }
 
+  context "print_message" do
+    it "prints the message" do
+      params = { :a => 'Test', :b => 83 }
+      msg = "Rendered with %{a} and %{b}"
+      expected_output = [
+        '---',
+        ':message: Rendered with Test and 83',
+        ''
+      ].join("\n")
+
+      proc { adapter.print_message(msg, params) }.must_output(expected_output)
+    end
+
+    it "prints the message with name and id" do
+      params = { :name => 'Test', :id => 83 }
+      msg = "Rendered with %{name} and %{id}"
+      expected_output = [
+        '---',
+        ':message: Rendered with Test and 83',
+        ':id: 83',
+        ':name: Test',
+        ''
+      ].join("\n")
+
+      proc { adapter.print_message(msg, params) }.must_output(expected_output)
+    end
+  end
+
   context "print_collection" do
 
     let(:id)            { Fields::Id.new(:path => [:id], :label => "Id") }

@@ -11,6 +11,19 @@ module HammerCLI::Output::Adapter
       puts YAML.dump(result)
     end
 
+    def print_message(msg, msg_params={})
+      id = msg_params["id"] || msg_params[:id]
+      name = msg_params["name"] || msg_params[:name]
+
+      data = {
+        :message => msg.format(msg_params)
+      }
+      data[:id] = id unless id.nil?
+      data[:name] = name unless name.nil?
+
+      puts YAML.dump(data)
+    end
+
   end
   HammerCLI::Output::Output.register_adapter(:yaml, Yaml)
 end
