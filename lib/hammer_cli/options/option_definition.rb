@@ -53,11 +53,11 @@ module HammerCLI
       end
 
       def handles?(switch)
-        message = _("Warning: Option #{switch} is deprecated. %s")
+        message = _("Warning: Option %{option} is deprecated. %{message}")
         if deprecated_switches.class <= String && switches.include?(switch)
-          warn(message % deprecated_switches)
+          warn(message % { :option => switch, :message => deprecated_switches })
         elsif deprecated_switches.class <= Hash && deprecated_switches.keys.include?(switch)
-          warn(message % deprecated_switches[switch])
+          warn(message % { :option => switch, :message => deprecated_switches[switch] })
         end
         super(switch)
       end
