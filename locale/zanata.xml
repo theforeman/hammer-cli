@@ -5,6 +5,7 @@
     <project-version>6.0</project-version>
     <project-type>podir</project-type>
     <locales>
+	<locale>ca</locale>
         <locale>fr</locale>
         <locale>it</locale>
         <locale>ja</locale>
