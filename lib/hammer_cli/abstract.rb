@@ -71,6 +71,7 @@ module HammerCLI
         items.sort! do |a, b|
           a.help[0] <=> b.help[0]
         end
+        items.reject! {|item| item.respond_to?(:hidden?) && item.hidden?}
 
         puts "\n#{heading}:"
 
