@@ -1,0 +1,251 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the hammer-cli package.
+#
+# Translators:
+# Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: hammer-cli 0.4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2015-12-08 14:10+0000\n"
+"Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
+"Language-Team: Catalan (http://www.transifex.com/foreman/foreman/language/ca/)"
+"\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ca\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "too many arguments"
+msgstr "massa arguments"
+
+msgid "option '%<option>s' is required"
+msgstr "es requereix l'opció '%<option>s'"
+
+msgid "option '%<option>s' (or env %<env>s) is required"
+msgstr "es requereix l'opció '%<option>s' (o env %<env>s)"
+
+msgid "option '%<switch>s': %<message>s"
+msgstr "opció '%<switch>s': %<message>s"
+
+msgid "parameter '%<param>s': %<message>s"
+msgstr "paràmetre '%<param>s': %<message>s"
+
+msgid "%<env>s: %<message>s"
+msgstr "%<env>s: %<message>s"
+
+msgid "Unrecognised option '%<switch>s'"
+msgstr "Opció no reconeguda '%<switch>s'"
+
+msgid "No such sub-command '%<name>s'"
+msgstr "No hi ha la suborde '%<name>s'"
+
+msgid "no value provided"
+msgstr "no s'ha proporcionat cap valor"
+
+msgid "Error: %s"
+msgstr "Error: %s"
+
+msgid "Error: %{message}"
+msgstr "Error: %{message}"
+
+msgid "See: '%{path} --help'"
+msgstr "Vegeu: '%{path} --help'"
+
+msgid "Invalid username or password"
+msgstr "nom d'usuari no vàlid o contrasenya no vàlida"
+
+msgid "Could not load the API description from the server"
+msgstr "No s'ha pogut carregar la descripció de l'API des del servidor"
+
+msgid "is the server down?"
+msgstr "Ha caigut el servidor?"
+
+msgid ""
+"was '%s' run on the server when using apipie cache? (typical production settin"
+"gs)"
+msgstr ""
+"Es va executar '%s' al servidor quan s'utilitzava la memòria cau d'apipie? (aj"
+"ustos típics de producció)"
+
+msgid "Missing arguments for %s"
+msgstr "Falten argument per %s"
+
+msgid "No permissions to create log dir %s"
+msgstr "Sense els permisos per crear el directori del registre %s"
+
+msgid "File %s not writeable, won't log anything to the file!"
+msgstr "No es pot escriure al fitxer %s, no s'enregistrarà res al fitxer!"
+
+msgid "be verbose"
+msgstr "mostra informació detallada"
+
+msgid "show debugging output "
+msgstr "mostra la sortida de depuració"
+
+msgid "force reload of Apipie cache"
+msgstr "força la recàrrega de la memòria cau d'Apipie"
+
+msgid "path to custom config file"
+msgstr "camí al fitxer de configuració personalitzat"
+
+msgid "username to access the remote system"
+msgstr "nom d'usuari per accedir al sistema remot"
+
+msgid "password to access the remote system"
+msgstr "contrasenya per accedir al sistema remot"
+
+msgid "remote system address"
+msgstr "adreça del sistema remot"
+
+msgid "show version"
+msgstr "mostra la versió"
+
+msgid "unknown version"
+msgstr "versió desconeguda"
+
+msgid "Show ids of associated resources"
+msgstr "Mostra els id. dels recursos associats"
+
+msgid "Explicitly turn interactive mode on/off"
+msgstr "Explícitament encén o apaga el mode interactiu"
+
+msgid "Output as CSV (same as --output=csv)"
+msgstr "Sortida com a CSV (el mateix que --output=csv)"
+
+msgid "Set output format. One of [%s]"
+msgstr "Estableix el format de sortida. Un de [%s]"
+
+msgid "Character to separate the values"
+msgstr "Caràcter per separar els valors"
+
+msgid "Get list of possible endings"
+msgstr "Obté la llista dels finals possibles"
+
+msgid ""
+"Legacy configuration of modules detected. Check section about configuration in"
+" user manual"
+msgstr ""
+"S'ha detectat la configuració del llegat dels mòduls. Consulteu la secció quan"
+"t a la configuració al manual d'usuari"
+
+msgid "Warning: An error occured while loading module %s"
+msgstr "Advertència: S'ha produït un error mentre es carregava el mòdul %s"
+
+msgid "Error: Some of the required modules are disabled in configuration: %s "
+msgstr "Error: Alguns dels mòduls requerits estan inhabilitats en la configuració: %s "
+
+msgid "Comma-separated list of key=value."
+msgstr "Llista separada per comes de clau=valor."
+
+msgid "value must be defined as a comma-separated list of key=value"
+msgstr "El valor ha d'estar definit com a una llista separada per comes de clau=valor"
+
+msgid "Comma separated list of values."
+msgstr "Llista separada per comes dels valors."
+
+msgid "numeric value is required"
+msgstr "es requereix un valor numèric"
+
+msgid "One of true/false, yes/no, 1/0."
+msgstr "Un de true/false, yes/no, 1/0."
+
+msgid "value must be one of true/false, yes/no, 1/0"
+msgstr "el valor ha de ser un de true/false, yes/no, 1/0"
+
+msgid "Unable to parse JSON input"
+msgstr "No es pot analitzar sintàcticament l'entrada de JSON"
+
+msgid "Possible value(s): %s"
+msgstr "Valors possibles: %s"
+
+msgid "value must be %s"
+msgstr "el valor ha de ser %s"
+
+msgid "value must be one of %s"
+msgstr "el valor ha de ser un de %s"
+
+msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
+msgstr "Data i hora en format YYYY-MM-DD HH:MM:SS o ISO 8601"
+
+msgid "'%s' is not a valid date"
+msgstr "'%s' no és una data vàlida"
+
+msgid "Any combination (comma separated list) of '%s'"
+msgstr "Qualsevol combinació (llista separada per comes) de '%s'"
+
+msgid "value must be a combination of '%s'"
+msgstr "el valor ha de ser una combinació de '%s'"
+
+msgid "\"Warning: Option #{switch} is deprecated. %s\""
+msgstr "\"Advertència: L'opció #{switch} està en desús. %s\""
+
+msgid "Can be specified multiple times. "
+msgstr "Es pot especificar múltiples vegades."
+
+msgid ", or "
+msgstr ", o "
+
+msgid "Default: "
+msgstr "Per defecte:"
+
+msgid "Message"
+msgstr "Missatge"
+
+msgid "Id"
+msgstr "Id."
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "no"
+msgstr "no"
+
+msgid "yes"
+msgstr "si"
+
+msgid ""
+"Warning: location hammer.modules.d is deprecated, move your module configurati"
+"ons to cli.modules.d"
+msgstr ""
+"Advertència: la ubicació hammer.modules.d està en desús, moveu les configuraci"
+"ons dels vostres mòduls a cli.modules.d"
+
+msgid "Print help for commands"
+msgstr "Imprimeix l'ajuda per a les ordres"
+
+msgid "Exit interactive shell"
+msgstr "Surt del shell interactiu"
+
+msgid "Welcome to the hammer interactive shell"
+msgstr "Benvingut al shell interactiu de hammer"
+
+msgid "Type 'help' for usage information"
+msgstr "Teclegeu 'help' per a la informació de l'ús"
+
+msgid "Interactive shell"
+msgstr "Shell interactiu"
+
+msgid ""
+"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
+"ass>s)"
+msgstr ""
+"no es pot substituir la subordre %<name>s (%<existing_class>s) amb %<name>s (%"
+"<new_class>s)"
+
+msgid "Unknown option name '%s'"
+msgstr "Nom desconegut d'opció '%s'"
+
+msgid "You can't set all options %s at one time"
+msgstr "No podeu establir totes les opcions %s alhora"
+
+msgid "Options %s are required"
+msgstr "Es requereixen %s opcions"
+
+msgid "You can't set any of options %s"
+msgstr "No podeu establir cap de les opcions %s"
+
+msgid "At least one of options %s is required"
+msgstr "Com a mínim es requereix una de les opcions %s"
