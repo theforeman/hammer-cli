@@ -47,6 +47,80 @@ msgstr "다음과 같은 서브 명령 '%<name>s'이(가) 없습니다"
 msgid "no value provided"
 msgstr "값이 지정되어 있지 않습니다 "
 
+msgid "Couldn't create %s please create the path before defaults are enabled."
+msgstr ""
+
+msgid "Defaults management"
+msgstr ""
+
+msgid "List all the providers"
+msgstr ""
+
+msgid "Provider"
+msgstr ""
+
+msgid "Supported defaults"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "List all the default parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "Delete a default param"
+msgstr ""
+
+msgid "The name of the default option"
+msgstr ""
+
+msgid "Add a default parameter to config"
+msgstr ""
+
+msgid "The name of the default option (e.g. organization_id)."
+msgstr ""
+
+msgid "The value for the default option"
+msgstr ""
+
+msgid ""
+"The name of the provider providing the value. For list available providers see"
+" `hammer defaults providers`."
+msgstr ""
+
+msgid ""
+"Added %{key_val} default-option with value that will be generated from the ser"
+"ver."
+msgstr ""
+
+msgid "Added %{key_val} default-option with value %{val_val}."
+msgstr ""
+
+msgid ""
+"\"Provider #{namespace} was not found. See `hammer defaults providers` for avai"
+"lable providers.\""
+msgstr ""
+
+msgid ""
+"The param name is not supported by provider. See `hammer defaults providers` f"
+"or supported params."
+msgstr ""
+
+msgid "%{param} was deleted successfully."
+msgstr ""
+
+msgid "You must specify value or a provider name, cant specify both."
+msgstr ""
+
+msgid "Couldn't find the requested param in %s."
+msgstr ""
+
 msgid "Error: %s"
 msgstr "오류: %s"
 
@@ -179,17 +253,17 @@ msgstr "'%s'의 모든 조합 (콤마로 구분된 목록)"
 msgid "value must be a combination of '%s'"
 msgstr "값은 '%s'의  조합이어야 합니다 "
 
-msgid "\"Warning: Option #{switch} is deprecated. %s\""
+msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr ""
 
 msgid "Can be specified multiple times. "
 msgstr "여러 번 지정할 수 있습니다 "
 
-msgid ", or "
-msgstr " 또는 "
-
 msgid "Default: "
 msgstr "기본값:"
+
+msgid ", or "
+msgstr " 또는 "
 
 msgid "Message"
 msgstr "메세지 "
@@ -200,11 +274,11 @@ msgstr "ID "
 msgid "Name"
 msgstr "이름 "
 
-msgid "no"
-msgstr "no"
-
 msgid "yes"
 msgstr "yes"
+
+msgid "no"
+msgstr "no"
 
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"

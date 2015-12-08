@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hammer-cli 0.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-21 16:29+0200\n"
-"PO-Revision-Date: 2015-09-21 16:29+0200\n"
+"POT-Creation-Date: 2015-12-08 08:56+0000\n"
+"PO-Revision-Date: 2015-12-08 08:56+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -52,6 +52,102 @@ msgstr ""
 
 #: ../lib/hammer_cli/clamp.rb:13
 msgid "no value provided"
+msgstr ""
+
+#: ../lib/hammer_cli/defaults.rb:72
+msgid "Couldn't create %s please create the path before defaults are enabled."
+msgstr ""
+
+#: ../lib/hammer_cli/defaults.rb:82
+msgid "Defaults management"
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:25
+msgid "List all the providers"
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:37
+msgid "Provider"
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:38
+msgid "Supported defaults"
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:39
+msgid "Description"
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:56
+msgid "List all the default parameters"
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:67
+msgid "Parameter"
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:68
+msgid "Value"
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:86
+msgid "Delete a default param"
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:87
+msgid "The name of the default option"
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:103
+msgid "Add a default parameter to config"
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:104
+msgid "The name of the default option (e.g. organization_id)."
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:105
+msgid "The value for the default option"
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:106
+msgid ""
+"The name of the provider providing the value. For list available providers see"
+" `hammer defaults providers`."
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:134
+msgid ""
+"Added %{key_val} default-option with value that will be generated from the ser"
+"ver."
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:135
+msgid "Added %{key_val} default-option with value %{val_val}."
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:139
+msgid ""
+"\"Provider #{namespace} was not found. See `hammer defaults providers` for avai"
+"lable providers.\""
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:143
+msgid ""
+"The param name is not supported by provider. See `hammer defaults providers` f"
+"or supported params."
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:147
+msgid "%{param} was deleted successfully."
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:151
+msgid "You must specify value or a provider name, cant specify both."
+msgstr ""
+
+#: ../lib/hammer_cli/defaults_commands.rb:155
+msgid "Couldn't find the requested param in %s."
 msgstr ""
 
 #: ../lib/hammer_cli/exception_handler.rb:62
@@ -227,7 +323,7 @@ msgid "value must be a combination of '%s'"
 msgstr ""
 
 #: ../lib/hammer_cli/options/option_definition.rb:56
-msgid "\"Warning: Option #{switch} is deprecated. %s\""
+msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr ""
 
 #: ../lib/hammer_cli/options/option_definition.rb:80
@@ -235,11 +331,11 @@ msgid "Can be specified multiple times. "
 msgstr ""
 
 #: ../lib/hammer_cli/options/option_definition.rb:81
-msgid ", or "
+msgid "Default: "
 msgstr ""
 
 #: ../lib/hammer_cli/options/option_definition.rb:81
-msgid "Default: "
+msgid ", or "
 msgstr ""
 
 #: ../lib/hammer_cli/output/adapter/csv.rb:174
@@ -255,14 +351,14 @@ msgid "Name"
 msgstr ""
 
 #: ../lib/hammer_cli/output/formatters.rb:154
-msgid "no"
-msgstr ""
-
-#: ../lib/hammer_cli/output/formatters.rb:154
 msgid "yes"
 msgstr ""
 
-#: ../lib/hammer_cli/settings.rb:26
+#: ../lib/hammer_cli/output/formatters.rb:154
+msgid "no"
+msgstr ""
+
+#: ../lib/hammer_cli/settings.rb:27
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
 "ons to cli.modules.d"

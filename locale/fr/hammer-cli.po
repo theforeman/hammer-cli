@@ -49,6 +49,80 @@ msgstr "Sous commande inconnue '%<name>s'"
 msgid "no value provided"
 msgstr "Aucune valeur fournit"
 
+msgid "Couldn't create %s please create the path before defaults are enabled."
+msgstr ""
+
+msgid "Defaults management"
+msgstr ""
+
+msgid "List all the providers"
+msgstr ""
+
+msgid "Provider"
+msgstr ""
+
+msgid "Supported defaults"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "List all the default parameters"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "Delete a default param"
+msgstr ""
+
+msgid "The name of the default option"
+msgstr ""
+
+msgid "Add a default parameter to config"
+msgstr ""
+
+msgid "The name of the default option (e.g. organization_id)."
+msgstr ""
+
+msgid "The value for the default option"
+msgstr ""
+
+msgid ""
+"The name of the provider providing the value. For list available providers see"
+" `hammer defaults providers`."
+msgstr ""
+
+msgid ""
+"Added %{key_val} default-option with value that will be generated from the ser"
+"ver."
+msgstr ""
+
+msgid "Added %{key_val} default-option with value %{val_val}."
+msgstr ""
+
+msgid ""
+"\"Provider #{namespace} was not found. See `hammer defaults providers` for avai"
+"lable providers.\""
+msgstr ""
+
+msgid ""
+"The param name is not supported by provider. See `hammer defaults providers` f"
+"or supported params."
+msgstr ""
+
+msgid "%{param} was deleted successfully."
+msgstr ""
+
+msgid "You must specify value or a provider name, cant specify both."
+msgstr ""
+
+msgid "Couldn't find the requested param in %s."
+msgstr ""
+
 msgid "Error: %s"
 msgstr "Erreur : %s"
 
@@ -187,17 +261,17 @@ msgstr "Toute combinaison (liste séparée par des virgules) de '%s'"
 msgid "value must be a combination of '%s'"
 msgstr "la valeur doit être une combinaison de '%s'"
 
-msgid "\"Warning: Option #{switch} is deprecated. %s\""
+msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr ""
 
 msgid "Can be specified multiple times. "
 msgstr "Peut être spécifié plusieurs fois."
 
-msgid ", or "
-msgstr ", ou "
-
 msgid "Default: "
 msgstr "Défaut : "
+
+msgid ", or "
+msgstr ", ou "
 
 msgid "Message"
 msgstr "Message"
@@ -208,11 +282,11 @@ msgstr "Id"
 msgid "Name"
 msgstr "Nom"
 
-msgid "no"
-msgstr "non"
-
 msgid "yes"
 msgstr "oui"
+
+msgid "no"
+msgstr "non"
 
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
