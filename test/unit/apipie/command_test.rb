@@ -111,6 +111,7 @@ describe HammerCLI::Apipie::Command do
     end
 
     it "should perform a call to api when resource is defined" do
+      ctx[:defaults] = stub(:get_defaults => {})
       cmd_run.must_equal 0
     end
   end

@@ -122,4 +122,4 @@ HammerCLI::I18n.domains.each do |domain|
   logger.debug "'#{domain.type}' files for locale domain '#{domain.domain_name}' loaded from '#{File.expand_path(domain.locale_dir)}'"
 end
 
-exit HammerCLI::MainCommand.run || HammerCLI::EX_OK
+exit HammerCLI::MainCommand.run(File.basename($0), ARGV, HammerCLI.context) || HammerCLI::EX_OK

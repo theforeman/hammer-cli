@@ -5,7 +5,6 @@ require 'hammer_cli/clamp'
 require 'hammer_cli/subcommand'
 require 'hammer_cli/options/matcher'
 require 'logging'
-
 module HammerCLI
 
   class AbstractCommand < Clamp::Command
@@ -234,10 +233,12 @@ module HammerCLI
     end
 
     def all_options
-      self.class.recognised_options.inject({}) do |h, opt|
-        h[opt.attribute_name] = send(opt.read_method)
-        h
+      @all_options ||= self.class.recognised_options.inject({}) do |hash, opt|
+        hash[opt.attribute_name] = send(opt.read_method)
+        hash[opt.attribute_name] = add_custom_defaults(opt.attribute_name) if hash[opt.attribute_name].nil?
+        hash
       end
+      @all_options
     end
 
     def options
@@ -246,6 +247,14 @@ module HammerCLI
 
     private
 
+    def add_custom_defaults(attr)
+      if context[:defaults]
+        value = context[:defaults].get_defaults(attr)
+        logger.info("Custom default value #{value} was used for attribute #{attr}") if value
+        value
+      end
+    end
+    
     def self.inherited_output_definition
       od = nil
       if superclass.respond_to? :output_definition
