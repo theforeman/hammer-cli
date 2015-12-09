@@ -15,7 +15,7 @@ module HammerCLI
     end
 
     def register_provider(provider)
-      providers[provider.plugin_name.to_s] = provider
+      providers[provider.provider_name.to_s] = provider
     end
 
     def providers

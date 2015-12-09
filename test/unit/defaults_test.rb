@@ -31,7 +31,7 @@ describe HammerCLI::Defaults do
 
   it "should get the default param, with provider" do
     fake_provider = mock()
-    fake_provider.stubs(:plugin_name).returns(:foreman)
+    fake_provider.stubs(:provider_name).returns(:foreman)
     fake_provider.expects(:get_defaults).with(:organization_id).returns(3)
     @defaults.register_provider(fake_provider)
     assert_equal 3, @defaults.get_defaults("organization_id")
