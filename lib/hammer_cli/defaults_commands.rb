@@ -2,23 +2,19 @@ require 'hammer_cli'
 require 'yaml'
 module HammerCLI
   class BaseDefaultsProvider
-    def self.plugin_name
-      self.name.split('::').first.gsub(/^HammerCLI/, '').underscore
+    attr_reader :provider_name, :supported_defaults, :description
+
+    def initialize
+      @provider_name = nil
+      @supported_defaults = nil
+      @description = 'Abstract provider'
     end
 
-    def self.register_provider
-      HammerCLI.defaults.register_provider(self)
+    def param_supported?(param)
+      @supported_defaults.nil? || @supported_defaults.any? {|s| s.to_s == param}
     end
 
-    def self.support?
-      raise NotImplementedError
-    end
-
-    def self.supported_defaults
-      raise NotImplementedError
-    end
-
-    def self.get_defaults
+    def get_defaults
       raise NotImplementedError
     end
   end
@@ -32,13 +28,15 @@ module HammerCLI
         data = context[:defaults].providers.map do |key, val|
           {
             :provider => key.to_s,
-            :defaults => (val.supported_defaults || ['*']).map(&:to_s)
+            :defaults => (val.supported_defaults || ['*']).map(&:to_s),
+            :description => val.description
           }
         end
 
         fields = HammerCLI::Output::Dsl.new.build do
           field :provider, _('Provider')
           field :defaults, _('Supported defaults'), Fields::List
+          field :description, _('Description')
         end
 
         definition = HammerCLI::Output::Definition.new
@@ -105,19 +103,19 @@ module HammerCLI
       desc _('Add a default parameter to config')
       option "--param-name", "OPTION_NAME", _("The name of the default option (e.g. organization_id)."), :required => true
       option "--param-value", "OPTION_VALUE", _("The value for the default option")
-      option "--plugin-name", "OPTION_PLUGIN_NAME", _("The name of the provider providing the value. For list available providers see `hammer defaults providers`.")
+      option "--provider", "OPTION_PROVIDER", _("The name of the provider providing the value. For list available providers see `hammer defaults providers`.")
 
       def execute
-        if option_plugin_name.nil? && option_param_value.nil? || !option_plugin_name.nil? && !option_param_value.nil?
+        if option_provider.nil? && option_param_value.nil? || !option_provider.nil? && !option_param_value.nil?
           bad_input
           HammerCLI::EX_USAGE
         else
-          if option_plugin_name
-            namespace = option_plugin_name
+          if option_provider
+            namespace = option_provider
             if !context[:defaults].providers.key?(namespace)
-              plugin_prob_message(namespace)
+              provider_prob_message(namespace)
               return HammerCLI::EX_USAGE
-            elsif !context[:defaults].providers[namespace].support?(option_param_name)
+            elsif !context[:defaults].providers[namespace].param_supported?(option_param_name)
               defaults_not_supported_by_provider
               return HammerCLI::EX_CONFIG
             end
@@ -137,7 +135,7 @@ module HammerCLI
       print_message(_("Added %{key_val} default-option with value %{val_val}.") % {:key_val => key.to_s, :val_val => value.to_s}) unless value.nil?
     end
 
-    def plugin_prob_message(namespace)
+    def provider_prob_message(namespace)
       print_message(_("Provider #{namespace} was not found. See `hammer defaults providers` for available providers."))
     end
 
@@ -160,4 +158,3 @@ module HammerCLI
     autoload_subcommands
   end
 end
-
