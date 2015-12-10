@@ -10,7 +10,7 @@ module HammerCLI
 
     def initialize(settings, file_path = nil)
 
-      @defaults_settings = settings
+      @defaults_settings = settings || {}
       @path = file_path || DEFAULT_FILE
     end
 

@@ -37,4 +37,9 @@ describe HammerCLI::Defaults do
     assert_equal 3, @defaults.get_defaults("organization_id")
   end
 
+  it "should return empty defaults when the settings file is not present" do
+    defaults = HammerCLI::Defaults.new(nil, FILEPATH)
+    assert_equal({}, defaults.defaults_settings)
+  end
+
 end
