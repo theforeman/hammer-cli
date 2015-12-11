@@ -1,6 +1,12 @@
 Release notes
 =============
 
+### 0.5.0 (2015-12-14)
+* Added defaults options in hammer cli ([#8015](http://projects.theforeman.org/issues/8015))
+* Do not display hidden options in --help ([#12693](http://projects.theforeman.org/issues/12693))
+* Refs #10564 - interpolate option in i18n string correctly ([#10564](http://projects.theforeman.org/issues/10564))
+* Json and yaml formatting for messages ([#11355](http://projects.theforeman.org/issues/11355))
+
 ### 0.4.0 (2015-09-21)
 * Pull in the downstream translations ([#11184](http://projects.theforeman.org/issues/11184))
 * Abort when custom config file is not found ([#11158](http://projects.theforeman.org/issues/11158))
