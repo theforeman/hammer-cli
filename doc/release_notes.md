@@ -1,6 +1,9 @@
 Release notes
 =============
 
+### 0.5.1 (2015-12-15)
+* Minor release to fix wrongly packaged gem
+
 ### 0.5.0 (2015-12-14)
 * Added defaults options in hammer cli ([#8015](http://projects.theforeman.org/issues/8015))
 * Do not display hidden options in --help ([#12693](http://projects.theforeman.org/issues/12693))
