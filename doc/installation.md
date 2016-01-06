@@ -56,7 +56,7 @@ with descriptions.
 
 ### Plugins
 
-Plugins are disabled by default. To enable plugin create configuration file in ```cli.modules.d``` and add```:enable_plugin: true``` in it.
+Plugins are disabled by default. To enable plugin create configuration file in ```cli.modules.d``` and add```:enable_module: true``` in it.
 Plugin specific configuration must be nested under plugin's name (without the ```hammer_cli_``` prefix).
 
 In the example we assume the gem ```hammer_cli_foreman``` with the Foreman plugin is installed. Then the plugin configuration
