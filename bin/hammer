@@ -42,6 +42,13 @@ end
 # load user's settings
 require 'hammer_cli/settings'
 
+hammer_gems = Gem::Specification.select do |spec|
+  spec.name.include?('hammer_cli')
+end
+CFG_PATH_GEM = hammer_gems.collect { |spec| "#{spec.gem_dir}/config" }
+
+HammerCLI::Settings.load_from_paths CFG_PATH_GEM
+
 CFG_PATH_LEGACY = ['~/.foreman/', '/etc/foreman/', "#{::RbConfig::CONFIG['sysconfdir']}/foreman/"].uniq
 HammerCLI::Settings.load_from_paths CFG_PATH_LEGACY
 if HammerCLI::Settings.path_history.empty?

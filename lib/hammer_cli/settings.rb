@@ -20,7 +20,7 @@ module HammerCLI
           load_from_file(File.join(full_path, 'cli_config.yml'))
           load_from_file(File.join(full_path, 'defaults.yml'))
           # load config for modules
-          Dir.glob(File.join(full_path, 'cli.modules.d/*.yml')).sort.each do |f|
+          Dir.glob(File.join(full_path, '**/*.yml')).sort.each do |f|
             load_from_file(f)
           end
           Dir.glob(File.join(full_path, 'hammer.modules.d/*.yml')).sort.each do |f|
