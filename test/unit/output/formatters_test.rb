@@ -76,19 +76,36 @@ describe HammerCLI::Output::Formatters::DateFormatter do
 end
 
 describe HammerCLI::Output::Formatters::ListFormatter do
+  let(:formatter) { HammerCLI::Output::Formatters::ListFormatter.new }
+
   it "serializes the value" do
-    formatter = HammerCLI::Output::Formatters::ListFormatter.new
     formatter.format([1, 2]).must_equal '1, 2'
   end
 
   it "returns empty string when the input is nil" do
-    formatter = HammerCLI::Output::Formatters::ListFormatter.new
     formatter.format(nil).must_equal ''
   end
 
   it "returns string value when the input is not a list" do
-    formatter = HammerCLI::Output::Formatters::ListFormatter.new
     formatter.format('some string').must_equal 'some string'
+  end
+
+  it 'can put the string on a new line' do
+    formatter.format([1, 2], :on_new_line => true).must_equal "\n  1, 2"
+  end
+
+  it 'allows to change the separator' do
+    formatter.format([1, 2, 3], :separator => '#').must_equal "1#2#3"
+  end
+
+  it 'can format list vertically' do
+    expected_output = [
+      '',
+      '  value 1',
+      '  value 2',
+    ].join("\n")
+
+    formatter.format(['value 1', 'value 2'], :separator => "\n", :on_new_line => true).must_equal expected_output
   end
 end
 
