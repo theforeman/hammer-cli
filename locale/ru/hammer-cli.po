@@ -8,7 +8,7 @@
 # ypoyarko <ypoyarko@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.4.0\n"
+"Project-Id-Version: hammer-cli 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-28 04:41+0000\n"
 "Last-Translator: ypoyarko <ypoyarko@redhat.com>\n"

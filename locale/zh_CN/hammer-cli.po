@@ -3,7 +3,7 @@
 # Leah Liu <lliu@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.4.0\n"
+"Project-Id-Version: hammer-cli 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-27 01:22+0000\n"
 "Last-Translator: Leah Liu <lliu@redhat.com>\n"
