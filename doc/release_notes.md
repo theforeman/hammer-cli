@@ -1,6 +1,12 @@
 Release notes
 =============
 
+### 0.6.0 (2016-02-25)
+* Enable vertical formatting for lists ([#13874](http://projects.theforeman.org/issues/13874))
+* Support for command testing moved to core ([#4118](http://projects.theforeman.org/issues/4118))
+* Remove psych require from Gemfile ([#12797](http://projects.theforeman.org/issues/12797))
+* Configuration doc on how to enable a plugin ([#13438](http://projects.theforeman.org/issues/13438))
+
 ### 0.5.1 (2015-12-15)
 * Minor release to fix wrongly packaged gem
 
