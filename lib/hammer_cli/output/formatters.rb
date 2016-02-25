@@ -93,6 +93,7 @@ module HammerCLI::Output
     end
 
     class ListFormatter < FieldFormatter
+      INDENT = "  "
 
       def tags
         [:flat]
@@ -100,7 +101,12 @@ module HammerCLI::Output
 
       def format(list, field_params={})
         if list.is_a? Array
-          list.join(", ")
+          separator = field_params.fetch(:separator, ', ')
+          new_line = field_params.fetch(:on_new_line, false)
+
+          list = list.join(separator)
+          list ="\n#{list.indent_with(INDENT)}" if new_line
+          list
         elsif list
           list.to_s
         else
