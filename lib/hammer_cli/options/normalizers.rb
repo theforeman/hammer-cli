@@ -22,6 +22,9 @@ module HammerCLI
 
       class KeyValueList < AbstractNormalizer
 
+        PAIR_RE = '([^,=]+)=([^,\[]+|\[[^\[\]]*\])'
+        FULL_RE = "^((%s)[,]?)+$" % PAIR_RE
+
         def description
           _("Comma-separated list of key=value.")
         end
@@ -30,25 +33,34 @@ module HammerCLI
           return {} unless val.is_a?(String)
           return {} if val.empty?
 
-          result = {}
-
-          pair_re = '([^,=]+)=([^,\[]+|\[[^\[\]]*\])'
-          full_re = "^((%s)[,]?)+$" % pair_re
-
-          unless Regexp.new(full_re).match(val)
-            raise ArgumentError, _("value must be defined as a comma-separated list of key=value")
+          if valid_key_value?(val)
+            parse_key_value(val)
+          else
+            begin
+              formatter = JSONInput.new
+              formatter.format(val)
+            rescue ArgumentError
+              raise ArgumentError, _("value must be defined as a comma-separated list of key=value or valid JSON")
+            end
           end
+        end
 
-          val.scan(Regexp.new(pair_re)) do |key, value|
+        private
+
+        def valid_key_value?(val)
+          Regexp.new(FULL_RE).match(val)
+        end
+
+        def parse_key_value(val)
+          result = {}
+          val.scan(Regexp.new(PAIR_RE)) do |key, value|
             value = value.strip
             value = value.scan(/[^,\[\]]+/) if value.start_with?('[')
 
             result[key.strip] = strip_value(value)
           end
-          return result
+          result
         end
-
-        private
 
         def strip_value(value)
           if value.is_a? Array
