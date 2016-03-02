@@ -149,6 +149,15 @@
                                 "required": false
                             },
                             {
+                                "name": "coded_enum_param",
+                                "full_name": "documented[coded_enum_param]",
+                                "allow_nil": true,
+                                "validator": "Must be one of: <code>tomas</code>, <code>tereza</code>.",
+                                "expected_type": "string",
+                                "description": "",
+                                "required": false
+                            },
+                            {
                                 "name": "numeric_param",
                                 "allow_null": false,
                                 "full_name": "documented[numeric_param]",
