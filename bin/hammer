@@ -79,7 +79,7 @@ HammerCLI::Settings.load({
     :reload_cache => preparser.reload_cache?
   }})
 
-if HammerCLI::Settings.get(:mark_translated)
+if HammerCLI::Settings.get(:ui, :mark_translated)
   include HammerCLI::I18n::Debug
 end
 

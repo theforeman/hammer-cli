@@ -32,9 +32,13 @@ describe HammerCLI::I18n do
   let(:unavailable_domain) { TestLocaleDomain.new('domain3', false) }
 
   it "registers available domains at gettext" do
-    FastGettext.expects(:add_text_domain).with do |name, options|
-      (name == domain1.domain_name) && (options[:path] == domain1.locale_dir) && (options[:type] == domain1.type)
-    end
+    repo = mock
+    FastGettext::TranslationRepository.expects(:build).with(domain1.domain_name,
+      :path => domain1.locale_dir,
+      :type => domain1.type,
+      :report_warning => false).returns(repo)
+
+    HammerCLI::I18n.translation_repository.expects(:add_repo).with(repo)
     HammerCLI::I18n.add_domain(domain1)
   end
 
