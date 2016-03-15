@@ -1,6 +1,9 @@
 Release notes
 =============
 
+### 0.6.1 (2016-03-15)
+* Fix coded options for apipie 0.3.6 ([#13960](http://projects.theforeman.org/issues/13960))
+
 ### 0.6.0 (2016-02-25)
 * Enable vertical formatting for lists ([#13874](http://projects.theforeman.org/issues/13874))
 * Support for command testing moved to core ([#4118](http://projects.theforeman.org/issues/4118))
