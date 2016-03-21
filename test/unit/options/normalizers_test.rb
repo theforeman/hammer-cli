@@ -52,52 +52,64 @@ describe HammerCLI::Options::Normalizers do
       proc { formatter.format("a") }.must_raise ArgumentError
     end
 
-    it "should parse a comma separated string" do
-      formatter.format("a=1,b=2,c=3").must_equal({'a' => '1', 'b' => '2', 'c' => '3'})
+    describe 'key=value format' do
+      it "should parse a comma separated string" do
+        formatter.format("a=1,b=2,c=3").must_equal({'a' => '1', 'b' => '2', 'c' => '3'})
+      end
+
+      it "should parse a comma separated string with spaces" do
+        formatter.format("a= 1 , b = 2 ,c =3").must_equal({'a' => '1', 'b' => '2', 'c' => '3'})
+      end
+
+      it "should parse a comma separated string with spaces using single quotes" do
+        formatter.format("a= ' 1 ' , b =' 2',c ='3'").must_equal({'a' => ' 1 ', 'b' => ' 2', 'c' => '3'})
+      end
+
+      it "should parse a comma separated string with spaces using double quotes" do
+        formatter.format("a= \" 1 \" , b =\" 2\",c =\"3\"").must_equal({'a' => ' 1 ', 'b' => ' 2', 'c' => '3'})
+      end
+
+      it "should deal with equal sign in value" do
+        formatter.format("a=1,b='2=2',c=3").must_equal({'a' => '1', 'b' => '2=2', 'c' => '3'})
+      end
+
+      it "should parse arrays" do
+        formatter.format("a=1,b=[1,2,3],c=3").must_equal({'a' => '1', 'b' => ['1', '2', '3'], 'c' => '3'})
+      end
+
+      it "should parse arrays with spaces" do
+        formatter.format("a=1,b=[1, 2, 3],c=3").must_equal({'a' => '1', 'b' => ['1', '2', '3'], 'c' => '3'})
+      end
+
+      it "should parse arrays with spaces using by single quotes" do
+        formatter.format("a=1,b=['1 1', ' 2 ', ' 3 3'],c=3").must_equal({'a' => '1', 'b' => ['1 1', ' 2 ', ' 3 3'], 'c' => '3'})
+      end
+
+      it "should parse arrays with spaces using by double quotes" do
+        formatter.format("a=1,b=[\"1 1\", \" 2 \", \" 3 3\"],c=3").must_equal({'a' => '1', 'b' => ['1 1', ' 2 ', ' 3 3'], 'c' => '3'})
+      end
+
+      it "should parse array with one item" do
+        formatter.format("a=1,b=[abc],c=3").must_equal({'a' => '1', 'b' => ['abc'], 'c' => '3'})
+      end
+
+      it "should parse empty array" do
+        formatter.format("a=1,b=[],c=3").must_equal({'a' => '1', 'b' => [], 'c' => '3'})
+      end
+
+      it "should parse a comma separated string 2" do
+        proc { formatter.format("a=1,b,c=3") }.must_raise ArgumentError
+      end
     end
 
-    it "should parse a comma separated string with spaces" do
-      formatter.format("a= 1 , b = 2 ,c =3").must_equal({'a' => '1', 'b' => '2', 'c' => '3'})
-    end
+    describe 'json format' do
+      it 'parses arrays' do
+        formatter.format('["a", "b", 1]').must_equal(['a', 'b', 1])
+      end
 
-    it "should parse a comma separated string with spaces using single quotes" do
-      formatter.format("a= ' 1 ' , b =' 2',c ='3'").must_equal({'a' => ' 1 ', 'b' => ' 2', 'c' => '3'})
-    end
-
-    it "should parse a comma separated string with spaces using double quotes" do
-      formatter.format("a= \" 1 \" , b =\" 2\",c =\"3\"").must_equal({'a' => ' 1 ', 'b' => ' 2', 'c' => '3'})
-    end
-
-    it "should deal with equal sign in value" do
-      formatter.format("a=1,b='2=2',c=3").must_equal({'a' => '1', 'b' => '2=2', 'c' => '3'})
-    end
-
-    it "should parse arrays" do
-      formatter.format("a=1,b=[1,2,3],c=3").must_equal({'a' => '1', 'b' => ['1', '2', '3'], 'c' => '3'})
-    end
-
-    it "should parse arrays with spaces" do
-      formatter.format("a=1,b=[1, 2, 3],c=3").must_equal({'a' => '1', 'b' => ['1', '2', '3'], 'c' => '3'})
-    end
-
-    it "should parse arrays with spaces using by single quotes" do
-      formatter.format("a=1,b=['1 1', ' 2 ', ' 3 3'],c=3").must_equal({'a' => '1', 'b' => ['1 1', ' 2 ', ' 3 3'], 'c' => '3'})
-    end
-
-    it "should parse arrays with spaces using by double quotes" do
-      formatter.format("a=1,b=[\"1 1\", \" 2 \", \" 3 3\"],c=3").must_equal({'a' => '1', 'b' => ['1 1', ' 2 ', ' 3 3'], 'c' => '3'})
-    end
-
-    it "should parse array with one item" do
-      formatter.format("a=1,b=[abc],c=3").must_equal({'a' => '1', 'b' => ['abc'], 'c' => '3'})
-    end
-
-    it "should parse empty array" do
-      formatter.format("a=1,b=[],c=3").must_equal({'a' => '1', 'b' => [], 'c' => '3'})
-    end
-
-    it "should parse a comma separated string 2" do
-      proc { formatter.format("a=1,b,c=3") }.must_raise ArgumentError
+      it 'parses objects' do
+        formatter.format('{"a": ["b", 1]}').must_equal({'a' => ['b', 1]})
+      end
     end
   end
 
