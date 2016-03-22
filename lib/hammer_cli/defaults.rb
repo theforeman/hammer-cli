@@ -30,7 +30,7 @@ module HammerCLI
     end
 
     def add_defaults_to_conf(default_options, provider)
-      create_default_file if defaults_settings.nil?
+      create_default_file if defaults_settings.empty?
       defaults = YAML.load_file(path)
       defaults[:defaults] ||= {}
       default_options.each do |key, value|
