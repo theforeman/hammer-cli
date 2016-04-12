@@ -45,7 +45,7 @@ module HammerCLI
                          :file   => :yellow,
                          :method => :yellow)
 
-    pattern         = "[%5l %d %c] %m\n"
+    pattern         = "#{HammerCLI::Settings.get(:log_pattern) || '[%5l %d %c] %m'}\n"
     COLOR_LAYOUT    = Logging::Layouts::Pattern.new(:pattern => pattern, :color_scheme => 'bright')
     NOCOLOR_LAYOUT  = Logging::Layouts::Pattern.new(:pattern => pattern, :color_scheme => nil)
     DEFAULT_LOG_DIR = '/var/log/hammer'
