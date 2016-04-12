@@ -28,3 +28,6 @@
 
 # Mark translated strings with X characters (for developers)
 #:mark_translated: false
+
+# Log record pattern (logging gem syntax)
+#:log_pattern: '[%5l %d %c] %m'
