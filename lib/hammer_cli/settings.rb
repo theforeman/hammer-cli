@@ -72,6 +72,8 @@ module HammerCLI
       h.merge!(other_h) do |key, old_val, new_val|
         if old_val.is_a? Hash and new_val.is_a? Hash
           deep_merge!(old_val, new_val)
+        elsif old_val.is_a? Array and new_val.is_a? Array
+          old_val += new_val
         else
           new_val
         end
