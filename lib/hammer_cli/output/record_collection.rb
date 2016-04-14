@@ -6,13 +6,17 @@ module HammerCLI::Output
     attr_accessor :total, :subtotal, :page, :per_page, :search, :sort_by, :sort_order
 
     def initialize(options={})
-      @total = options[:total]
-      @subtotal = options[:subtotal]
-      @page = options[:page]
-      @per_page = options[:per_page]
+      @total = options[:total].to_i if options[:total]
+      @subtotal = options[:subtotal].to_i if options[:subtotal]
+      @page = options[:page].to_i if options[:page]
+      @per_page = options[:per_page].to_i if options[:per_page]
       @search = options[:search]
       @sort_by = options[:sort_by]
       @sort_order = options[:sort_order]
+    end
+
+    def pagination_set?
+      !(@total.nil? || @subtotal.nil? || @page.nil? || @per_page.nil?)
     end
 
   end

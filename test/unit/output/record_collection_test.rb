@@ -30,5 +30,31 @@ describe HammerCLI::Output::RecordCollection do
     set.meta.must_equal metadata
     set.meta.total.must_equal 6
   end
+end
 
+describe HammerCLI::Output::MetaData do
+
+  let(:meta) { HammerCLI::Output::MetaData.new(:total => "6", :page => "2", :per_page => "3", :subtotal => "5") }
+
+  it "converts numeric metadata to numbers" do
+    meta.total.must_equal 6
+    meta.page.must_equal 2
+    meta.per_page.must_equal 3
+    meta.subtotal.must_equal 5
+  end
+
+  describe "pagination_set?" do
+    let(:pagination_data) { { :total => 6, :page => 2, :per_page => 3, :subtotal => 5 } }
+
+    it "can tell if pagination data are set" do
+      meta.pagination_set?.must_equal true
+    end
+
+    it "can tell if pagination data are not set" do
+      pagination_data.keys.each do |key|
+        meta = HammerCLI::Output::MetaData.new(pagination_data.clone.reject { |k| k == key })
+        meta.pagination_set?.must_equal false
+      end
+    end
+  end
 end

@@ -57,6 +57,11 @@ module HammerCLI::Output::Adapter
       puts dashes[1] if dashes
       puts output
       puts dashes[1] if dashes
+
+      if collection.meta.pagination_set? && collection.count < collection.meta.subtotal
+        pages = (collection.meta.subtotal.to_f/collection.meta.per_page).ceil
+        puts _("Page #{collection.meta.page} of #{pages} (use --page and --per-page for navigation)")
+      end
     end
 
     protected

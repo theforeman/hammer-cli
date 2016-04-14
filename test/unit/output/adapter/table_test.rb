@@ -15,14 +15,14 @@ describe HammerCLI::Output::Adapter::Table do
       [field_name]
     }
 
-    let(:data) { HammerCLI::Output::RecordCollection.new [{
+    let(:record) { {
       :id => 1,
       :firstname => "John",
       :lastname => "Doe",
       :fullname => "John Doe",
       :long => "SomeVeryLongString"
-    }]}
-
+    } }
+    let(:data) { HammerCLI::Output::RecordCollection.new [record] }
     let(:empty_data) { HammerCLI::Output::RecordCollection.new [] }
 
     it "should print column name " do
@@ -31,6 +31,18 @@ describe HammerCLI::Output::Adapter::Table do
 
     it "should print field value" do
       proc { adapter.print_collection(fields, data) }.must_output(/.*John Doe.*/, "")
+    end
+
+    context "pagination" do
+      it "should print pagination info if data are not complete" do
+        data = HammerCLI::Output::RecordCollection.new([record], { :total => 2, :page => 1, :per_page => 1, :subtotal => 2 })
+        proc { adapter.print_collection(fields, data) }.must_output(/.*Page 1 of 2 (use --page and --per-page for navigation)*/, "")
+      end
+
+      it "should print pagination info if data are complete" do
+        data = HammerCLI::Output::RecordCollection.new([record], { :total => 1, :page => 1, :per_page => 1, :subtotal => 1 })
+        proc { adapter.print_collection(fields, data) }.must_output("--------\nNAME    \n--------\nJohn Doe\n--------\n", "")
+      end
     end
 
     context "handle ids" do
