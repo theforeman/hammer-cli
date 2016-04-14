@@ -49,7 +49,7 @@ describe HammerCLI::Settings do
     settings.dump.must_equal data
   end
 
-  it "merges settings on second load" do
+  it "merges hash settings on second load" do
     settings.load({:a => 1, :b => 2, :d => {:e => 4, :f => 5}})
     settings.load({:b => 'B', :c => 'C', :d => {:e => 'E'}})
     settings.get(:a).must_equal 1
@@ -57,6 +57,16 @@ describe HammerCLI::Settings do
     settings.get(:c).must_equal 'C'
     settings.get(:d, :e).must_equal 'E'
     settings.get(:d, :f).must_equal 5
+  end
+
+  it "merges array settings on second load" do
+    settings.load({:x => [:a, :b]})
+    settings.load({:x => [:c, :d]})
+    settings.get(:x)[0].must_equal :a
+    settings.get(:x)[1].must_equal :b
+    settings.get(:x)[2].must_equal :c
+    settings.get(:x)[3].must_equal :d
+    settings.get(:x).size.must_equal 4
   end
 
   it "clear wipes all settings" do
