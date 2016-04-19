@@ -2,7 +2,7 @@ Development Tips
 ----------------
 
 ### Local gem modifications
-If you want to modify the gems setup for development needs, create a file `Gemfile.local` in the root of your hammer-cli checkout. You can override the setup from `Gemfile` there. This file is git-ignored so you can easily keep your custom tuning.
+If you want to modify the gems setup for development needs, create a file `Gemfile.local.rb` in the root of your hammer-cli checkout. You can override the setup from `Gemfile` there. This file is git-ignored so you can easily keep your custom tuning.
 
 Typical usage is for linking plugins from local checkouts:
 ```ruby
@@ -13,7 +13,7 @@ gem 'hammer_cli_foreman', :path => '../hammer-cli-foreman'
 [Pry](https://github.com/pry/pry) is a runtime developer console for ruby.
 It allows debugging when [Pry Debugger](https://github.com/nixme/pry-debugger) is installed alongside.
 
-For basic usage, add following the lines to your `Gemfile.local`:
+For basic usage, add following the lines to your `Gemfile.local.rb`:
 
 ```ruby
 gem 'pry'
