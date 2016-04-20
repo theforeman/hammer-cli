@@ -1,6 +1,7 @@
 # Ruby + project files
 Gemfile.lock
 Gemfile.local
+Gemfile.local.rb
 pkg
 
 # Tests
