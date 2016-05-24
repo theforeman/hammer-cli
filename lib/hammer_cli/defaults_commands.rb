@@ -87,7 +87,7 @@ module HammerCLI
       option "--param-name", "OPTION_NAME", _("The name of the default option"), :required => true
 
       def execute
-        if context[:defaults].defaults_settings && context[:defaults].defaults_settings[option_param_name.to_sym]
+        if context[:defaults] && context[:defaults].defaults_set?(option_param_name)
           context[:defaults].delete_default_from_conf(option_param_name.to_sym)
           param_deleted(option_param_name)
         else
@@ -115,7 +115,7 @@ module HammerCLI
             if !context[:defaults].providers.key?(namespace)
               provider_prob_message(namespace)
               return HammerCLI::EX_USAGE
-            elsif !context[:defaults].providers[namespace].param_supported?(option_param_name)
+            elsif !context[:defaults].providers[namespace].param_supported?(option_param_name.gsub('-','_'))
               defaults_not_supported_by_provider
               return HammerCLI::EX_CONFIG
             end

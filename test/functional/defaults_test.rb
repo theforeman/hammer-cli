@@ -118,6 +118,18 @@ describe 'commands' do
       assert_cmd(expected_result, result)
     end
 
+    it 'adds default from provider with name with dashed' do
+      options = ['--param-name=organization-id', '--provider=foreman']
+
+      @defaults.expects(:add_defaults_to_conf).with({'organization-id' => nil}, 'foreman').once
+
+      expected_result = success_result("Added organization-id default-option with value that will be generated from the server.\n")
+
+      result = run_cmd(cmd + options, @context)
+      assert_cmd(expected_result, result)
+    end
+
+
     it 'reports unsupported option' do
       options = ['--param-name=unsupported', '--provider=foreman']
       expected_result = success_result("The param name is not supported by provider. See `hammer defaults providers` for supported params.\n")
