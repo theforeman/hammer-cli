@@ -11,6 +11,9 @@ module HammerCLI::Apipie
         self.referenced_resource = options.delete(:referenced_resource).to_s if options[:referenced_resource]
       end
       super
+      # Apipie currently sends descriptions as escaped HTML once this is changed this should be removed.
+      # See #15198 on Redmine.
+      @description = CGI::unescapeHTML(description)
     end
 
   end

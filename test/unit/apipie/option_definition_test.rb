@@ -22,5 +22,14 @@ describe HammerCLI::Apipie::OptionDefinition do
     end
 
   end
+
+  let(:opt2) { HammerCLI::Apipie::OptionDefinition.new("--opt2", "OPT2", "&#39;OPT2&#39;", :referenced_resource => @referenced_resource) }
+
+  describe "Option Description should be converted" do
+    it "should be converted" do
+      opt2.description.must_equal "'OPT2'"
+    end
+
+  end
 end
 
