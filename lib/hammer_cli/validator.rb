@@ -89,6 +89,39 @@ module HammerCLI
     end
 
 
+    class OneOfConstraint < BaseConstraint
+      def initialize(options, to_check)
+        raise 'Set at least one expected option' if to_check.empty?
+        super(options, to_check)
+      end
+
+      def rejected
+        raise NotImplementedError, '#rejected is unsupported for OneOfConstraint'
+      end
+
+      def required_msg
+        case count_present_options
+        when 0
+          _("One of options %s is required")
+        when 1
+          ''
+        else
+          _("Only one of options %s can be set")
+        end
+      end
+
+      def exist?
+        return count_present_options == 1
+      end
+
+      protected
+      def count_present_options
+        @to_check.select do |opt|
+          option_passed?(opt)
+        end.count
+      end
+    end
+
     def initialize(options)
       @options = options
     end
@@ -103,6 +136,10 @@ module HammerCLI
 
     def any(*to_check)
       AnyConstraint.new(@options, to_check.flatten(1))
+    end
+
+    def one_of(*to_check)
+      OneOfConstraint.new(@options, to_check.flatten(1))
     end
 
     def run(&block)
