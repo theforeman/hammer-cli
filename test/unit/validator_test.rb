@@ -114,6 +114,59 @@ describe "constraints" do
 
   end
 
+  describe HammerCLI::Validator::OneOptionConstraint do
+    let(:cls) { HammerCLI::Validator::OneOptionConstraint }
+
+    describe "exist?" do
+      it "should return true when the option exist" do
+        constraint = cls.new(options, :option_a)
+        constraint.exist?.must_equal true
+      end
+
+      it "should return false when the option is missing" do
+        constraint = cls.new(options, :option_unset_d)
+        constraint.exist?.must_equal false
+      end
+    end
+
+    describe "#rejected" do
+      it "returns nil when the option is missing" do
+        constraint = cls.new(options, :option_unset_d)
+        constraint.rejected.must_equal nil
+      end
+
+      it "raises exception when the option is present" do
+        constraint = cls.new(options, :option_a)
+        e = proc{ constraint.rejected }.must_raise HammerCLI::Validator::ValidationError
+        e.message.must_equal "You can't set option --option-a"
+      end
+    end
+
+    describe "#required" do
+      it "returns nil when the option exist" do
+        constraint = cls.new(options, :option_a)
+        constraint.required.must_equal nil
+      end
+
+      it "raises exception when the option is present" do
+        constraint = cls.new(options, :option_unset_d)
+        e = proc{ constraint.required }.must_raise HammerCLI::Validator::ValidationError
+        e.message.must_equal 'Option --option-unset-d is required'
+      end
+    end
+
+    describe "#value" do
+      it "returns value of the option" do
+        constraint = cls.new(options, :option_a)
+        constraint.value.must_equal 1
+      end
+      it "returns nil when the option is missing" do
+        constraint = cls.new(options, :option_unset_d)
+        constraint.value.must_equal nil
+      end
+    end
+  end
+
   describe HammerCLI::Validator::AnyConstraint do
 
     let(:cls) { HammerCLI::Validator::AnyConstraint }
