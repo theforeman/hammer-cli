@@ -71,6 +71,17 @@ module HammerCLI
       end
     end
 
+    class OneOptionConstraint < AllConstraint
+      def initialize(options, to_check)
+        super(options, [to_check])
+        @rejected_msg = _("You can't set option %s")
+        @required_msg = _("Option %s is required")
+      end
+
+      def value
+        get_option(@to_check[0]).get
+      end
+    end
 
     class AnyConstraint < BaseConstraint
 
@@ -116,9 +127,9 @@ module HammerCLI
 
       protected
       def count_present_options
-        @to_check.select do |opt|
+        @to_check.count do |opt|
           option_passed?(opt)
-        end.count
+        end
       end
     end
 
@@ -131,7 +142,7 @@ module HammerCLI
     end
 
     def option(to_check)
-      all(to_check)
+      OneOptionConstraint.new(@options, to_check)
     end
 
     def any(*to_check)
