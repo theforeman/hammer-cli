@@ -11,6 +11,10 @@ module HammerCLI::Output::Adapter
       @formatters = HammerCLI::Output::Formatters::FormatterLibrary.new(filter_formatters(formatters))
     end
 
+    def paginate_by_default?
+      true
+    end
+
     def print_message(msg, msg_params={})
       puts msg.format(msg_params)
     end

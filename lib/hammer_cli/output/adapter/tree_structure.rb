@@ -7,6 +7,10 @@ module HammerCLI::Output::Adapter
       end
     end
 
+    def paginate_by_default?
+      false
+    end
+
     protected
     def field_filter
       filtered = []

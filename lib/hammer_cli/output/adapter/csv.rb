@@ -139,6 +139,10 @@ module HammerCLI::Output::Adapter
       [:flat]
     end
 
+    def paginate_by_default?
+      false
+    end
+
     def row_data(fields, collection)
       result = []
       collection.each do |data|
