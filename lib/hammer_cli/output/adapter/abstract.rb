@@ -9,10 +9,11 @@ module HammerCLI::Output::Adapter
     def initialize(context={}, formatters={})
       @context = context
       @formatters = HammerCLI::Output::Formatters::FormatterLibrary.new(filter_formatters(formatters))
+      @paginate_by_default = true
     end
 
     def paginate_by_default?
-      true
+      !!@paginate_by_default
     end
 
     def print_message(msg, msg_params={})

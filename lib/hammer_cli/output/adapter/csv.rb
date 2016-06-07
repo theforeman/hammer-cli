@@ -135,12 +135,13 @@ module HammerCLI::Output::Adapter
       end
     end
 
-    def tags
-      [:flat]
+    def initialize(context={}, formatters={})
+      super
+      @paginate_by_default = false
     end
 
-    def paginate_by_default?
-      false
+    def tags
+      [:flat]
     end
 
     def row_data(fields, collection)

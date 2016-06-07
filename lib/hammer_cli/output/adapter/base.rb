@@ -8,10 +8,6 @@ module HammerCLI::Output::Adapter
       [:flat, :screen]
     end
 
-    def paginate_by_default?
-      true
-    end
-
     def print_record(fields, record)
       print_collection(fields, [record].flatten(1))
     end
