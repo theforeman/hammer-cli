@@ -1,6 +1,11 @@
 module HammerCLI::Output::Adapter
   class TreeStructure < Abstract
 
+    def initialize(context={}, formatters={})
+      super
+      @paginate_by_default = false
+    end
+
     def prepare_collection(fields, collection)
       collection.map do |element|
         render_fields(fields, element)

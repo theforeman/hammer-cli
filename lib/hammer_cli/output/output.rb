@@ -66,7 +66,7 @@ module HammerCLI::Output
 
     def init_adapter(adapter_name)
       raise NameError unless self.class.adapters.has_key? adapter_name
-      self.class.adapters[adapter_name].new(context, self.class.formatters)
+      @adapter ||= self.class.adapters[adapter_name].new(context, self.class.formatters)
     end
 
   end

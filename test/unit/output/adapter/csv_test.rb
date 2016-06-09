@@ -4,6 +4,10 @@ describe HammerCLI::Output::Adapter::CSValues do
 
   let(:adapter) { HammerCLI::Output::Adapter::CSValues.new }
 
+  it "forbids default pagination" do
+    adapter.paginate_by_default?.must_equal false
+  end
+
   context "print_collection" do
 
     let(:field_name) { Fields::Field.new(:path => [:name], :label => "Name") }

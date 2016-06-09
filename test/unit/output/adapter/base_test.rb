@@ -5,6 +5,10 @@ describe HammerCLI::Output::Adapter::Base do
   let(:context) {{}}
   let(:adapter) { HammerCLI::Output::Adapter::Base.new(context, HammerCLI::Output::Output.formatters) }
 
+  it "allows default pagination" do
+    adapter.paginate_by_default?.must_equal true
+  end
+
   context "print_collection" do
 
     let(:id)            { Fields::Id.new(:path => [:id], :label => "Id") }

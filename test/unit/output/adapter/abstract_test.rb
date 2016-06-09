@@ -20,6 +20,10 @@ describe HammerCLI::Output::Adapter::Abstract do
     end
   end
 
+  it "allows default pagination" do
+    adapter.paginate_by_default?.must_equal true
+  end
+
   it "should filter formatters with incompatible tags" do
 
     HammerCLI::Output::Formatters::FormatterLibrary.expects(:new).with({ :type => [] })

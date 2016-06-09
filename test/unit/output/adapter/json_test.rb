@@ -5,6 +5,10 @@ describe HammerCLI::Output::Adapter::Json do
   let(:context) {{}}
   let(:adapter) { HammerCLI::Output::Adapter::Json.new(context, HammerCLI::Output::Output.formatters) }
 
+  it "forbids default pagination" do
+    adapter.paginate_by_default?.must_equal false
+  end
+
   context "print_message" do
     it "prints the message" do
       params = { :a => 'Test', :b => 83 }

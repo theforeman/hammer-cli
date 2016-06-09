@@ -4,6 +4,10 @@ describe HammerCLI::Output::Adapter::Table do
 
   let(:adapter) { HammerCLI::Output::Adapter::Table.new }
 
+  it "allows default pagination" do
+    adapter.paginate_by_default?.must_equal true
+  end
+
   context "print_collection" do
 
     let(:field_name) { Fields::Field.new(:path => [:fullname], :label => "Name") }

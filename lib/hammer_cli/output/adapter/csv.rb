@@ -135,6 +135,11 @@ module HammerCLI::Output::Adapter
       end
     end
 
+    def initialize(context={}, formatters={})
+      super
+      @paginate_by_default = false
+    end
+
     def tags
       [:flat]
     end
