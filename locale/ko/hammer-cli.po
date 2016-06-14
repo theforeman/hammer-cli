@@ -7,7 +7,7 @@
 # eukim <eukim@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.6.0\n"
+"Project-Id-Version: hammer-cli 0.7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-28 12:45+0000\n"
 "Last-Translator: eukim <eukim@redhat.com>\n"
@@ -212,8 +212,8 @@ msgstr "오류: 필요한 모듈 중 일부가 설정에서 비활성화되어 �
 msgid "Comma-separated list of key=value."
 msgstr "콤마로 구분된 key=value 목록입니다. "
 
-msgid "value must be defined as a comma-separated list of key=value"
-msgstr "콤마로 구분된 key=value 목록으로 값을 지정해야 합니다 "
+msgid "value must be defined as a comma-separated list of key=value or valid JSON"
+msgstr ""
 
 msgid "Comma separated list of values."
 msgstr "콤마로 구분된 값 목록입니다."
@@ -274,11 +274,16 @@ msgstr "ID "
 msgid "Name"
 msgstr "이름 "
 
-msgid "yes"
-msgstr "yes"
+msgid ""
+"\"Page #{collection.meta.page} of #{pages} (use --page and --per-page for navig"
+"ation)\""
+msgstr ""
 
 msgid "no"
 msgstr "no"
+
+msgid "yes"
+msgstr "yes"
 
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
@@ -314,8 +319,23 @@ msgstr "한 번에 모든 옵션 %s을(를) 설정할 수 없습니다 "
 msgid "Options %s are required"
 msgstr "옵션 %s이(가) 필요합니다 "
 
+#, fuzzy
+msgid "You can't set option %s"
+msgstr "옵션 %s을(를) 설정할 수 없습니다 "
+
+#, fuzzy
+msgid "Option %s is required"
+msgstr "옵션 %s이(가) 필요합니다 "
+
 msgid "You can't set any of options %s"
 msgstr "옵션 %s을(를) 설정할 수 없습니다 "
 
 msgid "At least one of options %s is required"
 msgstr "최소 하나의 옵션 %s이(가) 필요합니다 "
+
+#, fuzzy
+msgid "One of options %s is required"
+msgstr "최소 하나의 옵션 %s이(가) 필요합니다 "
+
+msgid "Only one of options %s can be set"
+msgstr ""

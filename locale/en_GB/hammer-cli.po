@@ -6,7 +6,7 @@
 # Andi Chandler <andi@gowling.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.6.0\n"
+"Project-Id-Version: hammer-cli 0.7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-08-30 02:01+0000\n"
 "Last-Translator: Andi Chandler <andi@gowling.com>\n"
@@ -215,8 +215,8 @@ msgstr "Error: Some of the required modules are disabled in configuration: %s "
 msgid "Comma-separated list of key=value."
 msgstr "Comma-separated list of key=value."
 
-msgid "value must be defined as a comma-separated list of key=value"
-msgstr "value must be defined as a comma-separated list of key=value"
+msgid "value must be defined as a comma-separated list of key=value or valid JSON"
+msgstr ""
 
 msgid "Comma separated list of values."
 msgstr "Comma separated list of values."
@@ -277,11 +277,16 @@ msgstr "Id"
 msgid "Name"
 msgstr "Name"
 
-msgid "yes"
-msgstr "yes"
+msgid ""
+"\"Page #{collection.meta.page} of #{pages} (use --page and --per-page for navig"
+"ation)\""
+msgstr ""
 
 msgid "no"
 msgstr "no"
+
+msgid "yes"
+msgstr "yes"
 
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
@@ -321,8 +326,23 @@ msgstr "You can't set all options %s at one time"
 msgid "Options %s are required"
 msgstr "Options %s are required"
 
+#, fuzzy
+msgid "You can't set option %s"
+msgstr "You can't set any of options %s"
+
+#, fuzzy
+msgid "Option %s is required"
+msgstr "Options %s are required"
+
 msgid "You can't set any of options %s"
 msgstr "You can't set any of options %s"
 
 msgid "At least one of options %s is required"
 msgstr "At least one of options %s is required"
+
+#, fuzzy
+msgid "One of options %s is required"
+msgstr "At least one of options %s is required"
+
+msgid "Only one of options %s can be set"
+msgstr ""

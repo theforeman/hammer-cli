@@ -9,7 +9,7 @@
 # jcarbone <jcarbone@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.6.0\n"
+"Project-Id-Version: hammer-cli 0.7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-28 08:20+0000\n"
 "Last-Translator: jcarbone <jcarbone@redhat.com>\n"
@@ -218,10 +218,8 @@ msgstr "Erreur : certains modules requis sont désactivés dans la configuratio
 msgid "Comma-separated list of key=value."
 msgstr "Liste de clef=valeur séparées par des virgules."
 
-msgid "value must be defined as a comma-separated list of key=value"
+msgid "value must be defined as a comma-separated list of key=value or valid JSON"
 msgstr ""
-"la valeur doit être définie comme liste de clef=valeur séparées par des virgul"
-"es"
 
 msgid "Comma separated list of values."
 msgstr "Liste de valeurs séparées par des virgules."
@@ -282,11 +280,16 @@ msgstr "Id"
 msgid "Name"
 msgstr "Nom"
 
-msgid "yes"
-msgstr "oui"
+msgid ""
+"\"Page #{collection.meta.page} of #{pages} (use --page and --per-page for navig"
+"ation)\""
+msgstr ""
 
 msgid "no"
 msgstr "non"
+
+msgid "yes"
+msgstr "oui"
 
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
@@ -326,8 +329,23 @@ msgstr "Vous ne pouvez pas définir toutes les options %s en même temps"
 msgid "Options %s are required"
 msgstr "Options %s requises"
 
+#, fuzzy
+msgid "You can't set option %s"
+msgstr "Vous ne pouvez définir les options de %s"
+
+#, fuzzy
+msgid "Option %s is required"
+msgstr "Options %s requises"
+
 msgid "You can't set any of options %s"
 msgstr "Vous ne pouvez définir les options de %s"
 
 msgid "At least one of options %s is required"
 msgstr "Au moins une options de %s est requise"
+
+#, fuzzy
+msgid "One of options %s is required"
+msgstr "Au moins une options de %s est requise"
+
+msgid "Only one of options %s can be set"
+msgstr ""

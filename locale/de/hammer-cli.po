@@ -12,7 +12,7 @@
 # hpeters <hpeters@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.6.0\n"
+"Project-Id-Version: hammer-cli 0.7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-27 11:50+0000\n"
 "Last-Translator: hpeters <hpeters@redhat.com>\n"
@@ -223,8 +223,8 @@ msgstr ""
 msgid "Comma-separated list of key=value."
 msgstr "Kommagetrennte Liste mit Schlüssel-Wert-Paaren."
 
-msgid "value must be defined as a comma-separated list of key=value"
-msgstr "Wert muss als kommagetrennte Liste mit Schlüssel-Wert-Paaren definiert sein"
+msgid "value must be defined as a comma-separated list of key=value or valid JSON"
+msgstr ""
 
 msgid "Comma separated list of values."
 msgstr "Kommagetrennte Liste von Werten."
@@ -285,11 +285,16 @@ msgstr "ID"
 msgid "Name"
 msgstr "Name"
 
-msgid "yes"
-msgstr "ja"
+msgid ""
+"\"Page #{collection.meta.page} of #{pages} (use --page and --per-page for navig"
+"ation)\""
+msgstr ""
 
 msgid "no"
 msgstr "nein"
+
+msgid "yes"
+msgstr "ja"
 
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
@@ -329,8 +334,23 @@ msgstr "Nicht alle Optionen %s sind gleichzeitig verwendbar"
 msgid "Options %s are required"
 msgstr "Optionen %s sind erforderlich"
 
+#, fuzzy
+msgid "You can't set option %s"
+msgstr "Sie können keine der Optionen %s festlegen"
+
+#, fuzzy
+msgid "Option %s is required"
+msgstr "Optionen %s sind erforderlich"
+
 msgid "You can't set any of options %s"
 msgstr "Sie können keine der Optionen %s festlegen"
 
 msgid "At least one of options %s is required"
 msgstr "Mindestens eine der Optionen %s ist erforderlich"
+
+#, fuzzy
+msgid "One of options %s is required"
+msgstr "Mindestens eine der Optionen %s ist erforderlich"
+
+msgid "Only one of options %s can be set"
+msgstr ""

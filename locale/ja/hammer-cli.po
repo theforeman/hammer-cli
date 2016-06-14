@@ -6,7 +6,7 @@
 # asasaki <asasaki@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.6.0\n"
+"Project-Id-Version: hammer-cli 0.7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-27 06:44+0000\n"
 "Last-Translator: asasaki <asasaki@redhat.com>\n"
@@ -211,8 +211,8 @@ msgstr "エラー: 必要なモジュールの一部は設定で無効にされ�
 msgid "Comma-separated list of key=value."
 msgstr "key=value のコンマ区切りの一覧です。"
 
-msgid "value must be defined as a comma-separated list of key=value"
-msgstr "値は key=value のコンマ区切りの一覧として定義する必要があります。"
+msgid "value must be defined as a comma-separated list of key=value or valid JSON"
+msgstr ""
 
 msgid "Comma separated list of values."
 msgstr "コンマ区切りの値の一覧です。"
@@ -273,11 +273,16 @@ msgstr "ID"
 msgid "Name"
 msgstr "名前"
 
-msgid "yes"
-msgstr "yes"
+msgid ""
+"\"Page #{collection.meta.page} of #{pages} (use --page and --per-page for navig"
+"ation)\""
+msgstr ""
 
 msgid "no"
 msgstr "no"
+
+msgid "yes"
+msgstr "yes"
 
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
@@ -313,8 +318,23 @@ msgstr "1 度にすべてのオプション %s を設定することはできま
 msgid "Options %s are required"
 msgstr "オプション %s は必須です"
 
+#, fuzzy
+msgid "You can't set option %s"
+msgstr "オプション %s のいずれも設定できません"
+
+#, fuzzy
+msgid "Option %s is required"
+msgstr "オプション %s は必須です"
+
 msgid "You can't set any of options %s"
 msgstr "オプション %s のいずれも設定できません"
 
 msgid "At least one of options %s is required"
 msgstr "オプション %s が少なくとも 1 つ以上必要です"
+
+#, fuzzy
+msgid "One of options %s is required"
+msgstr "オプション %s が少なくとも 1 つ以上必要です"
+
+msgid "Only one of options %s can be set"
+msgstr ""

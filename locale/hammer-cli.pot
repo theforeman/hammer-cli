@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.4.0\n"
+"Project-Id-Version: hammer-cli 0.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-08 08:56+0000\n"
-"PO-Revision-Date: 2015-12-08 08:56+0000\n"
+"POT-Creation-Date: 2016-06-14 23:26+0200\n"
+"PO-Revision-Date: 2016-06-14 23:26+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -54,11 +54,11 @@ msgstr ""
 msgid "no value provided"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults.rb:72
+#: ../lib/hammer_cli/defaults.rb:77
 msgid "Couldn't create %s please create the path before defaults are enabled."
 msgstr ""
 
-#: ../lib/hammer_cli/defaults.rb:82
+#: ../lib/hammer_cli/defaults.rb:101
 msgid "Defaults management"
 msgstr ""
 
@@ -266,59 +266,59 @@ msgstr ""
 msgid "Error: Some of the required modules are disabled in configuration: %s "
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:26
+#: ../lib/hammer_cli/options/normalizers.rb:29
 msgid "Comma-separated list of key=value."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:39
-msgid "value must be defined as a comma-separated list of key=value"
+#: ../lib/hammer_cli/options/normalizers.rb:43
+msgid "value must be defined as a comma-separated list of key=value or valid JSON"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:73
+#: ../lib/hammer_cli/options/normalizers.rb:85
 msgid "Comma separated list of values."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:88
+#: ../lib/hammer_cli/options/normalizers.rb:100
 msgid "numeric value is required"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:102
+#: ../lib/hammer_cli/options/normalizers.rb:114
 msgid "One of true/false, yes/no, 1/0."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:112
+#: ../lib/hammer_cli/options/normalizers.rb:124
 msgid "value must be one of true/false, yes/no, 1/0"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:151
+#: ../lib/hammer_cli/options/normalizers.rb:163
 msgid "Unable to parse JSON input"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:165
+#: ../lib/hammer_cli/options/normalizers.rb:177
 msgid "Possible value(s): %s"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:173
+#: ../lib/hammer_cli/options/normalizers.rb:185
 msgid "value must be %s"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:175
+#: ../lib/hammer_cli/options/normalizers.rb:187
 msgid "value must be one of %s"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:196
+#: ../lib/hammer_cli/options/normalizers.rb:208
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:203
+#: ../lib/hammer_cli/options/normalizers.rb:215
 msgid "'%s' is not a valid date"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:214
+#: ../lib/hammer_cli/options/normalizers.rb:226
 msgid "Any combination (comma separated list) of '%s'"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:234
+#: ../lib/hammer_cli/options/normalizers.rb:246
 msgid "value must be a combination of '%s'"
 msgstr ""
 
@@ -338,24 +338,30 @@ msgstr ""
 msgid ", or "
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:174
+#: ../lib/hammer_cli/output/adapter/csv.rb:179
 msgid "Message"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:178
+#: ../lib/hammer_cli/output/adapter/csv.rb:183
 msgid "Id"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:183
+#: ../lib/hammer_cli/output/adapter/csv.rb:188
 msgid "Name"
 msgstr ""
 
-#: ../lib/hammer_cli/output/formatters.rb:154
-msgid "yes"
+#: ../lib/hammer_cli/output/adapter/table.rb:63
+msgid ""
+"\"Page #{collection.meta.page} of #{pages} (use --page and --per-page for navig"
+"ation)\""
 msgstr ""
 
-#: ../lib/hammer_cli/output/formatters.rb:154
+#: ../lib/hammer_cli/output/formatters.rb:160
 msgid "no"
+msgstr ""
+
+#: ../lib/hammer_cli/output/formatters.rb:160
+msgid "yes"
 msgstr ""
 
 #: ../lib/hammer_cli/settings.rb:27
@@ -402,10 +408,26 @@ msgstr ""
 msgid "Options %s are required"
 msgstr ""
 
-#: ../lib/hammer_cli/validator.rb:79
+#: ../lib/hammer_cli/validator.rb:77
+msgid "You can't set option %s"
+msgstr ""
+
+#: ../lib/hammer_cli/validator.rb:78
+msgid "Option %s is required"
+msgstr ""
+
+#: ../lib/hammer_cli/validator.rb:90
 msgid "You can't set any of options %s"
 msgstr ""
 
-#: ../lib/hammer_cli/validator.rb:80
+#: ../lib/hammer_cli/validator.rb:91
 msgid "At least one of options %s is required"
+msgstr ""
+
+#: ../lib/hammer_cli/validator.rb:116
+msgid "One of options %s is required"
+msgstr ""
+
+#: ../lib/hammer_cli/validator.rb:120
+msgid "Only one of options %s can be set"
 msgstr ""

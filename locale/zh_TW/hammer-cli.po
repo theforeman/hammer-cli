@@ -7,7 +7,7 @@
 # tchuang <tchuang@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.6.0\n"
+"Project-Id-Version: hammer-cli 0.7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-28 05:21+0000\n"
 "Last-Translator: tchuang <tchuang@redhat.com>\n"
@@ -212,8 +212,8 @@ msgstr "錯誤：某些必要的模組在配置中已停用：%s "
 msgid "Comma-separated list of key=value."
 msgstr "逗號區隔開的一列 key=value。"
 
-msgid "value must be defined as a comma-separated list of key=value"
-msgstr "值必須以一列逗號區隔開的 key=value 來定義"
+msgid "value must be defined as a comma-separated list of key=value or valid JSON"
+msgstr ""
 
 msgid "Comma separated list of values."
 msgstr "逗號區隔開的值。"
@@ -274,11 +274,16 @@ msgstr "ID"
 msgid "Name"
 msgstr "名稱"
 
-msgid "yes"
-msgstr "是"
+msgid ""
+"\"Page #{collection.meta.page} of #{pages} (use --page and --per-page for navig"
+"ation)\""
+msgstr ""
 
 msgid "no"
 msgstr "否"
+
+msgid "yes"
+msgstr "是"
 
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
@@ -314,8 +319,23 @@ msgstr "您不可一次將所有選項設為 %s"
 msgid "Options %s are required"
 msgstr "%s 選項乃必要的"
 
+#, fuzzy
+msgid "You can't set option %s"
+msgstr "您不可將任何選項設為 %s"
+
+#, fuzzy
+msgid "Option %s is required"
+msgstr "%s 選項乃必要的"
+
 msgid "You can't set any of options %s"
 msgstr "您不可將任何選項設為 %s"
 
 msgid "At least one of options %s is required"
 msgstr "需要至少一項 %s 選項"
+
+#, fuzzy
+msgid "One of options %s is required"
+msgstr "需要至少一項 %s 選項"
+
+msgid "Only one of options %s can be set"
+msgstr ""

@@ -3,7 +3,7 @@
 # Leah Liu <lliu@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.6.0\n"
+"Project-Id-Version: hammer-cli 0.7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-27 01:22+0000\n"
 "Last-Translator: Leah Liu <lliu@redhat.com>\n"
@@ -209,8 +209,8 @@ msgstr "错误：在配置中禁用了一些要求的模块：%s"
 msgid "Comma-separated list of key=value."
 msgstr "用逗号分开的 key=value 列表。"
 
-msgid "value must be defined as a comma-separated list of key=value"
-msgstr "必须使用以逗号分开的 key=value 列表定义数值"
+msgid "value must be defined as a comma-separated list of key=value or valid JSON"
+msgstr ""
 
 msgid "Comma separated list of values."
 msgstr "逗号分开的数值列表。"
@@ -275,13 +275,18 @@ msgstr "Id"
 msgid "Name"
 msgstr "名称"
 
-# translation auto-copied from project NetworkManager, version 0.9.9.0, document NetworkManager
-msgid "yes"
-msgstr "是"
+msgid ""
+"\"Page #{collection.meta.page} of #{pages} (use --page and --per-page for navig"
+"ation)\""
+msgstr ""
 
 # translation auto-copied from project firstboot, version 19.6, document firstboot, author Leah Liu
 msgid "no"
 msgstr "否"
+
+# translation auto-copied from project NetworkManager, version 0.9.9.0, document NetworkManager
+msgid "yes"
+msgstr "是"
 
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
@@ -317,8 +322,23 @@ msgstr "无法一次设置所有选项 %s"
 msgid "Options %s are required"
 msgstr "需要选项 %s"
 
+#, fuzzy
+msgid "You can't set option %s"
+msgstr "无法设置任意选项 %s"
+
+#, fuzzy
+msgid "Option %s is required"
+msgstr "需要选项 %s"
+
 msgid "You can't set any of options %s"
 msgstr "无法设置任意选项 %s"
 
 msgid "At least one of options %s is required"
 msgstr "至少需要选项 %s 中的一个"
+
+#, fuzzy
+msgid "One of options %s is required"
+msgstr "至少需要选项 %s 中的一个"
+
+msgid "Only one of options %s can be set"
+msgstr ""

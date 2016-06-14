@@ -9,7 +9,7 @@
 # gcintra <gcintra@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.6.0\n"
+"Project-Id-Version: hammer-cli 0.7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-27 10:34+0000\n"
 "Last-Translator: gcintra <gcintra@redhat.com>\n"
@@ -218,8 +218,8 @@ msgstr "Erro: Alguns dos modelos requeridos estão desabilitados na configuraç�
 msgid "Comma-separated list of key=value."
 msgstr "Lista da chave=valor separada por vírgulas."
 
-msgid "value must be defined as a comma-separated list of key=value"
-msgstr "valor deve ser definido como uma lista separada por vírgulas de chave=valor"
+msgid "value must be defined as a comma-separated list of key=value or valid JSON"
+msgstr ""
 
 msgid "Comma separated list of values."
 msgstr "Lista de valores separada por vírgulas."
@@ -280,11 +280,16 @@ msgstr "Id"
 msgid "Name"
 msgstr "Nome"
 
-msgid "yes"
-msgstr "sim"
+msgid ""
+"\"Page #{collection.meta.page} of #{pages} (use --page and --per-page for navig"
+"ation)\""
+msgstr ""
 
 msgid "no"
 msgstr "não"
+
+msgid "yes"
+msgstr "sim"
 
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
@@ -324,8 +329,23 @@ msgstr "Você não pode definir todas as opções %s de uma só vez"
 msgid "Options %s are required"
 msgstr "Opções %s são necessárias"
 
+#, fuzzy
+msgid "You can't set option %s"
+msgstr "Você não pode definir nenhuma das opções %s"
+
+#, fuzzy
+msgid "Option %s is required"
+msgstr "Opções %s são necessárias"
+
 msgid "You can't set any of options %s"
 msgstr "Você não pode definir nenhuma das opções %s"
 
 msgid "At least one of options %s is required"
 msgstr "Ao menos uma das opções %s é necessária"
+
+#, fuzzy
+msgid "One of options %s is required"
+msgstr "Ao menos uma das opções %s é necessária"
+
+msgid "Only one of options %s can be set"
+msgstr ""

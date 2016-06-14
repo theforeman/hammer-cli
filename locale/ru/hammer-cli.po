@@ -8,7 +8,7 @@
 # ypoyarko <ypoyarko@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.6.0\n"
+"Project-Id-Version: hammer-cli 0.7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-28 04:41+0000\n"
 "Last-Translator: ypoyarko <ypoyarko@redhat.com>\n"
@@ -218,8 +218,8 @@ msgstr "Ошибка. Некоторые модули были отключен�
 msgid "Comma-separated list of key=value."
 msgstr "Список пар «ключ=значение» через запятую."
 
-msgid "value must be defined as a comma-separated list of key=value"
-msgstr "значение должно содержать пары «ключ=значение» через запятую"
+msgid "value must be defined as a comma-separated list of key=value or valid JSON"
+msgstr ""
 
 msgid "Comma separated list of values."
 msgstr "Список значений через запятую"
@@ -280,11 +280,16 @@ msgstr "ID"
 msgid "Name"
 msgstr "Имя"
 
-msgid "yes"
-msgstr "да"
+msgid ""
+"\"Page #{collection.meta.page} of #{pages} (use --page and --per-page for navig"
+"ation)\""
+msgstr ""
 
 msgid "no"
 msgstr "нет"
+
+msgid "yes"
+msgstr "да"
 
 msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
@@ -324,8 +329,23 @@ msgstr "Вы не можете одновременно настроить вс�
 msgid "Options %s are required"
 msgstr "Параметры %s являются обязательными"
 
+#, fuzzy
+msgid "You can't set option %s"
+msgstr "Вы не можете настроить параметры %s"
+
+#, fuzzy
+msgid "Option %s is required"
+msgstr "Параметры %s являются обязательными"
+
 msgid "You can't set any of options %s"
 msgstr "Вы не можете настроить параметры %s"
 
 msgid "At least one of options %s is required"
 msgstr "Необходимо определить параметр %s"
+
+#, fuzzy
+msgid "One of options %s is required"
+msgstr "Необходимо определить параметр %s"
+
+msgid "Only one of options %s can be set"
+msgstr ""
