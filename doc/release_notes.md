@@ -1,6 +1,21 @@
 Release notes
 =============
 
+### 0.7.0 (2016-06-14)
+* Let print adapters decide whether to paginate ([#15257](http://projects.theforeman.org/issues/15257))
+* Add support for testing values in option  validation ([#13832](http://projects.theforeman.org/issues/13832))
+* Add one_of constraint for option validator ([#13832](http://projects.theforeman.org/issues/13832))
+* Descriptions from Apipie will not contain unescaped HTML ([#14598](http://projects.theforeman.org/issues/14598))
+* Allow param names to contain dashes ([#8015](http://projects.theforeman.org/issues/8015))
+* Add Catalan language ([#14947](http://projects.theforeman.org/issues/14947))
+* Add support for Gemfile.local.rb ([#14466](http://projects.theforeman.org/issues/14466))
+* Introduced log format setting ([#14591](http://projects.theforeman.org/issues/14591))
+* Add pagination info when incomplete data are received (http://projects.theforeman.org/issues/14530)
+* Array is merged across YAML settings ([#14590](http://projects.theforeman.org/issues/14590))
+* Now hammer recognizes when to create defaults file correctly ([#14311](http://projects.theforeman.org/issues/14311))
+* Enable json for key=value parameters ([#12869](http://projects.theforeman.org/issues/12869))
+* Fix coded options for apipie 0.3.6 ([#13960](http://projects.theforeman.org/issues/13960))
+
 ### 0.6.0 (2016-02-25)
 * Enable vertical formatting for lists ([#13874](http://projects.theforeman.org/issues/13874))
 * Support for command testing moved to core ([#4118](http://projects.theforeman.org/issues/4118))
