@@ -136,7 +136,7 @@ module HammerCLI
     end
 
     def provider_prob_message(namespace)
-      print_message(_("Provider #{namespace} was not found. See `hammer defaults providers` for available providers."))
+      print_message(_("Provider %{name} was not found. See `hammer defaults providers` for available providers.") % {:name => namespace})
     end
 
     def defaults_not_supported_by_provider
