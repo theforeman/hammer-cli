@@ -14,10 +14,6 @@ describe HammerCLI::Apipie::OptionBuilder do
     })
   end
 
-  before :each do
-    HammerCLI::I18n.clear
-  end
-
   let(:resource) {api.resource(:documented)}
   let(:action) {resource.action(:index)}
   let(:builder) { HammerCLI::Apipie::OptionBuilder.new(resource, action) }

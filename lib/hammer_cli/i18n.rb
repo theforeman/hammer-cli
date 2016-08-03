@@ -92,13 +92,16 @@ module HammerCLI
 
     def self.domains
       @domains ||= []
-      @domains
     end
 
     def self.add_domain(domain)
       if domain.available?
         domains << domain
-        translation_repository.add_repo(build_repository(domain))
+        if base_repo_type == :merge
+          translation_repository.add_repo(build_repository(domain))
+        else
+          translation_repository.chain << build_repository(domain)
+        end
       end
     end
 
@@ -106,18 +109,31 @@ module HammerCLI
       FastGettext::TranslationRepository.build(domain.domain_name, :path => domain.locale_dir, :type => domain.type, :report_warning => false)
     end
 
-    def self.clear
-      translation_repository.clear
-      domains.clear
-    end
-
     def self.translation_repository
-      FastGettext.translation_repositories[HammerCLI::I18n::TEXT_DOMAIN] ||= FastGettext::TranslationRepository.build(HammerCLI::I18n::TEXT_DOMAIN, :type => :merge)
+      FastGettext.translation_repositories[HammerCLI::I18n::TEXT_DOMAIN]
     end
 
-    Encoding.default_external='UTF-8' if defined? Encoding
-    FastGettext.locale = locale
-    FastGettext.text_domain = HammerCLI::I18n::TEXT_DOMAIN
+    def self.base_repo_type
+      (fast_gettext_version >= '1.2.0') ? :merge : :chain
+    end
+
+    def self.fast_gettext_version
+      FastGettext::VERSION
+    end
+
+    def self.init(default_domains = [])
+      Encoding.default_external='UTF-8' if defined? Encoding
+      FastGettext.locale = locale
+      FastGettext.text_domain = HammerCLI::I18n::TEXT_DOMAIN
+      FastGettext.translation_repositories[HammerCLI::I18n::TEXT_DOMAIN] = FastGettext::TranslationRepository.build(HammerCLI::I18n::TEXT_DOMAIN, :type => base_repo_type, :chain => [])
+
+      @domains = []
+      default_domains.each do |domain|
+        add_domain(domain)
+      end
+    end
+
+    init
   end
 end
 
