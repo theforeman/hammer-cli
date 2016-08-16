@@ -34,10 +34,14 @@ module HammerCLI
 
     def self.load_from_file(file_path)
       if File.file? file_path
-        config = YAML::load(File.open(file_path))
-        if config
-          load(config)
-          path_history << file_path
+        begin
+          config = YAML::load(File.open(file_path))
+          if config
+            load(config)
+            path_history << file_path
+          end
+        rescue Exception
+          puts _("Couldn't load configuration file %s, please check the YAML file for syntax.") % file_path
         end
       end
     end
