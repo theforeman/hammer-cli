@@ -40,8 +40,8 @@ module HammerCLI
             load(config)
             path_history << file_path
           end
-        rescue Exception
-          puts _("Couldn't load configuration file %s, please check the YAML file for syntax.") % file_path
+        rescue Exception => e
+          warn _("Warning: Couldn't load configuration file %{path}: %{message}") % { path: file_path, message: e.message }
         end
       end
     end
