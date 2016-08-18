@@ -62,11 +62,21 @@ module HammerCLI
         super(switch)
       end
 
+      def deprecation_message(switch)
+        if deprecated_switches.class <= String && switches.include?(switch)
+          deprecated_switches
+        elsif deprecated_switches.class <= Hash && deprecated_switches.keys.include?(switch)
+          deprecated_switches[switch]
+        end
+      end
+
       def description
-        if self.deprecated_switches.nil?
-          super
+        # Print deprecation note only when all switches are marked as deprecated
+        if deprecated_switches.class <= String
+          msg = _('Deprecated: %{deprecated_msg}') % { deprecated_msg: deprecated_switches }
+          "#{super} (%s)" % msg
         else
-          "#{super} (%s)" % _("deprecated")
+          super
         end
       end
 

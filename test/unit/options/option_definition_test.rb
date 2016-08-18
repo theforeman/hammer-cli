@@ -71,8 +71,8 @@ describe HammerCLI::Options::OptionDefinition do
     end
 
     it 'shows (depracated) in option description' do
-      opt = HammerCLI::Options::OptionDefinition.new(["--test-option"], "TEST_OPTION", "Test option", :deprecated => "--deprecated-switch")
-      opt.description.must_equal "Test option (deprecated)"
+      opt = HammerCLI::Options::OptionDefinition.new(["--test-option"], "TEST_OPTION", "Test option", :deprecated => "Use --better-switch instead")
+      opt.description.must_equal "Test option (Deprecated: Use --better-switch instead)"
     end
   end
 
