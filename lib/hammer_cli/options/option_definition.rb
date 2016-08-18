@@ -62,6 +62,14 @@ module HammerCLI
         super(switch)
       end
 
+      def description
+        if self.deprecated_switches.nil?
+          super
+        else
+          "#{super} (%s)" % _("deprecated")
+        end
+      end
+
       def format_description
         if value_formatter.nil?
           ""

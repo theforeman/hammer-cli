@@ -69,6 +69,11 @@ describe HammerCLI::Options::OptionDefinition do
       err.must_match /Warning: Option --deprecated is deprecated. Use --test-option instead/
       context[:test_option].must_equal "VALUE"
     end
+
+    it 'shows (depracated) in option description' do
+      opt = HammerCLI::Options::OptionDefinition.new(["--test-option"], "TEST_OPTION", "Test option", :deprecated => "--deprecated-switch")
+      opt.description.must_equal "Test option (deprecated)"
+    end
   end
 
   describe "context" do
