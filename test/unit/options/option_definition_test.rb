@@ -27,6 +27,9 @@ describe HammerCLI::Options::OptionDefinition do
       :deprecated => "It is going to be removed"
   end
 
+  def opt_with_deprecation(deprecation)
+    HammerCLI::Options::OptionDefinition.new(["--test-option", "--better-switch"], "TEST_OPTION", "Test option", :deprecated => deprecation)
+  end
 
   describe "formatters" do
 
@@ -70,9 +73,19 @@ describe HammerCLI::Options::OptionDefinition do
       context[:test_option].must_equal "VALUE"
     end
 
-    it 'shows (depracated) in option description' do
-      opt = HammerCLI::Options::OptionDefinition.new(["--test-option"], "TEST_OPTION", "Test option", :deprecated => "Use --better-switch instead")
+    it 'shows depracated message in help' do
+      opt = opt_with_deprecation("Use --better-switch instead")
       opt.description.must_equal "Test option (Deprecated: Use --better-switch instead)"
+    end
+
+    it 'shows flag specific depracated message in help' do
+      opt = opt_with_deprecation('--test-option' => "Use --better-switch instead")
+      opt.description.must_equal "Test option (--test-option is deprecated: Use --better-switch instead)"
+    end
+
+    it 'shows multiple flag specific depracated messages in help' do
+      opt = opt_with_deprecation('--test-option' => "Use --better-switch instead", '--test-option2' => 'This is deprecated too')
+      opt.description.must_equal "Test option (--test-option is deprecated: Use --better-switch instead, --test-option2 is deprecated: This is deprecated too)"
     end
   end
 

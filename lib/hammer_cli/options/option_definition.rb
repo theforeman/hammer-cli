@@ -71,10 +71,13 @@ module HammerCLI
       end
 
       def description
-        # Print deprecation note only when all switches are marked as deprecated
         if deprecated_switches.class <= String
-          msg = _('Deprecated: %{deprecated_msg}') % { deprecated_msg: deprecated_switches }
-          "#{super} (%s)" % msg
+          format_deprecation_msg(super, _('Deprecated: %{deprecated_msg}') % { deprecated_msg: deprecated_switches })
+        elsif deprecated_switches.class <= Hash
+          full_msg = deprecated_switches.map do |flag, msg|
+            _('%{flag} is deprecated: %{deprecated_msg}') % { flag: flag, deprecated_msg: msg }
+          end.join(', ')
+          format_deprecation_msg(super, full_msg)
         else
           super
         end
@@ -121,6 +124,10 @@ module HammerCLI
       end
 
       private
+
+      def format_deprecation_msg(option_desc, deprecation_msg)
+        "#{option_desc} (#{deprecation_msg})"
+      end
 
       def infer_attribute_name
         HammerCLI.option_accessor_name(super)
