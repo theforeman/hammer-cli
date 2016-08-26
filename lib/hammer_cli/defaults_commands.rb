@@ -148,7 +148,7 @@ module HammerCLI
     end
 
     def bad_input
-      print_message(_("You must specify value or a provider name, cant specify both."))
+      print_message(_("You must specify value or a provider name, can't specify both."))
     end
 
     def variable_not_found
