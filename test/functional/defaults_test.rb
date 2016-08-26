@@ -151,7 +151,7 @@ describe 'commands' do
     it 'reports missing parameter value or source' do
       options = ['--param-name=organization_id']
 
-      expected_result = CommandExpectation.new("You must specify value or a provider name, cant specify both.\n", "", HammerCLI::EX_USAGE)
+      expected_result = CommandExpectation.new("You must specify value or a provider name, can't specify both.\n", "", HammerCLI::EX_USAGE)
 
       result = run_cmd(cmd + options, @context)
       assert_cmd(expected_result, result)
