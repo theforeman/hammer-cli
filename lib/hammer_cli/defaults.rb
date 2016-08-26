@@ -74,7 +74,7 @@ module HammerCLI
         new_file.write ":defaults:"
         new_file.close
       else
-        raise DefaultsPathError.new(_("Couldn't create %s please create the path before defaults are enabled.") % path)
+        raise DefaultsPathError.new(_("Couldn't create %s. Please create the directory before setting defaults.") % path)
       end
     end
 
