@@ -3,7 +3,7 @@
 # Leah Liu <lliu@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.7.0\n"
+"Project-Id-Version: hammer-cli 0.8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-27 01:22+0000\n"
 "Last-Translator: Leah Liu <lliu@redhat.com>\n"
@@ -42,7 +42,7 @@ msgstr "没有子命令 '%<name>s'"
 msgid "no value provided"
 msgstr "未提供数值"
 
-msgid "Couldn't create %s please create the path before defaults are enabled."
+msgid "Couldn't create %s. Please create the directory before setting defaults."
 msgstr ""
 
 msgid "Defaults management"
@@ -98,8 +98,8 @@ msgid "Added %{key_val} default-option with value %{val_val}."
 msgstr ""
 
 msgid ""
-"\"Provider #{namespace} was not found. See `hammer defaults providers` for avai"
-"lable providers.\""
+"Provider %{name} was not found. See `hammer defaults providers` for available "
+"providers."
 msgstr ""
 
 msgid ""
@@ -110,7 +110,7 @@ msgstr ""
 msgid "%{param} was deleted successfully."
 msgstr ""
 
-msgid "You must specify value or a provider name, cant specify both."
+msgid "You must specify value or a provider name, can't specify both."
 msgstr ""
 
 msgid "Couldn't find the requested param in %s."
@@ -253,6 +253,12 @@ msgstr "数值必须为 '%s' 之一"
 msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr ""
 
+msgid "Deprecated: %{deprecated_msg}"
+msgstr ""
+
+msgid "%{flag} is deprecated: %{deprecated_msg}"
+msgstr ""
+
 msgid "Can be specified multiple times. "
 msgstr "无法多次指定。"
 
@@ -275,9 +281,7 @@ msgstr "Id"
 msgid "Name"
 msgstr "名称"
 
-msgid ""
-"\"Page #{collection.meta.page} of #{pages} (use --page and --per-page for navig"
-"ation)\""
+msgid "Page %{page} of %{total} (use --page and --per-page for navigation)"
 msgstr ""
 
 # translation auto-copied from project firstboot, version 19.6, document firstboot, author Leah Liu
@@ -292,6 +296,9 @@ msgid ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
 "ons to cli.modules.d"
 msgstr "警告：位置 hammer.modules.d 已启用，请将您的模块配置移至 cli.modules.d。"
+
+msgid "Warning: Couldn't load configuration file %{path}: %{message}"
+msgstr ""
 
 msgid "Print help for commands"
 msgstr "输出命令帮助信息"

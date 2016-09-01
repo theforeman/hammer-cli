@@ -8,7 +8,7 @@
 # ypoyarko <ypoyarko@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.7.0\n"
+"Project-Id-Version: hammer-cli 0.8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-28 04:41+0000\n"
 "Last-Translator: ypoyarko <ypoyarko@redhat.com>\n"
@@ -49,7 +49,7 @@ msgstr "Подкоманда «%<name>s» не существует"
 msgid "no value provided"
 msgstr "значение не определено"
 
-msgid "Couldn't create %s please create the path before defaults are enabled."
+msgid "Couldn't create %s. Please create the directory before setting defaults."
 msgstr ""
 
 msgid "Defaults management"
@@ -105,8 +105,8 @@ msgid "Added %{key_val} default-option with value %{val_val}."
 msgstr ""
 
 msgid ""
-"\"Provider #{namespace} was not found. See `hammer defaults providers` for avai"
-"lable providers.\""
+"Provider %{name} was not found. See `hammer defaults providers` for available "
+"providers."
 msgstr ""
 
 msgid ""
@@ -117,7 +117,7 @@ msgstr ""
 msgid "%{param} was deleted successfully."
 msgstr ""
 
-msgid "You must specify value or a provider name, cant specify both."
+msgid "You must specify value or a provider name, can't specify both."
 msgstr ""
 
 msgid "Couldn't find the requested param in %s."
@@ -262,6 +262,12 @@ msgstr "значение должно содержать комбинацию «
 msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr ""
 
+msgid "Deprecated: %{deprecated_msg}"
+msgstr ""
+
+msgid "%{flag} is deprecated: %{deprecated_msg}"
+msgstr ""
+
 msgid "Can be specified multiple times. "
 msgstr "Может быть указан повторно."
 
@@ -280,9 +286,7 @@ msgstr "ID"
 msgid "Name"
 msgstr "Имя"
 
-msgid ""
-"\"Page #{collection.meta.page} of #{pages} (use --page and --per-page for navig"
-"ation)\""
+msgid "Page %{page} of %{total} (use --page and --per-page for navigation)"
 msgstr ""
 
 msgid "no"
@@ -297,6 +301,9 @@ msgid ""
 msgstr ""
 "Предупреждение. hammer.modules.d устарел. Скопируйте конфигурацию модулей в cl"
 "i.modules.d"
+
+msgid "Warning: Couldn't load configuration file %{path}: %{message}"
+msgstr ""
 
 msgid "Print help for commands"
 msgstr "Справка по командам"

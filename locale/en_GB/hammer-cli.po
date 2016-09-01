@@ -6,7 +6,7 @@
 # Andi Chandler <andi@gowling.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.7.0\n"
+"Project-Id-Version: hammer-cli 0.8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-08-30 02:01+0000\n"
 "Last-Translator: Andi Chandler <andi@gowling.com>\n"
@@ -45,7 +45,7 @@ msgstr "No such sub-command '%<name>s'"
 msgid "no value provided"
 msgstr "no value provided"
 
-msgid "Couldn't create %s please create the path before defaults are enabled."
+msgid "Couldn't create %s. Please create the directory before setting defaults."
 msgstr ""
 
 msgid "Defaults management"
@@ -101,8 +101,8 @@ msgid "Added %{key_val} default-option with value %{val_val}."
 msgstr ""
 
 msgid ""
-"\"Provider #{namespace} was not found. See `hammer defaults providers` for avai"
-"lable providers.\""
+"Provider %{name} was not found. See `hammer defaults providers` for available "
+"providers."
 msgstr ""
 
 msgid ""
@@ -113,7 +113,7 @@ msgstr ""
 msgid "%{param} was deleted successfully."
 msgstr ""
 
-msgid "You must specify value or a provider name, cant specify both."
+msgid "You must specify value or a provider name, can't specify both."
 msgstr ""
 
 msgid "Couldn't find the requested param in %s."
@@ -259,6 +259,12 @@ msgstr "value must be a combination of '%s'"
 msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr ""
 
+msgid "Deprecated: %{deprecated_msg}"
+msgstr ""
+
+msgid "%{flag} is deprecated: %{deprecated_msg}"
+msgstr ""
+
 msgid "Can be specified multiple times. "
 msgstr "Can be specified multiple times. "
 
@@ -277,9 +283,7 @@ msgstr "Id"
 msgid "Name"
 msgstr "Name"
 
-msgid ""
-"\"Page #{collection.meta.page} of #{pages} (use --page and --per-page for navig"
-"ation)\""
+msgid "Page %{page} of %{total} (use --page and --per-page for navigation)"
 msgstr ""
 
 msgid "no"
@@ -294,6 +298,9 @@ msgid ""
 msgstr ""
 "Warning: location hammer.modules.d is deprecated, move your module configurati"
 "ons to cli.modules.d"
+
+msgid "Warning: Couldn't load configuration file %{path}: %{message}"
+msgstr ""
 
 msgid "Print help for commands"
 msgstr "Print help for commands"
