@@ -1,6 +1,18 @@
 Release notes
 =============
 
+### 0.8.0 (2016-09-01)
+* Fix tests with rest-client >= 2.0.0 ([#16404](http://projects.theforeman.org/issues/16404))
+* Add missing apostrophe in error message ([#16316](http://projects.theforeman.org/issues/16316))
+* Improve error for missing ~/.hammer directory ([#16312](http://projects.theforeman.org/issues/16312))
+* Option deprecation indication in help ([PR #212](https://github.com/theforeman/hammer-cli/pull/212)) ([#16161](http://projects.theforeman.org/issues/16161))
+* Preserve original exception message ([#14436](http://projects.theforeman.org/issues/14436))
+* Added exception handling while parsing configuration file. ([#14436](http://projects.theforeman.org/issues/14436))
+* Gettext speed improvements ([PR #198](https://github.com/theforeman/hammer-cli/pull/198)) ([#14092](http://projects.theforeman.org/issues/14092))
+* Explicitly list man page in gemspec files ([PR #210](https://github.com/theforeman/hammer-cli/pull/210)) ([#7453](http://projects.theforeman.org/issues/7453))
+* Adds man page to hammer ([PR #163](https://github.com/theforeman/hammer-cli/pull/163)) ([#7453](http://projects.theforeman.org/issues/7453))
+* I18n - fix extraction of variables in strings ([PR #209](https://github.com/theforeman/hammer-cli/pull/209))
+
 ### 0.7.0 (2016-06-14)
 * Let print adapters decide whether to paginate ([#15257](http://projects.theforeman.org/issues/15257))
 * Add support for testing values in option  validation ([#13832](http://projects.theforeman.org/issues/13832))
