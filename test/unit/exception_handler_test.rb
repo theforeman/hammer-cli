@@ -51,7 +51,7 @@ describe HammerCLI::ExceptionHandler do
     ex = RestClient::ResourceNotFound.new
     output.default_adapter = :silent
     handler.handle_exception(ex)
-    @log_output.readline.strip.must_equal 'ERROR  Exception : Resource Not Found'
+    @log_output.readline.strip.must_match /ERROR  Exception : (Resource )?Not Found/
   end
 
 end
