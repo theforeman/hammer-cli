@@ -6,6 +6,8 @@
   # :per_page: 20
   # Location of shell history file
   :history_file: '~/.hammer/history'
+  # Mark translated strings with X characters (for developers)
+  #:mark_translated: false
 
 
 # Enable/disable color output of logger in Clamp commands
@@ -29,5 +31,3 @@
 # Log record pattern (logging gem syntax)
 #:log_pattern: '[%5l %d %c] %m'
 
-# Mark translated strings with X characters (for developers)
-#:mark_translated: false
