@@ -19,12 +19,20 @@ describe HammerCLI::Output::Adapter::Table do
       [field_name]
     }
 
+    let(:red) { "\e[1;31m" }
+    let(:reset) { "\e[0m" }
+
     let(:record) { {
       :id => 1,
       :firstname => "John",
       :lastname => "Doe",
+      :two_column_chars => "文字漢字",
+      :czech_chars => "žluťoučký kůň",
+      :colorized_name => "#{red}John#{reset}",
       :fullname => "John Doe",
-      :long => "SomeVeryLongString"
+      :long => "SomeVeryLongString",
+      :colorized_long => "#{red}SomeVeryLongString#{reset}",
+      :two_column_long => "文字-Kanji-漢字-Hanja-漢字"
     } }
     let(:data) { HammerCLI::Output::RecordCollection.new [record] }
     let(:empty_data) { HammerCLI::Output::RecordCollection.new [] }
@@ -90,6 +98,86 @@ describe HammerCLI::Output::Adapter::Table do
 
     context "column width" do
 
+      it "calculates correct width of two-column characters" do
+        first_field = Fields::Field.new(:path => [:two_column_chars], :label => "Some characters")
+        fields = [first_field, field_lastname]
+
+        expected_output = [
+          "----------------|---------",
+          "SOME CHARACTERS | LASTNAME",
+          "----------------|---------",
+          "文字漢字        | Doe     ",
+          "----------------|---------",
+          ""
+        ].join("\n")
+
+        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      end
+
+      it "calculates correct width of czech characters" do
+        first_field = Fields::Field.new(:path => [:czech_chars], :label => "Some characters")
+        fields = [first_field, field_lastname]
+
+        expected_output = [
+          "----------------|---------",
+          "SOME CHARACTERS | LASTNAME",
+          "----------------|---------",
+          "žluťoučký kůň   | Doe     ",
+          "----------------|---------",
+          ""
+        ].join("\n")
+
+        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      end
+
+      it "calculates correct width of colorized strings" do
+        first_field = Fields::Field.new(:path => [:colorized_name], :label => "Colorized name")
+        fields = [first_field, field_lastname]
+
+        expected_output = [
+          "---------------|---------",
+          "COLORIZED NAME | LASTNAME",
+          "---------------|---------",
+          "John           | Doe     ",
+          "---------------|---------",
+          ""
+        ].join("\n").gsub('John', "#{red}John#{reset}")
+
+        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      end
+
+      it "truncates two-column characters when it exceeds maximum width" do
+        first_field = Fields::Field.new(:path => [:two_column_long], :label => "Some characters", :max_width => 16)
+        fields = [first_field, field_lastname]
+
+        expected_output = [
+          "-----------------|---------",
+          "SOME CHARACTERS  | LASTNAME",
+          "-----------------|---------",
+          "文字-Kanji-漢... | Doe     ",
+          "-----------------|---------",
+          ""
+        ].join("\n")
+
+        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      end
+
+      it "truncates colorized string string when it exceeds maximum width" do
+        first_field = Fields::Field.new(:path => [:colorized_long], :label => "Long", :max_width => 10)
+        fields = [first_field, field_lastname]
+
+        expected_output = [
+          "-----------|---------",
+          "LONG       | LASTNAME",
+          "-----------|---------",
+          "SomeVer... | Doe     ",
+          "-----------|---------",
+          ""
+        ].join("\n").gsub('SomeVer', "#{red}SomeVer#{reset}")
+
+        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      end
+
       it "truncates string when it exceeds maximum width" do
         first_field = Fields::Field.new(:path => [:long], :label => "Long", :max_width => 10)
         fields = [first_field, field_lastname]
@@ -122,18 +210,18 @@ describe HammerCLI::Output::Adapter::Table do
         proc { adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
-    it "sets width to the longest column name when no data" do
-      first_field = Fields::Field.new(:path => [:long], :label => "VeryLongTableHeaderName")
-      fields = [first_field, field_lastname]
+      it "sets width to the longest column name when no data" do
+        first_field = Fields::Field.new(:path => [:long], :label => "VeryLongTableHeaderName")
+        fields = [first_field, field_lastname]
 
-      expected_output = [
-                         "------------------------|---------",
-                         "VERYLONGTABLEHEADERNAME | LASTNAME",
-                         "------------------------|---------",
-                         ""
-                        ].join("\n")
-      proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
-    end
+        expected_output = [
+                           "------------------------|---------",
+                           "VERYLONGTABLEHEADERNAME | LASTNAME",
+                           "------------------------|---------",
+                           ""
+                          ].join("\n")
+        proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
+      end
 
       it "sets certain width" do
         first_field = Fields::Field.new(:path => [:long], :label => "Long", :width => 25)
