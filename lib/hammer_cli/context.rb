@@ -4,7 +4,8 @@ module HammerCLI
 
   def self.context
     {
-      :defaults => HammerCLI.defaults
+      :defaults => HammerCLI.defaults,
+      :is_tty? => HammerCLI.tty?
     }
   end
 
