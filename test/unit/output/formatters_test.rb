@@ -158,16 +158,19 @@ end
 
 describe HammerCLI::Output::Formatters::BooleanFormatter do
 
+  let(:formatter) { HammerCLI::Output::Formatters::BooleanFormatter.new }
+
   it "says yes for true like objects" do
-    formatter = HammerCLI::Output::Formatters::BooleanFormatter.new
     formatter.format(true).must_equal "yes"
     formatter.format("yes").must_equal "yes"
+    formatter.format("no").must_equal "yes"
+    formatter.format(1).must_equal "yes"
   end
 
-  it "says no for false and nil and empty string" do
-    formatter = HammerCLI::Output::Formatters::BooleanFormatter.new
+  it "says no for false, nil, empty string and 0" do
     formatter.format(nil).must_equal "no"
     formatter.format(false).must_equal "no"
     formatter.format("").must_equal "no"
+    formatter.format(0).must_equal "no"
   end
 end
