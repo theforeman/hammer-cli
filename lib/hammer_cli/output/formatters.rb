@@ -157,7 +157,7 @@ module HammerCLI::Output
       end
 
       def format(value, field_params={})
-        !value || value == "" ? _("no") : _("yes")
+        (value == 0 || !value || value == "") ? _("no") : _("yes")
       end
     end
 
