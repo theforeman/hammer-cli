@@ -42,8 +42,15 @@ module HammerCLI
         @options[name]
       end
 
+      def get_option_value(name)
+        opt = get_option(name)
+        value = opt.get
+        value = opt.command.send(:context)[:defaults].get_defaults(name.to_s) if value.nil?
+        value
+      end
+
       def option_passed?(option_name)
-        !get_option(option_name).get.nil?
+        !get_option_value(option_name).nil?
       end
 
       def option_switches(opts=nil)
@@ -79,7 +86,7 @@ module HammerCLI
       end
 
       def value
-        get_option(@to_check[0]).get
+        get_option_value(@to_check[0])
       end
     end
 
