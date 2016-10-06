@@ -45,7 +45,10 @@ module HammerCLI
       def get_option_value(name)
         opt = get_option(name)
         value = opt.get
-        value = opt.command.send(:context)[:defaults].get_defaults(name.to_s) if value.nil?
+        if value.nil?
+          defaults = opt.command.send(:context)[:defaults]
+          value = defaults.get_defaults(name.to_s) if defaults
+        end
         value
       end
 
