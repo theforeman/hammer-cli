@@ -376,5 +376,14 @@ describe HammerCLI::AbstractCommand do
     CmdOD2.output_definition.fields.length.must_equal 1
   end
 
+  it "should allow for multiple validation blocks" do
+    class CmdName1 < HammerCLI::AbstractCommand
+      validate_options do; end
+      validate_options do; end
+    end
+
+    assert_equal 2, CmdName1.validation_blocks.length
+  end
+
 end
 

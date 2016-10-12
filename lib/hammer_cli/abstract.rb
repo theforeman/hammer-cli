@@ -11,7 +11,7 @@ module HammerCLI
     include HammerCLI::Subcommand
 
     class << self
-      attr_accessor :validation_block
+      attr_accessor :validation_blocks
     end
 
     def adapter
@@ -39,11 +39,14 @@ module HammerCLI
     end
 
     def self.validate_options(&block)
-      self.validation_block = block
+      self.validation_blocks ||= []
+      self.validation_blocks << block
     end
 
     def validate_options
-      validator.run &self.class.validation_block if self.class.validation_block
+      if self.class.validation_blocks && self.class.validation_blocks.any?
+        self.class.validation_blocks.each { |validation_block| validator.run(&validation_block) }
+      end
     end
 
     def exception_handler
