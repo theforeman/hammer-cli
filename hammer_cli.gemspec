@@ -23,7 +23,7 @@ EOF
   s.require_paths = ["lib"]
   s.executables = ['hammer']
 
-  s.add_dependency 'clamp', '>= 1.0.0'
+  s.add_dependency 'clamp', '~> 1.0.0'
   s.add_dependency 'logging'
   s.add_dependency 'awesome_print'
   s.add_dependency 'table_print'
