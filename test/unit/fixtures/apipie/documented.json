@@ -134,7 +134,7 @@
                                 "name": "boolean_param",
                                 "allow_null": false,
                                 "full_name": "documented[boolean_param]",
-                                "validator": "Must be Boolean",
+                                "validator": "Must be 'true' or 'false' or '1' or '0'",
                                 "expected_type": "boolean",
                                 "description": "",
                                 "required": false
