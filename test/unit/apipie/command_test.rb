@@ -3,17 +3,11 @@ require File.join(File.dirname(__FILE__), '../test_helper')
 
 describe HammerCLI::Apipie::Command do
 
-  class TestCommand < HammerCLI::Apipie::Command
-    def self.resource_config
-      { :apidoc_cache_dir => 'test/unit/fixtures/apipie', :apidoc_cache_name => 'architectures' }
-    end
-  end
-
-  class ParentCommand < TestCommand
+  class ParentCommand < HammerCLI::Apipie::Command
     action :show
   end
 
-  class OptionCommand < TestCommand
+  class OptionCommand < HammerCLI::Apipie::Command
     resource :architectures, :create
 
     def option_name
@@ -23,10 +17,9 @@ describe HammerCLI::Apipie::Command do
     def option_operatingsystem_ids
       nil
     end
-
   end
 
-  class CommandA < TestCommand
+  class CommandA < HammerCLI::Apipie::Command
     resource :architectures, :index
 
     class CommandB < ParentCommand
@@ -37,13 +30,9 @@ describe HammerCLI::Apipie::Command do
   end
 
   let(:ctx) { { :adapter => :silent, :interactive => false } }
-  let(:cmd_class) { TestCommand.dup }
+  let(:cmd_class) { HammerCLI::Apipie::Command.dup }
   let(:cmd) { cmd_class.new("", ctx) }
   let(:cmd_run) { cmd.run([]) }
-
-  before :each do
-    HammerCLI::Connection.drop_all
-  end
 
   context "setting resources" do
 
@@ -103,40 +92,11 @@ describe HammerCLI::Apipie::Command do
   end
 
   context "resource defined" do
-
-    before :each do
-      HammerCLI::Connection.drop_all
-      ApipieBindings::API.any_instance.stubs(:call).returns([])
-      cmd.class.resource :architectures, :index
-    end
-
     it "should perform a call to api when resource is defined" do
-      ctx[:defaults] = stub(:get_defaults => {})
+      ApipieBindings::API.any_instance.expects(:call).returns([])
+      cmd.class.resource :architectures, :index
       cmd_run.must_equal 0
     end
-  end
-
-  context "reload apipie cache" do
-
-    before :each do
-      HammerCLI::Connection.drop_all
-      ApipieBindings::API.any_instance.stubs(:call).returns([])
-    end
-
-    it "clears the cache on init when required from config" do
-      HammerCLI::Settings.load({ :reload_cache => true })
-      ApipieBindings::API.any_instance.expects(:clean_cache).returns(nil)
-      cmd.class.resource :architectures, :index
-      HammerCLI::Settings.load({ :reload_cache => false })
-    end
-
-    it "clears the cache on init when required from CLI" do
-      HammerCLI::Settings.load({ :_params => { :reload_cache => true }})
-      ApipieBindings::API.any_instance.expects(:clean_cache).returns(nil)
-      cmd.class.resource :architectures, :index
-      HammerCLI::Settings.load({ :_params => { :reload_cache => false }})
-    end
-
   end
 
   context "options" do

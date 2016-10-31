@@ -1,68 +1,59 @@
 require File.join(File.dirname(__FILE__), 'test_helper')
 
 describe HammerCLI::Connection do
+  let(:connections) { HammerCLI::Connection.new }
 
-  before :each do
-    # clean up global settings
-    HammerCLI::Connection.drop_all
-    HammerCLI::Settings.load({:_params => {:interactive => false}})
-  end
-
-  let(:connection) { HammerCLI::Connection }
-
-  class Connector < HammerCLI::AbstractConnector
-
-    attr_reader :url
-
-    def initialize(params)
-      @url = params[:url]
-      super
+  describe '#create' do
+    it "creates new connection" do
+      connections.create(:test) do
+        :conn1
+      end
+      assert_equal :conn1, connections.get(:test)
     end
 
+    it "doesn't overwrite the connection when called multiple times" do
+      connections.create(:test) do
+        :conn1
+      end
+      connections.create(:test) do
+        :conn2
+      end
+      assert_equal :conn1, connections.get(:test)
+    end
+
+    it 'writes message to log' do
+      logger = stub()
+      logger.expects(:debug).with('Registered: test_connection')
+
+      connections = HammerCLI::Connection.new(logger)
+      connections.create(:test_connection) do
+        :test_connection
+      end
+    end
   end
 
-  it "should return the conection" do
-    conn = connection.create(:test, {})
-    conn.must_be_kind_of HammerCLI::AbstractConnector
+  describe '#drop' do
+    it 'drops the connection' do
+      connections.create(:test) do
+        :conn1
+      end
+      connections.drop(:test)
+      assert_nil connections.get(:test)
+    end
   end
 
-  it "should create the connection only once" do
-    conn1 = connection.create(:test, {})
-    conn2 = connection.create(:test, {})
-    conn1.must_equal conn2
+  describe '#drop_all' do
+    it 'drops all connections' do
+      connections.create(:test1) do
+        :conn1
+      end
+      connections.create(:test2) do
+        :conn3
+      end
+      connections.drop_all
+
+      assert_nil connections.get(:test1)
+      assert_nil connections.get(:test2)
+    end
   end
-
-  it "should test the connection" do
-    connection.exist?(:test).must_equal false
-    conn1 = connection.create(:test, {})
-    connection.exist?(:test).must_equal true
-  end
-
-it "should get the connection" do
-    conn1 = connection.create(:test, {})
-    conn2 = connection.get(:test)
-    conn1.must_equal conn2
-  end
-
-
-  it "should be able to drop all" do
-    conn1 = connection.create(:test, {})
-    connection.drop_all
-    conn2 = connection.create(:test, {})
-    conn1.wont_equal conn2    # TODO
-  end
-
-  it "should drop the connection" do
-    conn1 = connection.create(:test, {})
-    connection.drop(:test)
-    conn2 = connection.create(:test, {})
-    conn1.wont_equal conn2
-  end
-
-  it "should accept custom connector" do
-    conn = connection.create(:test, {:url => 'URL'}, :connector => Connector)
-    conn.must_be_kind_of Connector
-    conn.url.must_equal 'URL'
-  end
-
 end

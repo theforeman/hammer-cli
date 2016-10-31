@@ -14,7 +14,7 @@ describe HammerCLI::ExceptionHandler do
   let(:cmd) { Class.new(HammerCLI::AbstractCommand).new("command_name") }
 
   it "should handle unauthorized" do
-    output.expects(:print_error).with(heading, "Invalid username or password")
+    output.expects(:print_error).with(heading, "Unauthorized")
     handler.handle_exception(RestClient::Unauthorized.new, :heading => heading)
   end
 

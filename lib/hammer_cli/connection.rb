@@ -6,39 +6,40 @@ module HammerCLI
   end
 
   class Connection
+    def initialize(logger = nil)
+      @logger = logger
+    end
 
-    def self.drop(name)
+    def drop(name)
       connections.delete(name)
     end
 
-    def self.drop_all()
+    def drop_all()
       connections.keys.each { |c| drop(c) }
     end
 
-    def self.create(name, conector_params={}, options={})
+    def create(name, &create_connector_block)
       unless connections[name]
-        Logging.logger['Connection'].debug "Registered: #{name}"
-        connector = options[:connector] || AbstractConnector
-
-        connections[name] = connector.new(conector_params)
+        connector = yield
+        @logger.debug("Registered: #{name}") if @logger
+        connections[name] = connector
       end
       connections[name]
     end
 
-    def self.exist?(name)
+    def exist?(name)
       !get(name).nil?
     end
 
-    def self.get(name)
+    def get(name)
       connections[name]
     end
 
     private
 
-    def self.connections
+    def connections
       @connections_hash ||= {}
       @connections_hash
     end
-
   end
 end

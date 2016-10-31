@@ -83,7 +83,7 @@ module HammerCLI
     end
 
     def handle_unauthorized(e)
-      print_error _("Invalid username or password")
+      print_error e.message
       log_full_error e
       HammerCLI::EX_UNAUTHORIZED
     end

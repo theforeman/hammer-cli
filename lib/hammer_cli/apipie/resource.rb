@@ -1,21 +1,5 @@
 require 'apipie_bindings'
 module HammerCLI::Apipie
-
-
-  class ApipieConnector < HammerCLI::AbstractConnector
-
-    attr_reader :api
-
-    def initialize(params)
-      @api = ApipieBindings::API.new(params)
-      if HammerCLI::Settings.get(:_params, :reload_cache) || HammerCLI::Settings.get(:reload_cache)
-        @api.clean_cache
-        Logging.logger['Init'].debug 'Apipie cache was cleared'
-      end
-    end
-  end
-
-
   module Resource
 
     def self.included(base)
@@ -44,12 +28,6 @@ module HammerCLI::Apipie
         {}
       end
 
-      def connection_options
-        {
-          :connector => HammerCLI::Apipie::ApipieConnector
-        }
-      end
-
       def connection_name(resource_class)
         :apipie
       end
@@ -70,10 +48,7 @@ module HammerCLI::Apipie
 
       def resource(resource=nil, action=nil)
         unless resource.nil?
-          api = HammerCLI::Connection.create(
-            connection_name(resource),
-            resource_config,
-            connection_options).api
+          api = HammerCLI.context[:api_connection].get(connection_name(resource))
           if api.has_resource?(resource)
             @api_resource = api.resource(resource)
           else
