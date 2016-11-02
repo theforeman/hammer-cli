@@ -33,6 +33,14 @@ describe HammerCLI::Options::Normalizers do
     it "should parse a comma separated string" do
       formatter.format("a,b,c").must_equal ['a', 'b', 'c']
     end
+
+    it "should parse a comma separated string with values including comma" do
+      formatter.format('a,b,"c,d"').must_equal ['a', 'b', 'c,d']
+    end
+
+    it "should parse a comma separated string containig double quotes" do
+      formatter.format('a,b,""c""').must_equal ['a', 'b', '"c"']
+    end
   end
 
 

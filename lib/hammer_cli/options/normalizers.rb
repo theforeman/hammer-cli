@@ -1,4 +1,5 @@
 require 'json'
+require 'csv'
 
 module HammerCLI
   module Options
@@ -82,11 +83,11 @@ module HammerCLI
       class List < AbstractNormalizer
 
         def description
-          _("Comma separated list of values.")
+          _("Comma separated list of values. Values containing comma should be double quoted")
         end
 
         def format(val)
-          val.is_a?(String) ? val.split(",") : []
+          val.is_a?(String) ? CSV.parse(val).flatten(1) : []
         end
       end
 
