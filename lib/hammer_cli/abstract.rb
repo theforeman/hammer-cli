@@ -4,6 +4,8 @@ require 'hammer_cli/options/option_definition'
 require 'hammer_cli/clamp'
 require 'hammer_cli/subcommand'
 require 'hammer_cli/options/matcher'
+require 'hammer_cli/help/builder'
+require 'hammer_cli/help/text_builder'
 require 'logging'
 module HammerCLI
 
@@ -63,38 +65,24 @@ module HammerCLI
       context[:path][-2]
     end
 
-    class SortedBuilder < Clamp::Help::Builder
-
-      def default_label_indent
-        29
-      end
-
-      def add_list(heading, items)
-        items.sort! do |a, b|
-          a.help[0] <=> b.help[0]
-        end
-        items.reject! {|item| item.respond_to?(:hidden?) && item.hidden?}
-
-        puts "\n#{heading}:"
-
-        label_width = default_label_indent
-        items.each do |item|
-          label, description = item.help
-          label_width = label.size if label.size > label_width
-        end
-
-        items.each do |item|
-          label, description = item.help
-          description.each_line do |line|
-            puts " %-#{label_width}s %s" % [label, line]
-            label = ''
-          end
-        end
-      end
+    def help
+      self.class.help(invocation_path, HammerCLI::Help::Builder.new(context[:is_tty?]))
     end
 
-    def help
-      self.class.help(invocation_path, SortedBuilder.new)
+    def self.help(invocation_path, builder = HammerCLI::Help::Builder.new)
+      super(invocation_path, builder)
+
+      if @help_extension_block
+        help_extension = HammerCLI::Help::TextBuilder.new(builder.richtext)
+        @help_extension_block.call(help_extension)
+        builder.add_text(help_extension.string)
+      end
+      builder.string
+    end
+
+    def self.extend_help(&block)
+      # We save the block for execution on object level, where we can access command's context and check :is_tty? flag
+      @help_extension_block = block
     end
 
     def self.output(definition=nil, &block)
@@ -257,7 +245,7 @@ module HammerCLI
         value
       end
     end
-    
+
     def self.inherited_output_definition
       od = nil
       if superclass.respond_to? :output_definition
