@@ -48,7 +48,7 @@ module HammerCLI
   end
 
   def self.interactive?
-    return false unless STDOUT.tty?
+    return false unless tty?
     return HammerCLI::Settings.get(:_params, :interactive) unless HammerCLI::Settings.get(:_params, :interactive).nil?
     HammerCLI::Settings.get(:ui, :interactive) != false
   end
