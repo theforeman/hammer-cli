@@ -1,5 +1,7 @@
 require 'table_print'
 require File.join(File.dirname(__FILE__), 'wrapper_formatter')
+require 'hammer_cli/table_print/formatter'
+require 'hammer_cli/table_print/column'
 
 module HammerCLI::Output::Adapter
 
