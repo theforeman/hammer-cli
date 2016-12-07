@@ -88,6 +88,8 @@ module HammerCLI
 
         def format(val)
           val.is_a?(String) ? CSV.parse(val).flatten(1) : []
+        rescue CSV::MalformedCSVError => e
+          raise ArgumentError.new(e.message)
         end
       end
 

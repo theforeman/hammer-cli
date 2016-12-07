@@ -41,6 +41,10 @@ describe HammerCLI::Options::Normalizers do
     it "should parse a comma separated string containig double quotes" do
       formatter.format('a,b,""c""').must_equal ['a', 'b', '"c"']
     end
+
+    it "should catch quoting errors" do
+      proc { formatter.format('1,"3,4""s') }.must_raise ArgumentError
+    end
   end
 
 
