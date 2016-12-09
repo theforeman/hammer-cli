@@ -18,3 +18,9 @@ require 'hammer_cli/logger'
 
 Logging.logger.root.appenders = Logging::Appenders['__test__'] || Logging::Appenders::StringIo.new('__test__')
 
+HammerCLI.context[:api_connection].create(:apipie) do
+  HammerCLI::Apipie::ApiConnection.new({
+    :apidoc_cache_dir => 'test/unit/fixtures/apipie',
+    :apidoc_cache_name => 'architectures'
+  })
+end
