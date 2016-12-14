@@ -79,13 +79,13 @@ module HammerCLI
         end
       end
 
-      CSV_ERROR_MESSAGES = [
-        N_('Missing or stray quote in line %s.'),
-        N_('Unquoted fields do not allow \r or \n (line %s).'),
-        N_('Illegal quoting in line %s.'),
-        N_('Unclosed quoted field on line %s.'),
-        N_('Field size exceeded on line %s.')
-      ]
+      CSV_ERROR_MESSAGES = {
+        /Missing or stray quote/ => _('Missing or stray quote.'),
+        /Unquoted fields do not allow/ => _('Unquoted fields do not allow \r or \n.'),
+        /Illegal quoting/ => _('Illegal quoting.'),
+        /Unclosed quoted field/ => _('Unclosed quoted field.'),
+        /Field size exceeded/ => _('Field size exceeded.')
+      }
 
       class List < AbstractNormalizer
 
@@ -96,9 +96,8 @@ module HammerCLI
         def format(val)
           (val.is_a?(String) && !val.empty?) ? CSV.parse_line(val) : []
         rescue CSV::MalformedCSVError => e
-          match = e.message.match /\d+/
-          message = match ? _(e.message.gsub(/\d+/, '%s')) % match[0] : e.message
-          raise ArgumentError.new(message)
+          message = CSV_ERROR_MESSAGES.find { |pattern,| pattern.match e.message } || [e.message]
+          raise ArgumentError.new(message.last)
         end
       end
 
