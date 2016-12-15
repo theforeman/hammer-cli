@@ -3,7 +3,7 @@
 # Leah Liu <lliu@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.8.0\n"
+"Project-Id-Version: hammer-cli 0.9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-27 01:22+0000\n"
 "Last-Translator: Leah Liu <lliu@redhat.com>\n"
@@ -126,9 +126,6 @@ msgstr "错误：%{message}"
 msgid "See: '%{path} --help'"
 msgstr "请查看： '%{path} --help'"
 
-msgid "Invalid username or password"
-msgstr "无效用户名或密码"
-
 msgid "Could not load the API description from the server"
 msgstr "无法从服务器载入 API 描述"
 
@@ -212,8 +209,27 @@ msgstr "用逗号分开的 key=value 列表。"
 msgid "value must be defined as a comma-separated list of key=value or valid JSON"
 msgstr ""
 
-msgid "Comma separated list of values."
-msgstr "逗号分开的数值列表。"
+msgid "Missing or stray quote."
+msgstr ""
+
+msgid ""
+"Unquoted fields do not allow  or \n"
+"."
+msgstr ""
+
+msgid "Illegal quoting."
+msgstr ""
+
+msgid "Unclosed quoted field."
+msgstr ""
+
+msgid "Field size exceeded."
+msgstr ""
+
+msgid ""
+"Comma separated list of values. Values containing comma should be double quote"
+"d"
+msgstr ""
 
 msgid "numeric value is required"
 msgstr ""

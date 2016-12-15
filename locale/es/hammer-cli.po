@@ -8,7 +8,7 @@
 # gguerrer <gguerrer@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.8.0\n"
+"Project-Id-Version: hammer-cli 0.9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-27 06:26+0000\n"
 "Last-Translator: gguerrer <gguerrer@redhat.com>\n"
@@ -131,9 +131,6 @@ msgstr "Error: %{message}"
 msgid "See: '%{path} --help'"
 msgstr "Ver: '%{path} --help'"
 
-msgid "Invalid username or password"
-msgstr "Nombre o contraseña inválidos"
-
 msgid "Could not load the API description from the server"
 msgstr "No se pudo cargar la descripción de la API desde el servidor"
 
@@ -224,8 +221,27 @@ msgstr "Lista de pares llave=valor separados por comas."
 msgid "value must be defined as a comma-separated list of key=value or valid JSON"
 msgstr ""
 
-msgid "Comma separated list of values."
-msgstr "Lista de valores separadas por comas."
+msgid "Missing or stray quote."
+msgstr ""
+
+msgid ""
+"Unquoted fields do not allow  or \n"
+"."
+msgstr ""
+
+msgid "Illegal quoting."
+msgstr ""
+
+msgid "Unclosed quoted field."
+msgstr ""
+
+msgid "Field size exceeded."
+msgstr ""
+
+msgid ""
+"Comma separated list of values. Values containing comma should be double quote"
+"d"
+msgstr ""
 
 msgid "numeric value is required"
 msgstr ""
