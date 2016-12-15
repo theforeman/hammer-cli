@@ -1,6 +1,21 @@
 Release notes
 =============
 
+### 0.9.0 (2016-12-15)
+* Double quotes in list type params ([#17180](http://projects.theforeman.org/issues/17180))
+* API connection moved to context ([PR #227](https://github.com/theforeman/hammer-cli/pull/227)) ([#8016](http://projects.theforeman.org/issues/8016))
+* Log related error messages to stderr ([#17508](http://projects.theforeman.org/issues/17508))
+* Respect special chars width ([#3520](http://projects.theforeman.org/issues/3520))
+* Properly detect booleans ([#17021](http://projects.theforeman.org/issues/17021))
+* Support for additional text in help ([PR #222](https://github.com/theforeman/hammer-cli/pull/222)) ([#16408](http://projects.theforeman.org/issues/16408))
+* Permit clamp 1.1 and higher, compatibility restored ([PR #224](https://github.com/theforeman/hammer-cli/pull/224)) ([#16973](http://projects.theforeman.org/issues/16973))
+* Pin clamp to 1.0.x ([PR #223](https://github.com/theforeman/hammer-cli/pull/223)) ([#16973](http://projects.theforeman.org/issues/16973))
+* Allow multiple opt validation blocks ([#16811](http://projects.theforeman.org/issues/16811))
+* Check for nil default values ([PR #221](https://github.com/theforeman/hammer-cli/pull/221)) ([#16822](http://projects.theforeman.org/issues/16822))
+* Use defaults in validators ([#16631](http://projects.theforeman.org/issues/16631))
+* Boolean formatter prints "no" for 0 ([PR #219](https://github.com/theforeman/hammer-cli/pull/219)) ([#16406](http://projects.theforeman.org/issues/16406))
+* Fix mark_translated in cli_config ([PR #216](https://github.com/theforeman/hammer-cli/pull/216)) ([#16470](http://projects.theforeman.org/issues/16470))
+
 ### 0.8.0 (2016-09-01)
 * Fix tests with rest-client >= 2.0.0 ([#16404](http://projects.theforeman.org/issues/16404))
 * Add missing apostrophe in error message ([#16316](http://projects.theforeman.org/issues/16316))
