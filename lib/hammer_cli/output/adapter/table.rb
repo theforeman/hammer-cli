@@ -1,7 +1,5 @@
-require 'table_print'
 require File.join(File.dirname(__FILE__), 'wrapper_formatter')
-require 'hammer_cli/table_print/formatter'
-require 'hammer_cli/table_print/column'
+require 'hammer_cli/output/utils'
 
 module HammerCLI::Output::Adapter
 
@@ -9,6 +7,10 @@ module HammerCLI::Output::Adapter
 
     MAX_COLUMN_WIDTH = 80
     MIN_COLUMN_WIDTH = 5
+
+    HLINE = '-'
+    LINE_SEPARATOR = '-|-'
+    COLUMN_SEPARATOR = ' | '
 
     def tags
       [:screen, :flat]
@@ -21,44 +23,32 @@ module HammerCLI::Output::Adapter
     def print_collection(all_fields, collection)
       fields = field_filter.filter(all_fields)
 
-      rows = collection.collect do |d|
-        row = {}
-        fields.each do |f|
-          row[label_for(f)] = WrapperFormatter.new(
-            @formatters.formatter_for_type(f.class), f.parameters).format(data_for_field(f, d) || "")
+      formatted_collection = format_values(fields, collection)
+      # calculate hash of column widths (label -> width)
+      widths = calculate_widths(fields, formatted_collection)
+
+      header_bits = []
+      hline_bits = []
+      fields.map do |f|
+        header_bits << normalize_column(widths[f.label], f.label.upcase)
+        hline_bits << HLINE * widths[f.label]
+      end
+
+      line = hline_bits.join(LINE_SEPARATOR)
+
+      puts line
+      puts header_bits.join(COLUMN_SEPARATOR)
+      puts line
+
+      formatted_collection.collect do |row|
+        row_bits = fields.map do |f|
+          normalize_column(widths[f.label], row[f.label] || "")
         end
-        row
+        puts row_bits.join(COLUMN_SEPARATOR)
       end
 
-      if rows.empty?
-        keys = fields.map { |f| [label_for(f), ''] }
-        rows = [Hash[keys]]
-        @header_only = true
-      end
-
-      options = fields.collect do |f|
-        { label_for(f) => {
-            :width => max_width_for(f)
-          }
-        }
-      end
-
-      sort_order = fields.map { |f| f.label.upcase }
-
-      printer = TablePrint::Printer.new(rows, options)
-      TablePrint::Config.max_width = MAX_COLUMN_WIDTH
-      TablePrint::Config.multibyte = true
-
-      output = sort_columns(printer.table_print, sort_order)
-      dashes = /\n([-|]+)\n/.match(output)
-
-      if @header_only
-        output = output.lines.first
-      end
-
-      puts dashes[1] if dashes
-      puts output
-      puts dashes[1] if dashes
+      # print closing line only when the table isn't empty
+      puts line unless formatted_collection.empty?
 
       if collection.meta.pagination_set? && collection.count < collection.meta.subtotal
         pages = (collection.meta.subtotal.to_f/collection.meta.per_page).ceil
@@ -68,6 +58,46 @@ module HammerCLI::Output::Adapter
 
     protected
 
+    def normalize_column(width, value)
+      value = value.to_s
+      padding = width - HammerCLI::Output::Utils.real_length(value)
+      if padding >= 0
+        value += (" " * padding)
+      else
+        value, real_length = HammerCLI::Output::Utils.real_truncate(value, width-3)
+        value += '...'
+        value += ' ' if real_length < (width - 3)
+      end
+      value
+    end
+
+    def format_values(fields, collection)
+      collection.collect do |d|
+        fields.inject({}) do |row, f|
+          formatter = WrapperFormatter.new(@formatters.formatter_for_type(f.class), f.parameters)
+          row.update(f.label => formatter.format(data_for_field(f, d) || "").to_s)
+        end
+      end
+    end
+
+    def calculate_widths(fields, collection)
+      Hash[fields.map { |f| [f.label, calculate_column_width(f, collection)] }]
+    end
+
+    def calculate_column_width(field, collection)
+      if field.parameters[:width]
+        return [field.parameters[:width], MIN_COLUMN_WIDTH].max
+      end
+
+      width = HammerCLI::Output::Utils.real_length(field.label.to_s)
+      max_width = max_width_for(field)
+      collection.each do |item|
+        width = [HammerCLI::Output::Utils.real_length(item[field.label]), width].max
+        return max_width if width >= max_width
+      end
+      width
+    end
+
     def field_filter
       filtered = [Fields::ContainerField]
       filtered << Fields::Id unless @context[:show_ids]
@@ -76,65 +106,14 @@ module HammerCLI::Output::Adapter
 
     private
 
-    def label_for(field)
-      width = width_for(field)
-      if width
-        "%-#{width}s" % field.label.to_s
-      else
-        field.label.to_s
-      end
-    end
-
     def max_width_for(field)
-      width = width_for(field)
-      width ||= field.parameters[:max_width]
-      width = MIN_COLUMN_WIDTH if width && width < MIN_COLUMN_WIDTH
-      width
-    end
-
-    def width_for(field)
-      width = field.parameters[:width]
-      width = MIN_COLUMN_WIDTH if width && width < MIN_COLUMN_WIDTH
-      width
-    end
-
-
-    def sort_columns(output, sort_order)
-      return output if sort_order.length == 1 # don't sort one column
-      delimiter = ' | '
-      lines = output.split("\n")
-      out = []
-
-      headers = lines.first.split(delimiter).map(&:strip)
-
-      # create mapping table for column indexes
-      sort_map = []
-      sort_order.each { |c| sort_map << headers.index(c) }
-
-      lines.each do |line|
-        columns = line.split(delimiter)
-        if columns.length == 1 # dashes
-          columns = columns.first.split('-|-')
-          if columns.length == 1
-            out << columns.first
-          else # new style dashes
-            new_row = []
-            sort_map.each { |i| new_row << columns[i] }
-            out << new_row.join('-|-')
-          end
-        else
-          # reorder row
-          new_row = []
-          sort_map.each { |i| new_row << columns[i] }
-          out << new_row.join(delimiter)
-        end
+      if field.parameters[:max_width]
+        [field.parameters[:max_width], MAX_COLUMN_WIDTH].min
+      else
+        MAX_COLUMN_WIDTH
       end
-
-      out.join("\n")
     end
-
   end
 
   HammerCLI::Output::Output.register_adapter(:table, Table)
-
 end

@@ -322,33 +322,6 @@ describe HammerCLI::Output::Adapter::Table do
       end
 
     end
-
-    context "sort_columns" do
-      let(:fields) {
-        [field_firstname, field_lastname]
-      }
-
-      it "should sort output" do
-
-        table_print_output = [
-          "LASTNAME | FIRSTNAME",
-          "---------|----------",
-          "Doe      | John     "
-        ].join("\n")
-
-        expected_output = [
-          "----------|---------",
-          "FIRSTNAME | LASTNAME",
-          "----------|---------",
-          "John      | Doe     ",
-          "----------|---------",
-          ""
-        ].join("\n")
-
-        TablePrint::Printer.any_instance.stubs(:table_print).returns(table_print_output)
-        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
-      end
-    end
   end
 
 end
