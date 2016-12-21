@@ -73,21 +73,15 @@ module HammerCLI::Output::Adapter
 
     def format_values(fields, collection)
       collection.collect do |d|
-        row = {}
-        fields.each do |f|
+        fields.inject({}) do |row, f|
           formatter = WrapperFormatter.new(@formatters.formatter_for_type(f.class), f.parameters)
-          row[f.label] = formatter.format(data_for_field(f, d) || "").to_s
+          row.update(f.label => formatter.format(data_for_field(f, d) || "").to_s)
         end
-        row
       end
     end
 
     def calculate_widths(fields, collection)
-      widths = {}
-      fields.map do |f|
-        widths[f.label] = calculate_column_width(f, collection)
-      end
-      widths
+      Hash[fields.map { |f| [f.label, calculate_column_width(f, collection)] }]
     end
 
     def calculate_column_width(field, collection)
