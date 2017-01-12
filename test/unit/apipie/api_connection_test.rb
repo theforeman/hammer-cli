@@ -7,9 +7,9 @@ describe HammerCLI::Apipie::ApiConnection do
 
     let(:empty_params) {{}}
 
-    def api_stub(params = {})
+    def api_stub(params = {}, options = {})
       api_stub = stub()
-      ApipieBindings::API.expects(:new).with(params).returns(api_stub)
+      ApipieBindings::API.expects(:new).with(params, options).returns(api_stub)
       api_stub
     end
 
