@@ -17,7 +17,11 @@ Gem::Specification.new do |s|
 Hammer cli provides universal extendable CLI interface for ruby apps
 EOF
 
-  s.files            = Dir['{lib,test,bin,doc,config,locale}/**/*', 'LICENSE', 'README*', 'hammer_cli_complete'] + ['man/hammer.1.gz']
+  locales = Dir['locale/*'].select { |f| File.directory?(f) }
+  s.files = Dir['{lib,test,bin,doc,config}/**/*', 'LICENSE', 'README*', 'hammer_cli_complete'] +
+    locales.map { |loc| "#{loc}/LC_MESSAGES/hammer-cli.mo" } +
+    ['man/hammer.1.gz']
+
   s.test_files       = Dir['test/**/*']
   s.extra_rdoc_files = Dir['{doc,config}/**/*', 'README*']
   s.require_paths = ["lib"]
