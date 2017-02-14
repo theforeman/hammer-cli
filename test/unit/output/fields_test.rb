@@ -166,22 +166,25 @@ describe Fields::Label do
         end
       end
 
-      it "returns true when all the keys are present" do
+      it "returns true when all subfields are displayed" do
         field.display?({:a => 1, :b => 2}).must_equal true
       end
 
-      it "returns true when some of the keys are present" do
+      it "returns true when at least one or the subfields is displayed" do
         field.display?({:a => 1}).must_equal true
       end
 
-      it "returns false when there are some displayed subfields" do
-        field.display?({}).must_equal false
-      end
-
-      it "returns false the hash does not contain the required keys" do
+      it "returns false when none of the subfieldsis displayed" do
         field.display?({:c => 3}).must_equal false
       end
 
+      it "returns false when the value is empty hash" do
+        field.display?({}).must_equal false
+      end
+
+      it "returns false when the value is nil" do
+        field.display?(nil).must_equal false
+      end
     end
 
   end
