@@ -1,11 +1,5 @@
 require File.join(File.dirname(__FILE__), 'test_helper')
 
-
-# describe HammerCLI::OptionValidator do
-
-
-# end
-
 describe "constraints" do
 
   class FakeCmd < Clamp::Command

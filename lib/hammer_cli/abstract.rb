@@ -226,7 +226,7 @@ module HammerCLI
     def all_options
       @all_options ||= self.class.recognised_options.inject({}) do |hash, opt|
         hash[opt.attribute_name] = send(opt.read_method)
-        hash[opt.attribute_name] = add_custom_defaults(opt.attribute_name) if hash[opt.attribute_name].nil?
+        hash[opt.attribute_name] = add_custom_defaults(opt) if hash[opt.attribute_name].nil?
         hash
       end
       @all_options
@@ -238,11 +238,16 @@ module HammerCLI
 
     private
 
-    def add_custom_defaults(attr)
+    def add_custom_defaults(opt)
       if context[:defaults]
-        value = context[:defaults].get_defaults(attr)
-        logger.info("Custom default value #{value} was used for attribute #{attr}") if value
-        value
+        opt.switches.each do |switch|
+          value = context[:defaults].get_defaults(switch)
+          if value
+            logger.info("Custom default value #{value} was used for attribute #{switch}")
+            return value
+          end
+        end
+        nil
       end
     end
 
