@@ -4,6 +4,7 @@ module HammerCLI
   module Subcommand
 
     class LazyDefinition < Clamp::Subcommand::Definition
+      attr_reader :names, :description
 
       def initialize(names, description, subcommand_class_name, path)
         @names = Array(names)
