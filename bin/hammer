@@ -31,7 +31,10 @@ class PreParser < Clamp::Command
   option ["--output"], "ADAPTER", "Set output format"
   option ["--csv-separator"], "SEPARATOR", "Character to separate the values"
   option ["--autocomplete"], "LINE", "Get list of possible endings"
-  option ["--verify-ssl"], "VERIFY_SSL", "Configure SSL verification of remote system"
+  option ["--verify-ssl"], "VERIFY_SSL", "Configure SSL verification of remote system" do |value|
+    bool_normalizer = HammerCLI::Options::Normalizers::Bool.new
+    bool_normalizer.format(value)
+  end
   option ["--ssl-ca-file"], "CA_FILE", "Configure the file containing the CA certificates"
   option ["--ssl-ca-path"], "CA_PATH", "Configure the directory containing the CA certificates"
   option ["--ssl-client-cert"], "CERT_FILE", "Configure the client's public certificate"
