@@ -16,11 +16,11 @@ module HammerCLI
       :context_target => :password
     option ["-s", "--server"], "SERVER", _("remote system address"),
       :context_target => :uri
-    option ["--verify_ssl"], "VERIFY_SSL", "Configure SSL verification of remote system"
-    option ["--ssl_ca_file"], "CA_FILE", _("configure the file containing the CA certificates")
-    option ["--ssl_ca_path"], "CA_PATH", _("configure the directory containing the CA certificates")
-    option ["--ssl_client_cert"], "CERT_FILE", _("configure the client's public certificate")
-    option ["--ssl_client_key"], "KEY_FILE", _("configure the client's private key")
+    option ["--verify-ssl"], "VERIFY_SSL", "Configure SSL verification of remote system"
+    option ["--ssl-ca-file"], "CA_FILE", _("Configure the file containing the CA certificates")
+    option ["--ssl-ca-path"], "CA_PATH", _("Configure the directory containing the CA certificates")
+    option ["--ssl-client-cert"], "CERT_FILE", _("Configure the client's public certificate")
+    option ["--ssl-client-key"], "KEY_FILE", _("Configure the client's private key")
 
     option "--version", :flag, _("show version") do
       puts "hammer (%s)" % HammerCLI.version
