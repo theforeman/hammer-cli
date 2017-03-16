@@ -48,3 +48,6 @@
 
   # Path to a client key
   #:ssl_client_key: '/path/to/cert.key'
+
+  # Enable standard authentication in addition to client certificate authentication
+  #:auth_with_client_cert: true

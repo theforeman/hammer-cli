@@ -39,6 +39,7 @@ class PreParser < Clamp::Command
   option ["--ssl-ca-path"], "CA_PATH", "Configure the directory containing the CA certificates"
   option ["--ssl-client-cert"], "CERT_FILE", "Configure the client's public certificate"
   option ["--ssl-client-key"], "KEY_FILE", "Configure the client's private key"
+  option ["--auth-with-client-cert"], :flag, "Use standard authentication in addition to client certificate authentication"
 end
 
 preparser = PreParser.new File.basename($0), {}
@@ -89,7 +90,8 @@ HammerCLI::Settings.load({
     :ssl_ca_file => preparser.ssl_ca_file,
     :ssl_ca_path => preparser.ssl_ca_path,
     :ssl_client_cert => preparser.ssl_client_cert,
-    :ssl_client_key => preparser.ssl_client_key
+    :ssl_client_key => preparser.ssl_client_key,
+    :auth_with_client_cert => preparser.auth_with_client_cert?
   }})
 
 if HammerCLI::Settings.get(:ui, :mark_translated)
