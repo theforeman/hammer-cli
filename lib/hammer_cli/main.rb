@@ -22,7 +22,7 @@ module HammerCLI
     option ["--ssl-ca-path"], "CA_PATH", _("Configure the directory containing the CA certificates")
     option ["--ssl-client-cert"], "CERT_FILE", _("Configure the client's public certificate")
     option ["--ssl-client-key"], "KEY_FILE", _("Configure the client's private key")
-    option ["--auth-with-client-cert"], :flag, _("Use standard authentication in addition to client certificate authentication")
+    option ["--ssl-with-basic-auth"], :flag, _("Use standard authentication in addition to client certificate authentication")
 
     option "--version", :flag, _("show version") do
       puts "hammer (%s)" % HammerCLI.version
