@@ -31,3 +31,23 @@
 # Log record pattern (logging gem syntax)
 #:log_pattern: '[%5l %d %c] %m'
 
+
+# SSL auth options
+#:ssl:
+  # Path to a ca file
+  #:ssl_ca_file: '/path/to/ca_certificate.pem'
+
+  # Path to a direcotry with ca file
+  #:ssl_ca_path: '/path/to/ca/'
+
+  # Turn SSL verification on/off
+  #:verify_ssl: true
+
+  # Path to a client certificate
+  #:ssl_client_cert: '/path/to/cert.crt'
+
+  # Path to a client key
+  #:ssl_client_key: '/path/to/cert.key'
+
+  # Enable standard authentication in addition to client certificate authentication
+  #:ssl_with_basic_auth: true

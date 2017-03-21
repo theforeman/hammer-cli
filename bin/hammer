@@ -31,6 +31,15 @@ class PreParser < Clamp::Command
   option ["--output"], "ADAPTER", "Set output format"
   option ["--csv-separator"], "SEPARATOR", "Character to separate the values"
   option ["--autocomplete"], "LINE", "Get list of possible endings"
+  option ["--verify-ssl"], "VERIFY_SSL", "Configure SSL verification of remote system" do |value|
+    bool_normalizer = HammerCLI::Options::Normalizers::Bool.new
+    bool_normalizer.format(value)
+  end
+  option ["--ssl-ca-file"], "CA_FILE", "Configure the file containing the CA certificates"
+  option ["--ssl-ca-path"], "CA_PATH", "Configure the directory containing the CA certificates"
+  option ["--ssl-client-cert"], "CERT_FILE", "Configure the client's public certificate"
+  option ["--ssl-client-key"], "KEY_FILE", "Configure the client's private key"
+  option ["--ssl-with-basic-auth"], :flag, "Use standard authentication in addition to client certificate authentication"
 end
 
 preparser = PreParser.new File.basename($0), {}
@@ -76,7 +85,13 @@ HammerCLI::Settings.load({
     :host => preparser.server,
     :interactive => preparser.interactive,
     :verbose => preparser.verbose? || preparser.debug?,
-    :reload_cache => preparser.reload_cache?
+    :reload_cache => preparser.reload_cache?,
+    :verify_ssl => preparser.verify_ssl,
+    :ssl_ca_file => preparser.ssl_ca_file,
+    :ssl_ca_path => preparser.ssl_ca_path,
+    :ssl_client_cert => preparser.ssl_client_cert,
+    :ssl_client_key => preparser.ssl_client_key,
+    :ssl_with_basic_auth => preparser.ssl_with_basic_auth?
   }})
 
 if HammerCLI::Settings.get(:ui, :mark_translated)

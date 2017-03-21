@@ -90,9 +90,12 @@ module HammerCLI
 
     def handle_apipie_docloading_error(e)
       rake_command = "rake apipie:cache"
-      print_error _("Could not load the API description from the server") + "\n  - " +
-                  _("is the server down?") + "\n  - " +
-                  _("was '%s' run on the server when using apipie cache? (typical production settings)") % rake_command
+      message = _("Could not load the API description from the server") + ":"
+      message += "\n#{e.original_error.message}" if e.respond_to?(:original_error)
+      message += "\n  - " +
+                 _("is the server down?") + "\n  - " +
+                 _("was '%s' run on the server when using apipie cache? (typical production settings)") % rake_command
+      print_error message
       log_full_error e
       HammerCLI::EX_CONFIG
     end
