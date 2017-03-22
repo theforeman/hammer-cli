@@ -16,6 +16,8 @@ module HammerCLI
         [Clamp::UsageError, :handle_usage_exception],
         [RestClient::ResourceNotFound, :handle_not_found],
         [RestClient::Unauthorized, :handle_unauthorized],
+        [RestClient::SSLCertificateNotVerified, :handle_ssl_cert_not_verified],
+        [OpenSSL::SSL::SSLError, :handle_ssl_error],
         [ApipieBindings::DocLoadingError, :handle_apipie_docloading_error],
         [ApipieBindings::MissingArgumentsError, :handle_apipie_missing_arguments_error],
         [HammerCLI::ModuleDisabledButRequired, :handle_generic_config_error]
@@ -88,15 +90,49 @@ module HammerCLI
       HammerCLI::EX_UNAUTHORIZED
     end
 
+    def rake_command
+      "rake apipie:cache"
+    end
+
+    def handle_ssl_error(e)
+      print_error(_("SSL error") + ": #{e.message}")
+      log_full_error(e)
+      HammerCLI::EX_CONFIG
+    end
+
+    def handle_ssl_cert_not_verified(e)
+      print_error(ssl_cert_message)
+      log_full_error(e)
+      HammerCLI::EX_CONFIG
+    end
+
+    def ssl_cert_instructions
+    end
+
+    def ssl_cert_message
+      message = _("SSL certificate verification failed")
+      message += "\n#{ssl_cert_instructions}" if ssl_cert_instructions
+      message
+    end
+
     def handle_apipie_docloading_error(e)
-      rake_command = "rake apipie:cache"
-      message = _("Could not load the API description from the server") + ":"
-      message += "\n#{e.original_error.message}" if e.respond_to?(:original_error)
-      message += "\n  - " +
-                 _("is the server down?") + "\n  - " +
-                 _("was '%s' run on the server when using apipie cache? (typical production settings)") % rake_command
-      print_error message
-      log_full_error e
+      api_cache_instructions = "\n  - " +
+                               _("is the server down?") + "\n  - " +
+                               _("was '%s' run on the server when using apipie cache? (typical production settings)") % rake_command
+
+      message = _("Could not load the API description from the server") + ": "
+      if e.respond_to?(:original_error)
+        if e.original_error.is_a?(RestClient::SSLCertificateNotVerified)
+          message += ssl_cert_message + "\n\n"
+        else
+          message += "\n#{e.original_error.message}"
+          message += api_cache_instructions
+        end
+      else
+        message += api_cache_instructions
+      end
+      print_error(message)
+      log_full_error(e)
       HammerCLI::EX_CONFIG
     end
 

@@ -9,6 +9,7 @@ describe HammerCLI::Apipie::ApiConnection do
 
     def api_stub(params = {}, options = {})
       api_stub = stub()
+      options[:verify_ssl] = true if options[:verify_ssl].nil?
       ApipieBindings::API.expects(:new).with(params, options).returns(api_stub)
       api_stub
     end

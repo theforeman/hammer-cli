@@ -17,8 +17,8 @@ module HammerCLI
       end
       ssl_options.merge!(cert_key_options)
 
-      # enable ssl verification if verify_ssl is not configured and either CA file or path are present
-      ssl_options[:verify_ssl] = 1 if ssl_options[:verify_ssl].nil? && (ssl_options[:ssl_ca_file] || ssl_options[:ssl_ca_path])
+      # enable ssl verification
+      ssl_options[:verify_ssl] ||= true
       @logger.debug("SSL options: #{ApipieBindings::Utils::inspect_data(ssl_options)}")
       ssl_options
     end
