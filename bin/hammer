@@ -40,6 +40,7 @@ class PreParser < Clamp::Command
   option ["--ssl-client-cert"], "CERT_FILE", "Configure the client's public certificate"
   option ["--ssl-client-key"], "KEY_FILE", "Configure the client's private key"
   option ["--ssl-with-basic-auth"], :flag, "Use standard authentication in addition to client certificate authentication"
+  option ["--fetch-ca-cert"], "SERVER", "Fetch CA certificate from server and exit"
 end
 
 preparser = PreParser.new File.basename($0), {}
@@ -121,6 +122,11 @@ end
 
 # load hammer core
 require 'hammer_cli'
+
+if preparser.fetch_ca_cert
+  require 'hammer_cli/ca_cert_fetcher'
+  exit HammerCLI::CACertFetcher.fetch_ca_cert(preparser.fetch_ca_cert)
+end
 
 # load modules set in config
 begin
