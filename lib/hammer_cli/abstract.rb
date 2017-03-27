@@ -1,6 +1,9 @@
 require 'hammer_cli/exception_handler'
 require 'hammer_cli/logger_watch'
 require 'hammer_cli/options/option_definition'
+require 'hammer_cli/options/option_collector'
+require 'hammer_cli/options/sources/command_line'
+require 'hammer_cli/options/sources/saved_defaults'
 require 'hammer_cli/clamp'
 require 'hammer_cli/subcommand'
 require 'hammer_cli/options/matcher'
@@ -224,27 +227,21 @@ module HammerCLI
     end
 
     def all_options
-      @all_options ||= self.class.recognised_options.inject({}) do |hash, opt|
-        hash[opt.attribute_name] = send(opt.read_method)
-        hash[opt.attribute_name] = add_custom_defaults(opt.attribute_name) if hash[opt.attribute_name].nil?
-        hash
-      end
-      @all_options
+      option_collector.all_options
     end
 
     def options
-      all_options.reject {|key, value| value.nil? }
+      option_collector.options
+    end
+
+    def option_collector
+      @option_collector ||= HammerCLI::Options::OptionCollector.new(self.class.recognised_options, [
+        HammerCLI::Options::Sources::CommandLine.new(self),
+        HammerCLI::Options::Sources::SavedDefaults.new(context[:defaults], logger)
+      ])
     end
 
     private
-
-    def add_custom_defaults(attr)
-      if context[:defaults]
-        value = context[:defaults].get_defaults(attr)
-        logger.info("Custom default value #{value} was used for attribute #{attr}") if value
-        value
-      end
-    end
 
     def self.inherited_output_definition
       od = nil

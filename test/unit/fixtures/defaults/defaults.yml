@@ -4,3 +4,5 @@
     :provider: 'foreman'
   :location_id:
     :value: 2
+  :f:
+    :value: 'F'

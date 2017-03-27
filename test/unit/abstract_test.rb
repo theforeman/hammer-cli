@@ -351,6 +351,40 @@ describe HammerCLI::AbstractCommand do
 
   end
 
+  describe 'defaults' do
+    class TestDefaultsCmd < HammerCLI::AbstractCommand
+      option '--test', 'TEST', '', :attribute_name => :different_attr_name
+      option ['--test-multi1', '--test-multi2'], 'TEST_MULTI', '', :attribute_name => :multiple_switches_option
+
+      def options
+        super
+      end
+    end
+
+    before do
+      @defaults = mock()
+      @defaults.stubs(:get_defaults).returns(nil)
+      @cmd = TestDefaultsCmd.new("", { :defaults => @defaults })
+    end
+
+    it 'provides default value for an option flag' do
+      @defaults.expects(:get_defaults).with('--test').returns(2)
+      assert_equal({'different_attr_name' => 2}, @cmd.options)
+    end
+
+    it 'prefers values from command line' do
+      @defaults.stubs(:get_defaults).with('--test').returns(2)
+      @cmd.run(['--test=1'])
+      assert_equal({'different_attr_name' => '1'}, @cmd.options)
+    end
+
+    it 'iterates over multiple switches of an option' do
+      @defaults.expects(:get_defaults).with('--test-multi1').returns(nil)
+      @defaults.expects(:get_defaults).with('--test-multi2').returns(3)
+      assert_equal({'multiple_switches_option' => 3}, @cmd.options)
+    end
+  end
+
   it "should inherit command_name" do
     class CmdName1 < HammerCLI::AbstractCommand
       command_name 'cmd'

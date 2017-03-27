@@ -29,6 +29,12 @@ describe HammerCLI::Defaults do
         assert_equal 3, defaults_result[:defaults][:location_id][:value]
         assert_equal nil, defaults_result[:defaults][:'location-id']
       end
+
+      it "should update underscored default with option syntax when dashed default is set" do
+        defaults_result = @defaults.add_defaults_to_conf({"--location-id"=> 3}, nil)
+        assert_equal 3, defaults_result[:defaults][:'location-id'][:value]
+        assert_equal nil, defaults_result[:defaults][:location_id]
+      end
     end
 
     it "Should add a default param to defaults file, with provider" do
@@ -70,8 +76,12 @@ describe HammerCLI::Defaults do
 
 
   describe '#get_defaults' do
-    it "should get the default param, without provider" do
-      assert_equal 2, @defaults.get_defaults("location_id")
+    it "should get the default param" do
+      assert_equal 2, @defaults.get_defaults("--location-id")
+    end
+
+    it "should get the default param for short flag" do
+      assert_equal 'F', @defaults.get_defaults("-f")
     end
 
     it "should get the default param, with provider" do
@@ -79,14 +89,14 @@ describe HammerCLI::Defaults do
       fake_provider.stubs(:provider_name).returns(:foreman)
       fake_provider.expects(:get_defaults).with(:organization_id).returns(3)
       @defaults.register_provider(fake_provider)
-      assert_equal 3, @defaults.get_defaults("organization_id")
+      assert_equal 3, @defaults.get_defaults("--organization-id")
     end
 
     context 'dashed params' do
       let(:filepath) { File.join(File.dirname(__FILE__), '/fixtures/defaults/defaults_dashed.yml') }
 
       it "should get the default param, without provider" do
-        assert_equal 2, @defaults.get_defaults("location_id")
+        assert_equal 2, @defaults.get_defaults("--location-id")
       end
 
       it "should get the default param, with provider" do
@@ -94,7 +104,7 @@ describe HammerCLI::Defaults do
         fake_provider.stubs(:provider_name).returns(:foreman)
         fake_provider.expects(:get_defaults).with(:organization_id).returns(3)
         @defaults.register_provider(fake_provider)
-        assert_equal 3, @defaults.get_defaults("organization_id")
+        assert_equal 3, @defaults.get_defaults("--organization-id")
       end
     end
   end

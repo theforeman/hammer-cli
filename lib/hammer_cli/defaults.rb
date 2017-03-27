@@ -32,9 +32,9 @@ module HammerCLI
       create_default_file if defaults_settings.empty?
       update_defaults_file do |defaults|
         default_options.each do |key, value|
-          key = key.to_sym
+          key = switch_to_name(key).to_sym
           defaults.delete_if { |k,| defaults_match?(k, key) }
-          defaults[key] = (value ? {:value => value,} : {:provider => provider})
+          defaults[key] = (value ? {:value => value} : {:provider => provider})
         end
       end
     end
@@ -44,16 +44,16 @@ module HammerCLI
     end
 
     def get_defaults(opt)
-      option = opt
-      option = opt.gsub("option_",'') if opt.include? "option_"
       unless defaults_settings.nil?
-        option_key = defaults_settings[option.to_sym].nil? ? option.gsub('_','-').to_sym : option.to_sym
-        return nil if defaults_settings[option_key].nil?
+        option_key = normalize_option(opt)
+        settings_key = defaults_settings[option_key.to_sym].nil? ? option_key.gsub('_','-').to_sym : option_key.to_sym
 
-        if defaults_settings[option_key][:provider]
-          providers[defaults_settings[option_key][:provider]].get_defaults(option.to_sym)
+        return nil if defaults_settings[settings_key].nil?
+
+        if defaults_settings[settings_key][:provider]
+          providers[defaults_settings[settings_key][:provider]].get_defaults(option_key.to_sym)
         else
-          defaults_settings[option_key][:value]
+          defaults_settings[settings_key][:value]
         end
       end
     end
@@ -89,7 +89,15 @@ module HammerCLI
     private
 
     def defaults_match?(default_a, default_b)
-      default_a.to_s.gsub('-','_') == default_b.to_s.gsub('-','_')
+      normalize_option(default_a) == normalize_option(default_b)
+    end
+
+    def normalize_option(opt)
+      switch_to_name(opt).gsub(/^option_/,'').gsub('-','_')
+    end
+
+    def switch_to_name(opt)
+      opt.to_s.gsub(/^-[-]?/,'')
     end
   end
 
