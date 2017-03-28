@@ -13,12 +13,12 @@ module HammerCLI
       ssl_options = {}
       for sslopt in [:ssl_ca_file, :ssl_ca_path, :verify_ssl] do
         ssloptval = read_ssl_option(sslopt)
-        ssl_options[sslopt] = ssloptval if ssloptval
+        ssl_options[sslopt] = ssloptval unless ssloptval.nil?
       end
       ssl_options.merge!(cert_key_options)
 
-      # enable ssl verification if verify_ssl is not configured and either CA file or path are present
-      ssl_options[:verify_ssl] = 1 if ssl_options[:verify_ssl].nil? && (ssl_options[:ssl_ca_file] || ssl_options[:ssl_ca_path])
+      # enable ssl verification
+      ssl_options[:verify_ssl] = true if ssl_options[:verify_ssl].nil?
       @logger.debug("SSL options: #{ApipieBindings::Utils::inspect_data(ssl_options)}")
       ssl_options
     end
@@ -26,7 +26,7 @@ module HammerCLI
     protected
 
     def read_ssl_option(key)
-      @settings.get(:_params, key) || @settings.get(:ssl, key)
+      @settings.get(:_params, key).nil? ? @settings.get(:ssl, key) : @settings.get(:_params, key)
     end
 
     def cert_key_options
