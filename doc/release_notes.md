@@ -1,6 +1,13 @@
 Release notes
 =============
 
+### 0.10.0 (2017-03-28)
+* Defaults match on option switch name (#233) ([#17920](http://projects.theforeman.org/issues/17920))
+* Add support for client certificate authentication ([#12401](http://projects.theforeman.org/issues/12401))
+* Only include .mo files below locale/ ([#18439](http://projects.theforeman.org/issues/18439))
+* Hide label fields when the value is empty or nil ([#18446](http://projects.theforeman.org/issues/18446))
+* Replacement for table_print gem ([#17740](http://projects.theforeman.org/issues/17740))
+
 ### 0.9.0 (2016-12-15)
 * Double quotes in list type params ([#17180](http://projects.theforeman.org/issues/17180))
 * API connection moved to context ([PR #227](https://github.com/theforeman/hammer-cli/pull/227)) ([#8016](http://projects.theforeman.org/issues/8016))

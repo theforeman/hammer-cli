@@ -34,6 +34,6 @@ EOF
   s.add_dependency 'highline'
   s.add_dependency 'fast_gettext'
   s.add_dependency 'locale', '>= 2.0.6'
-  s.add_dependency 'apipie-bindings', '~> 0.0.14'
+  s.add_dependency 'apipie-bindings', '>= 0.0.19'
 
 end
