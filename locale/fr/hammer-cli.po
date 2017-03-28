@@ -9,7 +9,7 @@
 # jcarbone <jcarbone@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.9.0\n"
+"Project-Id-Version: hammer-cli 0.10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-28 08:20+0000\n"
 "Last-Translator: jcarbone <jcarbone@redhat.com>\n"
@@ -21,6 +21,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Zanata 3.6.0\n"
+
+msgid "Couldn't parse URI '%s'."
+msgstr ""
+
+msgid "Fetching the CA certificate failed:"
+msgstr ""
+
+#, fuzzy
+msgid "The service at the given URI does not accept SSL connections"
+msgstr "non"
+
+msgid "Perhaps you meant to connect to '%s'?"
+msgstr ""
 
 msgid "too many arguments"
 msgstr "trop d'arguments"
@@ -132,8 +145,11 @@ msgstr "Erreur : %{message}"
 msgid "See: '%{path} --help'"
 msgstr "Voir : '%{path} --help'"
 
-msgid "Could not load the API description from the server"
-msgstr "Impossible de charger la description de l'API depuis le serveur"
+msgid "SSL error"
+msgstr ""
+
+msgid "SSL certificate verification failed"
+msgstr ""
 
 msgid "is the server down?"
 msgstr "Le serveur est-il éteint ?"
@@ -144,6 +160,9 @@ msgid ""
 msgstr ""
 "Est ce que '%s' était lancé pendant que le cache apipie était en cours d'utili"
 "sation ? (état normal pour un serveur de production)"
+
+msgid "Could not load the API description from the server"
+msgstr "Impossible de charger la description de l'API depuis le serveur"
 
 msgid "Missing arguments for %s"
 msgstr "Arguments manquants pour %s"
@@ -174,6 +193,27 @@ msgstr "mot de passe pour accéder au système distant"
 
 msgid "remote system address"
 msgstr "adresse du système distant"
+
+msgid "Configure SSL verification of remote system"
+msgstr ""
+
+msgid "Configure the file containing the CA certificates"
+msgstr ""
+
+msgid "Configure the directory containing the CA certificates"
+msgstr ""
+
+msgid "Configure the client's public certificate"
+msgstr ""
+
+msgid "Configure the client's private key"
+msgstr ""
+
+msgid "Use standard authentication in addition to client certificate authentication"
+msgstr ""
+
+msgid "Fetch CA certificate from server and exit"
+msgstr ""
 
 msgid "show version"
 msgstr "Voir la version"
@@ -335,6 +375,23 @@ msgstr "Saisir 'help' pour des informations d'utilisation "
 
 msgid "Interactive shell"
 msgstr "Shell interactif"
+
+#, fuzzy
+msgid "SSL client certificate is set but the key is not"
+msgstr "non"
+
+#, fuzzy
+msgid "SSL client key is set but the certificate is not"
+msgstr "non"
+
+msgid "SSL client authentication disabled"
+msgstr ""
+
+msgid "Could't read SSL client certificate %s"
+msgstr ""
+
+msgid "Could't read SSL client key %s"
+msgstr ""
 
 msgid ""
 "can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"

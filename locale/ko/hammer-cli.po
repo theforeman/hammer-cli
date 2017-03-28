@@ -7,7 +7,7 @@
 # eukim <eukim@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.9.0\n"
+"Project-Id-Version: hammer-cli 0.10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-28 12:45+0000\n"
 "Last-Translator: eukim <eukim@redhat.com>\n"
@@ -19,6 +19,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Zanata 3.6.0\n"
+
+msgid "Couldn't parse URI '%s'."
+msgstr ""
+
+msgid "Fetching the CA certificate failed:"
+msgstr ""
+
+#, fuzzy
+msgid "The service at the given URI does not accept SSL connections"
+msgstr "no"
+
+msgid "Perhaps you meant to connect to '%s'?"
+msgstr ""
 
 msgid "too many arguments"
 msgstr "인수가 너무 많습니다 "
@@ -130,8 +143,11 @@ msgstr "오류: %{message}"
 msgid "See: '%{path} --help'"
 msgstr "참조: '%{path} --help'"
 
-msgid "Could not load the API description from the server"
-msgstr "서버에서 API 설명을 불러올 수 없습니다 "
+msgid "SSL error"
+msgstr ""
+
+msgid "SSL certificate verification failed"
+msgstr ""
 
 msgid "is the server down?"
 msgstr "서버가 중지되어 있습니까?"
@@ -140,6 +156,9 @@ msgid ""
 "was '%s' run on the server when using apipie cache? (typical production settin"
 "gs)"
 msgstr "apipie 캐시를 사용할 때 서버에서 '%s'가 실행되었습니까? (일반 제품 설정)"
+
+msgid "Could not load the API description from the server"
+msgstr "서버에서 API 설명을 불러올 수 없습니다 "
 
 msgid "Missing arguments for %s"
 msgstr "%s에 대한 인수가 누락되어 있습니다 "
@@ -170,6 +189,27 @@ msgstr "원격 시스템에 액세스하기 위한 암호 "
 
 msgid "remote system address"
 msgstr "원격 시스템 주소 "
+
+msgid "Configure SSL verification of remote system"
+msgstr ""
+
+msgid "Configure the file containing the CA certificates"
+msgstr ""
+
+msgid "Configure the directory containing the CA certificates"
+msgstr ""
+
+msgid "Configure the client's public certificate"
+msgstr ""
+
+msgid "Configure the client's private key"
+msgstr ""
+
+msgid "Use standard authentication in addition to client certificate authentication"
+msgstr ""
+
+msgid "Fetch CA certificate from server and exit"
+msgstr ""
 
 msgid "show version"
 msgstr "버전 표시 "
@@ -327,6 +367,23 @@ msgstr "사용법을 확인하려면 'help'를 입력하십시오 "
 
 msgid "Interactive shell"
 msgstr "대화식 쉘 "
+
+#, fuzzy
+msgid "SSL client certificate is set but the key is not"
+msgstr "no"
+
+#, fuzzy
+msgid "SSL client key is set but the certificate is not"
+msgstr "no"
+
+msgid "SSL client authentication disabled"
+msgstr ""
+
+msgid "Could't read SSL client certificate %s"
+msgstr ""
+
+msgid "Could't read SSL client key %s"
+msgstr ""
 
 msgid ""
 "can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"

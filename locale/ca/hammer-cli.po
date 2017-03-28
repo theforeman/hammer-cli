@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.9.0\n"
+"Project-Id-Version: hammer-cli 0.10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12,6 +12,19 @@ msgstr ""
 "Language: ca\n"
 "X-Generator: Poedit 1.8.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Couldn't parse URI '%s'."
+msgstr ""
+
+msgid "Fetching the CA certificate failed:"
+msgstr ""
+
+#, fuzzy
+msgid "The service at the given URI does not accept SSL connections"
+msgstr "no"
+
+msgid "Perhaps you meant to connect to '%s'?"
+msgstr ""
 
 msgid "too many arguments"
 msgstr "massa arguments"
@@ -124,7 +137,10 @@ msgstr "Error: %s"
 msgid "See: '%{path} --help'"
 msgstr ""
 
-msgid "Could not load the API description from the server"
+msgid "SSL error"
+msgstr ""
+
+msgid "SSL certificate verification failed"
 msgstr ""
 
 msgid "is the server down?"
@@ -133,6 +149,9 @@ msgstr ""
 msgid ""
 "was '%s' run on the server when using apipie cache? (typical production settin"
 "gs)"
+msgstr ""
+
+msgid "Could not load the API description from the server"
 msgstr ""
 
 msgid "Missing arguments for %s"
@@ -164,6 +183,27 @@ msgstr "contrasenya per accedir al sistema remot"
 
 msgid "remote system address"
 msgstr "adreça del sistema remot"
+
+msgid "Configure SSL verification of remote system"
+msgstr ""
+
+msgid "Configure the file containing the CA certificates"
+msgstr ""
+
+msgid "Configure the directory containing the CA certificates"
+msgstr ""
+
+msgid "Configure the client's public certificate"
+msgstr ""
+
+msgid "Configure the client's private key"
+msgstr ""
+
+msgid "Use standard authentication in addition to client certificate authentication"
+msgstr ""
+
+msgid "Fetch CA certificate from server and exit"
+msgstr ""
 
 msgid "show version"
 msgstr "mostra la versió"
@@ -324,6 +364,23 @@ msgstr "Teclegeu 'help' per a la informació de l'ús"
 
 msgid "Interactive shell"
 msgstr "Shell interactiu"
+
+#, fuzzy
+msgid "SSL client certificate is set but the key is not"
+msgstr "no"
+
+#, fuzzy
+msgid "SSL client key is set but the certificate is not"
+msgstr "no"
+
+msgid "SSL client authentication disabled"
+msgstr ""
+
+msgid "Could't read SSL client certificate %s"
+msgstr ""
+
+msgid "Could't read SSL client key %s"
+msgstr ""
 
 msgid ""
 "can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"

@@ -7,7 +7,7 @@
 # tchuang <tchuang@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.9.0\n"
+"Project-Id-Version: hammer-cli 0.10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-28 05:21+0000\n"
 "Last-Translator: tchuang <tchuang@redhat.com>\n"
@@ -19,6 +19,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Zanata 3.6.0\n"
+
+msgid "Couldn't parse URI '%s'."
+msgstr ""
+
+msgid "Fetching the CA certificate failed:"
+msgstr ""
+
+#, fuzzy
+msgid "The service at the given URI does not accept SSL connections"
+msgstr "否"
+
+msgid "Perhaps you meant to connect to '%s'?"
+msgstr ""
 
 msgid "too many arguments"
 msgstr "引數過多"
@@ -130,8 +143,11 @@ msgstr "錯誤：%{message}"
 msgid "See: '%{path} --help'"
 msgstr "請參閱：'%{path} --help'"
 
-msgid "Could not load the API description from the server"
-msgstr "無法從伺服器載入 API 描述"
+msgid "SSL error"
+msgstr ""
+
+msgid "SSL certificate verification failed"
+msgstr ""
 
 msgid "is the server down?"
 msgstr "伺服器是否沒有在運作？"
@@ -140,6 +156,9 @@ msgid ""
 "was '%s' run on the server when using apipie cache? (typical production settin"
 "gs)"
 msgstr "使用 apipie 快取時 '%s' 是否有在伺服器上運作？（典型的生產設定）"
+
+msgid "Could not load the API description from the server"
+msgstr "無法從伺服器載入 API 描述"
 
 msgid "Missing arguments for %s"
 msgstr "%s 缺少了引數"
@@ -170,6 +189,27 @@ msgstr "用來存取遠端系統的密碼"
 
 msgid "remote system address"
 msgstr "遠端系統位址"
+
+msgid "Configure SSL verification of remote system"
+msgstr ""
+
+msgid "Configure the file containing the CA certificates"
+msgstr ""
+
+msgid "Configure the directory containing the CA certificates"
+msgstr ""
+
+msgid "Configure the client's public certificate"
+msgstr ""
+
+msgid "Configure the client's private key"
+msgstr ""
+
+msgid "Use standard authentication in addition to client certificate authentication"
+msgstr ""
+
+msgid "Fetch CA certificate from server and exit"
+msgstr ""
 
 msgid "show version"
 msgstr "顯示版本"
@@ -327,6 +367,23 @@ msgstr "請輸入「help」以查看使用說明"
 
 msgid "Interactive shell"
 msgstr "互動式 shell"
+
+#, fuzzy
+msgid "SSL client certificate is set but the key is not"
+msgstr "否"
+
+#, fuzzy
+msgid "SSL client key is set but the certificate is not"
+msgstr "否"
+
+msgid "SSL client authentication disabled"
+msgstr ""
+
+msgid "Could't read SSL client certificate %s"
+msgstr ""
+
+msgid "Could't read SSL client key %s"
+msgstr ""
 
 msgid ""
 "can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"

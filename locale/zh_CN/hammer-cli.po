@@ -3,7 +3,7 @@
 # Leah Liu <lliu@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.9.0\n"
+"Project-Id-Version: hammer-cli 0.10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-27 01:22+0000\n"
 "Last-Translator: Leah Liu <lliu@redhat.com>\n"
@@ -14,6 +14,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Zanata 3.6.0\n"
+
+msgid "Couldn't parse URI '%s'."
+msgstr ""
+
+msgid "Fetching the CA certificate failed:"
+msgstr ""
+
+# translation auto-copied from project firstboot, version 19.6, document firstboot, author Leah Liu
+#, fuzzy
+msgid "The service at the given URI does not accept SSL connections"
+msgstr "否"
+
+msgid "Perhaps you meant to connect to '%s'?"
+msgstr ""
 
 msgid "too many arguments"
 msgstr "参数太多"
@@ -126,8 +140,11 @@ msgstr "错误：%{message}"
 msgid "See: '%{path} --help'"
 msgstr "请查看： '%{path} --help'"
 
-msgid "Could not load the API description from the server"
-msgstr "无法从服务器载入 API 描述"
+msgid "SSL error"
+msgstr ""
+
+msgid "SSL certificate verification failed"
+msgstr ""
 
 msgid "is the server down?"
 msgstr "服务器宕机了吗？"
@@ -136,6 +153,9 @@ msgid ""
 "was '%s' run on the server when using apipie cache? (typical production settin"
 "gs)"
 msgstr "使用 apipie 缓存时服务器中是否运行了 '%s'？（典型产品设置）"
+
+msgid "Could not load the API description from the server"
+msgstr "无法从服务器载入 API 描述"
 
 msgid "Missing arguments for %s"
 msgstr "缺少 %s 的参数"
@@ -166,6 +186,27 @@ msgstr "访问远程系统的密码"
 
 msgid "remote system address"
 msgstr "远程系统地址"
+
+msgid "Configure SSL verification of remote system"
+msgstr ""
+
+msgid "Configure the file containing the CA certificates"
+msgstr ""
+
+msgid "Configure the directory containing the CA certificates"
+msgstr ""
+
+msgid "Configure the client's public certificate"
+msgstr ""
+
+msgid "Configure the client's private key"
+msgstr ""
+
+msgid "Use standard authentication in addition to client certificate authentication"
+msgstr ""
+
+msgid "Fetch CA certificate from server and exit"
+msgstr ""
 
 # translation auto-copied from project libvirt, version 1.1.1, document libvirt
 msgid "show version"
@@ -330,6 +371,25 @@ msgstr "输入 ‘help’ 获取用法信息"
 
 msgid "Interactive shell"
 msgstr "互动 shell"
+
+# translation auto-copied from project firstboot, version 19.6, document firstboot, author Leah Liu
+#, fuzzy
+msgid "SSL client certificate is set but the key is not"
+msgstr "否"
+
+# translation auto-copied from project firstboot, version 19.6, document firstboot, author Leah Liu
+#, fuzzy
+msgid "SSL client key is set but the certificate is not"
+msgstr "否"
+
+msgid "SSL client authentication disabled"
+msgstr ""
+
+msgid "Could't read SSL client certificate %s"
+msgstr ""
+
+msgid "Could't read SSL client key %s"
+msgstr ""
 
 msgid ""
 "can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"

@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.9.0\n"
+"Project-Id-Version: hammer-cli 0.10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-03-04 16:38+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -15,6 +15,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgid "Couldn't parse URI '%s'."
+msgstr ""
+
+msgid "Fetching the CA certificate failed:"
+msgstr ""
+
+msgid "The service at the given URI does not accept SSL connections"
+msgstr ""
+
+msgid "Perhaps you meant to connect to '%s'?"
+msgstr ""
 
 msgid "too many arguments"
 msgstr ""
@@ -126,7 +138,10 @@ msgstr ""
 msgid "See: '%{path} --help'"
 msgstr ""
 
-msgid "Could not load the API description from the server"
+msgid "SSL error"
+msgstr ""
+
+msgid "SSL certificate verification failed"
 msgstr ""
 
 msgid "is the server down?"
@@ -135,6 +150,9 @@ msgstr ""
 msgid ""
 "was '%s' run on the server when using apipie cache? (typical production settin"
 "gs)"
+msgstr ""
+
+msgid "Could not load the API description from the server"
 msgstr ""
 
 msgid "Missing arguments for %s"
@@ -165,6 +183,27 @@ msgid "password to access the remote system"
 msgstr ""
 
 msgid "remote system address"
+msgstr ""
+
+msgid "Configure SSL verification of remote system"
+msgstr ""
+
+msgid "Configure the file containing the CA certificates"
+msgstr ""
+
+msgid "Configure the directory containing the CA certificates"
+msgstr ""
+
+msgid "Configure the client's public certificate"
+msgstr ""
+
+msgid "Configure the client's private key"
+msgstr ""
+
+msgid "Use standard authentication in addition to client certificate authentication"
+msgstr ""
+
+msgid "Fetch CA certificate from server and exit"
 msgstr ""
 
 msgid "show version"
@@ -320,6 +359,21 @@ msgid "Type 'help' for usage information"
 msgstr ""
 
 msgid "Interactive shell"
+msgstr ""
+
+msgid "SSL client certificate is set but the key is not"
+msgstr ""
+
+msgid "SSL client key is set but the certificate is not"
+msgstr ""
+
+msgid "SSL client authentication disabled"
+msgstr ""
+
+msgid "Could't read SSL client certificate %s"
+msgstr ""
+
+msgid "Could't read SSL client key %s"
 msgstr ""
 
 msgid ""
