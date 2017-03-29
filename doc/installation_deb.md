@@ -21,7 +21,7 @@ echo "deb http://deb.theforeman.org/ squeeze nightly" > /etc/apt/sources.list.d/
 and update the keys
 
 ```bash
-wget -q http://deb.theforeman.org/foreman.asc -O- | apt-key add -
+wget -q https://deb.theforeman.org/foreman.asc -O- | apt-key add -
 ```
 
 #### Step 2: install hammer core
