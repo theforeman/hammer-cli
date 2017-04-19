@@ -1,39 +1,66 @@
+require 'hammer_cli/ca_cert_manager'
 module HammerCLI
   class CACertFetcher
-    def self.fetch_ca_cert(host)
-      CACertFetcher.new.fetch_ca_cert(host)
-    end
-
-    def fetch_ca_cert(host)
+    def fetch_ca_cert(service_uri, ca_path)
       begin
-        uri = URI.parse(host)
+        uri = URI.parse(service_uri)
+        raise URI::InvalidURIError.new(_("Unable to find hostname in #{service_uri}")) if uri.host.nil?
+        raise URI::InvalidURIError.new(scheme_error(uri)) unless uri.scheme == 'https'
+        ca_cert_manager = HammerCLI::CACertManager.new(ca_path)
+        raw_cert = HammerCLI::CACertDownloader.new.download(uri)
+        cert_file = ca_cert_manager.cert_file_name(uri)
+        ca_cert_manager.store_ca_cert(raw_cert, cert_file)
 
-        hostname = uri.host
-        port = uri.port || 443
+        rh_install_path = "/etc/pki/ca-trust/source/anchors/"
+        rh_update_cmd = "update-ca-trust"
+        deb_install_path = "/usr/local/share/ca-certificates/"
+        deb_update_cmd = "update-ca-certificates"
+        cert_file = ca_cert_manager.cert_file_name(uri)
 
-        if hostname.nil?
-          $stderr.puts _("Couldn't parse URI '%s'.") % host
-          $stderr.puts scheme_error(uri)
-          return HammerCLI::EX_SOFTWARE
+        puts _("CA certificate for #{service_uri} was stored to #{cert_file}")
+        puts _("Now hammer can use the downloaded certificate to verify SSL connection to the server.")
+        puts
+        puts _("Be aware that hammer cannot verify whether the certificate is correct and you should verify its authenticity.")
+        puts
+        puts _("You can display the certificate content with")
+        puts "  $ openssl x509 -text -in #{cert_file}"
+        puts
+
+        cert_install_msg = _("As root you can also install the certificate and update the system-wide list of trusted CA certificates as follows:") + "\n"
+
+        if File.directory?(rh_install_path)
+          puts cert_install_msg
+          puts "  $ install #{cert_file} #{rh_install_path}"
+          puts "  $ #{rh_update_cmd}"
+        elsif File.directory?(deb_install_path)
+          puts cert_install_msg
+          puts "  $ install #{cert_file} #{deb_install_path}"
+          puts "  $ #{deb_update_cmd}"
         end
-
-        puts get_ca_cert(hostname, port)
+        puts
         return HammerCLI::EX_OK
+
+      rescue URI::InvalidURIError => e
+        $stderr.puts _("Couldn't parse URI '%s'.") % service_uri
+        $stderr.puts e.message
+        return HammerCLI::EX_SOFTWARE
       rescue StandardError => e
+        logger = Logging.logger['CACertFetcher']
         msg = [_('Fetching the CA certificate failed:')]
 
         if e.is_a?(OpenSSL::SSL::SSLError) && e.message.include?('unknown protocol')
           msg << _('The service at the given URI does not accept SSL connections')
-          msg << scheme_error(uri) if uri.scheme == 'http'
+          msg << scheme_error if uri.scheme == 'http'
         else
           msg << e.message
         end
         $stderr.puts msg.join("\n")
+        logger.error(e.backtrace.join("\n    "))
         return HammerCLI::EX_SOFTWARE
       end
     end
 
-    protected
+    private
 
     def scheme_error(uri)
       _("Perhaps you meant to connect to '%s'?") % uri_to_https(uri)
@@ -50,18 +77,6 @@ module HammerCLI
         https_uri = "https://#{https_uri}"
       end
       https_uri
-    end
-
-    def get_ca_cert(hostname, port)
-      noverify_ssl_connection = OpenSSL::SSL::SSLSocket.new(TCPSocket.new(hostname, port), noverify_ssl_context)
-      noverify_ssl_connection.connect
-      noverify_ssl_connection.peer_cert_chain.last
-    end
-
-    def noverify_ssl_context
-      noverify_ssl_context = OpenSSL::SSL::SSLContext.new
-      noverify_ssl_context.verify_mode = OpenSSL::SSL::VERIFY_NONE
-      noverify_ssl_context
     end
   end
 end

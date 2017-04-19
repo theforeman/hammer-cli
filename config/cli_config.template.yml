@@ -38,7 +38,7 @@
   #:ssl_ca_file: '/path/to/ca_certificate.pem'
 
   # Path to a direcotry with ca file
-  #:ssl_ca_path: '/path/to/ca/'
+  #:ssl_ca_path: '~/.hammer/certs'
 
   # Turn SSL verification on/off
   #:verify_ssl: true

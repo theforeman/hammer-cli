@@ -1,5 +1,7 @@
 module HammerCLI
   class SSLOptions
+    DEFAULT_SSL_CA_PATH = "~/.hammer/certs"
+
     def initialize(settings = HammerCLI::Settings, logger = Logging.logger['SSLoptions'])
       @settings = settings
       @logger = logger
@@ -16,6 +18,11 @@ module HammerCLI
         ssl_options[sslopt] = ssloptval unless ssloptval.nil?
       end
       ssl_options.merge!(cert_key_options)
+
+      ssl_options[:ssl_ca_path] = DEFAULT_SSL_CA_PATH if ssl_options[:ssl_ca_path].nil?
+      [:ssl_ca_file, :ssl_ca_path].each do |opt|
+        ssl_options[opt] = File.expand_path(ssl_options[opt]) unless ssl_options[opt].nil?
+      end
 
       # enable ssl verification
       ssl_options[:verify_ssl] = true if ssl_options[:verify_ssl].nil?
