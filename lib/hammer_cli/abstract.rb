@@ -24,11 +24,16 @@ module HammerCLI
     end
 
     def run(arguments)
-      exit_code = super
-      raise "exit code must be integer" unless exit_code.is_a? Integer
+      begin
+        begin
+          exit_code = super
+          raise "exit code must be integer" unless exit_code.is_a? Integer
+        rescue => e
+          exit_code = handle_exception(e)
+        end
+        logger.debug 'Retrying the command' if (exit_code == HammerCLI::EX_RETRY)
+      end while (exit_code == HammerCLI::EX_RETRY)
       return exit_code
-    rescue => e
-      handle_exception e
     end
 
     def parse(arguments)
