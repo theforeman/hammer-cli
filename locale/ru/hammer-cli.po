@@ -8,7 +8,7 @@
 # ypoyarko <ypoyarko@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.10.0\n"
+"Project-Id-Version: hammer-cli 0.10.1\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2015-04-28 04:41+0000\n"
 "Last-Translator: ypoyarko <ypoyarko@redhat.com>\n"
@@ -21,6 +21,30 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Zanata 3.6.0\n"
+
+msgid "\"Unable to find hostname in #{service_uri}\""
+msgstr ""
+
+msgid "\"CA certificate for #{service_uri} was stored to #{cert_file}\""
+msgstr ""
+
+msgid ""
+"Now hammer can use the downloaded certificate to verify SSL connection to the "
+"server."
+msgstr ""
+
+msgid ""
+"Be aware that hammer cannot verify whether the certificate is correct and you "
+"should verify its authenticity."
+msgstr ""
+
+msgid "You can display the certificate content with"
+msgstr ""
+
+msgid ""
+"As root you can also install the certificate and update the system-wide list o"
+"f trusted CA certificates as follows:"
+msgstr ""
 
 msgid "Couldn't parse URI '%s'."
 msgstr ""
