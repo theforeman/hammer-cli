@@ -1,6 +1,10 @@
 Release notes
 =============
 
+### 0.10.1 (2017-04-24)
+* Require apipie-bindings >= 0.2.0 ([#19083](http://projects.theforeman.org/issues/19083))
+* Install server CA cert without root access ([#19083](http://projects.theforeman.org/issues/19083))
+
 ### 0.10.0 (2017-03-28)
 * Defaults match on option switch name (#233) ([#17920](http://projects.theforeman.org/issues/17920))
 * Add support for client certificate authentication ([#12401](http://projects.theforeman.org/issues/12401))
