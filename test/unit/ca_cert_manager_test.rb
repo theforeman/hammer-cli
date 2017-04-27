@@ -6,59 +6,42 @@ require 'hammer_cli/ca_cert_manager'
 describe HammerCLI::CACertManager do
 
   before(:all) do
-    @ca_path = Dir.mktmpdir('ca_cert_manager')
+    @ca_store_path = Dir.mktmpdir('ca_cert_manager')
   end
 
   after(:all) do
-    FileUtils.rm_rf(@ca_path) if File.exist?(@ca_path)
+    FileUtils.rm_rf(@ca_store_path) if File.exist?(@ca_store_path)
   end
 
   let(:service_uri) { URI.parse("https://test.host.com") }
-  let(:ca_cert_manager) { HammerCLI::CACertManager.new(@ca_path) }
+  let(:ca_cert_manager) { HammerCLI::CACertManager.new(@ca_store_path) }
   let(:cert_file) { ca_cert_manager.cert_file_name(service_uri) }
+  let(:cert_fixture) { File.join(File.dirname(__FILE__), '/fixtures/certs/ca_cert.pem') }
 
   describe '#store_ca_cert' do
-    let(:cert_fixture) { File.join(File.dirname(__FILE__), '/fixtures/certs/ca_cert.pem') }
-
     it 'stores ca cert' do
       new_cert_file = ca_cert_manager.store_ca_cert(File.read(cert_fixture), cert_file)
-      assert File.exist?(File.join(@ca_path, "2c543cd1.0"))
       assert File.exist?(cert_file)
       assert_equal cert_file, new_cert_file
     end
   end
 
-  describe '#create_link' do
-    let(:hash) { 123456789 }
-    let(:hash_file) { hash.to_s(16) }
-
-    it "creates link to cert" do
-      FileUtils.touch(cert_file)
-      ca_cert_manager.create_link(hash, cert_file)
-      assert File.exist?(File.join(@ca_path, "#{hash_file}.0"))
+  describe '#cert_exist?' do
+    it 'return true if the cert exist' do
+      ca_cert_manager.store_ca_cert(File.read(cert_fixture), cert_file)
+      assert ca_cert_manager.cert_exist?(service_uri)
     end
 
-    it "creates ca path if missing" do
-      FileUtils.rm_rf(@ca_path) if File.exist?(@ca_path)
-      ca_cert_manager.create_link(hash, cert_file)
-      FileUtils.touch(cert_file)
-      assert File.exist?(File.join(@ca_path, "#{hash_file}.0"))
+    it 'return false if the cert does not exist' do
+      refute ca_cert_manager.cert_exist?(service_uri)
     end
+  end
 
-    it "does not create new link if it already exist" do
-      FileUtils.touch(cert_file)
-      File.symlink(cert_file, File.join(@ca_path, "#{hash_file}.0"))
-      ca_cert_manager.create_link(hash, cert_file)
-      assert File.exist?(File.join(@ca_path, "#{hash_file}.0"))
-      refute File.exist?(File.join(@ca_path, "#{hash_file}.1"))
-    end
-
-    it "does not override existing link if it has different target" do
-      FileUtils.touch(cert_file)
-      FileUtils.touch(File.join(@ca_path, "#{hash_file}.0"))
-      ca_cert_manager.create_link(hash, cert_file)
-      assert File.exist?(File.join(@ca_path, "#{hash_file}.0"))
-      assert File.exist?(File.join(@ca_path, "#{hash_file}.1"))
+  describe '#cert_file_name' do
+    it 'make file name from host uri' do
+      uri = URI.parse("https://test.example.com:1111")
+      filename = ca_cert_manager.cert_file_name(uri)
+      assert_equal File.join(ca_cert_manager.ca_store_path,'test.example.com_1111.pem'), filename
     end
   end
 end

@@ -1,17 +1,18 @@
 module HammerCLI
   class SSLOptions
-    DEFAULT_SSL_CA_PATH = "~/.hammer/certs"
+    DEFAULT_LOCAL_CA_STORE_PATH = "~/.hammer/certs"
 
-    def initialize(settings = HammerCLI::Settings, logger = Logging.logger['SSLoptions'])
-      @settings = settings
-      @logger = logger
+    def initialize(options={})
+      @settings = options.fetch(:settings, HammerCLI::Settings)
+      @logger = options.fetch(:logger, Logging.logger['SSLoptions'])
+      @ca_manager = options.fetch(:ca_manager, HammerCLI::CACertManager.new(DEFAULT_LOCAL_CA_STORE_PATH))
     end
 
-    def self.get_options(settings = HammerCLI::Settings, logger = Logging.logger['SSLoptions'])
-      self.new(settings, logger).get_options
+    def get_local_ca_store_path
+      @settings.get(:ssl, :local_ca_store_path) || DEFAULT_LOCAL_CA_STORE_PATH
     end
 
-    def get_options
+    def get_options(uri = nil)
       ssl_options = {}
       for sslopt in [:ssl_ca_file, :ssl_ca_path, :verify_ssl] do
         ssloptval = read_ssl_option(sslopt)
@@ -19,13 +20,21 @@ module HammerCLI
       end
       ssl_options.merge!(cert_key_options)
 
-      ssl_options[:ssl_ca_path] = DEFAULT_SSL_CA_PATH if ssl_options[:ssl_ca_path].nil?
+      # enable ssl verification
+      ssl_options[:verify_ssl] = true if ssl_options[:verify_ssl].nil?
+
+      if ssl_options[:verify_ssl] && uri && !ssl_options[:ssl_ca_file] && !ssl_options[:ssl_ca_path]
+        uri = URI.parse(uri) if uri.is_a?(String)
+        if @ca_manager.cert_exist?(uri)
+          ssl_options[:ssl_ca_file] = @ca_manager.cert_file_name(uri)
+          @logger.info("Matching CA cert was found in local CA store #{ssl_options[:ssl_ca_file]}")
+        end
+      end
+
       [:ssl_ca_file, :ssl_ca_path].each do |opt|
         ssl_options[opt] = File.expand_path(ssl_options[opt]) unless ssl_options[opt].nil?
       end
 
-      # enable ssl verification
-      ssl_options[:verify_ssl] = true if ssl_options[:verify_ssl].nil?
       @logger.debug("SSL options: #{ApipieBindings::Utils::inspect_data(ssl_options)}")
       ssl_options
     end

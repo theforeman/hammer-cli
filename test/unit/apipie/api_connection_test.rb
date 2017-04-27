@@ -10,7 +10,6 @@ describe HammerCLI::Apipie::ApiConnection do
     def api_stub(params = {}, options = {})
       api_stub = stub()
       options[:verify_ssl] = true if options[:verify_ssl].nil?
-      options[:ssl_ca_path] = File.expand_path(HammerCLI::SSLOptions::DEFAULT_SSL_CA_PATH) if options[:ssl_ca_path].nil?
       ApipieBindings::API.expects(:new).with(params, options).returns(api_stub)
       api_stub
     end
