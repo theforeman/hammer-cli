@@ -125,7 +125,7 @@ require 'hammer_cli'
 
 if preparser.fetch_ca_cert
   require 'hammer_cli/ca_cert_fetcher'
-  ca_path = HammerCLI::SSLOptions.get_options[:ssl_ca_path]
+  ca_path = HammerCLI::SSLOptions.new.get_local_ca_store_path
   exit HammerCLI::CACertFetcher.new.fetch_ca_cert(preparser.fetch_ca_cert, ca_path)
 end
 

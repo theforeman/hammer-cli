@@ -38,7 +38,7 @@
   #:ssl_ca_file: '/path/to/ca_certificate.pem'
 
   # Path to a direcotry with ca file
-  #:ssl_ca_path: '~/.hammer/certs'
+  #:ssl_ca_path: '/path/to/ca'
 
   # Turn SSL verification on/off
   #:verify_ssl: true
@@ -51,3 +51,6 @@
 
   # Enable standard authentication in addition to client certificate authentication
   #:ssl_with_basic_auth: true
+
+  # local CA cert store path
+  #:local_ca_store_path: '~/.hammer/certs'
