@@ -4,5 +4,6 @@ module HammerCLI
   class OperationNotSupportedError < StandardError; end
   class ModuleLoadingError < StandardError; end
   class ModuleDisabledButRequired < StandardError; end
+  class NoCACertificate < StandardError; end
 
 end

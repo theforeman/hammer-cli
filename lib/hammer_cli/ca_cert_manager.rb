@@ -9,6 +9,7 @@ module HammerCLI
     end
 
     def store_ca_cert(raw_cert, cert_file)
+      raise HammerCLI::NoCACertificate.new unless is_ca_cert?(raw_cert)
       ensure_ca_store_exist
       File.write(cert_file, raw_cert)
       cert_file
@@ -27,9 +28,17 @@ module HammerCLI
     def ensure_ca_store_exist
       FileUtils.mkpath(ca_store_path) unless File.directory?(ca_store_path)
     end
+
+    def is_ca_cert?(cert)
+      cert = OpenSSL::X509::Certificate.new(cert) if cert.is_a? String
+      cert.extensions.any? do |ex|
+        (ex.oid == 'basicConstraints' && ex.value.upcase == 'CA:TRUE') ||
+            (ex.oid == 'keyUsage' && ex.value =~ /Cert(ificate )?Sign/i)
+      end
+    end
   end
 
-  class CACertDownloader
+  class CertDownloader
     def download(uri)
       noverify_ssl_connection = OpenSSL::SSL::SSLSocket.new(TCPSocket.new(uri.host, uri.port), noverify_ssl_context)
       noverify_ssl_connection.connect
