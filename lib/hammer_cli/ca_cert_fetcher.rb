@@ -7,7 +7,7 @@ module HammerCLI
         raise URI::InvalidURIError.new(_("Unable to find hostname in #{service_uri}")) if uri.host.nil?
         raise URI::InvalidURIError.new(scheme_error(uri)) unless uri.scheme == 'https'
         ca_cert_manager = HammerCLI::CACertManager.new(ca_store_path)
-        raw_cert = HammerCLI::CACertDownloader.new.download(uri)
+        raw_cert = HammerCLI::CertDownloader.new.download(uri)
         cert_file = ca_cert_manager.cert_file_name(uri)
         ca_cert_manager.store_ca_cert(raw_cert, cert_file)
 
@@ -44,6 +44,16 @@ module HammerCLI
       rescue URI::InvalidURIError => e
         $stderr.puts _("Couldn't parse URI '%s'.") % service_uri
         $stderr.puts e.message
+        return HammerCLI::EX_SOFTWARE
+      rescue HammerCLI::NoCACertificate => e
+        $stderr.puts _("The CA certificate for #{service_uri} couldn't be downloaded. No CA cert was found.")
+        $stderr.puts
+        $stderr.puts _("Make sure your server sends cert chain including the CA.")
+        $stderr.puts _("To see the actual chain you can use openssl command")
+        $stderr.puts "  $ openssl s_client -showcerts -connect #{uri.host}:#{uri.port} </dev/null"
+        $stderr.puts
+        $stderr.puts _("You can also download the certificate manually and store it as #{cert_file}")
+        $stderr.puts _("If you choose any other location set the ssl_ca_path or ssl_ca_file configuration options appropriately.")
         return HammerCLI::EX_SOFTWARE
       rescue StandardError => e
         logger = Logging.logger['CACertFetcher']
