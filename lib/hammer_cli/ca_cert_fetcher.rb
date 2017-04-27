@@ -1,12 +1,12 @@
 require 'hammer_cli/ca_cert_manager'
 module HammerCLI
   class CACertFetcher
-    def fetch_ca_cert(service_uri, ca_path)
+    def fetch_ca_cert(service_uri, ca_store_path)
       begin
         uri = URI.parse(service_uri)
         raise URI::InvalidURIError.new(_("Unable to find hostname in #{service_uri}")) if uri.host.nil?
         raise URI::InvalidURIError.new(scheme_error(uri)) unless uri.scheme == 'https'
-        ca_cert_manager = HammerCLI::CACertManager.new(ca_path)
+        ca_cert_manager = HammerCLI::CACertManager.new(ca_store_path)
         raw_cert = HammerCLI::CACertDownloader.new.download(uri)
         cert_file = ca_cert_manager.cert_file_name(uri)
         ca_cert_manager.store_ca_cert(raw_cert, cert_file)
@@ -19,6 +19,7 @@ module HammerCLI
 
         puts _("CA certificate for #{service_uri} was stored to #{cert_file}")
         puts _("Now hammer can use the downloaded certificate to verify SSL connection to the server.")
+        puts _("It will be used automatically when ssl_ca_path and ssl_ca_file options are not set.")
         puts
         puts _("Be aware that hammer cannot verify whether the certificate is correct and you should verify its authenticity.")
         puts
