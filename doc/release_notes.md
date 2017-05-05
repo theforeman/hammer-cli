@@ -1,6 +1,11 @@
 Release notes
 =============
 
+### 0.10.2 (2017-05-05)
+* Retry command on session expiry ([#19431](http://projects.theforeman.org/issues/19431))
+* Prevent fetching of non-CA certificates ([#19391](http://projects.theforeman.org/issues/19391))
+* Use local ca cert store instead of ssl_ca_path ([#19390](http://projects.theforeman.org/issues/19390))
+
 ### 0.10.1 (2017-04-24)
 * Require apipie-bindings >= 0.2.0 ([#19083](http://projects.theforeman.org/issues/19083))
 * Install server CA cert without root access ([#19083](http://projects.theforeman.org/issues/19083))
