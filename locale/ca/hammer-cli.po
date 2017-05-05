@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.10.0\n"
+"Project-Id-Version: hammer-cli 0.11.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,7 +13,55 @@ msgstr ""
 "X-Generator: Poedit 1.8.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "\"Unable to find hostname in #{service_uri}\""
+msgstr ""
+
+msgid "CA certificate for %{uri} was stored to %{file}"
+msgstr ""
+
+msgid ""
+"Now hammer can use the downloaded certificate to verify SSL connection to the "
+"server."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"It will be used automatically when ssl_ca_path and ssl_ca_file options are not"
+" set."
+msgstr "no"
+
+#, fuzzy
+msgid ""
+"Be aware that hammer cannot verify whether the certificate is correct and you "
+"should verify its authenticity."
+msgstr "no"
+
+msgid "You can display the certificate content with"
+msgstr ""
+
+msgid ""
+"As root you can also install the certificate and update the system-wide list o"
+"f trusted CA certificates as follows:"
+msgstr ""
+
 msgid "Couldn't parse URI '%s'."
+msgstr ""
+
+msgid "The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
+msgstr ""
+
+msgid "Make sure your server sends cert chain including the CA."
+msgstr ""
+
+msgid "To see the actual chain you can use openssl command"
+msgstr ""
+
+msgid "\"You can also download the certificate manually and store it as #{cert_file}\""
+msgstr ""
+
+msgid ""
+"If you choose any other location set the ssl_ca_path or ssl_ca_file configurat"
+"ion options appropriately."
 msgstr ""
 
 msgid "Fetching the CA certificate failed:"

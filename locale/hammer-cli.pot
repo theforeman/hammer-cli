@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.10.0\n"
+"Project-Id-Version: hammer-cli 0.11.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-28 16:24+0200\n"
-"PO-Revision-Date: 2017-03-28 16:24+0200\n"
+"POT-Creation-Date: 2017-05-05 15:31+0200\n"
+"PO-Revision-Date: 2017-05-05 15:31+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,19 +18,77 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../lib/hammer_cli/ca_cert_fetcher.rb:15
-msgid "Couldn't parse URI '%s'."
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:7
+msgid "\"Unable to find hostname in #{service_uri}\""
 msgstr ""
 
-#: ../lib/hammer_cli/ca_cert_fetcher.rb:23
-msgid "Fetching the CA certificate failed:"
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:20
+msgid "CA certificate for %{uri} was stored to %{file}"
+msgstr ""
+
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:21
+msgid ""
+"Now hammer can use the downloaded certificate to verify SSL connection to the "
+"server."
+msgstr ""
+
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:22
+msgid ""
+"It will be used automatically when ssl_ca_path and ssl_ca_file options are not"
+" set."
+msgstr ""
+
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:24
+msgid ""
+"Be aware that hammer cannot verify whether the certificate is correct and you "
+"should verify its authenticity."
 msgstr ""
 
 #: ../lib/hammer_cli/ca_cert_fetcher.rb:26
+msgid "You can display the certificate content with"
+msgstr ""
+
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:30
+msgid ""
+"As root you can also install the certificate and update the system-wide list o"
+"f trusted CA certificates as follows:"
+msgstr ""
+
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:45
+msgid "Couldn't parse URI '%s'."
+msgstr ""
+
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:49
+msgid "The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
+msgstr ""
+
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:51
+msgid "Make sure your server sends cert chain including the CA."
+msgstr ""
+
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:52
+msgid "To see the actual chain you can use openssl command"
+msgstr ""
+
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:55
+msgid "\"You can also download the certificate manually and store it as #{cert_file}\""
+msgstr ""
+
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:56
+msgid ""
+"If you choose any other location set the ssl_ca_path or ssl_ca_file configurat"
+"ion options appropriately."
+msgstr ""
+
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:60
+msgid "Fetching the CA certificate failed:"
+msgstr ""
+
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:63
 msgid "The service at the given URI does not accept SSL connections"
 msgstr ""
 
-#: ../lib/hammer_cli/ca_cert_fetcher.rb:39
+#: ../lib/hammer_cli/ca_cert_fetcher.rb:77
 msgid "Perhaps you meant to connect to '%s'?"
 msgstr ""
 
@@ -470,23 +528,23 @@ msgstr ""
 msgid "Interactive shell"
 msgstr ""
 
-#: ../lib/hammer_cli/ssloptions.rb:42
+#: ../lib/hammer_cli/ssloptions.rb:58
 msgid "SSL client certificate is set but the key is not"
 msgstr ""
 
-#: ../lib/hammer_cli/ssloptions.rb:44
+#: ../lib/hammer_cli/ssloptions.rb:60
 msgid "SSL client key is set but the certificate is not"
 msgstr ""
 
-#: ../lib/hammer_cli/ssloptions.rb:46
+#: ../lib/hammer_cli/ssloptions.rb:62
 msgid "SSL client authentication disabled"
 msgstr ""
 
-#: ../lib/hammer_cli/ssloptions.rb:56
+#: ../lib/hammer_cli/ssloptions.rb:72
 msgid "Could't read SSL client certificate %s"
 msgstr ""
 
-#: ../lib/hammer_cli/ssloptions.rb:62
+#: ../lib/hammer_cli/ssloptions.rb:78
 msgid "Could't read SSL client key %s"
 msgstr ""
 
