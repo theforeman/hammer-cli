@@ -19,12 +19,17 @@ msgstr ""
 msgid "\"Unable to find hostname in #{service_uri}\""
 msgstr ""
 
-msgid "\"CA certificate for #{service_uri} was stored to #{cert_file}\""
+msgid "CA certificate for %{uri} was stored to %{file}"
 msgstr ""
 
 msgid ""
 "Now hammer can use the downloaded certificate to verify SSL connection to the "
 "server."
+msgstr ""
+
+msgid ""
+"It will be used automatically when ssl_ca_path and ssl_ca_file options are not"
+" set."
 msgstr ""
 
 msgid ""
@@ -41,6 +46,23 @@ msgid ""
 msgstr ""
 
 msgid "Couldn't parse URI '%s'."
+msgstr ""
+
+msgid "The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
+msgstr ""
+
+msgid "Make sure your server sends cert chain including the CA."
+msgstr ""
+
+msgid "To see the actual chain you can use openssl command"
+msgstr ""
+
+msgid "\"You can also download the certificate manually and store it as #{cert_file}\""
+msgstr ""
+
+msgid ""
+"If you choose any other location set the ssl_ca_path or ssl_ca_file configurat"
+"ion options appropriately."
 msgstr ""
 
 msgid "Fetching the CA certificate failed:"
