@@ -27,6 +27,7 @@ module HammerCLI
     def handle_exception(e, options={})
       @options = options
       handler = mappings.reverse.find { |m| e.class.respond_to?(:"<=") ? e.class <= m[0] : false }
+      @logger.debug "Using exception handler #{self.class}##{handler[1]}"
       return send(handler[1], e) if handler
       raise e
     end
