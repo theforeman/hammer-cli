@@ -17,7 +17,7 @@ module HammerCLI
         deb_update_cmd = "update-ca-certificates"
         cert_file = ca_cert_manager.cert_file_name(uri)
 
-        puts _("CA certificate for #{service_uri} was stored to #{cert_file}")
+        puts _("CA certificate for %{uri} was stored to %{file}") % {:uri => service_uri, :file => cert_file}
         puts _("Now hammer can use the downloaded certificate to verify SSL connection to the server.")
         puts _("It will be used automatically when ssl_ca_path and ssl_ca_file options are not set.")
         puts
@@ -46,7 +46,7 @@ module HammerCLI
         $stderr.puts e.message
         return HammerCLI::EX_SOFTWARE
       rescue HammerCLI::NoCACertificate => e
-        $stderr.puts _("The CA certificate for #{service_uri} couldn't be downloaded. No CA cert was found.")
+        $stderr.puts _("The CA certificate for %{uri} couldn't be downloaded. No CA cert was found.") % {:uri => service_uri}
         $stderr.puts
         $stderr.puts _("Make sure your server sends cert chain including the CA.")
         $stderr.puts _("To see the actual chain you can use openssl command")
