@@ -34,7 +34,7 @@ or use it as a base for your own CLI, read
 
 License
 -------
-This project is licensed under the GPLv3+.
+This project is licensed under the MIT license.
 
 
 Acknowledgements
