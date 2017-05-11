@@ -198,8 +198,7 @@ module HammerCLI
     end
 
     def validator
-      options = self.class.recognised_options.collect{|opt| opt.of(self)}
-      @validator ||= HammerCLI::Validator.new(options)
+      @validator ||= HammerCLI::Validator.new(self.class.recognised_options, all_options)
     end
 
     def handle_exception(e)
