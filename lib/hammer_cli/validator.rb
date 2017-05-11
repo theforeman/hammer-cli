@@ -10,13 +10,14 @@ module HammerCLI
 
       attr_reader :rejected_msg, :required_msg
 
-      def initialize(options, to_check)
+      def initialize(option_definitions, option_values, to_check)
         @to_check = to_check
         @rejected_msg = ""
         @required_msg = ""
 
-        @options = options.inject({}) do |hash, opt|
-          hash.update({opt.attribute.attribute_name => opt})
+        @option_values = option_values
+        @options = option_definitions.inject({}) do |hash, opt|
+          hash.update({opt.attribute_name => opt})
         end
       end
 
@@ -43,13 +44,7 @@ module HammerCLI
       end
 
       def get_option_value(name)
-        opt = get_option(name)
-        value = opt.get
-        if value.nil?
-          defaults = opt.command.send(:context)[:defaults]
-          value = defaults.get_defaults(name.to_s) if defaults
-        end
-        value
+        @option_values[name] || @option_values[name.to_s]
       end
 
       def option_passed?(option_name)
@@ -59,16 +54,15 @@ module HammerCLI
       def option_switches(opts=nil)
         opts ||= @to_check
         opts.collect do |option_name|
-          get_option(option_name).attribute.long_switch || get_option(option_name).attribute.switches.first
+          get_option(option_name).long_switch || get_option(option_name).switches.first
         end
       end
 
     end
 
     class AllConstraint < BaseConstraint
-
-      def initialize(options, to_check)
-        super(options, to_check)
+      def initialize(options, option_values, to_check)
+        super
         @rejected_msg = _("You can't set all options %s at one time.")
         @required_msg = _("Options %s are required.")
       end
@@ -82,8 +76,8 @@ module HammerCLI
     end
 
     class OneOptionConstraint < AllConstraint
-      def initialize(options, to_check)
-        super(options, [to_check])
+      def initialize(options, option_values, to_check)
+        super(options, option_values, [to_check])
         @rejected_msg = _("You can't set option %s.")
         @required_msg = _("Option %s is required.")
       end
@@ -94,9 +88,8 @@ module HammerCLI
     end
 
     class AnyConstraint < BaseConstraint
-
-      def initialize(options, to_check)
-        super(options, to_check)
+      def initialize(options, option_values, to_check)
+        super
         @rejected_msg = _("You can't set any of options %s.")
         @required_msg = _("At least one of options %s is required.")
       end
@@ -111,9 +104,9 @@ module HammerCLI
 
 
     class OneOfConstraint < BaseConstraint
-      def initialize(options, to_check)
+      def initialize(options, option_values, to_check)
         raise 'Set at least one expected option' if to_check.empty?
-        super(options, to_check)
+        super
       end
 
       def rejected
@@ -143,24 +136,25 @@ module HammerCLI
       end
     end
 
-    def initialize(options)
+    def initialize(options, option_values)
       @options = options
+      @option_values = option_values
     end
 
     def all(*to_check)
-      AllConstraint.new(@options, to_check.flatten(1))
+      AllConstraint.new(@options, @option_values, to_check.flatten(1))
     end
 
     def option(to_check)
-      OneOptionConstraint.new(@options, to_check)
+      OneOptionConstraint.new(@options, @option_values, to_check)
     end
 
     def any(*to_check)
-      AnyConstraint.new(@options, to_check.flatten(1))
+      AnyConstraint.new(@options, @option_values, to_check.flatten(1))
     end
 
     def one_of(*to_check)
-      OneOfConstraint.new(@options, to_check.flatten(1))
+      OneOfConstraint.new(@options, @option_values, to_check.flatten(1))
     end
 
     def run(&block)
