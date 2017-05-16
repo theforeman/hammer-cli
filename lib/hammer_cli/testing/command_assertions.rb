@@ -2,8 +2,6 @@ module HammerCLI
   module Testing
     module CommandAssertions
       class CommandExpectation
-        include MiniTest::Assertions
-
         attr_accessor :expected_out, :expected_err, :expected_exit_code
 
         def initialize(expected_out="", expected_err="", expected_exit_code=0)
@@ -12,10 +10,10 @@ module HammerCLI
           @expected_exit_code = expected_exit_code
         end
 
-        def assert_match(actual_result)
-          assert_equal_or_match @expected_err, actual_result.err
-          assert_equal_or_match @expected_out, actual_result.out
-          assert_exit_code_equal @expected_exit_code, actual_result.exit_code
+        def assert_match(test_ctx, actual_result)
+          test_ctx.assert_equal_or_match @expected_err, actual_result.err
+          test_ctx.assert_equal_or_match @expected_out, actual_result.out
+          test_ctx.assert_exit_code_equal @expected_exit_code, actual_result.exit_code
         end
       end
 
@@ -54,15 +52,14 @@ module HammerCLI
       end
 
       def assert_cmd(expectation, actual_result)
-        expectation.assert_match(actual_result)
+        expectation.assert_match(self, actual_result)
       end
 
       def assert_equal_or_match(expected, actual)
-        case expected
-        when String
+        if expected.is_a? String
           assert_equal(expected, actual)
-        when MatcherBase
-          expected.assert_match(actual)
+        elsif expected.respond_to? :assert_match
+          expected.assert_match(self, actual)
         else
           msg = actual
           assert_match(expected, actual, msg)

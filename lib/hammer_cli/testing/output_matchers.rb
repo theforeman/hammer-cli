@@ -8,8 +8,8 @@ module HammerCLI
           @expected = expected
         end
 
-        def assert_match(actual)
-          assert_equal(@expected, actual)
+        def assert_match(test_ctx, actual)
+          test_ctx.assert_equal(@expected, actual)
         end
       end
 
@@ -18,9 +18,9 @@ module HammerCLI
           @expected = FieldMatcher.matcher(label, value)
         end
 
-        def assert_match(actual)
+        def assert_match(test_ctx, actual)
           message = "Regex /#{@expected.source}/ didn't match the output:\n#{actual}"
-          assert(@expected =~ actual, message)
+          test_ctx.assert(@expected =~ actual, message)
         end
 
         def self.matcher(label, value)
@@ -36,7 +36,7 @@ module HammerCLI
           @ignore_whitespace = options.fetch(:ignore_whitespace, true)
         end
 
-        def assert_match(actual)
+        def assert_match(test_ctx, actual)
           if @ignore_whitespace
             expected_lines = strip_lines(@expected_lines)
             actual = strip_lines(actual.split("\n")).join("\n")
@@ -46,7 +46,7 @@ module HammerCLI
           expected_lines = expected_lines.join("\n")
 
           message = "Output didn't contain expected lines:\n" + diff(expected_lines, actual)
-          assert(actual.include?(expected_lines), message)
+          test_ctx.assert(actual.include?(expected_lines), message)
         end
 
         protected
@@ -64,9 +64,9 @@ module HammerCLI
           end
         end
 
-        def assert_match(actual)
+        def assert_match(test_ctx, actual)
           @line_matchers.each do |matcher|
-            matcher.assert_match(actual)
+            matcher.assert_match(test_ctx, actual)
           end
         end
       end
@@ -76,7 +76,7 @@ module HammerCLI
           @expected_values = expected
         end
 
-        def assert_match(actual)
+        def assert_match(test_ctx, actual)
           message = [
             "Regex didn't match the output.",
             "Expected regex:",
@@ -87,7 +87,7 @@ module HammerCLI
             actual
           ].join("\n")
 
-          assert(line_regexp =~ actual, message)
+          test_ctx.assert(line_regexp =~ actual, message)
         end
 
         protected
