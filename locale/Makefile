@@ -14,6 +14,7 @@ POFILES = $(shell find . -name '$(DOMAIN).po')
 MOFILES = $(patsubst %.po,%.mo,$(POFILES))
 POXFILES = $(patsubst %.po,%.pox,$(POFILES))
 EDITFILES = $(patsubst %.po,%.edit.po,$(POFILES))
+TIMESTAMPFILES = $(patsubst %.po,%.po.time_stamp,$(POFILES))
 
 %.mo: %.po
 	mkdir -p $(shell dirname $@)/LC_MESSAGES
@@ -38,20 +39,28 @@ uniq-po:
 		msguniq $$f -o $$f ; \
 	done
 
+%.edit.po:
+	touch $@
+
 tx-pull: $(EDITFILES)
 	tx pull -f
-	for f in $(POFILES) ; do \
+	for f in $(EDITFILES); do \
 		sed -i 's/^\("Project-Id-Version: \).*$$/\1$(DOMAIN) $(VERSION)\\n"/' $$f; \
+	done
+
+# Merge .edit.po into .po
+update-po:
+	for f in $(EDITFILES); do \
+		msgcat --use-first --no-location $$f $${f//.edit/} > $${f//.edit/}; \
 	done
 
 # Extract strings and update the .pot, prepare .edit.po files
 extract-strings:
 	bundle exec rake gettext:find
 
-# Merge .edit.po into .po
-update-po:
-	bundle exec rake gettext:find
-
-tx-update: extract-strings tx-pull $(MOFILES)
+tx-update: extract-strings tx-pull update-po $(MOFILES)
 	git commit -m "i18n - extracting new, pulling from tx" ../locale
 	-echo Changes commited!
+
+clean:
+	rm -f $(EDITFILES) $(TIMESTAMPFILES)
