@@ -4,21 +4,20 @@
 #
 # Translators:
 # Automatically generated, 2014
-# eukim <eukim@redhat.com>, 2015. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: hammer-cli 0.11.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2015-04-28 12:45+0000\n"
-"Last-Translator: eukim <eukim@redhat.com>\n"
-"Language-Team: Korean (http://www.transifex.com/projects/p/foreman/language/ko"
-"/)\n"
-"Language: ko\n"
+"POT-Creation-Date: 2017-05-05 15:31+0200\n"
+"PO-Revision-Date: 2017-05-05 14:28+0000\n"
+"Last-Translator: Lukáš Zapletal\n"
+"Language-Team: Korean (http://www.transifex.com/foreman/foreman/language/"
+"ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Zanata 3.6.0\n"
 
 msgid "\"Unable to find hostname in #{service_uri}\""
 msgstr ""
@@ -27,34 +26,33 @@ msgid "CA certificate for %{uri} was stored to %{file}"
 msgstr ""
 
 msgid ""
-"Now hammer can use the downloaded certificate to verify SSL connection to the "
-"server."
+"Now hammer can use the downloaded certificate to verify SSL connection to "
+"the server."
 msgstr ""
 
-#, fuzzy
 msgid ""
-"It will be used automatically when ssl_ca_path and ssl_ca_file options are not"
-" set."
-msgstr "no"
+"It will be used automatically when ssl_ca_path and ssl_ca_file options are "
+"not set."
+msgstr ""
 
-#, fuzzy
 msgid ""
-"Be aware that hammer cannot verify whether the certificate is correct and you "
-"should verify its authenticity."
-msgstr "no"
+"Be aware that hammer cannot verify whether the certificate is correct and "
+"you should verify its authenticity."
+msgstr ""
 
 msgid "You can display the certificate content with"
 msgstr ""
 
 msgid ""
-"As root you can also install the certificate and update the system-wide list o"
-"f trusted CA certificates as follows:"
+"As root you can also install the certificate and update the system-wide list "
+"of trusted CA certificates as follows:"
 msgstr ""
 
 msgid "Couldn't parse URI '%s'."
 msgstr ""
 
-msgid "The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
+msgid ""
+"The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
 msgstr ""
 
 msgid "Make sure your server sends cert chain including the CA."
@@ -63,20 +61,21 @@ msgstr ""
 msgid "To see the actual chain you can use openssl command"
 msgstr ""
 
-msgid "\"You can also download the certificate manually and store it as #{cert_file}\""
+msgid ""
+"\"You can also download the certificate manually and store it as "
+"#{cert_file}\""
 msgstr ""
 
 msgid ""
-"If you choose any other location set the ssl_ca_path or ssl_ca_file configurat"
-"ion options appropriately."
+"If you choose any other location set the ssl_ca_path or ssl_ca_file "
+"configuration options appropriately."
 msgstr ""
 
 msgid "Fetching the CA certificate failed:"
 msgstr ""
 
-#, fuzzy
 msgid "The service at the given URI does not accept SSL connections"
-msgstr "no"
+msgstr ""
 
 msgid "Perhaps you meant to connect to '%s'?"
 msgstr ""
@@ -97,7 +96,7 @@ msgid "parameter '%<param>s': %<message>s"
 msgstr "매개변수 '%<param>s': %<message>s"
 
 msgid "%<env>s: %<message>s"
-msgstr "%<env>s: %<message>s"
+msgstr "%<env>: %<message>"
 
 msgid "Unrecognised option '%<switch>s'"
 msgstr "인식할 수 없는 옵션 '%<switch>s'"
@@ -108,79 +107,84 @@ msgstr "다음과 같은 서브 명령 '%<name>s'이(가) 없습니다"
 msgid "no value provided"
 msgstr "값이 지정되어 있지 않습니다 "
 
-msgid "Couldn't create %s. Please create the directory before setting defaults."
+msgid ""
+"Couldn't create %s. Please create the directory before setting defaults."
 msgstr ""
 
 msgid "Defaults management"
-msgstr ""
+msgstr "기본값 관리"
 
 msgid "List all the providers"
-msgstr ""
+msgstr "모든 공급자 나열"
 
 msgid "Provider"
-msgstr ""
+msgstr "공급처"
 
 msgid "Supported defaults"
-msgstr ""
+msgstr "지원되는 기본값"
 
 msgid "Description"
-msgstr ""
+msgstr "설명"
 
 msgid "List all the default parameters"
-msgstr ""
+msgstr "기본 매개 변수 모두 나열"
 
 msgid "Parameter"
-msgstr ""
+msgstr "매개 변수 "
 
 msgid "Value"
-msgstr ""
+msgstr "값 "
 
 msgid "Delete a default param"
-msgstr ""
+msgstr "기본 매개 변수 삭제"
 
 msgid "The name of the default option"
-msgstr ""
+msgstr "기본 옵션의 이름"
 
 msgid "Add a default parameter to config"
-msgstr ""
+msgstr "구성에 기본 매개 변수 추가"
 
 msgid "The name of the default option (e.g. organization_id)."
-msgstr ""
+msgstr "기본 옵션의 이름(예: organization_id)"
 
 msgid "The value for the default option"
-msgstr ""
+msgstr "기본 옵션의 값"
 
 msgid ""
-"The name of the provider providing the value. For list available providers see"
-" `hammer defaults providers`."
+"The name of the provider providing the value. For list available providers "
+"see `hammer defaults providers`."
 msgstr ""
+"값을 제공하는 공급자의 이름입니다. 사용 가능한 공급자의 목록은 'hammer 기본"
+"값 공급자'를 참조하십시오."
 
 msgid ""
-"Added %{key_val} default-option with value that will be generated from the ser"
-"ver."
-msgstr ""
+"Added %{key_val} default-option with value that will be generated from the "
+"server."
+msgstr "서버에서 생성된 값으로 추가된 %{key_val} 기본 옵션입니다."
 
 msgid "Added %{key_val} default-option with value %{val_val}."
+msgstr "%{val_val} 값으로 추가된 %{key_val} 기본 옵션입니다."
+
+msgid ""
+"Provider %{name} was not found. See `hammer defaults providers` for "
+"available providers."
 msgstr ""
 
 msgid ""
-"Provider %{name} was not found. See `hammer defaults providers` for available "
-"providers."
+"The param name is not supported by provider. See `hammer defaults providers` "
+"for supported params."
 msgstr ""
-
-msgid ""
-"The param name is not supported by provider. See `hammer defaults providers` f"
-"or supported params."
-msgstr ""
+"공급자가 지원하지 않는 매개 변수 이름입니다. 지원되는 매개 변수는 'hammer 기"
+"본값 공급자'를 참조하십시오."
 
 msgid "%{param} was deleted successfully."
-msgstr ""
+msgstr "%{param}이(가) 삭제되었습니다."
 
 msgid "You must specify value or a provider name, can't specify both."
 msgstr ""
 
 msgid "Couldn't find the requested param in %s."
-msgstr ""
+msgstr "%s에서 요청된 매개 변수를 찾을 수 없습니다."
 
 msgid "Error: %s"
 msgstr "오류: %s"
@@ -201,9 +205,10 @@ msgid "is the server down?"
 msgstr "서버가 중지되어 있습니까?"
 
 msgid ""
-"was '%s' run on the server when using apipie cache? (typical production settin"
-"gs)"
-msgstr "apipie 캐시를 사용할 때 서버에서 '%s'가 실행되었습니까? (일반 제품 설정)"
+"was '%s' run on the server when using apipie cache? (typical production "
+"settings)"
+msgstr ""
+"apipie 캐시를 사용할 때 서버에서 '%s'가 실행되었습니까? (일반 제품 설정)"
 
 msgid "Could not load the API description from the server"
 msgstr "서버에서 API 설명을 불러올 수 없습니다 "
@@ -253,7 +258,8 @@ msgstr ""
 msgid "Configure the client's private key"
 msgstr ""
 
-msgid "Use standard authentication in addition to client certificate authentication"
+msgid ""
+"Use standard authentication in addition to client certificate authentication"
 msgstr ""
 
 msgid "Fetch CA certificate from server and exit"
@@ -284,9 +290,11 @@ msgid "Get list of possible endings"
 msgstr "가능한 종료 목록 검색 "
 
 msgid ""
-"Legacy configuration of modules detected. Check section about configuration in"
-" user manual"
-msgstr "모듈의 레거시 설정이 감지되었습니다. 사용자 설명서에서 설정에 대한 섹션을 확인하십시오"
+"Legacy configuration of modules detected. Check section about configuration "
+"in user manual"
+msgstr ""
+"모듈의 레거시 설정이 감지되었습니다. 사용자 설명서에서 설정에 대한 섹션을 확"
+"인하십시오"
 
 msgid "Warning: An error occured while loading module %s"
 msgstr "경고: 모듈 %s을(를) 불러오는 도중 오류가 발생했습니다 "
@@ -297,15 +305,14 @@ msgstr "오류: 필요한 모듈 중 일부가 설정에서 비활성화되어 �
 msgid "Comma-separated list of key=value."
 msgstr "콤마로 구분된 key=value 목록입니다. "
 
-msgid "value must be defined as a comma-separated list of key=value or valid JSON"
+msgid ""
+"value must be defined as a comma-separated list of key=value or valid JSON"
 msgstr ""
 
 msgid "Missing or stray quote."
 msgstr ""
 
-msgid ""
-"Unquoted fields do not allow  or \n"
-"."
+msgid "Unquoted fields do not allow \\r or \\n."
 msgstr ""
 
 msgid "Illegal quoting."
@@ -318,12 +325,12 @@ msgid "Field size exceeded."
 msgstr ""
 
 msgid ""
-"Comma separated list of values. Values containing comma should be double quote"
-"d"
+"Comma separated list of values. Values containing comma should be double "
+"quoted"
 msgstr ""
 
 msgid "numeric value is required"
-msgstr ""
+msgstr "숫자 값이 필요합니다."
 
 msgid "One of true/false, yes/no, 1/0."
 msgstr "true/false, yes/no, 1/0 중 하나입니다."
@@ -335,15 +342,13 @@ msgid "Unable to parse JSON input"
 msgstr "JSON 입력을 구문 분석할 수 없습니다 "
 
 msgid "Possible value(s): %s"
-msgstr ""
+msgstr "가능한 값: %s"
 
-#, fuzzy
 msgid "value must be %s"
-msgstr "값은 '%s' 중 하나로 해야 합니다 "
+msgstr "값은 '%s' 중 하나로 해야 합니다"
 
-#, fuzzy
 msgid "value must be one of %s"
-msgstr "값은 '%s' 중 하나로 해야 합니다 "
+msgstr "값은 '%s' 중 하나로 해야 합니다"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "날짜 및 시간 (YYYY-MM-DD HH:MM:SS 또는 ISO 8601 형식으로)"
@@ -358,7 +363,7 @@ msgid "value must be a combination of '%s'"
 msgstr "값은 '%s'의  조합이어야 합니다 "
 
 msgid "Warning: Option %{option} is deprecated. %{message}"
-msgstr ""
+msgstr "경고: %{option} 옵션은 사용 중지되었습니다. %{message}"
 
 msgid "Deprecated: %{deprecated_msg}"
 msgstr ""
@@ -388,15 +393,17 @@ msgid "Page %{page} of %{total} (use --page and --per-page for navigation)"
 msgstr ""
 
 msgid "no"
-msgstr "no"
+msgstr "아니요"
 
 msgid "yes"
-msgstr "yes"
+msgstr "예"
 
 msgid ""
-"Warning: location hammer.modules.d is deprecated, move your module configurati"
-"ons to cli.modules.d"
-msgstr "경고: hammer.modules.d 위치는 사용 중지되었습니다. 모듈 설정을 cli.modules.d로 옮기십시오 "
+"Warning: location hammer.modules.d is deprecated, move your module "
+"configurations to cli.modules.d"
+msgstr ""
+"경고: hammer.modules.d 위치는 사용 중지되었습니다. 모듈 설정을 cli.modules.d"
+"로 옮기십시오 "
 
 msgid "Warning: Couldn't load configuration file %{path}: %{message}"
 msgstr ""
@@ -416,13 +423,11 @@ msgstr "사용법을 확인하려면 'help'를 입력하십시오 "
 msgid "Interactive shell"
 msgstr "대화식 쉘 "
 
-#, fuzzy
 msgid "SSL client certificate is set but the key is not"
-msgstr "no"
+msgstr ""
 
-#, fuzzy
 msgid "SSL client key is set but the certificate is not"
-msgstr "no"
+msgstr ""
 
 msgid "SSL client authentication disabled"
 msgstr ""
@@ -434,9 +439,11 @@ msgid "Could't read SSL client key %s"
 msgstr ""
 
 msgid ""
-"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
-"ass>s)"
-msgstr "하위 명령 %<name>s (%<existing_class>s)을(를) %<name>s (%<new_class>s)로 대체할 수 없습니다 "
+"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
+"(%<new_class>s)"
+msgstr ""
+"하위 명령 %<name>s (%<existing_class>s)을(를) %<name>s (%<new_class>s)로 대체"
+"할 수 없습니다 "
 
 msgid "Unknown option name '%s'"
 msgstr "알 수 없는 옵션 이름 '%s'"
@@ -447,13 +454,11 @@ msgstr "한 번에 모든 옵션 %s을(를) 설정할 수 없습니다 "
 msgid "Options %s are required"
 msgstr "옵션 %s이(가) 필요합니다 "
 
-#, fuzzy
 msgid "You can't set option %s"
-msgstr "옵션 %s을(를) 설정할 수 없습니다 "
+msgstr ""
 
-#, fuzzy
 msgid "Option %s is required"
-msgstr "옵션 %s이(가) 필요합니다 "
+msgstr ""
 
 msgid "You can't set any of options %s"
 msgstr "옵션 %s을(를) 설정할 수 없습니다 "
@@ -461,9 +466,8 @@ msgstr "옵션 %s을(를) 설정할 수 없습니다 "
 msgid "At least one of options %s is required"
 msgstr "최소 하나의 옵션 %s이(가) 필요합니다 "
 
-#, fuzzy
 msgid "One of options %s is required"
-msgstr "최소 하나의 옵션 %s이(가) 필요합니다 "
+msgstr ""
 
 msgid "Only one of options %s can be set"
 msgstr ""

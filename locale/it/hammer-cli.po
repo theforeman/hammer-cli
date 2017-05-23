@@ -4,22 +4,21 @@
 #
 # Translators:
 # Automatically generated, 2014
-# Dominic Cleal <dcleal@redhat.com>, 2014
-# fvalen <fvalen@redhat.com>, 2015. #zanata
+# Dominic Cleal <dominic@cleal.org>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: hammer-cli 0.11.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2015-04-28 01:00+0000\n"
-"Last-Translator: fvalen <fvalen@redhat.com>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/foreman/language/i"
-"t/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2017-05-05 15:31+0200\n"
+"PO-Revision-Date: 2017-05-05 14:28+0000\n"
+"Last-Translator: Lukáš Zapletal\n"
+"Language-Team: Italian (http://www.transifex.com/foreman/foreman/language/"
+"it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Zanata 3.6.0\n"
 
 msgid "\"Unable to find hostname in #{service_uri}\""
 msgstr ""
@@ -28,34 +27,33 @@ msgid "CA certificate for %{uri} was stored to %{file}"
 msgstr ""
 
 msgid ""
-"Now hammer can use the downloaded certificate to verify SSL connection to the "
-"server."
+"Now hammer can use the downloaded certificate to verify SSL connection to "
+"the server."
 msgstr ""
 
-#, fuzzy
 msgid ""
-"It will be used automatically when ssl_ca_path and ssl_ca_file options are not"
-" set."
-msgstr "no"
+"It will be used automatically when ssl_ca_path and ssl_ca_file options are "
+"not set."
+msgstr ""
 
-#, fuzzy
 msgid ""
-"Be aware that hammer cannot verify whether the certificate is correct and you "
-"should verify its authenticity."
-msgstr "no"
+"Be aware that hammer cannot verify whether the certificate is correct and "
+"you should verify its authenticity."
+msgstr ""
 
 msgid "You can display the certificate content with"
 msgstr ""
 
 msgid ""
-"As root you can also install the certificate and update the system-wide list o"
-"f trusted CA certificates as follows:"
+"As root you can also install the certificate and update the system-wide list "
+"of trusted CA certificates as follows:"
 msgstr ""
 
 msgid "Couldn't parse URI '%s'."
 msgstr ""
 
-msgid "The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
+msgid ""
+"The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
 msgstr ""
 
 msgid "Make sure your server sends cert chain including the CA."
@@ -64,20 +62,21 @@ msgstr ""
 msgid "To see the actual chain you can use openssl command"
 msgstr ""
 
-msgid "\"You can also download the certificate manually and store it as #{cert_file}\""
+msgid ""
+"\"You can also download the certificate manually and store it as "
+"#{cert_file}\""
 msgstr ""
 
 msgid ""
-"If you choose any other location set the ssl_ca_path or ssl_ca_file configurat"
-"ion options appropriately."
+"If you choose any other location set the ssl_ca_path or ssl_ca_file "
+"configuration options appropriately."
 msgstr ""
 
 msgid "Fetching the CA certificate failed:"
 msgstr ""
 
-#, fuzzy
 msgid "The service at the given URI does not accept SSL connections"
-msgstr "no"
+msgstr ""
 
 msgid "Perhaps you meant to connect to '%s'?"
 msgstr ""
@@ -109,7 +108,8 @@ msgstr "Comando '%<name>s' non trovato"
 msgid "no value provided"
 msgstr "nessun valore fornito"
 
-msgid "Couldn't create %s. Please create the directory before setting defaults."
+msgid ""
+"Couldn't create %s. Please create the directory before setting defaults."
 msgstr ""
 
 msgid "Defaults management"
@@ -119,22 +119,22 @@ msgid "List all the providers"
 msgstr ""
 
 msgid "Provider"
-msgstr ""
+msgstr "Provider"
 
 msgid "Supported defaults"
 msgstr ""
 
 msgid "Description"
-msgstr ""
+msgstr "Descrizione"
 
 msgid "List all the default parameters"
 msgstr ""
 
 msgid "Parameter"
-msgstr ""
+msgstr "Parametro"
 
 msgid "Value"
-msgstr ""
+msgstr "Valore"
 
 msgid "Delete a default param"
 msgstr ""
@@ -152,26 +152,26 @@ msgid "The value for the default option"
 msgstr ""
 
 msgid ""
-"The name of the provider providing the value. For list available providers see"
-" `hammer defaults providers`."
+"The name of the provider providing the value. For list available providers "
+"see `hammer defaults providers`."
 msgstr ""
 
 msgid ""
-"Added %{key_val} default-option with value that will be generated from the ser"
-"ver."
+"Added %{key_val} default-option with value that will be generated from the "
+"server."
 msgstr ""
 
 msgid "Added %{key_val} default-option with value %{val_val}."
 msgstr ""
 
 msgid ""
-"Provider %{name} was not found. See `hammer defaults providers` for available "
-"providers."
+"Provider %{name} was not found. See `hammer defaults providers` for "
+"available providers."
 msgstr ""
 
 msgid ""
-"The param name is not supported by provider. See `hammer defaults providers` f"
-"or supported params."
+"The param name is not supported by provider. See `hammer defaults providers` "
+"for supported params."
 msgstr ""
 
 msgid "%{param} was deleted successfully."
@@ -202,11 +202,11 @@ msgid "is the server down?"
 msgstr "il server non è attivo?"
 
 msgid ""
-"was '%s' run on the server when using apipie cache? (typical production settin"
-"gs)"
+"was '%s' run on the server when using apipie cache? (typical production "
+"settings)"
 msgstr ""
-"'%s' era in esecuzione sul server durante l'utilizzo di apipie cache? (imposta"
-"zioni tipiche di produzione)"
+"'%s' era in esecuzione sul server durante l'utilizzo di apipie cache? "
+"(impostazioni tipiche di produzione)"
 
 msgid "Could not load the API description from the server"
 msgstr "Impossibile caricare la descrizione API dal server"
@@ -219,8 +219,8 @@ msgstr "Nessun permesso per la creazione della directory log %s"
 
 msgid "File %s not writeable, won't log anything to the file!"
 msgstr ""
-"Il file %s non è modificabile, impossibile registrare alcun contenuto al suo i"
-"nterno!"
+"Il file %s non è modificabile, impossibile registrare alcun contenuto al suo "
+"interno!"
 
 msgid "be verbose"
 msgstr "verboso"
@@ -258,7 +258,8 @@ msgstr ""
 msgid "Configure the client's private key"
 msgstr ""
 
-msgid "Use standard authentication in addition to client certificate authentication"
+msgid ""
+"Use standard authentication in addition to client certificate authentication"
 msgstr ""
 
 msgid "Fetch CA certificate from server and exit"
@@ -289,32 +290,32 @@ msgid "Get list of possible endings"
 msgstr "Ottieni un elenco delle possibili parti finali"
 
 msgid ""
-"Legacy configuration of modules detected. Check section about configuration in"
-" user manual"
+"Legacy configuration of modules detected. Check section about configuration "
+"in user manual"
 msgstr ""
-"Rilevata una configurazione Legacy dei modelli. Controllare la sezione relativ"
-"a alla configurazione nel manuale dell'utente"
+"Rilevata una configurazione Legacy dei modelli. Controllare la sezione "
+"relativa alla configurazione nel manuale dell'utente"
 
 msgid "Warning: An error occured while loading module %s"
-msgstr "Attenzione: Si è verificato un errore durante il caricamento del modulo %s"
+msgstr ""
+"Attenzione: Si è verificato un errore durante il caricamento del modulo %s"
 
 msgid "Error: Some of the required modules are disabled in configuration: %s "
 msgstr ""
-"Errore: Alcuni dei moduli necessari sono disabilitati nella configurazione: %s"
-" "
+"Errore: Alcuni dei moduli necessari sono disabilitati nella configurazione: "
+"%s "
 
 msgid "Comma-separated list of key=value."
 msgstr "Elenco separato da virgole di key=value."
 
-msgid "value must be defined as a comma-separated list of key=value or valid JSON"
+msgid ""
+"value must be defined as a comma-separated list of key=value or valid JSON"
 msgstr ""
 
 msgid "Missing or stray quote."
 msgstr ""
 
-msgid ""
-"Unquoted fields do not allow  or \n"
-"."
+msgid "Unquoted fields do not allow \\r or \\n."
 msgstr ""
 
 msgid "Illegal quoting."
@@ -327,8 +328,8 @@ msgid "Field size exceeded."
 msgstr ""
 
 msgid ""
-"Comma separated list of values. Values containing comma should be double quote"
-"d"
+"Comma separated list of values. Values containing comma should be double "
+"quoted"
 msgstr ""
 
 msgid "numeric value is required"
@@ -346,16 +347,15 @@ msgstr "Impossibile analizzare l'input JSON"
 msgid "Possible value(s): %s"
 msgstr ""
 
-#, fuzzy
 msgid "value must be %s"
 msgstr "il valore deve essere uno di '%s'"
 
-#, fuzzy
 msgid "value must be one of %s"
 msgstr "il valore deve essere uno di '%s'"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
-msgstr "Data e ora con un formato ANNO-MESE-GIORNO ORA:MINUTI:SECONDI o ISO 8601"
+msgstr ""
+"Data e ora con un formato ANNO-MESE-GIORNO ORA:MINUTI:SECONDI o ISO 8601"
 
 msgid "'%s' is not a valid date"
 msgstr "'%s' non è una data valida"
@@ -403,11 +403,11 @@ msgid "yes"
 msgstr "si"
 
 msgid ""
-"Warning: location hammer.modules.d is deprecated, move your module configurati"
-"ons to cli.modules.d"
+"Warning: location hammer.modules.d is deprecated, move your module "
+"configurations to cli.modules.d"
 msgstr ""
-"Attenzione: la posizione hammer.modules.d è stata deprecata, spostare le confi"
-"gurazioni del modulo su cli.modules.d"
+"Attenzione: la posizione hammer.modules.d è stata deprecata, spostare le "
+"configurazioni del modulo su cli.modules.d"
 
 msgid "Warning: Couldn't load configuration file %{path}: %{message}"
 msgstr ""
@@ -427,13 +427,11 @@ msgstr "Digita 'aiuto' per le informazioni sull'utilizzo"
 msgid "Interactive shell"
 msgstr "Shell interattiva"
 
-#, fuzzy
 msgid "SSL client certificate is set but the key is not"
-msgstr "no"
+msgstr ""
 
-#, fuzzy
 msgid "SSL client key is set but the certificate is not"
-msgstr "no"
+msgstr ""
 
 msgid "SSL client authentication disabled"
 msgstr ""
@@ -445,11 +443,11 @@ msgid "Could't read SSL client key %s"
 msgstr ""
 
 msgid ""
-"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
-"ass>s)"
+"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
+"(%<new_class>s)"
 msgstr ""
-"impossibile sostituire il comando %<name>s (%<existing_class>s) con %<name>s ("
-"%<new_class>s)"
+"impossibile sostituire il comando %<name>s (%<existing_class>s) con %<name>s "
+"(%<new_class>s)"
 
 msgid "Unknown option name '%s'"
 msgstr "Nome opzione '%s sconosciuto"
@@ -460,13 +458,11 @@ msgstr "Impossibile impostare contemporaneamente tutte le opzioni %s"
 msgid "Options %s are required"
 msgstr "Le opzioni %s sono obbligatorie"
 
-#, fuzzy
 msgid "You can't set option %s"
-msgstr "Impossibile impostare le opzioni %s"
+msgstr ""
 
-#, fuzzy
 msgid "Option %s is required"
-msgstr "Le opzioni %s sono obbligatorie"
+msgstr ""
 
 msgid "You can't set any of options %s"
 msgstr "Impossibile impostare le opzioni %s"
@@ -474,9 +470,8 @@ msgstr "Impossibile impostare le opzioni %s"
 msgid "At least one of options %s is required"
 msgstr "È necessario usare almeno una delle opzioni %s"
 
-#, fuzzy
 msgid "One of options %s is required"
-msgstr "È necessario usare almeno una delle opzioni %s"
+msgstr ""
 
 msgid "Only one of options %s can be set"
 msgstr ""
