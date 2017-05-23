@@ -3,21 +3,21 @@
 # This file is distributed under the same license as the hammer-cli package.
 #
 # Translators:
-# asasaki <asasaki@redhat.com>, 2015. #zanata
+# Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: hammer-cli 0.11.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2015-04-27 06:44+0000\n"
-"Last-Translator: asasaki <asasaki@redhat.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/projects/p/foreman/language/"
+"POT-Creation-Date: 2017-05-05 15:31+0200\n"
+"PO-Revision-Date: 2017-05-05 14:28+0000\n"
+"Last-Translator: Lukáš Zapletal\n"
+"Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/"
 "ja/)\n"
-"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Zanata 3.6.0\n"
 
 msgid "\"Unable to find hostname in #{service_uri}\""
 msgstr ""
@@ -26,34 +26,33 @@ msgid "CA certificate for %{uri} was stored to %{file}"
 msgstr ""
 
 msgid ""
-"Now hammer can use the downloaded certificate to verify SSL connection to the "
-"server."
+"Now hammer can use the downloaded certificate to verify SSL connection to "
+"the server."
 msgstr ""
 
-#, fuzzy
 msgid ""
-"It will be used automatically when ssl_ca_path and ssl_ca_file options are not"
-" set."
-msgstr "no"
+"It will be used automatically when ssl_ca_path and ssl_ca_file options are "
+"not set."
+msgstr ""
 
-#, fuzzy
 msgid ""
-"Be aware that hammer cannot verify whether the certificate is correct and you "
-"should verify its authenticity."
-msgstr "no"
+"Be aware that hammer cannot verify whether the certificate is correct and "
+"you should verify its authenticity."
+msgstr ""
 
 msgid "You can display the certificate content with"
 msgstr ""
 
 msgid ""
-"As root you can also install the certificate and update the system-wide list o"
-"f trusted CA certificates as follows:"
+"As root you can also install the certificate and update the system-wide list "
+"of trusted CA certificates as follows:"
 msgstr ""
 
 msgid "Couldn't parse URI '%s'."
 msgstr ""
 
-msgid "The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
+msgid ""
+"The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
 msgstr ""
 
 msgid "Make sure your server sends cert chain including the CA."
@@ -62,20 +61,21 @@ msgstr ""
 msgid "To see the actual chain you can use openssl command"
 msgstr ""
 
-msgid "\"You can also download the certificate manually and store it as #{cert_file}\""
+msgid ""
+"\"You can also download the certificate manually and store it as "
+"#{cert_file}\""
 msgstr ""
 
 msgid ""
-"If you choose any other location set the ssl_ca_path or ssl_ca_file configurat"
-"ion options appropriately."
+"If you choose any other location set the ssl_ca_path or ssl_ca_file "
+"configuration options appropriately."
 msgstr ""
 
 msgid "Fetching the CA certificate failed:"
 msgstr ""
 
-#, fuzzy
 msgid "The service at the given URI does not accept SSL connections"
-msgstr "no"
+msgstr ""
 
 msgid "Perhaps you meant to connect to '%s'?"
 msgstr ""
@@ -107,79 +107,91 @@ msgstr "次のようなコマンドはありません: '%<name>s'"
 msgid "no value provided"
 msgstr "値が指定されていません"
 
-msgid "Couldn't create %s. Please create the directory before setting defaults."
+msgid ""
+"Couldn't create %s. Please create the directory before setting defaults."
 msgstr ""
+"%s を作成できませんでした。デフォルト値を設定する前にディレクトリーを作成して"
+"ください。"
 
 msgid "Defaults management"
-msgstr ""
+msgstr "デフォルト管理"
 
 msgid "List all the providers"
-msgstr ""
+msgstr "すべてのプロバイダーを一覧表示"
 
 msgid "Provider"
-msgstr ""
+msgstr "プロバイダー"
 
 msgid "Supported defaults"
-msgstr ""
+msgstr "サポートされたデフォルト値"
 
 msgid "Description"
-msgstr ""
+msgstr "説明"
 
 msgid "List all the default parameters"
-msgstr ""
+msgstr "すべてのデフォルトパラメーターを一覧表示"
 
 msgid "Parameter"
-msgstr ""
+msgstr "パラメーター"
 
 msgid "Value"
-msgstr ""
+msgstr "値"
 
 msgid "Delete a default param"
-msgstr ""
+msgstr "デフォルトパラメーターを削除"
 
 msgid "The name of the default option"
-msgstr ""
+msgstr "デフォルトオプションの名前"
 
 msgid "Add a default parameter to config"
-msgstr ""
+msgstr "デフォルトパラメーターを設定に追加"
 
 msgid "The name of the default option (e.g. organization_id)."
-msgstr ""
+msgstr "デフォルトオプションの名前 (たとえば、organization_id)。"
 
 msgid "The value for the default option"
-msgstr ""
+msgstr "デフォルトオプションの値"
 
 msgid ""
-"The name of the provider providing the value. For list available providers see"
-" `hammer defaults providers`."
+"The name of the provider providing the value. For list available providers "
+"see `hammer defaults providers`."
 msgstr ""
+"値を提供するプロバイダーの名前。利用可能なプロバイダーの一覧については、"
+"`hammer defaults providers` を参照してください。"
 
 msgid ""
-"Added %{key_val} default-option with value that will be generated from the ser"
-"ver."
+"Added %{key_val} default-option with value that will be generated from the "
+"server."
 msgstr ""
+"サーバーから生成される値で %{key_val} デフォルトオプションが追加されました。"
 
 msgid "Added %{key_val} default-option with value %{val_val}."
-msgstr ""
+msgstr "%{key_val} デフォルトオプションが値 %{val_val} で追加されました。"
 
 msgid ""
-"Provider %{name} was not found. See `hammer defaults providers` for available "
-"providers."
+"Provider %{name} was not found. See `hammer defaults providers` for "
+"available providers."
 msgstr ""
+"プロバイダー %{name} が見つかりませんでした。利用可能なプロバイダーについて"
+"は、`hammer defaults providers` を参照してください。"
 
 msgid ""
-"The param name is not supported by provider. See `hammer defaults providers` f"
-"or supported params."
+"The param name is not supported by provider. See `hammer defaults providers` "
+"for supported params."
 msgstr ""
+"パラメーター名はプロバイダーによりサポートされていません。サポートされるパラ"
+"メーターについては、`hammer defaults providers` を参照してください。"
 
 msgid "%{param} was deleted successfully."
-msgstr ""
+msgstr "%{param} が正常に削除されました。"
 
 msgid "You must specify value or a provider name, can't specify both."
 msgstr ""
+"値またはプロバイダー名を指定する必要があります。両方を指定することはできませ"
+"ん。"
 
 msgid "Couldn't find the requested param in %s."
-msgstr ""
+msgstr "要求されたパラメーターを %s で見つけることができませんでした。"
 
 msgid "Error: %s"
 msgstr "エラー: %s"
@@ -200,9 +212,11 @@ msgid "is the server down?"
 msgstr "サーバーは停止していますか?"
 
 msgid ""
-"was '%s' run on the server when using apipie cache? (typical production settin"
-"gs)"
-msgstr "apipie キャッシュの使用時に '%s' がサーバーで実行されましたか? (通常の本番設定)"
+"was '%s' run on the server when using apipie cache? (typical production "
+"settings)"
+msgstr ""
+"apipie キャッシュの使用時に '%s' がサーバーで実行されましたか? (通常の本番設"
+"定)"
 
 msgid "Could not load the API description from the server"
 msgstr "サーバーから API 記述をロードできませんでした"
@@ -214,7 +228,9 @@ msgid "No permissions to create log dir %s"
 msgstr "ログディレクトリー %s を作成するパーミッションがありません"
 
 msgid "File %s not writeable, won't log anything to the file!"
-msgstr "ファイル %s は書き込み可能ではないため、このファイルにログの記録は行なわれません!"
+msgstr ""
+"ファイル %s は書き込み可能ではないため、このファイルにログの記録は行なわれま"
+"せん!"
 
 msgid "be verbose"
 msgstr "詳細"
@@ -252,7 +268,8 @@ msgstr ""
 msgid "Configure the client's private key"
 msgstr ""
 
-msgid "Use standard authentication in addition to client certificate authentication"
+msgid ""
+"Use standard authentication in addition to client certificate authentication"
 msgstr ""
 
 msgid "Fetch CA certificate from server and exit"
@@ -283,9 +300,11 @@ msgid "Get list of possible endings"
 msgstr "使用できる終了部分の一覧を取得"
 
 msgid ""
-"Legacy configuration of modules detected. Check section about configuration in"
-" user manual"
-msgstr "モジュールのレガシー設定が検出されました。ユーザーマニュアルの設定についてのセクションを確認してください"
+"Legacy configuration of modules detected. Check section about configuration "
+"in user manual"
+msgstr ""
+"モジュールのレガシー設定が検出されました。ユーザーマニュアルの設定についての"
+"セクションを確認してください"
 
 msgid "Warning: An error occured while loading module %s"
 msgstr "警告: モジュール %s のロード中にエラーが発生しました"
@@ -296,33 +315,34 @@ msgstr "エラー: 必要なモジュールの一部は設定で無効にされ�
 msgid "Comma-separated list of key=value."
 msgstr "key=value のコンマ区切りの一覧です。"
 
-msgid "value must be defined as a comma-separated list of key=value or valid JSON"
+msgid ""
+"value must be defined as a comma-separated list of key=value or valid JSON"
 msgstr ""
+"値は key=value または有効な JSON のコンマ区切りの一覧として定義する必要があり"
+"ます。"
 
 msgid "Missing or stray quote."
-msgstr ""
+msgstr "引用符がないか、不明です。"
 
-msgid ""
-"Unquoted fields do not allow  or \n"
-"."
-msgstr ""
+msgid "Unquoted fields do not allow \\r or \\n."
+msgstr "引用符で囲まれていないフィールドでは \\r または \\n を使用できません。"
 
 msgid "Illegal quoting."
-msgstr ""
+msgstr "引用符が不正に使用されています。"
 
 msgid "Unclosed quoted field."
-msgstr ""
+msgstr "フィールドが引用符で閉じられていません。"
 
 msgid "Field size exceeded."
-msgstr ""
+msgstr "フィールドサイズが超えています。"
 
 msgid ""
-"Comma separated list of values. Values containing comma should be double quote"
-"d"
-msgstr ""
+"Comma separated list of values. Values containing comma should be double "
+"quoted"
+msgstr "値のコンマ区切りリスト。コンマを含む値は二重引用符で囲む必要があります"
 
 msgid "numeric value is required"
-msgstr ""
+msgstr "数値が必要"
 
 msgid "One of true/false, yes/no, 1/0."
 msgstr "true/false、yes/no、1/0 のいずれかです。"
@@ -334,13 +354,11 @@ msgid "Unable to parse JSON input"
 msgstr "JSON 入力を解析できません"
 
 msgid "Possible value(s): %s"
-msgstr ""
+msgstr "可能な値: %s"
 
-#, fuzzy
 msgid "value must be %s"
-msgstr "値を '%s' のいずれかにする必要があります"
+msgstr "値を '%s' にする必要があります"
 
-#, fuzzy
 msgid "value must be one of %s"
 msgstr "値を '%s' のいずれかにする必要があります"
 
@@ -357,13 +375,13 @@ msgid "value must be a combination of '%s'"
 msgstr "値を '%s' の組み合わせにする必要があります"
 
 msgid "Warning: Option %{option} is deprecated. %{message}"
-msgstr ""
+msgstr "警告: オプション %{option} は非推奨です。%{message}"
 
 msgid "Deprecated: %{deprecated_msg}"
-msgstr ""
+msgstr "非推奨: %{deprecated_msg}"
 
 msgid "%{flag} is deprecated: %{deprecated_msg}"
-msgstr ""
+msgstr "%{flag} は非推奨になりました: %{deprecated_msg}"
 
 msgid "Can be specified multiple times. "
 msgstr "複数回指定することはできません。"
@@ -385,6 +403,7 @@ msgstr "名前"
 
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)"
 msgstr ""
+"ページ %{page}/%{total} (ナビゲーションには --page と --per-page を使用)"
 
 msgid "no"
 msgstr "no"
@@ -393,12 +412,14 @@ msgid "yes"
 msgstr "yes"
 
 msgid ""
-"Warning: location hammer.modules.d is deprecated, move your module configurati"
-"ons to cli.modules.d"
-msgstr "警告: hammer.modules.d の場所は廃止されます。モジュール設定を cli.modules.d に移行してください"
+"Warning: location hammer.modules.d is deprecated, move your module "
+"configurations to cli.modules.d"
+msgstr ""
+"警告: hammer.modules.d の場所は廃止されます。モジュール設定を cli.modules.d "
+"に移行してください"
 
 msgid "Warning: Couldn't load configuration file %{path}: %{message}"
-msgstr ""
+msgstr "警告: 設定ファイル %{path} をロードできませんでした: %{message}"
 
 msgid "Print help for commands"
 msgstr "コマンドについての help を出力"
@@ -415,13 +436,11 @@ msgstr "使用法の詳細を参照するには、'help' を入力してくだ�
 msgid "Interactive shell"
 msgstr "インタラクティブシェル"
 
-#, fuzzy
 msgid "SSL client certificate is set but the key is not"
-msgstr "no"
+msgstr ""
 
-#, fuzzy
 msgid "SSL client key is set but the certificate is not"
-msgstr "no"
+msgstr ""
 
 msgid "SSL client authentication disabled"
 msgstr ""
@@ -433,9 +452,11 @@ msgid "Could't read SSL client key %s"
 msgstr ""
 
 msgid ""
-"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
-"ass>s)"
-msgstr "サブコマンド %<name>s (%<existing_class>s) を %<name>s (%<new_class>s) に置き換えることができません"
+"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
+"(%<new_class>s)"
+msgstr ""
+"サブコマンド %<name>s (%<existing_class>s) を %<name>s (%<new_class>s) に置き"
+"換えることができません"
 
 msgid "Unknown option name '%s'"
 msgstr "不明なオプション名 '%s'"
@@ -446,13 +467,11 @@ msgstr "1 度にすべてのオプション %s を設定することはできま
 msgid "Options %s are required"
 msgstr "オプション %s は必須です"
 
-#, fuzzy
 msgid "You can't set option %s"
-msgstr "オプション %s のいずれも設定できません"
+msgstr "オプション %s を設定できません"
 
-#, fuzzy
 msgid "Option %s is required"
-msgstr "オプション %s は必須です"
+msgstr "オプション %s が必要です"
 
 msgid "You can't set any of options %s"
 msgstr "オプション %s のいずれも設定できません"
@@ -460,9 +479,8 @@ msgstr "オプション %s のいずれも設定できません"
 msgid "At least one of options %s is required"
 msgstr "オプション %s が少なくとも 1 つ以上必要です"
 
-#, fuzzy
 msgid "One of options %s is required"
-msgstr "オプション %s が少なくとも 1 つ以上必要です"
+msgstr "オプション %s のいずれかが必要です"
 
 msgid "Only one of options %s can be set"
-msgstr ""
+msgstr "オプション %s のいずれかのみを設定できます"
