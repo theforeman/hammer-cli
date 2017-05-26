@@ -34,7 +34,7 @@ module HammerCLI
         default_options.each do |key, value|
           key = switch_to_name(key).to_sym
           defaults.delete_if { |k,| defaults_match?(k, key) }
-          defaults[key] = (value ? {:value => value} : {:provider => provider})
+          defaults[key] = (value ? {:value => value.to_s} : {:provider => provider.to_s})
         end
       end
     end

@@ -13,12 +13,19 @@ describe HammerCLI::Defaults do
   describe '#add_defaults_to_conf' do
     it "Should add a default param to defaults file, without a provider" do
       defaults_result = @defaults.add_defaults_to_conf({"organization_id"=> 3}, nil)
-      assert_equal 3, defaults_result[:defaults][:organization_id][:value]
+      assert_equal '3', defaults_result[:defaults][:organization_id][:value]
+    end
+
+    it "adds values from hammer shell" do
+      key = HammerCLI::CompleterWord.new("organization_id")
+      value = HammerCLI::CompleterWord.new("3")
+      defaults_result = @defaults.add_defaults_to_conf({ key => value }, nil)
+      assert_equal '3', defaults_result[:defaults][:organization_id][:value]
     end
 
     it "Should update dashed default when underscored default is set" do
       defaults_result = @defaults.add_defaults_to_conf({"location-id"=> 3}, nil)
-      assert_equal 3, defaults_result[:defaults][:'location-id'][:value]
+      assert_equal '3', defaults_result[:defaults][:'location-id'][:value]
       assert_equal nil, defaults_result[:defaults][:location_id]
     end
 
@@ -26,20 +33,20 @@ describe HammerCLI::Defaults do
       let(:filepath) { File.join(File.dirname(__FILE__), '/fixtures/defaults/defaults_dashed.yml') }
       it "Should update underscored default when dashed default is set" do
         defaults_result = @defaults.add_defaults_to_conf({"location_id"=> 3}, nil)
-        assert_equal 3, defaults_result[:defaults][:location_id][:value]
+        assert_equal '3', defaults_result[:defaults][:location_id][:value]
         assert_equal nil, defaults_result[:defaults][:'location-id']
       end
 
       it "should update underscored default with option syntax when dashed default is set" do
         defaults_result = @defaults.add_defaults_to_conf({"--location-id"=> 3}, nil)
-        assert_equal 3, defaults_result[:defaults][:'location-id'][:value]
+        assert_equal '3', defaults_result[:defaults][:'location-id'][:value]
         assert_equal nil, defaults_result[:defaults][:location_id]
       end
     end
 
     it "Should add a default param to defaults file, with provider" do
       defaults_result = @defaults.add_defaults_to_conf({"location_id"=>nil}, :foreman)
-      assert_equal :foreman, defaults_result[:defaults][:location_id][:provider]
+      assert_equal 'foreman', defaults_result[:defaults][:location_id][:provider]
     end
   end
 
