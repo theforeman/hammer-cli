@@ -15,6 +15,7 @@ describe String do
     let(:str) { "AA%<a>s BB%<b>s" }
     let(:curly_str) { "AA%{a} BB%{b}" }
     let(:pos_str) { "AA%s BB%s" }
+    let(:str_with_percent) { "Error: AA%<a>s BB%<b>s <%# template error %> verify this %>" }
 
     it "should not fail without expected parameters" do
       str.format({}).must_equal 'AA BB'
@@ -34,6 +35,10 @@ describe String do
 
     it "should replace named parameters marked with curly brackets" do
       curly_str.format(:a => 'A', :b => 'B').must_equal 'AAA BBB'
+    end
+
+    it "should not fail due to presence of percent chars in string" do
+      str_with_percent.format({}).must_equal 'Error: AA BB <%# template error %> verify this %>'
     end
 
   end

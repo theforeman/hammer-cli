@@ -8,10 +8,11 @@ class String
         name = name[0]
         params[name.to_s] || params[name.to_sym]
       end
-
-      self.gsub(/%[<]([^>]*)[>]/, '%').gsub(/%[{]([^}]*)[}]/, '%s') % array_params
+      self.gsub(/%[<]([^>]*)[>]/, '%')
+          .gsub(/%[{]([^}]*)[}]/, '%s')
+          .gsub(/\%(\W?[^bBdiouxXeEfgGaAcps])/, '%%\1') % array_params
     else
-      self % params
+      self.gsub(/\%(\W?[^bBdiouxXeEfgGaAcps])/, '%%\1') % params
     end
   end
 
