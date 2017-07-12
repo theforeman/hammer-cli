@@ -47,7 +47,8 @@ describe HammerCLI::CSVParser do
     end
 
     it "raises quoting error" do
-      proc { parser.parse('1,"3,4""s') }.must_raise ArgumentError
+      err = proc { parser.parse('1,"3,4""s') }.must_raise ArgumentError
+      err.message.must_equal "Illegal quoting in \"3,4\"\"s"
     end
   end
 end
