@@ -23,20 +23,18 @@ module HammerCLI
     end
 
     def delete_default_from_conf(param)
-      update_defaults_file do |defaults|
-        defaults.delete_if { |k,| defaults_match?(k, param) }
-      end
+      @defaults_settings.delete_if { |k,| defaults_match?(k, param) }
+      update_defaults_file
     end
 
     def add_defaults_to_conf(default_options, provider)
       create_default_file if defaults_settings.empty?
-      update_defaults_file do |defaults|
-        default_options.each do |key, value|
-          key = switch_to_name(key).to_sym
-          defaults.delete_if { |k,| defaults_match?(k, key) }
-          defaults[key] = (value ? {:value => value.to_s} : {:provider => provider.to_s})
-        end
+      default_options.each do |key, value|
+        key = switch_to_name(key).to_sym
+        @defaults_settings.delete_if { |k,| defaults_match?(k, key) }
+        @defaults_settings[key] = (value ? {:value => value.to_s} : {:provider => provider.to_s})
       end
+      update_defaults_file
     end
 
     def defaults_set?(param)
@@ -79,11 +77,11 @@ module HammerCLI
     end
 
     def update_defaults_file
-      conf_file = YAML.load_file(@path)
-      conf_file[:defaults] ||= {}
-      yield conf_file[:defaults]
-      write_to_file conf_file
-      conf_file
+      conf_file_content = {
+        :defaults => @defaults_settings
+      }
+      write_to_file(conf_file_content)
+      conf_file_content
     end
 
     private
