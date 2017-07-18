@@ -1,5 +1,5 @@
 require 'json'
-require 'csv'
+require 'hammer_cli/csv_parser'
 
 module HammerCLI
   module Options
@@ -79,25 +79,14 @@ module HammerCLI
         end
       end
 
-      CSV_ERROR_MESSAGES = {
-        /Missing or stray quote/ => _('Missing or stray quote.'),
-        /Unquoted fields do not allow/ => _('Unquoted fields do not allow \r or \n.'),
-        /Illegal quoting/ => _('Illegal quoting.'),
-        /Unclosed quoted field/ => _('Unclosed quoted field.'),
-        /Field size exceeded/ => _('Field size exceeded.')
-      }
 
       class List < AbstractNormalizer
-
         def description
-          _("Comma separated list of values. Values containing comma should be double quoted")
+          _("Comma separated list of values. Values containing comma should be quoted or escaped with backslash")
         end
 
         def format(val)
-          (val.is_a?(String) && !val.empty?) ? CSV.parse_line(val) : []
-        rescue CSV::MalformedCSVError => e
-          message = CSV_ERROR_MESSAGES.find { |pattern,| pattern.match e.message } || [e.message]
-          raise ArgumentError.new(message.last)
+          (val.is_a?(String) && !val.empty?) ? HammerCLI::CSVParser.new.parse(val) : []
         end
       end
 
