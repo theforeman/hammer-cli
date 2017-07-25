@@ -21,4 +21,4 @@ require 'hammer_cli/apipie'
 # extend MainCommand
 require 'hammer_cli/shell'
 require 'hammer_cli/defaults'
-
+require 'hammer_cli/full_help'
