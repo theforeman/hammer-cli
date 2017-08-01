@@ -1,6 +1,20 @@
 Release notes
 =============
 
+### 0.11.0 (2017-08-01)
+* Add full-help command ([#20181](http://projects.theforeman.org/issues/20181))
+* Replace CSV parser in List Normalizer ([#17135](http://projects.theforeman.org/issues/17135))
+* Make sure assert_match is called in correct context ([#19573](http://projects.theforeman.org/issues/19573))
+* Fix merging .edit.po into .po files ([#17671](http://projects.theforeman.org/issues/17671))
+* Error strings with % in them break messages ([#11178](http://projects.theforeman.org/issues/11178))
+* Log what exception handler is used ([#19470](http://projects.theforeman.org/issues/19470))
+* Interpolate variables in translations correctly ([#19083](http://projects.theforeman.org/issues/19083))
+* Retry command on session expiry ([#19431](http://projects.theforeman.org/issues/19431))
+* Prevent fetching of non-CA certificates ([#19391](http://projects.theforeman.org/issues/19391))
+* Use local ca cert store instead of ssl_ca_path ([#19390](http://projects.theforeman.org/issues/19390))
+* Require apipie-bindings >= 0.2.0 ([#19083](http://projects.theforeman.org/issues/19083))
+* Install server CA cert without root access ([#19083](http://projects.theforeman.org/issues/19083))
+
 ### 0.10.0 (2017-03-28)
 * Defaults match on option switch name (#233) ([#17920](http://projects.theforeman.org/issues/17920))
 * Add support for client certificate authentication ([#12401](http://projects.theforeman.org/issues/12401))
