@@ -104,6 +104,9 @@ msgstr ""
 msgid "no value provided"
 msgstr ""
 
+msgid "Illegal quoting in %{buffer}"
+msgstr ""
+
 msgid ""
 "Couldn't create %s. Please create the directory before setting defaults."
 msgstr ""
@@ -208,6 +211,15 @@ msgstr ""
 msgid "Missing arguments for %s"
 msgstr ""
 
+msgid "Format output in markdown"
+msgstr ""
+
+msgid "Hammer CLI help"
+msgstr ""
+
+msgid "Print help for all hammer commands"
+msgstr ""
+
 msgid "No permissions to create log dir %s"
 msgstr ""
 
@@ -299,26 +311,9 @@ msgid ""
 "value must be defined as a comma-separated list of key=value or valid JSON"
 msgstr ""
 
-msgid "Missing or stray quote."
-msgstr ""
-
 msgid ""
-"Unquoted fields do not allow \r or \n"
-"."
-msgstr ""
-
-msgid "Illegal quoting."
-msgstr ""
-
-msgid "Unclosed quoted field."
-msgstr ""
-
-msgid "Field size exceeded."
-msgstr ""
-
-msgid ""
-"Comma separated list of values. Values containing comma should be double "
-"quoted"
+"Comma separated list of values. Values containing comma should be quoted or "
+"escaped with backslash"
 msgstr ""
 
 msgid "numeric value is required"

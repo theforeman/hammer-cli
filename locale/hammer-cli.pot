@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hammer-cli 0.11.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-05 15:31+0200\n"
-"PO-Revision-Date: 2017-05-05 15:31+0200\n"
+"POT-Creation-Date: 2017-08-01 10:47+0200\n"
+"PO-Revision-Date: 2017-08-01 10:47+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -128,6 +128,10 @@ msgstr ""
 msgid "no value provided"
 msgstr ""
 
+#: ../lib/hammer_cli/csv_parser.rb:14
+msgid "Illegal quoting in %{buffer}"
+msgstr ""
+
 #: ../lib/hammer_cli/defaults.rb:77
 msgid "Couldn't create %s. Please create the directory before setting defaults."
 msgstr ""
@@ -224,42 +228,54 @@ msgstr ""
 msgid "Couldn't find the requested param in %s."
 msgstr ""
 
-#: ../lib/hammer_cli/exception_handler.rb:64
+#: ../lib/hammer_cli/exception_handler.rb:65
 msgid "Error: %s"
 msgstr ""
 
-#: ../lib/hammer_cli/exception_handler.rb:70
+#: ../lib/hammer_cli/exception_handler.rb:71
 msgid "Error: %{message}"
 msgstr ""
 
-#: ../lib/hammer_cli/exception_handler.rb:71
+#: ../lib/hammer_cli/exception_handler.rb:72
 msgid "See: '%{path} --help'"
 msgstr ""
 
-#: ../lib/hammer_cli/exception_handler.rb:98
+#: ../lib/hammer_cli/exception_handler.rb:99
 msgid "SSL error"
 msgstr ""
 
-#: ../lib/hammer_cli/exception_handler.rb:113
+#: ../lib/hammer_cli/exception_handler.rb:114
 msgid "SSL certificate verification failed"
 msgstr ""
 
-#: ../lib/hammer_cli/exception_handler.rb:120
+#: ../lib/hammer_cli/exception_handler.rb:121
 msgid "is the server down?"
 msgstr ""
 
-#: ../lib/hammer_cli/exception_handler.rb:121
+#: ../lib/hammer_cli/exception_handler.rb:122
 msgid ""
 "was '%s' run on the server when using apipie cache? (typical production settin"
 "gs)"
 msgstr ""
 
-#: ../lib/hammer_cli/exception_handler.rb:123
+#: ../lib/hammer_cli/exception_handler.rb:124
 msgid "Could not load the API description from the server"
 msgstr ""
 
-#: ../lib/hammer_cli/exception_handler.rb:140
+#: ../lib/hammer_cli/exception_handler.rb:141
 msgid "Missing arguments for %s"
+msgstr ""
+
+#: ../lib/hammer_cli/full_help.rb:5
+msgid "Format output in markdown"
+msgstr ""
+
+#: ../lib/hammer_cli/full_help.rb:17
+msgid "Hammer CLI help"
+msgstr ""
+
+#: ../lib/hammer_cli/full_help.rb:83
+msgid "Print help for all hammer commands"
 msgstr ""
 
 #: ../lib/hammer_cli/logger.rb:58
@@ -380,73 +396,53 @@ msgstr ""
 msgid "value must be defined as a comma-separated list of key=value or valid JSON"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:83
-msgid "Missing or stray quote."
-msgstr ""
-
-#: ../lib/hammer_cli/options/normalizers.rb:84
-msgid "Unquoted fields do not allow \\r or \\n."
-msgstr ""
-
 #: ../lib/hammer_cli/options/normalizers.rb:85
-msgid "Illegal quoting."
-msgstr ""
-
-#: ../lib/hammer_cli/options/normalizers.rb:86
-msgid "Unclosed quoted field."
-msgstr ""
-
-#: ../lib/hammer_cli/options/normalizers.rb:87
-msgid "Field size exceeded."
-msgstr ""
-
-#: ../lib/hammer_cli/options/normalizers.rb:93
 msgid ""
-"Comma separated list of values. Values containing comma should be double quote"
-"d"
+"Comma separated list of values. Values containing comma should be quoted or es"
+"caped with backslash"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:111
+#: ../lib/hammer_cli/options/normalizers.rb:100
 msgid "numeric value is required"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:125
+#: ../lib/hammer_cli/options/normalizers.rb:114
 msgid "One of true/false, yes/no, 1/0."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:135
+#: ../lib/hammer_cli/options/normalizers.rb:124
 msgid "value must be one of true/false, yes/no, 1/0"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:174
+#: ../lib/hammer_cli/options/normalizers.rb:163
 msgid "Unable to parse JSON input"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:188
+#: ../lib/hammer_cli/options/normalizers.rb:177
 msgid "Possible value(s): %s"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:196
+#: ../lib/hammer_cli/options/normalizers.rb:185
 msgid "value must be %s"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:198
+#: ../lib/hammer_cli/options/normalizers.rb:187
 msgid "value must be one of %s"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:219
+#: ../lib/hammer_cli/options/normalizers.rb:208
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:226
+#: ../lib/hammer_cli/options/normalizers.rb:215
 msgid "'%s' is not a valid date"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:237
+#: ../lib/hammer_cli/options/normalizers.rb:226
 msgid "Any combination (comma separated list) of '%s'"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:257
+#: ../lib/hammer_cli/options/normalizers.rb:246
 msgid "value must be a combination of '%s'"
 msgstr ""
 
