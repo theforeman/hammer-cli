@@ -58,6 +58,7 @@ namespace :gettext do
       task.mo_base_directory = domain.locale_dir
       task.po_base_directory = domain.locale_dir
       task.files = domain.translated_files
+      task.msgmerge_options='--no-fuzzy-matching'
     end
   end
 
