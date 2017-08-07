@@ -1,0 +1,77 @@
+#
+# Definition of common Makefile tasks for PO merging and MO generation.
+#
+# Run make help to list available targets
+#
+
+POTFILE = $(DOMAIN).pot
+MOFILE = $(DOMAIN).mo
+POFILES = $(shell find . -name '$(DOMAIN).po')
+MOFILES = $(patsubst %.po,%.mo,$(POFILES))
+POXFILES = $(patsubst %.po,%.pox,$(POFILES))
+EDITFILES = $(patsubst %.po,%.edit.po,$(POFILES))
+TIMESTAMPFILES = $(patsubst %.po,%.po.time_stamp,$(POFILES))
+
+%.mo: %.po
+	mkdir -p $(shell dirname $@)/LC_MESSAGES
+	msgfmt -o $(shell dirname $@)/LC_MESSAGES/$(MOFILE) $<
+
+.PHONY: all-mo
+all-mo: $(MOFILES) ## Generate MO files from PO files (default)
+
+# Check for malformed strings
+%.pox: %.po
+	@command -v pofilter >/dev/null 2>&1 || { echo "Command pofilter not found. Make sure you have translate-toolkit installed." >&2; exit 1; }
+	msgfmt -c $<
+	pofilter --nofuzzy -t variables -t blank -t urls -t emails -t long -t newlines \
+		-t endwhitespace -t endpunc -t puncspacing -t options -t printf -t validchars --gnome $< > $@;
+	cat $@
+	! grep -q msgid $@
+
+.PHONY: check
+check: $(POXFILES) ## Check translations using translate-tool, run make with -k to skip errors and execute for all languages
+
+.PHONY: uniq-po
+uniq-po: ## Unify duplicate translations in .po files
+	for f in $(shell find ./ -name "*.po") ; do \
+		msguniq $$f -o $$f ; \
+	done
+
+%.edit.po:
+	touch $@
+
+# Pull translaions from transifex
+.PHONY: tx-pull
+tx-pull: $(EDITFILES)
+	@command -v tx >/dev/null 2>&1 || { echo "Command tx not found. Make sure you have transifex-client installed and configured." >&2; exit 1; }
+	tx pull -f
+	for f in $(EDITFILES); do \
+		sed -i 's/^\("Project-Id-Version: \).*$$/\1$(DOMAIN) $(VERSION)\\n"/' $$f; \
+	done
+
+# Merge .edit.po into .po
+.PHONY: update-po
+update-po:
+	for f in $(EDITFILES); do \
+		msgcat --use-first --no-location $$f $${f//.edit/} > $${f//.edit/}; \
+	done
+
+# Extract strings and update the .pot, prepare .edit.po files
+.PHONY: extract-strings
+extract-strings:
+	bundle exec rake gettext:find
+
+.PHONY: tx-update
+tx-update: extract-strings tx-pull update-po $(MOFILES) ## Download and merge translations from Transifex
+	git add ../locale
+	git commit -m "i18n - extracting new, pulling from tx"
+	@echo Changes commited!
+
+.PHONY: clean
+clean: ## Clean everything, removes *.edit.po, *.po.timestamp and *.pox files
+	rm -f $(EDITFILES) $(TIMESTAMPFILES) $(POXFILES)
+
+.PHONY: help
+help: ## This help message
+	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
+

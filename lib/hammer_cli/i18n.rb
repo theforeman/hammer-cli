@@ -133,6 +133,10 @@ module HammerCLI
       end
     end
 
+    def self.main_makefile
+      File.expand_path(File.join(File.dirname(__FILE__), '../../locale/Makefile.def'))
+    end
+
     init
   end
 end
