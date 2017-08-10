@@ -50,7 +50,7 @@ describe 'help' do
       '    hammer [OPTIONS]',
       '',
       'Options:',
-      ' -h, --help                    print help',
+      ' -h, --help                    Print help',
       '',
       'Details about interface settings',
       '',

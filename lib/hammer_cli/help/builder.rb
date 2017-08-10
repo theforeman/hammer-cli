@@ -1,3 +1,4 @@
+require 'unicode'
 module HammerCLI
   module Help
     class Builder < Clamp::Help::Builder
@@ -34,7 +35,7 @@ module HammerCLI
 
         items.each do |item|
           label, description = item.help
-          description.each_line do |line|
+          description.gsub(/^(.)/) { Unicode::capitalize($1) }.each_line do |line|
             puts " %-#{label_width}s %s" % [label, line]
             label = ''
           end
