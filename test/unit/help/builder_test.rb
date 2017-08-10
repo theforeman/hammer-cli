@@ -23,6 +23,22 @@ describe HammerCLI::Help::Builder do
     end
   end
 
+  describe 'adding an option with lower case description' do
+    it 'capitalizes the description' do
+      options = [
+        Clamp::Option::Definition.new(['--alpha-option'], 'OPT_ALPHA', 'alpha description'),
+        Clamp::Option::Definition.new(['--beta-option'], 'OPT_BETA', 'BETA description')
+      ]
+      help.add_list('Options',options)
+
+      help.string.strip.must_equal [
+        'Options:',
+        ' --alpha-option OPT_ALPHA      Alpha description',
+        ' --beta-option OPT_BETA        BETA description'
+      ].join("\n")
+    end
+  end
+
   describe 'adding text' do
     let(:content_1) {[
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -54,4 +70,3 @@ describe HammerCLI::Help::Builder do
     end
   end
 end
-
