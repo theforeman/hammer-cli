@@ -34,23 +34,28 @@
 
 # SSL auth options
 #:ssl:
-  # Path to a ca file
+  # Path to a CA file in PEM format, mutually exclusive with :ssl_ca_path:
   #:ssl_ca_file: '/path/to/ca_certificate.pem'
 
-  # Path to a direcotry with ca file
+  # Path to a direcotry with CA files, mutually exclusive with :ssl_ca_file:
+  # The directory should contain one certificate per file in PEM format, with a file name of the form hash.N
+  # The hash can be obtained via the -hash option of the openssl x509 command. See the OpenSSL documentation
+  # for more information.
   #:ssl_ca_path: '/path/to/ca'
 
   # Turn SSL verification on/off
   #:verify_ssl: true
 
-  # Path to a client certificate
+  # Path to a client certificate, DER- or PEM-encoded certificates are supported
   #:ssl_client_cert: '/path/to/cert.crt'
 
   # Path to a client key
   #:ssl_client_key: '/path/to/cert.key'
 
-  # Enable standard authentication in addition to client certificate authentication
+  # Enable standard authentication in addition to client certificate authentication.
+  # Switch to false if you want to rely on certificates only.
   #:ssl_with_basic_auth: true
 
-  # local CA cert store path
+  # Local CA cert store path where hammer stores certificates fetched from the server.
+  # Certs from the local storage are used only when neither :ssl_ca_file: nor :ssl_ca_path: is cofigured.
   #:local_ca_store_path: '~/.hammer/certs'
