@@ -162,7 +162,16 @@
                                 "allow_null": false,
                                 "full_name": "documented[numeric_param]",
                                 "validator": "Must be Number",
-                                "expected_type": "number",
+                                "expected_type": "numeric",
+                                "description": "",
+                                "required": false
+                            },
+                            {
+                                "name": "integer_param",
+                                "allow_null": false,
+                                "full_name": "documented[numeric_param]",
+                                "validator": "Integer",
+                                "expected_type": "numeric",
                                 "description": "",
                                 "required": false
                             }

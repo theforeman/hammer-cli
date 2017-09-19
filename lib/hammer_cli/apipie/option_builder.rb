@@ -71,7 +71,7 @@ module HammerCLI::Apipie
       elsif param.validator =~ /Must be one of: (.*)\./
         allowed = $1.split(/,\ ?/).map { |val| val.gsub(/<[^>]*>/i,'') }
         opts[:format] = HammerCLI::Options::Normalizers::Enum.new(allowed)
-      elsif param.expected_type.to_s == 'number' || param.validator =~ /Number/i
+      elsif param.expected_type.to_s == 'numeric' || param.validator =~ /Number/i || param.validator =~ /Integer/i
         opts[:format] = HammerCLI::Options::Normalizers::Number.new
       end
       opts[:attribute_name] = HammerCLI.option_accessor_name(param.name)
