@@ -97,6 +97,12 @@ describe HammerCLI::Apipie::OptionBuilder do
       numeric_option = options.find {|o| o.attribute_name == HammerCLI.option_accessor_name("numeric_param") }
       numeric_option.value_formatter.class.must_equal HammerCLI::Options::Normalizers::Number
     end
+
+    it "should set number normalizer for integer" do
+      integer_option = options.find {|o| o.attribute_name == HammerCLI.option_accessor_name("integer_param") }
+      integer_option.value_formatter.class.must_equal HammerCLI::Options::Normalizers::Number
+    end
+
   end
 
 
