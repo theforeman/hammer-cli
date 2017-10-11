@@ -52,15 +52,8 @@ end
 # load user's settings
 require 'hammer_cli/settings'
 
-CFG_PATH_LEGACY = ['~/.foreman/', '/etc/foreman/', "#{::RbConfig::CONFIG['sysconfdir']}/foreman/"].uniq
-HammerCLI::Settings.load_from_paths CFG_PATH_LEGACY
-if HammerCLI::Settings.path_history.empty?
-  CFG_PATH = ['~/.hammer/', '/etc/hammer/', "#{::RbConfig::CONFIG['sysconfdir']}/hammer/"].uniq
-  HammerCLI::Settings.load_from_paths CFG_PATH
-else
-  warn _("Warning: Legacy config paths detected, move the following files")
-  HammerCLI::Settings.path_history.each { |p| warn "    #{p} -> #{p.gsub('hammer.modules.d', 'cli.modules.d').gsub('foreman/', 'hammer/')}"}
-end
+CFG_PATH = ['~/.hammer/', '/etc/hammer/', "#{::RbConfig::CONFIG['sysconfdir']}/hammer/"].uniq
+HammerCLI::Settings.load_from_paths CFG_PATH
 
 CFG_PATH_LOCAL = ['./config/']
 

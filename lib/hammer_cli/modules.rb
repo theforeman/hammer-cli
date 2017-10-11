@@ -7,10 +7,7 @@ module HammerCLI
     end
 
     def self.enabled_modules
-      # legacy modules config
-      modules = HammerCLI::Settings.get(:modules) || []
-      logger.warn _("Legacy configuration of modules detected. Check section about configuration in user manual") unless modules.empty?
-
+      modules = []
       HammerCLI::Settings.dump.inject(modules) do |names, (mod_name, mod_config)|
         if is_module_config?(mod_config)
           mod = ["hammer_cli_#{mod_name}"]

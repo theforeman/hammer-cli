@@ -23,11 +23,6 @@ module HammerCLI
           Dir.glob(File.join(full_path, 'cli.modules.d/*.yml')).sort.each do |f|
             load_from_file(f)
           end
-          Dir.glob(File.join(full_path, 'hammer.modules.d/*.yml')).sort.each do |f|
-            warn _("Warning: location hammer.modules.d is deprecated, move your module configurations to cli.modules.d")
-            warn "    #{f} -> #{f.gsub('hammer.modules.d', 'cli.modules.d')}"
-            load_from_file(f)
-          end
         end
       end
     end
