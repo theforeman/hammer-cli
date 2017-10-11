@@ -35,16 +35,6 @@ describe HammerCLI::Modules do
       HammerCLI::Settings.clear
       HammerCLI::Modules.names.must_equal []
     end
-
-    it "must work with old modules config" do
-      HammerCLI::Settings.clear
-      HammerCLI::Settings.load({
-        :tom => {},
-        :modules => ['hammer_cli_tom', 'hammer_cli_jerry'],
-      })
-      HammerCLI::Modules.names.must_equal ["hammer_cli_jerry", "hammer_cli_tom"]
-    end
-
   end
 
   describe "find by name" do
@@ -167,4 +157,3 @@ describe HammerCLI::Modules do
   end
 
 end
-
