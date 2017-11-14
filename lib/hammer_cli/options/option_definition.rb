@@ -98,8 +98,15 @@ module HammerCLI
         ].compact
 
         str = ""
-        str += _("Can be specified multiple times. ") if multivalued?
-        str += _("Default: ") + default_sources.join(_(", or ")) unless default_sources.empty?
+        if multivalued?
+          str += _("Can be specified multiple times.")
+          str += " "
+        end
+        unless default_sources.empty?
+          str += _("Default:")
+          str += " "
+          str += default_sources.join(_(", or "))
+        end
         str
       end
 

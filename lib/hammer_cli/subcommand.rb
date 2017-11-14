@@ -91,7 +91,7 @@ module HammerCLI
       def define_subcommand(name, subcommand_class, definition, &block)
         existing = find_subcommand(name)
         if existing
-          raise HammerCLI::CommandConflict, _("can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_class>s)") % {
+          raise HammerCLI::CommandConflict, _("Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_class>s).") % {
             :name => name,
             :existing_class => existing.subcommand_class,
             :new_class => subcommand_class

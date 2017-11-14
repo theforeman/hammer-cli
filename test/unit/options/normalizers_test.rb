@@ -246,7 +246,7 @@ describe HammerCLI::Options::Normalizers do
     end
 
     it "should list allowed values in description" do
-      formatter.description.must_equal("Possible value(s): 'a', 'b'")
+      formatter.description.must_equal("Possible value(s): 'a', 'b'.")
     end
 
   end
@@ -281,7 +281,7 @@ describe HammerCLI::Options::Normalizers do
     end
 
     it "should list allowed values in description" do
-      formatter.description.must_equal("Any combination (comma separated list) of ''1', '2', 'a', 'b''")
+      formatter.description.must_equal("Any combination (comma separated list) of ''1', '2', 'a', 'b''.")
     end
 
   end

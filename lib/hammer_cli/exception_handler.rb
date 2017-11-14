@@ -69,7 +69,7 @@ module HammerCLI
 
     def handle_usage_exception(e)
       print_error (_("Error: %{message}") + "\n\n" +
-                   _("See: '%{path} --help'")) % {:message => e.message, :path => e.command.invocation_path}
+                   _("See: '%{path} --help'.")) % {:message => e.message, :path => e.command.invocation_path}
       log_full_error e
       HammerCLI::EX_USAGE
     end
@@ -111,7 +111,7 @@ module HammerCLI
     end
 
     def ssl_cert_message
-      message = _("SSL certificate verification failed")
+      message = _("SSL certificate verification failed.")
       message += "\n#{ssl_cert_instructions}" if ssl_cert_instructions
       message
     end
@@ -138,7 +138,7 @@ module HammerCLI
     end
 
     def handle_apipie_missing_arguments_error(e)
-      message = _("Missing arguments for %s") % "'#{e.params.join("', '")}'"
+      message = _("Missing arguments for %s.") % "'#{e.params.join("', '")}'"
       print_error message
       log_full_error e, message
       HammerCLI::EX_USAGE

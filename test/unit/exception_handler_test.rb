@@ -36,7 +36,7 @@ describe HammerCLI::ExceptionHandler do
   end
 
   it "should handle usage error" do
-    output.expects(:print_error).with(heading, "Error: wrong_usage\n\nSee: 'command_name --help'")
+    output.expects(:print_error).with(heading, "Error: wrong_usage\n\nSee: 'command_name --help'.")
     handler.handle_exception(Clamp::UsageError.new('wrong_usage', cmd), :heading => heading)
 
   end
