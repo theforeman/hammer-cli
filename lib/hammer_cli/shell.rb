@@ -7,7 +7,7 @@ module HammerCLI
 
     class HelpCommand < AbstractCommand
       command_name "help"
-      desc _("Print help for commands")
+      desc _("Print help for commands.")
 
       parameter "[COMMAND] ...", "command"
 
@@ -19,7 +19,7 @@ module HammerCLI
 
     class ExitCommand < AbstractCommand
       command_name "exit"
-      desc _("Exit interactive shell")
+      desc _("Exit interactive shell.")
 
       def execute
         exit HammerCLI::EX_OK
@@ -113,8 +113,8 @@ module HammerCLI
     end
 
     def print_welcome_message
-      print_message(_("Welcome to the hammer interactive shell"))
-      print_message(_("Type 'help' for usage information"))
+      print_message(_("Welcome to the hammer interactive shell."))
+      print_message(_("Type 'help' for usage information."))
     end
 
     def common_prefix(results)
@@ -130,5 +130,5 @@ module HammerCLI
 
   end
 
-  HammerCLI::MainCommand.subcommand "shell", _("Interactive shell"), HammerCLI::ShellCommand
+  HammerCLI::MainCommand.subcommand "shell", _("Interactive shell."), HammerCLI::ShellCommand
 end

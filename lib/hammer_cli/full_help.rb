@@ -2,7 +2,7 @@ require 'hammer_cli/abstract'
 
 module HammerCLI
   class FullHelpCommand < HammerCLI::AbstractCommand
-    option "--md", :flag, _("Format output in markdown")
+    option "--md", :flag, _("Format output in markdown.")
 
     def execute
       @adapter = option_md? ? MDAdapter.new : TxtAdapter.new
@@ -80,5 +80,5 @@ module HammerCLI
     end
   end
 
-  HammerCLI::MainCommand.subcommand "full-help", _("Print help for all hammer commands"), HammerCLI::FullHelpCommand
+  HammerCLI::MainCommand.subcommand "full-help", _("Print help for all hammer commands."), HammerCLI::FullHelpCommand
 end

@@ -22,7 +22,7 @@ module HammerCLI
   class DefaultsCommand < HammerCLI::AbstractCommand
     class ProvidersDefaultsCommand < HammerCLI::DefaultsCommand
       command_name 'providers'
-      desc _('List all the providers')
+      desc _('List all the providers.')
 
       def execute
         data = context[:defaults].providers.map do |key, val|
@@ -53,7 +53,7 @@ module HammerCLI
 
     class ListDefaultsCommand < HammerCLI::DefaultsCommand
       command_name 'list'
-      desc _('List all the default parameters')
+      desc _('List all the default parameters.')
 
       def execute
         data = context[:defaults].defaults_settings.map do |key, val|
@@ -83,8 +83,8 @@ module HammerCLI
     class DeleteDefaultsCommand < HammerCLI::DefaultsCommand
       command_name 'delete'
 
-      desc _('Delete a default param')
-      option "--param-name", "OPTION_NAME", _("The name of the default option"), :required => true
+      desc _('Delete a default param.')
+      option "--param-name", "OPTION_NAME", _("The name of the default option."), :required => true
 
       def execute
         if context[:defaults] && context[:defaults].defaults_set?(option_param_name)
@@ -100,9 +100,9 @@ module HammerCLI
     class AddDefaultsCommand < HammerCLI::DefaultsCommand
       command_name 'add'
 
-      desc _('Add a default parameter to config')
+      desc _('Add a default parameter to config.')
       option "--param-name", "OPTION_NAME", _("The name of the default option (e.g. organization_id)."), :required => true
-      option "--param-value", "OPTION_VALUE", _("The value for the default option")
+      option "--param-value", "OPTION_VALUE", _("The value for the default option.")
       option "--provider", "OPTION_PROVIDER", _("The name of the provider providing the value. For list available providers see `hammer defaults providers`.")
 
       def execute

@@ -133,7 +133,7 @@ describe 'commands' do
     it 'reports missing parameter name' do
       options = ['--param-value=83']
 
-      expected_result = usage_error_result(cmd, "option '--param-name' is required")
+      expected_result = usage_error_result(cmd, "Option '--param-name' is required.")
 
       result = run_cmd(cmd + options, @context)
       assert_cmd(expected_result, result)

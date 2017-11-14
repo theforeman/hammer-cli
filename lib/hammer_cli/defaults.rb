@@ -104,5 +104,5 @@ module HammerCLI
 
   end
 
-  HammerCLI::MainCommand.subcommand "defaults", _("Defaults management"), HammerCLI::DefaultsCommand
+  HammerCLI::MainCommand.subcommand "defaults", _("Defaults management."), HammerCLI::DefaultsCommand
 end
