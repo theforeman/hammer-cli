@@ -17,6 +17,7 @@ module HammerCLI
         [RestClient::ResourceNotFound, :handle_not_found],
         [RestClient::Unauthorized, :handle_unauthorized],
         [RestClient::SSLCertificateNotVerified, :handle_ssl_cert_not_verified],
+        [RestClient::BadRequest, :handle_bad_request],
         [OpenSSL::SSL::SSLError, :handle_ssl_error],
         [ApipieBindings::DocLoadingError, :handle_apipie_docloading_error],
         [ApipieBindings::MissingArgumentsError, :handle_apipie_missing_arguments_error],
@@ -91,6 +92,12 @@ module HammerCLI
       HammerCLI::EX_UNAUTHORIZED
     end
 
+    def handle_bad_request(e)
+      print_error "#{e.message}#{response_message(e.response)}"
+      log_full_error e
+      HammerCLI::EX_BAD_REQUEST
+    end
+
     def rake_command
       "rake apipie:cache"
     end
@@ -148,6 +155,15 @@ module HammerCLI
       print_error e.message
       log_full_error e
       HammerCLI::EX_CONFIG
+    end
+
+    private
+
+    def response_message(response)
+      message = JSON.parse(response.body)["error"]["message"]
+      "\n  #{message}"
+    rescue JSON::ParserError
+      ''
     end
 
   end
