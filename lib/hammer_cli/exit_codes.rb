@@ -20,5 +20,6 @@ module HammerCLI
   # non POSIX codes
   EX_NOT_FOUND    = 128     # resource was not found
   EX_UNAUTHORIZED = 129     # authorization failed
+  EX_BAD_REQUEST  = 665
   EX_RETRY        = 666     # retry the command
 end

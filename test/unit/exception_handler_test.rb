@@ -54,6 +54,19 @@ describe HammerCLI::ExceptionHandler do
     assert_match /Using exception handler HammerCLI::ExceptionHandler#handle_not_found/, @log_output.readline.strip
     assert_match /ERROR  Exception : (Resource )?Not Found/, @log_output.readline.strip
   end
+  it "should handle bad request" do
+    ex = RestClient::BadRequest.new
+    ex.stubs(:response).returns(mock(:body => ''))
+    output.expects(:print_error).with(heading, ex.message)
+    handler.handle_exception(ex, :heading => heading)
+  end
 
+  it "should log bad request error" do
+    ex = RestClient::BadRequest.new
+    ex.stubs(:response).returns(mock(:body => ''))
+    output.default_adapter = :silent
+    handler.handle_exception(ex)
+    assert_match /Using exception handler HammerCLI::ExceptionHandler#handle_bad_request/, @log_output.readline.strip
+    assert_match /ERROR  Exception : Bad Request/, @log_output.readline.strip
+  end
 end
-
