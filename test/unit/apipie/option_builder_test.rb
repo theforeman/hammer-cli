@@ -73,34 +73,34 @@ describe HammerCLI::Apipie::OptionBuilder do
 
     it "should set array normalizer" do
       array_option = options.find {|o| o.attribute_name == HammerCLI.option_accessor_name("array_param") }
-      array_option.value_formatter.normalizer.class.must_equal HammerCLI::Options::Normalizers::List
+      array_option.value_formatter.class.must_equal HammerCLI::Options::Normalizers::List
     end
 
     it "should set boolean normalizer" do
       boolean_option = options.find {|o| o.attribute_name == HammerCLI.option_accessor_name("boolean_param") }
-      boolean_option.value_formatter.normalizer.class.must_equal HammerCLI::Options::Normalizers::Bool
+      boolean_option.value_formatter.class.must_equal HammerCLI::Options::Normalizers::Bool
     end
 
     it "should set enum normalizer" do
       enum_option = options.find {|o| o.attribute_name == HammerCLI.option_accessor_name("enum_param") }
-      enum_option.value_formatter.normalizer.class.must_equal HammerCLI::Options::Normalizers::Enum
-      enum_option.value_formatter.normalizer.allowed_values.sort.must_equal ["one", "two", "three"].sort
+      enum_option.value_formatter.class.must_equal HammerCLI::Options::Normalizers::Enum
+      enum_option.value_formatter.allowed_values.sort.must_equal ["one", "two", "three"].sort
     end
 
     it "should set enum normalizer and handle coded values" do
       enum_option = options.find {|o| o.attribute_name == HammerCLI.option_accessor_name("coded_enum_param") }
-      enum_option.value_formatter.normalizer.class.must_equal HammerCLI::Options::Normalizers::Enum
-      enum_option.value_formatter.normalizer.allowed_values.sort.must_equal ["tomas", "tereza"].sort
+      enum_option.value_formatter.class.must_equal HammerCLI::Options::Normalizers::Enum
+      enum_option.value_formatter.allowed_values.sort.must_equal ["tomas", "tereza"].sort
     end
 
     it "should set number normalizer" do
       numeric_option = options.find {|o| o.attribute_name == HammerCLI.option_accessor_name("numeric_param") }
-      numeric_option.value_formatter.normalizer.class.must_equal HammerCLI::Options::Normalizers::Number
+      numeric_option.value_formatter.class.must_equal HammerCLI::Options::Normalizers::Number
     end
 
     it "should set number normalizer for integer" do
       integer_option = options.find {|o| o.attribute_name == HammerCLI.option_accessor_name("integer_param") }
-      integer_option.value_formatter.normalizer.class.must_equal HammerCLI::Options::Normalizers::Number
+      integer_option.value_formatter.class.must_equal HammerCLI::Options::Normalizers::Number
     end
 
   end

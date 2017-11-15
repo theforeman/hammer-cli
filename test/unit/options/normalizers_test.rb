@@ -4,7 +4,7 @@ require File.join(File.dirname(__FILE__), '../test_helper')
 describe HammerCLI::Options::Normalizers do
 
   describe 'abstract' do
-    
+
     let(:formatter) { HammerCLI::Options::Normalizers::AbstractNormalizer.new }
 
     it "should raise exception on format" do
@@ -13,61 +13,24 @@ describe HammerCLI::Options::Normalizers do
 
   end
 
-  describe 'nil decorator' do
-    
-    describe 'standalone' do
-      
-      let(:formatter) { HammerCLI::Options::Normalizers::NilDecorator.new }
-
-      it "should return nil on NIL" do
-        formatter.format('NIL').must_equal HammerCLI::NIL
-      end
-
-      it "should return nil on nil value defined in ENV var" do
-        # simulate HAMMER_NIL=NULL hammer command --arg=NULL
-        ENV.stubs(:[]).with('HAMMER_NIL').returns('NULL')
-        formatter.format('NULL').must_equal HammerCLI::NIL
-      end
-
-      it "should return value on value" do
-        formatter.format('value').must_equal 'value'
-      end
-      
-      it "has empty description" do
-        formatter.description.must_equal ''
-      end
-
-      it "has empty completion" do
-        formatter.complete('test').must_equal []
-      end
+  describe 'default' do
+  
+    let(:formatter) { HammerCLI::Options::Normalizers::Default.new }
+  
+    it "should not change any value" do
+      formatter.format('value').must_equal 'value'
     end
-
-    describe 'nested' do
-      
-      let(:nested) { HammerCLI::Options::Normalizers::Bool.new }
-      let(:formatter) { HammerCLI::Options::Normalizers::NilDecorator.new(nested) }
-
-      it "should return value formatted by the nested formatter" do
-        formatter.format('yes').must_equal nested.format('yes')
+  
+    it "should not change nil value" do
+      formatter.format(nil).must_be_nil
       end
-
-      it "should return nil on nil value defined in ENV var" do
-        # simulate HAMMER_NIL=NULL hammer command --arg=NULL
-        ENV.stubs(:[]).with('HAMMER_NIL').returns('NULL')
-        formatter.format('NULL').must_equal HammerCLI::NIL
-      end
-
-      it "should return nil on NIL" do
-        formatter.format('NIL').must_equal HammerCLI::NIL
-      end
-
-      it "has description of the nested normalizer" do
-        formatter.description.must_equal nested.description
-      end
-
-      it "has completion delegated to the nested normalizer" do
-        formatter.complete('test').must_equal nested.complete('test')
-      end
+    
+    it "has empty description" do
+      formatter.description.must_equal ''
+    end
+ 
+    it "has empty completion" do
+      formatter.complete('test').must_equal []
     end
   end
 

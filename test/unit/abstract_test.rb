@@ -280,7 +280,7 @@ describe HammerCLI::AbstractCommand do
 
     it "should set options' formatters" do
       opt = TestOptionCmd.find_option("--test-format")
-      opt.value_formatter.normalizer.kind_of?(HammerCLI::Options::Normalizers::List).must_equal true
+      opt.value_formatter.kind_of?(HammerCLI::Options::Normalizers::List).must_equal true
     end
 
   end

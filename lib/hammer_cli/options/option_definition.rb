@@ -1,6 +1,8 @@
 require 'clamp'
 
 module HammerCLI
+  
+  class NilValue; end
 
   def self.option_accessor_name(*name)
     if name.length > 1
@@ -15,6 +17,8 @@ module HammerCLI
   end
 
   module Options
+    
+    NIL_SUBST = 'NIL'
 
     class OptionDefinition < Clamp::Option::Definition
 
@@ -23,7 +27,7 @@ module HammerCLI
       attr_accessor :deprecated_switches
 
       def initialize(switches, type, description, options = {})
-        self.value_formatter = HammerCLI::Options::Normalizers::NilDecorator.new(options.delete(:format))
+        self.value_formatter = options.delete(:format) || HammerCLI::Options::Normalizers::Default.new
         self.context_target = options.delete(:context_target)
         self.deprecated_switches = options.delete(:deprecated)
         super
@@ -99,7 +103,14 @@ module HammerCLI
         if flag?
           Clamp.method(:truthy?)
         else
-          value_formatter.method(:format)
+          formatter = value_formatter.method(:format)
+          lambda do |value|
+            if value == (ENV['HAMMER_NIL'] || HammerCLI::Options::NIL_SUBST)
+              HammerCLI::NilValue
+            else
+              formatter.call(value)
+            end
+          end
         end
       end
 

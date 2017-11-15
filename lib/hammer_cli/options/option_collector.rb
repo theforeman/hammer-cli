@@ -29,7 +29,7 @@ module HammerCLI
       end
       
       def translate_nil(value)
-        value == HammerCLI::NIL ? nil : value
+        value == HammerCLI::NilValue ? nil : value
       end
     end
   end
