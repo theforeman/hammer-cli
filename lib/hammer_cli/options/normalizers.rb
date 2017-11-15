@@ -2,10 +2,12 @@ require 'json'
 require 'hammer_cli/csv_parser'
 
 module HammerCLI
+  class NilValue; end
+  NIL = NilValue.new
+  
   module Options
     module Normalizers
-
-
+  
       class AbstractNormalizer
         def description
           ""
@@ -20,6 +22,32 @@ module HammerCLI
         end
       end
 
+      class NilDecorator < AbstractNormalizer
+        NIL_SUBST = 'NIL'
+        
+        attr_reader :normalizer
+        
+        def initialize(normalizer=nil)
+          @normalizer = normalizer
+        end
+
+        def description
+          normalizer ? normalizer.description : super
+        end
+        
+        def format(val)
+          nil_subst =ENV['HAMMER_NIL'] || NIL_SUBST
+          if val == nil_subst
+            HammerCLI::NIL
+          else
+            normalizer ? normalizer.format(val) : val
+          end
+        end
+        
+        def complete(val)
+          normalizer ? normalizer.complete(val) : super
+        end
+      end
 
       class KeyValueList < AbstractNormalizer
 

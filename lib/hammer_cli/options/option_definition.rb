@@ -23,18 +23,14 @@ module HammerCLI
       attr_accessor :deprecated_switches
 
       def initialize(switches, type, description, options = {})
-        self.value_formatter = options.delete(:format)
+        self.value_formatter = HammerCLI::Options::Normalizers::NilDecorator.new(options.delete(:format))
         self.context_target = options.delete(:context_target)
         self.deprecated_switches = options.delete(:deprecated)
         super
       end
 
       def complete(value)
-        if value_formatter.nil?
-          []
-        else
-          value_formatter.complete(value)
-        end
+        value_formatter.complete(value)
       end
 
       def help_lhs
@@ -84,11 +80,7 @@ module HammerCLI
       end
 
       def format_description
-        if value_formatter.nil?
-          ""
-        else
-          value_formatter.description
-        end
+        value_formatter.description
       end
 
       def value_description
@@ -104,20 +96,16 @@ module HammerCLI
       end
 
       def default_conversion_block
-        if !value_formatter.nil?
-          value_formatter.method(:format)
-        elsif flag?
+        if flag?
           Clamp.method(:truthy?)
+        else
+          value_formatter.method(:format)
         end
       end
 
       def default_value
         if defined?(@default_value)
-          if value_formatter
             value_formatter.format(@default_value)
-          else
-            @default_value
-          end
         elsif multivalued?
           []
         end
