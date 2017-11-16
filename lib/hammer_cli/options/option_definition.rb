@@ -103,20 +103,27 @@ module HammerCLI
         if flag?
           Clamp.method(:truthy?)
         else
-          formatter = value_formatter.method(:format)
-          lambda do |value|
-            if value == (ENV['HAMMER_NIL'] || HammerCLI::Options::NIL_SUBST)
-              HammerCLI::NilValue
-            else
-              formatter.call(value)
-            end
-          end
+          self.method(:format_value)
         end
+      end
+
+      def format_value(value)
+        if value == nil_subst
+          HammerCLI::NilValue
+        else
+          value_formatter.format(value)
+        end
+      end
+
+      def nil_subst
+        nil_subst = ENV['HAMMER_NIL'] || HammerCLI::Options::NIL_SUBST
+        raise _('Environment variable HAMMER_NIL can not be empty') if nil_subst.empty?
+        nil_subst
       end
 
       def default_value
         if defined?(@default_value)
-            value_formatter.format(@default_value)
+          value_formatter.format(@default_value)
         elsif multivalued?
           []
         end

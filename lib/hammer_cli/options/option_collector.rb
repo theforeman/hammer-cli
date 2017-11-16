@@ -19,7 +19,7 @@ module HammerCLI
       end
 
       def options
-        @options ||= all_options.reject {|key, value| value.nil? && all_options_raw[key].nil? }
+        @options ||= all_options.reject { |key, value| value.nil? && all_options_raw[key].nil? }
       end
       
       private

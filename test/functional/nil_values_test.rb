@@ -46,6 +46,14 @@ describe 'setting options to nil' do
     assert_key_val('present?', true, result)
     assert_key_val('nil?', true, result)
   end
+
+  it 'throws error when HAMMER_NIL is empty' do
+    ENV.stubs(:[]).with('HAMMER_NIL').returns('')
+    cmd = ['--description=NULL']
+    expected_result = common_error_result(cmd, "Environment variable HAMMER_NIL can not be empty")
+    result = run_cmd(cmd, {}, TestNilableCommand)
+    assert_cmd(expected_result, result)
+  end
   
   it 'does not interpret NIL value when the subst is redefined' do
     ENV.stubs(:[]).with('HAMMER_NIL').returns('NULL')
