@@ -31,12 +31,12 @@ module HammerCLI
 
         if File.directory?(rh_install_path)
           puts cert_install_msg
-          puts "  $ install #{cert_file} #{rh_install_path}"
-          puts "  $ #{rh_update_cmd}"
+          puts "  # install #{cert_file} #{rh_install_path}"
+          puts "  # #{rh_update_cmd}"
         elsif File.directory?(deb_install_path)
           puts cert_install_msg
-          puts "  $ install #{cert_file} #{deb_install_path}"
-          puts "  $ #{deb_update_cmd}"
+          puts "  # install #{cert_file} #{deb_install_path}"
+          puts "  # #{deb_update_cmd}"
         end
         puts
         return HammerCLI::EX_OK
