@@ -4,8 +4,7 @@ require 'hammer_cli/csv_parser'
 module HammerCLI
   module Options
     module Normalizers
-
-
+  
       class AbstractNormalizer
         def description
           ""
@@ -20,6 +19,11 @@ module HammerCLI
         end
       end
 
+      class Default < AbstractNormalizer
+        def format(value)
+          value
+        end
+      end
 
       class KeyValueList < AbstractNormalizer
 

@@ -3,7 +3,6 @@ require File.join(File.dirname(__FILE__), '../test_helper')
 
 describe HammerCLI::Options::Normalizers do
 
-
   describe 'abstract' do
 
     let(:formatter) { HammerCLI::Options::Normalizers::AbstractNormalizer.new }
@@ -12,6 +11,27 @@ describe HammerCLI::Options::Normalizers do
       proc { formatter.format(nil) }.must_raise NotImplementedError
     end
 
+  end
+
+  describe 'default' do
+  
+    let(:formatter) { HammerCLI::Options::Normalizers::Default.new }
+  
+    it "should not change any value" do
+      formatter.format('value').must_equal 'value'
+    end
+  
+    it "should not change nil value" do
+      formatter.format(nil).must_be_nil
+      end
+    
+    it "has empty description" do
+      formatter.description.must_equal ''
+    end
+ 
+    it "has empty completion" do
+      formatter.complete('test').must_equal []
+    end
   end
 
   describe 'list' do

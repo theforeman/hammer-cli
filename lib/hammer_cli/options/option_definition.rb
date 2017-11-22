@@ -1,6 +1,8 @@
 require 'clamp'
 
 module HammerCLI
+  
+  class NilValue; end
 
   def self.option_accessor_name(*name)
     if name.length > 1
@@ -15,6 +17,8 @@ module HammerCLI
   end
 
   module Options
+    
+    NIL_SUBST = 'NIL'
 
     class OptionDefinition < Clamp::Option::Definition
 
@@ -23,18 +27,14 @@ module HammerCLI
       attr_accessor :deprecated_switches
 
       def initialize(switches, type, description, options = {})
-        self.value_formatter = options.delete(:format)
+        self.value_formatter = options.delete(:format) || HammerCLI::Options::Normalizers::Default.new
         self.context_target = options.delete(:context_target)
         self.deprecated_switches = options.delete(:deprecated)
         super
       end
 
       def complete(value)
-        if value_formatter.nil?
-          []
-        else
-          value_formatter.complete(value)
-        end
+        value_formatter.complete(value)
       end
 
       def help_lhs
@@ -84,11 +84,7 @@ module HammerCLI
       end
 
       def format_description
-        if value_formatter.nil?
-          ""
-        else
-          value_formatter.description
-        end
+        value_formatter.description
       end
 
       def value_description
@@ -104,20 +100,30 @@ module HammerCLI
       end
 
       def default_conversion_block
-        if !value_formatter.nil?
-          value_formatter.method(:format)
-        elsif flag?
+        if flag?
           Clamp.method(:truthy?)
+        else
+          self.method(:format_value)
         end
+      end
+
+      def format_value(value)
+        if value == nil_subst
+          HammerCLI::NilValue
+        else
+          value_formatter.format(value)
+        end
+      end
+
+      def nil_subst
+        nil_subst = ENV['HAMMER_NIL'] || HammerCLI::Options::NIL_SUBST
+        raise _('Environment variable HAMMER_NIL can not be empty') if nil_subst.empty?
+        nil_subst
       end
 
       def default_value
         if defined?(@default_value)
-          if value_formatter
-            value_formatter.format(@default_value)
-          else
-            @default_value
-          end
+          value_formatter.format(@default_value)
         elsif multivalued?
           []
         end

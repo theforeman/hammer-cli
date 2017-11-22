@@ -129,6 +129,22 @@ $ hammer hello --name 'Foreman'
 Hello Foreman!
 ```
 
+#### Nil values ####
+To unset some option (i.e. to set it to nil value) use preset value `NIL`:
+```
+$ hammer hello --name NIL
+Hello World!
+```
+
+When the `NIL` value collides with a real value being used it can be redefined using
+environment variable `HAMMER_NIL`:
+```
+$ HAMMER_NIL=NULL hammer hello --name NIL
+Hello NIL!
+```
+
+Note that the normalizers are not called for a NIL values even when defined for the option.
+
 #### Deprecated options
 To mark an option as deprecated use the `:deprecated` option as follows:
 ```ruby

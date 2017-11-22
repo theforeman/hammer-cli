@@ -47,6 +47,8 @@ def format(bool)
 end
 ```
 
+Note: the `format` is not called when `NIL` (value reserved for nil) is used.
+
 
 #### Value completion
 

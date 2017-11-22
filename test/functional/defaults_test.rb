@@ -15,18 +15,9 @@ describe 'commands' do
     end
   end
 
-  let(:defaults_path) { File.join(File.dirname(__FILE__), '../unit/fixtures/defaults/defaults.yml') }
-
   before do
-    settings = load_yaml(defaults_path)
-
-    @defaults = HammerCLI::Defaults.new(settings[:defaults], defaults_path)
-    @defaults.stubs(:write_to_file).returns true
-    @defaults.stubs(:providers).returns({ 'foreman' => TestProvider.new() })
-
-    @context = {
-      :defaults => @defaults
-    }
+    @defaults = defaults_mock({ 'foreman' => TestProvider.new() })
+    @context = { :defaults => @defaults }
   end
 
   describe 'defaults list' do
