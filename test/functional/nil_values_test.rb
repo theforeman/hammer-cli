@@ -62,14 +62,14 @@ describe 'setting options to nil' do
     assert_key_val('nil?', false, result)
     assert_key_val('value', 'NIL', result)
   end
-  
+
   it 'overrides defaults' do
-      defaults = defaults_mock
-      defaults.stubs(:defaults_settings).returns({ :description => { :value => 'description' }})
-      context = { :defaults => defaults }
-      result = run_cmd(['--description=NIL'], context, TestNilableCommand)
-      assert_key_val('present?', true, result)
-      assert_key_val('nil?', true, result)
+    defaults = defaults_mock
+    defaults.stubs(:defaults_settings).returns({ :description => { :value => 'description' }})
+    context = { :defaults => defaults }
+    result = run_cmd(['--description=NIL'], context, TestNilableCommand)
+    assert_key_val('present?', true, result)
+    assert_key_val('nil?', true, result)
   end
 end
 
