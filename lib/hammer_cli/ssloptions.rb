@@ -55,11 +55,11 @@ module HammerCLI
         options
       elsif options[:ssl_client_cert] || options[:ssl_client_key]
         if options[:ssl_client_cert]
-          warn _("SSL client certificate is set but the key is not.")
+          warn _("SSL client certificate is set but the key is not")
         elsif options[:ssl_client_key]
-          warn _("SSL client key is set but the certificate is not.")
+          warn _("SSL client key is set but the certificate is not")
         end
-        warn _("SSL client authentication disabled.")
+        warn _("SSL client authentication disabled")
         {}
       else
         {}
@@ -69,13 +69,13 @@ module HammerCLI
     def read_certificate(path)
       OpenSSL::X509::Certificate.new(File.read(path)) unless path.nil?
     rescue SystemCallError => e
-      warn _("Could't read SSL client certificate %s.") % path
+      warn _("Could't read SSL client certificate %s") % path
     end
 
     def read_key(path)
       OpenSSL::PKey::RSA.new(File.read(path)) unless path.nil?
     rescue SystemCallError => e
-      warn _("Could't read SSL client key %s.") % path
+      warn _("Could't read SSL client key %s") % path
     end
   end
 end

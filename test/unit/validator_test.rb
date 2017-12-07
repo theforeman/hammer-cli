@@ -145,7 +145,7 @@ describe "constraints" do
       it "raises exception when the option is present" do
         constraint = cls.new(options, :option_a)
         e = proc{ constraint.rejected }.must_raise HammerCLI::Validator::ValidationError
-        e.message.must_equal "You can't set option --option-a."
+        e.message.must_equal "You can't set option --option-a"
       end
     end
 
@@ -158,7 +158,7 @@ describe "constraints" do
       it "raises exception when the option is present" do
         constraint = cls.new(options, :option_unset_d)
         e = proc{ constraint.required }.must_raise HammerCLI::Validator::ValidationError
-        e.message.must_equal 'Option --option-unset-d is required.'
+        e.message.must_equal 'Option --option-unset-d is required'
       end
     end
 
@@ -257,13 +257,13 @@ describe "constraints" do
       it "raises exception when none of the options is present" do
         constraint = cls.new(options, [:option_unset_d, :option_unset_e])
         e = proc{ constraint.required }.must_raise HammerCLI::Validator::ValidationError
-        e.message.must_equal 'One of options --option-unset-d, --option-unset-e is required.'
+        e.message.must_equal 'One of options --option-unset-d, --option-unset-e is required'
       end
 
       it "raises exception when more than one of the options is present" do
         constraint = cls.new(options, [:option_a, :option_b])
         e = proc{ constraint.required }.must_raise HammerCLI::Validator::ValidationError
-        e.message.must_equal 'Only one of options --option-a, --option-b can be set.'
+        e.message.must_equal 'Only one of options --option-a, --option-b can be set'
       end
     end
   end

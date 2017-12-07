@@ -55,7 +55,7 @@ module HammerCLI
       begin
         FileUtils.mkdir_p(log_dir, :mode => 0750)
       rescue Errno::EACCES => e
-        $stderr.puts _("No permissions to create log dir %s.") % log_dir
+        $stderr.puts _("No permissions to create log dir %s") % log_dir
       end
 
       filename = "#{log_dir}/hammer.log"
