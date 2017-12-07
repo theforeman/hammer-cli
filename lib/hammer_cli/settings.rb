@@ -36,7 +36,7 @@ module HammerCLI
             path_history << file_path
           end
         rescue Exception => e
-          warn _("Warning: Couldn't load configuration file %{path}: %{message}.") % { path: file_path, message: e.message }
+          warn _("Warning: Couldn't load configuration file %{path}: %{message}") % { path: file_path, message: e.message }
         end
       end
     end

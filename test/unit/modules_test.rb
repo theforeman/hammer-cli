@@ -85,7 +85,7 @@ describe HammerCLI::Modules do
       it "must log module's name and version" do
         HammerCLI::Modules.expects(:require_module).with("hammer_cli_tom")
         HammerCLI::Modules.load("hammer_cli_tom")
-        @log_output.readline.strip.must_equal "INFO  Modules : Extension module hammer_cli_tom (0.0.1) loaded."
+        @log_output.readline.strip.must_equal "INFO  Modules : Extension module hammer_cli_tom (0.0.1) loaded"
       end
 
       it "must return true when load succeeds" do
@@ -100,7 +100,7 @@ describe HammerCLI::Modules do
     describe "module not found" do
       before :each do
         HammerCLI::Modules.stubs(:require_module).raises(LoadError)
-        @error_msg = "ERROR  Modules : Error while loading module hammer_cli_tom."
+        @error_msg = "ERROR  Modules : Error while loading module hammer_cli_tom"
       end
 
       it "must log an error if the load! fails" do
@@ -127,8 +127,8 @@ describe HammerCLI::Modules do
     describe "module runtime exception" do
       before :each do
         HammerCLI::Modules.stubs(:require_module).raises(RuntimeError)
-        @error_msg = "ERROR  Modules : Error while loading module hammer_cli_tom."
-        @warning_msg = "Warning: An error occured while loading module hammer_cli_tom."
+        @error_msg = "ERROR  Modules : Error while loading module hammer_cli_tom"
+        @warning_msg = "Warning: An error occured while loading module hammer_cli_tom"
       end
 
       it "must log an error if the load! fails" do

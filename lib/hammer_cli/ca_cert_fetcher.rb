@@ -4,7 +4,7 @@ module HammerCLI
     def fetch_ca_cert(service_uri, ca_store_path)
       begin
         uri = URI.parse(service_uri)
-        raise URI::InvalidURIError.new(_("Unable to find hostname in %s.") % service_uri) if uri.host.nil?
+        raise URI::InvalidURIError.new(_("Unable to find hostname in #{service_uri}")) if uri.host.nil?
         raise URI::InvalidURIError.new(scheme_error(uri)) unless uri.scheme == 'https'
         ca_cert_manager = HammerCLI::CACertManager.new(ca_store_path)
         raw_cert = HammerCLI::CertDownloader.new.download(uri)
@@ -17,7 +17,7 @@ module HammerCLI
         deb_update_cmd = "update-ca-certificates"
         cert_file = ca_cert_manager.cert_file_name(uri)
 
-        puts _("CA certificate for %{uri} was stored to %{file}.") % {:uri => service_uri, :file => cert_file}
+        puts _("CA certificate for %{uri} was stored to %{file}") % {:uri => service_uri, :file => cert_file}
         puts _("Now hammer can use the downloaded certificate to verify SSL connection to the server.")
         puts _("It will be used automatically when ssl_ca_path and ssl_ca_file options are not set.")
         puts
@@ -52,7 +52,7 @@ module HammerCLI
         $stderr.puts _("To see the actual chain you can use openssl command")
         $stderr.puts "  $ openssl s_client -showcerts -connect #{uri.host}:#{uri.port} </dev/null"
         $stderr.puts
-        $stderr.puts _("You can also download the certificate manually and store it as %s.") % cert_file
+        $stderr.puts _("You can also download the certificate manually and store it as #{cert_file}")
         $stderr.puts _("If you choose any other location set the ssl_ca_path or ssl_ca_file configuration options appropriately.")
         return HammerCLI::EX_SOFTWARE
       rescue StandardError => e
@@ -60,7 +60,7 @@ module HammerCLI
         msg = [_('Fetching the CA certificate failed:')]
 
         if e.is_a?(OpenSSL::SSL::SSLError) && e.message.include?('unknown protocol')
-          msg << _('The service at the given URI does not accept SSL connections.')
+          msg << _('The service at the given URI does not accept SSL connections')
           msg << scheme_error if uri.scheme == 'http'
         else
           msg << e.message

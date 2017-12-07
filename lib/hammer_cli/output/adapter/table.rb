@@ -52,7 +52,7 @@ module HammerCLI::Output::Adapter
 
       if collection.meta.pagination_set? && collection.count < collection.meta.subtotal
         pages = (collection.meta.subtotal.to_f/collection.meta.per_page).ceil
-        puts _("Page %{page} of %{total} (use --page and --per-page for navigation).") % {:page => collection.meta.page, :total => pages}
+        puts _("Page %{page} of %{total} (use --page and --per-page for navigation)") % {:page => collection.meta.page, :total => pages}
       end
     end
 

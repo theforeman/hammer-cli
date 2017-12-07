@@ -38,7 +38,7 @@ module HammerCLI
 
       def get_option(name)
         name = name.to_s
-        raise _("Unknown option name '%s'.") % name unless @options.has_key? name
+        raise _("Unknown option name '%s'") % name unless @options.has_key? name
         @options[name]
       end
 
@@ -69,8 +69,8 @@ module HammerCLI
 
       def initialize(options, to_check)
         super(options, to_check)
-        @rejected_msg = _("You can't set all options %s at one time.")
-        @required_msg = _("Options %s are required.")
+        @rejected_msg = _("You can't set all options %s at one time")
+        @required_msg = _("Options %s are required")
       end
 
       def exist?
@@ -84,8 +84,8 @@ module HammerCLI
     class OneOptionConstraint < AllConstraint
       def initialize(options, to_check)
         super(options, [to_check])
-        @rejected_msg = _("You can't set option %s.")
-        @required_msg = _("Option %s is required.")
+        @rejected_msg = _("You can't set option %s")
+        @required_msg = _("Option %s is required")
       end
 
       def value
@@ -97,8 +97,8 @@ module HammerCLI
 
       def initialize(options, to_check)
         super(options, to_check)
-        @rejected_msg = _("You can't set any of options %s.")
-        @required_msg = _("At least one of options %s is required.")
+        @rejected_msg = _("You can't set any of options %s")
+        @required_msg = _("At least one of options %s is required")
       end
 
       def exist?
@@ -123,11 +123,11 @@ module HammerCLI
       def required_msg
         case count_present_options
         when 0
-          _("One of options %s is required.")
+          _("One of options %s is required")
         when 1
           ''
         else
-          _("Only one of options %s can be set.")
+          _("Only one of options %s can be set")
         end
       end
 
