@@ -163,7 +163,7 @@ module HammerCLI::Output::Adapter
       # or use headers from output definition
       headers ||= default_headers(fields)
       csv_string = generate do |csv|
-        csv << headers if headers
+        csv << headers if headers && !@context[:no_headers]
         rows.each do |row|
           csv << Cell.values(headers, row)
         end

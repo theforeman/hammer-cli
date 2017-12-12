@@ -6,7 +6,8 @@ module HammerCLI
     @context ||= {
       :defaults => HammerCLI.defaults,
       :is_tty? => HammerCLI.tty?,
-      :api_connection => HammerCLI::Connection.new(Logging.logger['Connection'])
+      :api_connection => HammerCLI::Connection.new(Logging.logger['Connection']),
+      :no_headers => HammerCLI::Settings.get(:ui, :no_headers)
     }
   end
 

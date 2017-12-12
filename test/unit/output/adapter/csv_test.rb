@@ -55,6 +55,35 @@ describe HammerCLI::Output::Adapter::CSValues do
       end
     end
 
+    context "handle headers" do
+      let(:empty_data) { HammerCLI::Output::RecordCollection.new [] }
+
+      it "should print headers by default" do
+        out, err = capture_io { adapter.print_collection(fields, data) }
+        out.must_match(/.*Name.*/)
+      end
+
+      it "should print headers by default even if there is no data" do
+        out, err = capture_io { adapter.print_collection(fields, empty_data) }
+        out.must_match(/.*Name.*/)
+      end
+
+      it "should print data only when --no-headers is set" do
+        expected_output = [
+                           "John Doe,2000",
+                           "",
+                          ].join("\n")
+        adapter = HammerCLI::Output::Adapter::CSValues.new( { :no_headers => true } )
+        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      end
+
+      it "should print nothing when --no-headers is set but no data" do
+        expected_output = "\n"
+        adapter = HammerCLI::Output::Adapter::CSValues.new( { :no_headers => true } )
+        proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
+      end
+    end
+
     context "handle fields with containers" do
       let(:demographics) {
         Fields::Label.new(:path => [], :label => "Demographics") do

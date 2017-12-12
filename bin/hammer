@@ -29,6 +29,7 @@ class PreParser < Clamp::Command
   option ["--show-ids"], :flag, "Show ids of associated resources"
   option ["--csv"], :flag, "Output as CSV (same as --output=csv)"
   option ["--output"], "ADAPTER", "Set output format"
+  option ["--no-headers"], :flag, "Hide headers from output"
   option ["--csv-separator"], "SEPARATOR", "Character to separate the values"
   option ["--autocomplete"], "LINE", "Get list of possible endings"
   option ["--verify-ssl"], "VERIFY_SSL", "Configure SSL verification of remote system" do |value|
@@ -79,6 +80,7 @@ HammerCLI::Settings.load({
     :host => preparser.server,
     :interactive => preparser.interactive,
     :verbose => preparser.verbose? || preparser.debug?,
+    :no_headers => preparser.no_headers?,
     :reload_cache => preparser.reload_cache?,
     :verify_ssl => preparser.verify_ssl,
     :ssl_ca_file => preparser.ssl_ca_file,
