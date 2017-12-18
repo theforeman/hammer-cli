@@ -240,10 +240,15 @@ module HammerCLI
     end
 
     def option_collector
-      @option_collector ||= HammerCLI::Options::OptionCollector.new(self.class.recognised_options, [
+      @option_collector ||= HammerCLI::Options::OptionCollector.new(self.class.recognised_options, option_sources)
+    end
+
+
+    def option_sources
+      [
         HammerCLI::Options::Sources::CommandLine.new(self),
         HammerCLI::Options::Sources::SavedDefaults.new(context[:defaults], logger)
-      ])
+      ]
     end
 
     private
