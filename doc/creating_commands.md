@@ -242,6 +242,28 @@ option "--attributes", "ATTRIBUTES", "Values of various attributes",
 ```
 `--attributes="material=unoptanium,thickness=3"` -> `{'material' => 'unoptanium', 'thickness' => '3'}`
 
+### Advanced option evaluation
+
+Sometimes it is necessary to tune the option values based on other parameters given on CLI. 
+An example could be setting default values based on other options, values lookup in a DB, etc.
+The right place for this are `OptionSources`. Abstract Hammer command uses two default option sources -
+`HammerCLI::Options::Sources::CommandLine` responsible for intial population of the options, 
+`HammerCLI::Options::Sources::SavedDefaults` adding defaults managed by the `defaults` command.
+
+By overriding `option_sources` method in a command it is possible to add custom option sources 
+for various tasks to the list. The option sources are evaluated one by one each being given output 
+of the previous one as its input so the order in which the sources are listed matters. 
+
+Option sources are collected only once per command call. The collection is triggered by first call 
+to the `options` or `all_options` method, but at latest right after the option validation 
+(before the command's `execute` method is invoked). The order is as follows:
+ 1. parse
+ 1. option normalization
+ 1. option validation (run against normalized raw options as given on CLI)
+ 1. option sources execution
+ 1. `execute` invocation
+
+
 ### Adding subcommands
 Commands in the CLI can be structured into a tree of parent commands (nodes) and subcommands (leaves).
 Neither the number of subcommands nor the nesting is limited. Please note that no parent command
