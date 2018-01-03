@@ -1,7 +1,6 @@
 require File.join(File.dirname(__FILE__), 'test_helper')
 require 'tempfile'
 
-
 describe HammerCLI::AbstractCommand do
 
   context "output" do
@@ -283,6 +282,16 @@ describe HammerCLI::AbstractCommand do
       opt.value_formatter.kind_of?(HammerCLI::Options::Normalizers::List).must_equal true
     end
 
+  end
+
+  describe "#options" do
+    class TestOptionSourceCommand < HammerCLI::AbstractCommand;end
+
+    it "allows overriding option sources in a command" do
+      cmd = TestOptionSourceCommand.new('')
+      cmd.expects(:option_sources).returns([])
+      cmd.send(:all_options)
+    end
   end
 
   describe "option builder" do
