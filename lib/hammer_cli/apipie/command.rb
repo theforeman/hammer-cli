@@ -36,6 +36,14 @@ module HammerCLI::Apipie
       return HammerCLI::EX_OK
     end
 
+    def help
+      help_str = super
+      if !resource || (!action.nil? && !resource.has_action?(action))
+        help_str << "\n" + _("Unfortunately the server does not support such operation.") + "\n"
+      end
+      help_str
+    end
+
     protected
 
     def send_request
