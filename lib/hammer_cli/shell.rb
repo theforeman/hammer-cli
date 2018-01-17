@@ -113,8 +113,8 @@ module HammerCLI
     end
 
     def print_welcome_message
-      print_message(_("Welcome to the hammer interactive shell"))
-      print_message(_("Type 'help' for usage information"))
+      print_message(_("Welcome to the hammer interactive shell."))
+      print_message(_("Type 'help' for usage information."))
     end
 
     def common_prefix(results)

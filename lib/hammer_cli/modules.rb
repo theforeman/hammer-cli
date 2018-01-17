@@ -53,15 +53,15 @@ module HammerCLI
       begin
         require_module(name)
       rescue Exception => e
-        logger.error "Error while loading module #{name}"
-        puts _("Warning: An error occured while loading module %s") % name
+        logger.error "Error while loading module #{name}."
+        puts _("Warning: An error occured while loading module %s.") % name
         # with ModuleLoadingError we assume the error is already logged by the issuer
         logger.error e unless e.is_a?(HammerCLI::ModuleLoadingError)
         raise e
       end
 
       version = find_by_name(name).version
-      logger.info "Extension module #{name} (#{version}) loaded"
+      logger.info "Extension module #{name} (#{version}) loaded."
       true
     end
 
@@ -81,7 +81,7 @@ module HammerCLI
       end
       loaded_for_deps = loaded_modules & disabled_modules
       unless loaded_for_deps.empty?
-        message = _("Error: Some of the required modules are disabled in configuration: %s ") % loaded_for_deps.join(', ')
+        message = _("Error: Some of the required modules are disabled in configuration: %s.") % loaded_for_deps.join(', ')
         raise HammerCLI::ModuleDisabledButRequired.new(message)
       end
     end

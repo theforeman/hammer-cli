@@ -4,17 +4,17 @@ module HammerCLI
 
   class MainCommand < AbstractCommand
 
-    option ["-v", "--verbose"], :flag, _("be verbose"), :context_target => :verbose
-    option ["-d", "--debug"], :flag, _("show debugging output "), :context_target => :debug
-    option ["-r", "--reload-cache"], :flag, _("force reload of Apipie cache")
+    option ["-v", "--verbose"], :flag, _("Be verbose"), :context_target => :verbose
+    option ["-d", "--debug"], :flag, _("Show debugging output"), :context_target => :debug
+    option ["-r", "--reload-cache"], :flag, _("Force reload of Apipie cache")
 
-    option ["-c", "--config"], "CFG_FILE", _("path to custom config file")
+    option ["-c", "--config"], "CFG_FILE", _("Path to custom config file")
 
-    option ["-u", "--username"], "USERNAME", _("username to access the remote system"),
+    option ["-u", "--username"], "USERNAME", _("Username to access the remote system"),
       :context_target => :username
-    option ["-p", "--password"], "PASSWORD", _("password to access the remote system"),
+    option ["-p", "--password"], "PASSWORD", _("Password to access the remote system"),
       :context_target => :password
-    option ["-s", "--server"], "SERVER", _("remote system address"),
+    option ["-s", "--server"], "SERVER", _("Remote system address"),
       :context_target => :uri
     option ["--verify-ssl"], "VERIFY_SSL", _("Configure SSL verification of remote system"),
       :format => HammerCLI::Options::Normalizers::Bool.new
@@ -25,10 +25,10 @@ module HammerCLI
     option ["--ssl-with-basic-auth"], :flag, _("Use standard authentication in addition to client certificate authentication")
     option ["--fetch-ca-cert"], "SERVER", _("Fetch CA certificate from server and exit")
 
-    option "--version", :flag, _("show version") do
+    option "--version", :flag, _("Show version") do
       puts "hammer (%s)" % HammerCLI.version
       HammerCLI::Modules.names.each do |m|
-        module_version = HammerCLI::Modules.find_by_name(m).version rescue _("unknown version")
+        module_version = HammerCLI::Modules.find_by_name(m).version rescue _("Unknown version.")
         puts " * #{m} (#{module_version})"
       end
       exit(HammerCLI::EX_OK)
@@ -64,5 +64,3 @@ module HammerCLI
   end
 
 end
-
-

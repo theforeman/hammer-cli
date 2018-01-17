@@ -1,7 +1,7 @@
 require 'clamp'
 
 module HammerCLI
-  
+
   class NilValue; end
 
   def self.option_accessor_name(*name)
@@ -17,7 +17,7 @@ module HammerCLI
   end
 
   module Options
-    
+
     NIL_SUBST = 'NIL'
 
     class OptionDefinition < Clamp::Option::Definition
@@ -94,8 +94,17 @@ module HammerCLI
         ].compact
 
         str = ""
-        str += _("Can be specified multiple times. ") if multivalued?
-        str += _("Default: ") + default_sources.join(_(", or ")) unless default_sources.empty?
+        if multivalued?
+          str += _("Can be specified multiple times.")
+          str += " "
+        end
+        unless default_sources.empty?
+          sep = _(", or")
+          sep += " "
+          str += _("Default:")
+          str += " "
+          str += default_sources.join(sep)
+        end
         str
       end
 
@@ -117,7 +126,7 @@ module HammerCLI
 
       def nil_subst
         nil_subst = ENV['HAMMER_NIL'] || HammerCLI::Options::NIL_SUBST
-        raise _('Environment variable HAMMER_NIL can not be empty') if nil_subst.empty?
+        raise _('Environment variable HAMMER_NIL can not be empty.') if nil_subst.empty?
         nil_subst
       end
 
