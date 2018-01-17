@@ -101,9 +101,9 @@ module HammerCLI
       command_name 'add'
 
       desc _('Add a default parameter to config')
-      option "--param-name", "OPTION_NAME", _("The name of the default option (e.g. organization_id)."), :required => true
+      option "--param-name", "OPTION_NAME", _("The name of the default option (e.g. organization_id)"), :required => true
       option "--param-value", "OPTION_VALUE", _("The value for the default option")
-      option "--provider", "OPTION_PROVIDER", _("The name of the provider providing the value. For list available providers see `hammer defaults providers`.")
+      option "--provider", "OPTION_PROVIDER", _("The name of the provider providing the value. For list available providers see `hammer defaults providers`")
 
       def execute
         if option_provider.nil? && option_param_value.nil? || !option_provider.nil? && !option_param_value.nil?

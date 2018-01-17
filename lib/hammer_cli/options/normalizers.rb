@@ -4,7 +4,7 @@ require 'hammer_cli/csv_parser'
 module HammerCLI
   module Options
     module Normalizers
-  
+
       class AbstractNormalizer
         def description
           ""
@@ -31,7 +31,7 @@ module HammerCLI
         FULL_RE = "^((%s)[,]?)+$" % PAIR_RE
 
         def description
-          _("Comma-separated list of key=value.")
+          _("Comma-separated list of key=value")
         end
 
         def format(val)
@@ -45,7 +45,7 @@ module HammerCLI
               formatter = JSONInput.new
               formatter.format(val)
             rescue ArgumentError
-              raise ArgumentError, _("value must be defined as a comma-separated list of key=value or valid JSON")
+              raise ArgumentError, _("Value must be defined as a comma-separated list of key=value or valid JSON.")
             end
           end
         end
@@ -101,7 +101,7 @@ module HammerCLI
           if numeric?(val)
             val.to_i
           else
-            raise ArgumentError, _("numeric value is required")
+            raise ArgumentError, _("Numeric value is required.")
           end
         end
 
@@ -115,7 +115,7 @@ module HammerCLI
       class Bool < AbstractNormalizer
 
         def description
-          _("One of true/false, yes/no, 1/0.")
+          _("One of true/false, yes/no, 1/0")
         end
 
         def format(bool)
@@ -125,7 +125,7 @@ module HammerCLI
           elsif bool.downcase.match(/^(false|f|no|n|0)$/i)
             return false
           else
-            raise ArgumentError, _("value must be one of true/false, yes/no, 1/0")
+            raise ArgumentError, _("Value must be one of true/false, yes/no, 1/0.")
           end
         end
 
@@ -164,7 +164,7 @@ module HammerCLI
           ::JSON.parse(json_string)
 
         rescue ::JSON::ParserError => e
-          raise ArgumentError, _("Unable to parse JSON input")
+          raise ArgumentError, _("Unable to parse JSON input.")
         end
 
       end
@@ -186,9 +186,9 @@ module HammerCLI
             value
           else
             if allowed_values.count == 1
-              msg = _("value must be %s") % quoted_values
+              msg = _("Value must be %s.") % quoted_values
             else
-              msg = _("value must be one of %s") % quoted_values
+              msg = _("Value must be one of %s.") % quoted_values
             end
             raise ArgumentError, msg
           end
@@ -216,7 +216,7 @@ module HammerCLI
           raise ArgumentError unless date
           ::DateTime.parse(date).to_s
         rescue ArgumentError
-          raise ArgumentError, _("'%s' is not a valid date") % date
+          raise ArgumentError, _("'%s' is not a valid date.") % date
         end
       end
 
@@ -247,7 +247,7 @@ module HammerCLI
         def parse(arr)
           arr.split(",").uniq.tap do |values|
             unless values.inject(true) { |acc, cur| acc & (@allowed_values.include? cur) }
-              raise ArgumentError, _("value must be a combination of '%s'") % quoted_values
+              raise ArgumentError, _("Value must be a combination of '%s'.") % quoted_values
             end
           end
         end
