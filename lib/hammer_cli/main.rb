@@ -39,7 +39,7 @@ module HammerCLI
     option ["--interactive"], "INTERACTIVE", _("Explicitly turn interactive mode on/off"),
       :format => HammerCLI::Options::Normalizers::Bool.new,
       :context_target => :interactive
-
+    option ["--no-headers"], :flag, _("Hide headers from output")
     option ["--csv"], :flag, _("Output as CSV (same as --output=csv)")
     option ["--output"], "ADAPTER", _("Set output format. One of [%s]") %
       HammerCLI::Output::Output.adapters.keys.join(', '),
@@ -61,6 +61,9 @@ module HammerCLI
       context[:adapter] = :csv
     end
 
+    def option_no_headers=(no_headers)
+      context[:no_headers] = :no_headers
+    end
   end
 
 end
