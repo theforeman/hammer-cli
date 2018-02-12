@@ -27,7 +27,7 @@ EOF
   s.require_paths = ["lib"]
   s.executables = ['hammer']
 
-  s.add_dependency 'clamp', '~> 1.0'
+  s.add_dependency 'clamp', '>= 1.0', '< 1.2.0'
   s.add_dependency 'logging'
   s.add_dependency 'unicode-display_width'
   s.add_dependency 'unicode'
