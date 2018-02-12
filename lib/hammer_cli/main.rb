@@ -28,7 +28,7 @@ module HammerCLI
     option "--version", :flag, _("Show version") do
       puts "hammer (%s)" % HammerCLI.version
       HammerCLI::Modules.names.each do |m|
-        module_version = HammerCLI::Modules.find_by_name(m).version rescue _("Unknown version.")
+        module_version = HammerCLI::Modules.find_by_name(m).version rescue _("unknown version")
         puts " * #{m} (#{module_version})"
       end
       exit(HammerCLI::EX_OK)
