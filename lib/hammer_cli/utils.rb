@@ -1,7 +1,5 @@
 
 class String
-
-  # string formatting for ruby 1.8
   def format(params)
     if params.is_a? Hash
       array_params = self.scan(/%[<{]([^>}]*)[>}]/).collect do |name|

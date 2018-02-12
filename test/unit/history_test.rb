@@ -1,12 +1,8 @@
 require 'tempfile'
 
 describe HammerCLI::ShellHistory do
-
   before :each do
-    # Readline::HISOTRY does not implement #clear in Ruby 1.8
-    while not Readline::HISTORY.empty?
-      Readline::HISTORY.pop
-    end
+    Readline::HISTORY.clear
   end
 
   let :history_file do
@@ -68,4 +64,3 @@ describe HammerCLI::ShellHistory do
   end
 
 end
-

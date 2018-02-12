@@ -9,40 +9,31 @@ module Constant
 end
 
 describe String do
+  context 'formatting' do
+    let(:str) { 'AA%<a>s BB%<b>s' }
+    let(:curly_str) { 'AA%{a} BB%{b}' }
+    let(:pos_str) { 'AA%s BB%s' }
+    let(:str_with_percent) { 'Error: AA%<a>s BB%<b>s <%# template error %> verify this %>' }
 
-  context "formatting" do
-
-    let(:str) { "AA%<a>s BB%<b>s" }
-    let(:curly_str) { "AA%{a} BB%{b}" }
-    let(:pos_str) { "AA%s BB%s" }
-    let(:str_with_percent) { "Error: AA%<a>s BB%<b>s <%# template error %> verify this %>" }
-
-    it "should not fail without expected parameters" do
+    it 'should not fail without expected parameters' do
       str.format({}).must_equal 'AA BB'
     end
-
-    it "should replace positional parameters" do
+    it 'should replace positional parameters' do
       pos_str.format(['A', 'B']).must_equal 'AAA BBB'
     end
-
-    it "should replace named parameters" do
+    it 'should replace named parameters' do
       str.format(:a => 'A', :b => 'B').must_equal 'AAA BBB'
     end
-
-    it "should replace named parameters with string keys" do
+    it 'should replace named parameters with string keys' do
       str.format('a' => 'A', 'b' => 'B').must_equal 'AAA BBB'
     end
-
-    it "should replace named parameters marked with curly brackets" do
+    it 'should replace named parameters marked with curly brackets' do
       curly_str.format(:a => 'A', :b => 'B').must_equal 'AAA BBB'
     end
-
-    it "should not fail due to presence of percent chars in string" do
+    it 'should not fail due to presence of percent chars in string' do
       str_with_percent.format({}).must_equal 'Error: AA BB <%# template error %> verify this %>'
     end
-
   end
-
 
   context "camelize" do
 
