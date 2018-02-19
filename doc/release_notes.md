@@ -1,6 +1,24 @@
 Release notes
 =============
 
+### 0.12.0 (2018-02-19)
+* Tests for message formats ([PR #266](https://github.com/theforeman/hammer-cli/pull/266)) ([#7451](http://projects.theforeman.org/issues/7451))
+* Pin clamp version to < 1.2.0 ([#22554](http://projects.theforeman.org/issues/22554))
+* Fix "unknown version" message ([#7451](http://projects.theforeman.org/issues/7451))
+* Remove legacy Gemfile code for Ruby < 2.0 ([#22549](http://projects.theforeman.org/issues/22549))
+* Allow hiding headers from output of list actions ([PR #253](https://github.com/theforeman/hammer-cli/pull/253)) ([#20978](http://projects.theforeman.org/issues/20978))
+* Review whitespace in extracted strings ([#7451](http://projects.theforeman.org/issues/7451))
+* Matches user prefix in output messages for CA certs ([#21707](http://projects.theforeman.org/issues/21707))
+* Make option sources overridable ([#21768](http://projects.theforeman.org/issues/21768))
+* Allow empty parameters in hammer ([PR #260](https://github.com/theforeman/hammer-cli/pull/260)) ([#17252](http://projects.theforeman.org/issues/17252))
+* Shareable locale Makefile and Rakefile definitions ([PR #249](https://github.com/theforeman/hammer-cli/pull/249)) ([#20513](http://projects.theforeman.org/issues/20513))
+* Support for deprecating commands ([#20804](http://projects.theforeman.org/issues/20804))
+* Remove legacy config code ([#20611](http://projects.theforeman.org/issues/20611))
+* Number normalizers for Integer params ([#21013](http://projects.theforeman.org/issues/21013))
+* More detailed description of ssl options ([PR #248](https://github.com/theforeman/hammer-cli/pull/248)) ([#12401](http://projects.theforeman.org/issues/12401))
+* Consistant capitalization in hammer help ([#19511](http://projects.theforeman.org/issues/19511))
+* Saving defaults from hammer shell ([PR #244](https://github.com/theforeman/hammer-cli/pull/244)) ([#19676](http://projects.theforeman.org/issues/19676))
+
 ### 0.11.0 (2017-08-01)
 * Add full-help command ([#20181](http://projects.theforeman.org/issues/20181))
 * Replace CSV parser in List Normalizer ([#17135](http://projects.theforeman.org/issues/17135))
