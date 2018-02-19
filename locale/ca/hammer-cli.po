@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the hammer-cli package.
 #
 # Translators:
+# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2017
 # Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.11.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-05 15:31+0200\n"
-"PO-Revision-Date: 2017-05-05 14:28+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2017-08-01 10:47+0200\n"
+"PO-Revision-Date: 2017-12-22 07:50+0000\n"
+"Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/foreman/foreman/language/"
 "ca/)\n"
 "MIME-Version: 1.0\n"
@@ -20,65 +21,80 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "\"Unable to find hostname in #{service_uri}\""
-msgstr ""
+msgstr "\"No es pot trobar el nom d'amfitrió a #{service_uri}\""
 
 msgid "CA certificate for %{uri} was stored to %{file}"
-msgstr ""
+msgstr "L'AC del certificat per %{uri} ha estat emmagatzemat a %{file}"
 
 msgid ""
 "Now hammer can use the downloaded certificate to verify SSL connection to "
 "the server."
 msgstr ""
+"Ara hammer pot utilitzar el certificat baixat per verificar la connexió SSL "
+"al servidor."
 
 msgid ""
 "It will be used automatically when ssl_ca_path and ssl_ca_file options are "
 "not set."
 msgstr ""
+"S'utilitzarà automàticament quan no estiguin establertes les opcions "
+"ssl_ca_path i ssl_ca_file."
 
 msgid ""
 "Be aware that hammer cannot verify whether the certificate is correct and "
 "you should verify its authenticity."
 msgstr ""
+"Tingueu en compte que hammer no pot verificar si el certificat és correcte i "
+"heu de verificar la seva autenticitat."
 
 msgid "You can display the certificate content with"
-msgstr ""
+msgstr "Podeu visualitzar el contingut del certificat amb"
 
 msgid ""
 "As root you can also install the certificate and update the system-wide list "
 "of trusted CA certificates as follows:"
 msgstr ""
+"Com a root, també podeu instal·lar el certificat i actualitzar la llista de "
+"certificats d'AC de confiança a tot el sistema de la manera següent:"
 
 msgid "Couldn't parse URI '%s'."
-msgstr ""
+msgstr "No s'ha pogut analitzar l'URI '%s'."
 
 msgid ""
 "The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
 msgstr ""
+"No s'ha pogut baixar l'AC per %{uri}. No s'ha trobat cap certificat d'AC."
 
 msgid "Make sure your server sends cert chain including the CA."
 msgstr ""
+"Assegureu-vos que el vostre servidor envia la cadena del certificat, "
+"incloent-hi l'AC."
 
 msgid "To see the actual chain you can use openssl command"
-msgstr ""
+msgstr "Per veure la cadena real, podeu utilitzar l'ordre openssl"
 
 msgid ""
 "\"You can also download the certificate manually and store it as "
 "#{cert_file}\""
 msgstr ""
+"\"També podeu baixar el certificat manualment i emmagatzemar-lo com a "
+"#{cert_file}\""
 
 msgid ""
 "If you choose any other location set the ssl_ca_path or ssl_ca_file "
 "configuration options appropriately."
 msgstr ""
+"Si trieu qualsevol altra ubicació, establiu adequadament les opcions de "
+"configuració ssl_ca_path o ssl_ca_file."
 
 msgid "Fetching the CA certificate failed:"
-msgstr ""
+msgstr "Ha fallat la captura del certificat de l'AC:"
 
 msgid "The service at the given URI does not accept SSL connections"
-msgstr ""
+msgstr "El servei a l'URI donat no accepta connexions SSL"
 
 msgid "Perhaps you meant to connect to '%s'?"
-msgstr ""
+msgstr "Potser voleu connectar-vos a '%s'?"
 
 msgid "too many arguments"
 msgstr "massa arguments"
@@ -107,9 +123,14 @@ msgstr "No hi ha la suborde '%<name>s'"
 msgid "no value provided"
 msgstr "no s'ha proporcionat cap valor"
 
+msgid "Illegal quoting in %{buffer}"
+msgstr "cometes no permeses a %{buffer}"
+
 msgid ""
 "Couldn't create %s. Please create the directory before setting defaults."
 msgstr ""
+"No s'ha pogut crear %s. Creeu el directori abans d'establir els valors "
+"predeterminats."
 
 msgid "Defaults management"
 msgstr "Gestió dels per defecte"
@@ -171,6 +192,8 @@ msgid ""
 "Provider %{name} was not found. See `hammer defaults providers` for "
 "available providers."
 msgstr ""
+"No s'ha trobat el proveïdor %{name}. Consulteu `hammer defaults providers` "
+"per als proveïdors disponibles."
 
 msgid ""
 "The param name is not supported by provider. See `hammer defaults providers` "
@@ -184,6 +207,8 @@ msgstr "S'ha eliminat correctament %{param}."
 
 msgid "You must specify value or a provider name, can't specify both."
 msgstr ""
+"Heu d'especificar el valor o el nom del proveïdor, però no podeu especificar "
+"ambdós."
 
 msgid "Couldn't find the requested param in %s."
 msgstr "No s'ha pogut trobar el paràmetre sol·licitat a %s."
@@ -198,10 +223,10 @@ msgid "See: '%{path} --help'"
 msgstr "Vegeu: '%{path} --help'"
 
 msgid "SSL error"
-msgstr ""
+msgstr "Error SSL"
 
 msgid "SSL certificate verification failed"
-msgstr ""
+msgstr "La verificació del certificat SSL ha fallat"
 
 msgid "is the server down?"
 msgstr "Ha caigut el servidor?"
@@ -218,6 +243,15 @@ msgstr "No s'ha pogut carregar la descripció de l'API des del servidor"
 
 msgid "Missing arguments for %s"
 msgstr "Falten argument per %s"
+
+msgid "Format output in markdown"
+msgstr "Formata la sortida amb markdown"
+
+msgid "Hammer CLI help"
+msgstr "Ajuda del client de línia d'ordres de hammer"
+
+msgid "Print help for all hammer commands"
+msgstr "Imprimeix l'ajuda per a les ordres de hammer"
 
 msgid "No permissions to create log dir %s"
 msgstr "Sense els permisos per crear el directori del registre %s"
@@ -247,26 +281,28 @@ msgid "remote system address"
 msgstr "adreça del sistema remot"
 
 msgid "Configure SSL verification of remote system"
-msgstr ""
+msgstr "Configura la verificació SSL del sistema remot"
 
 msgid "Configure the file containing the CA certificates"
-msgstr ""
+msgstr "Configura el fitxer que conté els certificats d'AC"
 
 msgid "Configure the directory containing the CA certificates"
-msgstr ""
+msgstr "Configura el directori que conté els certificats d'AC"
 
 msgid "Configure the client's public certificate"
-msgstr ""
+msgstr "Configura el certificat públic del client"
 
 msgid "Configure the client's private key"
-msgstr ""
+msgstr "Configura la clau privada del client"
 
 msgid ""
 "Use standard authentication in addition to client certificate authentication"
 msgstr ""
+"Utilitza l'autenticació estàndard a més de l'autenticació del certificat del "
+"client"
 
 msgid "Fetch CA certificate from server and exit"
-msgstr ""
+msgstr "Captura el certificat d'AC del servidor i surt"
 
 msgid "show version"
 msgstr "mostra la versió"
@@ -290,7 +326,7 @@ msgid "Character to separate the values"
 msgstr "Caràcter per separar els valors"
 
 msgid "Get list of possible endings"
-msgstr "Obté la llista dels finals possibles"
+msgstr "Obtén la llista dels finals possibles"
 
 msgid ""
 "Legacy configuration of modules detected. Check section about configuration "
@@ -313,26 +349,15 @@ msgstr "Llista separada per comes de clau=valor."
 msgid ""
 "value must be defined as a comma-separated list of key=value or valid JSON"
 msgstr ""
-
-msgid "Missing or stray quote."
-msgstr ""
-
-msgid "Unquoted fields do not allow \\r or \\n."
-msgstr ""
-
-msgid "Illegal quoting."
-msgstr ""
-
-msgid "Unclosed quoted field."
-msgstr ""
-
-msgid "Field size exceeded."
-msgstr ""
+"el valor s'ha de definir com una llista separada per comes de clau=valor o "
+"un JSON vàlid"
 
 msgid ""
-"Comma separated list of values. Values containing comma should be double "
-"quoted"
+"Comma separated list of values. Values containing comma should be quoted or "
+"escaped with backslash"
 msgstr ""
+"Llista de valors separada per comes. Els valors que contenen comes s'han "
+"d'escriure entre cometes o amb l'escapament de la barra invertida"
 
 msgid "numeric value is required"
 msgstr "es requereix un valor numèric"
@@ -371,10 +396,10 @@ msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr "Advertència: L'opció %{option} està en desús. %{message}"
 
 msgid "Deprecated: %{deprecated_msg}"
-msgstr ""
+msgstr "Obsolet: %{deprecated_msg}"
 
 msgid "%{flag} is deprecated: %{deprecated_msg}"
-msgstr ""
+msgstr "%{flag} és obsolet: %{deprecated_msg}"
 
 msgid "Can be specified multiple times. "
 msgstr "Es pot especificar múltiples vegades."
@@ -396,6 +421,7 @@ msgstr "Nom"
 
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)"
 msgstr ""
+"Pàgina %{page} de %{total} (utilitzeu --page i --per-page per a la navegació)"
 
 msgid "no"
 msgstr "no"
@@ -412,6 +438,8 @@ msgstr ""
 
 msgid "Warning: Couldn't load configuration file %{path}: %{message}"
 msgstr ""
+"Advertència: no s'ha pogut carregar el fitxer de configuració %{path}: "
+"%{message}"
 
 msgid "Print help for commands"
 msgstr "Imprimeix l'ajuda per a les ordres"
@@ -429,19 +457,19 @@ msgid "Interactive shell"
 msgstr "Shell interactiu"
 
 msgid "SSL client certificate is set but the key is not"
-msgstr ""
+msgstr "S'ha establert el certificat de client SSL, però no la clau"
 
 msgid "SSL client key is set but the certificate is not"
-msgstr ""
+msgstr "S'ha establert la clau de client SSL, però no el certificat"
 
 msgid "SSL client authentication disabled"
-msgstr ""
+msgstr "S'ha inhabilitat l'autenticació de client SSL"
 
 msgid "Could't read SSL client certificate %s"
-msgstr ""
+msgstr "No s'ha pogut llegir el certificat de client SSL %s"
 
 msgid "Could't read SSL client key %s"
-msgstr ""
+msgstr "No s'ha pogut llegir la clau de client SSL %s"
 
 msgid ""
 "can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
@@ -460,10 +488,10 @@ msgid "Options %s are required"
 msgstr "Es requereixen %s opcions"
 
 msgid "You can't set option %s"
-msgstr ""
+msgstr "No podeu establir l'opció %s"
 
 msgid "Option %s is required"
-msgstr ""
+msgstr "Cal l'opció %s"
 
 msgid "You can't set any of options %s"
 msgstr "No podeu establir cap de les opcions %s"
@@ -472,7 +500,7 @@ msgid "At least one of options %s is required"
 msgstr "Com a mínim es requereix una de les opcions %s"
 
 msgid "One of options %s is required"
-msgstr ""
+msgstr "Cal una de les opcions %s"
 
 msgid "Only one of options %s can be set"
-msgstr ""
+msgstr "Només es pot establir una de les opcions %s"

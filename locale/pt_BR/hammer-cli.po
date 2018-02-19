@@ -3,18 +3,18 @@
 # This file is distributed under the same license as the hammer-cli package.
 #
 # Translators:
-# Dominic Cleal <dominic@cleal.org>, 2014
+# Dominic Cleal <dcleal@redhat.com>, 2014
 # Fabio Dias <fabioqos@gmail.com>, 2015
 # Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2014
 # Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2014
 # Valeria S Silva <valeriassilva@live.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.11.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-05 15:31+0200\n"
-"PO-Revision-Date: 2017-05-05 14:28+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2017-08-01 10:47+0200\n"
+"PO-Revision-Date: 2018-01-04 17:04+0000\n"
+"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/foreman/foreman/"
 "language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -24,65 +24,81 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 msgid "\"Unable to find hostname in #{service_uri}\""
-msgstr ""
+msgstr "\"Não foi possível encontrar o nome do host em #{service_uri}\""
 
 msgid "CA certificate for %{uri} was stored to %{file}"
-msgstr ""
+msgstr "Certificado CA para %{uri} foi armazenado no %{file}"
 
 msgid ""
 "Now hammer can use the downloaded certificate to verify SSL connection to "
 "the server."
 msgstr ""
+"Novo martelo pode usar o certificado transferido para verificar conexão SSL "
+"no servidor."
 
 msgid ""
 "It will be used automatically when ssl_ca_path and ssl_ca_file options are "
 "not set."
 msgstr ""
+"Será usado automaticamente quando as opções ssl_ca_path e ssl_ca_file  não "
+"estiverem definidas."
 
 msgid ""
 "Be aware that hammer cannot verify whether the certificate is correct and "
 "you should verify its authenticity."
 msgstr ""
+"Como o martelo não pode verificar se o certificado está correto, você deve "
+"verificar sua autenticidade."
 
 msgid "You can display the certificate content with"
-msgstr ""
+msgstr "Você pode exibir o conteúdo do certificado com"
 
 msgid ""
 "As root you can also install the certificate and update the system-wide list "
 "of trusted CA certificates as follows:"
 msgstr ""
+"Como raiz, você também pode instalar o certificado e atualizar a lista em "
+"todo o sistema de certificados CA confiáveis da seguinte forma:"
 
 msgid "Couldn't parse URI '%s'."
-msgstr ""
+msgstr "Não foi possível analisar a URI '%s'."
 
 msgid ""
 "The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
 msgstr ""
+"Não foi possível fazer o download do certificado CA para %{uri}. Nenhum "
+"certificado CA encontrado."
 
 msgid "Make sure your server sends cert chain including the CA."
 msgstr ""
+"Certifique-se de que o servidor envia a cadeia de certificados, incluindo o "
+"CA."
 
 msgid "To see the actual chain you can use openssl command"
-msgstr ""
+msgstr "Para ver a cadeia real, você pode usar o comando openssl"
 
 msgid ""
 "\"You can also download the certificate manually and store it as "
 "#{cert_file}\""
 msgstr ""
+"\"Você também pode fazer download do certificado manualmente e armazená-lo "
+"como #{cert_file}\""
 
 msgid ""
 "If you choose any other location set the ssl_ca_path or ssl_ca_file "
 "configuration options appropriately."
 msgstr ""
+"Se você escolher qualquer outro local, defina as opções de configurações "
+"ssl_ca_path ou ssl_ca_file adequadamente."
 
 msgid "Fetching the CA certificate failed:"
-msgstr ""
+msgstr "Falha ao buscar o certificado CA:"
 
 msgid "The service at the given URI does not accept SSL connections"
-msgstr ""
+msgstr "O serviço na URI especificada não aceita conexões SSL"
 
 msgid "Perhaps you meant to connect to '%s'?"
-msgstr ""
+msgstr "Talvez você quisesse se conectar a '%s'?"
 
 msgid "too many arguments"
 msgstr "muitos argumentos"
@@ -111,9 +127,12 @@ msgstr "Não existe tal sub-comando '%<name>s'"
 msgid "no value provided"
 msgstr "não foi fornecido nenhum valor"
 
+msgid "Illegal quoting in %{buffer}"
+msgstr "Aspas incorretas em %{buffer}"
+
 msgid ""
 "Couldn't create %s. Please create the directory before setting defaults."
-msgstr ""
+msgstr "Não foi possível criar %s. Crie o diretório antes de definir padrões."
 
 msgid "Defaults management"
 msgstr "Gerenciamento de padrões"
@@ -174,6 +193,8 @@ msgid ""
 "Provider %{name} was not found. See `hammer defaults providers` for "
 "available providers."
 msgstr ""
+"O provedor %{name} não foi encontrado. Consulte os provedores disponíveis em "
+"\"provedores de padrões Hammer\"."
 
 msgid ""
 "The param name is not supported by provider. See `hammer defaults providers` "
@@ -187,6 +208,8 @@ msgstr "%{param} foi removido com êxito."
 
 msgid "You must specify value or a provider name, can't specify both."
 msgstr ""
+"Você deve especificar o valor ou nome de provedor; não é possível "
+"especificar ambos."
 
 msgid "Couldn't find the requested param in %s."
 msgstr "Não foi possível localizar o parâmetro solicitado %s."
@@ -201,10 +224,10 @@ msgid "See: '%{path} --help'"
 msgstr "Veja: '%{path} --help'"
 
 msgid "SSL error"
-msgstr ""
+msgstr "Erro SSL"
 
 msgid "SSL certificate verification failed"
-msgstr ""
+msgstr "Falha ao verificar certificado SSL"
 
 msgid "is the server down?"
 msgstr "o servidor está desligado?"
@@ -221,6 +244,15 @@ msgstr "Não foi possível carregar a descrição do API do servidor"
 
 msgid "Missing arguments for %s"
 msgstr "Falta argumentos para %s"
+
+msgid "Format output in markdown"
+msgstr "Formatar saída no markdown"
+
+msgid "Hammer CLI help"
+msgstr "Ajuda da CLI do martelo"
+
+msgid "Print help for all hammer commands"
+msgstr "Imprimir ajuda para todos os comandos do martelo"
 
 msgid "No permissions to create log dir %s"
 msgstr "Não há permissão para criar o diretório do log %s"
@@ -250,26 +282,26 @@ msgid "remote system address"
 msgstr "endereço de sistema remoto"
 
 msgid "Configure SSL verification of remote system"
-msgstr ""
+msgstr "Configurar verificação SSL do sistema remoto"
 
 msgid "Configure the file containing the CA certificates"
-msgstr ""
+msgstr "Configurar o arquivo contendo os certificados CA"
 
 msgid "Configure the directory containing the CA certificates"
-msgstr ""
+msgstr "Configurar o diretório contendo os certificados CA"
 
 msgid "Configure the client's public certificate"
-msgstr ""
+msgstr "Configurar o certificado público do cliente"
 
 msgid "Configure the client's private key"
-msgstr ""
+msgstr "Configurar a chave privada do cliente"
 
 msgid ""
 "Use standard authentication in addition to client certificate authentication"
-msgstr ""
+msgstr "Use autenticação padrão além da autenticação certificada do cliente"
 
 msgid "Fetch CA certificate from server and exit"
-msgstr ""
+msgstr "Buscar certificado CA do servidor e sair"
 
 msgid "show version"
 msgstr "exibir versão"
@@ -318,25 +350,12 @@ msgstr ""
 "valor deve ser definido como uma lista separada por vírgulas de  key=value "
 "ou JSON válido"
 
-msgid "Missing or stray quote."
-msgstr ""
-
-msgid "Unquoted fields do not allow \\r or \\n."
-msgstr ""
-
-msgid "Illegal quoting."
-msgstr ""
-
-msgid "Unclosed quoted field."
-msgstr ""
-
-msgid "Field size exceeded."
-msgstr ""
-
 msgid ""
-"Comma separated list of values. Values containing comma should be double "
-"quoted"
+"Comma separated list of values. Values containing comma should be quoted or "
+"escaped with backslash"
 msgstr ""
+"Lista de valores separada por vírgula. Os valores contendo vírgula devem "
+"estar entre aspas ou com barra invertida de escape"
 
 msgid "numeric value is required"
 msgstr "valor numérico é necessário"
@@ -375,10 +394,10 @@ msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr "Aviso: Opção %{option} foi preterida. %{message}"
 
 msgid "Deprecated: %{deprecated_msg}"
-msgstr ""
+msgstr "Preterido: %{deprecated_msg}"
 
 msgid "%{flag} is deprecated: %{deprecated_msg}"
-msgstr ""
+msgstr "%{flag} foi preterido: %{deprecated_msg}"
 
 msgid "Can be specified multiple times. "
 msgstr "Pode ser especificado diversas vezes."
@@ -399,7 +418,7 @@ msgid "Name"
 msgstr "Nome"
 
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)"
-msgstr ""
+msgstr "Página %{page} de %{total} (use --page e --per-page para navegar)"
 
 msgid "no"
 msgstr "não"
@@ -416,6 +435,8 @@ msgstr ""
 
 msgid "Warning: Couldn't load configuration file %{path}: %{message}"
 msgstr ""
+"Aviso: não foi possível carregar o arquivo de configuração %{path}: "
+"%{message}"
 
 msgid "Print help for commands"
 msgstr "Exibe help para os comandos"
@@ -433,19 +454,19 @@ msgid "Interactive shell"
 msgstr "shell interativo"
 
 msgid "SSL client certificate is set but the key is not"
-msgstr ""
+msgstr "O certificado do cliente SSL está definido, mas a chave não está"
 
 msgid "SSL client key is set but the certificate is not"
-msgstr ""
+msgstr "A chave do cliente SSL está definida, mas o certificado não está"
 
 msgid "SSL client authentication disabled"
-msgstr ""
+msgstr "Autenticação do cliente SSL desabilitada"
 
 msgid "Could't read SSL client certificate %s"
-msgstr ""
+msgstr "Não foi possível ler o certificado do cliente SSL %s"
 
 msgid "Could't read SSL client key %s"
-msgstr ""
+msgstr "Não foi possível ler a chave do cliente SSL %s"
 
 msgid ""
 "can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
@@ -464,10 +485,10 @@ msgid "Options %s are required"
 msgstr "Opções %s são necessárias"
 
 msgid "You can't set option %s"
-msgstr ""
+msgstr "Não é possível definir a opção %s"
 
 msgid "Option %s is required"
-msgstr ""
+msgstr "A opção %s é necessária"
 
 msgid "You can't set any of options %s"
 msgstr "Você não pode definir nenhuma das opções %s"
@@ -476,7 +497,7 @@ msgid "At least one of options %s is required"
 msgstr "Ao menos uma das opções %s é necessária"
 
 msgid "One of options %s is required"
-msgstr ""
+msgstr "Uma das opções %s é necessária"
 
 msgid "Only one of options %s can be set"
-msgstr ""
+msgstr "Somente é possível definir uma das opções %s"

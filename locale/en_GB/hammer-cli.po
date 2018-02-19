@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the hammer-cli package.
 #
 # Translators:
-# Andi Chandler <andi@gowling.com>, 2015-2016
+# Andi Chandler <andi@gowling.com>, 2015-2017
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.11.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-05 15:31+0200\n"
-"PO-Revision-Date: 2017-05-05 14:28+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2017-08-01 10:47+0200\n"
+"PO-Revision-Date: 2017-10-12 21:20+0000\n"
+"Last-Translator: Andi Chandler <andi@gowling.com>\n"
 "Language-Team: English (United Kingdom) (http://www.transifex.com/foreman/"
 "foreman/language/en_GB/)\n"
 "MIME-Version: 1.0\n"
@@ -20,65 +20,78 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "\"Unable to find hostname in #{service_uri}\""
-msgstr ""
+msgstr "\"Unable to find hostname in #{service_uri}\""
 
 msgid "CA certificate for %{uri} was stored to %{file}"
-msgstr ""
+msgstr "CA certificate for %{uri} was stored to %{file}"
 
 msgid ""
 "Now hammer can use the downloaded certificate to verify SSL connection to "
 "the server."
 msgstr ""
+"Now hammer can use the downloaded certificate to verify SSL connection to "
+"the server."
 
 msgid ""
 "It will be used automatically when ssl_ca_path and ssl_ca_file options are "
 "not set."
 msgstr ""
+"It will be used automatically when ssl_ca_path and ssl_ca_file options are "
+"not set."
 
 msgid ""
 "Be aware that hammer cannot verify whether the certificate is correct and "
 "you should verify its authenticity."
 msgstr ""
+"Be aware that hammer cannot verify whether the certificate is correct and "
+"you should verify its authenticity."
 
 msgid "You can display the certificate content with"
-msgstr ""
+msgstr "You can display the certificate content with"
 
 msgid ""
 "As root you can also install the certificate and update the system-wide list "
 "of trusted CA certificates as follows:"
 msgstr ""
+"As root you can also install the certificate and update the system-wide list "
+"of trusted CA certificates as follows:"
 
 msgid "Couldn't parse URI '%s'."
-msgstr ""
+msgstr "Couldn't parse URI '%s'."
 
 msgid ""
 "The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
 msgstr ""
+"The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
 
 msgid "Make sure your server sends cert chain including the CA."
-msgstr ""
+msgstr "Make sure your server sends cert chain including the CA."
 
 msgid "To see the actual chain you can use openssl command"
-msgstr ""
+msgstr "To see the actual chain you can use openssl command"
 
 msgid ""
 "\"You can also download the certificate manually and store it as "
 "#{cert_file}\""
 msgstr ""
+"\"You can also download the certificate manually and store it as "
+"#{cert_file}\""
 
 msgid ""
 "If you choose any other location set the ssl_ca_path or ssl_ca_file "
 "configuration options appropriately."
 msgstr ""
+"If you choose any other location set the ssl_ca_path or ssl_ca_file "
+"configuration options appropriately."
 
 msgid "Fetching the CA certificate failed:"
-msgstr ""
+msgstr "Fetching the CA certificate failed:"
 
 msgid "The service at the given URI does not accept SSL connections"
-msgstr ""
+msgstr "The service at the given URI does not accept SSL connections"
 
 msgid "Perhaps you meant to connect to '%s'?"
-msgstr ""
+msgstr "Perhaps you meant to connect to '%s'?"
 
 msgid "too many arguments"
 msgstr "too many arguments"
@@ -107,9 +120,13 @@ msgstr "No such sub-command '%<name>s'"
 msgid "no value provided"
 msgstr "no value provided"
 
+msgid "Illegal quoting in %{buffer}"
+msgstr "Illegal quoting in %{buffer}"
+
 msgid ""
 "Couldn't create %s. Please create the directory before setting defaults."
 msgstr ""
+"Couldn't create %s. Please create the directory before setting defaults."
 
 msgid "Defaults management"
 msgstr "Defaults management"
@@ -171,6 +188,8 @@ msgid ""
 "Provider %{name} was not found. See `hammer defaults providers` for "
 "available providers."
 msgstr ""
+"Provider %{name} was not found. See `hammer defaults providers` for "
+"available providers."
 
 msgid ""
 "The param name is not supported by provider. See `hammer defaults providers` "
@@ -183,7 +202,7 @@ msgid "%{param} was deleted successfully."
 msgstr "%{param} was deleted successfully."
 
 msgid "You must specify value or a provider name, can't specify both."
-msgstr ""
+msgstr "You must specify value or a provider name, can't specify both."
 
 msgid "Couldn't find the requested param in %s."
 msgstr "Couldn't find the requested param in %s."
@@ -198,10 +217,10 @@ msgid "See: '%{path} --help'"
 msgstr "See: '%{path} --help'"
 
 msgid "SSL error"
-msgstr ""
+msgstr "SSL error"
 
 msgid "SSL certificate verification failed"
-msgstr ""
+msgstr "SSL certificate verification failed"
 
 msgid "is the server down?"
 msgstr "is the server down?"
@@ -218,6 +237,15 @@ msgstr "Could not load the API description from the server"
 
 msgid "Missing arguments for %s"
 msgstr "Missing arguments for %s"
+
+msgid "Format output in markdown"
+msgstr "Format output in markdown"
+
+msgid "Hammer CLI help"
+msgstr "Hammer CLI help"
+
+msgid "Print help for all hammer commands"
+msgstr "Print help for all hammer commands"
 
 msgid "No permissions to create log dir %s"
 msgstr "No permissions to create log dir %s"
@@ -247,26 +275,27 @@ msgid "remote system address"
 msgstr "remote system address"
 
 msgid "Configure SSL verification of remote system"
-msgstr ""
+msgstr "Configure SSL verification of remote system"
 
 msgid "Configure the file containing the CA certificates"
-msgstr ""
+msgstr "Configure the file containing the CA certificates"
 
 msgid "Configure the directory containing the CA certificates"
-msgstr ""
+msgstr "Configure the directory containing the CA certificates"
 
 msgid "Configure the client's public certificate"
-msgstr ""
+msgstr "Configure the client's public certificate"
 
 msgid "Configure the client's private key"
-msgstr ""
+msgstr "Configure the client's private key"
 
 msgid ""
 "Use standard authentication in addition to client certificate authentication"
 msgstr ""
+"Use standard authentication in addition to client certificate authentication"
 
 msgid "Fetch CA certificate from server and exit"
-msgstr ""
+msgstr "Fetch CA certificate from server and exit"
 
 msgid "show version"
 msgstr "show version"
@@ -313,25 +342,12 @@ msgid ""
 msgstr ""
 "value must be defined as a comma-separated list of key=value or valid JSON"
 
-msgid "Missing or stray quote."
-msgstr ""
-
-msgid "Unquoted fields do not allow \\r or \\n."
-msgstr ""
-
-msgid "Illegal quoting."
-msgstr ""
-
-msgid "Unclosed quoted field."
-msgstr ""
-
-msgid "Field size exceeded."
-msgstr ""
-
 msgid ""
-"Comma separated list of values. Values containing comma should be double "
-"quoted"
+"Comma separated list of values. Values containing comma should be quoted or "
+"escaped with backslash"
 msgstr ""
+"Comma separated list of values. Values containing comma should be quoted or "
+"escaped with backslash"
 
 msgid "numeric value is required"
 msgstr "numeric value is required"
@@ -370,10 +386,10 @@ msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr "Warning: Option %{option} is deprecated. %{message}"
 
 msgid "Deprecated: %{deprecated_msg}"
-msgstr ""
+msgstr "Deprecated: %{deprecated_msg}"
 
 msgid "%{flag} is deprecated: %{deprecated_msg}"
-msgstr ""
+msgstr "%{flag} is deprecated: %{deprecated_msg}"
 
 msgid "Can be specified multiple times. "
 msgstr "Can be specified multiple times. "
@@ -394,7 +410,7 @@ msgid "Name"
 msgstr "Name"
 
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)"
-msgstr ""
+msgstr "Page %{page} of %{total} (use --page and --per-page for navigation)"
 
 msgid "no"
 msgstr "no"
@@ -410,7 +426,7 @@ msgstr ""
 "configurations to cli.modules.d"
 
 msgid "Warning: Couldn't load configuration file %{path}: %{message}"
-msgstr ""
+msgstr "Warning: Couldn't load configuration file %{path}: %{message}"
 
 msgid "Print help for commands"
 msgstr "Print help for commands"
@@ -428,19 +444,19 @@ msgid "Interactive shell"
 msgstr "Interactive shell"
 
 msgid "SSL client certificate is set but the key is not"
-msgstr ""
+msgstr "SSL client certificate is set but the key is not"
 
 msgid "SSL client key is set but the certificate is not"
-msgstr ""
+msgstr "SSL client key is set but the certificate is not"
 
 msgid "SSL client authentication disabled"
-msgstr ""
+msgstr "SSL client authentication disabled"
 
 msgid "Could't read SSL client certificate %s"
-msgstr ""
+msgstr "Could't read SSL client certificate %s"
 
 msgid "Could't read SSL client key %s"
-msgstr ""
+msgstr "Could't read SSL client key %s"
 
 msgid ""
 "can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "

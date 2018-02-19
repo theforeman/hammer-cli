@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.11.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-01 10:47+0200\n"
-"PO-Revision-Date: 2017-08-01 10:47+0200\n"
+"POT-Creation-Date: 2018-02-19 01:11+0100\n"
+"PO-Revision-Date: 2018-02-19 01:11+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,11 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: ../lib/hammer_cli/ca_cert_fetcher.rb:7
-msgid "\"Unable to find hostname in #{service_uri}\""
+msgid "Unable to find hostname in %s."
 msgstr ""
 
 #: ../lib/hammer_cli/ca_cert_fetcher.rb:20
-msgid "CA certificate for %{uri} was stored to %{file}"
+msgid "CA certificate for %{uri} was stored to %{file}."
 msgstr ""
 
 #: ../lib/hammer_cli/ca_cert_fetcher.rb:21
@@ -71,7 +71,7 @@ msgid "To see the actual chain you can use openssl command"
 msgstr ""
 
 #: ../lib/hammer_cli/ca_cert_fetcher.rb:55
-msgid "\"You can also download the certificate manually and store it as #{cert_file}\""
+msgid "You can also download the certificate manually and store it as %s."
 msgstr ""
 
 #: ../lib/hammer_cli/ca_cert_fetcher.rb:56
@@ -85,7 +85,7 @@ msgid "Fetching the CA certificate failed:"
 msgstr ""
 
 #: ../lib/hammer_cli/ca_cert_fetcher.rb:63
-msgid "The service at the given URI does not accept SSL connections"
+msgid "The service at the given URI does not accept SSL connections."
 msgstr ""
 
 #: ../lib/hammer_cli/ca_cert_fetcher.rb:77
@@ -93,50 +93,50 @@ msgid "Perhaps you meant to connect to '%s'?"
 msgstr ""
 
 #: ../lib/hammer_cli/clamp.rb:5
-msgid "too many arguments"
+msgid "Too many arguments."
 msgstr ""
 
 #: ../lib/hammer_cli/clamp.rb:6
-msgid "option '%<option>s' is required"
+msgid "Option '%s' is required."
 msgstr ""
 
 #: ../lib/hammer_cli/clamp.rb:7
-msgid "option '%<option>s' (or env %<env>s) is required"
+msgid "Option '%{opt}' (or env %{env}) is required."
 msgstr ""
 
 #: ../lib/hammer_cli/clamp.rb:8
-msgid "option '%<switch>s': %<message>s"
+msgid "Option '%{swt}': %{msg}."
 msgstr ""
 
 #: ../lib/hammer_cli/clamp.rb:9
-msgid "parameter '%<param>s': %<message>s"
+msgid "Parameter '%{pmt}': %{msg}."
 msgstr ""
 
 #: ../lib/hammer_cli/clamp.rb:10
-msgid "%<env>s: %<message>s"
+msgid "%{env}: %{msg}."
 msgstr ""
 
 #: ../lib/hammer_cli/clamp.rb:11
-msgid "Unrecognised option '%<switch>s'"
+msgid "Unrecognised option '%s'."
 msgstr ""
 
 #: ../lib/hammer_cli/clamp.rb:12
-msgid "No such sub-command '%<name>s'"
+msgid "No such sub-command '%s'."
 msgstr ""
 
 #: ../lib/hammer_cli/clamp.rb:13
-msgid "no value provided"
+msgid "No value provided."
 msgstr ""
 
 #: ../lib/hammer_cli/csv_parser.rb:14
 msgid "Illegal quoting in %{buffer}"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults.rb:77
+#: ../lib/hammer_cli/defaults.rb:75
 msgid "Couldn't create %s. Please create the directory before setting defaults."
 msgstr ""
 
-#: ../lib/hammer_cli/defaults.rb:109
+#: ../lib/hammer_cli/defaults.rb:107
 msgid "Defaults management"
 msgstr ""
 
@@ -181,7 +181,7 @@ msgid "Add a default parameter to config"
 msgstr ""
 
 #: ../lib/hammer_cli/defaults_commands.rb:104
-msgid "The name of the default option (e.g. organization_id)."
+msgid "The name of the default option (e.g. organization_id)"
 msgstr ""
 
 #: ../lib/hammer_cli/defaults_commands.rb:105
@@ -191,7 +191,7 @@ msgstr ""
 #: ../lib/hammer_cli/defaults_commands.rb:106
 msgid ""
 "The name of the provider providing the value. For list available providers see"
-" `hammer defaults providers`."
+" `hammer defaults providers`"
 msgstr ""
 
 #: ../lib/hammer_cli/defaults_commands.rb:134
@@ -237,7 +237,7 @@ msgid "Error: %{message}"
 msgstr ""
 
 #: ../lib/hammer_cli/exception_handler.rb:72
-msgid "See: '%{path} --help'"
+msgid "See: '%{path} --help'."
 msgstr ""
 
 #: ../lib/hammer_cli/exception_handler.rb:99
@@ -279,7 +279,7 @@ msgid "Print help for all hammer commands"
 msgstr ""
 
 #: ../lib/hammer_cli/logger.rb:58
-msgid "No permissions to create log dir %s"
+msgid "No permissions to create log dir %s."
 msgstr ""
 
 #: ../lib/hammer_cli/logger.rb:72
@@ -287,31 +287,31 @@ msgid "File %s not writeable, won't log anything to the file!"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:7
-msgid "be verbose"
+msgid "Be verbose"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:8
-msgid "show debugging output "
+msgid "Show debugging output"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:9
-msgid "force reload of Apipie cache"
+msgid "Force reload of Apipie cache"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:11
-msgid "path to custom config file"
+msgid "Path to custom config file"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:13
-msgid "username to access the remote system"
+msgid "Username to access the remote system"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:15
-msgid "password to access the remote system"
+msgid "Password to access the remote system"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:17
-msgid "remote system address"
+msgid "Remote system address"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:19
@@ -343,7 +343,7 @@ msgid "Fetch CA certificate from server and exit"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:28
-msgid "show version"
+msgid "Show version"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:31
@@ -356,6 +356,10 @@ msgstr ""
 
 #: ../lib/hammer_cli/main.rb:39
 msgid "Explicitly turn interactive mode on/off"
+msgstr ""
+
+#: ../lib/hammer_cli/main.rb:42
+msgid "Hide headers from output"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:43
@@ -374,76 +378,70 @@ msgstr ""
 msgid "Get list of possible endings"
 msgstr ""
 
-#: ../lib/hammer_cli/modules.rb:12
-msgid ""
-"Legacy configuration of modules detected. Check section about configuration in"
-" user manual"
+#: ../lib/hammer_cli/modules.rb:57
+msgid "Warning: An error occured while loading module %s."
 msgstr ""
 
-#: ../lib/hammer_cli/modules.rb:60
-msgid "Warning: An error occured while loading module %s"
+#: ../lib/hammer_cli/modules.rb:84
+msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr ""
 
-#: ../lib/hammer_cli/modules.rb:87
-msgid "Error: Some of the required modules are disabled in configuration: %s "
+#: ../lib/hammer_cli/options/normalizers.rb:34
+msgid "Comma-separated list of key=value"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:30
-msgid "Comma-separated list of key=value."
+#: ../lib/hammer_cli/options/normalizers.rb:48
+msgid "Value must be defined as a comma-separated list of key=value or valid JSON."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:44
-msgid "value must be defined as a comma-separated list of key=value or valid JSON"
-msgstr ""
-
-#: ../lib/hammer_cli/options/normalizers.rb:85
+#: ../lib/hammer_cli/options/normalizers.rb:89
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or es"
 "caped with backslash"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:100
-msgid "numeric value is required"
+#: ../lib/hammer_cli/options/normalizers.rb:104
+msgid "Numeric value is required."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:114
-msgid "One of true/false, yes/no, 1/0."
+#: ../lib/hammer_cli/options/normalizers.rb:118
+msgid "One of true/false, yes/no, 1/0"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:124
-msgid "value must be one of true/false, yes/no, 1/0"
+#: ../lib/hammer_cli/options/normalizers.rb:128
+msgid "Value must be one of true/false, yes/no, 1/0."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:163
-msgid "Unable to parse JSON input"
+#: ../lib/hammer_cli/options/normalizers.rb:167
+msgid "Unable to parse JSON input."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:177
+#: ../lib/hammer_cli/options/normalizers.rb:181
 msgid "Possible value(s): %s"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:185
-msgid "value must be %s"
+#: ../lib/hammer_cli/options/normalizers.rb:189
+msgid "Value must be %s."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:187
-msgid "value must be one of %s"
+#: ../lib/hammer_cli/options/normalizers.rb:191
+msgid "Value must be one of %s."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:208
+#: ../lib/hammer_cli/options/normalizers.rb:212
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:215
-msgid "'%s' is not a valid date"
+#: ../lib/hammer_cli/options/normalizers.rb:219
+msgid "'%s' is not a valid date."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:226
+#: ../lib/hammer_cli/options/normalizers.rb:230
 msgid "Any combination (comma separated list) of '%s'"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:246
-msgid "value must be a combination of '%s'"
+#: ../lib/hammer_cli/options/normalizers.rb:250
+msgid "Value must be a combination of '%s'."
 msgstr ""
 
 #: ../lib/hammer_cli/options/option_definition.rb:56
@@ -458,16 +456,20 @@ msgstr ""
 msgid "%{flag} is deprecated: %{deprecated_msg}"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:101
-msgid "Can be specified multiple times. "
+#: ../lib/hammer_cli/options/option_definition.rb:98
+msgid "Can be specified multiple times."
 msgstr ""
 
 #: ../lib/hammer_cli/options/option_definition.rb:102
-msgid "Default: "
+msgid ", or"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:102
-msgid ", or "
+#: ../lib/hammer_cli/options/option_definition.rb:104
+msgid "Default:"
+msgstr ""
+
+#: ../lib/hammer_cli/options/option_definition.rb:129
+msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr ""
 
 #: ../lib/hammer_cli/output/adapter/csv.rb:179
@@ -482,8 +484,8 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/table.rb:55
-msgid "Page %{page} of %{total} (use --page and --per-page for navigation)"
+#: ../lib/hammer_cli/output/adapter/table.rb:57
+msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr ""
 
 #: ../lib/hammer_cli/output/formatters.rb:160
@@ -494,14 +496,8 @@ msgstr ""
 msgid "yes"
 msgstr ""
 
-#: ../lib/hammer_cli/settings.rb:27
-msgid ""
-"Warning: location hammer.modules.d is deprecated, move your module configurati"
-"ons to cli.modules.d"
-msgstr ""
-
-#: ../lib/hammer_cli/settings.rb:44
-msgid "Warning: Couldn't load configuration file %{path}: %{message}"
+#: ../lib/hammer_cli/settings.rb:39
+msgid "Warning: Couldn't load configuration file %{path}: %{message}."
 msgstr ""
 
 #: ../lib/hammer_cli/shell.rb:10
@@ -513,11 +509,11 @@ msgid "Exit interactive shell"
 msgstr ""
 
 #: ../lib/hammer_cli/shell.rb:116
-msgid "Welcome to the hammer interactive shell"
+msgid "Welcome to the hammer interactive shell."
 msgstr ""
 
 #: ../lib/hammer_cli/shell.rb:117
-msgid "Type 'help' for usage information"
+msgid "Type 'help' for usage information."
 msgstr ""
 
 #: ../lib/hammer_cli/shell.rb:133
@@ -525,63 +521,63 @@ msgid "Interactive shell"
 msgstr ""
 
 #: ../lib/hammer_cli/ssloptions.rb:58
-msgid "SSL client certificate is set but the key is not"
+msgid "SSL client certificate is set but the key is not."
 msgstr ""
 
 #: ../lib/hammer_cli/ssloptions.rb:60
-msgid "SSL client key is set but the certificate is not"
+msgid "SSL client key is set but the certificate is not."
 msgstr ""
 
 #: ../lib/hammer_cli/ssloptions.rb:62
-msgid "SSL client authentication disabled"
+msgid "SSL client authentication disabled."
 msgstr ""
 
 #: ../lib/hammer_cli/ssloptions.rb:72
-msgid "Could't read SSL client certificate %s"
+msgid "Could't read SSL client certificate %s."
 msgstr ""
 
 #: ../lib/hammer_cli/ssloptions.rb:78
-msgid "Could't read SSL client key %s"
+msgid "Could't read SSL client key %s."
 msgstr ""
 
-#: ../lib/hammer_cli/subcommand.rb:56
+#: ../lib/hammer_cli/subcommand.rb:94
 msgid ""
-"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
-"ass>s)"
+"Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
+"ass>s)."
 msgstr ""
 
 #: ../lib/hammer_cli/validator.rb:41
-msgid "Unknown option name '%s'"
+msgid "Unknown option name '%s'."
 msgstr ""
 
 #: ../lib/hammer_cli/validator.rb:72
-msgid "You can't set all options %s at one time"
+msgid "You can't set all options %s at one time."
 msgstr ""
 
 #: ../lib/hammer_cli/validator.rb:73
-msgid "Options %s are required"
+msgid "Options %s are required."
 msgstr ""
 
 #: ../lib/hammer_cli/validator.rb:87
-msgid "You can't set option %s"
+msgid "You can't set option %s."
 msgstr ""
 
 #: ../lib/hammer_cli/validator.rb:88
-msgid "Option %s is required"
+msgid "Option %s is required."
 msgstr ""
 
 #: ../lib/hammer_cli/validator.rb:100
-msgid "You can't set any of options %s"
+msgid "You can't set any of options %s."
 msgstr ""
 
 #: ../lib/hammer_cli/validator.rb:101
-msgid "At least one of options %s is required"
+msgid "At least one of options %s is required."
 msgstr ""
 
 #: ../lib/hammer_cli/validator.rb:126
-msgid "One of options %s is required"
+msgid "One of options %s is required."
 msgstr ""
 
 #: ../lib/hammer_cli/validator.rb:130
-msgid "Only one of options %s can be set"
+msgid "Only one of options %s can be set."
 msgstr ""

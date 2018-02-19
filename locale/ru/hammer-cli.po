@@ -4,16 +4,16 @@
 #
 # Translators:
 # Automatically generated, 2014
-# Dominic Cleal <dominic@cleal.org>, 2014
+# Dominic Cleal <dcleal@redhat.com>, 2014
 # Vladimir Pavlov <v.pavlov@i-teco.ru>, 2015
 # Yulia <yulia.poyarkova@redhat.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.11.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-05 15:31+0200\n"
-"PO-Revision-Date: 2017-05-05 14:28+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2017-08-01 10:47+0200\n"
+"PO-Revision-Date: 2017-12-01 21:14+0000\n"
+"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/foreman/foreman/language/"
 "ru/)\n"
 "MIME-Version: 1.0\n"
@@ -111,6 +111,9 @@ msgstr "Подкоманда «%<name>s» не существует"
 
 msgid "no value provided"
 msgstr "значение не определено"
+
+msgid "Illegal quoting in %{buffer}"
+msgstr ""
 
 msgid ""
 "Couldn't create %s. Please create the directory before setting defaults."
@@ -224,6 +227,15 @@ msgstr "Не удалось загрузить описание API с серв�
 msgid "Missing arguments for %s"
 msgstr "Недостаточно аргументов для %s"
 
+msgid "Format output in markdown"
+msgstr ""
+
+msgid "Hammer CLI help"
+msgstr ""
+
+msgid "Print help for all hammer commands"
+msgstr ""
+
 msgid "No permissions to create log dir %s"
 msgstr "Недостаточно разрешений для создания каталога %s"
 
@@ -319,24 +331,9 @@ msgstr ""
 "значение должно содержать список пар «ключ=значение», разделенных запятыми, "
 "или фрагмент в формате JSON"
 
-msgid "Missing or stray quote."
-msgstr ""
-
-msgid "Unquoted fields do not allow \\r or \\n."
-msgstr ""
-
-msgid "Illegal quoting."
-msgstr ""
-
-msgid "Unclosed quoted field."
-msgstr ""
-
-msgid "Field size exceeded."
-msgstr ""
-
 msgid ""
-"Comma separated list of values. Values containing comma should be double "
-"quoted"
+"Comma separated list of values. Values containing comma should be quoted or "
+"escaped with backslash"
 msgstr ""
 
 msgid "numeric value is required"
@@ -468,7 +465,7 @@ msgid "You can't set option %s"
 msgstr ""
 
 msgid "Option %s is required"
-msgstr ""
+msgstr "Параметр %s является обязательным"
 
 msgid "You can't set any of options %s"
 msgstr "Вы не можете настроить параметры %s"

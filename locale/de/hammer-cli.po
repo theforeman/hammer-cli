@@ -4,7 +4,7 @@
 #
 # Translators:
 # Christina Gurski <Gurski_christina@yahoo.de>, 2015
-# Dominic Cleal <dominic@cleal.org>, 2014
+# Dominic Cleal <dcleal@redhat.com>, 2014
 # Ettore Atalan <atalanttore@googlemail.com>, 2014-2017
 # simon11 <simon.stieger.98@live.de>, 2014
 # simon11 <simon.stieger.98@live.de>, 2014
@@ -12,11 +12,11 @@
 # Ulrich Habel <rhaen@pkgbox.de>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.11.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-05 15:31+0200\n"
-"PO-Revision-Date: 2017-05-05 14:28+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2017-08-01 10:47+0200\n"
+"PO-Revision-Date: 2017-11-20 20:50+0000\n"
+"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/foreman/foreman/language/"
 "de/)\n"
 "MIME-Version: 1.0\n"
@@ -96,13 +96,13 @@ msgid "option '%<option>s' (or env %<env>s) is required"
 msgstr "Option '%<option>s' (oder Umgebung %<env>s) ist erforderlich"
 
 msgid "option '%<switch>s': %<message>s"
-msgstr "Option '%<switch>s': %<message>s"
+msgstr "Option '%<switch>s': %<message>en"
 
 msgid "parameter '%<param>s': %<message>s"
-msgstr "Parameter '%<param>s': %<message>s"
+msgstr "Parameter '%<param>s': %<message>en"
 
 msgid "%<env>s: %<message>s"
-msgstr "%<env>s: %<message>s"
+msgstr "%<env>s: %<message>en"
 
 msgid "Unrecognised option '%<switch>s'"
 msgstr "Unbekannte Option '%<switch>s'"
@@ -112,6 +112,9 @@ msgstr "Unterbefehl '%<name>s' existiert nicht"
 
 msgid "no value provided"
 msgstr "kein Wert geliefert"
+
+msgid "Illegal quoting in %{buffer}"
+msgstr ""
 
 msgid ""
 "Couldn't create %s. Please create the directory before setting defaults."
@@ -204,7 +207,7 @@ msgid "See: '%{path} --help'"
 msgstr "Siehe: '%{path} --help'"
 
 msgid "SSL error"
-msgstr ""
+msgstr "SSL-Fehler"
 
 msgid "SSL certificate verification failed"
 msgstr ""
@@ -224,6 +227,15 @@ msgstr "Die API-Beschreibung konnte nicht vom Server geladen werden"
 
 msgid "Missing arguments for %s"
 msgstr "Fehlende Argumente für %s"
+
+msgid "Format output in markdown"
+msgstr ""
+
+msgid "Hammer CLI help"
+msgstr ""
+
+msgid "Print help for all hammer commands"
+msgstr ""
 
 msgid "No permissions to create log dir %s"
 msgstr "Keine Berechtigung zum Anlegen von Protokollverzeichnis %s"
@@ -323,24 +335,9 @@ msgid ""
 msgstr ""
 "Wert muss als kommagetrennte Liste mit Schlüssel=Wert oder gültigem JSON sein"
 
-msgid "Missing or stray quote."
-msgstr ""
-
-msgid "Unquoted fields do not allow \\r or \\n."
-msgstr ""
-
-msgid "Illegal quoting."
-msgstr ""
-
-msgid "Unclosed quoted field."
-msgstr ""
-
-msgid "Field size exceeded."
-msgstr "Feldgröße überschritten."
-
 msgid ""
-"Comma separated list of values. Values containing comma should be double "
-"quoted"
+"Comma separated list of values. Values containing comma should be quoted or "
+"escaped with backslash"
 msgstr ""
 
 msgid "numeric value is required"

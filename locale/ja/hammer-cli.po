@@ -6,11 +6,11 @@
 # Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.11.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-05 15:31+0200\n"
-"PO-Revision-Date: 2017-05-05 14:28+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2017-08-01 10:47+0200\n"
+"PO-Revision-Date: 2017-11-20 20:51+0000\n"
+"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/"
 "ja/)\n"
 "MIME-Version: 1.0\n"
@@ -20,65 +20,79 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "\"Unable to find hostname in #{service_uri}\""
-msgstr ""
+msgstr "\"#{service_uri} にホスト名が見つかりません\""
 
 msgid "CA certificate for %{uri} was stored to %{file}"
-msgstr ""
+msgstr "%{uri} の CA 証明書が %{file} に保存されています"
 
 msgid ""
 "Now hammer can use the downloaded certificate to verify SSL connection to "
 "the server."
 msgstr ""
+"hammer はダウンロードされた証明書を使用して、サーバーへの SSL 接続を検証でき"
+"るようになりました。"
 
 msgid ""
 "It will be used automatically when ssl_ca_path and ssl_ca_file options are "
 "not set."
 msgstr ""
+"ssl_ca_path および ssl_ca_file オプションが設定されていない場合に使用されま"
+"す。"
 
 msgid ""
 "Be aware that hammer cannot verify whether the certificate is correct and "
 "you should verify its authenticity."
 msgstr ""
+"hammer は証明書が正しいかどうかを検証できないので、その認証を独自に検証する必"
+"要があることに注意してください。"
 
 msgid "You can display the certificate content with"
-msgstr ""
+msgstr "以下で証明書コンテンツを表示することができます"
 
 msgid ""
 "As root you can also install the certificate and update the system-wide list "
 "of trusted CA certificates as follows:"
 msgstr ""
+"root として以下のように証明書をインストールし、信頼された CA 証明書のシステム"
+"全体の一覧を更新することもできます。"
 
 msgid "Couldn't parse URI '%s'."
-msgstr ""
+msgstr "URI '%s' を解析できませんでした。"
 
 msgid ""
 "The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
 msgstr ""
+"%{uri} の CA 証明書をダウンロードできませんでした。CA 証明書は見つかりません"
+"でした。"
 
 msgid "Make sure your server sends cert chain including the CA."
-msgstr ""
+msgstr "サーバーが CA を含む証明書チェーンを送信することを確認してください。"
 
 msgid "To see the actual chain you can use openssl command"
-msgstr ""
+msgstr "実際のチェーンを確認するには、openssl コマンドを使用できます"
 
 msgid ""
 "\"You can also download the certificate manually and store it as "
 "#{cert_file}\""
 msgstr ""
+"\"証明書を手動でダウンロードし、これを #{cert_file} として保存することもでき"
+"ます\""
 
 msgid ""
 "If you choose any other location set the ssl_ca_path or ssl_ca_file "
 "configuration options appropriately."
 msgstr ""
+"他のロケーションを選択する場合は、適宜 ssl_ca_path または ssl_ca_file 設定オ"
+"プションを設定します。"
 
 msgid "Fetching the CA certificate failed:"
-msgstr ""
+msgstr "CA 証明書の取得に失敗しました:"
 
 msgid "The service at the given URI does not accept SSL connections"
-msgstr ""
+msgstr "指定された URI のサービスは SSL 接続を受け入れません"
 
 msgid "Perhaps you meant to connect to '%s'?"
-msgstr ""
+msgstr "'%s' に接続しますか?"
 
 msgid "too many arguments"
 msgstr "引数が多すぎます"
@@ -106,6 +120,9 @@ msgstr "次のようなコマンドはありません: '%<name>s'"
 
 msgid "no value provided"
 msgstr "値が指定されていません"
+
+msgid "Illegal quoting in %{buffer}"
+msgstr "%{buffer} での不正な引用"
 
 msgid ""
 "Couldn't create %s. Please create the directory before setting defaults."
@@ -203,10 +220,10 @@ msgid "See: '%{path} --help'"
 msgstr "参照: '%{path} --help'"
 
 msgid "SSL error"
-msgstr ""
+msgstr "SSL エラー"
 
 msgid "SSL certificate verification failed"
-msgstr ""
+msgstr "SSL 証明書の検証に失敗しました"
 
 msgid "is the server down?"
 msgstr "サーバーは停止していますか?"
@@ -223,6 +240,15 @@ msgstr "サーバーから API 記述をロードできませんでした"
 
 msgid "Missing arguments for %s"
 msgstr "%s の引数がありません"
+
+msgid "Format output in markdown"
+msgstr "マークダウンでの出力のフォーマット"
+
+msgid "Hammer CLI help"
+msgstr "Hammer CLI ヘルプ"
+
+msgid "Print help for all hammer commands"
+msgstr "すべての hammer コマンドのヘルプの出力"
 
 msgid "No permissions to create log dir %s"
 msgstr "ログディレクトリー %s を作成するパーミッションがありません"
@@ -254,26 +280,26 @@ msgid "remote system address"
 msgstr "リモートシステムのアドレス"
 
 msgid "Configure SSL verification of remote system"
-msgstr ""
+msgstr "リモートシステムの SSL 検証の設定"
 
 msgid "Configure the file containing the CA certificates"
-msgstr ""
+msgstr "CA 証明書を含むファイルの設定"
 
 msgid "Configure the directory containing the CA certificates"
-msgstr ""
+msgstr "CA 証明書を含むディレクトリーの設定"
 
 msgid "Configure the client's public certificate"
-msgstr ""
+msgstr "クライアントの公開証明書の設定"
 
 msgid "Configure the client's private key"
-msgstr ""
+msgstr "クライアントの秘密鍵の設定"
 
 msgid ""
 "Use standard authentication in addition to client certificate authentication"
-msgstr ""
+msgstr "クライアント証明書の認証のほかに標準の認証を使用"
 
 msgid "Fetch CA certificate from server and exit"
-msgstr ""
+msgstr "サーバーからの CA 証明書の取得および終了"
 
 msgid "show version"
 msgstr "バージョンの表示"
@@ -321,25 +347,12 @@ msgstr ""
 "値は key=value または有効な JSON のコンマ区切りの一覧として定義する必要があり"
 "ます。"
 
-msgid "Missing or stray quote."
-msgstr "引用符がないか、不明です。"
-
-msgid "Unquoted fields do not allow \\r or \\n."
-msgstr "引用符で囲まれていないフィールドでは \\r または \\n を使用できません。"
-
-msgid "Illegal quoting."
-msgstr "引用符が不正に使用されています。"
-
-msgid "Unclosed quoted field."
-msgstr "フィールドが引用符で閉じられていません。"
-
-msgid "Field size exceeded."
-msgstr "フィールドサイズが超えています。"
-
 msgid ""
-"Comma separated list of values. Values containing comma should be double "
-"quoted"
-msgstr "値のコンマ区切りリスト。コンマを含む値は二重引用符で囲む必要があります"
+"Comma separated list of values. Values containing comma should be quoted or "
+"escaped with backslash"
+msgstr ""
+"値のコンマ区切りの一覧。コンマを含む値は引用符で囲むか、またはバックスラッ"
+"シュでエスケープする必要があります"
 
 msgid "numeric value is required"
 msgstr "数値が必要"
@@ -437,19 +450,19 @@ msgid "Interactive shell"
 msgstr "インタラクティブシェル"
 
 msgid "SSL client certificate is set but the key is not"
-msgstr ""
+msgstr "SSL クライアント証明書は設定されていますが、鍵は設定されていません"
 
 msgid "SSL client key is set but the certificate is not"
-msgstr ""
+msgstr "SSL クライアント鍵は設定されていますが、証明書は設定されていません"
 
 msgid "SSL client authentication disabled"
-msgstr ""
+msgstr "SSL クライアントの認証は無効にされました"
 
 msgid "Could't read SSL client certificate %s"
-msgstr ""
+msgstr "SSL クライアント証明書 %s を読み取ることができませんでした"
 
 msgid "Could't read SSL client key %s"
-msgstr ""
+msgstr "SSL クライアント鍵 %s を読み取ることができませんでした"
 
 msgid ""
 "can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "

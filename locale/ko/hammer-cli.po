@@ -6,11 +6,11 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.11.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-05 15:31+0200\n"
-"PO-Revision-Date: 2017-05-05 14:28+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2017-08-01 10:47+0200\n"
+"PO-Revision-Date: 2017-11-30 13:02+0000\n"
+"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
 "Language-Team: Korean (http://www.transifex.com/foreman/foreman/language/"
 "ko/)\n"
 "MIME-Version: 1.0\n"
@@ -106,6 +106,9 @@ msgstr "다음과 같은 서브 명령 '%<name>s'이(가) 없습니다"
 
 msgid "no value provided"
 msgstr "값이 지정되어 있지 않습니다 "
+
+msgid "Illegal quoting in %{buffer}"
+msgstr ""
 
 msgid ""
 "Couldn't create %s. Please create the directory before setting defaults."
@@ -216,6 +219,15 @@ msgstr "서버에서 API 설명을 불러올 수 없습니다 "
 msgid "Missing arguments for %s"
 msgstr "%s에 대한 인수가 누락되어 있습니다 "
 
+msgid "Format output in markdown"
+msgstr ""
+
+msgid "Hammer CLI help"
+msgstr ""
+
+msgid "Print help for all hammer commands"
+msgstr ""
+
 msgid "No permissions to create log dir %s"
 msgstr "로그 디렉토리 %s을(를) 생성할 권한이 없습니다 "
 
@@ -309,24 +321,9 @@ msgid ""
 "value must be defined as a comma-separated list of key=value or valid JSON"
 msgstr ""
 
-msgid "Missing or stray quote."
-msgstr ""
-
-msgid "Unquoted fields do not allow \\r or \\n."
-msgstr ""
-
-msgid "Illegal quoting."
-msgstr ""
-
-msgid "Unclosed quoted field."
-msgstr ""
-
-msgid "Field size exceeded."
-msgstr ""
-
 msgid ""
-"Comma separated list of values. Values containing comma should be double "
-"quoted"
+"Comma separated list of values. Values containing comma should be quoted or "
+"escaped with backslash"
 msgstr ""
 
 msgid "numeric value is required"
@@ -458,7 +455,7 @@ msgid "You can't set option %s"
 msgstr ""
 
 msgid "Option %s is required"
-msgstr ""
+msgstr "옵션 %s가 필요"
 
 msgid "You can't set any of options %s"
 msgstr "옵션 %s을(를) 설정할 수 없습니다 "

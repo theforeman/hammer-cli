@@ -6,11 +6,11 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.11.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-05 15:31+0200\n"
-"PO-Revision-Date: 2017-05-05 14:28+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2017-08-01 10:47+0200\n"
+"PO-Revision-Date: 2018-01-04 17:05+0000\n"
+"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/foreman/foreman/"
 "language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -20,65 +20,66 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "\"Unable to find hostname in #{service_uri}\""
-msgstr ""
+msgstr "“无法在 #{service_uri} 中找到主机名”"
 
 msgid "CA certificate for %{uri} was stored to %{file}"
-msgstr ""
+msgstr "%{uri} 的 CA 证书已被存储至 %{file}"
 
 msgid ""
 "Now hammer can use the downloaded certificate to verify SSL connection to "
 "the server."
-msgstr ""
+msgstr "现在，hammer 可以使用下载的证书来验证与服务器的 SSL 连接。"
 
 msgid ""
 "It will be used automatically when ssl_ca_path and ssl_ca_file options are "
 "not set."
-msgstr ""
+msgstr "未设置 ssl_ca_path 和 ssl_ca_file 选项时，将自动使用该证书。"
 
 msgid ""
 "Be aware that hammer cannot verify whether the certificate is correct and "
 "you should verify its authenticity."
-msgstr ""
+msgstr "注意，hammer 无法验证证书是否正确，您应验证其真实性。"
 
 msgid "You can display the certificate content with"
-msgstr ""
+msgstr "您可以通过以下方式显示证书内容"
 
 msgid ""
 "As root you can also install the certificate and update the system-wide list "
 "of trusted CA certificates as follows:"
-msgstr ""
+msgstr "您还可以用  root 账户安装证书、更新系统级受信 CA 证书列表，如下所示："
 
 msgid "Couldn't parse URI '%s'."
-msgstr ""
+msgstr "无法解析 URI '%s'。"
 
 msgid ""
 "The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
-msgstr ""
+msgstr "无法为 %{uri} 下载 CA 证书。未找到 CA 证书。"
 
 msgid "Make sure your server sends cert chain including the CA."
-msgstr ""
+msgstr "确保您的服务器发送了包括 CA 在内的证书链。"
 
 msgid "To see the actual chain you can use openssl command"
-msgstr ""
+msgstr "要查看实际的证书链，您可以使用 openssl 命令"
 
 msgid ""
 "\"You can also download the certificate manually and store it as "
 "#{cert_file}\""
-msgstr ""
+msgstr "“您也可以手动下载证书，并将其存储为 #{cert_file}”"
 
 msgid ""
 "If you choose any other location set the ssl_ca_path or ssl_ca_file "
 "configuration options appropriately."
 msgstr ""
+"如果您选择任何其他位置，则请适当设置 ssl_ca_path 或 ssl_ca_file 配置选项。"
 
 msgid "Fetching the CA certificate failed:"
-msgstr ""
+msgstr "获取 CA 证书失败："
 
 msgid "The service at the given URI does not accept SSL connections"
-msgstr ""
+msgstr "给定 URI 上的服务不接受 SSL 连接"
 
 msgid "Perhaps you meant to connect to '%s'?"
-msgstr ""
+msgstr "可能您想要连接至 '%s'？"
 
 msgid "too many arguments"
 msgstr "参数太多"
@@ -107,9 +108,12 @@ msgstr "没有子命令 '%<name>s'"
 msgid "no value provided"
 msgstr "未提供数值"
 
+msgid "Illegal quoting in %{buffer}"
+msgstr "%{buffer} 中的非法引用"
+
 msgid ""
 "Couldn't create %s. Please create the directory before setting defaults."
-msgstr ""
+msgstr "无法创建 %s。请先创建目录，然后设置默认值。"
 
 msgid "Defaults management"
 msgstr "默认管理"
@@ -169,6 +173,8 @@ msgid ""
 "Provider %{name} was not found. See `hammer defaults providers` for "
 "available providers."
 msgstr ""
+"没有找到提供程序 %{name}。有关可用的提供程序，请参见 `hammer defaults "
+"providers` 。"
 
 msgid ""
 "The param name is not supported by provider. See `hammer defaults providers` "
@@ -180,7 +186,7 @@ msgid "%{param} was deleted successfully."
 msgstr "成功删除 %{param}。"
 
 msgid "You must specify value or a provider name, can't specify both."
-msgstr ""
+msgstr "您必须指定值或提供程序名称，但不能同时指定这两项。"
 
 msgid "Couldn't find the requested param in %s."
 msgstr "无法在 %s 中找到请求的参数。"
@@ -195,10 +201,10 @@ msgid "See: '%{path} --help'"
 msgstr "请查看： '%{path} --help'"
 
 msgid "SSL error"
-msgstr ""
+msgstr "SSL 错误"
 
 msgid "SSL certificate verification failed"
-msgstr ""
+msgstr "SSL 证书验证失败"
 
 msgid "is the server down?"
 msgstr "服务器宕机了吗？"
@@ -213,6 +219,15 @@ msgstr "无法从服务器载入 API 描述"
 
 msgid "Missing arguments for %s"
 msgstr "缺少 %s 的参数"
+
+msgid "Format output in markdown"
+msgstr "格式输出下降"
+
+msgid "Hammer CLI help"
+msgstr "Hammer CLI 帮助"
+
+msgid "Print help for all hammer commands"
+msgstr "打印针对所有 hammer 命令的帮助信息"
 
 msgid "No permissions to create log dir %s"
 msgstr "没有创建日志目录 %s 的权限"
@@ -242,26 +257,26 @@ msgid "remote system address"
 msgstr "远程系统地址"
 
 msgid "Configure SSL verification of remote system"
-msgstr ""
+msgstr "配置远程系统的 SSL 验证"
 
 msgid "Configure the file containing the CA certificates"
-msgstr ""
+msgstr "配置包含 CA 证书的文件"
 
 msgid "Configure the directory containing the CA certificates"
-msgstr ""
+msgstr "配置包含 CA 证书的目录"
 
 msgid "Configure the client's public certificate"
-msgstr ""
+msgstr "配置客户端的公共证书"
 
 msgid "Configure the client's private key"
-msgstr ""
+msgstr "配置客户端的私钥"
 
 msgid ""
 "Use standard authentication in addition to client certificate authentication"
-msgstr ""
+msgstr "除了客户端证书验证外，还使用标准验证"
 
 msgid "Fetch CA certificate from server and exit"
-msgstr ""
+msgstr "从服务器获取 CA 证书，然后退出"
 
 msgid "show version"
 msgstr "显示版本"
@@ -305,25 +320,10 @@ msgid ""
 "value must be defined as a comma-separated list of key=value or valid JSON"
 msgstr "必须使用以逗号分开的 key=value 列表或有效的 JSON 来定义数值"
 
-msgid "Missing or stray quote."
-msgstr ""
-
-msgid "Unquoted fields do not allow \\r or \\n."
-msgstr ""
-
-msgid "Illegal quoting."
-msgstr ""
-
-msgid "Unclosed quoted field."
-msgstr ""
-
-msgid "Field size exceeded."
-msgstr ""
-
 msgid ""
-"Comma separated list of values. Values containing comma should be double "
-"quoted"
-msgstr ""
+"Comma separated list of values. Values containing comma should be quoted or "
+"escaped with backslash"
+msgstr "逗号分隔值列表。含有逗号的值应当用双引号括起或使用反斜杠转义"
 
 msgid "numeric value is required"
 msgstr "需要数字值"
@@ -362,10 +362,10 @@ msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr "警告：%{option} 选项已过时。%{message}"
 
 msgid "Deprecated: %{deprecated_msg}"
-msgstr ""
+msgstr "已弃用：%{deprecated_msg}"
 
 msgid "%{flag} is deprecated: %{deprecated_msg}"
-msgstr ""
+msgstr "%{flag} 已弃用：%{deprecated_msg}"
 
 msgid "Can be specified multiple times. "
 msgstr "无法多次指定。"
@@ -386,7 +386,7 @@ msgid "Name"
 msgstr "名称"
 
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)"
-msgstr ""
+msgstr "第 %{page} 页，共 %{total} 页（使用 --page 和 --per-page 进行浏览）"
 
 msgid "no"
 msgstr "否"
@@ -401,7 +401,7 @@ msgstr ""
 "警告：位置 hammer.modules.d 已启用，请将您的模块配置移至 cli.modules.d。"
 
 msgid "Warning: Couldn't load configuration file %{path}: %{message}"
-msgstr ""
+msgstr "警告：无法加载配置文件 %{path}：%{message}"
 
 msgid "Print help for commands"
 msgstr "输出命令帮助信息"
@@ -419,19 +419,19 @@ msgid "Interactive shell"
 msgstr "互动 shell"
 
 msgid "SSL client certificate is set but the key is not"
-msgstr ""
+msgstr "设置了 SSL 客户端证书，但未设置密钥"
 
 msgid "SSL client key is set but the certificate is not"
-msgstr ""
+msgstr "设置了 SSL 客户端密钥，但未设置证书"
 
 msgid "SSL client authentication disabled"
-msgstr ""
+msgstr "SSL 客户端验证已被禁用"
 
 msgid "Could't read SSL client certificate %s"
-msgstr ""
+msgstr "无法读取 SSL 客户端证书 %s"
 
 msgid "Could't read SSL client key %s"
-msgstr ""
+msgstr "无法读取 SSL 客户端密钥 %s"
 
 msgid ""
 "can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
@@ -449,10 +449,10 @@ msgid "Options %s are required"
 msgstr "需要选项 %s"
 
 msgid "You can't set option %s"
-msgstr ""
+msgstr "您无法设置 %s 选项"
 
 msgid "Option %s is required"
-msgstr ""
+msgstr "%s 是必要选项"
 
 msgid "You can't set any of options %s"
 msgstr "无法设置任意选项 %s"
@@ -461,7 +461,7 @@ msgid "At least one of options %s is required"
 msgstr "至少需要选项 %s 中的一个"
 
 msgid "One of options %s is required"
-msgstr ""
+msgstr "%s 选项中的一个是必需的"
 
 msgid "Only one of options %s can be set"
-msgstr ""
+msgstr "仅可设置 %s 选项中的一个"

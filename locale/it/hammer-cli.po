@@ -4,14 +4,14 @@
 #
 # Translators:
 # Automatically generated, 2014
-# Dominic Cleal <dominic@cleal.org>, 2014
+# Dominic Cleal <dcleal@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.11.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-05 15:31+0200\n"
-"PO-Revision-Date: 2017-05-05 14:28+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2017-08-01 10:47+0200\n"
+"PO-Revision-Date: 2017-11-30 13:02+0000\n"
+"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/foreman/foreman/language/"
 "it/)\n"
 "MIME-Version: 1.0\n"
@@ -107,6 +107,9 @@ msgstr "Comando '%<name>s' non trovato"
 
 msgid "no value provided"
 msgstr "nessun valore fornito"
+
+msgid "Illegal quoting in %{buffer}"
+msgstr ""
 
 msgid ""
 "Couldn't create %s. Please create the directory before setting defaults."
@@ -214,6 +217,15 @@ msgstr "Impossibile caricare la descrizione API dal server"
 msgid "Missing arguments for %s"
 msgstr "Argomenti mancanti per %s"
 
+msgid "Format output in markdown"
+msgstr ""
+
+msgid "Hammer CLI help"
+msgstr ""
+
+msgid "Print help for all hammer commands"
+msgstr ""
+
 msgid "No permissions to create log dir %s"
 msgstr "Nessun permesso per la creazione della directory log %s"
 
@@ -312,24 +324,9 @@ msgid ""
 "value must be defined as a comma-separated list of key=value or valid JSON"
 msgstr ""
 
-msgid "Missing or stray quote."
-msgstr ""
-
-msgid "Unquoted fields do not allow \\r or \\n."
-msgstr ""
-
-msgid "Illegal quoting."
-msgstr ""
-
-msgid "Unclosed quoted field."
-msgstr ""
-
-msgid "Field size exceeded."
-msgstr ""
-
 msgid ""
-"Comma separated list of values. Values containing comma should be double "
-"quoted"
+"Comma separated list of values. Values containing comma should be quoted or "
+"escaped with backslash"
 msgstr ""
 
 msgid "numeric value is required"
@@ -462,7 +459,7 @@ msgid "You can't set option %s"
 msgstr ""
 
 msgid "Option %s is required"
-msgstr ""
+msgstr "L'opzione %s è necessaria"
 
 msgid "You can't set any of options %s"
 msgstr "Impossibile impostare le opzioni %s"
