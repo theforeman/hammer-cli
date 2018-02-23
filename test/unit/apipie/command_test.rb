@@ -29,10 +29,23 @@ describe HammerCLI::Apipie::Command do
   class CommandC < CommandA
   end
 
+  class CommandUnsupp < HammerCLI::Apipie::Command
+    resource :architectures, :unsupptest
+  end
+
   let(:ctx) { { :adapter => :silent, :interactive => false } }
   let(:cmd_class) { HammerCLI::Apipie::Command.dup }
   let(:cmd) { cmd_class.new("", ctx) }
   let(:cmd_run) { cmd.run([]) }
+
+  context "unsupported commands" do
+    let(:cmd_class) { CommandUnsupp.dup }
+    let(:cmd) { cmd_class.new("unsupported", ctx) }
+    it "should print help for unsupported command" do
+      assert_match /.*Unfortunately the server does not support such operation.*/, cmd.help
+    end
+
+  end
 
   context "setting resources" do
 
