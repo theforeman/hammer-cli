@@ -64,14 +64,14 @@ module HammerCLI::Apipie
     def option_opts(param)
       opts = {}
       opts[:required] = true if (param.required? and require_options?)
-      if param.expected_type.to_s == 'array' || param.validator =~ /Array/i
+      if param.expected_type.to_s == 'array'
         opts[:format] = HammerCLI::Options::Normalizers::List.new
-      elsif param.expected_type.to_s == 'boolean' || param.validator =~ /Boolean/i
+      elsif param.expected_type.to_s == 'boolean' || param.validator.to_s == 'boolean'
         opts[:format] = HammerCLI::Options::Normalizers::Bool.new
-      elsif param.validator =~ /Must be one of: (.*)\./
+      elsif param.expected_type.to_s == 'string' && param.validator =~ /Must be one of: (.*)\./
         allowed = $1.split(/,\ ?/).map { |val| val.gsub(/<[^>]*>/i,'') }
         opts[:format] = HammerCLI::Options::Normalizers::Enum.new(allowed)
-      elsif param.expected_type.to_s == 'numeric' || param.validator =~ /Number/i || param.validator =~ /Integer/i
+      elsif param.expected_type.to_s == 'numeric'
         opts[:format] = HammerCLI::Options::Normalizers::Number.new
       end
       opts[:attribute_name] = HammerCLI.option_accessor_name(param.name)
