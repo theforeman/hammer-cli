@@ -90,7 +90,12 @@ describe HammerCLI::Apipie::OptionBuilder do
     it "should set enum normalizer and handle coded values" do
       enum_option = options.find {|o| o.attribute_name == HammerCLI.option_accessor_name("coded_enum_param") }
       enum_option.value_formatter.class.must_equal HammerCLI::Options::Normalizers::Enum
-      enum_option.value_formatter.allowed_values.sort.must_equal ["tomas", "tereza"].sort
+      enum_option.value_formatter.allowed_values.sort.must_equal ["array", "boolean", "hash", "integer", "json", "real", "string", "yaml"].sort
+    end
+
+    it "should set list normalizer for array of nested elements" do
+      array_option = options.find {|o| o.attribute_name == HammerCLI.option_accessor_name("nested_elements_param") }
+      array_option.value_formatter.class.must_equal HammerCLI::Options::Normalizers::List
     end
 
     it "should set number normalizer" do

@@ -149,10 +149,19 @@
                                 "required": false
                             },
                             {
+                                "name": "nested_elements_param",
+                                "full_name": "documented[nested_elements_param]",
+                                "allow_nil": true,
+                                "validator": "Must be an Array of nested elements",
+                                "expected_type": "array",
+                                "description": "",
+                                "required": false
+                            },
+                            {
                                 "name": "coded_enum_param",
                                 "full_name": "documented[coded_enum_param]",
                                 "allow_nil": true,
-                                "validator": "Must be one of: <code>tomas</code>, <code>tereza</code>.",
+                                "validator": "Must be one of: <code>string</code>, <code>boolean</code>, <code>integer</code>, <code>real</code>, <code>array</code>, <code>hash</code>, <code>yaml</code>, <code>json</code>.",
                                 "expected_type": "string",
                                 "description": "",
                                 "required": false
