@@ -44,6 +44,13 @@ module HammerCLI
     option ["--output"], "ADAPTER", _("Set output format. One of [%s]") %
       HammerCLI::Output::Output.adapters.keys.join(', '),
       :context_target => :adapter
+    option ["--output-file"], "OUTPUT_FILE", _("Path to custom output file") do |filename|
+      begin
+        context[:output_file] = File.new(filename, 'w')
+      rescue SystemCallError, IOError => e
+        raise ArgumentError, e
+      end
+    end
     option ["--csv-separator"], "SEPARATOR", _("Character to separate the values"),
       :context_target => :csv_separator
 

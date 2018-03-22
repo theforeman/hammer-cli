@@ -203,6 +203,30 @@ describe HammerCLI::Output::Adapter::CSValues do
         out.must_match(/.*NIL.*/)
       end
     end
+
+    context "output_stream" do
+
+      let(:tempfile) { Tempfile.new("output_stream_csv_test_temp") }
+      let(:context) { {:output_file => tempfile} }
+      let(:adapter) { HammerCLI::Output::Adapter::CSValues.new(context, HammerCLI::Output::Output.formatters) }
+
+      it "should not print to stdout when --output-file is set" do
+        fields = [field_name]
+
+        proc { adapter.print_collection(fields, data) }.must_output("")
+      end
+
+      it "should print to file if --output-file is set" do
+        fields = [field_name]
+        expected_output = "Name\nJohn Doe\n"
+
+        adapter.print_collection(fields, data)
+        tempfile.close
+        IO.read(tempfile.path).must_equal(expected_output)
+      end
+
+    end
+
   end
 
   context "print message" do

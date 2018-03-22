@@ -30,6 +30,7 @@ class PreParser < Clamp::Command
   option ["--csv"], :flag, "Output as CSV (same as --output=csv)"
   option ["--output"], "ADAPTER", "Set output format"
   option ["--no-headers"], :flag, "Hide headers from output"
+  option ["--output-file"], "OUTPUT_FILE", "Path to custom output file"
   option ["--csv-separator"], "SEPARATOR", "Character to separate the values"
   option ["--autocomplete"], "LINE", "Get list of possible endings"
   option ["--verify-ssl"], "VERIFY_SSL", "Configure SSL verification of remote system" do |value|

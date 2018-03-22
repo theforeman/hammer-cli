@@ -243,6 +243,31 @@ describe HammerCLI::Output::Adapter::Json do
 
     end
 
+    context "output_stream" do
+
+      let(:tempfile) { Tempfile.new("output_stream_json_test_temp") }
+      let(:context) { {:output_file => tempfile} }
+
+      it "should not print to stdout when --output-file is set" do
+        fields = [name]
+
+        proc { adapter.print_collection(fields, data) }.must_output("")
+      end
+
+      it "should print to file if --output-file is set" do
+        fields = [name]
+        hash = [{
+                  'Name' => 'John'
+                }]
+        expected_output = JSON.pretty_generate(hash) + "\n"
+
+        adapter.print_collection(fields, data)
+        tempfile.close
+        IO.read(tempfile.path).must_equal(expected_output)
+      end
+
+    end
+
   end
 
 end
