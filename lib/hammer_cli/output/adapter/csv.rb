@@ -168,7 +168,7 @@ module HammerCLI::Output::Adapter
           csv << Cell.values(headers, row)
         end
       end
-      puts csv_string
+      output_stream.puts csv_string
     end
 
     def print_message(msg, msg_params={})

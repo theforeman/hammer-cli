@@ -36,21 +36,21 @@ module HammerCLI::Output::Adapter
 
       line = hline_bits.join(LINE_SEPARATOR)
       unless @context[:no_headers]
-        puts line
-        puts header_bits.join(COLUMN_SEPARATOR)
-        puts line
+        output_stream.puts line
+        output_stream.puts header_bits.join(COLUMN_SEPARATOR)
+        output_stream.puts line
       end
 
       formatted_collection.collect do |row|
         row_bits = fields.map do |f|
           normalize_column(widths[f.label], row[f.label] || "")
         end
-        puts row_bits.join(COLUMN_SEPARATOR)
+        output_stream.puts row_bits.join(COLUMN_SEPARATOR)
       end
 
       # print closing line only when the table isn't empty
       # and there is no --no-headers option
-      puts line unless formatted_collection.empty? || @context[:no_headers]
+      output_stream.puts line unless formatted_collection.empty? || @context[:no_headers]
 
       if collection.meta.pagination_set? && collection.count < collection.meta.subtotal
         pages = (collection.meta.subtotal.to_f/collection.meta.per_page).ceil

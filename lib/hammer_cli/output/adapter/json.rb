@@ -3,12 +3,12 @@ module HammerCLI::Output::Adapter
 
     def print_record(fields, record)
       result = prepare_collection(fields, [record].flatten(1))
-      puts JSON.pretty_generate(result.first)
+      output_stream.puts JSON.pretty_generate(result.first)
     end
 
     def print_collection(fields, collection)
       result = prepare_collection(fields, collection)
-      puts JSON.pretty_generate(result)
+      output_stream.puts JSON.pretty_generate(result)
     end
 
     def print_message(msg, msg_params={})

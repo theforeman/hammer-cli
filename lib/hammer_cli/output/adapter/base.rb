@@ -14,8 +14,8 @@ module HammerCLI::Output::Adapter
 
     def print_collection(fields, collection)
       collection.each do |data|
-        puts render_fields(fields, data)
-        puts
+        output_stream.puts render_fields(fields, data)
+        output_stream.puts
       end
     end
 

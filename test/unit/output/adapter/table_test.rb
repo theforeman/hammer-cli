@@ -349,6 +349,37 @@ describe HammerCLI::Output::Adapter::Table do
       end
 
     end
+
+    context "output_stream" do
+
+      let(:tempfile) { Tempfile.new("output_stream_table_test_temp") }
+      let(:context) { {:output_file => tempfile} }
+      let(:adapter) { HammerCLI::Output::Adapter::Table.new(context, HammerCLI::Output::Output.formatters) }
+
+      it "should not print to stdout when --output-file is set" do
+        fields = [field_firstname]
+
+        proc { adapter.print_collection(fields, data) }.must_output("")
+      end
+
+      it "should print to file if --output-file is set" do
+        fields = [field_firstname]
+        expected_output = [
+          "---------",
+          "FIRSTNAME",
+          "---------",
+          "John     ",
+          "---------",
+          ""
+        ].join("\n")
+
+        adapter.print_collection(fields, data)
+        tempfile.close
+        IO.read(tempfile.path).must_equal(expected_output)
+      end
+
+    end
+
   end
 
 end

@@ -195,6 +195,31 @@ describe HammerCLI::Output::Adapter::Base do
 
     end
 
+    context "output_stream" do
+
+      let(:tempfile) { Tempfile.new("output_stream_base_test_temp") }
+      let(:context) { {:output_file => tempfile} }
+
+      it "should not print to stdout when --output-file is set" do
+        fields = [name]
+
+        proc { adapter.print_collection(fields, data) }.must_output("")
+      end
+
+      it "should print to file if --output-file is set" do
+        fields = [name]
+        expected_output = [
+          "Name: John",
+          "\n"
+        ].join("\n")
+
+        adapter.print_collection(fields, data)
+        tempfile.close
+        IO.read(tempfile.path).must_equal(expected_output)
+      end
+
+    end
+
   end
 
 end

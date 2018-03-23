@@ -64,6 +64,11 @@ module HammerCLI::Output::Adapter
       Abstract.data_for_field(field, record)
     end
 
+    def output_stream
+      return @context[:output_file] if @context.has_key?(:output_file)
+      $stdout
+    end
+
     private
 
     def filter_formatters(formatters_map)
