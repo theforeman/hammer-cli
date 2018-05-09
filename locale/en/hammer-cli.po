@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.12.0\n"
+"Project-Id-Version: hammer-cli 0.13.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-03-04 16:38+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -15,6 +15,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgid "Unfortunately the server does not support such operation."
+msgstr ""
 
 msgid "Unable to find hostname in %s."
 msgstr ""
@@ -286,6 +289,9 @@ msgid "Output as CSV (same as --output=csv)"
 msgstr ""
 
 msgid "Set output format. One of [%s]"
+msgstr ""
+
+msgid "Path to custom output file"
 msgstr ""
 
 msgid "Character to separate the values"
