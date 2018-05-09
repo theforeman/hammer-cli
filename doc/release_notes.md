@@ -1,5 +1,10 @@
 Release notes
 =============
+### 0.13.0 (2018-05-09)
+* Hammer CSV output saved as a file ([PR #254](https://github.com/theforeman/hammer-cli/pull/254)) ([#11586](http://projects.theforeman.org/issues/11586))
+* correct parsing of enum types ([PR #272](https://github.com/theforeman/hammer-cli/pull/272)) ([#22752](http://projects.theforeman.org/issues/22752))
+* require logger ([PR #273](https://github.com/theforeman/hammer-cli/pull/273)) ([#22906](http://projects.theforeman.org/issues/22906))
+* Better help for unsupported hammer commands ([PR #257](https://github.com/theforeman/hammer-cli/pull/257)) ([#18532](http://projects.theforeman.org/issues/18532))
 
 ### 0.12.0 (2018-02-19)
 * Tests for message formats ([PR #266](https://github.com/theforeman/hammer-cli/pull/266)) ([#7451](http://projects.theforeman.org/issues/7451))
