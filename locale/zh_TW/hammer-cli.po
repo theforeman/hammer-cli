@@ -6,10 +6,10 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.12.0\n"
+"Project-Id-Version: hammer-cli 0.14.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-01 10:47+0200\n"
-"PO-Revision-Date: 2017-11-30 13:02+0000\n"
+"POT-Creation-Date: 2018-02-19 01:11+0100\n"
+"PO-Revision-Date: 2018-03-27 18:07+0000\n"
 "Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/foreman/foreman/"
 "language/zh_TW/)\n"
@@ -19,10 +19,10 @@ msgstr ""
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "\"Unable to find hostname in #{service_uri}\""
+msgid "Unable to find hostname in %s."
 msgstr ""
 
-msgid "CA certificate for %{uri} was stored to %{file}"
+msgid "CA certificate for %{uri} was stored to %{file}."
 msgstr ""
 
 msgid ""
@@ -61,9 +61,7 @@ msgstr ""
 msgid "To see the actual chain you can use openssl command"
 msgstr ""
 
-msgid ""
-"\"You can also download the certificate manually and store it as "
-"#{cert_file}\""
+msgid "You can also download the certificate manually and store it as %s."
 msgstr ""
 
 msgid ""
@@ -74,38 +72,38 @@ msgstr ""
 msgid "Fetching the CA certificate failed:"
 msgstr ""
 
-msgid "The service at the given URI does not accept SSL connections"
+msgid "The service at the given URI does not accept SSL connections."
 msgstr ""
 
 msgid "Perhaps you meant to connect to '%s'?"
 msgstr ""
 
-msgid "too many arguments"
-msgstr "引數過多"
+msgid "Too many arguments."
+msgstr ""
 
-msgid "option '%<option>s' is required"
-msgstr "需要使用 '%<option>s' 選項"
+msgid "Option '%s' is required."
+msgstr ""
 
-msgid "option '%<option>s' (or env %<env>s) is required"
-msgstr "需要使用 '%<option>s'（或是 %<env>s 環境）選項"
+msgid "Option '%{opt}' (or env %{env}) is required."
+msgstr ""
 
-msgid "option '%<switch>s': %<message>s"
-msgstr "選項 '%<switch>s'：%<message>s"
+msgid "Option '%{swt}': %{msg}."
+msgstr ""
 
-msgid "parameter '%<param>s': %<message>s"
-msgstr "參數 '%<param>s'：%<message>s"
+msgid "Parameter '%{pmt}': %{msg}."
+msgstr ""
 
-msgid "%<env>s: %<message>s"
-msgstr "%<env>s：%<message>s"
+msgid "%{env}: %{msg}."
+msgstr ""
 
-msgid "Unrecognised option '%<switch>s'"
-msgstr "無法辨識的選項 '%<switch>s'"
+msgid "Unrecognised option '%s'."
+msgstr ""
 
-msgid "No such sub-command '%<name>s'"
-msgstr "此類型的次指令不存在：'%<name>s'"
+msgid "No such sub-command '%s'."
+msgstr ""
 
-msgid "no value provided"
-msgstr "未提供值"
+msgid "No value provided."
+msgstr ""
 
 msgid "Illegal quoting in %{buffer}"
 msgstr ""
@@ -147,18 +145,16 @@ msgstr "預設選項的名稱"
 msgid "Add a default parameter to config"
 msgstr "新增預設參數至配置"
 
-msgid "The name of the default option (e.g. organization_id)."
-msgstr "預設選項的名稱（例如 organization_id）。"
+msgid "The name of the default option (e.g. organization_id)"
+msgstr ""
 
 msgid "The value for the default option"
 msgstr "預設選項的值"
 
 msgid ""
 "The name of the provider providing the value. For list available providers "
-"see `hammer defaults providers`."
+"see `hammer defaults providers`"
 msgstr ""
-"提供這個值的供應者。欲知可用供應者的清單，請參見「hammer defaults "
-"providers」。"
 
 msgid ""
 "Added %{key_val} default-option with value that will be generated from the "
@@ -195,8 +191,8 @@ msgstr "錯誤：%s"
 msgid "Error: %{message}"
 msgstr "錯誤：%{message}"
 
-msgid "See: '%{path} --help'"
-msgstr "請參閱：'%{path} --help'"
+msgid "See: '%{path} --help'."
+msgstr ""
 
 msgid "SSL error"
 msgstr ""
@@ -227,32 +223,32 @@ msgstr ""
 msgid "Print help for all hammer commands"
 msgstr ""
 
-msgid "No permissions to create log dir %s"
-msgstr "沒有建立日誌目錄 %s 的權限"
+msgid "No permissions to create log dir %s."
+msgstr ""
 
 msgid "File %s not writeable, won't log anything to the file!"
 msgstr "%s 檔案不允許寫入，將不會記錄任何資料至此檔案中！"
 
-msgid "be verbose"
-msgstr "詳細提供資料"
+msgid "Be verbose"
+msgstr ""
 
-msgid "show debugging output "
-msgstr "顯示除錯輸出"
+msgid "Show debugging output"
+msgstr ""
 
-msgid "force reload of Apipie cache"
-msgstr "強制重新載入 Apipie 快取"
+msgid "Force reload of Apipie cache"
+msgstr ""
 
-msgid "path to custom config file"
-msgstr "自訂配置檔案的路徑"
+msgid "Path to custom config file"
+msgstr ""
 
-msgid "username to access the remote system"
-msgstr "用來存取遠端系統的使用者名稱"
+msgid "Username to access the remote system"
+msgstr ""
 
-msgid "password to access the remote system"
-msgstr "用來存取遠端系統的密碼"
+msgid "Password to access the remote system"
+msgstr ""
 
-msgid "remote system address"
-msgstr "遠端系統位址"
+msgid "Remote system address"
+msgstr ""
 
 msgid "Configure SSL verification of remote system"
 msgstr ""
@@ -276,8 +272,8 @@ msgstr ""
 msgid "Fetch CA certificate from server and exit"
 msgstr ""
 
-msgid "show version"
-msgstr "顯示版本"
+msgid "Show version"
+msgstr ""
 
 msgid "unknown version"
 msgstr "不明的版本"
@@ -287,6 +283,9 @@ msgstr "顯示相聯資源的 id"
 
 msgid "Explicitly turn interactive mode on/off"
 msgstr "明確開啓或關閉互動式模式"
+
+msgid "Hide headers from output"
+msgstr ""
 
 msgid "Output as CSV (same as --output=csv)"
 msgstr "輸出為 CSV（與 --output=csv 相同）"
@@ -300,22 +299,17 @@ msgstr "用來隔開值的字元"
 msgid "Get list of possible endings"
 msgstr "取得一列可能的結尾"
 
-msgid ""
-"Legacy configuration of modules detected. Check section about configuration "
-"in user manual"
-msgstr "偵測到了舊式的模組配置。請查看使用者指南中的配置部分"
+msgid "Warning: An error occured while loading module %s."
+msgstr ""
 
-msgid "Warning: An error occured while loading module %s"
-msgstr "警告：載入 %s 模組時發生了錯誤"
+msgid "Error: Some of the required modules are disabled in configuration: %s."
+msgstr ""
 
-msgid "Error: Some of the required modules are disabled in configuration: %s "
-msgstr "錯誤：某些必要的模組在配置中已停用：%s "
-
-msgid "Comma-separated list of key=value."
-msgstr "逗號區隔開的一列 key=value。"
+msgid "Comma-separated list of key=value"
+msgstr ""
 
 msgid ""
-"value must be defined as a comma-separated list of key=value or valid JSON"
+"Value must be defined as a comma-separated list of key=value or valid JSON."
 msgstr ""
 
 msgid ""
@@ -323,38 +317,38 @@ msgid ""
 "escaped with backslash"
 msgstr ""
 
-msgid "numeric value is required"
-msgstr "需要數字值"
+msgid "Numeric value is required."
+msgstr ""
 
-msgid "One of true/false, yes/no, 1/0."
-msgstr "true/false、yes/no、1/0 之一。"
+msgid "One of true/false, yes/no, 1/0"
+msgstr ""
 
-msgid "value must be one of true/false, yes/no, 1/0"
-msgstr "值必須是 true/false、yes/no、1/0 之一"
+msgid "Value must be one of true/false, yes/no, 1/0."
+msgstr ""
 
-msgid "Unable to parse JSON input"
-msgstr "無法叵析 JSON 輸入"
+msgid "Unable to parse JSON input."
+msgstr ""
 
 msgid "Possible value(s): %s"
 msgstr "可能的值：%s"
 
-msgid "value must be %s"
-msgstr "值必須是 %s"
+msgid "Value must be %s."
+msgstr ""
 
-msgid "value must be one of %s"
-msgstr "值必須是 %s 之一"
+msgid "Value must be one of %s."
+msgstr ""
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "日期與時間，格式為 YYYY-MM-DD HH:MM:SS 或是 ISO 8601 格式"
 
-msgid "'%s' is not a valid date"
-msgstr "「%s」不是個有效的日期"
+msgid "'%s' is not a valid date."
+msgstr ""
 
 msgid "Any combination (comma separated list) of '%s'"
 msgstr "任何（以逗號隔開的）「%s」的組合"
 
-msgid "value must be a combination of '%s'"
-msgstr "值必須是「%s」的組合"
+msgid "Value must be a combination of '%s'."
+msgstr ""
 
 msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr "警告：選項 %{option} 已淘汰。%{message}"
@@ -365,14 +359,17 @@ msgstr ""
 msgid "%{flag} is deprecated: %{deprecated_msg}"
 msgstr ""
 
-msgid "Can be specified multiple times. "
-msgstr "可指定多次。"
+msgid "Can be specified multiple times."
+msgstr ""
 
-msgid "Default: "
-msgstr "預設值："
+msgid ", or"
+msgstr ""
 
-msgid ", or "
-msgstr "，或是"
+msgid "Default:"
+msgstr ""
+
+msgid "Environment variable HAMMER_NIL can not be empty."
+msgstr ""
 
 msgid "Message"
 msgstr "訊息"
@@ -383,7 +380,7 @@ msgstr "ID"
 msgid "Name"
 msgstr "名稱"
 
-msgid "Page %{page} of %{total} (use --page and --per-page for navigation)"
+msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr ""
 
 msgid "no"
@@ -392,13 +389,7 @@ msgstr "否"
 msgid "yes"
 msgstr "是"
 
-msgid ""
-"Warning: location hammer.modules.d is deprecated, move your module "
-"configurations to cli.modules.d"
-msgstr ""
-"警告：hammer.modules.d 這個位置已淘汰使用，請將您的模組配置移至 cli.modules.d"
-
-msgid "Warning: Couldn't load configuration file %{path}: %{message}"
+msgid "Warning: Couldn't load configuration file %{path}: %{message}."
 msgstr ""
 
 msgid "Print help for commands"
@@ -407,59 +398,58 @@ msgstr "印出指令的說明"
 msgid "Exit interactive shell"
 msgstr "退出互動式 shell"
 
-msgid "Welcome to the hammer interactive shell"
-msgstr "歡迎使用 hammer 互動式 shell"
+msgid "Welcome to the hammer interactive shell."
+msgstr ""
 
-msgid "Type 'help' for usage information"
-msgstr "請輸入「help」以查看使用說明"
+msgid "Type 'help' for usage information."
+msgstr ""
 
 msgid "Interactive shell"
 msgstr "互動式 shell"
 
-msgid "SSL client certificate is set but the key is not"
+msgid "SSL client certificate is set but the key is not."
 msgstr ""
 
-msgid "SSL client key is set but the certificate is not"
+msgid "SSL client key is set but the certificate is not."
 msgstr ""
 
-msgid "SSL client authentication disabled"
+msgid "SSL client authentication disabled."
 msgstr ""
 
-msgid "Could't read SSL client certificate %s"
+msgid "Could't read SSL client certificate %s."
 msgstr ""
 
-msgid "Could't read SSL client key %s"
+msgid "Could't read SSL client key %s."
 msgstr ""
 
 msgid ""
-"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
-"(%<new_class>s)"
-msgstr ""
-"無法將次指令 %<name>s (%<existing_class>s) 替換為 %<name>s (%<new_class>s)"
-
-msgid "Unknown option name '%s'"
-msgstr "不明選項名稱「%s」"
-
-msgid "You can't set all options %s at one time"
-msgstr "您不可一次將所有選項設為 %s"
-
-msgid "Options %s are required"
-msgstr "%s 選項乃必要的"
-
-msgid "You can't set option %s"
+"Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
+"(%<new_class>s)."
 msgstr ""
 
-msgid "Option %s is required"
-msgstr "選項 %s 是必需的"
-
-msgid "You can't set any of options %s"
-msgstr "您不可將任何選項設為 %s"
-
-msgid "At least one of options %s is required"
-msgstr "需要至少一項 %s 選項"
-
-msgid "One of options %s is required"
+msgid "Unknown option name '%s'."
 msgstr ""
 
-msgid "Only one of options %s can be set"
+msgid "You can't set all options %s at one time."
+msgstr ""
+
+msgid "Options %s are required."
+msgstr ""
+
+msgid "You can't set option %s."
+msgstr ""
+
+msgid "Option %s is required."
+msgstr ""
+
+msgid "You can't set any of options %s."
+msgstr ""
+
+msgid "At least one of options %s is required."
+msgstr ""
+
+msgid "One of options %s is required."
+msgstr ""
+
+msgid "Only one of options %s can be set."
 msgstr ""

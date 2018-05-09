@@ -6,10 +6,10 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.12.0\n"
+"Project-Id-Version: hammer-cli 0.14.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-01 10:47+0200\n"
-"PO-Revision-Date: 2018-01-04 17:05+0000\n"
+"POT-Creation-Date: 2018-02-19 01:11+0100\n"
+"PO-Revision-Date: 2018-03-27 18:06+0000\n"
 "Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/foreman/foreman/"
 "language/zh_CN/)\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "\"Unable to find hostname in #{service_uri}\""
-msgstr "“无法在 #{service_uri} 中找到主机名”"
+msgid "Unable to find hostname in %s."
+msgstr "无法在 %s 中找到主机名。"
 
-msgid "CA certificate for %{uri} was stored to %{file}"
-msgstr "%{uri} 的 CA 证书已被存储至 %{file}"
+msgid "CA certificate for %{uri} was stored to %{file}."
+msgstr "%{uri} 的 CA 证书已被存储至 %{file}。"
 
 msgid ""
 "Now hammer can use the downloaded certificate to verify SSL connection to "
@@ -61,10 +61,8 @@ msgstr "确保您的服务器发送了包括 CA 在内的证书链。"
 msgid "To see the actual chain you can use openssl command"
 msgstr "要查看实际的证书链，您可以使用 openssl 命令"
 
-msgid ""
-"\"You can also download the certificate manually and store it as "
-"#{cert_file}\""
-msgstr "“您也可以手动下载证书，并将其存储为 #{cert_file}”"
+msgid "You can also download the certificate manually and store it as %s."
+msgstr "您也可以手动下载证书，并将其存储为 %s。"
 
 msgid ""
 "If you choose any other location set the ssl_ca_path or ssl_ca_file "
@@ -75,38 +73,38 @@ msgstr ""
 msgid "Fetching the CA certificate failed:"
 msgstr "获取 CA 证书失败："
 
-msgid "The service at the given URI does not accept SSL connections"
-msgstr "给定 URI 上的服务不接受 SSL 连接"
+msgid "The service at the given URI does not accept SSL connections."
+msgstr "给定 URI 上的服务不接受 SSL 连接。"
 
 msgid "Perhaps you meant to connect to '%s'?"
 msgstr "可能您想要连接至 '%s'？"
 
-msgid "too many arguments"
-msgstr "参数太多"
+msgid "Too many arguments."
+msgstr "参数太多。"
 
-msgid "option '%<option>s' is required"
-msgstr "需要选项 '%<option>s'"
+msgid "Option '%s' is required."
+msgstr "选项 '%s' 是必需的。"
 
-msgid "option '%<option>s' (or env %<env>s) is required"
-msgstr "需要选项 '%<option>s'（或者 env %<env>s）"
+msgid "Option '%{opt}' (or env %{env}) is required."
+msgstr "选项 '%{opt}'（或 env %{env}）是必需的。"
 
-msgid "option '%<switch>s': %<message>s"
-msgstr "选项 '%<switch>s': %<message>s"
+msgid "Option '%{swt}': %{msg}."
+msgstr "选项 '%{swt}'：%{msg}。"
 
-msgid "parameter '%<param>s': %<message>s"
-msgstr "参数 '%<param>s': %<message>s"
+msgid "Parameter '%{pmt}': %{msg}."
+msgstr "参数 '%{pmt}'：%{msg}。"
 
-msgid "%<env>s: %<message>s"
-msgstr "%<env>s: %<message>s"
+msgid "%{env}: %{msg}."
+msgstr "%{env}：%{msg}。"
 
-msgid "Unrecognised option '%<switch>s'"
-msgstr "无法识别的选项 '%<switch>s'"
+msgid "Unrecognised option '%s'."
+msgstr "无法识别的选项 '%s'。"
 
-msgid "No such sub-command '%<name>s'"
-msgstr "没有子命令 '%<name>s'"
+msgid "No such sub-command '%s'."
+msgstr "没有此类子命令 '%s'。"
 
-msgid "no value provided"
-msgstr "未提供数值"
+msgid "No value provided."
+msgstr "未提供值。"
 
 msgid "Illegal quoting in %{buffer}"
 msgstr "%{buffer} 中的非法引用"
@@ -148,7 +146,7 @@ msgstr "默认选项名称"
 msgid "Add a default parameter to config"
 msgstr "在配置中添加默认参数"
 
-msgid "The name of the default option (e.g. organization_id)."
+msgid "The name of the default option (e.g. organization_id)"
 msgstr "默认选项名称（例如：organization_id）"
 
 msgid "The value for the default option"
@@ -156,10 +154,9 @@ msgstr "默认选项值"
 
 msgid ""
 "The name of the provider providing the value. For list available providers "
-"see `hammer defaults providers`."
+"see `hammer defaults providers`"
 msgstr ""
-"提供该值的提供者名称。有关可用提供者列表，请参看 `hammer defaults "
-"providers`。"
+"提供该值的提供者名称。有关可用提供者列表，请查看 `hammer defaults providers`"
 
 msgid ""
 "Added %{key_val} default-option with value that will be generated from the "
@@ -197,8 +194,8 @@ msgstr "错误：%s"
 msgid "Error: %{message}"
 msgstr "错误：%{message}"
 
-msgid "See: '%{path} --help'"
-msgstr "请查看： '%{path} --help'"
+msgid "See: '%{path} --help'."
+msgstr "请查看： '%{path} --help'。"
 
 msgid "SSL error"
 msgstr "SSL 错误"
@@ -229,31 +226,31 @@ msgstr "Hammer CLI 帮助"
 msgid "Print help for all hammer commands"
 msgstr "打印针对所有 hammer 命令的帮助信息"
 
-msgid "No permissions to create log dir %s"
-msgstr "没有创建日志目录 %s 的权限"
+msgid "No permissions to create log dir %s."
+msgstr "没有创建日志目录 %s 的权限。"
 
 msgid "File %s not writeable, won't log anything to the file!"
 msgstr "无法写入文件 %s，因此无法记录文件的任何变化！"
 
-msgid "be verbose"
-msgstr "更详细"
+msgid "Be verbose"
+msgstr "详细输出"
 
-msgid "show debugging output "
-msgstr "显示调试输出结果"
+msgid "Show debugging output"
+msgstr "显示调试输出"
 
-msgid "force reload of Apipie cache"
+msgid "Force reload of Apipie cache"
 msgstr "强制重新载入 Apipie 缓存"
 
-msgid "path to custom config file"
+msgid "Path to custom config file"
 msgstr "到自定义配置文件的路径"
 
-msgid "username to access the remote system"
+msgid "Username to access the remote system"
 msgstr "访问远程系统的用户名"
 
-msgid "password to access the remote system"
+msgid "Password to access the remote system"
 msgstr "访问远程系统的密码"
 
-msgid "remote system address"
+msgid "Remote system address"
 msgstr "远程系统地址"
 
 msgid "Configure SSL verification of remote system"
@@ -278,7 +275,7 @@ msgstr "除了客户端证书验证外，还使用标准验证"
 msgid "Fetch CA certificate from server and exit"
 msgstr "从服务器获取 CA 证书，然后退出"
 
-msgid "show version"
+msgid "Show version"
 msgstr "显示版本"
 
 msgid "unknown version"
@@ -289,6 +286,9 @@ msgstr "显示关联资源的 id"
 
 msgid "Explicitly turn interactive mode on/off"
 msgstr "明确打开/关闭互动模式"
+
+msgid "Hide headers from output"
+msgstr "从输出中隐藏标题"
 
 msgid "Output as CSV (same as --output=csv)"
 msgstr "作为 CSV 输出（与 --output=csv 相同） "
@@ -302,61 +302,56 @@ msgstr "用来分开数值的字符"
 msgid "Get list of possible endings"
 msgstr "获取可能结尾的列表"
 
-msgid ""
-"Legacy configuration of modules detected. Check section about configuration "
-"in user manual"
-msgstr "探测到遗留的模块配置。请在用户手册中查看有关配置一节。"
+msgid "Warning: An error occured while loading module %s."
+msgstr "警告：载入模块 %s 时出错。"
 
-msgid "Warning: An error occured while loading module %s"
-msgstr "警告：载入模块 %s 时出错"
+msgid "Error: Some of the required modules are disabled in configuration: %s."
+msgstr "错误：在配置中禁用了一些要求的模块：%s。"
 
-msgid "Error: Some of the required modules are disabled in configuration: %s "
-msgstr "错误：在配置中禁用了一些要求的模块：%s"
-
-msgid "Comma-separated list of key=value."
-msgstr "用逗号分开的 key=value 列表。"
+msgid "Comma-separated list of key=value"
+msgstr "用逗号分隔的 key=value 列表"
 
 msgid ""
-"value must be defined as a comma-separated list of key=value or valid JSON"
-msgstr "必须使用以逗号分开的 key=value 列表或有效的 JSON 来定义数值"
+"Value must be defined as a comma-separated list of key=value or valid JSON."
+msgstr "必须作为用逗号分隔的 key=value 列表或有效的 JSON 来定义值。"
 
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
 "escaped with backslash"
 msgstr "逗号分隔值列表。含有逗号的值应当用双引号括起或使用反斜杠转义"
 
-msgid "numeric value is required"
-msgstr "需要数字值"
+msgid "Numeric value is required."
+msgstr "需要提供数值。"
 
-msgid "One of true/false, yes/no, 1/0."
-msgstr "从 true/false、yes/no、1/0 中选择一组。"
+msgid "One of true/false, yes/no, 1/0"
+msgstr "true/false、yes/no、1/0 中的一个"
 
-msgid "value must be one of true/false, yes/no, 1/0"
-msgstr "数值必须是 true/false、yes/no、1/0 中的一个"
+msgid "Value must be one of true/false, yes/no, 1/0."
+msgstr "值必须是 true/false、yes/no、1/0 中的一个。"
 
-msgid "Unable to parse JSON input"
-msgstr "无法解析 JSON 输入"
+msgid "Unable to parse JSON input."
+msgstr "无法解析 JSON 输入。"
 
 msgid "Possible value(s): %s"
 msgstr "可能值为：%s"
 
-msgid "value must be %s"
-msgstr "值必须是 %s"
+msgid "Value must be %s."
+msgstr "值必须是 %s。"
 
-msgid "value must be one of %s"
-msgstr "数值必须是 %s 中的一个"
+msgid "Value must be one of %s."
+msgstr "值必须是 %s 中的一个。"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "日期和时间格式为 YYYY-MM-DD HH:MM:SS 或者 ISO 8601 格式"
 
-msgid "'%s' is not a valid date"
-msgstr "'%s' 不是有效日期"
+msgid "'%s' is not a valid date."
+msgstr "'%s' 不是有效日期。"
 
 msgid "Any combination (comma separated list) of '%s'"
 msgstr "'%s' 的任意组合（用逗号分开的列表）"
 
-msgid "value must be a combination of '%s'"
-msgstr "数值必须为 '%s' 之一"
+msgid "Value must be a combination of '%s'."
+msgstr "值必须是 '%s' 的组合。"
 
 msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr "警告：%{option} 选项已过时。%{message}"
@@ -367,14 +362,17 @@ msgstr "已弃用：%{deprecated_msg}"
 msgid "%{flag} is deprecated: %{deprecated_msg}"
 msgstr "%{flag} 已弃用：%{deprecated_msg}"
 
-msgid "Can be specified multiple times. "
+msgid "Can be specified multiple times."
 msgstr "无法多次指定。"
 
-msgid "Default: "
+msgid ", or"
+msgstr "，或者"
+
+msgid "Default:"
 msgstr "默认："
 
-msgid ", or "
-msgstr "，或者"
+msgid "Environment variable HAMMER_NIL can not be empty."
+msgstr "环境变量 HAMMER_NIL 不能为空。"
 
 msgid "Message"
 msgstr "信息"
@@ -385,8 +383,8 @@ msgstr "Id"
 msgid "Name"
 msgstr "名称"
 
-msgid "Page %{page} of %{total} (use --page and --per-page for navigation)"
-msgstr "第 %{page} 页，共 %{total} 页（使用 --page 和 --per-page 进行浏览）"
+msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
+msgstr "第 %{page} 页，共 %{total} 页（使用 --page 和 --per-page 进行导航）。"
 
 msgid "no"
 msgstr "否"
@@ -394,14 +392,8 @@ msgstr "否"
 msgid "yes"
 msgstr "是"
 
-msgid ""
-"Warning: location hammer.modules.d is deprecated, move your module "
-"configurations to cli.modules.d"
-msgstr ""
-"警告：位置 hammer.modules.d 已启用，请将您的模块配置移至 cli.modules.d。"
-
-msgid "Warning: Couldn't load configuration file %{path}: %{message}"
-msgstr "警告：无法加载配置文件 %{path}：%{message}"
+msgid "Warning: Couldn't load configuration file %{path}: %{message}."
+msgstr "警告：无法加载配置文件 %{path}：%{message}。"
 
 msgid "Print help for commands"
 msgstr "输出命令帮助信息"
@@ -409,59 +401,59 @@ msgstr "输出命令帮助信息"
 msgid "Exit interactive shell"
 msgstr "退出互动 shell"
 
-msgid "Welcome to the hammer interactive shell"
-msgstr "欢迎使用 hammer 互动 shell"
+msgid "Welcome to the hammer interactive shell."
+msgstr "欢迎使用 hammer 互动 shell。"
 
-msgid "Type 'help' for usage information"
-msgstr "输入 ‘help’ 获取用法信息"
+msgid "Type 'help' for usage information."
+msgstr "输入 ‘help’ 获取用法信息。"
 
 msgid "Interactive shell"
 msgstr "互动 shell"
 
-msgid "SSL client certificate is set but the key is not"
-msgstr "设置了 SSL 客户端证书，但未设置密钥"
+msgid "SSL client certificate is set but the key is not."
+msgstr "设置了 SSL 客户端证书，但未设置密钥。"
 
-msgid "SSL client key is set but the certificate is not"
-msgstr "设置了 SSL 客户端密钥，但未设置证书"
+msgid "SSL client key is set but the certificate is not."
+msgstr "设置了 SSL 客户端密钥，但未设置证书。"
 
-msgid "SSL client authentication disabled"
-msgstr "SSL 客户端验证已被禁用"
+msgid "SSL client authentication disabled."
+msgstr "SSL 客户端验证已被禁用。"
 
-msgid "Could't read SSL client certificate %s"
-msgstr "无法读取 SSL 客户端证书 %s"
+msgid "Could't read SSL client certificate %s."
+msgstr "无法读取 SSL 客户端证书 %s。"
 
-msgid "Could't read SSL client key %s"
-msgstr "无法读取 SSL 客户端密钥 %s"
+msgid "Could't read SSL client key %s."
+msgstr "无法读取 SSL 客户端密钥 %s。"
 
 msgid ""
-"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
-"(%<new_class>s)"
+"Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
+"(%<new_class>s)."
 msgstr ""
-"无法使用 %<name>s（%<new_class>s）替换子命令 %<name>s（%<existing_class>s）"
+"无法将子命令 %<name>s (%<existing_class>s) 替换为 %<name>s (%<new_class>s)。"
 
-msgid "Unknown option name '%s'"
-msgstr "未知选项名称 '%s'"
+msgid "Unknown option name '%s'."
+msgstr "未知选项名称 '%s'。"
 
-msgid "You can't set all options %s at one time"
-msgstr "无法一次设置所有选项 %s"
+msgid "You can't set all options %s at one time."
+msgstr "无法一次设置所有选项 %s。"
 
-msgid "Options %s are required"
-msgstr "需要选项 %s"
+msgid "Options %s are required."
+msgstr "选项 %s 是必需的。"
 
-msgid "You can't set option %s"
-msgstr "您无法设置 %s 选项"
+msgid "You can't set option %s."
+msgstr "您无法设置 %s 选项。"
 
-msgid "Option %s is required"
-msgstr "%s 是必要选项"
+msgid "Option %s is required."
+msgstr "选项 %s 是必需的。"
 
-msgid "You can't set any of options %s"
-msgstr "无法设置任意选项 %s"
+msgid "You can't set any of options %s."
+msgstr "您无法设置任意 %s 选项。"
 
-msgid "At least one of options %s is required"
-msgstr "至少需要选项 %s 中的一个"
+msgid "At least one of options %s is required."
+msgstr "%s 选项中的至少一个是必需的。"
 
-msgid "One of options %s is required"
-msgstr "%s 选项中的一个是必需的"
+msgid "One of options %s is required."
+msgstr "%s 选项中的一个是必需的。"
 
-msgid "Only one of options %s can be set"
-msgstr "仅可设置 %s 选项中的一个"
+msgid "Only one of options %s can be set."
+msgstr "仅可设置 %s 选项中的一个。"

@@ -12,11 +12,11 @@
 # Ulrich Habel <rhaen@pkgbox.de>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.12.0\n"
+"Project-Id-Version: hammer-cli 0.14.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-01 10:47+0200\n"
-"PO-Revision-Date: 2017-11-20 20:50+0000\n"
-"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
+"POT-Creation-Date: 2018-02-19 01:11+0100\n"
+"PO-Revision-Date: 2018-02-19 11:47+0000\n"
+"Last-Translator: Lukáš Zapletal\n"
 "Language-Team: German (http://www.transifex.com/foreman/foreman/language/"
 "de/)\n"
 "MIME-Version: 1.0\n"
@@ -25,10 +25,10 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "\"Unable to find hostname in #{service_uri}\""
+msgid "Unable to find hostname in %s."
 msgstr ""
 
-msgid "CA certificate for %{uri} was stored to %{file}"
+msgid "CA certificate for %{uri} was stored to %{file}."
 msgstr ""
 
 msgid ""
@@ -67,9 +67,7 @@ msgstr ""
 msgid "To see the actual chain you can use openssl command"
 msgstr ""
 
-msgid ""
-"\"You can also download the certificate manually and store it as "
-"#{cert_file}\""
+msgid "You can also download the certificate manually and store it as %s."
 msgstr ""
 
 msgid ""
@@ -80,38 +78,38 @@ msgstr ""
 msgid "Fetching the CA certificate failed:"
 msgstr ""
 
-msgid "The service at the given URI does not accept SSL connections"
+msgid "The service at the given URI does not accept SSL connections."
 msgstr ""
 
 msgid "Perhaps you meant to connect to '%s'?"
 msgstr ""
 
-msgid "too many arguments"
-msgstr "Zu viele Argumente"
+msgid "Too many arguments."
+msgstr ""
 
-msgid "option '%<option>s' is required"
-msgstr "Option '%<option>s' ist erforderlich"
+msgid "Option '%s' is required."
+msgstr ""
 
-msgid "option '%<option>s' (or env %<env>s) is required"
-msgstr "Option '%<option>s' (oder Umgebung %<env>s) ist erforderlich"
+msgid "Option '%{opt}' (or env %{env}) is required."
+msgstr ""
 
-msgid "option '%<switch>s': %<message>s"
-msgstr "Option '%<switch>s': %<message>en"
+msgid "Option '%{swt}': %{msg}."
+msgstr ""
 
-msgid "parameter '%<param>s': %<message>s"
-msgstr "Parameter '%<param>s': %<message>en"
+msgid "Parameter '%{pmt}': %{msg}."
+msgstr ""
 
-msgid "%<env>s: %<message>s"
-msgstr "%<env>s: %<message>en"
+msgid "%{env}: %{msg}."
+msgstr ""
 
-msgid "Unrecognised option '%<switch>s'"
-msgstr "Unbekannte Option '%<switch>s'"
+msgid "Unrecognised option '%s'."
+msgstr ""
 
-msgid "No such sub-command '%<name>s'"
-msgstr "Unterbefehl '%<name>s' existiert nicht"
+msgid "No such sub-command '%s'."
+msgstr ""
 
-msgid "no value provided"
-msgstr "kein Wert geliefert"
+msgid "No value provided."
+msgstr ""
 
 msgid "Illegal quoting in %{buffer}"
 msgstr ""
@@ -153,18 +151,16 @@ msgstr "Name der Standardoption"
 msgid "Add a default parameter to config"
 msgstr "Standardparameter zur Konfiguration hinzufügen"
 
-msgid "The name of the default option (e.g. organization_id)."
-msgstr "Name der Standardoption (z.B. organization_id)."
+msgid "The name of the default option (e.g. organization_id)"
+msgstr ""
 
 msgid "The value for the default option"
 msgstr "Der Wert für die Standardoption"
 
 msgid ""
 "The name of the provider providing the value. For list available providers "
-"see `hammer defaults providers`."
+"see `hammer defaults providers`"
 msgstr ""
-"Der Name des Anbieters, der den Wert bereitstellt. Eine Liste von "
-"verfügbaren Anbietern finden Sie unter `hammer defaults providers`."
 
 msgid ""
 "Added %{key_val} default-option with value that will be generated from the "
@@ -203,8 +199,8 @@ msgstr "Fehler: %s"
 msgid "Error: %{message}"
 msgstr "Fehler: %{message}"
 
-msgid "See: '%{path} --help'"
-msgstr "Siehe: '%{path} --help'"
+msgid "See: '%{path} --help'."
+msgstr ""
 
 msgid "SSL error"
 msgstr "SSL-Fehler"
@@ -237,34 +233,34 @@ msgstr ""
 msgid "Print help for all hammer commands"
 msgstr ""
 
-msgid "No permissions to create log dir %s"
-msgstr "Keine Berechtigung zum Anlegen von Protokollverzeichnis %s"
+msgid "No permissions to create log dir %s."
+msgstr ""
 
 msgid "File %s not writeable, won't log anything to the file!"
 msgstr ""
 "Datei %s ist schreibgeschützt, in diese Datei kann nicht protokolliert "
 "werden!"
 
-msgid "be verbose"
-msgstr "ausführliche Ausgabe"
+msgid "Be verbose"
+msgstr ""
 
-msgid "show debugging output "
-msgstr "Debugausgabe anzeigen"
+msgid "Show debugging output"
+msgstr ""
 
-msgid "force reload of Apipie cache"
-msgstr "Neuladen von Apipie-Cache erzwingen"
+msgid "Force reload of Apipie cache"
+msgstr ""
 
-msgid "path to custom config file"
-msgstr "Pfad zur angepassten Konfigurationsdatei"
+msgid "Path to custom config file"
+msgstr ""
 
-msgid "username to access the remote system"
-msgstr "Benutzername zum Zugriff auf das entfernte System"
+msgid "Username to access the remote system"
+msgstr ""
 
-msgid "password to access the remote system"
-msgstr "Passwort zum Zugriff auf das entfernte System"
+msgid "Password to access the remote system"
+msgstr ""
 
-msgid "remote system address"
-msgstr "Adresse des entfernten Systems"
+msgid "Remote system address"
+msgstr ""
 
 msgid "Configure SSL verification of remote system"
 msgstr ""
@@ -288,8 +284,8 @@ msgstr ""
 msgid "Fetch CA certificate from server and exit"
 msgstr ""
 
-msgid "show version"
-msgstr "Version anzeigen"
+msgid "Show version"
+msgstr ""
 
 msgid "unknown version"
 msgstr "unbekannte Version"
@@ -299,6 +295,9 @@ msgstr "IDs zugehöriger Ressourcen anzeigen"
 
 msgid "Explicitly turn interactive mode on/off"
 msgstr "Interaktiven Modus explizit aktivieren/deaktivieren"
+
+msgid "Hide headers from output"
+msgstr ""
 
 msgid "Output as CSV (same as --output=csv)"
 msgstr "Ausgabe als CSV (entspricht --output=csv)"
@@ -312,66 +311,56 @@ msgstr "Trennzeichen"
 msgid "Get list of possible endings"
 msgstr "Liste möglicher Endungen abrufen"
 
-msgid ""
-"Legacy configuration of modules detected. Check section about configuration "
-"in user manual"
+msgid "Warning: An error occured while loading module %s."
 msgstr ""
-"Veraltete Konfiguration von Modulen entdeckt. Prüfen Sie den Abschnitt zum "
-"Thema Konfiguration im Benutzerhandbuch"
 
-msgid "Warning: An error occured while loading module %s"
-msgstr "Warnung: Beim Laden von Modul %s ist ein Fehler aufgetreten"
-
-msgid "Error: Some of the required modules are disabled in configuration: %s "
+msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr ""
-"Fehler: Einige der erforderlichen Module sind in der Konfiguration "
-"deaktiviert: %s "
 
-msgid "Comma-separated list of key=value."
-msgstr "Kommagetrennte Liste mit Schlüssel-Wert-Paaren."
+msgid "Comma-separated list of key=value"
+msgstr ""
 
 msgid ""
-"value must be defined as a comma-separated list of key=value or valid JSON"
+"Value must be defined as a comma-separated list of key=value or valid JSON."
 msgstr ""
-"Wert muss als kommagetrennte Liste mit Schlüssel=Wert oder gültigem JSON sein"
 
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
 "escaped with backslash"
 msgstr ""
 
-msgid "numeric value is required"
-msgstr "numerischer Wert ist erforderlich"
+msgid "Numeric value is required."
+msgstr ""
 
-msgid "One of true/false, yes/no, 1/0."
-msgstr "Optionen sind true/false, yes/no, 1/0."
+msgid "One of true/false, yes/no, 1/0"
+msgstr ""
 
-msgid "value must be one of true/false, yes/no, 1/0"
-msgstr "Gültige Werte sind true/false, yes/no, 1/0"
+msgid "Value must be one of true/false, yes/no, 1/0."
+msgstr ""
 
-msgid "Unable to parse JSON input"
-msgstr "JSON-Eingabe nicht analysierbar"
+msgid "Unable to parse JSON input."
+msgstr ""
 
 msgid "Possible value(s): %s"
 msgstr "Mögliche(r) Wert(e): %s"
 
-msgid "value must be %s"
-msgstr "Wert muss '%s' sein"
+msgid "Value must be %s."
+msgstr ""
 
-msgid "value must be one of %s"
-msgstr "Wert muss einer von '%s' sein"
+msgid "Value must be one of %s."
+msgstr ""
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "Datum und Uhrzeit im Format JJJJ-MM-TT HH:MM:SS oder ISO-8601-Format"
 
-msgid "'%s' is not a valid date"
-msgstr "'%s' ist kein gültiges Datum."
+msgid "'%s' is not a valid date."
+msgstr ""
 
 msgid "Any combination (comma separated list) of '%s'"
 msgstr "Eine Kombination (kommagetrennte Liste) aus '%s'"
 
-msgid "value must be a combination of '%s'"
-msgstr "Wert muss eine Kombination aus \"%s\" sein"
+msgid "Value must be a combination of '%s'."
+msgstr ""
 
 msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr "Warnung: Option %{option} ist veraltet. %{message}"
@@ -382,14 +371,17 @@ msgstr "Veraltet: %{deprecated_msg}"
 msgid "%{flag} is deprecated: %{deprecated_msg}"
 msgstr "%{flag} ist veraltet: %{deprecated_msg}"
 
-msgid "Can be specified multiple times. "
-msgstr "Kann mehrfach angegeben werden."
+msgid "Can be specified multiple times."
+msgstr ""
 
-msgid "Default: "
-msgstr "Standard: "
+msgid ", or"
+msgstr ""
 
-msgid ", or "
-msgstr " oder "
+msgid "Default:"
+msgstr ""
+
+msgid "Environment variable HAMMER_NIL can not be empty."
+msgstr ""
 
 msgid "Message"
 msgstr "Nachricht"
@@ -400,7 +392,7 @@ msgstr "ID"
 msgid "Name"
 msgstr "Name"
 
-msgid "Page %{page} of %{total} (use --page and --per-page for navigation)"
+msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr ""
 
 msgid "no"
@@ -409,14 +401,7 @@ msgstr "nein"
 msgid "yes"
 msgstr "ja"
 
-msgid ""
-"Warning: location hammer.modules.d is deprecated, move your module "
-"configurations to cli.modules.d"
-msgstr ""
-"Warnung: Speicherort hammer.modules.d ist veraltet, verlegen Sie Ihre "
-"Modulkonfigurationen nach cli.modules.d"
-
-msgid "Warning: Couldn't load configuration file %{path}: %{message}"
+msgid "Warning: Couldn't load configuration file %{path}: %{message}."
 msgstr ""
 
 msgid "Print help for commands"
@@ -425,60 +410,58 @@ msgstr "Hilfe für Befehle anzeigen"
 msgid "Exit interactive shell"
 msgstr "Interaktive Shell verlassen"
 
-msgid "Welcome to the hammer interactive shell"
-msgstr "Willkommen zur interaktiven Hammer-Shell"
+msgid "Welcome to the hammer interactive shell."
+msgstr ""
 
-msgid "Type 'help' for usage information"
-msgstr "Geben Sie 'help' ein, um Informationen zur Verwendung zu erhalten"
+msgid "Type 'help' for usage information."
+msgstr ""
 
 msgid "Interactive shell"
 msgstr "Interaktive Shell"
 
-msgid "SSL client certificate is set but the key is not"
+msgid "SSL client certificate is set but the key is not."
 msgstr ""
 
-msgid "SSL client key is set but the certificate is not"
+msgid "SSL client key is set but the certificate is not."
 msgstr ""
 
-msgid "SSL client authentication disabled"
+msgid "SSL client authentication disabled."
 msgstr ""
 
-msgid "Could't read SSL client certificate %s"
+msgid "Could't read SSL client certificate %s."
 msgstr ""
 
-msgid "Could't read SSL client key %s"
+msgid "Could't read SSL client key %s."
 msgstr ""
 
 msgid ""
-"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
-"(%<new_class>s)"
+"Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
+"(%<new_class>s)."
 msgstr ""
-"Unterbefehl %<name>s (%<existing_class>s) kann nicht durch %<name>s "
-"(%<new_class>s) ersetzt werden"
 
-msgid "Unknown option name '%s'"
-msgstr "Unbekannter Optionsname '%s'"
+msgid "Unknown option name '%s'."
+msgstr ""
 
-msgid "You can't set all options %s at one time"
-msgstr "Nicht alle Optionen %s sind gleichzeitig verwendbar"
+msgid "You can't set all options %s at one time."
+msgstr ""
 
-msgid "Options %s are required"
-msgstr "Optionen %s sind erforderlich"
+msgid "Options %s are required."
+msgstr ""
 
-msgid "You can't set option %s"
-msgstr "Sie können die Option %s nicht festlegen"
+msgid "You can't set option %s."
+msgstr ""
 
-msgid "Option %s is required"
-msgstr "Option %s ist erforderlich"
+msgid "Option %s is required."
+msgstr ""
 
-msgid "You can't set any of options %s"
-msgstr "Sie können keine der Optionen %s festlegen"
+msgid "You can't set any of options %s."
+msgstr ""
 
-msgid "At least one of options %s is required"
-msgstr "Mindestens eine der Optionen %s ist erforderlich"
+msgid "At least one of options %s is required."
+msgstr ""
 
-msgid "One of options %s is required"
-msgstr "Eine der Optionen %s ist erforderlich"
+msgid "One of options %s is required."
+msgstr ""
 
-msgid "Only one of options %s can be set"
-msgstr "Nur eine der Optionen %s kann festgelegt sein"
+msgid "Only one of options %s can be set."
+msgstr ""

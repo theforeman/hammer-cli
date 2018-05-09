@@ -6,10 +6,10 @@
 # Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.12.0\n"
+"Project-Id-Version: hammer-cli 0.14.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-01 10:47+0200\n"
-"PO-Revision-Date: 2017-11-20 20:51+0000\n"
+"POT-Creation-Date: 2018-02-19 01:11+0100\n"
+"PO-Revision-Date: 2018-03-27 18:03+0000\n"
 "Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/"
 "ja/)\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "\"Unable to find hostname in #{service_uri}\""
-msgstr "\"#{service_uri} にホスト名が見つかりません\""
+msgid "Unable to find hostname in %s."
+msgstr "%s でホスト名が見つかりません。"
 
-msgid "CA certificate for %{uri} was stored to %{file}"
-msgstr "%{uri} の CA 証明書が %{file} に保存されています"
+msgid "CA certificate for %{uri} was stored to %{file}."
+msgstr "%{uri} の CA 証明書が %{file} に保存されています。"
 
 msgid ""
 "Now hammer can use the downloaded certificate to verify SSL connection to "
@@ -71,12 +71,8 @@ msgstr "サーバーが CA を含む証明書チェーンを送信すること�
 msgid "To see the actual chain you can use openssl command"
 msgstr "実際のチェーンを確認するには、openssl コマンドを使用できます"
 
-msgid ""
-"\"You can also download the certificate manually and store it as "
-"#{cert_file}\""
-msgstr ""
-"\"証明書を手動でダウンロードし、これを #{cert_file} として保存することもでき"
-"ます\""
+msgid "You can also download the certificate manually and store it as %s."
+msgstr "証明書を手動でダウンロードし、これを %s として保存することもできます。"
 
 msgid ""
 "If you choose any other location set the ssl_ca_path or ssl_ca_file "
@@ -88,38 +84,38 @@ msgstr ""
 msgid "Fetching the CA certificate failed:"
 msgstr "CA 証明書の取得に失敗しました:"
 
-msgid "The service at the given URI does not accept SSL connections"
-msgstr "指定された URI のサービスは SSL 接続を受け入れません"
+msgid "The service at the given URI does not accept SSL connections."
+msgstr "指定された URI のサービスは SSL 接続を受け入れません。"
 
 msgid "Perhaps you meant to connect to '%s'?"
 msgstr "'%s' に接続しますか?"
 
-msgid "too many arguments"
-msgstr "引数が多すぎます"
+msgid "Too many arguments."
+msgstr "引数が多すぎます。"
 
-msgid "option '%<option>s' is required"
-msgstr "オプション '%<option>s' は必須です"
+msgid "Option '%s' is required."
+msgstr "オプション '%s' が必要です。"
 
-msgid "option '%<option>s' (or env %<env>s) is required"
-msgstr "オプション '%<option>s' (または env %<env>s) は必須です"
+msgid "Option '%{opt}' (or env %{env}) is required."
+msgstr "オプション '%{opt}' (または env %{env}) が必要です。"
 
-msgid "option '%<switch>s': %<message>s"
-msgstr "オプション '%<switch>s': %<message>s"
+msgid "Option '%{swt}': %{msg}."
+msgstr "オプション '%{swt}': %{msg}。"
 
-msgid "parameter '%<param>s': %<message>s"
-msgstr "パラメーター '%<param>s': %<message>s"
+msgid "Parameter '%{pmt}': %{msg}."
+msgstr "パラメーター '%{pmt}': %{msg}。"
 
-msgid "%<env>s: %<message>s"
-msgstr "%<env>s: %<message>s"
+msgid "%{env}: %{msg}."
+msgstr "%{env}: %{msg}。"
 
-msgid "Unrecognised option '%<switch>s'"
-msgstr "認識されないオプション '%<switch>s'"
+msgid "Unrecognised option '%s'."
+msgstr "認識されないオプション '%s'。"
 
-msgid "No such sub-command '%<name>s'"
-msgstr "次のようなコマンドはありません: '%<name>s'"
+msgid "No such sub-command '%s'."
+msgstr "次のようなサブコマンドはありません '%s'。"
 
-msgid "no value provided"
-msgstr "値が指定されていません"
+msgid "No value provided."
+msgstr "値が提供されていません。"
 
 msgid "Illegal quoting in %{buffer}"
 msgstr "%{buffer} での不正な引用"
@@ -163,18 +159,18 @@ msgstr "デフォルトオプションの名前"
 msgid "Add a default parameter to config"
 msgstr "デフォルトパラメーターを設定に追加"
 
-msgid "The name of the default option (e.g. organization_id)."
-msgstr "デフォルトオプションの名前 (たとえば、organization_id)。"
+msgid "The name of the default option (e.g. organization_id)"
+msgstr "デフォルトオプションの名前 (たとえば、organization_id)"
 
 msgid "The value for the default option"
 msgstr "デフォルトオプションの値"
 
 msgid ""
 "The name of the provider providing the value. For list available providers "
-"see `hammer defaults providers`."
+"see `hammer defaults providers`"
 msgstr ""
 "値を提供するプロバイダーの名前。利用可能なプロバイダーの一覧については、"
-"`hammer defaults providers` を参照してください。"
+"`hammer defaults providers` を参照してください"
 
 msgid ""
 "Added %{key_val} default-option with value that will be generated from the "
@@ -216,8 +212,8 @@ msgstr "エラー: %s"
 msgid "Error: %{message}"
 msgstr "エラー: %{message}"
 
-msgid "See: '%{path} --help'"
-msgstr "参照: '%{path} --help'"
+msgid "See: '%{path} --help'."
+msgstr "参照: '%{path} --help'。"
 
 msgid "SSL error"
 msgstr "SSL エラー"
@@ -250,33 +246,33 @@ msgstr "Hammer CLI ヘルプ"
 msgid "Print help for all hammer commands"
 msgstr "すべての hammer コマンドのヘルプの出力"
 
-msgid "No permissions to create log dir %s"
-msgstr "ログディレクトリー %s を作成するパーミッションがありません"
+msgid "No permissions to create log dir %s."
+msgstr "ログディレクトリー %s を作成するパーミッションがありません。"
 
 msgid "File %s not writeable, won't log anything to the file!"
 msgstr ""
 "ファイル %s は書き込み可能ではないため、このファイルにログの記録は行なわれま"
 "せん!"
 
-msgid "be verbose"
-msgstr "詳細"
+msgid "Be verbose"
+msgstr "冗長な出力"
 
-msgid "show debugging output "
+msgid "Show debugging output"
 msgstr "デバッグ出力の表示"
 
-msgid "force reload of Apipie cache"
-msgstr "Apipie キャッシュの再ロードを強制"
+msgid "Force reload of Apipie cache"
+msgstr "Apipie キャッシュのリロードを強制"
 
-msgid "path to custom config file"
+msgid "Path to custom config file"
 msgstr "カスタム設定ファイルのパス"
 
-msgid "username to access the remote system"
+msgid "Username to access the remote system"
 msgstr "リモートシステムにアクセスするためのユーザー名"
 
-msgid "password to access the remote system"
+msgid "Password to access the remote system"
 msgstr "リモートシステムにアクセスするためのパスワード"
 
-msgid "remote system address"
+msgid "Remote system address"
 msgstr "リモートシステムのアドレス"
 
 msgid "Configure SSL verification of remote system"
@@ -301,7 +297,7 @@ msgstr "クライアント証明書の認証のほかに標準の認証を使用
 msgid "Fetch CA certificate from server and exit"
 msgstr "サーバーからの CA 証明書の取得および終了"
 
-msgid "show version"
+msgid "Show version"
 msgstr "バージョンの表示"
 
 msgid "unknown version"
@@ -312,6 +308,9 @@ msgstr "関連リソースの ID を表示"
 
 msgid "Explicitly turn interactive mode on/off"
 msgstr "インタラクティブモードを明示的にオン/オフにする"
+
+msgid "Hide headers from output"
+msgstr "出力からヘッダーを非表示"
 
 msgid "Output as CSV (same as --output=csv)"
 msgstr "CSV として出力 (--output=csv と同じ)"
@@ -325,24 +324,17 @@ msgstr "値を区切るための文字"
 msgid "Get list of possible endings"
 msgstr "使用できる終了部分の一覧を取得"
 
-msgid ""
-"Legacy configuration of modules detected. Check section about configuration "
-"in user manual"
-msgstr ""
-"モジュールのレガシー設定が検出されました。ユーザーマニュアルの設定についての"
-"セクションを確認してください"
+msgid "Warning: An error occured while loading module %s."
+msgstr "警告: モジュール %s のロード中にエラーが発生しました。"
 
-msgid "Warning: An error occured while loading module %s"
-msgstr "警告: モジュール %s のロード中にエラーが発生しました"
+msgid "Error: Some of the required modules are disabled in configuration: %s."
+msgstr "エラー: 必要なモジュールの一部は設定で無効にされています: %s 。"
 
-msgid "Error: Some of the required modules are disabled in configuration: %s "
-msgstr "エラー: 必要なモジュールの一部は設定で無効にされています: %s "
-
-msgid "Comma-separated list of key=value."
-msgstr "key=value のコンマ区切りの一覧です。"
+msgid "Comma-separated list of key=value"
+msgstr "key=value のコンマ区切り一覧"
 
 msgid ""
-"value must be defined as a comma-separated list of key=value or valid JSON"
+"Value must be defined as a comma-separated list of key=value or valid JSON."
 msgstr ""
 "値は key=value または有効な JSON のコンマ区切りの一覧として定義する必要があり"
 "ます。"
@@ -354,38 +346,38 @@ msgstr ""
 "値のコンマ区切りの一覧。コンマを含む値は引用符で囲むか、またはバックスラッ"
 "シュでエスケープする必要があります"
 
-msgid "numeric value is required"
-msgstr "数値が必要"
+msgid "Numeric value is required."
+msgstr "数値が必要。"
 
-msgid "One of true/false, yes/no, 1/0."
-msgstr "true/false、yes/no、1/0 のいずれかです。"
+msgid "One of true/false, yes/no, 1/0"
+msgstr "true/false、yes/no、1/0 のいずれか"
 
-msgid "value must be one of true/false, yes/no, 1/0"
-msgstr "値を true/false、yes/no、1/0 のいずれかにする必要があります"
+msgid "Value must be one of true/false, yes/no, 1/0."
+msgstr "値を true/false、yes/no、1/0 のいずれかにする必要があります。"
 
-msgid "Unable to parse JSON input"
-msgstr "JSON 入力を解析できません"
+msgid "Unable to parse JSON input."
+msgstr "JSON 入力を解析できません。"
 
 msgid "Possible value(s): %s"
 msgstr "可能な値: %s"
 
-msgid "value must be %s"
-msgstr "値を '%s' にする必要があります"
+msgid "Value must be %s."
+msgstr "値を '%s' にする必要があります。"
 
-msgid "value must be one of %s"
-msgstr "値を '%s' のいずれかにする必要があります"
+msgid "Value must be one of %s."
+msgstr "値を '%s' のいずれかにする必要があります。"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "日時 (YYYY-MM-DD HH:MM:SS または ISO 8601 形式)"
 
-msgid "'%s' is not a valid date"
-msgstr "'%s' は有効な日付ではありません"
+msgid "'%s' is not a valid date."
+msgstr "'%s' は有効な日付ではありません。"
 
 msgid "Any combination (comma separated list) of '%s'"
 msgstr "'%s' の任意の組み合わせ (コンマ区切りの一覧)"
 
-msgid "value must be a combination of '%s'"
-msgstr "値を '%s' の組み合わせにする必要があります"
+msgid "Value must be a combination of '%s'."
+msgstr "値を '%s' の組み合わせにする必要があります。"
 
 msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr "警告: オプション %{option} は非推奨です。%{message}"
@@ -396,14 +388,17 @@ msgstr "非推奨: %{deprecated_msg}"
 msgid "%{flag} is deprecated: %{deprecated_msg}"
 msgstr "%{flag} は非推奨になりました: %{deprecated_msg}"
 
-msgid "Can be specified multiple times. "
-msgstr "複数回指定することはできません。"
+msgid "Can be specified multiple times."
+msgstr "複数回指定することができます。"
 
-msgid "Default: "
-msgstr "デフォルト: "
-
-msgid ", or "
+msgid ", or"
 msgstr "または"
+
+msgid "Default:"
+msgstr "デフォルト:"
+
+msgid "Environment variable HAMMER_NIL can not be empty."
+msgstr "環境変数 HAMMER_NIL は空欄にできません。"
 
 msgid "Message"
 msgstr "メッセージ"
@@ -414,9 +409,9 @@ msgstr "ID"
 msgid "Name"
 msgstr "名前"
 
-msgid "Page %{page} of %{total} (use --page and --per-page for navigation)"
+msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr ""
-"ページ %{page}/%{total} (ナビゲーションには --page と --per-page を使用)"
+"ページ %{page}/%{total} (ナビゲーションには --page と --per-page を使用)。"
 
 msgid "no"
 msgstr "no"
@@ -424,15 +419,8 @@ msgstr "no"
 msgid "yes"
 msgstr "yes"
 
-msgid ""
-"Warning: location hammer.modules.d is deprecated, move your module "
-"configurations to cli.modules.d"
-msgstr ""
-"警告: hammer.modules.d の場所は廃止されます。モジュール設定を cli.modules.d "
-"に移行してください"
-
-msgid "Warning: Couldn't load configuration file %{path}: %{message}"
-msgstr "警告: 設定ファイル %{path} をロードできませんでした: %{message}"
+msgid "Warning: Couldn't load configuration file %{path}: %{message}."
+msgstr "警告: 設定ファイル %{path} をロードできませんでした: %{message}。"
 
 msgid "Print help for commands"
 msgstr "コマンドについての help を出力"
@@ -440,60 +428,60 @@ msgstr "コマンドについての help を出力"
 msgid "Exit interactive shell"
 msgstr "インタラクティブシェルの終了"
 
-msgid "Welcome to the hammer interactive shell"
-msgstr "hammer インタラクティブシェルへようこそ"
+msgid "Welcome to the hammer interactive shell."
+msgstr "hammer インタラクティブシェルへようこそ。"
 
-msgid "Type 'help' for usage information"
-msgstr "使用法の詳細を参照するには、'help' を入力してください"
+msgid "Type 'help' for usage information."
+msgstr "使用法の詳細を参照するには、'help' を入力してください。"
 
 msgid "Interactive shell"
 msgstr "インタラクティブシェル"
 
-msgid "SSL client certificate is set but the key is not"
-msgstr "SSL クライアント証明書は設定されていますが、鍵は設定されていません"
+msgid "SSL client certificate is set but the key is not."
+msgstr "SSL クライアント証明書は設定されていますが、鍵は設定されていません。"
 
-msgid "SSL client key is set but the certificate is not"
-msgstr "SSL クライアント鍵は設定されていますが、証明書は設定されていません"
+msgid "SSL client key is set but the certificate is not."
+msgstr "SSL クライアント鍵は設定されていますが、証明書は設定されていません。"
 
-msgid "SSL client authentication disabled"
-msgstr "SSL クライアントの認証は無効にされました"
+msgid "SSL client authentication disabled."
+msgstr "SSL クライアントの認証は無効にされました。"
 
-msgid "Could't read SSL client certificate %s"
-msgstr "SSL クライアント証明書 %s を読み取ることができませんでした"
+msgid "Could't read SSL client certificate %s."
+msgstr "SSL クライアント証明書 %s を読み取ることができませんでした。"
 
-msgid "Could't read SSL client key %s"
-msgstr "SSL クライアント鍵 %s を読み取ることができませんでした"
+msgid "Could't read SSL client key %s."
+msgstr "SSL クライアント鍵 %s を読み取ることができませんでした。"
 
 msgid ""
-"can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
-"(%<new_class>s)"
+"Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
+"(%<new_class>s)."
 msgstr ""
 "サブコマンド %<name>s (%<existing_class>s) を %<name>s (%<new_class>s) に置き"
-"換えることができません"
+"換えることができません。"
 
-msgid "Unknown option name '%s'"
-msgstr "不明なオプション名 '%s'"
+msgid "Unknown option name '%s'."
+msgstr "不明なオプション名 '%s'。"
 
-msgid "You can't set all options %s at one time"
-msgstr "1 度にすべてのオプション %s を設定することはできません"
+msgid "You can't set all options %s at one time."
+msgstr "1 度にすべてのオプション %s を設定することはできません。"
 
-msgid "Options %s are required"
-msgstr "オプション %s は必須です"
+msgid "Options %s are required."
+msgstr "オプション %s は必須です。"
 
-msgid "You can't set option %s"
-msgstr "オプション %s を設定できません"
+msgid "You can't set option %s."
+msgstr "オプション %s を設定できません。"
 
-msgid "Option %s is required"
-msgstr "オプション %s が必要です"
+msgid "Option %s is required."
+msgstr "オプション %s は必須です。"
 
-msgid "You can't set any of options %s"
-msgstr "オプション %s のいずれも設定できません"
+msgid "You can't set any of options %s."
+msgstr "オプション %s のいずれも設定できません。"
 
-msgid "At least one of options %s is required"
-msgstr "オプション %s が少なくとも 1 つ以上必要です"
+msgid "At least one of options %s is required."
+msgstr "オプション %s が少なくとも 1 つ以上必要です。"
 
-msgid "One of options %s is required"
-msgstr "オプション %s のいずれかが必要です"
+msgid "One of options %s is required."
+msgstr "オプション %s のいずれかが必要です。"
 
-msgid "Only one of options %s can be set"
-msgstr "オプション %s のいずれかのみを設定できます"
+msgid "Only one of options %s can be set."
+msgstr "オプション %s のいずれかのみを設定できます。"
