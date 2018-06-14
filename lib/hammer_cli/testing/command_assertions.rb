@@ -108,6 +108,13 @@ module HammerCLI
         expected_result
       end
 
+      def not_found_error_result(command, message, heading=nil)
+        expected_result = CommandExpectation.new
+        expected_result.expected_err = common_error(command, message, heading)
+        expected_result.expected_exit_code = HammerCLI::EX_NOT_FOUND
+        expected_result
+      end
+
       def success_result(message)
         CommandExpectation.new(message)
       end
