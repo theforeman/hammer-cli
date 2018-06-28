@@ -50,12 +50,13 @@ module HammerCLI::Output::Adapter
       path = field.path
 
       path.inject(record) do |record, path_key|
-        if record && record.kind_of?(Hash) && record.has_key?(path_key.to_sym)
+        return nil unless record && record.is_a?(Hash)
+        if record.key?(path_key.to_sym)
           record[path_key.to_sym]
-        elsif record && record.kind_of?(Hash) && record.has_key?(path_key.to_s)
+        elsif record.key?(path_key.to_s)
           record[path_key.to_s]
         else
-          return nil
+          HammerCLI::Output::DataMissing.new
         end
       end
     end
@@ -67,6 +68,17 @@ module HammerCLI::Output::Adapter
     def output_stream
       return @context[:output_file] if @context.has_key?(:output_file)
       $stdout
+    end
+
+    def displayable_fields(fields, record, compact_only: false)
+      fields.select do |field|
+        field_data = data_for_field(field, record)
+        if compact_only && !field_data.is_a?(HammerCLI::Output::DataMissing)
+          true
+        else
+          field.display?(field_data)
+        end
+      end
     end
 
     private

@@ -58,6 +58,8 @@ describe HammerCLI::Output::Adapter::Json do
     let(:params_collection) { Fields::Collection.new(:path => [:params], :label => "Parameters") }
     let(:param)             { Fields::KeyValue.new(:path => nil, :label => nil) }
     let(:blank)             { Fields::Field.new(:path => [:blank], :label => "Blank", :hide_blank => true) }
+    let(:login)             { Fields::Field.new(:path => [:login], :label => "Login") }
+    let(:missing)           { Fields::Field.new(:path => [:missing], :label => "Missing", :hide_missing => false) }
 
     let(:data) { HammerCLI::Output::RecordCollection.new [{
       :id => 112,
@@ -201,6 +203,22 @@ describe HammerCLI::Output::Adapter::Json do
     it "skips blank values" do
       fields = [name, blank]
       hash = [{'Name' => 'John'}]
+      expected_output = JSON.pretty_generate(hash) + "\n"
+
+      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
+
+    it "does not print fields which data are missing from api by default" do
+      fields = [surname, login]
+      hash = [{ 'Surname' => 'Doe' }]
+      expected_output = JSON.pretty_generate(hash) + "\n"
+
+      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
+
+    it "prints fields which data are missing from api when field has hide_missing flag set to false" do
+      fields = [surname, missing]
+      hash = [{ 'Surname' => 'Doe', 'Missing' => '' }]
       expected_output = JSON.pretty_generate(hash) + "\n"
 
       proc { adapter.print_collection(fields, data) }.must_output(expected_output)

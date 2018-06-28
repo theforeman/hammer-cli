@@ -110,9 +110,9 @@ describe HammerCLI::Output::Adapter::Abstract do
       assert_nil adapter.send(:data_for_field, field, record)
     end
 
-    it "returns nil, if the data does not exist for the field" do
+    it "returns DataMissing instance, if the data does not exist for the field" do
       record = { :field2 => :value2 }
-      assert_nil adapter.send(:data_for_field, field, record)
+      assert_instance_of HammerCLI::Output::DataMissing, adapter.send(:data_for_field, field, record)
     end
 
     it "returns the value, if data exists for the field" do

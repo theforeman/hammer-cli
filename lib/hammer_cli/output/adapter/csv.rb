@@ -157,6 +157,7 @@ module HammerCLI::Output::Adapter
     end
 
     def print_collection(fields, collection)
+      fields = displayable_fields(fields, collection.first, compact_only: true)
       rows = row_data(fields, collection)
       # get headers using columns heuristic
       headers = rows.map{ |r| Cell.headers(r, @context) }.max_by{ |headers| headers.size }

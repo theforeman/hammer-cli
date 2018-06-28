@@ -26,6 +26,8 @@ describe HammerCLI::Output::Adapter::Base do
     let(:params_collection) { Fields::Collection.new(:path => [:params], :label => "Parameters") }
     let(:param)             { Fields::KeyValue.new(:path => nil, :label => nil) }
     let(:blank)             { Fields::Field.new(:path => [:blank], :label => "Blank", :hide_blank => true) }
+    let(:login)             { Fields::Field.new(:path => [:login], :label => "Login") }
+    let(:missing)           { Fields::Field.new(:path => [:login], :label => "Missing", :hide_missing => false) }
 
     let(:data) { HammerCLI::Output::RecordCollection.new [{
       :id => 112,
@@ -161,6 +163,25 @@ describe HammerCLI::Output::Adapter::Base do
         "\n"
       ].join("\n")
 
+      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
+
+    it "does not print fields which data are missing from api by default" do
+      fields = [name, login]
+      expected_output = [
+        "Name: John",
+        "\n"
+      ].join("\n")
+      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
+
+    it "prints fields which data are missing from api when field has hide_missing flag set to false" do
+      fields = [name, missing]
+      expected_output = [
+        "Name:    John",
+        "Missing:",
+        "\n"
+      ].join("\n")
       proc { adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 

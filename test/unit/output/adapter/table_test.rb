@@ -14,6 +14,8 @@ describe HammerCLI::Output::Adapter::Table do
     let(:field_firstname) { Fields::Field.new(:path => [:firstname], :label => "Firstname") }
     let(:field_lastname) { Fields::Field.new(:path => [:lastname], :label => "Lastname") }
     let(:field_long) { Fields::Field.new(:path => [:long], :label => "Full") }
+    let(:field_login) { Fields::Field.new(:path => [:login], :label => "Login") }
+    let(:field_missing) { Fields::Field.new(:path => [:missing], :label => "Missing", :hide_missing => false) }
 
     let(:fields) {
       [field_name]
@@ -45,6 +47,34 @@ describe HammerCLI::Output::Adapter::Table do
       proc { adapter.print_collection(fields, data) }.must_output(/.*John Doe.*/, "")
     end
 
+    it "does not print fields which data are missing from api by default" do
+      fields << field_login
+      expected_output = [
+        '--------',
+        'NAME    ',
+        '--------',
+        'John Doe',
+        '--------',
+        ''
+      ].join("\n")
+
+      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
+
+    it "prints fields which data are missing from api when field has hide_missing flag set to false" do
+      fields << field_missing
+      expected_output = [
+        '---------|--------',
+        'NAME     | MISSING',
+        '---------|--------',
+        'John Doe |        ',
+        '---------|--------',
+        ''
+      ].join("\n")
+
+      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
+
     context "pagination" do
       it "should print pagination info if data are not complete" do
         data = HammerCLI::Output::RecordCollection.new([record], { :total => 2, :page => 1, :per_page => 1, :subtotal => 2 })
@@ -58,7 +88,7 @@ describe HammerCLI::Output::Adapter::Table do
     end
 
     context "handle ids" do
-      let(:field_id) { Fields::Id.new(:path => [:some_id], :label => "Id") }
+      let(:field_id) { Fields::Id.new(:path => [:some_id], :label => "Id", :hide_missing => false) }
       let(:fields) {
         [field_name, field_id]
       }
