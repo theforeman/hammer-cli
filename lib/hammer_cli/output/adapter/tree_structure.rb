@@ -13,22 +13,16 @@ module HammerCLI::Output::Adapter
     end
 
     protected
+
     def field_filter
       filtered = []
       filtered << Fields::Id unless @context[:show_ids]
       HammerCLI::Output::FieldFilter.new(filtered)
     end
 
-    def filter_fields(fields, data)
-      field_filter.filter(fields).reject do |field|
-        field_data = data_for_field(field, data)
-        not field.display?(field_data)
-      end
-    end
-
     def render_fields(fields, data)
-      fields = filter_fields(fields, data)
-
+      fields = field_filter.filter(fields)
+      fields = displayable_fields(fields, data)
       fields.reduce({}) do |hash, field|
         field_data = data_for_field(field, data)
         next unless field.display?(field_data)

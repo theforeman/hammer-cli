@@ -9,6 +9,7 @@ module Fields
 
     def initialize(options={})
       @hide_blank = options[:hide_blank].nil? ? false : options[:hide_blank]
+      @hide_missing = options[:hide_missing].nil? ? true : options[:hide_missing]
       @path = options[:path] || []
       @label = options[:label]
       @options = options
@@ -18,11 +19,15 @@ module Fields
       @hide_blank
     end
 
+    def hide_missing?
+      @hide_missing
+    end
+
     def display?(value)
-      if not hide_blank?
-        true
+      if value.is_a?(HammerCLI::Output::DataMissing)
+        !hide_missing?
       elsif value.nil?
-        false
+        !hide_blank?
       else
         true
       end
@@ -55,10 +60,10 @@ module Fields
     end
 
     def display?(value)
-      if not hide_blank?
-        true
+      if value.is_a?(HammerCLI::Output::DataMissing)
+        !hide_missing?
       elsif value.nil? || value.empty?
-        false
+        !hide_blank?
       else
         true
       end
@@ -83,6 +88,7 @@ module Fields
   class Label < ContainerField
 
     def display?(value)
+      return false if value.is_a?(HammerCLI::Output::DataMissing) && hide_missing?
       return true if not hide_blank?
 
       !(value.nil? || value.empty?) && fields.any? do |f|

@@ -22,6 +22,7 @@ module HammerCLI::Output::Adapter
 
     def print_collection(all_fields, collection)
       fields = field_filter.filter(all_fields)
+      fields = displayable_fields(fields, collection.first, compact_only: true)
 
       formatted_collection = format_values(fields, collection)
       # calculate hash of column widths (label -> width)
@@ -52,7 +53,7 @@ module HammerCLI::Output::Adapter
       # and there is no --no-headers option
       output_stream.puts line unless formatted_collection.empty? || @context[:no_headers]
 
-      if collection.meta.pagination_set? && collection.count < collection.meta.subtotal
+      if collection.respond_to?(:meta) && collection.meta.pagination_set? && collection.count < collection.meta.subtotal
         pages = (collection.meta.subtotal.to_f/collection.meta.per_page).ceil
         puts _("Page %{page} of %{total} (use --page and --per-page for navigation).") % {:page => collection.meta.page, :total => pages}
       end

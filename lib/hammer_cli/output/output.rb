@@ -1,4 +1,10 @@
 module HammerCLI::Output
+  class DataMissing
+    def to_s
+      ''
+    end
+  end
+
   class Output
 
     def initialize(context={}, options={})

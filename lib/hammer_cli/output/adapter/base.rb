@@ -27,17 +27,11 @@ module HammerCLI::Output::Adapter
       HammerCLI::Output::FieldFilter.new(filtered)
     end
 
-    def filter_fields(fields, data)
-      field_filter.filter(fields).reject do |field|
-        field_data = data_for_field(field, data)
-        not field.display?(field_data)
-      end
-    end
-
     def render_fields(fields, data)
       output = ""
 
-      fields = filter_fields(fields, data)
+      fields = field_filter.filter(fields)
+      fields = displayable_fields(fields, data)
 
       label_width = label_width(fields)
 

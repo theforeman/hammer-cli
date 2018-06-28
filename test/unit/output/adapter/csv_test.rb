@@ -12,6 +12,8 @@ describe HammerCLI::Output::Adapter::CSValues do
 
     let(:field_name) { Fields::Field.new(:path => [:name], :label => "Name") }
     let(:field_started_at) { Fields::Field.new(:path => [:started_at], :label => "Started At") }
+    let(:field_login) { Fields::Field.new(:path => [:login], :label => "Login") }
+    let(:field_missing) { Fields::Field.new(:path => [:missing], :label => "Missing", :hide_missing => false) }
     let(:fields) {
       [field_name, field_started_at]
     }
@@ -29,6 +31,20 @@ describe HammerCLI::Output::Adapter::CSValues do
     it "should print field value" do
       out, err = capture_io { adapter.print_collection(fields, data) }
       out.must_match /.*John Doe.*/
+      err.must_match //
+    end
+
+    it "does not print fields which data are missing from api by default" do
+      fields << field_login
+      out, err = capture_io { adapter.print_collection(fields, data) }
+      out.wont_match /.*Login.*/
+      err.must_match //
+    end
+
+    it "prints fields which data are missing from api when field has hide_missing flag set to false" do
+      fields << field_missing
+      out, err = capture_io { adapter.print_collection(fields, data) }
+      out.must_match /.*Missing.*/
       err.must_match //
     end
 
