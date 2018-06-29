@@ -49,8 +49,7 @@ module HammerCLI::Output::Adapter
 
       # print closing line only when the table isn't empty
       puts line unless formatted_collection.empty?
-
-      if collection.meta.pagination_set? && collection.count < collection.meta.subtotal
+      if collection.methods.include?(:meta) && collection.meta.pagination_set? && collection.count < collection.meta.subtotal
         pages = (collection.meta.subtotal.to_f/collection.meta.per_page).ceil
         puts _("Page %{page} of %{total} (use --page and --per-page for navigation)") % {:page => collection.meta.page, :total => pages}
       end
