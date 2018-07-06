@@ -115,7 +115,7 @@ module HammerCLI
       class Bool < AbstractNormalizer
 
         def description
-          _("One of true/false, yes/no, 1/0")
+          _('One of %s.') % ['true/false', 'yes/no', '1/0'].join(', ')
         end
 
         def format(bool)
@@ -125,7 +125,7 @@ module HammerCLI
           elsif bool.downcase.match(/^(false|f|no|n|0)$/i)
             return false
           else
-            raise ArgumentError, _("Value must be one of true/false, yes/no, 1/0.")
+            raise ArgumentError, _('Value must be one of %s.') % ['true/false', 'yes/no', '1/0'].join(', ')
           end
         end
 
