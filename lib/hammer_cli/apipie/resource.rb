@@ -7,7 +7,7 @@ module HammerCLI::Apipie
     end
 
     def resource
-      self.class.resource || self.parent_command.class.resource
+      self.class.resource || parent_command_resource
     end
 
     def action
@@ -20,6 +20,10 @@ module HammerCLI::Apipie
 
     def connection_options
       self.class.connection_options
+    end
+
+    def parent_command_resource
+      self.parent_command.class.respond_to?(:resource) && self.parent_command.class.resource
     end
 
     module ClassMethods
