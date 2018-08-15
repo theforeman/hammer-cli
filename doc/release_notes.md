@@ -1,5 +1,8 @@
 Release notes
 =============
+### 0.13.1 (2018-08-15)
+* restore help building ([PR #280](https://github.com/theforeman/hammer-cli/pull/280)) ([#24488](http://projects.theforeman.org/issues/24488))
+
 ### 0.13.0 (2018-05-09)
 * Hammer CSV output saved as a file ([PR #254](https://github.com/theforeman/hammer-cli/pull/254)) ([#11586](http://projects.theforeman.org/issues/11586))
 * correct parsing of enum types ([PR #272](https://github.com/theforeman/hammer-cli/pull/272)) ([#22752](http://projects.theforeman.org/issues/22752))
