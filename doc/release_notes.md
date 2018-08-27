@@ -1,5 +1,11 @@
 Release notes
 =============
+### 0.14.0 (2018-08-27)
+* Restore help building ([PR #280](https://github.com/theforeman/hammer-cli/pull/280)) ([#24488](http://projects.theforeman.org/issues/24488))
+* Shouldn't translate the bool values in description ([#21381](http://projects.theforeman.org/issues/21381))
+* Allow hiding fields which are missing from api output ([#20607](http://projects.theforeman.org/issues/20607))
+* Add not found error type ([PR #274](https://github.com/theforeman/hammer-cli/pull/274)) ([#20538](http://projects.theforeman.org/issues/20538))
+
 ### 0.13.0 (2018-05-09)
 * Hammer CSV output saved as a file ([PR #254](https://github.com/theforeman/hammer-cli/pull/254)) ([#11586](http://projects.theforeman.org/issues/11586))
 * correct parsing of enum types ([PR #272](https://github.com/theforeman/hammer-cli/pull/272)) ([#22752](http://projects.theforeman.org/issues/22752))
