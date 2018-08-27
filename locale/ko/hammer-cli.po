@@ -6,10 +6,10 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.14.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-19 01:11+0100\n"
-"PO-Revision-Date: 2018-02-19 11:47+0000\n"
+"POT-Creation-Date: 2018-05-09 23:29+0200\n"
+"PO-Revision-Date: 2018-05-09 23:18+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Korean (http://www.transifex.com/foreman/foreman/language/"
 "ko/)\n"
@@ -18,6 +18,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Unfortunately the server does not support such operation."
+msgstr ""
 
 msgid "Unable to find hostname in %s."
 msgstr ""
@@ -293,6 +296,9 @@ msgstr "CSV로 출력 (--output=csv와 동일)"
 
 msgid "Set output format. One of [%s]"
 msgstr "출력 형식을 설정합니다. [%s] 중 하나입니다 "
+
+msgid "Path to custom output file"
+msgstr ""
 
 msgid "Character to separate the values"
 msgstr "값을 구분하기 위한 문자 "

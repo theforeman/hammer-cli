@@ -12,11 +12,11 @@
 # Ulrich Habel <rhaen@pkgbox.de>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.14.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-19 01:11+0100\n"
-"PO-Revision-Date: 2018-02-19 11:47+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2018-05-09 23:29+0200\n"
+"PO-Revision-Date: 2018-07-21 23:03+0000\n"
+"Last-Translator: Martin Zimmermann <martin.zimmermann@gmx.com>\n"
 "Language-Team: German (http://www.transifex.com/foreman/foreman/language/"
 "de/)\n"
 "MIME-Version: 1.0\n"
@@ -24,6 +24,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Unfortunately the server does not support such operation."
+msgstr ""
 
 msgid "Unable to find hostname in %s."
 msgstr ""
@@ -304,6 +307,9 @@ msgstr "Ausgabe als CSV (entspricht --output=csv)"
 
 msgid "Set output format. One of [%s]"
 msgstr "Ausgabeformat festlegen. Optionen sind [%s]"
+
+msgid "Path to custom output file"
+msgstr ""
 
 msgid "Character to separate the values"
 msgstr "Trennzeichen"

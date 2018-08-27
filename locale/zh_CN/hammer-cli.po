@@ -6,11 +6,11 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.14.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-19 01:11+0100\n"
-"PO-Revision-Date: 2018-03-27 18:06+0000\n"
-"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
+"POT-Creation-Date: 2018-05-09 23:29+0200\n"
+"PO-Revision-Date: 2018-05-09 23:18+0000\n"
+"Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/foreman/foreman/"
 "language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Unfortunately the server does not support such operation."
+msgstr ""
 
 msgid "Unable to find hostname in %s."
 msgstr "无法在 %s 中找到主机名。"
@@ -295,6 +298,9 @@ msgstr "作为 CSV 输出（与 --output=csv 相同） "
 
 msgid "Set output format. One of [%s]"
 msgstr "设定输出格式。[%s] 之一"
+
+msgid "Path to custom output file"
+msgstr ""
 
 msgid "Character to separate the values"
 msgstr "用来分开数值的字符"

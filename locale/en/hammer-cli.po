@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.14.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.14.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-03-04 16:38+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -321,10 +321,10 @@ msgstr ""
 msgid "Numeric value is required."
 msgstr ""
 
-msgid "One of true/false, yes/no, 1/0"
+msgid "One of %s."
 msgstr ""
 
-msgid "Value must be one of true/false, yes/no, 1/0."
+msgid "Value must be one of %s."
 msgstr ""
 
 msgid "Unable to parse JSON input."
@@ -334,9 +334,6 @@ msgid "Possible value(s): %s"
 msgstr ""
 
 msgid "Value must be %s."
-msgstr ""
-
-msgid "Value must be one of %s."
 msgstr ""
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
