@@ -12,6 +12,18 @@ module HammerCLI::Output::Adapter
       end
     end
 
+    def prepare_message(msg, msg_params = {})
+      id = msg_params['id'] || msg_params[:id]
+      name = msg_params['name'] || msg_params[:name]
+
+      data = {
+        capitalize(:message) => msg.format(msg_params)
+      }
+      data[capitalize(:id)] = id unless id.nil?
+      data[capitalize(:name)] = name unless name.nil?
+      data
+    end
+
     protected
 
     def field_filter
@@ -26,7 +38,7 @@ module HammerCLI::Output::Adapter
       fields.reduce({}) do |hash, field|
         field_data = data_for_field(field, data)
         next unless field.display?(field_data)
-        hash.update(field.label => render_field(field, field_data))
+        hash.update(capitalize(field.label) => render_field(field, field_data))
       end
     end
 
@@ -38,13 +50,15 @@ module HammerCLI::Output::Adapter
         end
         render_data(field, map_data(fields_data))
       else
-        data
+        return data unless data.is_a?(Hash)
+        data.transform_keys { |key| capitalize(key) }
       end
     end
 
     def render_data(field, data)
+      data = data.map! { |d| d.transform_keys { |key| capitalize(key) } if d.is_a?(Hash) }
       if field.is_a?(Fields::Collection)
-        if(field.parameters[:numbered])
+        if field.parameters[:numbered]
           numbered_data(data)
         else # necislovana kolekce je pole
           data
@@ -69,5 +83,10 @@ module HammerCLI::Output::Adapter
       end
     end
 
+    def capitalize(string)
+      capitalization = @context[:capitalization]
+      return string if capitalization.nil?
+      string.send(@context[:capitalization]) unless string.nil?
+    end
   end
 end

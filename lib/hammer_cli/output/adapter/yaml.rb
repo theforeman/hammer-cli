@@ -12,15 +12,7 @@ module HammerCLI::Output::Adapter
     end
 
     def print_message(msg, msg_params={})
-      id = msg_params["id"] || msg_params[:id]
-      name = msg_params["name"] || msg_params[:name]
-
-      data = {
-        :message => msg.format(msg_params)
-      }
-      data[:id] = id unless id.nil?
-      data[:name] = name unless name.nil?
-
+      data = prepare_message(msg, msg_params)
       puts YAML.dump(data)
     end
 

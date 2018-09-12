@@ -42,6 +42,18 @@ class String
 
 end
 
+class Hash
+  # for ruby < 2.5.0
+  def transform_keys
+    result = {}
+    each do |key, value|
+      new_key = yield key
+      result[new_key] = value
+    end
+    result
+  end
+end
+
 module HammerCLI
 
   def self.tty?
@@ -62,4 +74,12 @@ module HammerCLI
     path
   end
 
+  def self.capitalization
+    supported = %w[downcase capitalize upcase]
+    capitalization = HammerCLI::Settings.get(:ui, :capitalization).to_s
+    return nil if capitalization.empty?
+    return capitalization if supported.include?(capitalization)
+    warn _("Cannot use such capitalization. Try one of %s.") % supported.join(', ')
+    nil
+  end
 end

@@ -242,6 +242,65 @@ describe HammerCLI::Output::Adapter::Yaml do
       proc { adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
+    context 'capitalization' do
+      let(:fields)   { [name, surname] }
+      let(:raw_hash) { { 'Name' => 'John', 'Surname' => 'Doe' } }
+      let(:settings) { HammerCLI::Settings }
+      let(:context) { { :capitalization => HammerCLI.capitalization } }
+
+      it 'should respect selected downcase capitalization' do
+        settings.load({ :ui => { :capitalization => :downcase } })
+        hash = [raw_hash.transform_keys(&:downcase)]
+        expected_output = YAML.dump(hash)
+        out, = capture_io do
+          adapter.print_collection(fields, data)
+        end
+        out.must_equal(expected_output)
+      end
+
+      it 'should respect selected capitalize capitalization' do
+        settings.load({ :ui => { :capitalization => :capitalize } })
+        hash = [raw_hash.transform_keys(&:capitalize)]
+        expected_output = YAML.dump(hash)
+        out, = capture_io do
+          adapter.print_collection(fields, data)
+        end
+        out.must_equal(expected_output)
+      end
+
+      it 'should respect selected upcase capitalization' do
+        settings.load({ :ui => { :capitalization => :upcase } })
+        hash = [raw_hash.transform_keys(&:upcase)]
+        expected_output = YAML.dump(hash)
+        out, = capture_io do
+          adapter.print_collection(fields, data)
+        end
+        out.must_equal(expected_output)
+      end
+
+      it 'should print a warn for not supported capitalization' do
+        settings.load({ :ui => { :capitalization => :unsupported } })
+        hash = [raw_hash]
+        expected_error = "Cannot use such capitalization. Try one of downcase, capitalize, upcase.\n"
+        expected_output = YAML.dump(hash)
+        out, err = capture_io do
+          adapter.print_collection(fields, data)
+        end
+        out.must_equal(expected_output)
+        err.must_equal(expected_error)
+      end
+
+      it "shouldn't change capitalization if wasn't selected" do
+        settings.load({ :ui => { :capitalization => nil } })
+        hash = [raw_hash]
+        expected_output = YAML.dump(hash)
+        out, = capture_io do
+          adapter.print_collection(fields, data)
+        end
+        out.must_equal(expected_output)
+      end
+    end
+
     context "show ids" do
 
       let(:context) { {:show_ids => true} }
