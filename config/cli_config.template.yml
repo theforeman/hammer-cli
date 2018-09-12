@@ -10,6 +10,9 @@
   #:mark_translated: false
   # Hide headers from output of list actions
   # :no_headers: true
+  # Choose capitalization for JSON/YAML output.
+  # One of: 'downcase', 'capitalize', 'upcase'
+  # :capitalization: 'downcase'
 
 # Enable/disable color output of logger in Clamp commands
 :watch_plain: false

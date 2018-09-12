@@ -110,7 +110,16 @@ describe String do
 
 end
 
-
+describe Hash do
+  context 'transform_keys' do
+    let(:hash) { { :one => 'one', :two => 'two', 'three' => 3 } }
+    let(:transformed_hash) { { :ONE => 'one', :TWO => 'two', 'THREE' => 3 } }
+    it 'should return a new hash with new keys' do
+      new_hash = hash.transform_keys(&:upcase)
+      new_hash.must_equal transformed_hash
+    end
+  end
+end
 
 describe HammerCLI do
 
@@ -170,4 +179,3 @@ describe HammerCLI do
   end
 
 end
-
