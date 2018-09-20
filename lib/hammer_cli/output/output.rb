@@ -8,29 +8,30 @@ module HammerCLI::Output
   class Output
 
     def initialize(context={}, options={})
+      context[:verbosity] ||= HammerCLI::V_VERBOSE
       self.context = context
       self.default_adapter = options[:default_adapter]
     end
 
     attr_accessor :default_adapter
 
-    def print_message(msg, msg_params={})
-      adapter.print_message(msg.to_s, msg_params)
+    def print_message(msg, msg_params = {}, options = {})
+      adapter.print_message(msg.to_s, msg_params) if appropriate_verbosity?(:message, options)
     end
 
-    def print_error(msg, details=nil, msg_params={})
-      adapter.print_error(msg.to_s, details, msg_params)
+    def print_error(msg, details=nil, msg_params = {}, options = {})
+      adapter.print_error(msg.to_s, details, msg_params) if appropriate_verbosity?(:error, options)
     end
 
     def print_record(definition, record)
-      adapter.print_record(definition.fields, record)
+      adapter.print_record(definition.fields, record) if appropriate_verbosity?(:record)
     end
 
     def print_collection(definition, collection)
       unless collection.class <= HammerCLI::Output::RecordCollection
         collection = HammerCLI::Output::RecordCollection.new([collection].flatten(1))
       end
-      adapter.print_collection(definition.fields, collection)
+      adapter.print_collection(definition.fields, collection) if appropriate_verbosity?(:collection)
     end
 
     def adapter
@@ -64,6 +65,21 @@ module HammerCLI::Output
         formatter_list << formatter
         formatters[type] = formatter_list
       end
+    end
+
+    protected
+
+    def appropriate_verbosity?(msg_type, options = {})
+      default = case msg_type
+                when :message
+                  HammerCLI::V_VERBOSE
+                when :error
+                  HammerCLI::V_QUIET
+                when :record, :collection
+                  HammerCLI::V_UNIX
+                end
+      msg_verbosity = options[:verbosity] || default
+      context[:verbosity] >= msg_verbosity
     end
 
     private

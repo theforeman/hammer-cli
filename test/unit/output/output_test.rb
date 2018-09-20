@@ -112,5 +112,177 @@ describe HammerCLI::Output::Output do
     end
   end
 
-end
+  describe 'verbosity' do
+    let(:msg) { "Some message\n" }
+    let(:quiet_opts)        { { :verbosity => HammerCLI::V_QUIET } }
+    let(:no_verbose_opts)   { { :verbosity => HammerCLI::V_UNIX } }
+    let(:verbose_opts)      { { :verbosity => HammerCLI::V_VERBOSE } }
+    let(:very_verbose_opts) { { :verbosity => HammerCLI::V_VERBOSE + 1 } }
+    let(:data) do
+      HammerCLI::Output::RecordCollection.new(
+        [{
+          :id => 112,
+          :name => 'John',
+          :surname => 'Doe'
+        }]
+      )
+    end
+    let(:id)         { Fields::Id.new(:path => [:id], :label => 'Id') }
+    let(:name)       { Fields::Field.new(:path => [:name], :label => 'Name') }
+    let(:surname)    { Fields::Field.new(:path => [:surname], :label => 'Surname') }
+    let(:definition) { HammerCLI::Output::Definition.new }
+    let(:expected_record_output) do
+      [
+        "Name:    John",
+        "Surname: Doe",
+        "\n"
+      ].join("\n")
+    end
 
+    context 'quiet' do
+      let(:context) { quiet_opts }
+      let(:output) { HammerCLI::Output::Output.new(context) }
+
+      it 'should not print info messages with higher verbosity level' do
+        assert_output('', nil) do
+          output.print_message(msg)
+        end
+        assert_output('', nil) do
+          output.print_message(msg, {}, no_verbose_opts)
+        end
+        assert_output('', nil) do
+          output.print_message(msg, {}, verbose_opts)
+        end
+      end
+
+      it 'should print message with lower or equal verbosity level' do
+        assert_output(msg, nil) do
+          output.print_message(msg, {}, quiet_opts)
+        end
+      end
+
+      it 'should print error message even when hammer verbosity is level 0' do
+        assert_output(nil, msg) do
+          output.print_error(msg)
+        end
+      end
+
+      it 'should not print error messages with higher verbosity level' do
+        assert_output(nil, '') do
+          output.print_error(msg, nil, {}, verbose_opts)
+        end
+      end
+
+      it 'should not print record data' do
+        definition.append([id, name, surname])
+        assert_output('', nil) do
+          output.print_record(definition, data.first)
+        end
+      end
+
+      it 'should not print collection data' do
+        definition.append([id, name, surname])
+        assert_output('', nil) do
+          output.print_record(definition, data)
+        end
+      end
+    end
+
+    context 'no-verbose' do
+      let(:context) { no_verbose_opts }
+      let(:output) { HammerCLI::Output::Output.new(context) }
+
+      it 'should not print info messages with higher verbosity level' do
+        assert_output('', nil) do
+          output.print_message(msg)
+        end
+        assert_output('', nil) do
+          output.print_message(msg, {}, verbose_opts)
+        end
+      end
+
+      it 'should print message with lower or equal verbosity level' do
+        assert_output(msg, nil) do
+          output.print_message(msg, {}, quiet_opts)
+        end
+        assert_output(msg, nil) do
+          output.print_message(msg, {}, no_verbose_opts)
+        end
+      end
+
+      it 'should print error message' do
+        assert_output(nil, msg) do
+          output.print_error(msg)
+        end
+      end
+
+      it 'should not print error messages with higher verbosity level' do
+        assert_output(nil, '') do
+          output.print_error(msg, nil, {}, verbose_opts)
+        end
+      end
+
+      it 'should print record data' do
+        definition.append([id, name, surname])
+        assert_output(expected_record_output, nil) do
+          output.print_record(definition, data.first)
+        end
+      end
+
+      it 'should print collection data' do
+        definition.append([id, name, surname])
+        assert_output(expected_record_output, nil) do
+          output.print_record(definition, data)
+        end
+      end
+    end
+
+    context 'verbose' do
+      let(:context) { verbose_opts }
+      let(:output) { HammerCLI::Output::Output.new(context) }
+      it 'should not print info messages with higher verbosity level' do
+        assert_output('', nil) do
+          output.print_message(msg, {}, very_verbose_opts)
+        end
+      end
+
+      it 'should print message with lower or equal verbosity level' do
+        assert_output(msg, nil) do
+          output.print_message(msg, {}, quiet_opts)
+        end
+        assert_output(msg, nil) do
+          output.print_message(msg, {}, no_verbose_opts)
+        end
+        assert_output(msg, nil) do
+          output.print_message(msg, {}, verbose_opts)
+        end
+      end
+
+      it 'should print error message' do
+        assert_output(nil, msg) do
+          output.print_error(msg)
+        end
+      end
+
+      it 'should not print error messages with higher verbosity level' do
+        assert_output(nil, '') do
+          output.print_error(msg, nil, {}, very_verbose_opts)
+        end
+      end
+
+      it 'should print record data' do
+        definition.append([id, name, surname])
+        assert_output(expected_record_output, nil) do
+          output.print_record(definition, data.first)
+        end
+      end
+
+      it 'should print collection data' do
+        definition.append([id, name, surname])
+        assert_output(expected_record_output, nil) do
+          output.print_record(definition, data)
+        end
+      end
+    end
+  end
+end

@@ -4,7 +4,12 @@ module HammerCLI
 
   class MainCommand < AbstractCommand
 
-    option ["-v", "--verbose"], :flag, _("Be verbose"), :context_target => :verbose
+    option ['-v', '--[no-]verbose'], :flag, _('Be verbose (or not). True by default') do |value|
+      context[:verbosity] = value == true ? HammerCLI::V_VERBOSE : HammerCLI::V_UNIX
+    end
+    option ['-q', '--quiet'], :flag, _('Completely silent') do
+      context[:verbosity] = HammerCLI::V_QUIET
+    end
     option ["-d", "--debug"], :flag, _("Show debugging output"), :context_target => :debug
     option ["-r", "--reload-cache"], :flag, _("Force reload of Apipie cache")
 

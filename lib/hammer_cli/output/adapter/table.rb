@@ -53,8 +53,10 @@ module HammerCLI::Output::Adapter
       # and there is no --no-headers option
       output_stream.puts line unless formatted_collection.empty? || @context[:no_headers]
 
-      if collection.respond_to?(:meta) && collection.meta.pagination_set? && collection.count < collection.meta.subtotal
-        pages = (collection.meta.subtotal.to_f/collection.meta.per_page).ceil
+      if @context[:verbosity] >= collection.meta.pagination_verbosity &&
+         collection.respond_to?(:meta) && collection.meta.pagination_set? &&
+         collection.count < collection.meta.subtotal
+        pages = (collection.meta.subtotal.to_f / collection.meta.per_page).ceil
         puts _("Page %{page} of %{total} (use --page and --per-page for navigation).") % {:page => collection.meta.page, :total => pages}
       end
     end

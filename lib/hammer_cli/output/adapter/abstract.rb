@@ -7,6 +7,7 @@ module HammerCLI::Output::Adapter
     end
 
     def initialize(context={}, formatters={})
+      context[:verbosity] ||= HammerCLI::V_VERBOSE
       @context = context
       @formatters = HammerCLI::Output::Formatters::FormatterLibrary.new(filter_formatters(formatters))
       @paginate_by_default = true

@@ -26,6 +26,12 @@
 # Logging level. One of debug, info, warning, error, fatal
 :log_level: 'error'
 
+# Verbosity of the commands. Possible values:
+#   0 - completely silent, errors to stderr. Equals to --quiet.
+#   1 - data, interactive I/O. Equals to --no-verbose.
+#   2 - data, messages, interactive I/O, progress bars. Equals to --verbose.
+:verbosity: 2
+
 #:log_owner: 'foreman'
 #:log_group: 'foreman'
 

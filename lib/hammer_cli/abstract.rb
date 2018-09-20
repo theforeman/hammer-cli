@@ -165,8 +165,8 @@ module HammerCLI
       output.print_collection(definition, collection)
     end
 
-    def print_message(msg, msg_params={})
-      output.print_message(msg, msg_params)
+    def print_message(msg, msg_params = {}, options = {})
+      output.print_message(msg, msg_params, options)
     end
 
     def self.logger(name=self)
