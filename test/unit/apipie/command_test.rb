@@ -128,4 +128,51 @@ describe HammerCLI::Apipie::Command do
 
   end
 
+  context 'verbosity' do
+    class MessagesCommand < HammerCLI::Apipie::Command
+      def execute
+        messages = %w[quiet unix verbose very_verbose]
+        print_message(messages[0], {}, verbosity: HammerCLI::V_QUIET)
+        print_message(messages[1], {}, verbosity: HammerCLI::V_UNIX)
+        print_message(messages[2], {}, verbosity: HammerCLI::V_VERBOSE)
+        print_message(messages[3], {}, verbosity: HammerCLI::V_VERBOSE + 1)
+        HammerCLI::EX_OK
+      end
+    end
+
+    let(:messages) { %w[quiet unix verbose very_verbose] }
+
+    it 'should print quiet messages only when hammer verbosity level is V_QUIET' do
+      expected_messages = [
+        messages[0],
+        ''
+      ].join("\n")
+      expected_result = success_result(expected_messages)
+      result = run_cmd([], { :verbosity => HammerCLI::V_QUIET }, MessagesCommand)
+      assert_cmd(expected_result, result)
+    end
+
+    it 'should print quiet + no-verbose messages only when hammer verbosity level is V_UNIX' do
+      expected_messages = [
+        messages[0],
+        messages[1],
+        ''
+      ].join("\n")
+      expected_result = success_result(expected_messages)
+      result = run_cmd([], { :verbosity => HammerCLI::V_UNIX }, MessagesCommand)
+      assert_cmd(expected_result, result)
+    end
+
+    it 'should print quiet + no-verbose + verbose messages only when hammer verbosity level is V_VERBOSE' do
+      expected_messages = [
+        messages[0],
+        messages[1],
+        messages[2],
+        ''
+      ].join("\n")
+      expected_result = success_result(expected_messages)
+      result = run_cmd([], { :verbosity => HammerCLI::V_VERBOSE }, MessagesCommand)
+      assert_cmd(expected_result, result)
+    end
+  end
 end

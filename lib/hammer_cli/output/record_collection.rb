@@ -3,7 +3,7 @@ module HammerCLI::Output
 
   class MetaData
 
-    attr_accessor :total, :subtotal, :page, :per_page, :search, :sort_by, :sort_order
+    attr_accessor :total, :subtotal, :page, :per_page, :search, :sort_by, :sort_order, :pagination_verbosity
 
     def initialize(options={})
       @total = options[:total].to_i if options[:total]
@@ -13,6 +13,7 @@ module HammerCLI::Output
       @search = options[:search]
       @sort_by = options[:sort_by]
       @sort_order = options[:sort_order]
+      @pagination_verbosity = options[:pagination_verbosity] || HammerCLI::V_VERBOSE
     end
 
     def pagination_set?

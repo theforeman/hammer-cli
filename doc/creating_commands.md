@@ -244,18 +244,18 @@ option "--attributes", "ATTRIBUTES", "Values of various attributes",
 
 ### Advanced option evaluation
 
-Sometimes it is necessary to tune the option values based on other parameters given on CLI. 
+Sometimes it is necessary to tune the option values based on other parameters given on CLI.
 An example could be setting default values based on other options, values lookup in a DB, etc.
 The right place for this are `OptionSources`. Abstract Hammer command uses two default option sources -
-`HammerCLI::Options::Sources::CommandLine` responsible for intial population of the options, 
+`HammerCLI::Options::Sources::CommandLine` responsible for intial population of the options,
 `HammerCLI::Options::Sources::SavedDefaults` adding defaults managed by the `defaults` command.
 
-By overriding `option_sources` method in a command it is possible to add custom option sources 
-for various tasks to the list. The option sources are evaluated one by one each being given output 
-of the previous one as its input so the order in which the sources are listed matters. 
+By overriding `option_sources` method in a command it is possible to add custom option sources
+for various tasks to the list. The option sources are evaluated one by one each being given output
+of the previous one as its input so the order in which the sources are listed matters.
 
-Option sources are collected only once per command call. The collection is triggered by first call 
-to the `options` or `all_options` method, but at latest right after the option validation 
+Option sources are collected only once per command call. The collection is triggered by first call
+to the `options` or `all_options` method, but at latest right after the option validation
 (before the command's `execute` method is invoked). The order is as follows:
  1. parse
  1. option normalization
@@ -545,6 +545,22 @@ def adapter
 end
 ```
 
+#### Verbosity
+Currently Hammer [defines](https://github.com/theforeman/hammer-cli/blob/master/lib/hammer_cli/verbosity.rb) three basic verbose modes:
+  * __QUIET__ - Prints nothing
+  * __UNIX__ - Prints data only
+  * __VERBOSE__ - Prints data and other messages
+
+By default Hammer works in `VERBOSE` mode, but it can be changed with specific option (see `hammer --help`) or in the configuration file.
+
+If you want to force some messages to be printed with `print_message` in `UNIX` mode for example, you can specify `verbosity` of this message:
+```ruby
+class MyCommand < HammerCLI::Apipie::Command
+  def execute
+    print_message("Hello, %{name}!", { name: 'Jason' }, verbosity: HammerCLI::V_UNIX)
+  end
+end
+```
 
 Other useful command features
 -----------------------------
@@ -631,4 +647,3 @@ The best practice is to place module's configuration into a separate file named 
 the module. In this example it would be `~/.hammer/cli.modules.d/hello_world.yml`.
 
 Read more about configuration locations in [the settings howto](installation.md#configuration).
-

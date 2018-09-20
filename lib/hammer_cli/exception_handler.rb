@@ -49,8 +49,8 @@ module HammerCLI
       end
     end
 
-    def print_message(msg)
-      output.print_message(msg)
+    def print_message(msg, options = {})
+      output.print_message(msg, nil, options)
     end
 
     def log_full_error(e, message = e.message)
@@ -75,7 +75,7 @@ module HammerCLI
     end
 
     def handle_help_wanted(e)
-      print_message e.command.help
+      print_message e.command.help, verbosity: HammerCLI::V_QUIET
       HammerCLI::EX_OK
     end
 

@@ -12,7 +12,8 @@ require 'hammer_cli/options/normalizers'
 # Create fake command instance to use some global args before we start.
 # Option descriptions are never displayed and thus do not require translation.
 class PreParser < Clamp::Command
-  option ["-v", "--verbose"], :flag, "be verbose"
+  option ['-v', '--[no-]verbose'], :flag, _('Be verbose (or not). True by default')
+  option ['-q', '--quiet'], :flag, _('Completely silent')
   option ["-d", "--debug"], :flag, "show debugging output"
   option ["-c", "--config"], "CFG_FILE", "path to custom config file" do |path|
     File.expand_path path
@@ -80,7 +81,7 @@ HammerCLI::Settings.load({
     :password => preparser.password,
     :host => preparser.server,
     :interactive => preparser.interactive,
-    :verbose => preparser.verbose? || preparser.debug?,
+    :debug => preparser.debug?,
     :no_headers => preparser.no_headers?,
     :reload_cache => preparser.reload_cache?,
     :verify_ssl => preparser.verify_ssl,
@@ -99,10 +100,10 @@ end
 require 'hammer_cli/logger'
 logger = Logging.logger['Init']
 
-if preparser.verbose? || preparser.debug?
+if preparser.debug?
   root_logger = Logging.logger.root
   root_logger.appenders = root_logger.appenders << ::Logging.appenders.stderr(:layout => HammerCLI::Logger::COLOR_LAYOUT)
-  root_logger.level = 'debug' if preparser.debug?
+  root_logger.level = 'debug'
 end
 
 require 'hammer_cli/version'

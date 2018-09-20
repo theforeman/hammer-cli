@@ -41,16 +41,15 @@ describe HammerCLI::MainCommand do
     end
 
 
-    describe "verbose" do
-
-      it "stores into context" do
-        cmd.run(["-v"])
-        context[:verbose].must_equal true
+    describe 'verbose' do
+      it 'stores verbosity level into context' do
+        cmd.run(['-v'])
+        context[:verbosity].must_equal HammerCLI::V_VERBOSE
+        cmd.run(['--no-verbose'])
+        context[:verbosity].must_equal HammerCLI::V_UNIX
+        cmd.run(['--quiet'])
+        context[:verbosity].must_equal HammerCLI::V_QUIET
       end
-
     end
-
   end
-
 end
-
