@@ -6,6 +6,12 @@ module HammerCLI::Output::Adapter
       @paginate_by_default = false
     end
 
+    def tags
+      [
+        :data
+      ]
+    end
+
     def prepare_collection(fields, collection)
       collection.map do |element|
         render_fields(fields, element)
@@ -50,6 +56,13 @@ module HammerCLI::Output::Adapter
         end
         render_data(field, map_data(fields_data))
       else
+        formatter = @formatters.formatter_for_type(field.class)
+        parameters = field.parameters
+        parameters[:context] = @context
+        if formatter
+          data = formatter.format(data, field.parameters)
+        end
+
         return data unless data.is_a?(Hash)
         data.transform_keys { |key| capitalize(key) }
       end
@@ -60,7 +73,7 @@ module HammerCLI::Output::Adapter
       if field.is_a?(Fields::Collection)
         if field.parameters[:numbered]
           numbered_data(data)
-        else # necislovana kolekce je pole
+        else
           data
         end
       else
