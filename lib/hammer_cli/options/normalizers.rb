@@ -60,7 +60,7 @@ module HammerCLI
           result = {}
           val.scan(Regexp.new(PAIR_RE)) do |key, value|
             value = value.strip
-            value = value.scan(/[^,\[\]]+/) if value.start_with?('[')
+            value = value.scan(/[^\[\]]+/) if value.start_with?('[')
 
             result[key.strip] = strip_value(value)
           end
