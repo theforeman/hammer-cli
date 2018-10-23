@@ -1,3 +1,4 @@
+require 'highline'
 
 class String
   def format(params)
@@ -59,7 +60,6 @@ module HammerCLI
   end
 
   def self.interactive?
-    return false unless tty?
     return HammerCLI::Settings.get(:_params, :interactive) unless HammerCLI::Settings.get(:_params, :interactive).nil?
     HammerCLI::Settings.get(:ui, :interactive) != false
   end
@@ -79,5 +79,9 @@ module HammerCLI
     return capitalization if supported.include?(capitalization)
     warn _("Cannot use such capitalization. Try one of %s.") % supported.join(', ')
     nil
+  end
+
+  def self.interactive_output
+    @interactive_output ||= HighLine.new($stdin, IO.new(IO.sysopen('/dev/tty', 'w'), 'w'))
   end
 end
