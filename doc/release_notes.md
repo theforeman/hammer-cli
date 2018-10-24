@@ -1,5 +1,14 @@
 Release notes
 =============
+### 0.14.0 (2018-10-24)
+* Correct the gemspec ([PR #286](https://github.com/theforeman/hammer-cli/pull/286))
+* Use the tty for the interactive output ([PR #289](https://github.com/theforeman/hammer-cli/pull/289)) ([#6935](http://projects.theforeman.org/issues/6935))
+* Remove legacy code for ruby < 2.0 ([#21359](http://projects.theforeman.org/issues/21359))
+* Verbose mode does not work and is inconsistent ([#14725](http://projects.theforeman.org/issues/14725))
+* Enable formatters in json structured output ([PR #288](https://github.com/theforeman/hammer-cli/pull/288)) ([#24980](http://projects.theforeman.org/issues/24980))
+* Hammer JSON output uses inconsistent capitalization ([#17010](http://projects.theforeman.org/issues/17010))
+* Bump clamp dep to >=1.1 ([PR #282](https://github.com/theforeman/hammer-cli/pull/282))
+
 ### 0.14.0 (2018-08-27)
 * Restore help building ([PR #280](https://github.com/theforeman/hammer-cli/pull/280)) ([#24488](http://projects.theforeman.org/issues/24488))
 * Shouldn't translate the bool values in description ([#21381](http://projects.theforeman.org/issues/21381))
