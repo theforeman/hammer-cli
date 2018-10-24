@@ -17,6 +17,10 @@ module HammerCLI
 
     class << self
       attr_accessor :validation_blocks
+
+      def help_extension_blocks
+        @help_extension_blocks ||= []
+      end
     end
 
     def adapter
@@ -80,9 +84,16 @@ module HammerCLI
     def self.help(invocation_path, builder = HammerCLI::Help::Builder.new)
       super(invocation_path, builder)
 
-      if @help_extension_block
+      unless help_extension_blocks.empty?
         help_extension = HammerCLI::Help::TextBuilder.new(builder.richtext)
-        @help_extension_block.call(help_extension)
+        help_extension_blocks.each do |extension_block|
+          begin
+            extension_block.call(help_extension)
+          rescue ArgumentError => e
+            handler = HammerCLI::ExceptionHandler.new
+            handler.handle_exception(e)
+          end
+        end
         builder.add_text(help_extension.string)
       end
       builder.string
@@ -90,7 +101,7 @@ module HammerCLI
 
     def self.extend_help(&block)
       # We save the block for execution on object level, where we can access command's context and check :is_tty? flag
-      @help_extension_block = block
+      self.help_extension_blocks << block
     end
 
     def self.output(definition=nil, &block)
