@@ -9,11 +9,11 @@
 # ty breizh <tybreizh29@free.fr>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.14.0\n"
+"Project-Id-Version: hammer-cli 0.15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-09 23:29+0200\n"
-"PO-Revision-Date: 2018-05-31 15:01+0000\n"
-"Last-Translator: Pierre-Emmanuel Dutang <dutangp@gmail.com>\n"
+"POT-Creation-Date: 2018-08-27 16:57+0200\n"
+"PO-Revision-Date: 2018-08-27 23:09+0000\n"
+"Last-Translator: Lukáš Zapletal\n"
 "Language-Team: French (http://www.transifex.com/foreman/foreman/language/"
 "fr/)\n"
 "MIME-Version: 1.0\n"
@@ -372,12 +372,11 @@ msgstr ""
 msgid "Numeric value is required."
 msgstr "Valeur numérique obligatoire."
 
-msgid "One of true/false, yes/no, 1/0"
-msgstr "L'un de ces choix : true/false, yes/no, 1/0"
-
-msgid "Value must be one of true/false, yes/no, 1/0."
+msgid "One of %s."
 msgstr ""
-"La valeur doit correspondre à l'un de ces choix : true/false, yes/no, 1/0."
+
+msgid "Value must be one of %s."
+msgstr "La valeur doit être choisie parmi %s."
 
 msgid "Unable to parse JSON input."
 msgstr "Impossible d'analyser l'entrée JSON."
@@ -387,9 +386,6 @@ msgstr "Valeurs possible(s) : %s"
 
 msgid "Value must be %s."
 msgstr "La valeur doit être %s."
-
-msgid "Value must be one of %s."
-msgstr "La valeur doit être choisie parmi %s."
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "Date et heure suivant YYYY-MM-DD HH:MM:SS ou format ISO 8601"

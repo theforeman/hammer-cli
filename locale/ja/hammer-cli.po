@@ -6,10 +6,10 @@
 # Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.14.0\n"
+"Project-Id-Version: hammer-cli 0.15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-09 23:29+0200\n"
-"PO-Revision-Date: 2018-05-09 23:18+0000\n"
+"POT-Creation-Date: 2018-08-27 16:57+0200\n"
+"PO-Revision-Date: 2018-08-27 23:09+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/"
 "ja/)\n"
@@ -355,11 +355,11 @@ msgstr ""
 msgid "Numeric value is required."
 msgstr "数値が必要。"
 
-msgid "One of true/false, yes/no, 1/0"
-msgstr "true/false、yes/no、1/0 のいずれか"
+msgid "One of %s."
+msgstr ""
 
-msgid "Value must be one of true/false, yes/no, 1/0."
-msgstr "値を true/false、yes/no、1/0 のいずれかにする必要があります。"
+msgid "Value must be one of %s."
+msgstr "値を '%s' のいずれかにする必要があります。"
 
 msgid "Unable to parse JSON input."
 msgstr "JSON 入力を解析できません。"
@@ -369,9 +369,6 @@ msgstr "可能な値: %s"
 
 msgid "Value must be %s."
 msgstr "値を '%s' にする必要があります。"
-
-msgid "Value must be one of %s."
-msgstr "値を '%s' のいずれかにする必要があります。"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "日時 (YYYY-MM-DD HH:MM:SS または ISO 8601 形式)"

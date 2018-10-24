@@ -12,11 +12,11 @@
 # Ulrich Habel <rhaen@pkgbox.de>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.14.0\n"
+"Project-Id-Version: hammer-cli 0.15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-09 23:29+0200\n"
-"PO-Revision-Date: 2018-07-21 23:03+0000\n"
-"Last-Translator: Martin Zimmermann <martin.zimmermann@gmx.com>\n"
+"POT-Creation-Date: 2018-08-27 16:57+0200\n"
+"PO-Revision-Date: 2018-08-27 23:09+0000\n"
+"Last-Translator: Lukáš Zapletal\n"
 "Language-Team: German (http://www.transifex.com/foreman/foreman/language/"
 "de/)\n"
 "MIME-Version: 1.0\n"
@@ -338,10 +338,10 @@ msgstr ""
 msgid "Numeric value is required."
 msgstr ""
 
-msgid "One of true/false, yes/no, 1/0"
+msgid "One of %s."
 msgstr ""
 
-msgid "Value must be one of true/false, yes/no, 1/0."
+msgid "Value must be one of %s."
 msgstr ""
 
 msgid "Unable to parse JSON input."
@@ -351,9 +351,6 @@ msgid "Possible value(s): %s"
 msgstr "Mögliche(r) Wert(e): %s"
 
 msgid "Value must be %s."
-msgstr ""
-
-msgid "Value must be one of %s."
 msgstr ""
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"

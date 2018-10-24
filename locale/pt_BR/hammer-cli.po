@@ -5,16 +5,17 @@
 # Translators:
 # Dominic Cleal <dcleal@redhat.com>, 2014
 # Fabio Dias <fabioqos@gmail.com>, 2015
+# Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2018
 # Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2014
 # Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2014
 # Valeria S Silva <valeriassilva@live.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.14.0\n"
+"Project-Id-Version: hammer-cli 0.15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-09 23:29+0200\n"
-"PO-Revision-Date: 2018-05-09 23:18+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2018-08-27 16:57+0200\n"
+"PO-Revision-Date: 2018-08-29 18:29+0000\n"
+"Last-Translator: Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/foreman/foreman/"
 "language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 msgid "Unfortunately the server does not support such operation."
-msgstr ""
+msgstr "Infelizmente o servidor não suporta tal operação."
 
 msgid "Unable to find hostname in %s."
 msgstr "Não foi possível encontrar o nome de host em %s."
@@ -326,7 +327,7 @@ msgid "Set output format. One of [%s]"
 msgstr "Definir formato de resultado. Um entre  [%s]"
 
 msgid "Path to custom output file"
-msgstr ""
+msgstr "Caminho para o arquivo de saída personalizado"
 
 msgid "Character to separate the values"
 msgstr "Caractere para separar valores"
@@ -360,11 +361,11 @@ msgstr ""
 msgid "Numeric value is required."
 msgstr "O valor numérico é necessário."
 
-msgid "One of true/false, yes/no, 1/0"
-msgstr "Deve ser um entre verdadeiro/falso, sim/não, 1/0"
+msgid "One of %s."
+msgstr "Um de %s"
 
-msgid "Value must be one of true/false, yes/no, 1/0."
-msgstr "O valor deve ser um entre verdadeiro/falso, sim/não, 1/0."
+msgid "Value must be one of %s."
+msgstr "O valor deve ser um dos %s."
 
 msgid "Unable to parse JSON input."
 msgstr "Não foi possível analisar a entrada JSON."
@@ -374,9 +375,6 @@ msgstr "Possível(is) valor(es): %s"
 
 msgid "Value must be %s."
 msgstr "O valor deve ser %s."
-
-msgid "Value must be one of %s."
-msgstr "O valor deve ser um dos %s."
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "Data e hora em formato YYYY-MM-DD HH:MM:SS ou ISO 8601"
