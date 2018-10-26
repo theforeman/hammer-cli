@@ -100,9 +100,13 @@ module HammerCLI
   end
 
   def self.defaults
-    @defaults ||= Defaults.new(HammerCLI::Settings.settings[:defaults])
-
+    return @defaults if @defaults
+    settings = HammerCLI::Settings
+    default_values = settings.get(:use_defaults) ? settings.get(:defaults) : {}
+    @defaults = Defaults.new(default_values)
   end
 
-  HammerCLI::MainCommand.subcommand "defaults", _("Defaults management"), HammerCLI::DefaultsCommand
+  if HammerCLI::Settings.get(:use_defaults)
+    HammerCLI::MainCommand.subcommand "defaults", _("Defaults management"), HammerCLI::DefaultsCommand
+  end
 end

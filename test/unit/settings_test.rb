@@ -44,6 +44,7 @@ describe HammerCLI::Settings do
   end
 
   it "dumps all settings" do
+    settings.empty
     data = {:a => 1, :b => 2}
     settings.load(data)
     settings.dump.must_equal data
@@ -69,11 +70,23 @@ describe HammerCLI::Settings do
     settings.get(:x).size.must_equal 4
   end
 
-  it "clear wipes all settings" do
+  it "clear wipes all settings but default values" do
     settings.load({:a => 1, :b => 2})
     settings.clear
     settings.get(:a).must_be_nil
     settings.get(:b).must_be_nil
+    settings.default_values.each { |key, val| settings.get(key).must_equal val }
+  end
+
+  it "empty wipes all settings including default values" do
+    settings.load({:a => 1, :b => 2})
+    settings.empty
+    settings.dump.must_equal({})
+  end
+
+  it "initializes settings with default settings" do
+    settings.instance_variable_set(:@settings_hash, nil)
+    settings.dump.must_equal settings.default_values
   end
 
   context "load from paths" do

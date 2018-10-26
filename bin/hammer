@@ -13,6 +13,7 @@ require 'hammer_cli/options/normalizers'
 # Option descriptions are never displayed and thus do not require translation.
 class PreParser < Clamp::Command
   option ['-v', '--[no-]verbose'], :flag, _('Be verbose (or not). True by default')
+  option ['--[no-]use-defaults'], :flag, _('Enable/disable stored defaults. Enabled by default')
   option ['-q', '--quiet'], :flag, _('Completely silent')
   option ["-d", "--debug"], :flag, "show debugging output"
   option ["-c", "--config"], "CFG_FILE", "path to custom config file" do |path|
@@ -83,6 +84,7 @@ HammerCLI::Settings.load({
     :interactive => preparser.interactive,
     :debug => preparser.debug?,
     :no_headers => preparser.no_headers?,
+    :use_defaults => preparser.use_defaults?,
     :reload_cache => preparser.reload_cache?,
     :verify_ssl => preparser.verify_ssl,
     :ssl_ca_file => preparser.ssl_ca_file,
@@ -91,6 +93,8 @@ HammerCLI::Settings.load({
     :ssl_client_key => preparser.ssl_client_key,
     :ssl_with_basic_auth => preparser.ssl_with_basic_auth?
   }})
+
+HammerCLI::Settings.load({:use_defaults => preparser.use_defaults?}) unless preparser.use_defaults?.nil?
 
 if HammerCLI::Settings.get(:ui, :mark_translated)
   include HammerCLI::I18n::Debug
