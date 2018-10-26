@@ -84,7 +84,6 @@ HammerCLI::Settings.load({
     :interactive => preparser.interactive,
     :debug => preparser.debug?,
     :no_headers => preparser.no_headers?,
-    :use_defaults => preparser.use_defaults?,
     :reload_cache => preparser.reload_cache?,
     :verify_ssl => preparser.verify_ssl,
     :ssl_ca_file => preparser.ssl_ca_file,

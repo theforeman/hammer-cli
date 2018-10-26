@@ -8,14 +8,18 @@ module HammerCLI
 
     attr_reader :defaults_settings
 
-    def initialize(settings, file_path = nil)
-
-      @defaults_settings = settings || {}
+    def initialize(settings, file_path = nil, enabled: HammerCLI::Settings.get(:use_defaults))
+      @enabled = enabled
+      @defaults_settings = (enabled? ? settings : {}) || {}
       @path = file_path || DEFAULT_FILE
     end
 
     def register_provider(provider)
       providers[provider.provider_name.to_s] = provider
+    end
+
+    def enabled?
+      !!@enabled
     end
 
     def providers
@@ -57,6 +61,7 @@ module HammerCLI
     end
 
     def write_to_file(defaults)
+      ensure_is_enabled
       File.open(path,'w') do |h|
         h.write defaults.to_yaml
       end
@@ -67,6 +72,7 @@ module HammerCLI
     attr_reader :path
 
     def create_default_file
+      ensure_is_enabled
       if Dir.exist?(File.dirname(@path))
         new_file = File.new(path, "w")
         new_file.write ":defaults:"
@@ -97,16 +103,19 @@ module HammerCLI
     def switch_to_name(opt)
       opt.to_s.gsub(/^-[-]?/,'')
     end
+
+    def ensure_is_enabled
+      unless enabled?
+        message = _('Modification of the defaults is not allowed when the feature is disabled.') +
+          "\n" + _('Use --use-defaults or enable defaults in CLI configuration to proceed.')
+        raise DefaultsError, message
+      end
+    end
   end
 
   def self.defaults
-    return @defaults if @defaults
-    settings = HammerCLI::Settings
-    default_values = settings.get(:use_defaults) ? settings.get(:defaults) : {}
-    @defaults = Defaults.new(default_values)
+    @defaults ||= Defaults.new(HammerCLI::Settings.get(:defaults))
   end
 
-  if HammerCLI::Settings.get(:use_defaults)
-    HammerCLI::MainCommand.subcommand "defaults", _("Defaults management"), HammerCLI::DefaultsCommand
-  end
+  HammerCLI::MainCommand.subcommand "defaults", _("Defaults management"), HammerCLI::DefaultsCommand
 end

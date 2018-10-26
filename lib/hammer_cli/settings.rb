@@ -47,7 +47,7 @@ module HammerCLI
 
     def self.clear
       empty
-      load(default_values)
+      load(default_settings)
     end
 
     def self.empty
@@ -64,7 +64,7 @@ module HammerCLI
       @path_history
     end
 
-    def self.default_values
+    def self.default_settings
       {
         :use_defaults => true
       }
@@ -73,7 +73,7 @@ module HammerCLI
     private
 
     def self.settings
-      @settings_hash ||= default_values
+      @settings_hash ||= default_settings
       @settings_hash
     end
 
