@@ -1,78 +1,55 @@
+require 'hammer_cli/help/definition'
+
 module HammerCLI
   module Help
     class TextBuilder
-      INDENT_STEP = 2
-      LIST_INDENT = 20
+      attr_accessor :definition
 
       def initialize(richtext = false)
-        @out = StringIO.new
         @richtext = richtext
+        @definition = HammerCLI::Help::Definition.new
       end
 
       def string
-        @out.string
+        @definition.build_string
       end
 
-      def text(content)
-        puts unless first_print?
-        puts content
+      def text(content, options = {})
+        @definition << HammerCLI::Help::Text.new(content, options)
       end
 
-      def list(items)
+      def list(items, options = {})
         return if items.empty?
-
-        items = normalize_list(items)
-        max_len = items.map { |i| i[0].to_s.length }.max
-        indent_size = (max_len + INDENT_STEP > LIST_INDENT) ? (max_len + INDENT_STEP) : LIST_INDENT
-
-        puts unless first_print?
-        items.each do |col1, col2|
-          # handle multiple lines in the second column
-          col2 = indent(col2.to_s, ' ' * indent_size).lstrip
-
-          line = "%-#{indent_size}s%s" % [col1, col2]
-          line.strip!
-          puts line
-        end
+        @definition << HammerCLI::Help::List.new(items, options)
       end
 
-      def section(label, &block)
-        puts unless first_print?
-        heading(label)
-
+      def section(label, options = {}, &block)
         sub_builder = TextBuilder.new(@richtext)
         yield(sub_builder) if block_given?
-        puts indent(sub_builder.string)
+        options[:richtext] ||= @richtext
+        @definition << HammerCLI::Help::Section.new(label, sub_builder.definition, options)
+      end
+
+      def find_item(item_id)
+        @definition.find_item(item_id)
+      end
+
+      def at(path = [])
+        item = path.empty? ? self : @definition.at(path)
+        sub_builder = TextBuilder.new(@richtext)
+        sub_builder.definition = item.definition
+        yield(sub_builder)
+        item.definition = sub_builder.definition
+      end
+
+      def insert(mode, item_id)
+        sub_builder = TextBuilder.new(@richtext)
+        yield(sub_builder)
+        @definition.insert_definition(mode, item_id, sub_builder.definition)
       end
 
       def indent(content, indentation = nil)
-        indentation ||= " " * INDENT_STEP
-        content = content.split("\n") unless content.is_a? Array
-        content.map do |line|
-          (indentation + line).rstrip
-        end.join("\n")
-      end
-
-      protected
-
-      def heading(label)
-        label = "#{label}:"
-        label = HighLine.color(label, :bold) if @richtext
-        puts label
-      end
-
-      def puts(*args)
-        @out.puts(*args)
-      end
-
-      def first_print?
-        @out.size == 0
-      end
-
-      def normalize_list(items)
-        items.map do |i|
-          i.is_a?(Array) ? i : [i]
-        end
+        HammerCLI::Help::AbstractItem.indent(content, indentation)
       end
     end
   end

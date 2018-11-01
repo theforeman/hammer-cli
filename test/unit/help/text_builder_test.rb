@@ -136,5 +136,174 @@ describe HammerCLI::Help::TextBuilder do
       help.indent(text, '**').must_equal(expected_result)
     end
   end
-end
 
+  describe '#find_item' do
+    it 'finds an item' do
+      help.text('Lorem ipsum', id: :lorem)
+      help.text('Dolor sit amet', id: :dolor)
+      help.find_item(:dolor).id.must_equal :dolor
+    end
+
+    it 'finds a nested item' do
+      help.section('Heading') do |h|
+        h.text('Lorem ipsum', id: :lorem)
+        h.text('Dolor sit amet', id: :dolor)
+      end
+      help.at('Heading') do |h|
+        h.find_item(:dolor).id.must_equal :dolor
+      end
+    end
+  end
+
+  describe '#insert' do
+    describe 'before' do
+      it 'should insert new help item before the old one' do
+        help.text('old', id: :old)
+        help.insert(:before, :old) do |h|
+          h.text('new', id: :new)
+        end
+        help.definition.first.id.must_equal :new
+        help.definition.count.must_equal 2
+      end
+
+      it 'should insert multiple items before old item' do
+        help.text('old', id: :old)
+        help.insert(:before, :old) do |h|
+          h.text('new', id: :new)
+          h.text('new2', id: :new2)
+        end
+        help.definition.first.id.must_equal :new
+        help.definition.count.must_equal 3
+      end
+
+      it 'should work with labels' do
+        help.section('section') do |h|
+          h.text('text in section')
+        end
+        help.insert(:before, 'section') do |h|
+          h.text('text before section', id: :before_section)
+        end
+        help.definition.first.id.must_equal :before_section
+        help.definition.count.must_equal 2
+      end
+    end
+
+    describe 'after' do
+      it 'should insert new help item after the old one' do
+        help.text('old', id: :old)
+        help.insert(:after, :old) do |h|
+          h.text('new', id: :new)
+        end
+        help.definition[0].id.must_equal :old
+        help.definition[1].id.must_equal :new
+        help.definition.count.must_equal 2
+      end
+
+      it 'should insert multiple items after old item' do
+        help.text('old', id: :old)
+        help.insert(:after, :old) do |h|
+          h.text('new', id: :new)
+          h.text('new2', id: :new2)
+        end
+        help.definition[0].id.must_equal :old
+        help.definition[1].id.must_equal :new
+        help.definition[2].id.must_equal :new2
+        help.definition.count.must_equal 3
+      end
+
+      it 'should work with labels' do
+        help.section('section') do |h|
+          h.text('text in section')
+        end
+        help.insert(:after, 'section') do |h|
+          h.text('text before section', id: :after_section)
+        end
+        help.definition[1].id.must_equal :after_section
+        help.definition.count.must_equal 2
+      end
+    end
+
+    describe 'replace' do
+      it 'should replace the old help item with new one' do
+        help.text('old', id: :old)
+        help.insert(:replace, :old) do |h|
+          h.text('new', id: :new)
+        end
+        help.definition.first.id.must_equal :new
+        help.definition.count.must_equal 1
+      end
+
+      it 'should replace the old help item with new ones' do
+        help.text('old', id: :old)
+        help.insert(:replace, :old) do |h|
+          h.text('new', id: :new)
+          h.text('new2', id: :new2)
+        end
+        help.definition[0].id.must_equal :new
+        help.definition[1].id.must_equal :new2
+        help.definition.count.must_equal 2
+      end
+
+      it 'should work with labels' do
+        help.section('section') do |h|
+          h.text('text in section')
+        end
+        help.insert(:replace, 'section') do |h|
+          h.text('text instead of section', id: :instead_of_section)
+        end
+        help.definition.first.id.must_equal :instead_of_section
+        help.definition.count.must_equal 1
+      end
+    end
+  end
+
+  describe '#at' do
+    it 'should return self if path is empty' do
+      help.text('foo', id: :foo)
+      help.at([]) do |h|
+        h.definition.first.id.must_equal :foo
+      end
+      help.at do |h|
+        h.definition.first.id.must_equal :foo
+      end
+    end
+
+    it 'should return definition of specified help item with path' do
+      help.section('first', id: :first_section) do |h|
+        h.text('first text in the first section', id: :first_text1)
+        h.text('second text in the first section', id: :secon_text1)
+      end
+      help.section('second', id: :second_section) do |h|
+        h.text('first text in the second section', id: :first_text2)
+        h.text('second text in the second section', id: :secon_text2)
+      end
+      help.at(:first_section) do |h|
+        h.section('nested section', id: :nested_section) do |h|
+          h.text('text in nested section', id: :nested_text)
+        end
+      end
+      help.at([:first_section, :nested_section]) do |h|
+        h.definition.first.id.must_equal :nested_text
+      end
+    end
+
+    it 'should work with labels' do
+      help.section('first') do |h|
+        h.text('first text in the first section', id: :first_text1)
+        h.text('second text in the first section', id: :secon_text1)
+      end
+      help.section('second') do |h|
+        h.text('first text in the second section', id: :first_text2)
+        h.text('second text in the second section', id: :secon_text2)
+      end
+      help.at('first') do |h|
+        h.section('nested section') do |h|
+          h.text('text in nested section', id: :nested_text)
+        end
+      end
+      help.at(['first', 'nested section']) do |h|
+        h.definition.first.id.must_equal :nested_text
+      end
+    end
+  end
+end
