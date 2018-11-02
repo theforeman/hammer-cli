@@ -10,6 +10,7 @@ module HammerCLI
     option ['-q', '--quiet'], :flag, _('Completely silent') do
       context[:verbosity] = HammerCLI::V_QUIET
     end
+    option ['--[no-]use-defaults'], :flag, _('Enable/disable stored defaults. Enabled by default')
     option ["-d", "--debug"], :flag, _("Show debugging output"), :context_target => :debug
     option ["-r", "--reload-cache"], :flag, _("Force reload of Apipie cache")
 

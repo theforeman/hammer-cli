@@ -9,7 +9,6 @@ module HammerCLI
     attr_reader :defaults_settings
 
     def initialize(settings, file_path = nil)
-
       @defaults_settings = settings || {}
       @path = file_path || DEFAULT_FILE
     end
@@ -100,8 +99,7 @@ module HammerCLI
   end
 
   def self.defaults
-    @defaults ||= Defaults.new(HammerCLI::Settings.settings[:defaults])
-
+    @defaults ||= Defaults.new(HammerCLI::Settings.get(:defaults))
   end
 
   HammerCLI::MainCommand.subcommand "defaults", _("Defaults management"), HammerCLI::DefaultsCommand
