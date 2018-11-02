@@ -256,10 +256,9 @@ module HammerCLI
 
 
     def option_sources
-      [
-        HammerCLI::Options::Sources::CommandLine.new(self),
-        HammerCLI::Options::Sources::SavedDefaults.new(context[:defaults], logger)
-      ]
+      sources = [HammerCLI::Options::Sources::CommandLine.new(self)]
+      sources << HammerCLI::Options::Sources::SavedDefaults.new(context[:defaults], logger) if context[:use_defaults]
+      sources
     end
 
     private

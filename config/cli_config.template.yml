@@ -32,6 +32,9 @@
 #   2 - data, messages, interactive I/O, progress bars. Equals to --verbose.
 :verbosity: 2
 
+# Enable/disable defaults. Preset default values for the options won't be used.
+#:use_defaults: true
+
 #:log_owner: 'foreman'
 #:log_group: 'foreman'
 
