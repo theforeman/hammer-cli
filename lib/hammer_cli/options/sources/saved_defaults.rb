@@ -8,11 +8,9 @@ module HammerCLI
         end
 
         def get_options(defined_options, result)
-          if @defaults && @defaults.enabled?
-            defined_options.each do |opt|
-              result[opt.attribute_name] = add_custom_defaults(opt) if result[opt.attribute_name].nil?
-            end
-          end
+          defined_options.each do |opt|
+            result[opt.attribute_name] = add_custom_defaults(opt) if result[opt.attribute_name].nil?
+          end if @defaults
           result
         end
 

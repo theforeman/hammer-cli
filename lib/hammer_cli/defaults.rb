@@ -8,18 +8,13 @@ module HammerCLI
 
     attr_reader :defaults_settings
 
-    def initialize(settings, file_path = nil, enabled: HammerCLI::Settings.get(:use_defaults))
-      @enabled = enabled
+    def initialize(settings, file_path = nil)
       @defaults_settings = settings || {}
       @path = file_path || DEFAULT_FILE
     end
 
     def register_provider(provider)
       providers[provider.provider_name.to_s] = provider
-    end
-
-    def enabled?
-      !!@enabled
     end
 
     def providers

@@ -373,12 +373,18 @@ describe HammerCLI::AbstractCommand do
     before do
       @defaults = mock()
       @defaults.stubs(:get_defaults).returns(nil)
-      @cmd = TestDefaultsCmd.new("", { :defaults => @defaults })
+      @cmd = TestDefaultsCmd.new("", { :defaults => @defaults, :use_defaults => true })
+      @cmd_no_defaults = TestDefaultsCmd.new("", { :defaults => @defaults, :use_defaults => false })
     end
 
     it 'provides default value for an option flag' do
       @defaults.expects(:get_defaults).with('--test').returns(2)
       assert_equal({'different_attr_name' => 2}, @cmd.options)
+    end
+
+    it 'does not set default value if the defaults are disabled' do
+      @defaults.expects(:get_defaults).never()
+      assert_equal({}, @cmd_no_defaults.options)
     end
 
     it 'prefers values from command line' do
