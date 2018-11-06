@@ -1,4 +1,5 @@
 require 'highline'
+require 'tempfile'
 
 class String
   def format(params)
@@ -83,5 +84,16 @@ module HammerCLI
 
   def self.interactive_output
     @interactive_output ||= HighLine.new($stdin, IO.new(IO.sysopen('/dev/tty', 'w'), 'w'))
+  end
+
+  def self.open_in_editor(content, content_type: '', tempdir: '/tmp', suffix: '.tmp')
+    result = content
+    Tempfile.open([content_type, suffix], tempdir) do |f|
+      f.write(content)
+      f.rewind
+      system("#{ENV['EDITOR'] || 'vi'} #{f.path}")
+      result = f.read
+    end
+    result
   end
 end
