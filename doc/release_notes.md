@@ -1,6 +1,10 @@
 Release notes
 =============
-### 0.14.0 (2018-10-24)
+### 0.15.1 (2018-11-06)
+* Helper for editing text in editor ([PR #294](https://github.com/theforeman/hammer-cli/pull/294)) ([#24489](http://projects.theforeman.org/issues/24489))
+* Add ability to disable defaults ([PR #293](https://github.com/theforeman/hammer-cli/pull/293)) ([#25307](http://projects.theforeman.org/issues/25307))
+
+### 0.15.0 (2018-10-24)
 * Correct the gemspec ([PR #286](https://github.com/theforeman/hammer-cli/pull/286))
 * Use the tty for the interactive output ([PR #289](https://github.com/theforeman/hammer-cli/pull/289)) ([#6935](http://projects.theforeman.org/issues/6935))
 * Remove legacy code for ruby < 2.0 ([#21359](http://projects.theforeman.org/issues/21359))
