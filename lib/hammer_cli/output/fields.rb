@@ -3,9 +3,8 @@ require 'hammer_cli/output/dsl'
 module Fields
 
   class Field
-
-    attr_reader :label
     attr_reader :path
+    attr_accessor :label
 
     def initialize(options={})
       @hide_blank = options[:hide_blank].nil? ? false : options[:hide_blank]
@@ -13,6 +12,14 @@ module Fields
       @path = options[:path] || []
       @label = options[:label]
       @options = options
+    end
+
+    def id
+      @options[:id] || @options[:key] || @label
+    end
+
+    def match_id?(field_id)
+      @options[:id] == field_id || @options[:key] == field_id || @label == _(field_id)
     end
 
     def hide_blank?
