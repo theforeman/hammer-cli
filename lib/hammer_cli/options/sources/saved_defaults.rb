@@ -1,7 +1,9 @@
+require_relative './base'
+
 module HammerCLI
   module Options
     module Sources
-      class SavedDefaults
+      class SavedDefaults < Base
         def initialize(defaults, logger)
           @defaults = defaults
           @logger = logger

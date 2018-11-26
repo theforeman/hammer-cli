@@ -27,12 +27,7 @@ module HammerCLI
       end
 
       def insert_definition(mode, item_id, definition)
-        index = item_index(item_id)
-        index += 1 if mode == :after
-        delete_at(index) if mode == :replace
-        definition.each_with_index do |item, offset|
-          insert(index + offset, item)
-        end
+        HammerCLI.insert_relative(self, mode, item_index(item_id), *definition)
       end
 
       private

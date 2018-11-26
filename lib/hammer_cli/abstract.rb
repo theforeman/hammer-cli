@@ -2,14 +2,17 @@ require 'hammer_cli/exception_handler'
 require 'hammer_cli/logger_watch'
 require 'hammer_cli/options/option_definition'
 require 'hammer_cli/options/option_collector'
+require 'hammer_cli/options/processor_list'
 require 'hammer_cli/options/sources/command_line'
 require 'hammer_cli/options/sources/saved_defaults'
+require 'hammer_cli/options/validators/dsl_block_validator'
 require 'hammer_cli/clamp'
 require 'hammer_cli/subcommand'
 require 'hammer_cli/options/matcher'
 require 'hammer_cli/help/builder'
 require 'hammer_cli/help/text_builder'
 require 'logging'
+
 module HammerCLI
 
   class AbstractCommand < Clamp::Command
@@ -44,7 +47,7 @@ module HammerCLI
       super
       validate_options
       logger.info "Called with options: %s" % options.inspect
-    rescue HammerCLI::Validator::ValidationError => e
+    rescue HammerCLI::Options::Validators::ValidationError => e
       signal_usage_error e.message
     end
 
@@ -52,15 +55,14 @@ module HammerCLI
       HammerCLI::EX_OK
     end
 
-    def self.validate_options(&block)
+    def self.validate_options(mode=:append, target_name=nil, validator: nil, &block)
+      validator ||= HammerCLI::Options::Validators::DSLBlockValidator.new(&block)
       self.validation_blocks ||= []
-      self.validation_blocks << block
+      self.validation_blocks << [mode, target_name, validator]
     end
 
     def validate_options
-      if self.class.validation_blocks && self.class.validation_blocks.any?
-        self.class.validation_blocks.each { |validation_block| validator.run(&validation_block) }
-      end
+      # keep the method for legacy reasons
     end
 
     def exception_handler
@@ -198,7 +200,8 @@ module HammerCLI
     end
 
     def validator
-      @validator ||= HammerCLI::Validator.new(self.class.recognised_options, all_options)
+      # keep the method for legacy reasons, it's used by validate_options
+      @validator ||= HammerCLI::Options::Validators::DSL.new(self.class.recognised_options, all_options)
     end
 
     def handle_exception(e)
@@ -257,13 +260,24 @@ module HammerCLI
     end
 
     def option_collector
-      @option_collector ||= HammerCLI::Options::OptionCollector.new(self.class.recognised_options, option_sources)
+      @option_collector ||= HammerCLI::Options::OptionCollector.new(self.class.recognised_options, add_validators(option_sources))
     end
 
 
     def option_sources
-      sources = [HammerCLI::Options::Sources::CommandLine.new(self)]
+      sources = HammerCLI::Options::ProcessorList.new(name: 'DefaultInputs')
+      sources << HammerCLI::Options::Sources::CommandLine.new(self)
       sources << HammerCLI::Options::Sources::SavedDefaults.new(context[:defaults], logger) if context[:use_defaults]
+
+      HammerCLI::Options::ProcessorList.new([sources])
+    end
+
+    def add_validators(sources)
+      if self.class.validation_blocks
+        self.class.validation_blocks.each do |validation_block|
+          sources.insert_relative(*validation_block)
+        end
+      end
       sources
     end
 

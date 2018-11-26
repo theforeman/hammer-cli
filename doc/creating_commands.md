@@ -169,33 +169,7 @@ In cases when you want to deprecate just one of more possible switches use the e
 Hammer commands offer option builders that can be used for automatic option generation.
 See [documentation page](option_builders.md#option-builders) dedicated to this topic for more details.
 
-### Option validation
-Hammer provides extended functionality for validating options.
-
-#### DSL
-First of all there is a dsl for validating combinations of options:
-```ruby
-validate_options do
-  all(:option_name, :option_surname).required  # requires all the options
-  option(:option_age).required          # requires a single option,
-                                        # equivalent of :required => true in option declaration
-  any(:option_email, :option_phone).required   # requires at least one of the options
-
-  # It is possible to create more complicated constructs.
-  # This example requires either the full address or nothing
-  if any(:option_street, :option_city, :option_zip).exist?
-    all(:option_street, :option_city, :option_zip).required
-  end
-
-  # Here you can reject all address related option when --no-address is passed
-  if option(:option_no_address).exist?
-    all(:option_street, :option_city, :option_zip).rejected
-  end
-end
-
-```
-
-#### Option normalizers
+### Option normalizers
 Another option-related feature is a set of normalizers for specific option types. They validate and preprocess
 option values. Each normalizer has a description of the format it accepts. This description is printed
 in commands' help.
@@ -244,24 +218,90 @@ option "--attributes", "ATTRIBUTES", "Values of various attributes",
 
 ### Advanced option evaluation
 
-Sometimes it is necessary to tune the option values based on other parameters given on CLI.
+Sometimes it is necessary to tune or validate the option values based on other parameters given on CLI.
 An example could be setting default values based on other options, values lookup in a DB, etc.
-The right place for this are `OptionSources`. Abstract Hammer command uses two default option sources -
-`HammerCLI::Options::Sources::CommandLine` responsible for intial population of the options,
+The right place for this are option processors. There are two basic kinds of option processors in hammer:
+- *option sources* - they provide values for the options, descendants of `HammerCLI::Options::Sources::Base`
+- *option validators* - they check if the options values are valid, descendants of `HammerCLI::Options::Validators::Base`
+
+Option sources and validators can be mixed together. For example it's possible to collect options from the command line,
+do some validation on them and then continue with collecting options from a different source.
+The whole set of processors is invoked only once per command call. The processing is triggered by a first call
+to the `options` or `all_options` method, but at latest right after the option validation
+(before the command's `execute` method is invoked). The order is as follows:
+ 1. option parsing
+ 1. option normalization
+ 1. option processors execution (sources and validators)
+ 1. `execute` invocation
+
+#### Default option sources
+
+Abstract Hammer command uses two default option sources -
+`HammerCLI::Options::Sources::CommandLine` responsible for intial population of the options and
 `HammerCLI::Options::Sources::SavedDefaults` adding defaults managed by the `defaults` command.
+
+The default option sources are wrapped in `DefaultInputs` processor list so that it's possible to easily place
+custom sources before or behind all the default ones.
+The full default hierarchy is:
+
+```
+- DefaultInputs
+    - CommandLine
+    - SavedDefaults (present only when defaults are enabled)
+```
 
 By overriding `option_sources` method in a command it is possible to add custom option sources
 for various tasks to the list. The option sources are evaluated one by one each being given output
 of the previous one as its input so the order in which the sources are listed matters.
 
-Option sources are collected only once per command call. The collection is triggered by first call
-to the `options` or `all_options` method, but at latest right after the option validation
-(before the command's `execute` method is invoked). The order is as follows:
- 1. parse
- 1. option normalization
- 1. option validation (run against normalized raw options as given on CLI)
- 1. option sources execution
- 1. `execute` invocation
+#### Option validation
+Hammer provides extended functionality for validating options.
+
+First of all there is a DSL for validating combinations of options:
+```ruby
+validate_options do
+  all(:option_name, :option_surname).required  # requires all the options
+  option(:option_age).required          # requires a single option,
+                                        # equivalent of :required => true in option declaration
+  any(:option_email, :option_phone).required   # requires at least one of the options
+
+  # It is possible to create more complicated constructs.
+  # This example requires either the full address or nothing
+  if any(:option_street, :option_city, :option_zip).exist?
+    all(:option_street, :option_city, :option_zip).required
+  end
+
+  # Here you can reject all address related option when --no-address is passed
+  if option(:option_no_address).exist?
+    all(:option_street, :option_city, :option_zip).rejected
+  end
+end
+
+```
+
+It's possible to insert a validation block on a certain place in the option processor chain:
+```ruby
+validate_options(:after, 'DefaultInputs') do
+  # ...inserts the validation block after DefaultInputs option source
+end
+
+validate_options(:prepend) do
+  # ...adds validation to the first place in the queue
+end
+
+# Following insert modes can be used:
+# before, after, append, prepend (the default behavior)
+```
+
+Alternatively the functionality can be extracted in a validator object that can be shared by multiple commands:
+
+```ruby
+validate_options(:after, 'DefaultInputs', validator: Custom::Validator.new)
+
+```
+
+`validate_options` adds validators into a specific command class and they aren't inherited with subclasses.
+Inheritable validators can be created command's `add_validators` method.
 
 
 ### Adding subcommands

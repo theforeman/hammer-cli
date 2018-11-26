@@ -96,4 +96,19 @@ module HammerCLI
     end
     result
   end
+
+  def self.insert_relative(array, mode, idx, *new_items)
+    case mode
+    when :prepend
+      idx = 0
+    when :append
+      idx = -1
+    when :after
+      idx += 1
+    when :replace
+      array.delete_at(idx)
+    end
+
+    array.insert(idx, *new_items)
+  end
 end
