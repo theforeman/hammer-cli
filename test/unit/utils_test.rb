@@ -169,4 +169,27 @@ describe HammerCLI do
     end
   end
 
+  describe 'insert_relative' do
+    let(:arr) { [:a, :b, :c] }
+
+    it 'appends' do
+      HammerCLI.insert_relative(arr, :append, nil, 1, 2, 3)
+      assert_equal(arr, [:a, :b, :c, 1, 2, 3])
+    end
+
+    it 'prepends' do
+      HammerCLI.insert_relative(arr, :prepend, nil, 1, 2, 3)
+      assert_equal(arr, [1, 2, 3, :a, :b, :c])
+    end
+
+    it 'inserts after index' do
+      HammerCLI.insert_relative(arr, :after, 1, 1, 2, 3)
+      assert_equal(arr, [:a, :b, 1, 2, 3, :c])
+    end
+
+    it 'inserts before index' do
+      HammerCLI.insert_relative(arr, :before, 1, 1, 2, 3)
+      assert_equal(arr, [:a, 1, 2, 3, :b, :c])
+    end
+  end
 end

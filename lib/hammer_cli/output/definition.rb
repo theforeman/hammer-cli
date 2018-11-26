@@ -20,11 +20,9 @@ module HammerCLI::Output
     end
 
     def insert(mode, field_id, fields = nil, &block)
-      index = field_index(field_id)
-      index += 1 if mode == :after
       definition = self.class.new
       definition.append(fields, &block)
-      insert_fields(index, definition.fields, with_remove: mode == :replace)
+      HammerCLI.insert_relative(@fields, mode, field_index(field_id), *definition.fields)
     end
 
     def at(path = [])
@@ -56,13 +54,6 @@ module HammerCLI::Output
       end
       raise ArgumentError, "Field #{field_id} not found" if index.nil?
       index
-    end
-
-    def insert_fields(index, fields, with_remove: false)
-      @fields.delete_at(index) if with_remove
-      fields.each_with_index do |f, i|
-        @fields.insert(index + i, f)
-      end
     end
   end
 end
