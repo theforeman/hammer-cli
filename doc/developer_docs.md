@@ -9,6 +9,7 @@ Contents:
  - [Writing a plugin](writing_a_plugin.md#writing-your-own-hammer-plugin)
  - [Creating commands](creating_commands.md#create-your-first-command)
  - [Help modification](help_modification.md#modify-an-existing-help)
+ - [Commands modification](commands_modification.md#modify-an-existing-command)
  - [Option builders](option_builders.md#option-builders)
  - [Creating ApiPie commands](creating_apipie_commands.md#creating-commands-for-restful-api-with-apipie)
  - [Development tips](development_tips.md#development-tips)

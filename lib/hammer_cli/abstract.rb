@@ -104,6 +104,13 @@ module HammerCLI
       self.help_extension_blocks << block
     end
 
+    def self.extend_output_definition(&block)
+      block.call(output_definition)
+    rescue ArgumentError => e
+      handler = HammerCLI::ExceptionHandler.new
+      handler.handle_exception(e)
+    end
+
     def self.output(definition=nil, &block)
       dsl = HammerCLI::Output::Dsl.new
       dsl.build &block if block_given?

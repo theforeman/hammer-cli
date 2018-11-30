@@ -146,4 +146,3 @@ include FastGettext::Translation
 
 domain = [HammerCLI::I18n::LocaleDomain.new, HammerCLI::I18n::SystemLocaleDomain.new].find { |d| d.available? }
 HammerCLI::I18n.add_domain(domain) if domain
-

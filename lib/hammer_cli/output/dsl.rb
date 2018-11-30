@@ -19,8 +19,10 @@ module HammerCLI::Output
 
     def field(key, label, type=nil, options={}, &block)
       options[:path] = current_path.clone
-      options[:path] << key if !key.nil?
-
+      unless key.nil?
+        options[:path] << key
+        options[:key] = key
+      end
       options[:label] = label
       type ||= Fields::Field
       custom_field type, options, &block
