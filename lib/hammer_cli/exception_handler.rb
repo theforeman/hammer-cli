@@ -50,7 +50,7 @@ module HammerCLI
     end
 
     def print_message(msg, options = {})
-      output.print_message(msg, nil, options)
+      output.print_message(msg, {}, options)
     end
 
     def log_full_error(e, message = e.message)

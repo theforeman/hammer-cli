@@ -30,7 +30,7 @@ describe HammerCLI::ExceptionHandler do
   end
 
   it "should handle help request" do
-    output.expects(:print_message).with(cmd.help, nil, verbosity: HammerCLI::V_QUIET)
+    output.expects(:print_message).with(cmd.help, {}, verbosity: HammerCLI::V_QUIET)
     handler.handle_exception(Clamp::HelpWanted.new(cmd), :heading => heading)
 
   end

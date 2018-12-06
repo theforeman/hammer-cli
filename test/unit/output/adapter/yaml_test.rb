@@ -35,6 +35,17 @@ describe HammerCLI::Output::Adapter::Yaml do
 
       proc { adapter.print_message(msg, params) }.must_output(expected_output)
     end
+
+    it 'prints the message with nil params' do
+      params = nil
+      msg = 'MESSAGE'
+      expected_output = [
+        '---',
+        ':message: MESSAGE',
+        ''
+      ].join("\n")
+      proc { adapter.print_message(msg, params) }.must_output(expected_output)
+    end
   end
 
   context "print_collection" do

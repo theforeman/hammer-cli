@@ -59,6 +59,9 @@ describe HammerCLI::Output::Adapter::Abstract do
       proc { adapter.print_message("MESSAGE %{a}, %{b}", :a => 'A', :b => 'B') }.must_output(/.*MESSAGE A, B.*/, "")
     end
 
+    it 'should print message with nil params' do
+      proc { adapter.print_message('MESSAGE', nil) }.must_output(/.*MESSAGE.*/, '')
+    end
   end
 
   it "should raise not implemented on print_collection" do

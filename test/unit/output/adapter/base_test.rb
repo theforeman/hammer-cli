@@ -241,6 +241,11 @@ describe HammerCLI::Output::Adapter::Base do
 
     end
 
+    context 'print_message' do
+      it 'should print message with nil params' do
+        proc { adapter.print_message('MESSAGE', nil) }.must_output(/.*MESSAGE.*/, '')
+      end
+    end
   end
 
 end
