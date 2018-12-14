@@ -257,6 +257,9 @@ describe HammerCLI::Output::Adapter::CSValues do
       }.must_output("Message,Id,Name\nSOME MESSAGE,83,new_record\n", "")
     end
 
+    it 'should print message with nil params' do
+      proc { adapter.print_message('MESSAGE', nil) }.must_output("Message\nMESSAGE\n", '')
+    end
   end
 
 end

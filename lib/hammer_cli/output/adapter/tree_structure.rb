@@ -19,12 +19,14 @@ module HammerCLI::Output::Adapter
     end
 
     def prepare_message(msg, msg_params = {})
-      id = msg_params['id'] || msg_params[:id]
-      name = msg_params['name'] || msg_params[:name]
-
       data = {
         capitalize(:message) => msg.format(msg_params)
       }
+      return data if msg_params.nil?
+
+      id = msg_params['id'] || msg_params[:id]
+      name = msg_params['name'] || msg_params[:name]
+
       data[capitalize(:id)] = id unless id.nil?
       data[capitalize(:name)] = name unless name.nil?
       data

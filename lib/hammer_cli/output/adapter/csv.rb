@@ -165,20 +165,20 @@ module HammerCLI::Output::Adapter
 
     def print_message(msg, msg_params={})
       csv_string = generate do |csv|
-        id = msg_params["id"] || msg_params[:id]
-        name = msg_params["name"] || msg_params[:name]
-
         labels = [_("Message")]
         data = [msg.format(msg_params)]
 
-        if id
-          labels << _("Id")
-          data << id
-        end
-
-        if name
-          labels << _("Name")
-          data << name
+        unless msg_params.nil?
+          id = msg_params["id"] || msg_params[:id]
+          name = msg_params["name"] || msg_params[:name]
+          if id
+            labels << _("Id")
+            data << id
+          end
+          if name
+            labels << _("Name")
+            data << name
+          end
         end
 
         csv << labels
