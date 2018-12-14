@@ -32,7 +32,7 @@ On RHEL systems you will also have to add [EPEL repository](https://fedoraprojec
 #### Step 2: install hammer core
 
 ```bash
-yum install rubygem-hammer_cli
+yum install tfm-rubygem-hammer_cli
 ```
 
 #### Step 3: install plugins
@@ -41,13 +41,13 @@ Currently, there are two plugins, both available as rpm packages.
  - commands for managing foreman
 
 ```bash
-yum install rubygem-hammer_cli_foreman
+yum install tfm-rubygem-hammer_cli_foreman
 ```
 
  - commands for managing [katello](https://github.com/Katello/katello)
 
 ```bash
-yum install rubygem-hammer_cli_katello
+yum install tfm-rubygem-hammer_cli_katello
 ```
 
 To install any other hammer plugin just make sure the appropriate gem is installed and follow with the [configuration](installation.md#configuration).
