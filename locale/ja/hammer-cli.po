@@ -6,10 +6,10 @@
 # Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.15.0\n"
+"Project-Id-Version: hammer-cli 0.16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-27 16:57+0200\n"
-"PO-Revision-Date: 2018-08-27 23:09+0000\n"
+"POT-Creation-Date: 2018-10-24 09:41+0200\n"
+"PO-Revision-Date: 2018-10-24 09:33+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/"
 "ja/)\n"
@@ -257,8 +257,11 @@ msgstr ""
 "ファイル %s は書き込み可能ではないため、このファイルにログの記録は行なわれま"
 "せん!"
 
-msgid "Be verbose"
-msgstr "冗長な出力"
+msgid "Be verbose (or not). True by default"
+msgstr ""
+
+msgid "Completely silent"
+msgstr ""
 
 msgid "Show debugging output"
 msgstr "デバッグ出力の表示"
@@ -461,6 +464,9 @@ msgid ""
 msgstr ""
 "サブコマンド %<name>s (%<existing_class>s) を %<name>s (%<new_class>s) に置き"
 "換えることができません。"
+
+msgid "Cannot use such capitalization. Try one of %s."
+msgstr ""
 
 msgid "Unknown option name '%s'."
 msgstr "不明なオプション名 '%s'。"

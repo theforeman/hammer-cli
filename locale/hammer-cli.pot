@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.15.0\n"
+"Project-Id-Version: hammer-cli 0.16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-24 09:41+0200\n"
-"PO-Revision-Date: 2018-10-24 09:41+0200\n"
+"POT-Creation-Date: 2019-01-17 00:00+0100\n"
+"PO-Revision-Date: 2019-01-17 00:00+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -136,11 +136,11 @@ msgstr ""
 msgid "Illegal quoting in %{buffer}"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults.rb:75
+#: ../lib/hammer_cli/defaults.rb:74
 msgid "Couldn't create %s. Please create the directory before setting defaults."
 msgstr ""
 
-#: ../lib/hammer_cli/defaults.rb:107
+#: ../lib/hammer_cli/defaults.rb:105
 msgid "Defaults management"
 msgstr ""
 
@@ -299,94 +299,98 @@ msgid "Completely silent"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:13
-msgid "Show debugging output"
+msgid "Enable/disable stored defaults. Enabled by default"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:14
+msgid "Show debugging output"
+msgstr ""
+
+#: ../lib/hammer_cli/main.rb:15
 msgid "Force reload of Apipie cache"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:16
+#: ../lib/hammer_cli/main.rb:17
 msgid "Path to custom config file"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:18
+#: ../lib/hammer_cli/main.rb:19
 msgid "Username to access the remote system"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:20
+#: ../lib/hammer_cli/main.rb:21
 msgid "Password to access the remote system"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:22
+#: ../lib/hammer_cli/main.rb:23
 msgid "Remote system address"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:24
+#: ../lib/hammer_cli/main.rb:25
 msgid "Configure SSL verification of remote system"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:26
+#: ../lib/hammer_cli/main.rb:27
 msgid "Configure the file containing the CA certificates"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:27
+#: ../lib/hammer_cli/main.rb:28
 msgid "Configure the directory containing the CA certificates"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:28
+#: ../lib/hammer_cli/main.rb:29
 msgid "Configure the client's public certificate"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:29
+#: ../lib/hammer_cli/main.rb:30
 msgid "Configure the client's private key"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:30
+#: ../lib/hammer_cli/main.rb:31
 msgid "Use standard authentication in addition to client certificate authentication"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:31
+#: ../lib/hammer_cli/main.rb:32
 msgid "Fetch CA certificate from server and exit"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:33
+#: ../lib/hammer_cli/main.rb:34
 msgid "Show version"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:36
+#: ../lib/hammer_cli/main.rb:37
 msgid "unknown version"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:42
+#: ../lib/hammer_cli/main.rb:43
 msgid "Show ids of associated resources"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:44
+#: ../lib/hammer_cli/main.rb:45
 msgid "Explicitly turn interactive mode on/off"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:47
+#: ../lib/hammer_cli/main.rb:48
 msgid "Hide headers from output"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:48
+#: ../lib/hammer_cli/main.rb:49
 msgid "Output as CSV (same as --output=csv)"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:49
+#: ../lib/hammer_cli/main.rb:50
 msgid "Set output format. One of [%s]"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:52
+#: ../lib/hammer_cli/main.rb:53
 msgid "Path to custom output file"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:59
+#: ../lib/hammer_cli/main.rb:60
 msgid "Character to separate the values"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:63
+#: ../lib/hammer_cli/main.rb:64
 msgid "Get list of possible endings"
 msgstr ""
 
@@ -481,7 +485,43 @@ msgstr ""
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:171
+#: ../lib/hammer_cli/options/validators/dsl.rb:37
+msgid "Unknown option name '%s'."
+msgstr ""
+
+#: ../lib/hammer_cli/options/validators/dsl.rb:60
+msgid "You can't set all options %s at one time."
+msgstr ""
+
+#: ../lib/hammer_cli/options/validators/dsl.rb:61
+msgid "Options %s are required."
+msgstr ""
+
+#: ../lib/hammer_cli/options/validators/dsl.rb:75
+msgid "You can't set option %s."
+msgstr ""
+
+#: ../lib/hammer_cli/options/validators/dsl.rb:76
+msgid "Option %s is required."
+msgstr ""
+
+#: ../lib/hammer_cli/options/validators/dsl.rb:87
+msgid "You can't set any of options %s."
+msgstr ""
+
+#: ../lib/hammer_cli/options/validators/dsl.rb:88
+msgid "At least one of options %s is required."
+msgstr ""
+
+#: ../lib/hammer_cli/options/validators/dsl.rb:113
+msgid "One of options %s is required."
+msgstr ""
+
+#: ../lib/hammer_cli/options/validators/dsl.rb:117
+msgid "Only one of options %s can be set."
+msgstr ""
+
+#: ../lib/hammer_cli/output/adapter/csv.rb:168
 msgid "Message"
 msgstr ""
 
@@ -489,7 +529,7 @@ msgstr ""
 msgid "Id"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:180
+#: ../lib/hammer_cli/output/adapter/csv.rb:179
 msgid "Name"
 msgstr ""
 
@@ -555,42 +595,6 @@ msgid ""
 "ass>s)."
 msgstr ""
 
-#: ../lib/hammer_cli/utils.rb:80
+#: ../lib/hammer_cli/utils.rb:81
 msgid "Cannot use such capitalization. Try one of %s."
-msgstr ""
-
-#: ../lib/hammer_cli/validator.rb:41
-msgid "Unknown option name '%s'."
-msgstr ""
-
-#: ../lib/hammer_cli/validator.rb:72
-msgid "You can't set all options %s at one time."
-msgstr ""
-
-#: ../lib/hammer_cli/validator.rb:73
-msgid "Options %s are required."
-msgstr ""
-
-#: ../lib/hammer_cli/validator.rb:87
-msgid "You can't set option %s."
-msgstr ""
-
-#: ../lib/hammer_cli/validator.rb:88
-msgid "Option %s is required."
-msgstr ""
-
-#: ../lib/hammer_cli/validator.rb:100
-msgid "You can't set any of options %s."
-msgstr ""
-
-#: ../lib/hammer_cli/validator.rb:101
-msgid "At least one of options %s is required."
-msgstr ""
-
-#: ../lib/hammer_cli/validator.rb:126
-msgid "One of options %s is required."
-msgstr ""
-
-#: ../lib/hammer_cli/validator.rb:130
-msgid "Only one of options %s can be set."
 msgstr ""

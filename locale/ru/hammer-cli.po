@@ -9,10 +9,10 @@
 # Yulia <yulia.poyarkova@redhat.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.15.0\n"
+"Project-Id-Version: hammer-cli 0.16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-27 16:57+0200\n"
-"PO-Revision-Date: 2018-08-27 23:09+0000\n"
+"POT-Creation-Date: 2018-10-24 09:41+0200\n"
+"PO-Revision-Date: 2018-10-24 09:33+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Russian (http://www.transifex.com/foreman/foreman/language/"
 "ru/)\n"
@@ -241,7 +241,10 @@ msgstr ""
 msgid "File %s not writeable, won't log anything to the file!"
 msgstr "Запись в файл %s не разрешена."
 
-msgid "Be verbose"
+msgid "Be verbose (or not). True by default"
+msgstr ""
+
+msgid "Completely silent"
 msgstr ""
 
 msgid "Show debugging output"
@@ -437,6 +440,9 @@ msgstr ""
 msgid ""
 "Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
 "(%<new_class>s)."
+msgstr ""
+
+msgid "Cannot use such capitalization. Try one of %s."
 msgstr ""
 
 msgid "Unknown option name '%s'."

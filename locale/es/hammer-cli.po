@@ -9,10 +9,10 @@
 # Sergio Ocón <sergio.ocon@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.15.0\n"
+"Project-Id-Version: hammer-cli 0.16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-27 16:57+0200\n"
-"PO-Revision-Date: 2018-08-27 23:09+0000\n"
+"POT-Creation-Date: 2018-10-24 09:41+0200\n"
+"PO-Revision-Date: 2018-10-24 09:33+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Spanish (http://www.transifex.com/foreman/foreman/language/"
 "es/)\n"
@@ -262,8 +262,11 @@ msgstr ""
 "El archivo %s no tiene acceso de escritura, no se registrará ningún "
 "contenido en él."
 
-msgid "Be verbose"
-msgstr "Sea detallado"
+msgid "Be verbose (or not). True by default"
+msgstr ""
+
+msgid "Completely silent"
+msgstr ""
 
 msgid "Show debugging output"
 msgstr "Mostrar salida de depuración"
@@ -472,6 +475,9 @@ msgid ""
 msgstr ""
 "No es posible reemplazar el subcomando %<name>s (%<existing_class>s) por "
 "%<name>s (%<new_class>s)."
+
+msgid "Cannot use such capitalization. Try one of %s."
+msgstr ""
 
 msgid "Unknown option name '%s'."
 msgstr "Nombre de opción desconocido '%s'."
