@@ -1,6 +1,18 @@
 Release notes
 =============
-### 0.14.0 (2018-10-24)
+### 0.16.0 (2019-01-16)
+* Fixed instructions in i18n docs ([#25724](http://projects.theforeman.org/issues/25724))
+* Option validators can be mixed with sources ([#22253](http://projects.theforeman.org/issues/22253))
+* Validator uses options from option collector ([#19574](http://projects.theforeman.org/issues/19574))
+* Hammer -h does work with --output json, csv, yaml ([#25438](http://projects.theforeman.org/issues/25438))
+* Update rpm names to use tfm ([PR #296](https://github.com/theforeman/hammer-cli/pull/296))
+* Allows modification of output fields ([PR #275](https://github.com/theforeman/hammer-cli/pull/275)) ([#21634](http://projects.theforeman.org/issues/21634))
+* Allow skipping message tests ([PR #292](https://github.com/theforeman/hammer-cli/pull/292)) ([#7451](http://projects.theforeman.org/issues/7451))
+* Helper for editing text in editor ([PR #294](https://github.com/theforeman/hammer-cli/pull/294)) ([#24489](http://projects.theforeman.org/issues/24489))
+* Add ability to disable defaults ([PR #293](https://github.com/theforeman/hammer-cli/pull/293)) ([#25307](http://projects.theforeman.org/issues/25307))
+* Allow modification of additional help texts ([PR #277](https://github.com/theforeman/hammer-cli/pull/277)) ([#21633](http://projects.theforeman.org/issues/21633))
+
+### 0.15.0 (2018-10-24)
 * Correct the gemspec ([PR #286](https://github.com/theforeman/hammer-cli/pull/286))
 * Use the tty for the interactive output ([PR #289](https://github.com/theforeman/hammer-cli/pull/289)) ([#6935](http://projects.theforeman.org/issues/6935))
 * Remove legacy code for ruby < 2.0 ([#21359](http://projects.theforeman.org/issues/21359))
