@@ -7,9 +7,7 @@ module HammerCLI::Output::Adapter
     end
 
     def tags
-      [
-        :data
-      ]
+      [:tree_structure, :data]
     end
 
     def prepare_collection(fields, collection)

@@ -5,7 +5,7 @@ module HammerCLI::Output::Adapter
     LABEL_DIVIDER = ": "
 
     def tags
-      [:flat, :screen]
+      [:base, :flat, :screen]
     end
 
     def print_record(fields, record)

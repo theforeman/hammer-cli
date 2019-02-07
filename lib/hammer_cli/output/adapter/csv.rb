@@ -132,7 +132,7 @@ module HammerCLI::Output::Adapter
     end
 
     def tags
-      [:flat]
+      [:csv, :flat]
     end
 
     def row_data(fields, collection)

@@ -123,4 +123,26 @@ describe HammerCLI::Output::Adapter::Abstract do
       assert_equal adapter.send(:data_for_field, field, record), :value1
     end
   end
+
+  context 'formatters' do
+    it 'should apply formatter if tags were matched' do
+      adapter_class.any_instance.stubs(:tags).returns([:abstract, :unknown])
+      formatter = UnknownTestFormatter.new
+      formatter.match?(adapter_class.new.tags).must_equal true
+    end
+
+    it 'should apply formatter for selected adapter' do
+      adapter_class.any_instance.stubs(:tags).returns([:abstract, :unknown])
+      formatter = UnknownTestFormatter.new
+      formatter.stubs(:tags).returns([:abstract, :unknown])
+      formatter.match?(adapter_class.new.tags).must_equal true
+    end
+
+    it 'should not apply formatter for others, but selected adapter only' do
+      adapter_class.any_instance.stubs(:tags).returns([:abstract, :unknown])
+      formatter = UnknownTestFormatter.new
+      formatter.stubs(:tags).returns([:table, :unknown])
+      formatter.match?(adapter_class.new.tags).must_equal false
+    end
+  end
 end

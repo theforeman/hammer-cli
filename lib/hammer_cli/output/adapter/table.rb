@@ -13,7 +13,7 @@ module HammerCLI::Output::Adapter
     COLUMN_SEPARATOR = ' | '
 
     def tags
-      [:screen, :flat]
+      [:table, :screen, :flat]
     end
 
     def print_record(fields, record)

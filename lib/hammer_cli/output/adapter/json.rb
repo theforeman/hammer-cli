@@ -1,5 +1,8 @@
 module HammerCLI::Output::Adapter
   class Json < TreeStructure
+    def tags
+      [:json]
+    end
 
     def print_record(fields, record)
       result = prepare_collection(fields, [record].flatten(1))

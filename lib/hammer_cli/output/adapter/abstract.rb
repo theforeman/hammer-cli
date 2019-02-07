@@ -3,7 +3,7 @@ module HammerCLI::Output::Adapter
   class Abstract
 
     def tags
-      []
+      [:abstract]
     end
 
     def initialize(context={}, formatters={})
