@@ -65,7 +65,11 @@ module HammerCLI::Apipie
       opts = {}
       opts[:required] = true if (param.required? and require_options?)
       if param.expected_type.to_s == 'array'
-        opts[:format] = HammerCLI::Options::Normalizers::List.new
+        if param.params.empty?
+          opts[:format] = HammerCLI::Options::Normalizers::List.new
+        else
+          opts[:format] = HammerCLI::Options::Normalizers::ListNested.new(param.params)
+        end
       elsif param.expected_type.to_s == 'boolean' || param.validator.to_s == 'boolean'
         opts[:format] = HammerCLI::Options::Normalizers::Bool.new
       elsif param.expected_type.to_s == 'string' && param.validator =~ /Must be one of: (.*)\./

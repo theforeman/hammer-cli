@@ -39,6 +39,24 @@ module HammerCLI
         end
         extensions
       end
+
+      def extend_options_help(option)
+        extend_help do |h|
+          begin
+            h.find_item(:s_option_details)
+          rescue ArgumentError
+            option_details = HammerCLI::Help::Section.new(_('Option details'), nil, id: :s_option_details, richtext: true)
+            option_details.definition << HammerCLI::Help::Text.new(
+              _('Following parameters accept format defined by its schema (bold are required):')
+            )
+            h.definition.unshift(option_details)
+          ensure
+            h.find_item(:s_option_details).definition << HammerCLI::Help::List.new([
+              [option.switches.last, option.value_formatter.schema.description]
+            ])
+          end
+        end
+      end
     end
 
     def adapter
@@ -169,6 +187,7 @@ module HammerCLI
         declared_options << option
         block ||= option.default_conversion_block
         define_accessors_for(option, &block)
+        extend_options_help(option) if option.value_formatter.is_a?(HammerCLI::Options::Normalizers::ListNested)
       end
     end
 

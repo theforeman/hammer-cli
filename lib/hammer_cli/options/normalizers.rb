@@ -27,11 +27,12 @@ module HammerCLI
 
       class KeyValueList < AbstractNormalizer
 
-        PAIR_RE = '([^,=]+)=([^,\[]+|\[[^\[\]]*\])'
+        PAIR_RE = '([^,=]+)=([^,\{\[]+|[\{\[][^\{\}\[\]]*[\}\]])'
         FULL_RE = "^((%s)[,]?)+$" % PAIR_RE
 
         def description
-          _("Comma-separated list of key=value")
+          _("Comma-separated list of key=value.") + "\n" +
+          _("JSON is acceptable and preferred way for complex parameters")
         end
 
         def format(val)
@@ -60,7 +61,11 @@ module HammerCLI
           result = {}
           val.scan(Regexp.new(PAIR_RE)) do |key, value|
             value = value.strip
-            value = value.scan(/[^,\[\]]+/) if value.start_with?('[')
+            if value.start_with?('[')
+              value = value.scan(/[^,\[\]]+/)
+            elsif value.start_with?('{')
+              value = parse_key_value(value[1...-1])
+            end
 
             result[key.strip] = strip_value(value)
           end
@@ -72,6 +77,10 @@ module HammerCLI
             value.map do |item|
               strip_chars(item.strip, '"\'')
             end
+          elsif value.is_a? Hash
+            value.map do |key, val|
+              [strip_chars(key.strip, '"\''), strip_chars(val.strip, '"\'')]
+            end.to_h
           else
             strip_chars(value.strip, '"\'')
           end
@@ -86,14 +95,55 @@ module HammerCLI
 
       class List < AbstractNormalizer
         def description
-          _("Comma separated list of values. Values containing comma should be quoted or escaped with backslash")
+          _("Comma separated list of values. Values containing comma should be quoted or escaped with backslash.") + "\n" +
+          _("JSON is acceptable and preferred way for complex parameters")
         end
 
         def format(val)
-          (val.is_a?(String) && !val.empty?) ? HammerCLI::CSVParser.new.parse(val) : []
+          return [] unless val.is_a?(String) && !val.empty?
+          begin
+            JSON.parse(val)
+          rescue JSON::ParserError
+            HammerCLI::CSVParser.new.parse(val)
+          end
         end
       end
 
+      class ListNested < AbstractNormalizer
+        class Schema < Array
+          def description
+            '"' + reduce([]) do |schema, nested_param|
+              name = nested_param.name
+              name = HighLine.color(name, :bold) if nested_param.required?
+              schema << "#{name}=#{nested_param.expected_type}"
+            end.join('\,').concat(', ... "')
+          end
+        end
+
+        attr_reader :schema
+
+        def initialize(schema)
+          @schema = Schema.new(schema)
+        end
+
+        def description
+          _("Comma separated list of values defined by a schema. See Option details section below.") + "\n" +
+          _("JSON is acceptable and preferred way for complex parameters")
+        end
+
+        def format(val)
+          return [] unless val.is_a?(String) && !val.empty?
+          begin
+            JSON.parse(val)
+          rescue JSON::ParserError
+            HammerCLI::CSVParser.new.parse(val).inject([]) do |results, item|
+              next if item.empty?
+
+              results << KeyValueList.new.format(item)
+            end
+          end
+        end
+      end
 
       class Number < AbstractNormalizer
 

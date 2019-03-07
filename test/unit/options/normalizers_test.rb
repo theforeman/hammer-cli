@@ -14,21 +14,21 @@ describe HammerCLI::Options::Normalizers do
   end
 
   describe 'default' do
-  
+
     let(:formatter) { HammerCLI::Options::Normalizers::Default.new }
-  
+
     it "should not change any value" do
       formatter.format('value').must_equal 'value'
     end
-  
+
     it "should not change nil value" do
       formatter.format(nil).must_be_nil
       end
-    
+
     it "has empty description" do
       formatter.description.must_equal ''
     end
- 
+
     it "has empty completion" do
       formatter.complete('test').must_equal []
     end
@@ -69,8 +69,85 @@ describe HammerCLI::Options::Normalizers do
     it "should catch quoting errors" do
       proc { formatter.format('1,"3,4""s') }.must_raise ArgumentError
     end
+
+    it "should accept and parse JSON" do
+      formatter.format("{\"name\":\"bla\", \"value\":1}").must_equal(
+        JSON.parse("{\"name\":\"bla\", \"value\":1}")
+      )
+    end
   end
 
+  describe 'list_nested' do
+    let(:params_raw) do
+      [
+        {name: 'name', expected_type: :string, validator: 'string', description: ''},
+        {name: 'value', expected_type: :string, validator: 'string', description: ''}
+      ]
+    end
+    let(:params) do
+      [
+        ApipieBindings::Param.new(params_raw.first),
+        ApipieBindings::Param.new(params_raw.last)
+      ]
+    end
+    let(:param) do
+      ApipieBindings::Param.new({
+        name: 'array', expected_type: :array, validator: 'nested', description: '',
+        params: params_raw
+      })
+    end
+    let(:formatter) { HammerCLI::Options::Normalizers::ListNested.new(param.params) }
+
+    it "should accept and parse JSON" do
+      formatter.format("{\"name\":\"bla\", \"value\":1}").must_equal(
+        JSON.parse("{\"name\":\"bla\", \"value\":1}")
+      )
+    end
+
+    it "should parse simple input" do
+      formatter.format("name=test\\,value=1,name=other\\,value=2").must_equal(
+        [{'name' => 'test', 'value' => '1'}, {'name' => 'other', 'value' => '2'}]
+      )
+    end
+
+    it "should parse unexpected input" do
+      formatter.format("name=test\\,value=1,name=other\\,value=2,unexp=doe").must_equal(
+        [
+          {'name' => 'test', 'value' => '1'}, {'name' => 'other', 'value' => '2'},
+          {'unexp' => 'doe'}
+        ]
+      )
+    end
+
+    it "should accept arrays" do
+      formatter.format("name=test\\,value=1,name=other\\,value=[1\\,2\\,3]").must_equal(
+        [{'name' => 'test', 'value' => '1'}, {'name' => 'other', 'value' => ['1', '2', '3']}]
+      )
+    end
+
+    it "should accept hashes" do
+      formatter.format(
+        "name=test\\,value={key=key1\\,value=1},name=other\\,value={key=key2\\,value=2}"
+      ).must_equal(
+        [
+          {'name' => 'test', 'value' => {'key' => 'key1', 'value' => '1'}},
+          {'name' => 'other', 'value' => {'key' => 'key2', 'value' => '2'}},
+        ]
+      )
+    end
+
+    it "should accept combined input" do
+      formatter.format(
+        "name=foo\\,value=1\\,adds=[1\\,2\\,3]\\,cpu={name=ddd\\,type=abc}," \
+        "name=bar\\,value=2\\,adds=[2\\,2\\,2]\\,cpu={name=ccc\\,type=cba}"
+      ).must_equal(
+        [
+          {'name' => 'foo', 'value' => '1', 'adds' => ['1','2','3'], 'cpu' => {'name' => 'ddd', 'type' => 'abc'}},
+          {'name' => 'bar', 'value' => '2', 'adds' => ['2','2','2'], 'cpu' => {'name' => 'ccc', 'type' => 'cba'}}
+        ]
+      )
+    end
+  end
 
   describe 'key_value_list' do
 
@@ -131,6 +208,16 @@ describe HammerCLI::Options::Normalizers do
 
       it "should parse empty array" do
         formatter.format("a=1,b=[],c=3").must_equal({'a' => '1', 'b' => [], 'c' => '3'})
+      end
+
+      it "should parse hash with one item" do
+        formatter.format("a=1,b={key=abc,value=abc},c=3").must_equal(
+          {'a' => '1', 'b' => {'key' => 'abc', 'value' => 'abc'}, 'c' => '3'}
+        )
+      end
+
+      it "should parse empty hash" do
+        formatter.format("a=1,b={},c=3").must_equal({'a' => '1', 'b' => {}, 'c' => '3'})
       end
 
       it "should parse a comma separated string 2" do
