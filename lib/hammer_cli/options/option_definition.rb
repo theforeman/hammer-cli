@@ -27,9 +27,9 @@ module HammerCLI
       attr_accessor :deprecated_switches
 
       def initialize(switches, type, description, options = {})
-        self.value_formatter = options.delete(:format) || HammerCLI::Options::Normalizers::Default.new
-        self.context_target = options.delete(:context_target)
-        self.deprecated_switches = options.delete(:deprecated)
+        self.value_formatter = options[:format] || HammerCLI::Options::Normalizers::Default.new
+        self.context_target = options[:context_target]
+        self.deprecated_switches = options[:deprecated]
         super
       end
 

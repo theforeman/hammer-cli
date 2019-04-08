@@ -47,11 +47,10 @@ module HammerCLI::Apipie
     protected
 
     def send_request
-      if resource && resource.has_action?(action)
-        resource.call(action, request_params, request_headers, request_options)
-      else
-        raise HammerCLI::OperationNotSupportedError, "The server does not support such operation."
+      unless resource && resource.has_action?(action)
+        raise HammerCLI::OperationNotSupportedError, _('The server does not support such operation.')
       end
+      extended_data(resource.call(action, *extended_request))
     end
 
     def request_headers
@@ -90,5 +89,25 @@ module HammerCLI::Apipie
       end
     end
 
+    private
+
+    def extended_request
+      params = request_params
+      headers = request_headers
+      options = request_options
+      self.class.command_extensions.each do |extension|
+        extension.extend_request_headers(headers)
+        extension.extend_request_options(options)
+        extension.extend_request_params(params)
+      end
+      [params, headers, options]
+    end
+
+    def extended_data(data)
+      self.class.command_extensions.each do |extension|
+        extension.extend_before_print(data)
+      end
+      data
+    end
   end
 end

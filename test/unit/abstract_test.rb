@@ -499,5 +499,33 @@ describe HammerCLI::AbstractCommand do
       assert_equal ['Validator1'], result.map(&:name)
     end
   end
-end
 
+  describe '#extend_with' do
+    class Extensions < HammerCLI::CommandExtensions
+      option '--flag', 'FLAG', 'flag'
+      output { |definition| definition.append(Fields::Field.new) }
+      help { |h| h.text('text') }
+    end
+    class Cmd < HammerCLI::AbstractCommand
+      def execute
+        HammerCLI::EX_OK
+      end
+    end
+    let(:extension) { Extensions.new }
+    let(:output_extension) { Extensions.new(only: :output) }
+    let(:cmd) { Class.new(Cmd) }
+
+    it 'should extend command with option, output, help right away' do
+      cmd.extend_with(extension)
+      opt = cmd.find_option('--flag')
+      opt.is_a?(HammerCLI::Options::OptionDefinition).must_equal true
+      cmd.output_definition.empty?.must_equal false
+      cmd.new({}).help.must_match(/.*text.*/)
+    end
+
+    it 'should store more than one extension' do
+      cmd.extend_with(extension, output_extension)
+      cmd.command_extensions.size.must_equal 2
+    end
+  end
+end
