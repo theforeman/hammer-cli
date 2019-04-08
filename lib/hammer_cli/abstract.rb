@@ -11,6 +11,7 @@ require 'hammer_cli/subcommand'
 require 'hammer_cli/options/matcher'
 require 'hammer_cli/help/builder'
 require 'hammer_cli/help/text_builder'
+require 'hammer_cli/command_extensions'
 require 'logging'
 
 module HammerCLI
@@ -23,6 +24,20 @@ module HammerCLI
 
       def help_extension_blocks
         @help_extension_blocks ||= []
+      end
+
+      def command_extensions
+        @command_extensions = @command_extensions || inherited_command_extensions || []
+        @command_extensions
+      end
+
+      def inherited_command_extensions
+        extensions = nil
+        if superclass.respond_to?(:command_extensions)
+          parent_extensions = superclass.command_extensions.select(&:inheritable?)
+          extensions = parent_extensions.dup unless parent_extensions.empty?
+        end
+        extensions
       end
     end
 
@@ -157,6 +172,20 @@ module HammerCLI
       end
     end
 
+    def self.extend_with(*extensions)
+      extensions.each do |extension|
+        unless extension.is_a?(HammerCLI::CommandExtensions)
+          raise ArgumentError, _('Command extensions should be inherited from %s.') % HammerCLI::CommandExtensions
+        end
+        extension.delegatee(self)
+        extension.extend_options(self)
+        extension.extend_output(self)
+        extension.extend_help(self)
+        logger('Extensions').info "Applied #{extension.details} on #{self}."
+        command_extensions << extension
+      end
+    end
+
     protected
 
     def self.find_options(switch_filter, other_filters={})
@@ -269,7 +298,11 @@ module HammerCLI
       sources << HammerCLI::Options::Sources::CommandLine.new(self)
       sources << HammerCLI::Options::Sources::SavedDefaults.new(context[:defaults], logger) if context[:use_defaults]
 
-      HammerCLI::Options::ProcessorList.new([sources])
+      sources = HammerCLI::Options::ProcessorList.new([sources])
+      self.class.command_extensions.each do |extension|
+        extension.extend_option_sources(sources, self)
+      end
+      sources
     end
 
     def add_validators(sources)
