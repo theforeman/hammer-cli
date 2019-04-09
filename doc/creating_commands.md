@@ -164,6 +164,14 @@ In cases when you want to deprecate just one of more possible switches use the e
     :deprecated => { '--name' => _('Use --alias instead') }
 ```
 
+#### Predefined options
+Also Hammer offers predefined options now. Those are just options, but with
+predefined functionality. To define them in your command use
+`use_option :option_name` method.
+
+Here is the list of predefined options:
+  * `:fields` Expects a list with fields to show in output, see [example](creating_commands.md#printing-hash-records).
+
 
 ### Option builders
 Hammer commands offer option builders that can be used for automatic option generation.
@@ -523,8 +531,12 @@ Imagine there's an API of some service that returns list of users:
 ```
 
 We can create an output definition that selects and formats some of the fields:
+
+_NOTE_: Every field can be arranged in so-called field sets. All the fields by default go to `'DEFAULT'` and `'ALL'` sets. Fields which are in the `'DEFAULT'` set will be printed by default. To see printed other field sets, use predefined option `--fields NAME`, where `NAME` is a field set name in ALLCAPS.
 ```ruby
 class Command < HammerCLI::AbstractCommand
+  # To be able to select fields which should be printed
+  use_option :fields
 
   output do
     # Simple field with a label. The first parameter is the key in the printed hash.
@@ -536,7 +548,7 @@ class Command < HammerCLI::AbstractCommand
     field :roles, 'System Roles', Fields::List
 
     # Label is used for grouping fields.
-    label 'Contacts' do
+    label 'Contacts', sets: ['ADDITIONAL', 'ALL'] do
       field :email, 'Email'
       field :phone, 'Phone No.'
     end
@@ -565,18 +577,38 @@ Using the base adapter the output will look like:
 ID:            1
 System Roles:  Admin, Editor
 Name:          Tom Sawyer
-Contacts:
-  Email:       tom@email.com
-  Phone No.:   123456111
 Created At:    2012/12/18 15:24:42
 
 ID:            2
 System Roles:  Admin
 Name:          Huckleberry Finn
+Created At:    2012/12/18 15:25:00
+```
+
+Using the base adapter with `--fields ALL` or `--fields DEFAULT,ADDITIONAL` the output will look like:
+```
+ID:            1
+System Roles:  Admin, Editor
+Name:          Tom Sawyer
+Created At:    2012/12/18 15:24:42
+Contacts:
+  Email:       tom@email.com
+  Phone No.:   123456111
+
+ID:            2
+System Roles:  Admin
+Name:          Huckleberry Finn
+Created At:    2012/12/18 15:25:00
 Contacts:
   Email:       huckleberry@email.com
   Phone No.:   123456222
-Created At:    2012/12/18 15:25:00
+```
+
+_NOTE_: `--fields` as well lets you to print desired fields only. E.g. to see the users' emails without any additional information use `--fields contacts/email`:
+```
+Email:       tom@email.com
+
+Email:       huckleberry@email.com
 ```
 
 You can optionally use the output definition from another command as a base and extend it with

@@ -1,7 +1,6 @@
 module HammerCLI::Output::Adapter
   class TreeStructure < Abstract
-
-    def initialize(context={}, formatters={})
+    def initialize(context = {}, formatters = {}, filters = {})
       super
       @paginate_by_default = false
     end
@@ -34,15 +33,11 @@ module HammerCLI::Output::Adapter
 
     protected
 
-    def field_filter
-      filtered = []
-      filtered << Fields::Id unless @context[:show_ids]
-      HammerCLI::Output::FieldFilter.new(filtered)
-    end
-
     def render_fields(fields, data)
-      fields = field_filter.filter(fields)
-      fields = displayable_fields(fields, data)
+      fields = filter_fields(fields).filter_by_classes
+                                    .filter_by_sets
+                                    .filter_by_data(data)
+                                    .filtered_fields
       fields.reduce({}) do |hash, field|
         field_data = data_for_field(field, data)
         next unless field.display?(field_data)

@@ -6,11 +6,12 @@ module HammerCLI::Output::Adapter
       []
     end
 
-    def initialize(context={}, formatters={})
+    def initialize(context={}, formatters={}, filters = {})
       context[:verbosity] ||= HammerCLI::V_VERBOSE
       @context = context
       @formatters = HammerCLI::Output::Formatters::FormatterLibrary.new(filter_formatters(formatters))
       @paginate_by_default = true
+      @filters = filters
     end
 
     def paginate_by_default?
@@ -41,10 +42,14 @@ module HammerCLI::Output::Adapter
       raise NotImplementedError
     end
 
+    def reset_context
+      @context.delete(:fields)
+    end
+
     protected
 
-    def field_filter
-      HammerCLI::Output::FieldFilter.new
+    def filter_fields(fields)
+      HammerCLI::Output::FieldFilter.new(fields, field_filters)
     end
 
     def self.data_for_field(field, record)
@@ -71,15 +76,23 @@ module HammerCLI::Output::Adapter
       $stdout
     end
 
-    def displayable_fields(fields, record, compact_only: false)
-      fields.select do |field|
-        field_data = data_for_field(field, record)
-        if compact_only && !field_data.is_a?(HammerCLI::Output::DataMissing)
-          true
-        else
-          field.display?(field_data)
-        end
+    def field_filters
+      {
+        classes_filter: classes_filter,
+        sets_filter: sets_filter
+      }.merge(@filters) do |_, old_filter, new_filter|
+        old_filter + new_filter
       end
+    end
+
+    def classes_filter
+      return [] if @context[:show_ids]
+
+      [Fields::Id]
+    end
+
+    def sets_filter
+      @context[:fields] || []
     end
 
     private
@@ -94,6 +107,5 @@ module HammerCLI::Output::Adapter
         map
       end
     end
-
   end
 end

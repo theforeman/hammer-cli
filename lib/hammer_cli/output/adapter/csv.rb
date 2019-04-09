@@ -126,7 +126,7 @@ module HammerCLI::Output::Adapter
       end
     end
 
-    def initialize(context={}, formatters={})
+    def initialize(context = {}, formatters = {}, filters = {})
       super
       @paginate_by_default = false
     end
@@ -148,7 +148,11 @@ module HammerCLI::Output::Adapter
     end
 
     def print_collection(fields, collection)
-      fields = displayable_fields(fields, collection.first, compact_only: true)
+      fields = filter_fields(fields).filter_by_classes
+                                    .filter_by_sets
+                                    .filter_by_data(collection.first,
+                                                    compact_only: true)
+                                    .filtered_fields
       rows = row_data(fields, collection)
       # get headers using columns heuristic
       headers = rows.map{ |r| Cell.headers(r, @context) }.max_by{ |headers| headers.size }
@@ -198,7 +202,7 @@ module HammerCLI::Output::Adapter
     end
 
     def default_headers(fields)
-      fields.select{ |f| !(f.class <= Fields::Id) || @context[:show_ids] }.map { |f| f.label }
+      fields.map(&:label)
     end
 
   end
