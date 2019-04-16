@@ -18,7 +18,7 @@ module HammerCLI
       end
 
       def subcommand_class
-        @warning ||= @subcommand_class.deprecation
+        @warning ||= @subcommand_class.warning
         warn(@warning) if @warning
         @subcommand_class
       end
@@ -44,7 +44,7 @@ module HammerCLI
           @loaded = true
           @constantized_class = @subcommand_class.constantize
         end
-        @warning ||= @constantized_class.deprecation
+        @warning ||= @constantized_class.warning
         warn(@warning) if @warning
         @constantized_class
       end

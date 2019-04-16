@@ -453,7 +453,7 @@ Or you can mark a command in its definition:
 class SayCommand < HammerCLI::AbstractCommand
 
   class HelloCommand < HammerCLI::AbstractCommand
-    deprecation 'This command is deprecated and will be removed.'
+    warning 'This command is deprecated and will be removed.'
     command_name 'hello'
     desc 'Say Hello World!'
     # ...
