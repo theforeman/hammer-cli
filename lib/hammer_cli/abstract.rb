@@ -255,10 +255,15 @@ module HammerCLI
       @name || (superclass.respond_to?(:command_name) ? superclass.command_name : nil)
     end
 
+    def self.warning(message = nil)
+      @warning_msg = message if message
+      @warning_msg
+    end
+
     def self.autoload_subcommands
       commands = constants.map { |c| const_get(c) }.select { |c| c <= HammerCLI::AbstractCommand }
       commands.each do |cls|
-        subcommand cls.command_name, cls.desc, cls
+        subcommand(cls.command_name, cls.desc, cls, warning: cls.warning)
       end
     end
 

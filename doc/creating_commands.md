@@ -435,7 +435,34 @@ HammerCLI::MainCommand.lazy_subcommand(
 )
 ```
 
+### Deprecated commands
+To mark a command as deprecated use the `:warning` option as follows:
 
+```ruby
+HammerCLI::MainCommand.lazy_subcommand(
+  'say',                        # command's name
+  'Say something',              # description
+  'HammerCLIHello::SayCommand', # command's class in a string
+  'hammer_cli_hello/say',       # require path of the file
+  warning: _('This command is deprecated and will be removed.')
+)
+```
+Or you can mark a command in its definition:
+
+```ruby
+class SayCommand < HammerCLI::AbstractCommand
+
+  class HelloCommand < HammerCLI::AbstractCommand
+    warning 'This command is deprecated and will be removed.'
+    command_name 'hello'
+    desc 'Say Hello World!'
+    # ...
+  end
+  # ...
+
+  autoload_subcommands
+end
+```
 ### Printing some output
 We've mentioned above that it's not recommended practice to print output
 directly with `puts` in Hammer. The reason is we separate definition
