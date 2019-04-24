@@ -11,11 +11,11 @@
 # Valeria S Silva <valeriassilva@live.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.16.0\n"
+"Project-Id-Version: hammer-cli 0.17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-24 09:41+0200\n"
-"PO-Revision-Date: 2018-10-24 09:33+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2019-01-17 00:00+0100\n"
+"PO-Revision-Date: 2019-03-18 13:21+0000\n"
+"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/foreman/foreman/"
 "language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -263,10 +263,13 @@ msgid "File %s not writeable, won't log anything to the file!"
 msgstr "Arquivo %s não pode ser gravado, não gravará nada no arquivo!"
 
 msgid "Be verbose (or not). True by default"
-msgstr ""
+msgstr "Ser detalhado (ou não). Verdadeiro por padrão"
 
 msgid "Completely silent"
-msgstr ""
+msgstr "Completamente silencioso"
+
+msgid "Enable/disable stored defaults. Enabled by default"
+msgstr "Habilitar/desabilitar padrões armazenados. Habilitado por padrão"
 
 msgid "Show debugging output"
 msgstr "Mostrar resultado de depuração"
@@ -412,6 +415,33 @@ msgstr "Padrão:"
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr "A variável de ambiente HAMMER_NIL não pode estar vazia."
 
+msgid "Unknown option name '%s'."
+msgstr "Nome da opção '%s' desconhecida."
+
+msgid "You can't set all options %s at one time."
+msgstr "Você não pode definir todas as opções %s de uma só vez."
+
+msgid "Options %s are required."
+msgstr "As opções %s são necessárias."
+
+msgid "You can't set option %s."
+msgstr "Não é possível definir a opção %s."
+
+msgid "Option %s is required."
+msgstr "A opção '%s' é necessária."
+
+msgid "You can't set any of options %s."
+msgstr "Não é possível definir nenhuma das opções %s."
+
+msgid "At least one of options %s is required."
+msgstr "Pelo menos uma das opções %s é necessária."
+
+msgid "One of options %s is required."
+msgstr "Uma das opções %s é necessária."
+
+msgid "Only one of options %s can be set."
+msgstr "Somente é possível definir uma das opções %s."
+
 msgid "Message"
 msgstr "Mensagem"
 
@@ -473,31 +503,4 @@ msgstr ""
 "%<name>s (%<new_class>s)."
 
 msgid "Cannot use such capitalization. Try one of %s."
-msgstr ""
-
-msgid "Unknown option name '%s'."
-msgstr "Nome da opção '%s' desconhecida."
-
-msgid "You can't set all options %s at one time."
-msgstr "Você não pode definir todas as opções %s de uma só vez."
-
-msgid "Options %s are required."
-msgstr "As opções %s são necessárias."
-
-msgid "You can't set option %s."
-msgstr "Não é possível definir a opção %s."
-
-msgid "Option %s is required."
-msgstr "A opção '%s' é necessária."
-
-msgid "You can't set any of options %s."
-msgstr "Não é possível definir nenhuma das opções %s."
-
-msgid "At least one of options %s is required."
-msgstr "Pelo menos uma das opções %s é necessária."
-
-msgid "One of options %s is required."
-msgstr "Uma das opções %s é necessária."
-
-msgid "Only one of options %s can be set."
-msgstr "Somente é possível definir uma das opções %s."
+msgstr "Não é possível usar essa capitalização. Tente uma das %s."

@@ -6,11 +6,11 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.16.0\n"
+"Project-Id-Version: hammer-cli 0.17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-24 09:41+0200\n"
-"PO-Revision-Date: 2018-10-24 09:33+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2019-01-17 00:00+0100\n"
+"PO-Revision-Date: 2019-03-18 15:26+0000\n"
+"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/foreman/foreman/"
 "language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Unfortunately the server does not support such operation."
-msgstr ""
+msgstr "服务器不支持这样的操作。"
 
 msgid "Unable to find hostname in %s."
 msgstr "无法在 %s 中找到主机名。"
@@ -236,10 +236,13 @@ msgid "File %s not writeable, won't log anything to the file!"
 msgstr "无法写入文件 %s，因此无法记录文件的任何变化！"
 
 msgid "Be verbose (or not). True by default"
-msgstr ""
+msgstr "是否显示更详细的信息。默认为是"
 
 msgid "Completely silent"
-msgstr ""
+msgstr "完全沉默"
+
+msgid "Enable/disable stored defaults. Enabled by default"
+msgstr "启用/禁用存储的默认值。默认为启用"
 
 msgid "Show debugging output"
 msgstr "显示调试输出"
@@ -303,7 +306,7 @@ msgid "Set output format. One of [%s]"
 msgstr "设定输出格式。[%s] 之一"
 
 msgid "Path to custom output file"
-msgstr ""
+msgstr "到自定义输出文件的路径"
 
 msgid "Character to separate the values"
 msgstr "用来分开数值的字符"
@@ -333,7 +336,7 @@ msgid "Numeric value is required."
 msgstr "需要提供数值。"
 
 msgid "One of %s."
-msgstr ""
+msgstr "%s 之一。"
 
 msgid "Value must be one of %s."
 msgstr "值必须是 %s 中的一个。"
@@ -379,6 +382,33 @@ msgstr "默认："
 
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr "环境变量 HAMMER_NIL 不能为空。"
+
+msgid "Unknown option name '%s'."
+msgstr "未知选项名称 '%s'。"
+
+msgid "You can't set all options %s at one time."
+msgstr "无法一次设置所有选项 %s。"
+
+msgid "Options %s are required."
+msgstr "选项 %s 是必需的。"
+
+msgid "You can't set option %s."
+msgstr "您无法设置 %s 选项。"
+
+msgid "Option %s is required."
+msgstr "选项 %s 是必需的。"
+
+msgid "You can't set any of options %s."
+msgstr "您无法设置任意 %s 选项。"
+
+msgid "At least one of options %s is required."
+msgstr "%s 选项中的至少一个是必需的。"
+
+msgid "One of options %s is required."
+msgstr "%s 选项中的一个是必需的。"
+
+msgid "Only one of options %s can be set."
+msgstr "仅可设置 %s 选项中的一个。"
 
 msgid "Message"
 msgstr "信息"
@@ -438,31 +468,4 @@ msgstr ""
 "无法将子命令 %<name>s (%<existing_class>s) 替换为 %<name>s (%<new_class>s)。"
 
 msgid "Cannot use such capitalization. Try one of %s."
-msgstr ""
-
-msgid "Unknown option name '%s'."
-msgstr "未知选项名称 '%s'。"
-
-msgid "You can't set all options %s at one time."
-msgstr "无法一次设置所有选项 %s。"
-
-msgid "Options %s are required."
-msgstr "选项 %s 是必需的。"
-
-msgid "You can't set option %s."
-msgstr "您无法设置 %s 选项。"
-
-msgid "Option %s is required."
-msgstr "选项 %s 是必需的。"
-
-msgid "You can't set any of options %s."
-msgstr "您无法设置任意 %s 选项。"
-
-msgid "At least one of options %s is required."
-msgstr "%s 选项中的至少一个是必需的。"
-
-msgid "One of options %s is required."
-msgstr "%s 选项中的一个是必需的。"
-
-msgid "Only one of options %s can be set."
-msgstr "仅可设置 %s 选项中的一个。"
+msgstr "不能使用这样的大写。请尝试 %s 之一。"

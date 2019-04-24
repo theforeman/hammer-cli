@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the hammer-cli package.
 #
 # Translators:
+# Kazuki Omo <kazuki.omo@gmail.com>, 2019
 # Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.16.0\n"
+"Project-Id-Version: hammer-cli 0.17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-24 09:41+0200\n"
-"PO-Revision-Date: 2018-10-24 09:33+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2019-01-17 00:00+0100\n"
+"PO-Revision-Date: 2019-03-07 15:47+0000\n"
+"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/"
 "ja/)\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Unfortunately the server does not support such operation."
-msgstr ""
+msgstr "残念ですがサーバはその操作をサポートしていません。"
 
 msgid "Unable to find hostname in %s."
 msgstr "%s でホスト名が見つかりません。"
@@ -258,10 +259,13 @@ msgstr ""
 "せん!"
 
 msgid "Be verbose (or not). True by default"
-msgstr ""
+msgstr "詳細 (かどうか)。デフォルトは True です"
 
 msgid "Completely silent"
-msgstr ""
+msgstr "完全に静かに"
+
+msgid "Enable/disable stored defaults. Enabled by default"
+msgstr "保存したデフォルト値を有効化/無効化します。デフォルトでは有効です"
 
 msgid "Show debugging output"
 msgstr "デバッグ出力の表示"
@@ -325,7 +329,7 @@ msgid "Set output format. One of [%s]"
 msgstr "出力形式を設定します。[%s] のいずれかになります。"
 
 msgid "Path to custom output file"
-msgstr ""
+msgstr "カスタム出力ファイルのパス"
 
 msgid "Character to separate the values"
 msgstr "値を区切るための文字"
@@ -359,7 +363,7 @@ msgid "Numeric value is required."
 msgstr "数値が必要。"
 
 msgid "One of %s."
-msgstr ""
+msgstr "%s の 1 つ"
 
 msgid "Value must be one of %s."
 msgstr "値を '%s' のいずれかにする必要があります。"
@@ -405,6 +409,33 @@ msgstr "デフォルト:"
 
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr "環境変数 HAMMER_NIL は空欄にできません。"
+
+msgid "Unknown option name '%s'."
+msgstr "不明なオプション名 '%s'。"
+
+msgid "You can't set all options %s at one time."
+msgstr "1 度にすべてのオプション %s を設定することはできません。"
+
+msgid "Options %s are required."
+msgstr "オプション %s は必須です。"
+
+msgid "You can't set option %s."
+msgstr "オプション %s を設定できません。"
+
+msgid "Option %s is required."
+msgstr "オプション %s は必須です。"
+
+msgid "You can't set any of options %s."
+msgstr "オプション %s のいずれも設定できません。"
+
+msgid "At least one of options %s is required."
+msgstr "オプション %s が少なくとも 1 つ以上必要です。"
+
+msgid "One of options %s is required."
+msgstr "オプション %s のいずれかが必要です。"
+
+msgid "Only one of options %s can be set."
+msgstr "オプション %s のいずれかのみを設定できます。"
 
 msgid "Message"
 msgstr "メッセージ"
@@ -466,31 +497,4 @@ msgstr ""
 "換えることができません。"
 
 msgid "Cannot use such capitalization. Try one of %s."
-msgstr ""
-
-msgid "Unknown option name '%s'."
-msgstr "不明なオプション名 '%s'。"
-
-msgid "You can't set all options %s at one time."
-msgstr "1 度にすべてのオプション %s を設定することはできません。"
-
-msgid "Options %s are required."
-msgstr "オプション %s は必須です。"
-
-msgid "You can't set option %s."
-msgstr "オプション %s を設定できません。"
-
-msgid "Option %s is required."
-msgstr "オプション %s は必須です。"
-
-msgid "You can't set any of options %s."
-msgstr "オプション %s のいずれも設定できません。"
-
-msgid "At least one of options %s is required."
-msgstr "オプション %s が少なくとも 1 つ以上必要です。"
-
-msgid "One of options %s is required."
-msgstr "オプション %s のいずれかが必要です。"
-
-msgid "Only one of options %s can be set."
-msgstr "オプション %s のいずれかのみを設定できます。"
+msgstr "そのような大文字の使用は出来ません。次のなかから使用してください。"

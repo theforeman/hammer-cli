@@ -9,11 +9,11 @@
 # Sergio Ocón <sergio.ocon@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.16.0\n"
+"Project-Id-Version: hammer-cli 0.17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-24 09:41+0200\n"
-"PO-Revision-Date: 2018-10-24 09:33+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2019-01-17 00:00+0100\n"
+"PO-Revision-Date: 2019-03-18 13:21+0000\n"
+"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/foreman/foreman/language/"
 "es/)\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Unfortunately the server does not support such operation."
-msgstr ""
+msgstr "Lamentablemente, el servidor no admite esa operación."
 
 msgid "Unable to find hostname in %s."
 msgstr "No se encontró el nombre del host en %s."
@@ -263,10 +263,15 @@ msgstr ""
 "contenido en él."
 
 msgid "Be verbose (or not). True by default"
-msgstr ""
+msgstr "Ser más detallado (o no). Verdadero de manera predeterminada"
 
 msgid "Completely silent"
+msgstr "Completamente silencioso"
+
+msgid "Enable/disable stored defaults. Enabled by default"
 msgstr ""
+"Habilitar/deshabilitar valores predeterminados almacenados. Habilitado de "
+"manera predeterminada"
 
 msgid "Show debugging output"
 msgstr "Mostrar salida de depuración"
@@ -332,7 +337,7 @@ msgid "Set output format. One of [%s]"
 msgstr "Establecer formato de salida. Uno de [%s]"
 
 msgid "Path to custom output file"
-msgstr ""
+msgstr "Ruta al archivo de salida personalizado"
 
 msgid "Character to separate the values"
 msgstr "Caracter de separación de valores"
@@ -368,7 +373,7 @@ msgid "Numeric value is required."
 msgstr "El valor numérico es obligatorio."
 
 msgid "One of %s."
-msgstr ""
+msgstr "Uno de %s."
 
 msgid "Value must be one of %s."
 msgstr "El valor debe ser uno de %s."
@@ -414,6 +419,33 @@ msgstr "Predeterminado:"
 
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr "La variable de entorno HAMMER_NIL no puede estar vacía."
+
+msgid "Unknown option name '%s'."
+msgstr "Nombre de opción desconocido '%s'."
+
+msgid "You can't set all options %s at one time."
+msgstr "No se pueden definir todas las opciones %s al mismo tiempo."
+
+msgid "Options %s are required."
+msgstr "Se requieren las opciones %s."
+
+msgid "You can't set option %s."
+msgstr "No se puede definir la opción %s."
+
+msgid "Option %s is required."
+msgstr "Se requiere la opción %s."
+
+msgid "You can't set any of options %s."
+msgstr "No se puede definir ninguna de las opciones %s."
+
+msgid "At least one of options %s is required."
+msgstr "Se requiere al menos una de las opciones %s."
+
+msgid "One of options %s is required."
+msgstr "Se requiere una de las opciones %s."
+
+msgid "Only one of options %s can be set."
+msgstr "Solo se puede definir una de las opciones %s."
 
 msgid "Message"
 msgstr "Mensaje"
@@ -477,31 +509,4 @@ msgstr ""
 "%<name>s (%<new_class>s)."
 
 msgid "Cannot use such capitalization. Try one of %s."
-msgstr ""
-
-msgid "Unknown option name '%s'."
-msgstr "Nombre de opción desconocido '%s'."
-
-msgid "You can't set all options %s at one time."
-msgstr "No se pueden definir todas las opciones %s al mismo tiempo."
-
-msgid "Options %s are required."
-msgstr "Se requieren las opciones %s."
-
-msgid "You can't set option %s."
-msgstr "No se puede definir la opción %s."
-
-msgid "Option %s is required."
-msgstr "Se requiere la opción %s."
-
-msgid "You can't set any of options %s."
-msgstr "No se puede definir ninguna de las opciones %s."
-
-msgid "At least one of options %s is required."
-msgstr "Se requiere al menos una de las opciones %s."
-
-msgid "One of options %s is required."
-msgstr "Se requiere una de las opciones %s."
-
-msgid "Only one of options %s can be set."
-msgstr "Solo se puede definir una de las opciones %s."
+msgstr "No se pueden usar esas mayúsculas. Pruebe con uno de %s."

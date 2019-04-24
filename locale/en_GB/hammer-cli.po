@@ -6,10 +6,10 @@
 # Andi Chandler <andi@gowling.com>, 2015-2017
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.16.0\n"
+"Project-Id-Version: hammer-cli 0.17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-24 09:41+0200\n"
-"PO-Revision-Date: 2018-10-24 09:33+0000\n"
+"POT-Creation-Date: 2019-01-17 00:00+0100\n"
+"PO-Revision-Date: 2019-01-17 08:38+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: English (United Kingdom) (http://www.transifex.com/foreman/"
 "foreman/language/en_GB/)\n"
@@ -256,6 +256,9 @@ msgstr ""
 msgid "Completely silent"
 msgstr ""
 
+msgid "Enable/disable stored defaults. Enabled by default"
+msgstr ""
+
 msgid "Show debugging output"
 msgstr ""
 
@@ -398,6 +401,33 @@ msgstr ""
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr ""
 
+msgid "Unknown option name '%s'."
+msgstr ""
+
+msgid "You can't set all options %s at one time."
+msgstr ""
+
+msgid "Options %s are required."
+msgstr ""
+
+msgid "You can't set option %s."
+msgstr ""
+
+msgid "Option %s is required."
+msgstr ""
+
+msgid "You can't set any of options %s."
+msgstr ""
+
+msgid "At least one of options %s is required."
+msgstr ""
+
+msgid "One of options %s is required."
+msgstr ""
+
+msgid "Only one of options %s can be set."
+msgstr ""
+
 msgid "Message"
 msgstr "Message"
 
@@ -455,31 +485,4 @@ msgid ""
 msgstr ""
 
 msgid "Cannot use such capitalization. Try one of %s."
-msgstr ""
-
-msgid "Unknown option name '%s'."
-msgstr ""
-
-msgid "You can't set all options %s at one time."
-msgstr ""
-
-msgid "Options %s are required."
-msgstr ""
-
-msgid "You can't set option %s."
-msgstr ""
-
-msgid "Option %s is required."
-msgstr ""
-
-msgid "You can't set any of options %s."
-msgstr ""
-
-msgid "At least one of options %s is required."
-msgstr ""
-
-msgid "One of options %s is required."
-msgstr ""
-
-msgid "Only one of options %s can be set."
 msgstr ""
