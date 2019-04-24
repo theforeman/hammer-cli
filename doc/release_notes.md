@@ -1,5 +1,11 @@
 Release notes
 =============
+### 0.17.0 (2019-04-24)
+* Extended capabilities for list type options ([#26120](http://projects.theforeman.org/issues/26120))
+* Document how to deprecate commands ([PR #301](https://github.com/theforeman/hammer-cli/pull/301)) ([#24964](http://projects.theforeman.org/issues/24964))
+* Extensible commands in hammer ([#21635](http://projects.theforeman.org/issues/21635))
+* Table output allows to hide fields with no error ([#26453](http://projects.theforeman.org/issues/26453))
+
 ### 0.16.0 (2019-01-16)
 * Fixed instructions in i18n docs ([#25724](http://projects.theforeman.org/issues/25724))
 * Option validators can be mixed with sources ([#22253](http://projects.theforeman.org/issues/22253))

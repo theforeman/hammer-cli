@@ -1,5 +1,5 @@
 module HammerCLI
   def self.version
-    @version ||= Gem::Version.new '0.17-develop'
+    @version ||= Gem::Version.new '0.17.0'
   end
 end
