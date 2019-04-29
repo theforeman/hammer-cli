@@ -102,7 +102,7 @@ module HammerCLI
         def format(val)
           return [] unless val.is_a?(String) && !val.empty?
           begin
-            JSON.parse(val)
+            [JSON.parse(val)].flatten(1)
           rescue JSON::ParserError
             HammerCLI::CSVParser.new.parse(val)
           end

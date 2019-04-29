@@ -50,6 +50,10 @@ describe HammerCLI::Options::Normalizers do
       formatter.format("a").must_equal ['a']
     end
 
+    it "should parse a number" do
+      formatter.format("2").must_equal [2]
+    end
+
     it "should parse a comma separated string" do
       formatter.format("a,b,c").must_equal ['a', 'b', 'c']
     end
@@ -71,9 +75,8 @@ describe HammerCLI::Options::Normalizers do
     end
 
     it "should accept and parse JSON" do
-      formatter.format("{\"name\":\"bla\", \"value\":1}").must_equal(
-        JSON.parse("{\"name\":\"bla\", \"value\":1}")
-      )
+      value = {'name' => 'bla', 'value' => 1}
+      formatter.format(value.to_json).must_equal([value])
     end
   end
 
