@@ -1,5 +1,8 @@
 Release notes
 =============
+### 0.17.1 (2019-05-02)
+* Make sure list opts return a list ([#26703](http://projects.theforeman.org/issues/26703))
+
 ### 0.17.0 (2019-04-24)
 * Extended capabilities for list type options ([#26120](http://projects.theforeman.org/issues/26120))
 * Document how to deprecate commands ([PR #301](https://github.com/theforeman/hammer-cli/pull/301)) ([#24964](http://projects.theforeman.org/issues/24964))
