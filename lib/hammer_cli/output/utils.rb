@@ -3,6 +3,17 @@ require 'unicode/display_width'
 module HammerCLI
   module Output
     module Utils
+      TAGS_MAPPING = {
+        flat: :serialized,
+        data: :structured,
+        screen: :rich_text,
+        file: :plain_text
+      }.freeze
+
+      def self.tag_to_feature(tag)
+        TAGS_MAPPING[tag]
+      end
+
       def self.real_length(value)
         decolorized = value.gsub(/\033\[[^m]*m/, '')
         Unicode::DisplayWidth.of(decolorized)

@@ -4,8 +4,10 @@ module HammerCLI::Output::Adapter
     GROUP_INDENT = " "*4
     LABEL_DIVIDER = ": "
 
-    def tags
-      [:flat, :screen]
+    def features
+      return %i[serialized rich_text multiline] if tags.empty?
+
+      tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
     end
 
     def print_record(fields, record)

@@ -12,8 +12,10 @@ module HammerCLI::Output::Adapter
     LINE_SEPARATOR = '-|-'
     COLUMN_SEPARATOR = ' | '
 
-    def tags
-      [:screen, :flat]
+    def features
+      return %i[rich_text serialized inline] if tags.empty?
+
+      tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
     end
 
     def print_record(fields, record)

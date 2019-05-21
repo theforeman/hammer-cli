@@ -24,27 +24,36 @@ module HammerCLI::Output
       end
     end
 
-    # Tags:
-    # All the tags the formatter has, needs to be present in the addapter.
-    # Otherwise the formatter won't apply. Formatters with :flat tag are used first
-    # as we expect them to serialize the value.
-    #
-    #   - by format: :flat x :data
-    #   - by output: :file X :screen
-
     # abstract formatter
     class FieldFormatter
-
       def tags
-        []
+        %i[]
       end
 
-      def match?(other_tags)
-        tags & other_tags == tags
+      def required_features
+        return %i[] if tags.empty?
+
+        tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
+      end
+
+      def match?(features)
+        required_features & features == required_features
       end
 
       def format(data, field_params={})
         data
+      end
+
+      def self.inherited(subclass)
+        subclass.define_singleton_method(:method_added) do |method_name|
+          if method_name == :tags
+            warn(
+              _('Method %{tags} for field formatters and output adapters is deprecated. Please use %{feat} or %{req_feat} instead.') % {
+                tags: 'tags', feat: 'features', req_feat: 'required_features'
+              }
+            )
+          end
+        end
       end
     end
 
@@ -69,8 +78,10 @@ module HammerCLI::Output
         @color = color
       end
 
-      def tags
-        [:screen, :flat]
+      def required_features
+        return %i[rich_text serialized] if tags.empty?
+
+        tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
       end
 
       def format(data, field_params={})
@@ -80,8 +91,10 @@ module HammerCLI::Output
 
     class DateFormatter < FieldFormatter
 
-      def tags
-        [:flat]
+      def required_features
+        return %i[serialized] if tags.empty?
+
+        tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
       end
 
       def format(string_date, field_params={})
@@ -95,8 +108,10 @@ module HammerCLI::Output
     class ListFormatter < FieldFormatter
       INDENT = "  "
 
-      def tags
-        [:flat]
+      def required_features
+        return %i[serialized] if tags.empty?
+
+        tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
       end
 
       def format(list, field_params={})
@@ -117,8 +132,10 @@ module HammerCLI::Output
 
     class KeyValueFormatter < FieldFormatter
 
-      def tags
-        [:screen, :flat]
+      def required_features
+        return %i[rich_text serialized] if tags.empty?
+
+        tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
       end
 
       def format(params, field_params={})
@@ -140,8 +157,10 @@ module HammerCLI::Output
         @indent = options[:indent].nil? ? true : options[:indent]
       end
 
-      def tags
-        [:screen]
+      def required_features
+        return %i[rich_text] if tags.empty?
+
+        tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
       end
 
       def format(text, field_params={})
@@ -150,10 +169,42 @@ module HammerCLI::Output
       end
     end
 
+    class InlineTextFormatter < FieldFormatter
+      def required_features
+        return %i[serialized inline] if tags.empty?
+
+        tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
+      end
+
+      def format(text, _field_params = {})
+        text.to_s.tr("\r\n", ' ')
+      end
+    end
+
+    class MultilineTextFormatter < FieldFormatter
+      INDENT = '    '.freeze
+      MAX_WIDTH = 120
+      MIN_WIDTH = 60
+
+      def required_features
+        return %i[serialized multiline rich_text] if tags.empty?
+
+        tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
+      end
+
+      def format(text, field_params = {})
+        width = [[field_params.fetch(:width, 0), MIN_WIDTH].max, MAX_WIDTH].min
+        text.to_s.chars.each_slice(width).map(&:join).join("\n")
+            .indent_with(INDENT).prepend("\n")
+      end
+    end
+
     class BooleanFormatter < FieldFormatter
 
-      def tags
-        [:flat, :screen]
+      def required_features
+        return %i[serialized rich_text] if tags.empty?
+
+        tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
       end
 
       def format(value, field_params={})
@@ -165,10 +216,9 @@ module HammerCLI::Output
     HammerCLI::Output::Output.register_formatter(ListFormatter.new, :List)
     HammerCLI::Output::Output.register_formatter(KeyValueFormatter.new, :KeyValue)
     HammerCLI::Output::Output.register_formatter(LongTextFormatter.new, :LongText)
+    HammerCLI::Output::Output.register_formatter(InlineTextFormatter.new, :Text)
+    HammerCLI::Output::Output.register_formatter(MultilineTextFormatter.new, :Text)
     HammerCLI::Output::Output.register_formatter(BooleanFormatter.new, :Boolean)
 
   end
 end
-
-
-

@@ -89,6 +89,9 @@ module Fields
   class LongText < Field
   end
 
+  class Text < Field
+  end
+
   class KeyValue < Field
   end
 

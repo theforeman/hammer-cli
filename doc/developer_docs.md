@@ -8,6 +8,7 @@ before creating hammer specific plugins.
 Contents:
  - [Writing a plugin](writing_a_plugin.md#writing-your-own-hammer-plugin)
  - [Creating commands](creating_commands.md#create-your-first-command)
+ - [Output adapters, formatters, etc](output.md#output)
  - [Help modification](help_modification.md#modify-an-existing-help)
  - [Commands modification](commands_modification.md#modify-an-existing-command)
  - [Command extensions](commands_extension.md#extend-an-existing-command)

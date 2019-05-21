@@ -20,14 +20,14 @@ describe HammerCLI::Output::Formatters::FieldFormatter do
     formatter.respond_to?(:format).must_equal true
   end
 
-  it "has tags" do
-    formatter.tags.must_be_kind_of Array
+  it "has features" do
+    formatter.required_features.must_be_kind_of Array
   end
 
-  it "should know if it has matching tags" do
-    formatter.stubs(:tags).returns([:tag])
-    formatter.match?([:tag]).must_equal true
-    formatter.match?([:notag]).must_equal false
+  it "should know if it has matching features" do
+    formatter.stubs(:required_features).returns([:feature])
+    formatter.match?([:feature]).must_equal true
+    formatter.match?([:nofeature]).must_equal false
   end
 end
 
@@ -154,6 +154,49 @@ describe HammerCLI::Output::Formatters::LongTextFormatter do
     formatter.format("Some\nmultiline\ntext").must_equal "\nSome\nmultiline\ntext"
   end
 
+end
+
+describe HammerCLI::Output::Formatters::InlineTextFormatter do
+  let(:formatter) { HammerCLI::Output::Formatters::InlineTextFormatter.new }
+
+  it 'prints multiline text to one line' do
+    formatter.format("Some\nmultiline\ntext").must_equal('Some multiline text')
+  end
+
+  it 'accepts nil' do
+    formatter.format(nil).must_equal('')
+  end
+end
+
+describe HammerCLI::Output::Formatters::MultilineTextFormatter do
+  let(:formatter) { HammerCLI::Output::Formatters::MultilineTextFormatter.new }
+  let(:multiline_text) { "Some\nmultiline\ntext" }
+  let(:indentation) { "\n    " }
+  let(:long_multiline_text) { 'Lorem ipsum dolor' * 5 }
+
+  it 'prints multiline text' do
+    formatter.format(multiline_text).must_equal(
+      "#{indentation}Some#{indentation}multiline#{indentation}text"
+    )
+  end
+
+  it 'accepts nil' do
+    formatter.format(nil).must_equal(indentation)
+  end
+
+  it 'accepts field width param' do
+    formatter.format(long_multiline_text, width: 80)
+             .must_equal(indentation + long_multiline_text[0..-6] +
+                         indentation + long_multiline_text[-5..-1])
+  end
+
+  it 'deals with strange params' do
+    formatter.format(long_multiline_text, width: -1)
+             .must_equal(indentation + long_multiline_text[0..-26] +
+                         indentation + long_multiline_text[-25..-1])
+    formatter.format(long_multiline_text, width: 999)
+             .must_equal(indentation + long_multiline_text)
+  end
 end
 
 describe HammerCLI::Output::Formatters::BooleanFormatter do
