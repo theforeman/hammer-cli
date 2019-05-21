@@ -15,7 +15,7 @@ module HammerCLI
     ALLOWED_EXTENSIONS = %i[
       option command_options before_print data output help request
       request_headers headers request_options options request_params params
-      option_sources
+      option_sources predefined_options use_option
     ].freeze
 
     def initialize(options = {})
@@ -54,6 +54,10 @@ module HammerCLI
                     opts: opts, block: block }
     end
 
+    def self.use_option(*names)
+      @predefined_option_names = names
+    end
+
     def self.before_print(&block)
       @before_print_block = block
     end
@@ -89,6 +93,13 @@ module HammerCLI
       return if allowed.empty? || (allowed & @except).any?
 
       self.class.extend_options(command_class)
+    end
+
+    def extend_predefined_options(command_class)
+      allowed = @only & %i[predefined_options use_option]
+      return if allowed.empty? || (allowed & @except).any?
+
+      self.class.extend_predefined_options(command_class)
     end
 
     def extend_before_print(data)
@@ -168,6 +179,11 @@ module HammerCLI
                            &option[:block])
         logger.debug("Added option for #{command_class}: #{option}")
       end
+    end
+
+    def self.extend_predefined_options(command_class)
+      command_class.send(:use_option, *@predefined_option_names)
+      logger.debug("Added predefined options for #{command_class}: #{@predefined_option_names}")
     end
 
     def self.extend_before_print(data)

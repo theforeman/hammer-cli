@@ -33,10 +33,15 @@ HammerCLIForeman::Host::InfoCommand.extend_output_definition do |definition|
   end
   # Returns output definition of the command or field specified with path.
   # Where:
-  #   path = Array of :key or/and :id or/and 'label']
+  #   path is an Array of field's :key or/and :id or/and 'label'
   definition.at(path)
   # Returns field from current output definition.
   definition.find_field(:id)
+  # Finds and adds fields to a set (creates a new one if the set doesn't exist).
+  # Where:
+  #   sets is an Array of String with set names
+  #   fields is an Array of field's :key or/and :id or/and 'label'
+  definition.update_field_sets(sets, fields)
   # Deletes all fields from current output definition.
   definition.clear
 end
@@ -54,6 +59,12 @@ HammerCLIForeman::Host::InfoCommand.extend_output_definition do |definition|
 HammerCLIForeman::Host::InfoCommand.extend_output_definition do |definition|
                                       definition.at(:path)
                                       .find_field(:id).label = _('New label')
+                                    end
+# Update fields in a field set
+# Adds fields with :field_id and 'My field' to 'SET' set
+HammerCLIForeman::Host::InfoCommand.extend_output_definition do |definition|
+                                      definition.at(:path)
+                                      .update_field_sets('SET', [:field_id, 'My field'])
                                     end
 # Expand a field with new definition
 HammerCLIForeman::Host::InfoCommand.extend_output_definition do |definition|

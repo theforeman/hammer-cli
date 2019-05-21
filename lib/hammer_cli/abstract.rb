@@ -195,6 +195,7 @@ module HammerCLI
           raise ArgumentError, _('Command extensions should be inherited from %s.') % HammerCLI::CommandExtensions
         end
         extension.delegatee(self)
+        extension.extend_predefined_options(self)
         extension.extend_options(self)
         extension.extend_output(self)
         extension.extend_help(self)
