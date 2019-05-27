@@ -7,7 +7,7 @@ module HammerCLI::Apipie
     end
 
     def resource
-      self.class.resource || parent_command_resource
+      self.class.resource || parent_command_resource || nil
     end
 
     def action
