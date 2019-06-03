@@ -27,11 +27,9 @@ module HammerCLI::Output
     def filter_by_sets(sets = nil)
       sets ||= @sets_filter
       return self if sets.empty?
+
       set_names, labels = resolve_set_names(sets)
-      @filtered_fields.select! do |f|
-        next true if include_by_label?(labels, f.full_label.downcase)
-        (f.sets & set_names).any?
-      end
+      deep_filter(@filtered_fields, set_names, labels)
       self
     end
 
@@ -43,6 +41,15 @@ module HammerCLI::Output
     end
 
     private
+
+    def deep_filter(fields, set_names, labels)
+      fields.select! do |f|
+        allowed = include_by_label?(labels, f.full_label.downcase)
+        allowed ||= (f.sets & set_names).any?
+        deep_filter(f.fields, set_names, labels) if f.respond_to?(:fields)
+        allowed
+      end
+    end
 
     def displayable_fields(fields, record, compact_only: false)
       fields.select do |field|
@@ -59,6 +66,7 @@ module HammerCLI::Output
 
     def include_by_label?(labels, label)
       return true if labels.include?(label)
+
       labels.each do |l|
         return true if l.start_with?("#{label}/") || label.start_with?(l)
       end
@@ -70,6 +78,7 @@ module HammerCLI::Output
       labels = []
       sets.each do |name|
         next set_names << name if name.upcase == name
+
         labels << name.downcase
       end
       [set_names, labels]
