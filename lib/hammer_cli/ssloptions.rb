@@ -14,7 +14,7 @@ module HammerCLI
 
     def get_options(uri = nil)
       ssl_options = {}
-      for sslopt in [:ssl_ca_file, :ssl_ca_path, :verify_ssl] do
+      for sslopt in [:ssl_ca_file, :ssl_ca_path, :verify_ssl, :ssl_version] do
         ssloptval = read_ssl_option(sslopt)
         ssl_options[sslopt] = ssloptval unless ssloptval.nil?
       end

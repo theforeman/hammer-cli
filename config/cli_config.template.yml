@@ -72,3 +72,6 @@
   # Local CA cert store path where hammer stores certificates fetched from the server.
   # Certs from the local storage are used only when neither :ssl_ca_file: nor :ssl_ca_path: is cofigured.
   #:local_ca_store_path: '~/.hammer/certs'
+
+ # Allows setting the SSL version to use when making API calls
+  #:ssl_version: 'TLSv1_2'
