@@ -270,6 +270,7 @@ describe HammerCLI::AbstractCommand do
       option "--test", "TEST", "Test option"
       option "--test-format", "TEST_FORMAT", "Test option with a formatter",
         :format => HammerCLI::Options::Normalizers::List.new
+      use_option :fields
     end
 
     it "should create instances of hammer options" do
@@ -282,6 +283,10 @@ describe HammerCLI::AbstractCommand do
       opt.value_formatter.kind_of?(HammerCLI::Options::Normalizers::List).must_equal true
     end
 
+    it 'should allow using of predefined options' do
+      opt = TestOptionCmd.find_option('--fields')
+      opt.is_a?(HammerCLI::Options::OptionDefinition).must_equal true
+    end
   end
 
   describe "#options" do

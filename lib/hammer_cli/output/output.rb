@@ -25,6 +25,7 @@ module HammerCLI::Output
 
     def print_record(definition, record)
       adapter.print_record(definition.fields, record) if appropriate_verbosity?(:record)
+      adapter.reset_context
     end
 
     def print_collection(definition, collection)
@@ -32,6 +33,7 @@ module HammerCLI::Output
         collection = HammerCLI::Output::RecordCollection.new([collection].flatten(1))
       end
       adapter.print_collection(definition.fields, collection) if appropriate_verbosity?(:collection)
+      adapter.reset_context
     end
 
     def adapter

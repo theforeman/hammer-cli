@@ -1,16 +1,17 @@
 require 'hammer_cli/output/dsl'
 
 module Fields
-
   class Field
     attr_reader :path
-    attr_accessor :label
+    attr_writer :sets
+    attr_accessor :label, :parent
 
     def initialize(options={})
       @hide_blank = options[:hide_blank].nil? ? false : options[:hide_blank]
       @hide_missing = options[:hide_missing].nil? ? true : options[:hide_missing]
       @path = options[:path] || []
       @label = options[:label]
+      @sets = options[:sets]
       @options = options
     end
 
@@ -30,6 +31,15 @@ module Fields
       @hide_missing
     end
 
+    def full_label
+      return @label if @parent.nil?
+      "#{@parent.full_label}/#{@label}"
+    end
+
+    def sets
+      @sets || inherited_sets || default_sets
+    end
+
     def display?(value)
       if value.is_a?(HammerCLI::Output::DataMissing)
         !hide_missing?
@@ -44,6 +54,16 @@ module Fields
       @options
     end
 
+    protected
+
+    def inherited_sets
+      return nil if @parent.nil?
+      @parent.sets
+    end
+
+    def default_sets
+      %w[DEFAULT ALL]
+    end
   end
 
 
@@ -53,7 +73,7 @@ module Fields
       super(options)
       dsl = HammerCLI::Output::Dsl.new
       dsl.build &block if block_given?
-
+      dsl.fields.each { |f| f.parent = self }
       self.output_definition.append dsl.fields
     end
 

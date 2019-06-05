@@ -21,18 +21,12 @@ module HammerCLI::Output::Adapter
 
     protected
 
-    def field_filter
-      filtered = []
-      filtered << Fields::Id unless @context[:show_ids]
-      HammerCLI::Output::FieldFilter.new(filtered)
-    end
-
     def render_fields(fields, data)
-      output = ""
-
-      fields = field_filter.filter(fields)
-      fields = displayable_fields(fields, data)
-
+      output = ''
+      fields = filter_fields(fields).filter_by_classes
+                                    .filter_by_sets
+                                    .filter_by_data(data)
+                                    .filtered_fields
       label_width = label_width(fields)
 
       fields.collect do |field|

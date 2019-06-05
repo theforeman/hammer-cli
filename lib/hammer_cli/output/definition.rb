@@ -19,6 +19,14 @@ module HammerCLI::Output
       @fields[field_index(field_id)]
     end
 
+    def update_field_sets(set_names, field_ids)
+      set_names = [set_names] unless set_names.is_a?(Array)
+      field_ids = [field_ids] unless field_ids.is_a?(Array)
+      field_ids.each do |field_id|
+        find_field(field_id).sets = find_field(field_id).sets.concat(set_names).uniq
+      end
+    end
+
     def insert(mode, field_id, fields = nil, &block)
       definition = self.class.new
       definition.append(fields, &block)

@@ -21,9 +21,11 @@ module HammerCLI::Output::Adapter
     end
 
     def print_collection(all_fields, collection)
-      fields = field_filter.filter(all_fields)
-      fields = displayable_fields(fields, collection.first, compact_only: true)
-
+      fields = filter_fields(all_fields).filter_by_classes
+                                        .filter_by_sets
+                                        .filter_by_data(collection.first,
+                                                        compact_only: true)
+                                        .filtered_fields
       formatted_collection = format_values(fields, collection)
       # calculate hash of column widths (label -> width)
       widths = calculate_widths(fields, formatted_collection)
@@ -63,6 +65,10 @@ module HammerCLI::Output::Adapter
 
     protected
 
+    def classes_filter
+      super << Fields::ContainerField
+    end
+
     def normalize_column(width, value)
       value = value.to_s
       padding = width - HammerCLI::Output::Utils.real_length(value)
@@ -101,12 +107,6 @@ module HammerCLI::Output::Adapter
         return max_width if width >= max_width
       end
       width
-    end
-
-    def field_filter
-      filtered = [Fields::ContainerField]
-      filtered << Fields::Id unless @context[:show_ids]
-      HammerCLI::Output::FieldFilter.new(filtered)
     end
 
     private

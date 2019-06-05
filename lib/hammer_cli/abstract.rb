@@ -9,13 +9,13 @@ require 'hammer_cli/options/validators/dsl_block_validator'
 require 'hammer_cli/clamp'
 require 'hammer_cli/subcommand'
 require 'hammer_cli/options/matcher'
+require 'hammer_cli/options/predefined'
 require 'hammer_cli/help/builder'
 require 'hammer_cli/help/text_builder'
 require 'hammer_cli/command_extensions'
 require 'logging'
 
 module HammerCLI
-
   class AbstractCommand < Clamp::Command
     include HammerCLI::Subcommand
 
@@ -161,12 +161,10 @@ module HammerCLI
       self.class.output_definition
     end
 
-
     def self.output_definition
       @output_definition = @output_definition || inherited_output_definition || HammerCLI::Output::Definition.new
       @output_definition
     end
-
 
     def interactive?
       HammerCLI.interactive?
@@ -197,11 +195,18 @@ module HammerCLI
           raise ArgumentError, _('Command extensions should be inherited from %s.') % HammerCLI::CommandExtensions
         end
         extension.delegatee(self)
+        extension.extend_predefined_options(self)
         extension.extend_options(self)
         extension.extend_output(self)
         extension.extend_help(self)
         logger('Extensions').info "Applied #{extension.details} on #{self}."
         command_extensions << extension
+      end
+    end
+
+    def self.use_option(*names)
+      names.each do |name|
+        HammerCLI::Options::Predefined.use(name, self)
       end
     end
 
@@ -316,7 +321,6 @@ module HammerCLI
       @option_collector ||= HammerCLI::Options::OptionCollector.new(self.class.recognised_options, add_validators(option_sources))
     end
 
-
     def option_sources
       sources = HammerCLI::Options::ProcessorList.new(name: 'DefaultInputs')
       sources << HammerCLI::Options::Sources::CommandLine.new(self)
@@ -348,6 +352,5 @@ module HammerCLI
       end
       od
     end
-
   end
 end
