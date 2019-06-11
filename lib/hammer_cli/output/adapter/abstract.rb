@@ -92,7 +92,7 @@ module HammerCLI::Output::Adapter
     end
 
     def sets_filter
-      @context[:fields] || []
+      @context[:fields] || ['DEFAULT']
     end
 
     private

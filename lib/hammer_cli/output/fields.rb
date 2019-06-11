@@ -32,7 +32,7 @@ module Fields
     end
 
     def full_label
-      return @label if @parent.nil?
+      return @label.to_s if @parent.nil?
       "#{@parent.full_label}/#{@label}"
     end
 

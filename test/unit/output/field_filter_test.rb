@@ -47,7 +47,17 @@ describe HammerCLI::Output::FieldFilter do
 
   it 'filters by full labels' do
     f = HammerCLI::Output::FieldFilter.new(container_fields, sets_filter: ['container/first'])
-    f.filter_by_sets.filtered_fields.map(&:label).must_equal ['container']
+    f.filter_by_sets.filtered_fields.first.fields.map(&:label).must_equal ['first']
+  end
+
+  it 'filters by superclass labels' do
+    f = HammerCLI::Output::FieldFilter.new(container_fields, sets_filter: ['container'])
+    f.filter_by_sets.filtered_fields.first.fields.map(&:label).must_equal ['first', 'second']
+  end
+
+  it 'filters by labels with wildcards' do
+    f = HammerCLI::Output::FieldFilter.new(container_fields, sets_filter: ['container/f*'])
+    f.filter_by_sets.filtered_fields.first.fields.map(&:label).must_equal ['first']
   end
 
   it 'allows chained filtering' do

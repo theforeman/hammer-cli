@@ -65,12 +65,9 @@ module HammerCLI::Output
     end
 
     def include_by_label?(labels, label)
-      return true if labels.include?(label)
-
-      labels.each do |l|
-        return true if l.start_with?("#{label}/") || label.start_with?(l)
+      labels.any? do |l|
+        l.start_with?("#{label}/") || label.match(%r{^#{l.gsub(/\*/, '.*')}(|\/.*)$})
       end
-      false
     end
 
     def resolve_set_names(sets)
