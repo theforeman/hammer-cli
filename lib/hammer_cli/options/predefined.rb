@@ -6,7 +6,7 @@ module HammerCLI
     module Predefined
       OPTIONS = {
         fields: [['--fields'], 'FIELDS',
-                 _('Show these fields only. Field sets are supported, see "Predefined field sets" section for more info'),
+                 _('Show specified fileds or predefined filed sets only. (See below)'),
                  format: HammerCLI::Options::Normalizers::List.new,
                  context_target: :fields]
       }.freeze
