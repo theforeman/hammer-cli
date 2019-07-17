@@ -59,7 +59,7 @@ module HammerCLI::Output
     end
 
     def sets_table
-      fields_col_size = average_label_length
+      fields_col_size = max_label_length
       fields_col = normalize_column(fields_col_size, _('Fields'), centralize: true)
       fields_col += ' ' unless (fields_col_size - fields_col.size).zero?
       header_bits = [fields_col]
@@ -80,8 +80,8 @@ module HammerCLI::Output
 
     private
 
-    def average_label_length
-      field_labels(@fields, full_labels: true).map(&:size).mean.to_i
+    def max_label_length
+      field_labels(@fields, full_labels: true).map(&:size).max
     end
 
     def normalize_column(width, col, centralize: false)

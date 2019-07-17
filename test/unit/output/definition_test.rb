@@ -266,13 +266,13 @@ describe HammerCLI::Output::Definition do
       end
       definition.fields += [new_field, cont_field]
 
-      sets_table = "+--------+-----+---------+-----+
-| Fields | ALL | DEFAULT | SET |
-+--------+-----+---------+-----+
-| new... |  x  |    x    |     |
-| cf/abc |     |         |  x  |
-| cf/bca |     |         |  x  |
-+--------+-----+---------+-----+\n"
+      sets_table = "+----------+-----+---------+-----+
+|  Fields  | ALL | DEFAULT | SET |
++----------+-----+---------+-----+
+| newfield |  x  |    x    |     |
+| cf/abc   |     |         |  x  |
+| cf/bca   |     |         |  x  |
++----------+-----+---------+-----+\n"
 
       definition.sets_table.must_equal sets_table
     end

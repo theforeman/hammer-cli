@@ -54,17 +54,6 @@ class Hash
   end
 end
 
-class Array
-  # for ruby < 2.4.0
-  def sum
-    inject(0.0) { |result, el| result + el }
-  end
-
-  def mean
-    sum / size
-  end
-end
-
 module HammerCLI
 
   def self.tty?
