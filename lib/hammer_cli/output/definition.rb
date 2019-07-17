@@ -59,7 +59,7 @@ module HammerCLI::Output
     end
 
     def sets_table
-      fields_col_size = max_label_length
+      fields_col_size = max_label_length || _('Fields').size
       fields_col = normalize_column(fields_col_size, _('Fields'), centralize: true)
       fields_col += ' ' unless (fields_col_size - fields_col.size).zero?
       header_bits = [fields_col]
