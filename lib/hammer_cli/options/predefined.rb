@@ -5,7 +5,8 @@ module HammerCLI
     # Contains predefined by HammerCLI options for commands
     module Predefined
       OPTIONS = {
-        fields: [['--fields'], 'FIELDS', _('Show these fields only'),
+        fields: [['--fields'], 'FIELDS',
+                 _('Show specified fileds or predefined filed sets only. (See below)'),
                  format: HammerCLI::Options::Normalizers::List.new,
                  context_target: :fields]
       }.freeze

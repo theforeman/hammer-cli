@@ -54,7 +54,83 @@ module HammerCLI::Output
       @fields.empty?
     end
 
+    def field_sets
+      nested_fields_sets(@fields).uniq.sort
+    end
+
+    def sets_table
+      fields_col_size = max_label_length
+      fields_col = normalize_column(fields_col_size, _('Fields'), centralize: true)
+      fields_col += ' ' unless (fields_col_size - fields_col.size).zero?
+      header_bits = [fields_col]
+      hline_bits = ['-' * fields_col_size]
+      field_sets.map do |set|
+        header_bits << normalize_column(set.size, set)
+        hline_bits << '-' * set.size
+      end
+      rows_bits = fields_row(@fields, field_sets, fields_col_size)
+      line = "+-#{hline_bits.join('-+-')}-+\n"
+      table = line
+      table += "| #{header_bits.join(' | ')} |\n"
+      table += line
+      table += "#{rows_bits.join("\n")}\n"
+      table += line
+      table
+    end
+
     private
+
+    def max_label_length
+      field_labels(@fields, full_labels: true).map(&:size).max
+    end
+
+    def normalize_column(width, col, centralize: false)
+      padding = width - HammerCLI::Output::Utils.real_length(col)
+      if padding >= 0
+        if centralize
+          padding /= 2
+          col.prepend(' ' * padding)
+        end
+        col += (' ' * padding)
+      else
+        col, real_len = HammerCLI::Output::Utils.real_truncate(col, width - 3)
+        col += '...'
+        col += ' ' if real_len < (width - 3)
+      end
+      col
+    end
+
+    def fields_row(fields, sets, fields_col_size)
+      fields.each_with_object([]) do |field, rows|
+        next rows << fields_row(field.fields, sets, fields_col_size) if field.respond_to?(:fields)
+
+        row = [normalize_column(fields_col_size, field.full_label)]
+        sets.each do |set|
+          mark = field.sets.include?(set) ? 'x' : ' '
+          column = normalize_column(set.size, mark, centralize: true)
+          column += ' ' unless (set.size - column.size).zero?
+          row << column
+        end
+        rows << "| #{row.join(' | ')} |"
+      end
+    end
+
+    def field_labels(fields, full_labels: false)
+      fields.each_with_object([]) do |field, labels|
+        label = full_labels ? field.full_label : field.label
+        next labels << label unless field.respond_to?(:fields)
+
+        labels.concat(field_labels(field.fields, full_labels: full_labels))
+      end
+    end
+
+    def nested_fields_sets(fields)
+      fields.map do |field|
+        next field.sets unless field.respond_to?(:fields)
+
+        nested_fields_sets(field.fields)
+      end.flatten
+    end
 
     def field_index(field_id)
       index = @fields.find_index do |f|

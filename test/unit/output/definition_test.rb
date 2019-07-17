@@ -257,4 +257,24 @@ describe HammerCLI::Output::Definition do
       definition.at(path).must_equal label_field.output_definition
     end
   end
+
+  describe 'sets_table' do
+    it 'prints a table with fields and sets ' do
+      cont_field = Fields::ContainerField.new(id: :id1, label: 'cf', sets: ['SET']) do
+        field :a, 'abc', Fields::Field
+        field :b, 'bca', Fields::Field
+      end
+      definition.fields += [new_field, cont_field]
+
+      sets_table = "+----------+-----+---------+-----+
+|  Fields  | ALL | DEFAULT | SET |
++----------+-----+---------+-----+
+| newfield |  x  |    x    |     |
+| cf/abc   |     |         |  x  |
+| cf/bca   |     |         |  x  |
++----------+-----+---------+-----+\n"
+
+      definition.sets_table.must_equal sets_table
+    end
+  end
 end

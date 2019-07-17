@@ -57,6 +57,12 @@ module HammerCLI
           end
         end
       end
+
+      def add_sets_help(help)
+        sets_details = HammerCLI::Help::Section.new(_('Predefined field sets'), nil, id: :s_sets_details, richtext: true)
+        sets_details.definition << HammerCLI::Help::Text.new(output_definition.sets_table)
+        help.definition.unshift(sets_details)
+      end
     end
 
     def adapter
@@ -118,9 +124,10 @@ module HammerCLI
 
     def self.help(invocation_path, builder = HammerCLI::Help::Builder.new)
       super(invocation_path, builder)
-
+      help_extension = HammerCLI::Help::TextBuilder.new(builder.richtext)
+      fields_switch = HammerCLI::Options::Predefined::OPTIONS[:fields].first[0]
+      add_sets_help(help_extension) if find_option(fields_switch)
       unless help_extension_blocks.empty?
-        help_extension = HammerCLI::Help::TextBuilder.new(builder.richtext)
         help_extension_blocks.each do |extension_block|
           begin
             extension_block.call(help_extension)
@@ -129,8 +136,8 @@ module HammerCLI
             handler.handle_exception(e)
           end
         end
-        builder.add_text(help_extension.string)
       end
+      builder.add_text(help_extension.string)
       builder.string
     end
 
