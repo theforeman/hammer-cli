@@ -1,5 +1,13 @@
 Release notes
 =============
+### 0.18.0 (2019-08-01)
+* Unsure minimal label length ([PR #310](https://github.com/theforeman/hammer-cli/pull/310)) ([#26960](http://projects.theforeman.org/issues/26960))
+* The --fields option has set help ([PR #308](https://github.com/theforeman/hammer-cli/pull/308)) ([#26960](http://projects.theforeman.org/issues/26960))
+* Filter fields properly ([#26961](http://projects.theforeman.org/issues/26961))
+* Possibility to limit fields that are displayed ([PR #276](https://github.com/theforeman/hammer-cli/pull/276)) ([#19135](http://projects.theforeman.org/issues/19135))
+* Allow setting the SSL version to use for API calls
+* Make sure list opts return a list ([#26703](http://projects.theforeman.org/issues/26703))
+
 ### 0.17.0 (2019-04-24)
 * Extended capabilities for list type options ([#26120](http://projects.theforeman.org/issues/26120))
 * Document how to deprecate commands ([PR #301](https://github.com/theforeman/hammer-cli/pull/301)) ([#24964](http://projects.theforeman.org/issues/24964))
