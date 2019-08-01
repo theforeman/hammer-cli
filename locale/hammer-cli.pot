@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.17.0\n"
+"Project-Id-Version: hammer-cli 0.18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-24 11:43+0200\n"
-"PO-Revision-Date: 2019-04-24 11:43+0200\n"
+"POT-Creation-Date: 2019-08-01 22:26+0200\n"
+"PO-Revision-Date: 2019-08-01 22:26+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -26,7 +26,11 @@ msgstr ""
 msgid "Following parameters accept format defined by its schema (bold are required):"
 msgstr ""
 
-#: ../lib/hammer_cli/abstract.rb:197
+#: ../lib/hammer_cli/abstract.rb:62
+msgid "Predefined field sets"
+msgstr ""
+
+#: ../lib/hammer_cli/abstract.rb:202
 msgid "Command extensions should be inherited from %s."
 msgstr ""
 
@@ -513,6 +517,14 @@ msgstr ""
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr ""
 
+#: ../lib/hammer_cli/options/predefined.rb:9
+msgid "Show specified fileds or predefined filed sets only. (See below)"
+msgstr ""
+
+#: ../lib/hammer_cli/options/predefined.rb:16
+msgid "There is no such predefined option %s."
+msgstr ""
+
 #: ../lib/hammer_cli/options/validators/dsl.rb:37
 msgid "Unknown option name '%s'."
 msgstr ""
@@ -549,20 +561,25 @@ msgstr ""
 msgid "Only one of options %s can be set."
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:168
+#: ../lib/hammer_cli/output/adapter/csv.rb:172
 msgid "Message"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:175
+#: ../lib/hammer_cli/output/adapter/csv.rb:179
 msgid "Id"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:179
+#: ../lib/hammer_cli/output/adapter/csv.rb:183
 msgid "Name"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/table.rb:60
+#: ../lib/hammer_cli/output/adapter/table.rb:62
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
+msgstr ""
+
+#: ../lib/hammer_cli/output/definition.rb:62
+#: ../lib/hammer_cli/output/definition.rb:63
+msgid "Fields"
 msgstr ""
 
 #: ../lib/hammer_cli/output/formatters.rb:160

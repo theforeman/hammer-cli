@@ -7,11 +7,11 @@
 # Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.17.0\n"
+"Project-Id-Version: hammer-cli 0.18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-17 00:00+0100\n"
-"PO-Revision-Date: 2019-01-17 08:38+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2019-04-24 11:43+0200\n"
+"PO-Revision-Date: 2019-04-24 20:34+0000\n"
+"Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/foreman/foreman/language/"
 "ca/)\n"
 "MIME-Version: 1.0\n"
@@ -20,8 +20,21 @@ msgstr ""
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "Option details"
+msgstr ""
+
+msgid ""
+"Following parameters accept format defined by its schema (bold are required):"
+msgstr ""
+
+msgid "Command extensions should be inherited from %s."
+msgstr ""
+
 msgid "Unfortunately the server does not support such operation."
 msgstr ""
+
+msgid "The server does not support such operation."
+msgstr "El servidor no admet aquest tipus d'operació."
 
 msgid "Unable to find hostname in %s."
 msgstr ""
@@ -343,7 +356,10 @@ msgstr ""
 msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr ""
 
-msgid "Comma-separated list of key=value"
+msgid "Comma-separated list of key=value."
+msgstr "Llista separada per comes de clau=valor."
+
+msgid "JSON is acceptable and preferred way for complex parameters"
 msgstr ""
 
 msgid ""
@@ -352,10 +368,13 @@ msgstr ""
 
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
-"escaped with backslash"
+"escaped with backslash."
 msgstr ""
-"Llista de valors separada per comes. Els valors que contenen comes s'han "
-"d'escriure entre cometes o amb l'escapament de la barra invertida"
+
+msgid ""
+"Comma separated list of values defined by a schema. See Option details "
+"section below."
+msgstr ""
 
 msgid "Numeric value is required."
 msgstr ""

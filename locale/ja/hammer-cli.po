@@ -7,11 +7,11 @@
 # Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.17.0\n"
+"Project-Id-Version: hammer-cli 0.18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-17 00:00+0100\n"
-"PO-Revision-Date: 2019-03-07 15:47+0000\n"
-"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
+"POT-Creation-Date: 2019-04-24 11:43+0200\n"
+"PO-Revision-Date: 2019-04-24 20:34+0000\n"
+"Last-Translator: Dominic Cleal <dominic@cleal.org>\n"
 "Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/"
 "ja/)\n"
 "MIME-Version: 1.0\n"
@@ -20,8 +20,21 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+msgid "Option details"
+msgstr ""
+
+msgid ""
+"Following parameters accept format defined by its schema (bold are required):"
+msgstr ""
+
+msgid "Command extensions should be inherited from %s."
+msgstr ""
+
 msgid "Unfortunately the server does not support such operation."
 msgstr "残念ですがサーバはその操作をサポートしていません。"
+
+msgid "The server does not support such operation."
+msgstr "サーバーはこの操作に対応していません。"
 
 msgid "Unable to find hostname in %s."
 msgstr "%s でホスト名が見つかりません。"
@@ -343,8 +356,11 @@ msgstr "警告: モジュール %s のロード中にエラーが発生しまし
 msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr "エラー: 必要なモジュールの一部は設定で無効にされています: %s 。"
 
-msgid "Comma-separated list of key=value"
-msgstr "key=value のコンマ区切り一覧"
+msgid "Comma-separated list of key=value."
+msgstr "key=value のコンマ区切りの一覧です。"
+
+msgid "JSON is acceptable and preferred way for complex parameters"
+msgstr ""
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -354,10 +370,13 @@ msgstr ""
 
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
-"escaped with backslash"
+"escaped with backslash."
 msgstr ""
-"値のコンマ区切りの一覧。コンマを含む値は引用符で囲むか、またはバックスラッ"
-"シュでエスケープする必要があります"
+
+msgid ""
+"Comma separated list of values defined by a schema. See Option details "
+"section below."
+msgstr ""
 
 msgid "Numeric value is required."
 msgstr "数値が必要。"

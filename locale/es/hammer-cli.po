@@ -9,11 +9,11 @@
 # Sergio Ocón <sergio.ocon@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.17.0\n"
+"Project-Id-Version: hammer-cli 0.18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-17 00:00+0100\n"
-"PO-Revision-Date: 2019-03-18 13:21+0000\n"
-"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
+"POT-Creation-Date: 2019-04-24 11:43+0200\n"
+"PO-Revision-Date: 2019-04-24 20:34+0000\n"
+"Last-Translator: Sergio Ocón <sergio.ocon@redhat.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/foreman/foreman/language/"
 "es/)\n"
 "MIME-Version: 1.0\n"
@@ -22,8 +22,21 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "Option details"
+msgstr ""
+
+msgid ""
+"Following parameters accept format defined by its schema (bold are required):"
+msgstr ""
+
+msgid "Command extensions should be inherited from %s."
+msgstr ""
+
 msgid "Unfortunately the server does not support such operation."
 msgstr "Lamentablemente, el servidor no admite esa operación."
+
+msgid "The server does not support such operation."
+msgstr "El servidor no soporta esa operación."
 
 msgid "Unable to find hostname in %s."
 msgstr "No se encontró el nombre del host en %s."
@@ -353,8 +366,11 @@ msgstr ""
 "Error: Algunos de los módulos requeridos están desactivados en la "
 "configuración: %s. "
 
-msgid "Comma-separated list of key=value"
-msgstr "Lista de pares clave=valor separados por comas"
+msgid "Comma-separated list of key=value."
+msgstr "Lista de pares llave=valor separados por comas."
+
+msgid "JSON is acceptable and preferred way for complex parameters"
+msgstr ""
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -364,10 +380,13 @@ msgstr ""
 
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
-"escaped with backslash"
+"escaped with backslash."
 msgstr ""
-"Lista de valores separados por comas. Los valores que contienen comas "
-"deberían entrecomillarse o se les debería agregar una barra invertida."
+
+msgid ""
+"Comma separated list of values defined by a schema. See Option details "
+"section below."
+msgstr ""
 
 msgid "Numeric value is required."
 msgstr "El valor numérico es obligatorio."

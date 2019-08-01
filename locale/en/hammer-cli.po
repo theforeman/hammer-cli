@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.17.0\n"
+"Project-Id-Version: hammer-cli 0.18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-03-04 16:38+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -21,6 +21,9 @@ msgstr ""
 
 msgid ""
 "Following parameters accept format defined by its schema (bold are required):"
+msgstr ""
+
+msgid "Predefined field sets"
 msgstr ""
 
 msgid "Command extensions should be inherited from %s."
@@ -396,6 +399,12 @@ msgstr ""
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr ""
 
+msgid "Show specified fileds or predefined filed sets only. (See below)"
+msgstr ""
+
+msgid "There is no such predefined option %s."
+msgstr ""
+
 msgid "Unknown option name '%s'."
 msgstr ""
 
@@ -433,6 +442,9 @@ msgid "Name"
 msgstr ""
 
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
+msgstr ""
+
+msgid "Fields"
 msgstr ""
 
 msgid "no"

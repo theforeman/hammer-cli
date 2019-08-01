@@ -3,17 +3,18 @@
 # This file is distributed under the same license as the hammer-cli package.
 #
 # Translators:
+# Baptiste Agasse <baptiste.agasse@gmail.com>, 2019
 # Claer <transiblu@claer.hammock.fr>, 2014-2016
 # Dominic Cleal <dominic@cleal.org>, 2014
 # Pierre-Emmanuel Dutang <dutangp@gmail.com>, 2014,2016,2018
 # ty breizh <tybreizh29@free.fr>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.17.0\n"
+"Project-Id-Version: hammer-cli 0.18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-17 00:00+0100\n"
-"PO-Revision-Date: 2019-03-18 13:21+0000\n"
-"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
+"POT-Creation-Date: 2019-04-24 11:43+0200\n"
+"PO-Revision-Date: 2019-07-23 10:42+0000\n"
+"Last-Translator: Baptiste Agasse <baptiste.agasse@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/foreman/foreman/language/"
 "fr/)\n"
 "MIME-Version: 1.0\n"
@@ -22,8 +23,21 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+msgid "Option details"
+msgstr "Détails des options"
+
+msgid ""
+"Following parameters accept format defined by its schema (bold are required):"
+msgstr ""
+
+msgid "Command extensions should be inherited from %s."
+msgstr ""
+
 msgid "Unfortunately the server does not support such operation."
 msgstr "Malheureusement le serveur ne supporte pas cette opération"
+
+msgid "The server does not support such operation."
+msgstr "Le serveur ne supporte pas cette opération."
 
 msgid "Unable to find hostname in %s."
 msgstr "Impossible de trouver le nom d'hôte dans %s."
@@ -358,8 +372,12 @@ msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr ""
 "Erreur : certains modules requis sont désactivés dans la configuration : %s."
 
-msgid "Comma-separated list of key=value"
-msgstr "Liste séparée par des virgules de clé=valeur"
+msgid "Comma-separated list of key=value."
+msgstr "Liste de clef=valeur séparées par des virgules."
+
+msgid "JSON is acceptable and preferred way for complex parameters"
+msgstr ""
+"Le format JSON est accepté et le moyen préféré pour les paramètres complexes"
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -369,11 +387,16 @@ msgstr ""
 
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
-"escaped with backslash"
+"escaped with backslash."
 msgstr ""
 "Liste de valeurs séparées par une virgule. Les valeurs contenant une virgule "
 "doivent être placées entre guillemets ou précédées d'une barre oblique "
 "inverse"
+
+msgid ""
+"Comma separated list of values defined by a schema. See Option details "
+"section below."
+msgstr ""
 
 msgid "Numeric value is required."
 msgstr "Valeur numérique obligatoire."

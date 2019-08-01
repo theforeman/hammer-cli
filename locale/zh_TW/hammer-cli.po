@@ -6,11 +6,11 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.17.0\n"
+"Project-Id-Version: hammer-cli 0.18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-17 00:00+0100\n"
-"PO-Revision-Date: 2019-01-17 08:38+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2019-04-24 11:43+0200\n"
+"PO-Revision-Date: 2019-04-24 20:34+0000\n"
+"Last-Translator: Dominic Cleal <dominic@cleal.org>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/foreman/foreman/"
 "language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -19,8 +19,21 @@ msgstr ""
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+msgid "Option details"
+msgstr ""
+
+msgid ""
+"Following parameters accept format defined by its schema (bold are required):"
+msgstr ""
+
+msgid "Command extensions should be inherited from %s."
+msgstr ""
+
 msgid "Unfortunately the server does not support such operation."
 msgstr ""
+
+msgid "The server does not support such operation."
+msgstr "伺服器不支援此類型的操作。"
 
 msgid "Unable to find hostname in %s."
 msgstr ""
@@ -317,7 +330,10 @@ msgstr ""
 msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr ""
 
-msgid "Comma-separated list of key=value"
+msgid "Comma-separated list of key=value."
+msgstr "逗號區隔開的一列 key=value。"
+
+msgid "JSON is acceptable and preferred way for complex parameters"
 msgstr ""
 
 msgid ""
@@ -326,7 +342,12 @@ msgstr ""
 
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
-"escaped with backslash"
+"escaped with backslash."
+msgstr ""
+
+msgid ""
+"Comma separated list of values defined by a schema. See Option details "
+"section below."
 msgstr ""
 
 msgid "Numeric value is required."

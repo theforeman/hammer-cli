@@ -11,11 +11,11 @@
 # Valeria S Silva <valeriassilva@live.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.17.0\n"
+"Project-Id-Version: hammer-cli 0.18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-17 00:00+0100\n"
-"PO-Revision-Date: 2019-03-18 13:21+0000\n"
-"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
+"POT-Creation-Date: 2019-04-24 11:43+0200\n"
+"PO-Revision-Date: 2019-04-24 20:34+0000\n"
+"Last-Translator: Dominic Cleal <dominic@cleal.org>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/foreman/foreman/"
 "language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -24,8 +24,21 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+msgid "Option details"
+msgstr ""
+
+msgid ""
+"Following parameters accept format defined by its schema (bold are required):"
+msgstr ""
+
+msgid "Command extensions should be inherited from %s."
+msgstr ""
+
 msgid "Unfortunately the server does not support such operation."
 msgstr "Infelizmente o servidor não suporta tal operação."
+
+msgid "The server does not support such operation."
+msgstr "O servidor não suporta tal operação"
 
 msgid "Unable to find hostname in %s."
 msgstr "Não foi possível encontrar o nome de host em %s."
@@ -348,8 +361,11 @@ msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr ""
 "Erro: alguns dos modelos necessários estão desabilitados na configuração: %s."
 
-msgid "Comma-separated list of key=value"
-msgstr "Lista de key=value separada por vírgulas"
+msgid "Comma-separated list of key=value."
+msgstr "Lista da chave=valor separada por vírgulas."
+
+msgid "JSON is acceptable and preferred way for complex parameters"
+msgstr ""
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -359,10 +375,13 @@ msgstr ""
 
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
-"escaped with backslash"
+"escaped with backslash."
 msgstr ""
-"Lista de valores separada por vírgula. Os valores contendo vírgula devem "
-"estar entre aspas ou com barra invertida de escape"
+
+msgid ""
+"Comma separated list of values defined by a schema. See Option details "
+"section below."
+msgstr ""
 
 msgid "Numeric value is required."
 msgstr "O valor numérico é necessário."
