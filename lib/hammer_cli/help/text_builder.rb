@@ -18,9 +18,14 @@ module HammerCLI
         @definition << HammerCLI::Help::Text.new(content, options)
       end
 
-      def list(items, options = {})
+      def note(content, options = {})
+        @definition << HammerCLI::Help::Note.new(content, options)
+      end
+
+      def list(items, options = {}, &block)
         return if items.empty?
-        @definition << HammerCLI::Help::List.new(items, options)
+
+        @definition << HammerCLI::Help::List.new(items, options, &block)
       end
 
       def section(label, options = {}, &block)

@@ -1,5 +1,6 @@
 require_relative 'definition/abstract_item'
 require_relative 'definition/text'
+require_relative 'definition/note'
 require_relative 'definition/list'
 require_relative 'definition/section'
 

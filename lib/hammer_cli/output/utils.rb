@@ -4,7 +4,7 @@ module HammerCLI
   module Output
     module Utils
       def self.real_length(value)
-        decolorized = value.gsub(/\033\[[^m]*m/, '')
+        decolorized = value.to_s.gsub(/\033\[[^m]*m/, '')
         Unicode::DisplayWidth.of(decolorized)
       end
 

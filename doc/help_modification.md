@@ -1,6 +1,38 @@
-Modify an existing help
--------------------------
-Each command might have its own help definition. This definition is composed of various _help items_, which might contain their own definitions.
+# Modify an existing help
+
+### Help items
+Before modifying help, it's good to know which help items are available to use.
+There is a list with currently available items:
+```ruby
+Command.extend_help do |h|
+  # Add a simple text to the help output.
+  # content - String - text to be shown
+  # options - Hash   - options (id:, richtext:)
+  h.text(content, options = {})
+  # Add a notification to the help output (LABEL: content).
+  # content - String - text to be shown
+  # options - Hash   - options (same as #text, label:)
+  h.note(content, options = {})
+  # Add a list of items to the help output.
+  # items   - Array - array of items to be shown. Each item can be either string
+  #                   or an array of ['Key', 'Value', bold: true/false].
+  #                   Item options are optional.
+  #   Example: h.list(['a', 'b', 'c']) => "a\n b\n c\n"
+  #            h.list([['a', 'b', bold: true], ['c', 'd']]) => "a   b\nc   d\n"
+  # options - Hash  - same as #text
+  h.list(items, options = {})
+  # Add a section to the help output.
+  # label   - String - Section header
+  # options - Hash   - same as #text
+  # block   - block with section definition (may include lists/texts/etc.)
+  h.section(label, options = {}) { |h| ... }
+end
+```
+Every `Section`, `List` and simple `Text` is _help item_ defined as `HammerCLI::Help::AbstractItem`, so everything might have its own ID now for easier addressing.
+
+### Help modification
+
+Each command might have its own help definition. This definition is composed of various [_help items_](#Help-items), which might contain their own definitions.
 
 Let's say `hammer host create -h` help string has the following structure:
 ```
@@ -32,7 +64,6 @@ hammer host create -h
 |   |  |  +-- Section
 |   |  |  |  +-- List
 ```
-Every `Section`, `List` and simple `Text` is _help item_ defined as `HammerCLI::Help::AbstractItem`, so everything might have its own ID now for easier addressing.
 
 To modify the structure above, you might use the following:
 ```ruby

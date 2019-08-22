@@ -7,7 +7,9 @@ module HammerCLI
       end
 
       def build_string
-        @text
+        text = @text
+        text = HighLine.color(@text, :bold) if @richtext
+        text
       end
 
       protected

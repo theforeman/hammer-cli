@@ -6,7 +6,6 @@ module HammerCLI
       def initialize(label, definition = nil, options = {})
         super(options)
         @label = label
-        @richtext = options[:richtext] || false
         @id ||= label
         build_definition(definition)
       end
