@@ -36,9 +36,12 @@ module HammerCLI
       end
 
       def format_item(item)
-        col1, col2 = item
+        col1, col2, options = item
+        options ||= {}
+        col1 = HighLine.color(col1.to_s, :bold) if options[:bold]
         col2 = indent(col2.to_s, ' ' * @indent_size).lstrip
-        line = "%-#{@indent_size}s%s" % [col1, col2]
+        padding = col1.length - HammerCLI::Output::Utils.real_length(col1)
+        line = "%-#{@indent_size + padding}s%s" % [col1, col2]
         line.strip!
         line
       end

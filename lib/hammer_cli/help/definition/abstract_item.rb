@@ -3,12 +3,13 @@ module HammerCLI
     class AbstractItem
       INDENT_STEP = 2
 
-      attr_reader :id
+      attr_reader :id, :richtext
       attr_accessor :definition
 
       def initialize(options = {})
         @id = options[:id]
         @indentation = options[:indentation]
+        @richtext = options[:richtext] || false
       end
 
       def build_string
