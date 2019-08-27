@@ -16,6 +16,7 @@ Contents:
  - [Development tips](development_tips.md#development-tips)
  - [Option normalizers](option_normalizers.md#option-normalizers)
  - [Internationalization](i18n.md#internationalization)
+ - [PR review checklist](review_checklist.md)
 
 Links:
  - slides from tutorial at Config Management Camp 2015: [Hacking with hammer](https://tstrachota.fedorapeople.org/slides/hacking_with_hammer/)
