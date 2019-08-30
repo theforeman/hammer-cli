@@ -86,6 +86,7 @@ module HammerCLI::Apipie
         declared_options << option
         block ||= option.default_conversion_block
         define_accessors_for(option, &block)
+        completion_type_for(option, opts)
       end
       extend_options_help(option) if option.value_formatter.is_a?(HammerCLI::Options::Normalizers::ListNested)
       option

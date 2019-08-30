@@ -1,0 +1,5 @@
+#
+# Hammer CLI bash completion script
+#
+
+complete -C hammer-complete -o nospace hammer

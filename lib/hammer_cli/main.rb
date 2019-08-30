@@ -47,9 +47,11 @@ module HammerCLI
       :context_target => :interactive
     option ["--no-headers"], :flag, _("Hide headers from output")
     option ["--csv"], :flag, _("Output as CSV (same as --output=csv)")
-    option ["--output"], "ADAPTER", _("Set output format"),
-           format: HammerCLI::Options::Normalizers::Enum.new(HammerCLI::Output::Output.adapters.keys.map(&:to_s)),
-      :context_target => :adapter
+    option ['--output'], 'ADAPTER', _('Set output format'),
+           format: HammerCLI::Options::Normalizers::Enum.new(
+             HammerCLI::Output::Output.adapters.keys.map(&:to_s)
+           ),
+           context_target: :adapter
     option ["--output-file"], "OUTPUT_FILE", _("Path to custom output file") do |filename|
       begin
         context[:output_file] = File.new(filename, 'w')

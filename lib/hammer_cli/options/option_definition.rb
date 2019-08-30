@@ -138,6 +138,28 @@ module HammerCLI
         end
       end
 
+      def completion_type(formatter = nil)
+        return { type: :flag } if @type == :flag
+
+        formatter ||= value_formatter
+        completion_type = case formatter
+                          when HammerCLI::Options::Normalizers::Bool,
+                               HammerCLI::Options::Normalizers::Enum
+                            { type: :enum, values: value_formatter.allowed_values }
+                          when HammerCLI::Options::Normalizers::EnumList
+                            { type: :multienum, values: value_formatter.allowed_values }
+                          when HammerCLI::Options::Normalizers::ListNested
+                            { type: :schema, schema: value_formatter.schema.description }
+                          when HammerCLI::Options::Normalizers::List
+                            { type: :list }
+                          when HammerCLI::Options::Normalizers::KeyValueList
+                            { type: :key_value_list }
+                          when HammerCLI::Options::Normalizers::File
+                            { type: :file }
+                          end
+        completion_type || { type: :value }
+      end
+
       private
 
       def format_deprecation_msg(option_desc, deprecation_msg)

@@ -132,8 +132,51 @@ And you are done. Your hammer client is configured and ready to use.
 Autocompletion
 --------------
 
-It is necessary to copy the hammer_cli_complete script to the bash_completion.d directory.
+The completion offers suggestion of possible command-line subcommands and their
+options as usual. It can also suggest values for options and params where file
+or directory path is expected.
 
-    $ sudo cp hammer-cli/hammer_cli_complete /etc/bash_completion.d/
+Bash completion is automatically installed by RPM. To use it for development
+setup `cp ./config/hammer.completion /etc/bash_completion.d/hammer` and load it
+to the current shell `source /etc/bash_completion.d/hammer`. Make sure
+the `$PWD/bin` is in `PATH` or there is full path to `hammer-complete`
+executable specified in `/etc/bash_completion.d/hammer`.
 
-Then after starting a new shell the completion should work.
+Bash completion for hammer needs pre-built cache that holds description of
+all subcommands and its parameters. The cache is located by default in
+`~/.cache/hammer_completion.yml`. The location can be changed in hammer's
+config file. The cache can be built manually with
+`hammer prebuild-bash-completion` or is built automatically when completion is
+used and the cache is missing (this may cause slight delay). The cache expires
+if your API cache was changed (it indicates that the features on the instance
+may have changed which has impact on hammer CLI options and subcommands).
+
+####  Available value types
+
+Completion of values is dependent on CLI option and prameter settings, e.g.:
+
+```ruby
+  option '--value', 'VALUE', 'One of a, b, c', completion: { type: :enum, values: %w[a b c] }
+```
+
+Possible options for the `:completion` attribute are:
+ - `{ type: :flag }` option has no value, default for flags.
+ - `{ type: :value }` option has value of unknown type, no suggestions for the
+value, default.
+- `{ type: :list }` option has value of list type, no suggestions for the
+value.
+- `{ type: :key_value_list }` option has value of key=value list type, no
+suggestions for the value.
+ - `{ type: :directory }` value is directory, suggestions follow directory
+structure.
+ - `{ type: :file, filter: '\.txt$' }` value is file, suggestions follow
+directory structure, optional `:filter` is regexp to filter the results.
+ - `{ type: :enum, values: ['first', 'second']}` option can have one of the
+listed values, suggestions follow specified `values`.
+ - `{ type: :multienum, values: ['first', 'second']}` option can have one or
+more of the listed values, suggestions follow specified `values`.
+ - `{ type: :schema, schema: 'a=int\,b=string' }` option should have value
+according to specified schema, suggestion is the specified schema.
+
+All those completion attributes are generated automatically, specify you own to
+override.

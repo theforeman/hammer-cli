@@ -35,6 +35,10 @@ module HammerCLI
       connections[name]
     end
 
+    def available
+      connections.select { |k, v| !v.nil? }.values.first
+    end
+
     private
 
     def connections

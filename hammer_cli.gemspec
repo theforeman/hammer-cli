@@ -25,7 +25,7 @@ EOF
   s.test_files       = Dir['test/**/*']
   s.extra_rdoc_files = Dir['{doc,config}/**/*', 'README*']
   s.require_paths = ["lib"]
-  s.executables = ['hammer']
+  s.executables = ['hammer', 'hammer-complete']
 
   s.add_dependency 'clamp', '>= 1.1', '< 1.2.0'
   s.add_dependency 'logging'

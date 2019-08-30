@@ -44,6 +44,11 @@
 # Log record pattern (logging gem syntax)
 #:log_pattern: '[%5l %d %c] %m'
 
+# Location of cache for bash completion
+:completion_cache_file: '~/.cache/hammer_completion.yml'
+
+# API connection name. Comment out to use the first available connection.
+# :api_connection: 'foreman'
 
 # SSL auth options
 #:ssl:

@@ -194,6 +194,7 @@ module HammerCLI
         block ||= option.default_conversion_block
         define_accessors_for(option, &block)
         extend_options_help(option) if option.value_formatter.is_a?(HammerCLI::Options::Normalizers::ListNested)
+        completion_type_for(option)
       end
     end
 
@@ -314,6 +315,7 @@ module HammerCLI
         declared_options << option
         block ||= option.default_conversion_block
         define_accessors_for(option, &block)
+        completion_type_for(option, opts)
       end
       extend_options_help(option) if option.value_formatter.is_a?(HammerCLI::Options::Normalizers::ListNested)
       option
@@ -350,6 +352,33 @@ module HammerCLI
         end
       end
       sources
+    end
+
+    def self.completion_map
+      completion = {}
+      # collect options
+      recognised_options.each do |opt|
+        opt.switches.each do |switch|
+          completion[switch] = completion_types.fetch(switch, {})
+        end
+      end
+      # collect subcommands recursively
+      recognised_subcommands.each do |cmd|
+        completion[cmd.names.first] = cmd.subcommand_class.completion_map
+      end
+      # collect params
+      completion[:params] = completion_types[:params] unless completion_types[:params].empty?
+      completion
+    end
+
+    def self.completion_types
+      @completion_types ||= { :params => [] }
+    end
+
+    def self.completion_type_for(option, opts = {})
+      completion_type = opts.delete(:completion)
+      completion_type ||= option.completion_type(opts[:format])
+      [option.switches].flatten(1).each { |s| completion_types[s] = completion_type }
     end
 
     private

@@ -1,0 +1,55 @@
+#!/usr/bin/env ruby
+
+require 'English'
+@project_root = File.expand_path('../..', __FILE__)
+$LOAD_PATH.unshift(File.join(@project_root, 'lib'))
+system('which hammer > /dev/null 2>&1')
+found = $CHILD_STATUS.success?
+HAMMER = found ? 'hammer' : File.join(project_root, 'bin/hammer')
+
+require 'yaml'
+
+def cache_file
+  cache_file = nil
+  [
+    File.join(@project_root, 'config/cli_config.template.yml'),
+    '~/.hammer/cli_config.yml',
+    '/etc/hammer/cli_config.yml',
+    "#{::RbConfig::CONFIG['sysconfdir']}/hammer/cli_config.yml"
+  ].uniq.map { |p| File.expand_path(p) }.select { |f| File.exist?(f) }.reverse
+   .each do |file|
+    File.open(file) do |f|
+      config = YAML.load(f)
+      cache_file = config[:completion_cache_file] || cache_file
+    end
+  end
+  cache_file
+end
+
+completion_cache_file = cache_file || '~/.cache/hammer_completion.yml'
+completion_cache_file = File.expand_path(completion_cache_file)
+
+# build the cache if it does not exist
+unless File.exist?(completion_cache_file)
+  require 'hammer_cli'
+  `#{HAMMER} prebuild-bash-completion`
+end
+
+require 'hammer_cli/bash/completion'
+
+dict = HammerCLI::Bash::Completion.load_description(completion_cache_file)
+
+# regenerate and reload cache if it expired
+sha1sum = `sha1sum #{dict['expire']['file']}` if File.exist?(dict['expire']['file'])
+if sha1sum.nil? || sha1sum.strip != dict['expire']['sha1sum'].strip
+  require 'hammer_cli'
+  `#{HAMMER} prebuild-bash-completion`
+  dict = HammerCLI::Bash::Completion.load_description(completion_cache_file)
+end
+
+comp_line = ENV['COMP_LINE'] || ''
+comp_args = comp_line.split(' ', 2).last || ''
+
+result = HammerCLI::Bash::Completion.new(dict).complete(comp_args)
+
+puts result.join("\n")
