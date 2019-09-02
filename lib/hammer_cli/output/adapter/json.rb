@@ -6,9 +6,20 @@ module HammerCLI::Output::Adapter
       output_stream.puts JSON.pretty_generate(result.first)
     end
 
-    def print_collection(fields, collection)
-      result = prepare_collection(fields, collection)
-      output_stream.puts JSON.pretty_generate(result)
+    def print_collection(fields, collection, options = {})
+      current_chunk = options[:current_chunk] || :single
+      prepared = prepare_collection(fields, collection)
+      result = JSON.pretty_generate(prepared)
+      if current_chunk != :single
+        result = if current_chunk == :first
+                   result[0...-2] + ','
+                 elsif current_chunk == :last
+                   result[2..-1]
+                 else
+                   result[2...-2] + ','
+                 end
+      end
+      output_stream.puts result
     end
 
     def print_message(msg, msg_params={})

@@ -149,7 +149,8 @@ module HammerCLI::Output::Adapter
       print_collection(fields, [record].flatten(1))
     end
 
-    def print_collection(fields, collection)
+    def print_collection(fields, collection, options = {})
+      current_chunk = options[:current_chunk] || :single
       fields = filter_fields(fields).filter_by_classes
                                     .filter_by_sets
                                     .filter_by_data(collection.first,
@@ -161,7 +162,7 @@ module HammerCLI::Output::Adapter
       # or use headers from output definition
       headers ||= default_headers(fields)
       csv_string = generate do |csv|
-        csv << headers if headers && !@context[:no_headers]
+        csv << headers if headers && !@context[:no_headers] && %i[first single].include?(current_chunk)
         rows.each do |row|
           csv << Cell.values(headers, row)
         end

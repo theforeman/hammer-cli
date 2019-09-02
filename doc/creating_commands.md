@@ -494,6 +494,33 @@ You first create an _output definition_ that you apply to your data. The result
 is a collection of fields, each having its type. The collection is then passed to an
 _output adapter_ which handles the actual formatting and printing.
 
+Adapters support printing by chunks, e.g. if you want to print a large set of
+data (1000+ records), but you make several calls to the server instead of one,
+you may want to print received data right away instead of waiting for the rest.
+This can be achieved via `:current_chunk` option for
+`print_collection` and `print_data` methods. Allowed values for `:current_chunk`
+are `:first`, `:another`, `:last`. By default adapters use `:single` value that
+means only one record will be printed.
+
+##### Printing by chunks
+```ruby
+# ...
+  def execute
+    loop do
+      # ...
+      data = send_request
+      print_data(data, current_chunk: :first)
+      # ...
+      data = send_request
+      print_data(data, current_chunk: :another)
+      # ...
+      data = send_request
+      print_data(data, current_chunk: :last)
+    end
+  end
+# ...
+```
+
 Hammer provides a DSL for defining the output. Next rather complex example will
 explain how to use it in action.
 

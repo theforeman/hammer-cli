@@ -58,19 +58,19 @@ describe HammerCLI::Output::Output do
     end
 
     it "prints single resource as collection" do
-      adapter.any_instance.expects(:print_collection).with([], instance_of(HammerCLI::Output::RecordCollection))
+      adapter.any_instance.expects(:print_collection).with([], instance_of(HammerCLI::Output::RecordCollection), {})
       out.print_collection(definition, item1)
     end
 
 
     it "prints array of resources" do
-      adapter.any_instance.expects(:print_collection).with([], instance_of(HammerCLI::Output::RecordCollection))
+      adapter.any_instance.expects(:print_collection).with([], instance_of(HammerCLI::Output::RecordCollection), {})
       out.print_collection(definition, collection)
     end
 
     it "prints recordset" do
       data = HammerCLI::Output::RecordCollection.new(collection)
-      adapter.any_instance.expects(:print_collection).with([], data)
+      adapter.any_instance.expects(:print_collection).with([], data, {})
       out.print_collection(definition, data)
     end
 

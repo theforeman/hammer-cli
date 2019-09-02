@@ -9,7 +9,7 @@ describe HammerCLI::Output::Adapter::Table do
   end
 
   context "print_collection" do
-
+    let(:field_id) { Fields::Id.new(:path => [:id], :label => "Id") }
     let(:field_name) { Fields::Field.new(:path => [:fullname], :label => "Name") }
     let(:field_firstname) { Fields::Field.new(:path => [:firstname], :label => "Firstname") }
     let(:field_lastname) { Fields::Field.new(:path => [:lastname], :label => "Lastname") }
@@ -378,6 +378,75 @@ describe HammerCLI::Output::Adapter::Table do
         proc { adapter.print_collection([field_long], data) }.must_output(expected_output)
       end
 
+    end
+
+    context 'printing by chunks' do
+      let(:adapter) { HammerCLI::Output::Adapter::Table.new(show_ids: true) }
+      let(:collection_count) { 30 }
+      let(:collection_data) do
+        collection = collection_count.times.each_with_object([]) do |t, r|
+          r << { id: t, fullname: "John Doe #{t}"}
+        end
+        HammerCLI::Output::RecordCollection.new(collection)
+      end
+      let(:fields) { [field_id, field_name] }
+
+      it 'prints single chunk' do
+        expected_output = collection_count.times.each_with_object([]) do |t, r|
+          sp = t < 10 ? ' ' : ''
+          r << ["#{t} #{sp}| John Doe #{t}#{sp}"]
+        end.flatten(1).unshift(
+          '---|------------',
+          'ID | NAME       ',
+          "---|------------",
+        ).join("\n") + "\n---|------------\n"
+
+        proc do
+          adapter.print_collection(fields, collection_data)
+        end.must_output(expected_output)
+      end
+
+      it 'prints first chunk' do
+        expected_output = (0...10).each_with_object([]) do |t, r|
+          r << [
+            "#{t}  | John Doe #{t}"
+          ]
+        end.flatten(1).unshift(
+          '---|-----------',
+          'ID | NAME      ',
+          "---|-----------",
+        ).join("\n") + "\n"
+
+        proc do
+          adapter.print_collection(
+            fields, collection_data[0...10], current_chunk: :first
+          )
+        end.must_output(expected_output)
+      end
+
+      it 'prints another chunk' do
+        expected_output = (10...20).each_with_object([]) do |t, r|
+          r << ["#{t} | John Doe #{t}"]
+        end.flatten(1).join("\n") + "\n"
+
+        proc do
+          adapter.print_collection(
+            fields, collection_data[10...20], current_chunk: :another
+          )
+        end.must_output(expected_output)
+      end
+      #
+      it 'prints last chunk' do
+        expected_output = (20...30).each_with_object([]) do |t, r|
+          r << ["#{t} | John Doe #{t}"]
+        end.flatten(1).join("\n") + "\n---|------------\n"
+
+        proc do
+          adapter.print_collection(
+            fields, collection_data[20...30], current_chunk: :last
+          )
+        end.must_output(expected_output)
+      end
     end
 
     context "output_stream" do

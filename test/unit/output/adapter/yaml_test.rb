@@ -312,6 +312,65 @@ describe HammerCLI::Output::Adapter::Yaml do
       end
     end
 
+    context 'printing by chunks' do
+      let(:context) { { show_ids: true } }
+      let(:collection_count) { 30 }
+      let(:collection) do
+        collection_count.times.each_with_object([]) do |t, r|
+          r << { id: t, name: "John #{t}"}
+        end
+      end
+      let(:prepared_collection) do
+        collection.map { |i| i.transform_keys { |k| k.to_s.capitalize } }
+      end
+      let(:collection_data) do
+        HammerCLI::Output::RecordCollection.new(collection)
+      end
+      let(:fields) { [id, name] }
+
+      it 'prints single chunk' do
+        expected_output = YAML.dump(prepared_collection)
+
+        out, _err = capture_io do
+          adapter.print_collection(fields, collection_data)
+        end
+        out.must_equal(expected_output)
+      end
+
+      it 'prints first chunk' do
+        expected_output = YAML.dump(prepared_collection[0...10])
+
+        out, _err = capture_io do
+          adapter.print_collection(
+            fields, collection_data[0...10], current_chunk: :first
+          )
+        end
+        out.must_equal(expected_output)
+      end
+
+      it 'prints another chunk' do
+        expected_output = YAML.dump(prepared_collection[10...20])[4..-1]
+
+        out, _err = capture_io do
+          adapter.print_collection(
+            fields, collection_data[10...20], current_chunk: :another
+          )
+        end
+        out.must_equal(expected_output)
+      end
+
+      it 'prints last chunk' do
+        expected_output = YAML.dump(prepared_collection[20...30])[4..-1]
+
+        out, _err = capture_io do
+          adapter.print_collection(
+            fields, collection_data[20...30], current_chunk: :last
+          )
+        end
+        out.must_equal(expected_output)
+      end
+    end
+
     context "show ids" do
 
       let(:context) { {:show_ids => true} }
