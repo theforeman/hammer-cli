@@ -36,14 +36,6 @@ module HammerCLI::Output
       adapter.reset_context
     end
 
-    def print_output_type
-      if self.class.adapters.has_key? context[:adapter].to_sym
-        $stderr.puts _("Using '#{context[:adapter]}' adapter")
-      else
-        $stderr.puts _("Required adapter '#{context[:adapter]}' was not found, using 'base' instead")
-      end
-    end
-
     def adapter
       adapter_name = context[:adapter] || default_adapter
 
