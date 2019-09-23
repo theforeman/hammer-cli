@@ -3,7 +3,13 @@ module HammerCLI::Output::Adapter
   class Abstract
 
     def tags
-      []
+      %i[]
+    end
+
+    def features
+      return %i[] if tags.empty?
+
+      tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
     end
 
     def initialize(context={}, formatters={}, filters = {})
@@ -101,9 +107,9 @@ module HammerCLI::Output::Adapter
       formatters_map ||= {}
       formatters_map.inject({}) do |map, (type, formatter_list)|
         # remove incompatible formatters
-        filtered = formatter_list.select { |f| f.match?(tags) }
+        filtered = formatter_list.select { |f| f.match?(features) }
         # put serializers first
-        map[type] = filtered.sort_by { |f| f.tags.include?(:flat) ? 0 : 1 }
+        map[type] = filtered.sort_by { |f| f.required_features.include?(:serialized) ? 0 : 1 }
         map
       end
     end

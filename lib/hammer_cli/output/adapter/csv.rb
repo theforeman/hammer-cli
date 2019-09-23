@@ -131,8 +131,10 @@ module HammerCLI::Output::Adapter
       @paginate_by_default = false
     end
 
-    def tags
-      [:flat]
+    def features
+      return %i[serialized inline] if tags.empty?
+
+      tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
     end
 
     def row_data(fields, collection)

@@ -6,8 +6,8 @@ describe HammerCLI::Output::Adapter::Abstract do
   let(:adapter) { HammerCLI::Output::Adapter::Abstract.new }
 
 
-  it "should have tags" do
-    adapter.tags.must_be_kind_of Array
+  it "should have features" do
+    adapter.features.must_be_kind_of Array
   end
 
   class UnknownTestFormatter < HammerCLI::Output::Formatters::FieldFormatter
@@ -15,8 +15,8 @@ describe HammerCLI::Output::Adapter::Abstract do
       data+'.'
     end
 
-    def tags
-      [:unknown]
+    def required_features
+      %i[unknown]
     end
   end
 
@@ -24,7 +24,7 @@ describe HammerCLI::Output::Adapter::Abstract do
     adapter.paginate_by_default?.must_equal true
   end
 
-  it "should filter formatters with incompatible tags" do
+  it "should filter formatters with incompatible features" do
 
     HammerCLI::Output::Formatters::FormatterLibrary.expects(:new).with({ :type => [] })
     adapter = adapter_class.new({}, {:type => [UnknownTestFormatter.new]})
@@ -34,18 +34,18 @@ describe HammerCLI::Output::Adapter::Abstract do
     formatter = UnknownTestFormatter.new
     HammerCLI::Output::Formatters::FormatterLibrary.expects(:new).with({ :type => [formatter] })
     # set :unknown tag to abstract
-    adapter_class.any_instance.stubs(:tags).returns([:unknown])
+    adapter_class.any_instance.stubs(:features).returns([:unknown])
     adapter = adapter_class.new({}, {:type => [formatter]})
   end
 
   it "should put serializers first" do
     formatter1 = UnknownTestFormatter.new
-    formatter1.stubs(:tags).returns([])
+    formatter1.stubs(:required_features).returns([])
     formatter2 = UnknownTestFormatter.new
-    formatter2.stubs(:tags).returns([:flat])
+    formatter2.stubs(:required_features).returns([:serialized])
     HammerCLI::Output::Formatters::FormatterLibrary.expects(:new).with({ :type => [formatter2, formatter1] })
     # set :unknown tag to abstract
-    adapter_class.any_instance.stubs(:tags).returns([:flat])
+    adapter_class.any_instance.stubs(:features).returns([:serialized])
     adapter = adapter_class.new({}, {:type => [formatter1, formatter2]})
   end
 

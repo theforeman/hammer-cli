@@ -5,10 +5,10 @@ module HammerCLI::Output::Adapter
       @paginate_by_default = false
     end
 
-    def tags
-      [
-        :data
-      ]
+    def features
+      return %i[structured] if tags.empty?
+
+      tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
     end
 
     def prepare_collection(fields, collection)

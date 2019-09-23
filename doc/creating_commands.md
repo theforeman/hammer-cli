@@ -477,13 +477,7 @@ directly with `puts` in Hammer. The reason is we separate definition
 of the output from its interpretation. Hammer uses so called _output adapters_
 that can modify the output format.
 
-Hammer comes with four basic output adapters:
-  * __base__   - simple output, structured records
-  * __table__  - records printed in tables, ideal for printing lists of records
-  * __csv__    - comma separated output, ideal for scripting and grepping
-  * __silent__ - no output, used for testing
-
-The detailed documentation on creating adapters is coming soon.
+The detailed documentation on adapters and related things is [here](output.md#adapters).
 
 #### Printing messages
 Very simple, just call
@@ -496,7 +490,7 @@ Typical usage of a CLI is interaction with some API. In many cases it's listing
 some records returned by the API.
 
 Hammer comes with support for selecting and formatting of hash record fields.
-You first create a _output definition_ that you apply to your data. The result
+You first create an _output definition_ that you apply to your data. The result
 is a collection of fields, each having its type. The collection is then passed to an
 _output adapter_ which handles the actual formatting and printing.
 
