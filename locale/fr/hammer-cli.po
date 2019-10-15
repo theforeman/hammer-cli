@@ -10,11 +10,11 @@
 # ty breizh <tybreizh29@free.fr>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.18.0\n"
+"Project-Id-Version: hammer-cli 0.19.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-24 11:43+0200\n"
-"PO-Revision-Date: 2019-07-23 10:42+0000\n"
-"Last-Translator: Baptiste Agasse <baptiste.agasse@gmail.com>\n"
+"POT-Creation-Date: 2019-08-01 22:26+0200\n"
+"PO-Revision-Date: 2019-08-01 20:38+0000\n"
+"Last-Translator: Lukáš Zapletal\n"
 "Language-Team: French (http://www.transifex.com/foreman/foreman/language/"
 "fr/)\n"
 "MIME-Version: 1.0\n"
@@ -28,6 +28,9 @@ msgstr "Détails des options"
 
 msgid ""
 "Following parameters accept format defined by its schema (bold are required):"
+msgstr ""
+
+msgid "Predefined field sets"
 msgstr ""
 
 msgid "Command extensions should be inherited from %s."
@@ -449,6 +452,12 @@ msgstr "Valeur par défaut :"
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr "La variable d'environnement HAMMER_NIL ne peut pas être vide."
 
+msgid "Show specified fileds or predefined filed sets only. (See below)"
+msgstr ""
+
+msgid "There is no such predefined option %s."
+msgstr ""
+
 msgid "Unknown option name '%s'."
 msgstr "Nom d'option '%s' inconnue."
 
@@ -488,6 +497,9 @@ msgstr "Nom"
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr ""
 "Page %{page} de %{total} (utiliser --page et --per-page pour la navigation)."
+
+msgid "Fields"
+msgstr ""
 
 msgid "no"
 msgstr "non"

@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.18.0\n"
+"Project-Id-Version: hammer-cli 0.19.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-01 22:26+0200\n"
-"PO-Revision-Date: 2019-08-01 22:26+0200\n"
+"POT-Creation-Date: 2019-10-15 13:54+0200\n"
+"PO-Revision-Date: 2019-10-15 13:54+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -302,6 +302,10 @@ msgstr ""
 msgid "Print help for all hammer commands"
 msgstr ""
 
+#: ../lib/hammer_cli/help/definition/note.rb:5
+msgid "NOTE"
+msgstr ""
+
 #: ../lib/hammer_cli/logger.rb:58
 msgid "No permissions to create log dir %s."
 msgstr ""
@@ -399,7 +403,7 @@ msgid "Output as CSV (same as --output=csv)"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:50
-msgid "Set output format. One of [%s]"
+msgid "Set output format"
 msgstr ""
 
 #: ../lib/hammer_cli/main.rb:53
@@ -561,19 +565,19 @@ msgstr ""
 msgid "Only one of options %s can be set."
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:172
+#: ../lib/hammer_cli/output/adapter/csv.rb:174
 msgid "Message"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:179
+#: ../lib/hammer_cli/output/adapter/csv.rb:181
 msgid "Id"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:183
+#: ../lib/hammer_cli/output/adapter/csv.rb:185
 msgid "Name"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/table.rb:62
+#: ../lib/hammer_cli/output/adapter/table.rb:64
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr ""
 
@@ -582,11 +586,17 @@ msgstr ""
 msgid "Fields"
 msgstr ""
 
-#: ../lib/hammer_cli/output/formatters.rb:160
+#: ../lib/hammer_cli/output/formatters.rb:51
+msgid ""
+"Method %{tags} for field formatters and output adapters is deprecated. Please "
+"use %{feat} or %{req_feat} instead."
+msgstr ""
+
+#: ../lib/hammer_cli/output/formatters.rb:211
 msgid "no"
 msgstr ""
 
-#: ../lib/hammer_cli/output/formatters.rb:160
+#: ../lib/hammer_cli/output/formatters.rb:211
 msgid "yes"
 msgstr ""
 

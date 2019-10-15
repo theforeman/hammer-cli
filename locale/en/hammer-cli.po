@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.18.0\n"
+"Project-Id-Version: hammer-cli 0.19.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-03-04 16:38+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -237,6 +237,9 @@ msgstr ""
 msgid "Print help for all hammer commands"
 msgstr ""
 
+msgid "NOTE"
+msgstr ""
+
 msgid "No permissions to create log dir %s."
 msgstr ""
 
@@ -310,7 +313,7 @@ msgstr ""
 msgid "Output as CSV (same as --output=csv)"
 msgstr ""
 
-msgid "Set output format. One of [%s]"
+msgid "Set output format"
 msgstr ""
 
 msgid "Path to custom output file"
@@ -445,6 +448,11 @@ msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr ""
 
 msgid "Fields"
+msgstr ""
+
+msgid ""
+"Method %{tags} for field formatters and output adapters is deprecated. "
+"Please use %{feat} or %{req_feat} instead."
 msgstr ""
 
 msgid "no"
