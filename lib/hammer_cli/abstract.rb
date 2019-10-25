@@ -47,7 +47,8 @@ module HammerCLI
           rescue ArgumentError
             option_details = HammerCLI::Help::Section.new(_('Option details'), nil, id: :s_option_details, richtext: true)
             option_details.definition << HammerCLI::Help::Text.new(
-              _('Following parameters accept format defined by its schema (bold are required):')
+              _('Following parameters accept format defined by its schema ' \
+                '(bold are required; <> contain acceptable type; [] contain acceptable value):')
             )
             h.definition.unshift(option_details)
           ensure
@@ -309,11 +310,13 @@ module HammerCLI
     end
 
     def self.option(switches, type, description, opts = {}, &block)
-      HammerCLI::Options::OptionDefinition.new(switches, type, description, opts).tap do |option|
+      option = HammerCLI::Options::OptionDefinition.new(switches, type, description, opts).tap do |option|
         declared_options << option
         block ||= option.default_conversion_block
         define_accessors_for(option, &block)
       end
+      extend_options_help(option) if option.value_formatter.is_a?(HammerCLI::Options::Normalizers::ListNested)
+      option
     end
 
     def all_options

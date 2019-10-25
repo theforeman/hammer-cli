@@ -115,7 +115,16 @@ module HammerCLI
             '"' + reduce([]) do |schema, nested_param|
               name = nested_param.name
               name = HighLine.color(name, :bold) if nested_param.required?
-              schema << "#{name}=#{nested_param.expected_type}"
+              values = nested_param.validator.scan(/<[^>]+>[\w]+<\/?[^>]+>/)
+              value_pattern = if values.empty?
+                                "<#{nested_param.expected_type.downcase}>"
+                              else
+                                values = values.map do |value|
+                                  value.gsub(/(<\/?[^>]+>)*([\.,]*)*/, '')
+                                end
+                                "[#{values.join('|')}]"
+                              end
+              schema << "#{name}=#{value_pattern}"
             end.join('\,').concat(', ... "')
           end
         end

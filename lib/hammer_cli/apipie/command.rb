@@ -82,11 +82,13 @@ module HammerCLI::Apipie
     end
 
     def self.option(switches, type, description, opts = {}, &block)
-      HammerCLI::Apipie::OptionDefinition.new(switches, type, description, opts).tap do |option|
+      option = HammerCLI::Apipie::OptionDefinition.new(switches, type, description, opts).tap do |option|
         declared_options << option
         block ||= option.default_conversion_block
         define_accessors_for(option, &block)
       end
+      extend_options_help(option) if option.value_formatter.is_a?(HammerCLI::Options::Normalizers::ListNested)
+      option
     end
 
     private
