@@ -6,10 +6,10 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.19.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-01 22:26+0200\n"
-"PO-Revision-Date: 2019-08-01 20:38+0000\n"
+"POT-Creation-Date: 2019-10-15 13:54+0200\n"
+"PO-Revision-Date: 2019-10-15 20:03+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/foreman/foreman/"
 "language/zh_CN/)\n"
@@ -245,6 +245,9 @@ msgstr "Hammer CLI 帮助"
 msgid "Print help for all hammer commands"
 msgstr "打印针对所有 hammer 命令的帮助信息"
 
+msgid "NOTE"
+msgstr ""
+
 msgid "No permissions to create log dir %s."
 msgstr "没有创建日志目录 %s 的权限。"
 
@@ -318,8 +321,8 @@ msgstr "从输出中隐藏标题"
 msgid "Output as CSV (same as --output=csv)"
 msgstr "作为 CSV 输出（与 --output=csv 相同） "
 
-msgid "Set output format. One of [%s]"
-msgstr "设定输出格式。[%s] 之一"
+msgid "Set output format"
+msgstr ""
 
 msgid "Path to custom output file"
 msgstr "到自定义输出文件的路径"
@@ -453,6 +456,11 @@ msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr "第 %{page} 页，共 %{total} 页（使用 --page 和 --per-page 进行导航）。"
 
 msgid "Fields"
+msgstr ""
+
+msgid ""
+"Method %{tags} for field formatters and output adapters is deprecated. "
+"Please use %{feat} or %{req_feat} instead."
 msgstr ""
 
 msgid "no"

@@ -7,10 +7,10 @@
 # Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.19.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-01 22:26+0200\n"
-"PO-Revision-Date: 2019-08-01 20:38+0000\n"
+"POT-Creation-Date: 2019-10-15 13:54+0200\n"
+"PO-Revision-Date: 2019-10-15 20:03+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Catalan (http://www.transifex.com/foreman/foreman/language/"
 "ca/)\n"
@@ -266,6 +266,9 @@ msgstr "Ajuda del client de línia d'ordres de hammer"
 msgid "Print help for all hammer commands"
 msgstr "Imprimeix l'ajuda per a les ordres de hammer"
 
+msgid "NOTE"
+msgstr ""
+
 msgid "No permissions to create log dir %s."
 msgstr ""
 
@@ -341,8 +344,8 @@ msgstr ""
 msgid "Output as CSV (same as --output=csv)"
 msgstr "Sortida com a CSV (el mateix que --output=csv)"
 
-msgid "Set output format. One of [%s]"
-msgstr "Estableix el format de sortida. Un de [%s]"
+msgid "Set output format"
+msgstr ""
 
 msgid "Path to custom output file"
 msgstr ""
@@ -476,6 +479,11 @@ msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr ""
 
 msgid "Fields"
+msgstr ""
+
+msgid ""
+"Method %{tags} for field formatters and output adapters is deprecated. "
+"Please use %{feat} or %{req_feat} instead."
 msgstr ""
 
 msgid "no"

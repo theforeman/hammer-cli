@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.19.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.19.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-03-04 16:38+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -20,7 +20,8 @@ msgid "Option details"
 msgstr ""
 
 msgid ""
-"Following parameters accept format defined by its schema (bold are required):"
+"Following parameters accept format defined by its schema (bold are required; "
+"<> contain acceptable type; [] contain acceptable value):"
 msgstr ""
 
 msgid "Predefined field sets"

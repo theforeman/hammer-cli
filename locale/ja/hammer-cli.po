@@ -4,13 +4,13 @@
 #
 # Translators:
 # Kazuki Omo <kazuki.omo@gmail.com>, 2019
-# Shuji Yamada <uzy.exe@gmail.com>, 2015
+# 山田 修司 🍣 Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.19.pre.develop\n"
+"Project-Id-Version: hammer-cli 0.19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-01 22:26+0200\n"
-"PO-Revision-Date: 2019-08-01 20:38+0000\n"
+"POT-Creation-Date: 2019-10-15 13:54+0200\n"
+"PO-Revision-Date: 2019-10-15 20:03+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/"
 "ja/)\n"
@@ -266,6 +266,9 @@ msgstr "Hammer CLI ヘルプ"
 msgid "Print help for all hammer commands"
 msgstr "すべての hammer コマンドのヘルプの出力"
 
+msgid "NOTE"
+msgstr ""
+
 msgid "No permissions to create log dir %s."
 msgstr "ログディレクトリー %s を作成するパーミッションがありません。"
 
@@ -341,8 +344,8 @@ msgstr "出力からヘッダーを非表示"
 msgid "Output as CSV (same as --output=csv)"
 msgstr "CSV として出力 (--output=csv と同じ)"
 
-msgid "Set output format. One of [%s]"
-msgstr "出力形式を設定します。[%s] のいずれかになります。"
+msgid "Set output format"
+msgstr ""
 
 msgid "Path to custom output file"
 msgstr "カスタム出力ファイルのパス"
@@ -479,6 +482,11 @@ msgstr ""
 "ページ %{page}/%{total} (ナビゲーションには --page と --per-page を使用)。"
 
 msgid "Fields"
+msgstr ""
+
+msgid ""
+"Method %{tags} for field formatters and output adapters is deprecated. "
+"Please use %{feat} or %{req_feat} instead."
 msgstr ""
 
 msgid "no"
