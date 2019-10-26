@@ -1,5 +1,12 @@
 Release notes
 =============
+### 0.19.0 (2019-10-26)
+* Allow schema building for custom options ([PR #316](https://github.com/Apipie/apipie-bindings/pull/316)), [#27899](http://projects.theforeman.org/issues/27899)
+* New lines in text attr dont break output ([PR #300](https://github.com/Apipie/apipie-bindings/pull/300)), [#25878](http://projects.theforeman.org/issues/25878)
+* Added error to wrong --output ([PR #315](https://github.com/Apipie/apipie-bindings/pull/315)), [#21590](http://projects.theforeman.org/issues/21590)
+* Pr review checklist ([PR #305](https://github.com/Apipie/apipie-bindings/pull/305)), [#26950](http://projects.theforeman.org/issues/26950)
+* List items in help with customization ([PR #309](https://github.com/Apipie/apipie-bindings/pull/309)), [#27237](http://projects.theforeman.org/issues/27237)
+
 ### 0.18.0 (2019-08-01)
 * Unsure minimal label length ([PR #310](https://github.com/theforeman/hammer-cli/pull/310)) ([#26960](http://projects.theforeman.org/issues/26960))
 * The --fields option has set help ([PR #308](https://github.com/theforeman/hammer-cli/pull/308)) ([#26960](http://projects.theforeman.org/issues/26960))
