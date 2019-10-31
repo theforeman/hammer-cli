@@ -1,5 +1,8 @@
 Release notes
 =============
+### 0.18.1 (2019-10-31)
+* Allow schema building for custom options ([PR #316](https://github.com/theforeman/hammer-cli/pull/316)), [#27899](http://projects.theforeman.org/issues/27899)
+
 ### 0.18.0 (2019-08-01)
 * Unsure minimal label length ([PR #310](https://github.com/theforeman/hammer-cli/pull/310)) ([#26960](http://projects.theforeman.org/issues/26960))
 * The --fields option has set help ([PR #308](https://github.com/theforeman/hammer-cli/pull/308)) ([#26960](http://projects.theforeman.org/issues/26960))
