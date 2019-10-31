@@ -9,11 +9,11 @@
 # Sergio Ocón <sergio.ocon@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.17.0\n"
+"Project-Id-Version: hammer-cli 0.18.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-17 00:00+0100\n"
-"PO-Revision-Date: 2019-03-18 13:21+0000\n"
-"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
+"POT-Creation-Date: 2019-10-26 20:06+0200\n"
+"PO-Revision-Date: 2019-10-26 19:41+0000\n"
+"Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Spanish (http://www.transifex.com/foreman/foreman/language/"
 "es/)\n"
 "MIME-Version: 1.0\n"
@@ -22,8 +22,25 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "Option details"
+msgstr ""
+
+msgid ""
+"Following parameters accept format defined by its schema (bold are required; "
+"<> contain acceptable type; [] contain acceptable value):"
+msgstr ""
+
+msgid "Predefined field sets"
+msgstr ""
+
+msgid "Command extensions should be inherited from %s."
+msgstr ""
+
 msgid "Unfortunately the server does not support such operation."
 msgstr "Lamentablemente, el servidor no admite esa operación."
+
+msgid "The server does not support such operation."
+msgstr "El servidor no soporta esa operación."
 
 msgid "Unable to find hostname in %s."
 msgstr "No se encontró el nombre del host en %s."
@@ -254,6 +271,9 @@ msgstr "Ayuda de Hammer CLI"
 msgid "Print help for all hammer commands"
 msgstr "Imprimir ayuda para todos los comandos de hammer"
 
+msgid "NOTE"
+msgstr ""
+
 msgid "No permissions to create log dir %s."
 msgstr "No existen permisos para crear el directorio de registro %s."
 
@@ -333,8 +353,8 @@ msgstr "Ocultar encabezados de la salida"
 msgid "Output as CSV (same as --output=csv)"
 msgstr "Exportar como CSV (equivale a --output=csv)"
 
-msgid "Set output format. One of [%s]"
-msgstr "Establecer formato de salida. Uno de [%s]"
+msgid "Set output format"
+msgstr ""
 
 msgid "Path to custom output file"
 msgstr "Ruta al archivo de salida personalizado"
@@ -353,8 +373,11 @@ msgstr ""
 "Error: Algunos de los módulos requeridos están desactivados en la "
 "configuración: %s. "
 
-msgid "Comma-separated list of key=value"
-msgstr "Lista de pares clave=valor separados por comas"
+msgid "Comma-separated list of key=value."
+msgstr "Lista de pares llave=valor separados por comas."
+
+msgid "JSON is acceptable and preferred way for complex parameters"
+msgstr ""
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -364,10 +387,13 @@ msgstr ""
 
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
-"escaped with backslash"
+"escaped with backslash."
 msgstr ""
-"Lista de valores separados por comas. Los valores que contienen comas "
-"deberían entrecomillarse o se les debería agregar una barra invertida."
+
+msgid ""
+"Comma separated list of values defined by a schema. See Option details "
+"section below."
+msgstr ""
 
 msgid "Numeric value is required."
 msgstr "El valor numérico es obligatorio."
@@ -420,6 +446,12 @@ msgstr "Predeterminado:"
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr "La variable de entorno HAMMER_NIL no puede estar vacía."
 
+msgid "Show specified fileds or predefined filed sets only. (See below)"
+msgstr ""
+
+msgid "There is no such predefined option %s."
+msgstr ""
+
 msgid "Unknown option name '%s'."
 msgstr "Nombre de opción desconocido '%s'."
 
@@ -459,6 +491,14 @@ msgstr "Nombre"
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr ""
 "Página %{page} de %{total} (utilizar página y/por página para la navegación)."
+
+msgid "Fields"
+msgstr ""
+
+msgid ""
+"Method %{tags} for field formatters and output adapters is deprecated. "
+"Please use %{feat} or %{req_feat} instead."
+msgstr ""
 
 msgid "no"
 msgstr "No"

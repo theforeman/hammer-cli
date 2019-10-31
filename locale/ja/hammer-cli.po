@@ -4,14 +4,14 @@
 #
 # Translators:
 # Kazuki Omo <kazuki.omo@gmail.com>, 2019
-# Shuji Yamada <uzy.exe@gmail.com>, 2015
+# 山田 修司 🍣 Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.17.0\n"
+"Project-Id-Version: hammer-cli 0.18.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-17 00:00+0100\n"
-"PO-Revision-Date: 2019-03-07 15:47+0000\n"
-"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
+"POT-Creation-Date: 2019-10-26 20:06+0200\n"
+"PO-Revision-Date: 2019-10-26 19:41+0000\n"
+"Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/"
 "ja/)\n"
 "MIME-Version: 1.0\n"
@@ -20,8 +20,25 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+msgid "Option details"
+msgstr ""
+
+msgid ""
+"Following parameters accept format defined by its schema (bold are required; "
+"<> contain acceptable type; [] contain acceptable value):"
+msgstr ""
+
+msgid "Predefined field sets"
+msgstr ""
+
+msgid "Command extensions should be inherited from %s."
+msgstr ""
+
 msgid "Unfortunately the server does not support such operation."
 msgstr "残念ですがサーバはその操作をサポートしていません。"
+
+msgid "The server does not support such operation."
+msgstr "サーバーはこの操作に対応していません。"
 
 msgid "Unable to find hostname in %s."
 msgstr "%s でホスト名が見つかりません。"
@@ -250,6 +267,9 @@ msgstr "Hammer CLI ヘルプ"
 msgid "Print help for all hammer commands"
 msgstr "すべての hammer コマンドのヘルプの出力"
 
+msgid "NOTE"
+msgstr ""
+
 msgid "No permissions to create log dir %s."
 msgstr "ログディレクトリー %s を作成するパーミッションがありません。"
 
@@ -325,8 +345,8 @@ msgstr "出力からヘッダーを非表示"
 msgid "Output as CSV (same as --output=csv)"
 msgstr "CSV として出力 (--output=csv と同じ)"
 
-msgid "Set output format. One of [%s]"
-msgstr "出力形式を設定します。[%s] のいずれかになります。"
+msgid "Set output format"
+msgstr ""
 
 msgid "Path to custom output file"
 msgstr "カスタム出力ファイルのパス"
@@ -343,8 +363,11 @@ msgstr "警告: モジュール %s のロード中にエラーが発生しまし
 msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr "エラー: 必要なモジュールの一部は設定で無効にされています: %s 。"
 
-msgid "Comma-separated list of key=value"
-msgstr "key=value のコンマ区切り一覧"
+msgid "Comma-separated list of key=value."
+msgstr "key=value のコンマ区切りの一覧です。"
+
+msgid "JSON is acceptable and preferred way for complex parameters"
+msgstr ""
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -354,10 +377,13 @@ msgstr ""
 
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
-"escaped with backslash"
+"escaped with backslash."
 msgstr ""
-"値のコンマ区切りの一覧。コンマを含む値は引用符で囲むか、またはバックスラッ"
-"シュでエスケープする必要があります"
+
+msgid ""
+"Comma separated list of values defined by a schema. See Option details "
+"section below."
+msgstr ""
 
 msgid "Numeric value is required."
 msgstr "数値が必要。"
@@ -410,6 +436,12 @@ msgstr "デフォルト:"
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr "環境変数 HAMMER_NIL は空欄にできません。"
 
+msgid "Show specified fileds or predefined filed sets only. (See below)"
+msgstr ""
+
+msgid "There is no such predefined option %s."
+msgstr ""
+
 msgid "Unknown option name '%s'."
 msgstr "不明なオプション名 '%s'。"
 
@@ -449,6 +481,14 @@ msgstr "名前"
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr ""
 "ページ %{page}/%{total} (ナビゲーションには --page と --per-page を使用)。"
+
+msgid "Fields"
+msgstr ""
+
+msgid ""
+"Method %{tags} for field formatters and output adapters is deprecated. "
+"Please use %{feat} or %{req_feat} instead."
+msgstr ""
 
 msgid "no"
 msgstr "no"

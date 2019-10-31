@@ -11,11 +11,11 @@
 # Valeria S Silva <valeriassilva@live.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.17.0\n"
+"Project-Id-Version: hammer-cli 0.18.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-17 00:00+0100\n"
-"PO-Revision-Date: 2019-03-18 13:21+0000\n"
-"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>\n"
+"POT-Creation-Date: 2019-10-26 20:06+0200\n"
+"PO-Revision-Date: 2019-10-26 19:41+0000\n"
+"Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/foreman/foreman/"
 "language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -24,8 +24,25 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+msgid "Option details"
+msgstr ""
+
+msgid ""
+"Following parameters accept format defined by its schema (bold are required; "
+"<> contain acceptable type; [] contain acceptable value):"
+msgstr ""
+
+msgid "Predefined field sets"
+msgstr ""
+
+msgid "Command extensions should be inherited from %s."
+msgstr ""
+
 msgid "Unfortunately the server does not support such operation."
 msgstr "Infelizmente o servidor não suporta tal operação."
+
+msgid "The server does not support such operation."
+msgstr "O servidor não suporta tal operação"
 
 msgid "Unable to find hostname in %s."
 msgstr "Não foi possível encontrar o nome de host em %s."
@@ -256,6 +273,9 @@ msgstr "Ajuda da CLI do martelo"
 msgid "Print help for all hammer commands"
 msgstr "Imprimir ajuda para todos os comandos do martelo"
 
+msgid "NOTE"
+msgstr ""
+
 msgid "No permissions to create log dir %s."
 msgstr "Não há permissão para criar o diretório do log %s."
 
@@ -329,8 +349,8 @@ msgstr "Ocultar cabe;alhos da saída"
 msgid "Output as CSV (same as --output=csv)"
 msgstr "Resultado como CSV (mesmo que  --output=csv)"
 
-msgid "Set output format. One of [%s]"
-msgstr "Definir formato de resultado. Um entre  [%s]"
+msgid "Set output format"
+msgstr ""
 
 msgid "Path to custom output file"
 msgstr "Caminho para o arquivo de saída personalizado"
@@ -348,8 +368,11 @@ msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr ""
 "Erro: alguns dos modelos necessários estão desabilitados na configuração: %s."
 
-msgid "Comma-separated list of key=value"
-msgstr "Lista de key=value separada por vírgulas"
+msgid "Comma-separated list of key=value."
+msgstr "Lista da chave=valor separada por vírgulas."
+
+msgid "JSON is acceptable and preferred way for complex parameters"
+msgstr ""
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -359,10 +382,13 @@ msgstr ""
 
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
-"escaped with backslash"
+"escaped with backslash."
 msgstr ""
-"Lista de valores separada por vírgula. Os valores contendo vírgula devem "
-"estar entre aspas ou com barra invertida de escape"
+
+msgid ""
+"Comma separated list of values defined by a schema. See Option details "
+"section below."
+msgstr ""
 
 msgid "Numeric value is required."
 msgstr "O valor numérico é necessário."
@@ -415,6 +441,12 @@ msgstr "Padrão:"
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr "A variável de ambiente HAMMER_NIL não pode estar vazia."
 
+msgid "Show specified fileds or predefined filed sets only. (See below)"
+msgstr ""
+
+msgid "There is no such predefined option %s."
+msgstr ""
+
 msgid "Unknown option name '%s'."
 msgstr "Nome da opção '%s' desconhecida."
 
@@ -453,6 +485,14 @@ msgstr "Nome"
 
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr "Página %{page} de %{total} (use --page e --per-page para navegação)."
+
+msgid "Fields"
+msgstr ""
+
+msgid ""
+"Method %{tags} for field formatters and output adapters is deprecated. "
+"Please use %{feat} or %{req_feat} instead."
+msgstr ""
 
 msgid "no"
 msgstr "não"
