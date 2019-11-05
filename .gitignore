@@ -24,3 +24,6 @@ locale/*/*.po.time_stamp
 # Man
 man/hammer.1
 man/hammer.1.gz
+
+# Jupyter
+rel-eng/.ipynb_checkpoints
