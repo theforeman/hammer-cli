@@ -138,7 +138,16 @@ module HammerCLI
     end
 
     def handle_apipie_missing_arguments_error(e)
-      message = _("Missing arguments for %s") % "'#{e.params.join("', '")}'"
+      params = e.params.map do |p|
+        param = p[/\[.+\]/]
+        param = if param.nil?
+                  p
+                else
+                  p.scan(/\[[^\[\]]+\]/).first[1...-1].tr('_', '-')
+                end
+        "--#{param}"
+      end
+      message = _("Missing arguments for %s") % "'#{params.uniq.join("', '")}'"
       print_error message
       log_full_error e, message
       HammerCLI::EX_USAGE
