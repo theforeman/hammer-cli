@@ -32,10 +32,15 @@ $ jupyter notebook rel-eng/gem_release.ipynb
 as current notebook can not handle password prompt. If your env requires interactive
 steps skip the step in notebook and run its equivalent manually in your terminal. 
 
-> NOTE: If you notebook hangs waiting on your prompt you have to `Menu > Kernel > Interrupt`
-your notebook kernel. It is probable it will loose the variables and you'll have to re-run 
+> NOTE: If your notebook hangs waiting on your prompt you have to `Menu > Kernel > Interrupt`
+your notebook kernel. It may lead to loosing the variables and you'll have to re-run 
 some steps.
 
+> NOTE: To run Jupyter within virtual machine you need the server to listen to public
+ e.g. `jupyter notebook --ip 0.0.0.0 rel-eng/gem_release.ipynb`. Beware of the security risks
+ envolved - access to jupyter notebook means unrestricted access to the shell
+ as the user who runs the Jupyter.
+ 
 ## Follow the notebook
 
 Once you are in the notebook page in your browser read the content to see what is going on.
@@ -46,7 +51,7 @@ Once you are in the notebook page in your browser read the content to see what i
  - `<Shift>+<Enter>` executes the cell and moves to next one
  - you can execute markdown cells too
  - when the cell is executed the output is attached to the cell
- - when the execution is in progress the `[*}` is shown nex to it
+ - when the execution is in progress the `[*]` is shown nex to it
  - to edit cell press `<Enter>`
  
  ## Notebook updates
