@@ -6,9 +6,12 @@ module HammerCLI::Output::Adapter
       output_stream.puts YAML.dump(result.first)
     end
 
-    def print_collection(fields, collection)
-      result = prepare_collection(fields, collection)
-      output_stream.puts YAML.dump(result)
+    def print_collection(fields, collection, options = {})
+      current_chunk = options[:current_chunk] || :single
+      prepared = prepare_collection(fields, collection)
+      result = YAML.dump(prepared)
+      result = result[4..-1] unless %i[first single].include?(current_chunk)
+      output_stream.puts result
     end
 
     def print_message(msg, msg_params={})

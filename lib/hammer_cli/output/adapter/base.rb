@@ -14,7 +14,7 @@ module HammerCLI::Output::Adapter
       print_collection(fields, [record].flatten(1))
     end
 
-    def print_collection(fields, collection)
+    def print_collection(fields, collection, options = {})
       collection.each do |data|
         output_stream.puts render_fields(fields, data)
         output_stream.puts

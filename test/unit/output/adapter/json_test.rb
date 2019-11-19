@@ -316,6 +316,67 @@ describe HammerCLI::Output::Adapter::Json do
       end
     end
 
+    context 'printing by chunks' do
+      let(:settings) { HammerCLI::Settings }
+      let(:context) { { show_ids: true, capitalization: HammerCLI.capitalization } }
+      let(:collection_count) { 30 }
+      let(:collection) do
+        collection_count.times.each_with_object([]) do |t, r|
+          r << { id: t, name: "John #{t}"}
+        end
+      end
+      let(:collection_data) do
+        HammerCLI::Output::RecordCollection.new(collection)
+      end
+      let(:fields) { [id, name] }
+
+      before do
+        settings.load(ui: { capitalization: :downcase })
+      end
+
+      it 'prints single chunk' do
+        expected_output = JSON.pretty_generate(collection) + "\n"
+
+        out, _err = capture_io do
+          adapter.print_collection(fields, collection_data)
+        end
+        out.must_equal(expected_output)
+      end
+
+      it 'prints first chunk' do
+        expected_output = JSON.pretty_generate(collection[0...10])[0...-2] + ",\n"
+
+        out, _err = capture_io do
+          adapter.print_collection(
+            fields, collection_data[0...10], current_chunk: :first
+          )
+        end
+        out.must_equal(expected_output)
+      end
+
+      it 'prints another chunk' do
+        expected_output = JSON.pretty_generate(collection[10...20])[2...-2] + ",\n"
+
+        out, _err = capture_io do
+          adapter.print_collection(
+            fields, collection_data[10...20], current_chunk: :another
+          )
+        end
+        out.must_equal(expected_output)
+      end
+
+      it 'prints last chunk' do
+        expected_output = JSON.pretty_generate(collection[20...30])[2..-1] + "\n"
+
+        out, _err = capture_io do
+          adapter.print_collection(
+            fields, collection_data[20...30], current_chunk: :last
+          )
+        end
+        out.must_equal(expected_output)
+      end
+    end
+
     context "show ids" do
 
       let(:context) { {:show_ids => true} }

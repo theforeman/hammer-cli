@@ -65,8 +65,8 @@ module HammerCLI::Apipie
       method_options(options)
     end
 
-    def print_data(data)
-      print_collection(output_definition, data) unless output_definition.empty?
+    def print_data(data, options = {})
+      print_collection(output_definition, data, options) unless output_definition.empty?
       print_success_message(data) unless success_message.nil?
     end
 

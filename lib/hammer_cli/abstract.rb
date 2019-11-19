@@ -74,6 +74,7 @@ module HammerCLI
       begin
         begin
           exit_code = super
+          context.delete(:fields)
           raise "exit code must be integer" unless exit_code.is_a? Integer
         rescue => e
           exit_code = handle_exception(e)
@@ -242,8 +243,8 @@ module HammerCLI
       output.print_record(definition, record)
     end
 
-    def print_collection(definition, collection)
-      output.print_collection(definition, collection)
+    def print_collection(definition, collection, options = {})
+      output.print_collection(definition, collection, options)
     end
 
     def print_message(msg, msg_params = {}, options = {})

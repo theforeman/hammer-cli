@@ -12,7 +12,7 @@ module HammerCLI::Output::Adapter
     def print_record(fields, record)
     end
 
-    def print_collection(fields, collection)
+    def print_collection(fields, collection, options = {})
     end
 
   end

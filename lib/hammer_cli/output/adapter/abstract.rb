@@ -44,12 +44,8 @@ module HammerCLI::Output::Adapter
       raise NotImplementedError
     end
 
-    def print_collection(fields, collection)
+    def print_collection(fields, collection, options = {})
       raise NotImplementedError
-    end
-
-    def reset_context
-      @context.delete(:fields)
     end
 
     protected

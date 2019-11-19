@@ -199,6 +199,64 @@ describe HammerCLI::Output::Adapter::Base do
       proc { adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
+    context 'printing by chunks' do
+      let(:context) { { show_ids: true } }
+      let(:collection_count) { 30 }
+      let(:collection_data) do
+        collection = collection_count.times.each_with_object([]) do |t, r|
+          r << { id: t, name: "John #{t}"}
+        end
+        HammerCLI::Output::RecordCollection.new(collection)
+      end
+      let(:fields) { [id, name] }
+
+      it 'prints single chunk' do
+        expected_output = collection_count.times.each_with_object([]) do |t, r|
+          r << ["Id:   #{t}", "Name: John #{t}", "\n"].join("\n")
+        end.flatten(1).join
+
+        proc do
+          adapter.print_collection(fields, collection_data)
+        end.must_output(expected_output)
+      end
+
+      it 'prints first chunk' do
+        expected_output = 10.times.each_with_object([]) do |t, r|
+          r << ["Id:   #{t}", "Name: John #{t}", "\n"].join("\n")
+        end.flatten(1).join
+
+        proc do
+          adapter.print_collection(
+            fields, collection_data[0...10], current_chunk: :first
+          )
+        end.must_output(expected_output)
+      end
+
+      it 'prints another chunk' do
+        expected_output = (10...20).each_with_object([]) do |t, r|
+          r << ["Id:   #{t}", "Name: John #{t}", "\n"].join("\n")
+        end.flatten(1).join
+
+        proc do
+          adapter.print_collection(
+            fields, collection_data[10...20], current_chunk: :another
+          )
+        end.must_output(expected_output)
+      end
+
+      it 'prints last chunk' do
+        expected_output = (20...30).each_with_object([]) do |t, r|
+          r << ["Id:   #{t}", "Name: John #{t}", "\n"].join("\n")
+        end.flatten(1).join
+
+        proc do
+          adapter.print_collection(
+            fields, collection_data[20...30], current_chunk: :last
+          )
+        end.must_output(expected_output)
+      end
+    end
+
     context "show ids" do
 
       let(:context) { {:show_ids => true} }
