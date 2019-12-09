@@ -66,7 +66,7 @@ module HammerCLI::Output::Adapter
       collection.collect do |d|
         fields.inject({}) do |row, f|
           formatter = WrapperFormatter.new(@formatters.formatter_for_type(f.class), f.parameters)
-          row.update(f.label => formatter.format(data_for_field(f, d) || "").to_s)
+          row.update(f.label => formatter.format(data_for_field(f, d)).to_s)
         end
       end
     end
