@@ -149,7 +149,7 @@ module HammerCLI
                           when HammerCLI::Options::Normalizers::EnumList
                             { type: :multienum, values: value_formatter.allowed_values }
                           when HammerCLI::Options::Normalizers::ListNested
-                            { type: :schema, schema: value_formatter.schema.description }
+                            { type: :schema, schema: value_formatter.schema.description(richtext: false) }
                           when HammerCLI::Options::Normalizers::List
                             { type: :list }
                           when HammerCLI::Options::Normalizers::KeyValueList

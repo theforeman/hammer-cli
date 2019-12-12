@@ -152,7 +152,7 @@ module HammerCLI
       end
 
       def schema(template = '')
-        [template]
+        ['--->', "Add value by following schema: #{template}"]
       end
     end
   end

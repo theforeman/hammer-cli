@@ -111,10 +111,10 @@ module HammerCLI
 
       class ListNested < AbstractNormalizer
         class Schema < Array
-          def description
+          def description(richtext: true)
             '"' + reduce([]) do |schema, nested_param|
               name = nested_param.name
-              name = HighLine.color(name, :bold) if nested_param.required?
+              name = HighLine.color(name, :bold) if nested_param.required? && richtext
               values = nested_param.validator.scan(/<[^>]+>[\w]+<\/?[^>]+>/)
               value_pattern = if values.empty?
                                 "<#{nested_param.expected_type.downcase}>"

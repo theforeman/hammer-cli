@@ -102,7 +102,7 @@ describe HammerCLI::Bash::Completion do
 
       it 'completes :schema' do
         result = subject.complete('host create --installed-products-attributes ')
-        result.must_equal ['"product_id=string\,product_name=string\,arch=string\,version=string, ... "']
+        result.must_equal ["--->", 'Add value by following schema: "product_id=string\,product_name=string\,arch=string\,version=string, ... "']
       end
 
       it 'completes :enum' do

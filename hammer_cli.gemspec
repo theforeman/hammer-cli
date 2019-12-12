@@ -18,7 +18,7 @@ Hammer cli provides universal extendable CLI interface for ruby apps
 EOF
 
   locales = Dir['locale/*'].select { |f| File.directory?(f) }
-  s.files = Dir['{lib,test,bin,doc,config}/**/*', 'LICENSE', 'README*', 'hammer_cli_complete'] +
+  s.files = Dir['{lib,test,bin,doc,config}/**/*', 'LICENSE', 'README*'] +
     locales.map { |loc| "#{loc}/LC_MESSAGES/hammer-cli.mo" } +
     ['man/hammer.1.gz']
 

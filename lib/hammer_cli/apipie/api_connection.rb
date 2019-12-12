@@ -10,7 +10,11 @@ module HammerCLI::Apipie
       @api = ApipieBindings::API.new(params, HammerCLI::SSLOptions.new.get_options(params[:uri]))
       if options[:reload_cache]
         @api.clean_cache
-        @logger.debug 'Apipie cache was cleared' unless @logger.nil?
+        HammerCLI.clear_cache
+        unless @logger.nil?
+          @logger.debug 'Apipie cache was cleared'
+          @logger.debug 'Completion cache was cleared'
+        end
       end
     end
 

@@ -47,9 +47,6 @@
 # Location of cache for bash completion
 :completion_cache_file: '~/.cache/hammer_completion.yml'
 
-# API connection name. Comment out to use the first available connection.
-# :api_connection: 'foreman'
-
 # SSL auth options
 #:ssl:
   # Path to a CA file in PEM format, mutually exclusive with :ssl_ca_path:
