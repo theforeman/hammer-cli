@@ -111,11 +111,9 @@ module HammerCLI
         end
 
         def max_width_for(column)
-          if column.params[:max_width]
-            [column.params[:max_width], MAX_COLUMN_WIDTH].min
-          else
-            MAX_COLUMN_WIDTH
-          end
+          return MAX_COLUMN_WIDTH unless column.params[:max_width]
+
+          column.params[:max_width]
         end
       end
     end
