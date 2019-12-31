@@ -1,5 +1,9 @@
 Release notes
 =============
+### 0.19.1 (2019-12-31)
+* Allow column max width more than 80, [#28503](http://projects.theforeman.org/issues/28503)
+* Extract table generator into reusable component ([PR #314](https://github.com/theforeman/hammer-cli/pull/314)), [#27318](http://projects.theforeman.org/issues/27318)
+
 ### 0.19.0 (2019-10-26)
 * Allow schema building for custom options ([PR #316](https://github.com/Apipie/apipie-bindings/pull/316)), [#27899](http://projects.theforeman.org/issues/27899)
 * New lines in text attr dont break output ([PR #300](https://github.com/Apipie/apipie-bindings/pull/300)), [#25878](http://projects.theforeman.org/issues/25878)
