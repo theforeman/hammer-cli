@@ -30,6 +30,7 @@ describe HammerCLI::Apipie::ApiConnection do
       it "logs message when logger is available" do
         logger = stub()
         logger.expects(:debug).with('Apipie cache was cleared')
+        logger.expects(:debug).with('Completion cache was cleared')
 
         api_stub.expects(:clean_cache)
         HammerCLI::Apipie::ApiConnection.new(empty_params, :reload_cache => true, :logger => logger)

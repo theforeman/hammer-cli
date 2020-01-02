@@ -60,6 +60,11 @@ module HammerCLI
     STDOUT.tty?
   end
 
+  def self.clear_cache
+    cache_file = File.expand_path(HammerCLI::Settings.get(:completion_cache_file))
+    File.delete(cache_file) if File.exist?(cache_file)
+  end
+
   def self.interactive?
     return HammerCLI::Settings.get(:_params, :interactive) unless HammerCLI::Settings.get(:_params, :interactive).nil?
     HammerCLI::Settings.get(:ui, :interactive) != false

@@ -111,10 +111,10 @@ module HammerCLI
 
       class ListNested < AbstractNormalizer
         class Schema < Array
-          def description
+          def description(richtext: true)
             '"' + reduce([]) do |schema, nested_param|
               name = nested_param.name
-              name = HighLine.color(name, :bold) if nested_param.required?
+              name = HighLine.color(name, :bold) if nested_param.required? && richtext
               values = nested_param.validator.scan(/<[^>]+>[\w]+<\/?[^>]+>/)
               value_pattern = if values.empty?
                                 "<#{nested_param.expected_type.downcase}>"
@@ -172,6 +172,9 @@ module HammerCLI
 
 
       class Bool < AbstractNormalizer
+        def allowed_values
+          ['yes', 'no', 'true', 'false', '1', '0']
+        end
 
         def description
           _('One of %s.') % ['true/false', 'yes/no', '1/0'].join(', ')
@@ -189,7 +192,7 @@ module HammerCLI
         end
 
         def complete(value)
-          ["yes ", "no "]
+          allowed_values.map { |v| v + ' ' }
         end
       end
 
@@ -280,6 +283,7 @@ module HammerCLI
       end
 
       class EnumList < AbstractNormalizer
+        attr_reader :allowed_values
 
         def initialize(allowed_values)
           @allowed_values = allowed_values

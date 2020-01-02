@@ -66,7 +66,8 @@ module HammerCLI
 
     def self.default_settings
       {
-        :use_defaults => true
+        :use_defaults => true,
+        :completion_cache_file => '~/.cache/hammer_completion.yml'
       }
     end
 

@@ -18,14 +18,14 @@ Hammer cli provides universal extendable CLI interface for ruby apps
 EOF
 
   locales = Dir['locale/*'].select { |f| File.directory?(f) }
-  s.files = Dir['{lib,test,bin,doc,config}/**/*', 'LICENSE', 'README*', 'hammer_cli_complete'] +
+  s.files = Dir['{lib,test,bin,doc,config}/**/*', 'LICENSE', 'README*'] +
     locales.map { |loc| "#{loc}/LC_MESSAGES/hammer-cli.mo" } +
     ['man/hammer.1.gz']
 
   s.test_files       = Dir['test/**/*']
   s.extra_rdoc_files = Dir['{doc,config}/**/*', 'README*']
   s.require_paths = ["lib"]
-  s.executables = ['hammer']
+  s.executables = ['hammer', 'hammer-complete']
 
   s.add_dependency 'clamp', '>= 1.1', '< 1.2.0'
   s.add_dependency 'logging'
