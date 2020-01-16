@@ -1,5 +1,8 @@
 Release notes
 =============
+### 0.19.2 (2020-01-16)
+* Fixed userdata false display in image list ([PR #321](https://github.com/theforeman/hammer-cli/pull/321)), [#28134](http://projects.theforeman.org/issues/28134)
+
 ### 0.19.1 (2019-12-31)
 * Allow column max width more than 80, [#28503](http://projects.theforeman.org/issues/28503)
 * Extract table generator into reusable component ([PR #314](https://github.com/theforeman/hammer-cli/pull/314)), [#27318](http://projects.theforeman.org/issues/27318)
