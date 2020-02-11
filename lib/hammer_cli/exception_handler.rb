@@ -141,13 +141,13 @@ module HammerCLI
       params = e.params.map do |p|
         param = p[/\[.+\]/]
         param = if param.nil?
-                  p
+                  p.tr('_', '-')
                 else
                   p.scan(/\[[^\[\]]+\]/).first[1...-1].tr('_', '-')
                 end
         "--#{param}"
       end
-      message = _("Missing arguments for %s") % "'#{params.uniq.join("', '")}'"
+      message = _("Missing arguments for %s.") % "'#{params.uniq.join("', '")}'"
       print_error message
       log_full_error e, message
       HammerCLI::EX_USAGE

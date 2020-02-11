@@ -58,7 +58,7 @@ describe HammerCLI::ExceptionHandler do
   it "should print default prompts for standard missing arguments" do
     params = %w[login mail]
     heading = 'Could not create user:'
-    body = "Missing arguments for '--login', '--mail'"
+    body = "Missing arguments for '--login', '--mail'."
     ex = ApipieBindings::MissingArgumentsError.new(params)
     output.expects(:print_error).with(heading, body)
     handler.handle_exception(ex, heading: heading)
@@ -67,7 +67,7 @@ describe HammerCLI::ExceptionHandler do
   it "should print right prompts for nested missing arguments" do
     params = %w[user[login] user[mail]]
     heading = 'Could not create user:'
-    body = "Missing arguments for '--login', '--mail'"
+    body = "Missing arguments for '--login', '--mail'."
     ex = ApipieBindings::MissingArgumentsError.new(params)
     output.expects(:print_error).with(heading, body)
     handler.handle_exception(ex, heading: heading)
@@ -76,7 +76,7 @@ describe HammerCLI::ExceptionHandler do
   it "should print simple prompts for even more nested arguments" do
     params = %w[user[address][city] user[address][street]]
     heading = 'Could not create user:'
-    body = "Missing arguments for '--address'"
+    body = "Missing arguments for '--address'."
     ex = ApipieBindings::MissingArgumentsError.new(params)
     output.expects(:print_error).with(heading, body)
     handler.handle_exception(ex, heading: heading)
@@ -85,10 +85,18 @@ describe HammerCLI::ExceptionHandler do
   it "should print simple prompts for even more different nested arguments" do
     params = %w[user[address][city] user[address][street] user[nested][par1]]
     heading = 'Could not create user:'
-    body = "Missing arguments for '--address', '--nested'"
+    body = "Missing arguments for '--address', '--nested'."
     ex = ApipieBindings::MissingArgumentsError.new(params)
     output.expects(:print_error).with(heading, body)
     handler.handle_exception(ex, heading: heading)
   end
 
+  it "should print default prompts for standard missing arguments" do
+    params = %w[opt_abc opt_a_b-c]
+    heading = 'Could not create user:'
+    body = "Missing arguments for '--opt-abc', '--opt-a-b-c'."
+    ex = ApipieBindings::MissingArgumentsError.new(params)
+    output.expects(:print_error).with(heading, body)
+    handler.handle_exception(ex, heading: heading)
+  end
 end
