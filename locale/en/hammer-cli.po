@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.19.0\n"
+"Project-Id-Version: hammer-cli 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-03-04 16:38+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -34,6 +34,9 @@ msgid "Unfortunately the server does not support such operation."
 msgstr ""
 
 msgid "The server does not support such operation."
+msgstr ""
+
+msgid "Prepare map of options and subcommands for Bash completion"
 msgstr ""
 
 msgid "Unable to find hostname in %s."
@@ -226,7 +229,7 @@ msgstr ""
 msgid "Could not load the API description from the server"
 msgstr ""
 
-msgid "Missing arguments for %s"
+msgid "Missing arguments for %s."
 msgstr ""
 
 msgid "Format output in markdown"

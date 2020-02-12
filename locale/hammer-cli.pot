@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 0.19.0\n"
+"Project-Id-Version: hammer-cli 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-26 20:06+0200\n"
-"PO-Revision-Date: 2019-10-26 20:06+0200\n"
+"POT-Creation-Date: 2020-02-12 15:14+0200\n"
+"PO-Revision-Date: 2020-02-12 15:14+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "Predefined field sets"
 msgstr ""
 
-#: ../lib/hammer_cli/abstract.rb:203
+#: ../lib/hammer_cli/abstract.rb:205
 msgid "Command extensions should be inherited from %s."
 msgstr ""
 
@@ -42,6 +42,10 @@ msgstr ""
 
 #: ../lib/hammer_cli/apipie/command.rb:51
 msgid "The server does not support such operation."
+msgstr ""
+
+#: ../lib/hammer_cli/bash/prebuild_command.rb:18
+msgid "Prepare map of options and subcommands for Bash completion"
 msgstr ""
 
 #: ../lib/hammer_cli/ca_cert_fetcher.rb:7
@@ -288,8 +292,8 @@ msgstr ""
 msgid "Could not load the API description from the server"
 msgstr ""
 
-#: ../lib/hammer_cli/exception_handler.rb:141
-msgid "Missing arguments for %s"
+#: ../lib/hammer_cli/exception_handler.rb:150
+msgid "Missing arguments for %s."
 msgstr ""
 
 #: ../lib/hammer_cli/full_help.rb:5
@@ -408,15 +412,15 @@ msgstr ""
 msgid "Set output format"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:53
+#: ../lib/hammer_cli/main.rb:55
 msgid "Path to custom output file"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:60
+#: ../lib/hammer_cli/main.rb:62
 msgid "Character to separate the values"
 msgstr ""
 
-#: ../lib/hammer_cli/main.rb:64
+#: ../lib/hammer_cli/main.rb:66
 msgid "Get list of possible endings"
 msgstr ""
 
@@ -458,40 +462,40 @@ msgstr ""
 msgid "Numeric value is required."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:177
+#: ../lib/hammer_cli/options/normalizers.rb:180
 msgid "One of %s."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:187
-#: ../lib/hammer_cli/options/normalizers.rb:250
+#: ../lib/hammer_cli/options/normalizers.rb:190
+#: ../lib/hammer_cli/options/normalizers.rb:253
 msgid "Value must be one of %s."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:226
+#: ../lib/hammer_cli/options/normalizers.rb:229
 msgid "Unable to parse JSON input."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:240
+#: ../lib/hammer_cli/options/normalizers.rb:243
 msgid "Possible value(s): %s"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:248
+#: ../lib/hammer_cli/options/normalizers.rb:251
 msgid "Value must be %s."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:271
+#: ../lib/hammer_cli/options/normalizers.rb:274
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:278
+#: ../lib/hammer_cli/options/normalizers.rb:281
 msgid "'%s' is not a valid date."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:289
+#: ../lib/hammer_cli/options/normalizers.rb:293
 msgid "Any combination (comma separated list) of '%s'"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:309
+#: ../lib/hammer_cli/options/normalizers.rb:313
 msgid "Value must be a combination of '%s'."
 msgstr ""
 
@@ -567,24 +571,23 @@ msgstr ""
 msgid "Only one of options %s can be set."
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:174
+#: ../lib/hammer_cli/output/adapter/csv.rb:175
 msgid "Message"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:181
+#: ../lib/hammer_cli/output/adapter/csv.rb:182
 msgid "Id"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:185
+#: ../lib/hammer_cli/output/adapter/csv.rb:186
 msgid "Name"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/table.rb:64
+#: ../lib/hammer_cli/output/adapter/table.rb:55
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr ""
 
 #: ../lib/hammer_cli/output/definition.rb:62
-#: ../lib/hammer_cli/output/definition.rb:63
 msgid "Fields"
 msgstr ""
 
@@ -652,6 +655,6 @@ msgid ""
 "ass>s)."
 msgstr ""
 
-#: ../lib/hammer_cli/utils.rb:81
+#: ../lib/hammer_cli/utils.rb:86
 msgid "Cannot use such capitalization. Try one of %s."
 msgstr ""
