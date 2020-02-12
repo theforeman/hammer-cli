@@ -1,5 +1,20 @@
 Release notes
 =============
+### 2.0.0 (2020-02-12)
+* Bump version to 2.0.0
+* Bump version to 2.0 ([PR #324](https://github.com/theforeman/hammer-cli/pull/324))
+* Better promts for missing arguments, [#28793](http://projects.theforeman.org/issues/28793)
+* Allow column max width more than 80, [#28503](http://projects.theforeman.org/issues/28503)
+* Remove computing sha, [#27728](http://projects.theforeman.org/issues/27728)
+* Fixed userdata false display in image list, [#28134](http://projects.theforeman.org/issues/28134)
+* Add new bash completion, [#27728](http://projects.theforeman.org/issues/27728)
+* Allow adapters print page by page, [#17819](http://projects.theforeman.org/issues/17819)
+* Add release documentation ([PR #317](https://github.com/theforeman/hammer-cli/pull/317)), [#28149](http://projects.theforeman.org/issues/28149)
+* Fix pr links in release notes ([PR #318](https://github.com/theforeman/hammer-cli/pull/318)), [#28202](http://projects.theforeman.org/issues/28202)
+* Extract table generator into reusable component ([PR #314](https://github.com/theforeman/hammer-cli/pull/314)), [#27318](http://projects.theforeman.org/issues/27318)
+* Better prompts for missing arguments ([PR #313](https://github.com/theforeman/hammer-cli/pull/313)), [#27595](http://projects.theforeman.org/issues/27595)
+* Bump to 0.20-develop
+
 ### 0.19.0 (2019-10-26)
 * Allow schema building for custom options ([PR #316](https://github.com/theforeman/hammer-cli/pull/316)), [#27899](http://projects.theforeman.org/issues/27899)
 * New lines in text attr dont break output ([PR #300](https://github.com/theforeman/hammer-cli/pull/300)), [#25878](http://projects.theforeman.org/issues/25878)
