@@ -7,9 +7,7 @@ module HammerCLI::Apipie
     attr_accessor :referenced_resource
 
     def initialize(switches, type, description, options = {})
-      if options.has_key? :referenced_resource
-        self.referenced_resource = options.delete(:referenced_resource).to_s if options[:referenced_resource]
-      end
+      @referenced_resource = options[:referenced_resource].to_s if options[:referenced_resource]
       super
       # Apipie currently sends descriptions as escaped HTML once this is changed this should be removed.
       # See #15198 on Redmine.
