@@ -6,8 +6,10 @@ module HammerCLI
 
     def execute
       @adapter = option_md? ? MDAdapter.new : TxtAdapter.new
+      HammerCLI.context[:full_help] = true
       print_heading
       print_help
+      HammerCLI.context[:full_help] = false
       HammerCLI::EX_OK
     end
 

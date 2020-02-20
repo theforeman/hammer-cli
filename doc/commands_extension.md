@@ -10,6 +10,11 @@ Each command can be easily extended with one ore more `HammerCLI::CommandExtensi
     inheritable true
     # Simply add a new option to a command is being extended
     option(option_params)
+    # Add option family to a command
+    option_family(common_options = {}) do
+      parent option_params
+      child option_params
+    end
     # Extend hash with data returned from server before it is printed
     before_print do |data|
       # data modifications
@@ -64,6 +69,13 @@ __NOTE:__
 class MyCommandExtensions < HammerCLI::CommandExtensions
 
   option ['--new-option'], 'TYPE', _('Option description')
+
+  option_family(
+    description: _('Common description')
+  ) do
+    parent ['--new-option'], 'TYPE', _('Option description')
+    child ['--new-option-ver2'], 'TYPE', _('Option description')
+  end
 
   before_print do |data|
     data['results'].each do |result|

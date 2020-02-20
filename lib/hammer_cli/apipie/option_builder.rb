@@ -41,12 +41,11 @@ module HammerCLI::Apipie
     end
 
     def create_option(param, resource_name_map)
-      option(
-        option_switch(param, resource_name_map),
-        option_type(param, resource_name_map),
-        option_desc(param),
-        option_opts(param)
-      )
+      family = HammerCLI::Options::OptionFamily.new
+      family.parent(option_switch(param, resource_name_map),
+                    option_type(param, resource_name_map),
+                    option_desc(param),
+                    option_opts(param, resource_name_map))
     end
 
     def option_switch(param, resource_name_map)
@@ -61,7 +60,7 @@ module HammerCLI::Apipie
       param.description || " "
     end
 
-    def option_opts(param)
+    def option_opts(param, resource_name_map)
       opts = {}
       opts[:required] = true if (param.required? and require_options?)
       if param.expected_type.to_s == 'array'
@@ -80,19 +79,22 @@ module HammerCLI::Apipie
       end
       opts[:attribute_name] = HammerCLI.option_accessor_name(param.name)
       opts[:referenced_resource] = resource_name(param)
+      opts[:aliased_resource] = aliased_name(resource_name(param), resource_name_map)
 
       return opts
     end
 
+    def aliased_name(name, resource_name_map)
+      return if name.nil?
+
+      resource_name_map[name.to_s] || resource_name_map[name.to_sym] || name
+    end
+
     def aliased(param, resource_name_map)
       resource_name = resource_name(param)
+      return param.name if resource_name.nil?
 
-      if resource_name.nil?
-        return param.name
-      else
-        aliased_name = resource_name_map[resource_name.to_s] || resource_name_map[resource_name.to_sym] || resource_name
-        return param.name.gsub(resource_name, aliased_name.to_s)
-      end
+      param.name.gsub(resource_name, aliased_name(resource_name, resource_name_map).to_s)
     end
 
     def resource_name(param)

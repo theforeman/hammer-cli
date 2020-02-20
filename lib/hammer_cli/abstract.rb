@@ -13,6 +13,7 @@ require 'hammer_cli/options/predefined'
 require 'hammer_cli/help/builder'
 require 'hammer_cli/help/text_builder'
 require 'hammer_cli/command_extensions'
+require 'hammer_cli/options/option_family'
 require 'logging'
 
 module HammerCLI
@@ -191,6 +192,16 @@ module HammerCLI
         # skip switches that are already defined
         next if option.nil? or option.switches.any? {|s| find_option(s) }
 
+        if option.respond_to?(:referenced_resource)
+          # Collect options that don't have family, but related to this parent.
+          children = find_options(
+            referenced_resource: option.referenced_resource.to_s,
+            aliased_resource: option.aliased_resource.to_s
+          ).select { |o| o.family.nil? || o.family.head.nil? }
+          children.each do |child|
+            option.family.adopt(child) if option.family
+          end
+        end
         declared_options << option
         block ||= option.default_conversion_block
         define_accessors_for(option, &block)
@@ -207,6 +218,7 @@ module HammerCLI
         extension.delegatee(self)
         extension.extend_predefined_options(self)
         extension.extend_options(self)
+        extension.extend_option_family(self)
         extension.extend_output(self)
         extension.extend_help(self)
         logger('Extensions').info "Applied #{extension.details} on #{self}."
@@ -221,6 +233,12 @@ module HammerCLI
     end
 
     protected
+
+    def self.option_family(options = {}, &block)
+      options[:creator] ||= self
+      family = HammerCLI::Options::OptionFamily.new(options)
+      family.instance_eval(&block)
+    end
 
     def self.find_options(switch_filter, other_filters={})
       filters = other_filters
