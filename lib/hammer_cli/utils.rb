@@ -116,4 +116,21 @@ module HammerCLI
 
     array.insert(idx, *new_items)
   end
+
+  def self.expand_invocation_path(path)
+    bits = path.split(' ')
+    parent_command = HammerCLI::MainCommand
+    new_path = (bits[1..-1] || []).each_with_object([]) do |bit, names|
+      subcommand = parent_command.find_subcommand(bit)
+      next if subcommand.nil?
+
+      names << if subcommand.names.size > 1
+                 "<#{subcommand.names.join('|')}>"
+               else
+                 subcommand.names.first
+               end
+      parent_command = subcommand.subcommand_class
+    end
+    new_path.unshift(bits.first).join(' ')
+  end
 end

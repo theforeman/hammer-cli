@@ -71,13 +71,13 @@ module HammerCLI
         if heading.nil?
           ["Error: #{message}",
            "",
-           "See: '#{command} --help'.",
+           "See: '#{HammerCLI.expand_invocation_path(command)} --help'.",
            ""].join("\n")
         else
           ["#{heading}:",
            "  Error: #{message}",
            "  ",
-           "  See: '#{command} --help'.",
+           "  See: '#{HammerCLI.expand_invocation_path(command)} --help'.",
            ""].join("\n")
         end
       end

@@ -303,8 +303,17 @@ module HammerCLI
     end
 
     def self.command_name(name=nil)
-      @name = name if name
-      @name || (superclass.respond_to?(:command_name) ? superclass.command_name : nil)
+      if @names && name
+        @names << name if !@names.include?(name)
+      else
+        @names = [name] if name
+      end
+      @names || (superclass.respond_to?(:command_names) ? superclass.command_names : nil)
+    end
+
+    def self.command_names(*names)
+      @names = names unless names.empty?
+      @names || (superclass.respond_to?(:command_names) ? superclass.command_names : nil)
     end
 
     def self.warning(message = nil)

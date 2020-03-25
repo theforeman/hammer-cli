@@ -262,6 +262,27 @@ describe HammerCLI::AbstractCommand do
       end
 
     end
+
+    describe 'find_subcommand' do
+      it 'should find by full name' do
+        main_cmd.find_subcommand('some_command').wont_be_nil
+      end
+
+      it 'should find by partial name' do
+        main_cmd.find_subcommand('some_').wont_be_nil
+      end
+
+      it 'should not find by wrong name' do
+        main_cmd.find_subcommand('not_existing').must_be_nil
+      end
+
+      it 'should raise if more than one were found' do
+        main_cmd.subcommand('pong', 'description', Subcommand2)
+        proc do
+          main_cmd.find_subcommand('p')
+        end.must_raise HammerCLI::CommandConflict
+      end
+    end
   end
 
   describe "options" do
@@ -413,7 +434,7 @@ describe HammerCLI::AbstractCommand do
     class CmdName2 < CmdName1
     end
 
-    CmdName2.command_name.must_equal 'cmd'
+    CmdName2.command_name.must_equal ['cmd']
   end
 
   it "should inherit output definition" do
@@ -525,7 +546,7 @@ describe HammerCLI::AbstractCommand do
       opt = cmd.find_option('--flag')
       opt.is_a?(HammerCLI::Options::OptionDefinition).must_equal true
       cmd.output_definition.empty?.must_equal false
-      cmd.new({}).help.must_match(/.*text.*/)
+      cmd.new('', {}).help.must_match(/.*text.*/)
     end
 
     it 'should store more than one extension' do
