@@ -173,6 +173,54 @@ Here is the list of predefined options:
   * `:fields` Expects a list with fields to show in output, see [example](creating_commands.md#printing-hash-records).
 
 
+### Option family
+Option family is the way to unify options which have the same meaning or purpose,
+but contain some differences in their definitions (e.g. the name/switch of an option).
+Mainly serves as a container for options, which purpose is to show less repetitive
+output in commands' help. Option builders use it by default.
+
+To define an option family, use the following DSL:
+```ruby
+  # options is a Hash with options for family/each defined option within it
+  option_family(options = {}) do
+    # parent is the main option. Must be single, option family can have only one parent.
+    parent switches, type, description, options
+    # child  is an additional option. Could be none or more than one. Aren't shown in the help output.
+    child  switches, type, description, options
+  end
+```
+
+##### Example
+
+```ruby
+  option_family(
+    aliased_resource: 'environment',
+    description: _('Puppet environment'),
+    deprecation: _("Use %s instead") % '--puppet-environment[-id]'
+    deprecated: { '--environment' => _("Use %s instead") % '--puppet-environment[-id]',
+                  '--environment-id' => _("Use %s instead") % '--puppet-environment[-id]'}
+  ) do
+    parent '--environment-id', 'ENVIRONMENT_ID', _(''),
+           format: HammerCLI::Options::Normalizers::Number.new,
+           attribute_name: :option_environment_id
+    child '--environment', 'ENVIRONMENT_NAME', _('Environment name'),
+          attribute_name: :option_environment_name
+  end
+
+  # $ hammer command --help:
+  # ...
+  #  Options:
+  #    --environment[-id]               Puppet environment (Deprecated: Use --puppet-environment[-id] instead)
+  # ...
+
+  # $ hammer full-help:
+  # ...
+  #  Options:
+  #    --environment   ENVIRONMENT_NAME    Environment name (--environment is deprecated: Use --puppet-environment[-id] instead)
+  #    --environment-id   ENVIRONMENT_ID    (--environment-id is deprecated: Use --puppet-environment[-id] instead)
+  # ...
+```
+
 ### Option builders
 Hammer commands offer option builders that can be used for automatic option generation.
 See [documentation page](option_builders.md#option-builders) dedicated to this topic for more details.

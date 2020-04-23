@@ -15,7 +15,7 @@ module HammerCLI
     ALLOWED_EXTENSIONS = %i[
       option command_options before_print data output help request
       request_headers headers request_options options request_params params
-      option_sources predefined_options use_option
+      option_sources predefined_options use_option option_family
     ].freeze
 
     def initialize(options = {})
@@ -86,6 +86,11 @@ module HammerCLI
       @option_sources_block = block
     end
 
+    def self.option_family(options = {}, &block)
+      @option_family_opts = options
+      @option_family_block = block
+    end
+
     # Object
 
     def extend_options(command_class)
@@ -149,6 +154,13 @@ module HammerCLI
       return if allowed.empty? || (allowed & @except).any?
 
       self.class.extend_option_sources(sources, command)
+    end
+
+    def extend_option_family(command_class)
+      allowed = @only & %i[option_family]
+      return if allowed.empty? || (allowed & @except).any?
+
+      self.class.extend_option_family(command_class)
     end
 
     def delegatee(command_class)
@@ -233,6 +245,14 @@ module HammerCLI
 
       @option_sources_block.call(sources, command)
       logger.debug("Called block for #{@delegatee} option sources:\n\t#{@option_sources_block}")
+    end
+
+    def self.extend_option_family(command_class)
+      return if @option_family_block.nil?
+
+      @option_family_opts[:creator] = command_class
+      command_class.send(:option_family, @option_family_opts, &@option_family_block)
+      logger.debug("Called option family block for #{command_class}:\n\t#{@option_family_block}")
     end
   end
 end

@@ -23,6 +23,12 @@ describe HammerCLI::CommandExtensions do
 
   class CmdExtensions < HammerCLI::CommandExtensions
     option '--ext', 'EXT', 'ext'
+    option_family(
+      description: 'Test',
+    ) do
+      parent '--test-one', '', ''
+      child '--test-two', '', ''
+    end
     before_print do |data|
       data['key'] = 'value'
     end
@@ -108,6 +114,12 @@ describe HammerCLI::CommandExtensions do
       cmd.new({}).extended_request[2].must_equal({})
       cmd.new({}).extended_data({}).must_equal('key' => 'value')
     end
+
+    it 'should extend option family only' do
+      cmd.extend_with(CmdExtensions.new(only: :option_family))
+      cmd.output_definition.empty?.must_equal true
+      cmd.recognised_options.map(&:switches).flatten.must_equal ['--test-one', '--test-two', '-h', '--help']
+    end
   end
 
   context 'except' do
@@ -182,6 +194,12 @@ describe HammerCLI::CommandExtensions do
       cmd.new({}).extended_request[1].must_equal(ssl: true)
       cmd.new({}).extended_request[2].must_equal(with_authentication: true)
       cmd.new({}).extended_data({}).must_equal({})
+    end
+
+    it 'should extend all except option family' do
+      cmd.extend_with(CmdExtensions.new(except: :option_family))
+      cmd.output_definition.empty?.must_equal false
+      cmd.recognised_options.map(&:switches).flatten.must_equal ['--ext', '-h', '--help']
     end
   end
 

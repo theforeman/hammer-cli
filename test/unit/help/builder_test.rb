@@ -69,4 +69,26 @@ describe HammerCLI::Help::Builder do
       help.string.strip.must_equal expected_output
     end
   end
+
+  describe 'option family' do
+    let(:family) { Class.new(HammerCLI::Options::OptionFamily) }
+
+    it 'prints option families' do
+      fm1 = family.new
+      fm1.parent(['--option-zzz'], 'OPT', 'Some description')
+      fm1.child(['--option-aaa'], 'OPT', 'Some description')
+      fm2 = family.new
+      fm2.parent(['--option-bbb'], 'OPT', 'Some description')
+      fm2.child(['--option-yyy'], 'OPT', 'Some description')
+
+      options = fm1.all + fm2.all
+      help.add_list('Options', options)
+
+      help.string.strip.must_equal [
+        'Options:',
+        ' --option[-yyy|-bbb]           Some description',
+        ' --option[-aaa|-zzz]           Some description',
+      ].join("\n")
+    end
+  end
 end

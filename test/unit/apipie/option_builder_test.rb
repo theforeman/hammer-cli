@@ -37,6 +37,14 @@ describe HammerCLI::Apipie::OptionBuilder do
     it "should set description with html tags stripped" do
       options[0].description.must_equal 'filter results'
     end
+
+    it "should build option with default family" do
+      options[0].family.wont_be_nil
+    end
+
+    it "should build parent option within default family" do
+      options[0].child?.must_equal false
+    end
   end
 
 
