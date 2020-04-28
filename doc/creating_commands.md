@@ -454,6 +454,31 @@ Options:
     -h, --help                    print help
 ```
 
+#### Aliasing subcommands
+
+Commands can have two or more names, e.g. aliases. To support such functionality
+simple name addition could be used via `command_name` or `command_names` method:
+```ruby
+module HammerCLIHello
+
+  class SayCommand < HammerCLI::AbstractCommand
+
+    class GreetingsCommand < HammerCLI::AbstractCommand
+      command_name 'hello'
+      command_name 'hi'
+      # or use can use other method:
+      command_names 'hello', 'hi'
+
+      desc 'Say Hello World!'
+      # ...
+    end
+
+    autoload_subcommands
+  end
+
+  HammerCLI::MainCommand.subcommand 'say', "Say something", HammerCLIHello::SayCommand
+end
+```
 
 ### Conflicting subcommands
 It can happen that two different plugins define subcommands with the same name by accident.

@@ -70,49 +70,49 @@ describe HammerCLI::CommandExtensions do
 
     it 'should extend help only' do
       cmd.extend_with(CmdExtensions.new(only: :help))
-      cmd.new({}).help.must_match(/.*Section.*/)
-      cmd.new({}).help.must_match(/.*text.*/)
+      cmd.new('', {}).help.must_match(/.*Section.*/)
+      cmd.new('', {}).help.must_match(/.*text.*/)
     end
 
     it 'should extend params only' do
       cmd.extend_with(CmdExtensions.new(only: :request_params))
-      cmd.new({}).extended_request[0].must_equal(thin: true)
-      cmd.new({}).extended_request[1].must_equal({})
-      cmd.new({}).extended_request[2].must_equal({})
+      cmd.new('', {}).extended_request[0].must_equal(thin: true)
+      cmd.new('', {}).extended_request[1].must_equal({})
+      cmd.new('', {}).extended_request[2].must_equal({})
     end
 
     it 'should extend headers only' do
       cmd.extend_with(CmdExtensions.new(only: :request_headers))
-      cmd.new({}).extended_request[0].must_equal({})
-      cmd.new({}).extended_request[1].must_equal(ssl: true)
-      cmd.new({}).extended_request[2].must_equal({})
+      cmd.new('', {}).extended_request[0].must_equal({})
+      cmd.new('', {}).extended_request[1].must_equal(ssl: true)
+      cmd.new('', {}).extended_request[2].must_equal({})
     end
 
     it 'should extend options only' do
       cmd.extend_with(CmdExtensions.new(only: :request_options))
-      cmd.new({}).extended_request[0].must_equal({})
-      cmd.new({}).extended_request[1].must_equal({})
-      cmd.new({}).extended_request[2].must_equal(with_authentication: true)
+      cmd.new('', {}).extended_request[0].must_equal({})
+      cmd.new('', {}).extended_request[1].must_equal({})
+      cmd.new('', {}).extended_request[2].must_equal(with_authentication: true)
     end
 
     it 'should extend params and options and headers' do
       cmd.extend_with(CmdExtensions.new(only: :request))
-      cmd.new({}).extended_request[0].must_equal(thin: true)
-      cmd.new({}).extended_request[1].must_equal(ssl: true)
-      cmd.new({}).extended_request[2].must_equal(with_authentication: true)
+      cmd.new('', {}).extended_request[0].must_equal(thin: true)
+      cmd.new('', {}).extended_request[1].must_equal(ssl: true)
+      cmd.new('', {}).extended_request[2].must_equal(with_authentication: true)
     end
 
     it 'should extend data only' do
       cmd.extend_with(CmdExtensions.new(only: :data))
-      cmd.new({}).help.wont_match(/.*Section.*/)
-      cmd.new({}).help.wont_match(/.*text.*/)
+      cmd.new('', {}).help.wont_match(/.*Section.*/)
+      cmd.new('', {}).help.wont_match(/.*text.*/)
       cmd.output_definition.empty?.must_equal true
       opt = cmd.find_option('--ext')
       opt.is_a?(HammerCLI::Options::OptionDefinition).must_equal false
-      cmd.new({}).extended_request[0].must_equal({})
-      cmd.new({}).extended_request[1].must_equal({})
-      cmd.new({}).extended_request[2].must_equal({})
-      cmd.new({}).extended_data({}).must_equal('key' => 'value')
+      cmd.new('', {}).extended_request[0].must_equal({})
+      cmd.new('', {}).extended_request[1].must_equal({})
+      cmd.new('', {}).extended_request[2].must_equal({})
+      cmd.new('', {}).extended_data({}).must_equal('key' => 'value')
     end
 
     it 'should extend option family only' do
@@ -128,9 +128,9 @@ describe HammerCLI::CommandExtensions do
       opt = cmd.find_option('--ext')
       opt.is_a?(HammerCLI::Options::OptionDefinition).must_equal false
       cmd.output_definition.empty?.must_equal false
-      cmd.new({}).extended_request[0].must_equal(thin: true)
-      cmd.new({}).extended_request[1].must_equal(ssl: true)
-      cmd.new({}).extended_request[2].must_equal(with_authentication: true)
+      cmd.new('', {}).extended_request[0].must_equal(thin: true)
+      cmd.new('', {}).extended_request[1].must_equal(ssl: true)
+      cmd.new('', {}).extended_request[2].must_equal(with_authentication: true)
     end
 
     it 'should extend all except output' do
@@ -138,62 +138,62 @@ describe HammerCLI::CommandExtensions do
       cmd.output_definition.empty?.must_equal true
       opt = cmd.find_option('--ext')
       opt.is_a?(HammerCLI::Options::OptionDefinition).must_equal true
-      cmd.new({}).extended_request[0].must_equal(thin: true)
-      cmd.new({}).extended_request[1].must_equal(ssl: true)
-      cmd.new({}).extended_request[2].must_equal(with_authentication: true)
+      cmd.new('', {}).extended_request[0].must_equal(thin: true)
+      cmd.new('', {}).extended_request[1].must_equal(ssl: true)
+      cmd.new('', {}).extended_request[2].must_equal(with_authentication: true)
     end
 
     it 'should extend all except help' do
       cmd.extend_with(CmdExtensions.new(except: :help))
-      cmd.new({}).help.wont_match(/.*Section.*/)
-      cmd.new({}).help.wont_match(/.*text.*/)
+      cmd.new('', {}).help.wont_match(/.*Section.*/)
+      cmd.new('', {}).help.wont_match(/.*text.*/)
       cmd.output_definition.empty?.must_equal false
       opt = cmd.find_option('--ext')
       opt.is_a?(HammerCLI::Options::OptionDefinition).must_equal true
-      cmd.new({}).extended_request[0].must_equal(thin: true)
-      cmd.new({}).extended_request[1].must_equal(ssl: true)
-      cmd.new({}).extended_request[2].must_equal(with_authentication: true)
+      cmd.new('', {}).extended_request[0].must_equal(thin: true)
+      cmd.new('', {}).extended_request[1].must_equal(ssl: true)
+      cmd.new('', {}).extended_request[2].must_equal(with_authentication: true)
     end
 
     it 'should extend all except params' do
       cmd.extend_with(CmdExtensions.new(except: :request_params))
-      cmd.new({}).extended_request[0].must_equal({})
-      cmd.new({}).extended_request[1].must_equal(ssl: true)
-      cmd.new({}).extended_request[2].must_equal(with_authentication: true)
+      cmd.new('', {}).extended_request[0].must_equal({})
+      cmd.new('', {}).extended_request[1].must_equal(ssl: true)
+      cmd.new('', {}).extended_request[2].must_equal(with_authentication: true)
     end
 
     it 'should extend all except headers' do
       cmd.extend_with(CmdExtensions.new(except: :request_headers))
-      cmd.new({}).extended_request[0].must_equal(thin: true)
-      cmd.new({}).extended_request[1].must_equal({})
-      cmd.new({}).extended_request[2].must_equal(with_authentication: true)
+      cmd.new('', {}).extended_request[0].must_equal(thin: true)
+      cmd.new('', {}).extended_request[1].must_equal({})
+      cmd.new('', {}).extended_request[2].must_equal(with_authentication: true)
     end
 
     it 'should extend all except options' do
       cmd.extend_with(CmdExtensions.new(except: :request_options))
-      cmd.new({}).extended_request[0].must_equal(thin: true)
-      cmd.new({}).extended_request[1].must_equal(ssl: true)
-      cmd.new({}).extended_request[2].must_equal({})
+      cmd.new('', {}).extended_request[0].must_equal(thin: true)
+      cmd.new('', {}).extended_request[1].must_equal(ssl: true)
+      cmd.new('', {}).extended_request[2].must_equal({})
     end
 
     it 'should extend all except params and options and headers' do
       cmd.extend_with(CmdExtensions.new(except: :request))
-      cmd.new({}).extended_request[0].must_equal({})
-      cmd.new({}).extended_request[1].must_equal({})
-      cmd.new({}).extended_request[2].must_equal({})
+      cmd.new('', {}).extended_request[0].must_equal({})
+      cmd.new('', {}).extended_request[1].must_equal({})
+      cmd.new('', {}).extended_request[2].must_equal({})
     end
 
     it 'should extend all except data' do
       cmd.extend_with(CmdExtensions.new(except: :data))
-      cmd.new({}).help.must_match(/.*Section.*/)
-      cmd.new({}).help.must_match(/.*text.*/)
+      cmd.new('', {}).help.must_match(/.*Section.*/)
+      cmd.new('', {}).help.must_match(/.*text.*/)
       cmd.output_definition.empty?.must_equal false
       opt = cmd.find_option('--ext')
       opt.is_a?(HammerCLI::Options::OptionDefinition).must_equal true
-      cmd.new({}).extended_request[0].must_equal(thin: true)
-      cmd.new({}).extended_request[1].must_equal(ssl: true)
-      cmd.new({}).extended_request[2].must_equal(with_authentication: true)
-      cmd.new({}).extended_data({}).must_equal({})
+      cmd.new('', {}).extended_request[0].must_equal(thin: true)
+      cmd.new('', {}).extended_request[1].must_equal(ssl: true)
+      cmd.new('', {}).extended_request[2].must_equal(with_authentication: true)
+      cmd.new('', {}).extended_data({}).must_equal({})
     end
 
     it 'should extend all except option family' do

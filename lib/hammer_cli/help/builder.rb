@@ -14,7 +14,7 @@ module HammerCLI
       def add_usage(invocation_path, usage_descriptions)
         heading(Clamp.message(:usage_heading))
         usage_descriptions.each do |usage|
-          puts "    #{invocation_path} #{usage}".rstrip
+          puts "    #{HammerCLI.expand_invocation_path(invocation_path)} #{usage}".rstrip
         end
       end
 
@@ -60,6 +60,25 @@ module HammerCLI
         label = "#{label}:"
         label = HighLine.color(label, :bold) if @richtext
         puts label
+      end
+
+      private
+
+      def expand_invocation_path(path)
+        bits = path.split(' ')
+        parent_command = HammerCLI::MainCommand
+        new_path = (bits[1..-1] || []).each_with_object([]) do |bit, names|
+          subcommand = parent_command.find_subcommand(bit)
+          next if subcommand.nil?
+
+          names << if subcommand.names.size > 1
+                     "<#{subcommand.names.join('|')}>"
+                   else
+                     subcommand.names.first
+                   end
+          parent_command = subcommand.subcommand_class
+        end
+        new_path.unshift(bits.first).join(' ')
       end
     end
   end

@@ -23,6 +23,11 @@ module HammerCLI
         @subcommand_class
       end
 
+      def help
+        names = HammerCLI.context[:full_help] ? @names.join(", ") : @names.first
+        [names, description]
+      end
+
       attr_reader :warning
     end
 
@@ -90,8 +95,27 @@ module HammerCLI
         logger.info "subcommand #{name} (#{subcommand_class_name}) was created."
       end
 
+      def find_subcommand(name, fuzzy: true)
+        subcommand = super(name)
+        if subcommand.nil? && fuzzy
+          find_subcommand_starting_with(name)
+        else
+          subcommand
+        end
+      end
+
+      def find_subcommand_starting_with(name)
+        subcommands = recognised_subcommands.select { |sc| sc.names.any? { |n| n.start_with?(name) } }
+        if subcommands.size > 1
+          raise HammerCLI::CommandConflict, _('Found more than one command.') + "\n\n" +
+                                            _('Did you mean one of these?') + "\n\t" +
+                                            subcommands.collect(&:names).flatten.select { |n| n.start_with?(name) }.join("\n\t")
+        end
+        subcommands.first
+      end
+
       def define_subcommand(name, subcommand_class, definition, &block)
-        existing = find_subcommand(name)
+        existing = find_subcommand(name, fuzzy: false)
         if existing
           raise HammerCLI::CommandConflict, _("Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_class>s).") % {
             :name => name,
