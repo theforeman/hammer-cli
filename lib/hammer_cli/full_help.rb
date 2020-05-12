@@ -7,6 +7,7 @@ module HammerCLI
     def execute
       @adapter = option_md? ? MDAdapter.new : TxtAdapter.new
       HammerCLI.context[:full_help] = true
+      @invocation_paths = {}
       print_heading
       print_help
       HammerCLI.context[:full_help] = false
@@ -21,9 +22,13 @@ module HammerCLI
     end
 
     def print_help(name='hammer', command=HammerCLI::MainCommand, desc='')
-      @adapter.print_command(name, desc, command.new(name).help)
+      @invocation_paths[name] ||= []
+      @adapter.print_command(name, desc, command.new(name, path: @invocation_paths[name]).help)
 
       command.recognised_subcommands.each do |sub_cmd|
+        path = "#{name} #{sub_cmd.names.first}"
+        @invocation_paths[path] ||= []
+        @invocation_paths[path] += @invocation_paths[name]
         print_help(@adapter.command_name(name, sub_cmd.names.first), sub_cmd.subcommand_class, sub_cmd.description)
       end
     end
