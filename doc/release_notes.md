@@ -1,5 +1,12 @@
 Release notes
 =============
+### 2.1.0 (2020-05-14)
+* Hammer full-help returns correct output, [#29697](http://projects.theforeman.org/issues/29697)
+* Add fuzzy subcommand matching, [#29413](http://projects.theforeman.org/issues/29413)
+* Help contains squeezed options, [#28440](http://projects.theforeman.org/issues/28440)
+* Keep referenced resource in option options, [#29015](http://projects.theforeman.org/issues/29015)
+* Bump to 2.1.0-develop
+
 ### 2.0.0 (2020-02-12)
 * Bump version to 2.0.0
 * Bump version to 2.0 ([PR #324](https://github.com/theforeman/hammer-cli/pull/324))
