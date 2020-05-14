@@ -6,10 +6,10 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.0.0\n"
+"Project-Id-Version: hammer-cli 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-26 20:06+0200\n"
-"PO-Revision-Date: 2019-10-26 19:41+0000\n"
+"POT-Creation-Date: 2020-02-12 15:14+0200\n"
+"PO-Revision-Date: 2020-02-12 19:32+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/foreman/foreman/"
 "language/zh_CN/)\n"
@@ -38,6 +38,9 @@ msgstr "服务器不支持这样的操作。"
 
 msgid "The server does not support such operation."
 msgstr "该服务器不支持此操作。"
+
+msgid "Prepare map of options and subcommands for Bash completion"
+msgstr ""
 
 msgid "Unable to find hostname in %s."
 msgstr "无法在 %s 中找到主机名。"
@@ -234,8 +237,8 @@ msgstr "使用 apipie 缓存时服务器中是否运行了 '%s'？（典型产�
 msgid "Could not load the API description from the server"
 msgstr "无法从服务器载入 API 描述"
 
-msgid "Missing arguments for %s"
-msgstr "缺少 %s 的参数"
+msgid "Missing arguments for %s."
+msgstr ""
 
 msgid "Format output in markdown"
 msgstr "格式输出下降"

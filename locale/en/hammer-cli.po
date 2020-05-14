@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.0.0\n"
+"Project-Id-Version: hammer-cli 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-03-04 16:38+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -496,6 +496,12 @@ msgid "Could't read SSL client certificate %s."
 msgstr ""
 
 msgid "Could't read SSL client key %s."
+msgstr ""
+
+msgid "Found more than one command."
+msgstr ""
+
+msgid "Did you mean one of these?"
 msgstr ""
 
 msgid ""

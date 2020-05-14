@@ -6,10 +6,10 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.0.0\n"
+"Project-Id-Version: hammer-cli 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-26 20:06+0200\n"
-"PO-Revision-Date: 2019-10-26 19:41+0000\n"
+"POT-Creation-Date: 2020-02-12 15:14+0200\n"
+"PO-Revision-Date: 2020-02-12 19:32+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Korean (http://www.transifex.com/foreman/foreman/language/"
 "ko/)\n"
@@ -38,6 +38,9 @@ msgstr ""
 
 msgid "The server does not support such operation."
 msgstr "서버가 이러한 동작을 지원하지 않습니다. "
+
+msgid "Prepare map of options and subcommands for Bash completion"
+msgstr ""
 
 msgid "Unable to find hostname in %s."
 msgstr ""
@@ -232,8 +235,8 @@ msgstr ""
 msgid "Could not load the API description from the server"
 msgstr "서버에서 API 설명을 불러올 수 없습니다 "
 
-msgid "Missing arguments for %s"
-msgstr "%s에 대한 인수가 누락되어 있습니다 "
+msgid "Missing arguments for %s."
+msgstr ""
 
 msgid "Format output in markdown"
 msgstr ""

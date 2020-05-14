@@ -7,10 +7,10 @@
 # Dominic Cleal <dcleal@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.0.0\n"
+"Project-Id-Version: hammer-cli 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-26 20:06+0200\n"
-"PO-Revision-Date: 2019-10-26 19:41+0000\n"
+"POT-Creation-Date: 2020-02-12 15:14+0200\n"
+"PO-Revision-Date: 2020-02-12 19:32+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Italian (http://www.transifex.com/foreman/foreman/language/"
 "it/)\n"
@@ -39,6 +39,9 @@ msgstr ""
 
 msgid "The server does not support such operation."
 msgstr "Il server non supporta questa operazione."
+
+msgid "Prepare map of options and subcommands for Bash completion"
+msgstr ""
 
 msgid "Unable to find hostname in %s."
 msgstr ""
@@ -232,8 +235,8 @@ msgstr ""
 msgid "Could not load the API description from the server"
 msgstr "Impossibile caricare la descrizione API dal server"
 
-msgid "Missing arguments for %s"
-msgstr "Argomenti mancanti per %s"
+msgid "Missing arguments for %s."
+msgstr ""
 
 msgid "Format output in markdown"
 msgstr ""

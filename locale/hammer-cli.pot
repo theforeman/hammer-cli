@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.0.0\n"
+"Project-Id-Version: hammer-cli 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-12 15:14+0200\n"
-"PO-Revision-Date: 2020-02-12 15:14+0200\n"
+"POT-Creation-Date: 2020-05-14 11:10+0300\n"
+"PO-Revision-Date: 2020-05-14 11:10+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,21 +18,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../lib/hammer_cli/abstract.rb:48
+#: ../lib/hammer_cli/abstract.rb:49
 msgid "Option details"
 msgstr ""
 
-#: ../lib/hammer_cli/abstract.rb:50
+#: ../lib/hammer_cli/abstract.rb:51
 msgid ""
 "Following parameters accept format defined by its schema (bold are required; <"
 "> contain acceptable type; [] contain acceptable value):"
 msgstr ""
 
-#: ../lib/hammer_cli/abstract.rb:63
+#: ../lib/hammer_cli/abstract.rb:64
 msgid "Predefined field sets"
 msgstr ""
 
-#: ../lib/hammer_cli/abstract.rb:205
+#: ../lib/hammer_cli/abstract.rb:216
 msgid "Command extensions should be inherited from %s."
 msgstr ""
 
@@ -300,11 +300,11 @@ msgstr ""
 msgid "Format output in markdown"
 msgstr ""
 
-#: ../lib/hammer_cli/full_help.rb:17
+#: ../lib/hammer_cli/full_help.rb:20
 msgid "Hammer CLI help"
 msgstr ""
 
-#: ../lib/hammer_cli/full_help.rb:83
+#: ../lib/hammer_cli/full_help.rb:90
 msgid "Print help for all hammer commands"
 msgstr ""
 
@@ -499,31 +499,33 @@ msgstr ""
 msgid "Value must be a combination of '%s'."
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:56
+#: ../lib/hammer_cli/options/option_definition.rb:54
 msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:75
+#: ../lib/hammer_cli/options/option_definition.rb:73
+#: ../lib/hammer_cli/options/option_family.rb:25
 msgid "Deprecated: %{deprecated_msg}"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:78
+#: ../lib/hammer_cli/options/option_definition.rb:76
+#: ../lib/hammer_cli/options/option_family.rb:28
 msgid "%{flag} is deprecated: %{deprecated_msg}"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:98
+#: ../lib/hammer_cli/options/option_definition.rb:96
 msgid "Can be specified multiple times."
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:102
+#: ../lib/hammer_cli/options/option_definition.rb:100
 msgid ", or"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:104
+#: ../lib/hammer_cli/options/option_definition.rb:102
 msgid "Default:"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:129
+#: ../lib/hammer_cli/options/option_definition.rb:127
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr ""
 
@@ -649,7 +651,15 @@ msgstr ""
 msgid "Could't read SSL client key %s."
 msgstr ""
 
-#: ../lib/hammer_cli/subcommand.rb:96
+#: ../lib/hammer_cli/subcommand.rb:110
+msgid "Found more than one command."
+msgstr ""
+
+#: ../lib/hammer_cli/subcommand.rb:111
+msgid "Did you mean one of these?"
+msgstr ""
+
+#: ../lib/hammer_cli/subcommand.rb:120
 msgid ""
 "Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
 "ass>s)."

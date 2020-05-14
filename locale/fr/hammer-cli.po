@@ -10,10 +10,10 @@
 # ty breizh <tybreizh29@free.fr>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.0.0\n"
+"Project-Id-Version: hammer-cli 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-26 20:06+0200\n"
-"PO-Revision-Date: 2019-10-26 19:41+0000\n"
+"POT-Creation-Date: 2020-02-12 15:14+0200\n"
+"PO-Revision-Date: 2020-02-12 19:32+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: French (http://www.transifex.com/foreman/foreman/language/"
 "fr/)\n"
@@ -42,6 +42,9 @@ msgstr "Malheureusement le serveur ne supporte pas cette opération"
 
 msgid "The server does not support such operation."
 msgstr "Le serveur ne supporte pas cette opération."
+
+msgid "Prepare map of options and subcommands for Bash completion"
+msgstr ""
 
 msgid "Unable to find hostname in %s."
 msgstr "Impossible de trouver le nom d'hôte dans %s."
@@ -268,8 +271,8 @@ msgstr ""
 msgid "Could not load the API description from the server"
 msgstr "Impossible de charger la description de l'API depuis le serveur"
 
-msgid "Missing arguments for %s"
-msgstr "Arguments manquants pour %s"
+msgid "Missing arguments for %s."
+msgstr ""
 
 msgid "Format output in markdown"
 msgstr "Formater la sortie dans markdown"

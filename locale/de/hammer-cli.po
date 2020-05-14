@@ -7,16 +7,16 @@
 # Christina Gurski <Gurski_christina@yahoo.de>, 2015
 # Dominic Cleal <dcleal@redhat.com>, 2014
 # Ettore Atalan <atalanttore@googlemail.com>, 2014-2017
-# simon11 <simon.stieger.98@live.de>, 2014
-# simon11 <simon.stieger.98@live.de>, 2014
+# simon11 <transifex@stieger.co>, 2014
+# simon11 <transifex@stieger.co>, 2014
 # tstrachota <tstrachota@redhat.com>, 2016
 # Ulrich Habel <rhaen@pkgbox.de>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.0.0\n"
+"Project-Id-Version: hammer-cli 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-26 20:06+0200\n"
-"PO-Revision-Date: 2019-10-26 19:41+0000\n"
+"POT-Creation-Date: 2020-02-12 15:14+0200\n"
+"PO-Revision-Date: 2020-02-12 19:32+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: German (http://www.transifex.com/foreman/foreman/language/"
 "de/)\n"
@@ -45,6 +45,9 @@ msgstr "Leider unterstützt der Server eine solche Operation nicht."
 
 msgid "The server does not support such operation."
 msgstr "Diese Operation wird vom Server nicht unterstützt."
+
+msgid "Prepare map of options and subcommands for Bash completion"
+msgstr ""
 
 msgid "Unable to find hostname in %s."
 msgstr "Hostname konnte nicht gefunden werden in %s."
@@ -249,8 +252,8 @@ msgstr ""
 msgid "Could not load the API description from the server"
 msgstr "Die API-Beschreibung konnte nicht vom Server geladen werden"
 
-msgid "Missing arguments for %s"
-msgstr "Fehlende Argumente für %s"
+msgid "Missing arguments for %s."
+msgstr ""
 
 msgid "Format output in markdown"
 msgstr ""

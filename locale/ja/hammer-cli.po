@@ -7,10 +7,10 @@
 # 山田 修司 🍣 Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.0.0\n"
+"Project-Id-Version: hammer-cli 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-26 20:06+0200\n"
-"PO-Revision-Date: 2019-10-26 19:41+0000\n"
+"POT-Creation-Date: 2020-02-12 15:14+0200\n"
+"PO-Revision-Date: 2020-02-12 19:32+0000\n"
 "Last-Translator: Lukáš Zapletal\n"
 "Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/"
 "ja/)\n"
@@ -39,6 +39,9 @@ msgstr "残念ですがサーバはその操作をサポートしていません
 
 msgid "The server does not support such operation."
 msgstr "サーバーはこの操作に対応していません。"
+
+msgid "Prepare map of options and subcommands for Bash completion"
+msgstr ""
 
 msgid "Unable to find hostname in %s."
 msgstr "%s でホスト名が見つかりません。"
@@ -255,8 +258,8 @@ msgstr ""
 msgid "Could not load the API description from the server"
 msgstr "サーバーから API 記述をロードできませんでした"
 
-msgid "Missing arguments for %s"
-msgstr "%s の引数がありません"
+msgid "Missing arguments for %s."
+msgstr ""
 
 msgid "Format output in markdown"
 msgstr "マークダウンでの出力のフォーマット"
