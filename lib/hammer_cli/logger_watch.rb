@@ -1,4 +1,4 @@
-require 'awesome_print'
+require 'amazing_print'
 
 module HammerCLI
   module Logger
