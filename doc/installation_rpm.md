@@ -1,8 +1,8 @@
 ### Installation from RPMs
 
-#### Step 1: setup yum repositories
+#### Step 1: set up yum repositories
 
-For Foreman 1.3 stable the hammer packages are part of your installation repo and you can skip this step.
+For Foreman 1.3 stable, the hammer packages are part of your installation repo and you can skip this step.
 
 You can choose from stable or nightly repo. Nightly has more recent version of hammer packages, but it was subject to less testing so there is a higher risk of issues.
 Add the Foreman yum repository to your yum repo files. For Fedora installations replace 'el6' with 'f18' or 'f19' as appropriate.
