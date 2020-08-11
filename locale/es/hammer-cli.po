@@ -5,15 +5,15 @@
 # Translators:
 # Dominic Cleal <dcleal@redhat.com>, 2014
 # francis <hackgo@gmail.com>, 2014
-# Sergio Ocón <sergio.ocon@redhat.com>, 2014-2015
-# Sergio Ocón <sergio.ocon@redhat.com>, 2014
+# Sergio Ocón-Cárdenas <sergio.ocon@redhat.com>, 2014-2015
+# Sergio Ocón-Cárdenas <sergio.ocon@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.1.0\n"
+"Project-Id-Version: hammer-cli 2.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-12 15:14+0200\n"
-"PO-Revision-Date: 2020-02-12 19:32+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2020-05-14 11:10+0300\n"
+"PO-Revision-Date: 2020-05-14 08:46+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Spanish (http://www.transifex.com/foreman/foreman/language/"
 "es/)\n"
 "MIME-Version: 1.0\n"
@@ -543,6 +543,12 @@ msgstr "No se pudo leer el certificado de cliente SSL %s."
 
 msgid "Could't read SSL client key %s."
 msgstr "No se pudo leer la clave de cliente SSL %s."
+
+msgid "Found more than one command."
+msgstr ""
+
+msgid "Did you mean one of these?"
+msgstr ""
 
 msgid ""
 "Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "

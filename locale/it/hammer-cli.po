@@ -7,11 +7,11 @@
 # Dominic Cleal <dcleal@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.1.0\n"
+"Project-Id-Version: hammer-cli 2.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-12 15:14+0200\n"
-"PO-Revision-Date: 2020-02-12 19:32+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2020-05-14 11:10+0300\n"
+"PO-Revision-Date: 2020-05-14 08:46+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Italian (http://www.transifex.com/foreman/foreman/language/"
 "it/)\n"
 "MIME-Version: 1.0\n"
@@ -505,6 +505,12 @@ msgid "Could't read SSL client certificate %s."
 msgstr ""
 
 msgid "Could't read SSL client key %s."
+msgstr ""
+
+msgid "Found more than one command."
+msgstr ""
+
+msgid "Did you mean one of these?"
 msgstr ""
 
 msgid ""

@@ -7,11 +7,11 @@
 # 山田 修司 🍣 Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.1.0\n"
+"Project-Id-Version: hammer-cli 2.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-12 15:14+0200\n"
-"PO-Revision-Date: 2020-02-12 19:32+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2020-05-14 11:10+0300\n"
+"PO-Revision-Date: 2020-06-22 17:24+0000\n"
+"Last-Translator: Amit Upadhye <aupadhye@redhat.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/"
 "ja/)\n"
 "MIME-Version: 1.0\n"
@@ -21,18 +21,20 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Option details"
-msgstr ""
+msgstr "オプションの詳細"
 
 msgid ""
 "Following parameters accept format defined by its schema (bold are required; "
 "<> contain acceptable type; [] contain acceptable value):"
 msgstr ""
+"以下のパラメーターは、スキーマで定義された形式を使用できます (太字の項目は必"
+"須。<> には使用可能なタイプが、[] には使用可能な値が含まれます。):"
 
 msgid "Predefined field sets"
-msgstr ""
+msgstr "定義済みのフィールドセット"
 
 msgid "Command extensions should be inherited from %s."
-msgstr ""
+msgstr "コマンド拡張は ％s から継承する必要があります。"
 
 msgid "Unfortunately the server does not support such operation."
 msgstr "残念ですがサーバはその操作をサポートしていません。"
@@ -41,7 +43,7 @@ msgid "The server does not support such operation."
 msgstr "サーバーはこの操作に対応していません。"
 
 msgid "Prepare map of options and subcommands for Bash completion"
-msgstr ""
+msgstr "bash-completion のオプションおよびサブコマンドのマッピングを準備する"
 
 msgid "Unable to find hostname in %s."
 msgstr "%s でホスト名が見つかりません。"
@@ -259,7 +261,7 @@ msgid "Could not load the API description from the server"
 msgstr "サーバーから API 記述をロードできませんでした"
 
 msgid "Missing arguments for %s."
-msgstr ""
+msgstr "%s の引数がありません"
 
 msgid "Format output in markdown"
 msgstr "マークダウンでの出力のフォーマット"
@@ -271,7 +273,7 @@ msgid "Print help for all hammer commands"
 msgstr "すべての hammer コマンドのヘルプの出力"
 
 msgid "NOTE"
-msgstr ""
+msgstr "注記"
 
 msgid "No permissions to create log dir %s."
 msgstr "ログディレクトリー %s を作成するパーミッションがありません。"
@@ -285,7 +287,7 @@ msgid "Be verbose (or not). True by default"
 msgstr "詳細 (かどうか)。デフォルトは True です"
 
 msgid "Completely silent"
-msgstr "完全に静かに"
+msgstr "自動"
 
 msgid "Enable/disable stored defaults. Enabled by default"
 msgstr "保存したデフォルト値を有効化/無効化します。デフォルトでは有効です"
@@ -294,7 +296,7 @@ msgid "Show debugging output"
 msgstr "デバッグ出力の表示"
 
 msgid "Force reload of Apipie cache"
-msgstr "Apipie キャッシュのリロードを強制"
+msgstr "Apipie キャッシュの強制再読み込み"
 
 msgid "Path to custom config file"
 msgstr "カスタム設定ファイルのパス"
@@ -349,7 +351,7 @@ msgid "Output as CSV (same as --output=csv)"
 msgstr "CSV として出力 (--output=csv と同じ)"
 
 msgid "Set output format"
-msgstr ""
+msgstr "出力形式の設定"
 
 msgid "Path to custom output file"
 msgstr "カスタム出力ファイルのパス"
@@ -370,7 +372,7 @@ msgid "Comma-separated list of key=value."
 msgstr "key=value のコンマ区切りの一覧です。"
 
 msgid "JSON is acceptable and preferred way for complex parameters"
-msgstr ""
+msgstr "JSON は、複雑なパラメーターで使用でき、推奨の方法です"
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -382,11 +384,15 @@ msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
 "escaped with backslash."
 msgstr ""
+"値のコンマ区切りの一覧。コンマを含む値は引用符で囲むか、円記号でエスケープす"
+"る必要があります。"
 
 msgid ""
 "Comma separated list of values defined by a schema. See Option details "
 "section below."
 msgstr ""
+"スキーマで定義し値のコンマ区切りの一覧。以下のオプションの詳細セクションを参"
+"照してください。"
 
 msgid "Numeric value is required."
 msgstr "数値が必要。"
@@ -441,9 +447,11 @@ msgstr "環境変数 HAMMER_NIL は空欄にできません。"
 
 msgid "Show specified fileds or predefined filed sets only. (See below)"
 msgstr ""
+"指定したフィールドまたは定義済みのフィールドセットのみを表示します (下記参"
+"照)。"
 
 msgid "There is no such predefined option %s."
-msgstr ""
+msgstr "このような事前定義されたオプション ％s はありません。"
 
 msgid "Unknown option name '%s'."
 msgstr "不明なオプション名 '%s'。"
@@ -486,12 +494,14 @@ msgstr ""
 "ページ %{page}/%{total} (ナビゲーションには --page と --per-page を使用)。"
 
 msgid "Fields"
-msgstr ""
+msgstr "フィールド"
 
 msgid ""
 "Method %{tags} for field formatters and output adapters is deprecated. "
 "Please use %{feat} or %{req_feat} instead."
 msgstr ""
+"フィールドフォーマッターおよび出力アダプターのメソッド ％{tags} は非推奨にな"
+"りました。代わりに ％{feat} または ％{req_feat} を使用してください。"
 
 msgid "no"
 msgstr "no"
@@ -531,6 +541,12 @@ msgstr "SSL クライアント証明書 %s を読み取ることができませ�
 
 msgid "Could't read SSL client key %s."
 msgstr "SSL クライアント鍵 %s を読み取ることができませんでした。"
+
+msgid "Found more than one command."
+msgstr ""
+
+msgid "Did you mean one of these?"
+msgstr ""
 
 msgid ""
 "Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "

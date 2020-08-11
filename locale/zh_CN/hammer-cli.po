@@ -6,11 +6,11 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.1.0\n"
+"Project-Id-Version: hammer-cli 2.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-12 15:14+0200\n"
-"PO-Revision-Date: 2020-02-12 19:32+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2020-05-14 11:10+0300\n"
+"PO-Revision-Date: 2020-06-22 17:22+0000\n"
+"Last-Translator: Amit Upadhye <aupadhye@redhat.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/foreman/foreman/"
 "language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -20,27 +20,29 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Option details"
-msgstr ""
+msgstr "选项详情"
 
 msgid ""
 "Following parameters accept format defined by its schema (bold are required; "
 "<> contain acceptable type; [] contain acceptable value):"
 msgstr ""
+"以下参数接受其 schema 定义的格式（加重为必填项；<>包含可接受的类型； [] 包含"
+"可接受的值）："
 
 msgid "Predefined field sets"
-msgstr ""
+msgstr "预定义字段集"
 
 msgid "Command extensions should be inherited from %s."
-msgstr ""
+msgstr "命令扩展名应从％s 继承。"
 
 msgid "Unfortunately the server does not support such operation."
 msgstr "服务器不支持这样的操作。"
 
 msgid "The server does not support such operation."
-msgstr "该服务器不支持此操作。"
+msgstr "伺服器不支援此類型的操作。"
 
 msgid "Prepare map of options and subcommands for Bash completion"
-msgstr ""
+msgstr "准备用于 Bash 完成功能的选项和子命令映射"
 
 msgid "Unable to find hostname in %s."
 msgstr "无法在 %s 中找到主机名。"
@@ -137,43 +139,43 @@ msgid ""
 msgstr "无法创建 %s。请先创建目录，然后设置默认值。"
 
 msgid "Defaults management"
-msgstr "默认管理"
+msgstr "預設值管理"
 
 msgid "List all the providers"
-msgstr "列出所有提供者"
+msgstr "列出所有供應者"
 
 msgid "Provider"
 msgstr "提供者"
 
 msgid "Supported defaults"
-msgstr "支持的默认"
+msgstr "已支援的預設值"
 
 msgid "Description"
 msgstr "描述"
 
 msgid "List all the default parameters"
-msgstr "列出所有默认参数"
+msgstr "列出所有預設參數"
 
 msgid "Parameter"
 msgstr "参数"
 
 msgid "Value"
-msgstr "选项值"
+msgstr "值"
 
 msgid "Delete a default param"
-msgstr "删除默认参数"
+msgstr "刪除預設參數"
 
 msgid "The name of the default option"
-msgstr "默认选项名称"
+msgstr "預設選項的名稱"
 
 msgid "Add a default parameter to config"
-msgstr "在配置中添加默认参数"
+msgstr "新增預設參數至配置"
 
 msgid "The name of the default option (e.g. organization_id)"
 msgstr "默认选项名称（例如：organization_id）"
 
 msgid "The value for the default option"
-msgstr "默认选项值"
+msgstr "預設選項的值"
 
 msgid ""
 "The name of the provider providing the value. For list available providers "
@@ -184,10 +186,10 @@ msgstr ""
 msgid ""
 "Added %{key_val} default-option with value that will be generated from the "
 "server."
-msgstr "添加使用该服务器生成值的  %{key_val} 默认选项。"
+msgstr "已新增 %{key_val} 預設選項與預設值，這是由伺服器所產生。"
 
 msgid "Added %{key_val} default-option with value %{val_val}."
-msgstr "添加使用值 %{val_val} 的 %{key_val} 默认选项。"
+msgstr "已新增 %{key_val} 預設選項，數值為 %{val_val}。"
 
 msgid ""
 "Provider %{name} was not found. See `hammer defaults providers` for "
@@ -200,22 +202,23 @@ msgid ""
 "The param name is not supported by provider. See `hammer defaults providers` "
 "for supported params."
 msgstr ""
-"提供者不支持该参数名称。有关支持的参数，请查看 `hammer defaults providers`。"
+"供應者並不支援此參數名稱。欲知支援的參數名稱，請參閱 `hammer defaults "
+"providers`。"
 
 msgid "%{param} was deleted successfully."
-msgstr "成功删除 %{param}。"
+msgstr "已成功刪除 %{param}。"
 
 msgid "You must specify value or a provider name, can't specify both."
 msgstr "您必须指定值或提供程序名称，但不能同时指定这两项。"
 
 msgid "Couldn't find the requested param in %s."
-msgstr "无法在 %s 中找到请求的参数。"
+msgstr "在 %s 中找不到要求的參數。"
 
 msgid "Error: %s"
-msgstr "错误：%s"
+msgstr "錯誤：%s"
 
 msgid "Error: %{message}"
-msgstr "错误：%{message}"
+msgstr "錯誤：%{message}"
 
 msgid "See: '%{path} --help'."
 msgstr "请查看： '%{path} --help'。"
@@ -227,18 +230,18 @@ msgid "SSL certificate verification failed"
 msgstr "SSL 证书验证失败"
 
 msgid "is the server down?"
-msgstr "服务器宕机了吗？"
+msgstr "伺服器是否沒有在運作？"
 
 msgid ""
 "was '%s' run on the server when using apipie cache? (typical production "
 "settings)"
-msgstr "使用 apipie 缓存时服务器中是否运行了 '%s'？（典型产品设置）"
+msgstr "使用 apipie 快取時 '%s' 是否有在伺服器上運作？（典型的生產設定）"
 
 msgid "Could not load the API description from the server"
-msgstr "无法从服务器载入 API 描述"
+msgstr "無法從伺服器載入 API 描述"
 
 msgid "Missing arguments for %s."
-msgstr ""
+msgstr "%s 缺少了参数"
 
 msgid "Format output in markdown"
 msgstr "格式输出下降"
@@ -250,13 +253,13 @@ msgid "Print help for all hammer commands"
 msgstr "打印针对所有 hammer 命令的帮助信息"
 
 msgid "NOTE"
-msgstr ""
+msgstr "注意"
 
 msgid "No permissions to create log dir %s."
 msgstr "没有创建日志目录 %s 的权限。"
 
 msgid "File %s not writeable, won't log anything to the file!"
-msgstr "无法写入文件 %s，因此无法记录文件的任何变化！"
+msgstr "%s 檔案不允許寫入，將不會記錄任何資料至此檔案中！"
 
 msgid "Be verbose (or not). True by default"
 msgstr "是否显示更详细的信息。默认为是"
@@ -311,31 +314,31 @@ msgid "Show version"
 msgstr "显示版本"
 
 msgid "unknown version"
-msgstr "未知版本"
+msgstr "不明的版本"
 
 msgid "Show ids of associated resources"
-msgstr "显示关联资源的 id"
+msgstr "顯示相聯資源的 id"
 
 msgid "Explicitly turn interactive mode on/off"
-msgstr "明确打开/关闭互动模式"
+msgstr "明確開啓或關閉互動式模式"
 
 msgid "Hide headers from output"
 msgstr "从输出中隐藏标题"
 
 msgid "Output as CSV (same as --output=csv)"
-msgstr "作为 CSV 输出（与 --output=csv 相同） "
+msgstr "輸出為 CSV（與 --output=csv 相同）"
 
 msgid "Set output format"
-msgstr ""
+msgstr "设置输出格式"
 
 msgid "Path to custom output file"
 msgstr "到自定义输出文件的路径"
 
 msgid "Character to separate the values"
-msgstr "用来分开数值的字符"
+msgstr "用來隔開值的字元"
 
 msgid "Get list of possible endings"
-msgstr "获取可能结尾的列表"
+msgstr "取得一列可能的結尾"
 
 msgid "Warning: An error occured while loading module %s."
 msgstr "警告：载入模块 %s 时出错。"
@@ -344,10 +347,10 @@ msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr "错误：在配置中禁用了一些要求的模块：%s。"
 
 msgid "Comma-separated list of key=value."
-msgstr "用逗号分开的 key=value 列表。"
+msgstr "逗號區隔開的一列 key=value。"
 
 msgid "JSON is acceptable and preferred way for complex parameters"
-msgstr ""
+msgstr "JSON 可用，且是复杂参数的首选格式"
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -356,12 +359,12 @@ msgstr "必须作为用逗号分隔的 key=value 列表或有效的 JSON 来定�
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
 "escaped with backslash."
-msgstr ""
+msgstr "以逗号分隔的值列表。包含逗号的值应包括在引号中，或使用反斜杠转义。"
 
 msgid ""
 "Comma separated list of values defined by a schema. See Option details "
 "section below."
-msgstr ""
+msgstr "逗号分隔的由 schema 定义的值的列表。请参阅下面的“选项详细信息”部分。"
 
 msgid "Numeric value is required."
 msgstr "需要提供数值。"
@@ -376,25 +379,25 @@ msgid "Unable to parse JSON input."
 msgstr "无法解析 JSON 输入。"
 
 msgid "Possible value(s): %s"
-msgstr "可能值为：%s"
+msgstr "可能的值：%s"
 
 msgid "Value must be %s."
 msgstr "值必须是 %s。"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
-msgstr "日期和时间格式为 YYYY-MM-DD HH:MM:SS 或者 ISO 8601 格式"
+msgstr "日期與時間，格式為 YYYY-MM-DD HH:MM:SS 或是 ISO 8601 格式"
 
 msgid "'%s' is not a valid date."
 msgstr "'%s' 不是有效日期。"
 
 msgid "Any combination (comma separated list) of '%s'"
-msgstr "'%s' 的任意组合（用逗号分开的列表）"
+msgstr "任何（以逗號隔開的）「%s」的組合"
 
 msgid "Value must be a combination of '%s'."
 msgstr "值必须是 '%s' 的组合。"
 
 msgid "Warning: Option %{option} is deprecated. %{message}"
-msgstr "警告：%{option} 选项已过时。%{message}"
+msgstr "警告：選項 %{option} 已淘汰。%{message}"
 
 msgid "Deprecated: %{deprecated_msg}"
 msgstr "已弃用：%{deprecated_msg}"
@@ -415,10 +418,10 @@ msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr "环境变量 HAMMER_NIL 不能为空。"
 
 msgid "Show specified fileds or predefined filed sets only. (See below)"
-msgstr ""
+msgstr "仅显示指定的项或预定义的文件集。 （见下文）"
 
 msgid "There is no such predefined option %s."
-msgstr ""
+msgstr "没有预定义选项％s。"
 
 msgid "Unknown option name '%s'."
 msgstr "未知选项名称 '%s'。"
@@ -451,21 +454,23 @@ msgid "Message"
 msgstr "信息"
 
 msgid "Id"
-msgstr "Id"
+msgstr "ID"
 
 msgid "Name"
-msgstr "名称"
+msgstr "名稱"
 
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr "第 %{page} 页，共 %{total} 页（使用 --page 和 --per-page 进行导航）。"
 
 msgid "Fields"
-msgstr ""
+msgstr "字段"
 
 msgid ""
 "Method %{tags} for field formatters and output adapters is deprecated. "
 "Please use %{feat} or %{req_feat} instead."
 msgstr ""
+"字段格式化程序和输出适配器的方法％{tags}已弃用。请改用％{feat}"
+"或％{req_feat}。"
 
 msgid "no"
 msgstr "否"
@@ -477,10 +482,10 @@ msgid "Warning: Couldn't load configuration file %{path}: %{message}."
 msgstr "警告：无法加载配置文件 %{path}：%{message}。"
 
 msgid "Print help for commands"
-msgstr "输出命令帮助信息"
+msgstr "印出指令的說明"
 
 msgid "Exit interactive shell"
-msgstr "退出互动 shell"
+msgstr "退出互動式 shell"
 
 msgid "Welcome to the hammer interactive shell."
 msgstr "欢迎使用 hammer 互动 shell。"
@@ -489,7 +494,7 @@ msgid "Type 'help' for usage information."
 msgstr "输入 ‘help’ 获取用法信息。"
 
 msgid "Interactive shell"
-msgstr "互动 shell"
+msgstr "互動式 shell"
 
 msgid "SSL client certificate is set but the key is not."
 msgstr "设置了 SSL 客户端证书，但未设置密钥。"
@@ -505,6 +510,12 @@ msgstr "无法读取 SSL 客户端证书 %s。"
 
 msgid "Could't read SSL client key %s."
 msgstr "无法读取 SSL 客户端密钥 %s。"
+
+msgid "Found more than one command."
+msgstr ""
+
+msgid "Did you mean one of these?"
+msgstr ""
 
 msgid ""
 "Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "

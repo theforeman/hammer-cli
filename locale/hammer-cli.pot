@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.1.0\n"
+"Project-Id-Version: hammer-cli 2.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-14 11:10+0300\n"
-"PO-Revision-Date: 2020-05-14 11:10+0300\n"
+"POT-Creation-Date: 2020-08-11 16:35+0300\n"
+"PO-Revision-Date: 2020-08-11 16:35+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -530,7 +530,7 @@ msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr ""
 
 #: ../lib/hammer_cli/options/predefined.rb:9
-msgid "Show specified fileds or predefined filed sets only. (See below)"
+msgid "Show specified fields or predefined field sets only. (See below)"
 msgstr ""
 
 #: ../lib/hammer_cli/options/predefined.rb:16

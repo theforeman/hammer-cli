@@ -10,11 +10,11 @@
 # ty breizh <tybreizh29@free.fr>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.1.0\n"
+"Project-Id-Version: hammer-cli 2.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-12 15:14+0200\n"
-"PO-Revision-Date: 2020-02-12 19:32+0000\n"
-"Last-Translator: Lukáš Zapletal\n"
+"POT-Creation-Date: 2020-05-14 11:10+0300\n"
+"PO-Revision-Date: 2020-06-22 17:21+0000\n"
+"Last-Translator: Amit Upadhye <aupadhye@redhat.com>\n"
 "Language-Team: French (http://www.transifex.com/foreman/foreman/language/"
 "fr/)\n"
 "MIME-Version: 1.0\n"
@@ -24,18 +24,21 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 msgid "Option details"
-msgstr "Détails des options"
+msgstr "Détails de l'option"
 
 msgid ""
 "Following parameters accept format defined by its schema (bold are required; "
 "<> contain acceptable type; [] contain acceptable value):"
 msgstr ""
+"Les paramètres suivants acceptent le format défini par son schéma (les "
+"caractères gras sont obligatoires ; <> contient le type acceptable ; [] "
+"contient la valeur acceptable) :"
 
 msgid "Predefined field sets"
-msgstr ""
+msgstr "Ensembles de champs prédéfinis"
 
 msgid "Command extensions should be inherited from %s."
-msgstr ""
+msgstr "Les extensions de commande doivent être héritées des %."
 
 msgid "Unfortunately the server does not support such operation."
 msgstr "Malheureusement le serveur ne supporte pas cette opération"
@@ -45,6 +48,8 @@ msgstr "Le serveur ne supporte pas cette opération."
 
 msgid "Prepare map of options and subcommands for Bash completion"
 msgstr ""
+"Préparer une liste des options et des sous-commandes pour le travail en "
+"lignes de commandes"
 
 msgid "Unable to find hostname in %s."
 msgstr "Impossible de trouver le nom d'hôte dans %s."
@@ -244,7 +249,7 @@ msgid "Couldn't find the requested param in %s."
 msgstr "Vous devez spécifier le paramètre demandé dans %s."
 
 msgid "Error: %s"
-msgstr "Erreur : %s"
+msgstr "Erreur : %s"
 
 msgid "Error: %{message}"
 msgstr "Erreur : %{message}"
@@ -272,7 +277,7 @@ msgid "Could not load the API description from the server"
 msgstr "Impossible de charger la description de l'API depuis le serveur"
 
 msgid "Missing arguments for %s."
-msgstr ""
+msgstr "Arguments manquants pour %s"
 
 msgid "Format output in markdown"
 msgstr "Formater la sortie dans markdown"
@@ -284,7 +289,7 @@ msgid "Print help for all hammer commands"
 msgstr "Imprimer l'aide de toutes les commandes hammer"
 
 msgid "NOTE"
-msgstr ""
+msgstr "NOTE"
 
 msgid "No permissions to create log dir %s."
 msgstr "Aucune permission pour créer le répertoire de journal %s "
@@ -363,7 +368,7 @@ msgid "Output as CSV (same as --output=csv)"
 msgstr "Sortie de type CSV (idem --output=csv)"
 
 msgid "Set output format"
-msgstr ""
+msgstr "Définir le format de sortie"
 
 msgid "Path to custom output file"
 msgstr "Chemin vers le fichier de sortie personnalisé"
@@ -387,7 +392,7 @@ msgstr "Liste de clef=valeur séparées par des virgules."
 
 msgid "JSON is acceptable and preferred way for complex parameters"
 msgstr ""
-"Le format JSON est accepté et le moyen préféré pour les paramètres complexes"
+"JSON est une méthode acceptable et privilégiée pour les paramètres complexes"
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -399,14 +404,15 @@ msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
 "escaped with backslash."
 msgstr ""
-"Liste de valeurs séparées par une virgule. Les valeurs contenant une virgule "
-"doivent être placées entre guillemets ou précédées d'une barre oblique "
-"inverse"
+"Liste de valeurs séparées par des virgules. Les valeurs contenant une "
+"virgule doivent être indiquées ou échappées par une barre oblique inversée."
 
 msgid ""
 "Comma separated list of values defined by a schema. See Option details "
 "section below."
 msgstr ""
+"Liste de valeurs séparées par des virgules et définies par un schéma. Voir "
+"la section Détails des options ci-dessous."
 
 msgid "Numeric value is required."
 msgstr "Valeur numérique obligatoire."
@@ -461,9 +467,11 @@ msgstr "La variable d'environnement HAMMER_NIL ne peut pas être vide."
 
 msgid "Show specified fileds or predefined filed sets only. (See below)"
 msgstr ""
+"Afficher uniquement les fichiers spécifiés ou les ensembles de fichiers "
+"prédéfinis. (Voir ci-dessous)"
 
 msgid "There is no such predefined option %s."
-msgstr ""
+msgstr "Il n'existe pas d'options prédéfinis %s."
 
 msgid "Unknown option name '%s'."
 msgstr "Nom d'option '%s' inconnue."
@@ -506,12 +514,14 @@ msgstr ""
 "Page %{page} de %{total} (utiliser --page et --per-page pour la navigation)."
 
 msgid "Fields"
-msgstr ""
+msgstr "Champs"
 
 msgid ""
 "Method %{tags} for field formatters and output adapters is deprecated. "
 "Please use %{feat} or %{req_feat} instead."
 msgstr ""
+"La méthode %{tags} pour les formateurs de champs et les adaptateurs de "
+"sortie est obsolète. Veuillez utiliser %{feat} ou %{req_feat} à la place."
 
 msgid "no"
 msgstr "non"
@@ -553,6 +563,12 @@ msgstr "Impossible de lire le certificat du client SSL %s."
 
 msgid "Could't read SSL client key %s."
 msgstr "Impossible de lire la clé du client SSL %s."
+
+msgid "Found more than one command."
+msgstr ""
+
+msgid "Did you mean one of these?"
+msgstr ""
 
 msgid ""
 "Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
