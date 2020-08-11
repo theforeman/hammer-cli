@@ -1,5 +1,12 @@
 Release notes
 =============
+### 2.2.0 (2020-08-11)
+* Update installation_rpm.md ([PR #333](https://github.com/theforeman/hammer-cli/pull/333))
+* Clean gem_release.ipynb up
+* Replace awesome_print with amazing_print ([PR #330](https://github.com/theforeman/hammer-cli/pull/330)), [#29846](http://projects.theforeman.org/issues/29846)
+* Fix typo: s/filed/feild/ ([PR #331](https://github.com/theforeman/hammer-cli/pull/331))
+* Bump to 2.2.0-develop
+
 ### 2.1.0 (2020-05-14)
 * Hammer full-help returns correct output, [#29697](http://projects.theforeman.org/issues/29697)
 * Add fuzzy subcommand matching, [#29413](http://projects.theforeman.org/issues/29413)
