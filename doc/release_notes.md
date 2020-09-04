@@ -1,5 +1,8 @@
 Release notes
 =============
+### 2.2.1 (2020-09-04)
+* Make fuzzy search work in hammer shell ([PR #335](https://github.com/theforeman/hammer-cli/pull/335)), [#30747](http://projects.theforeman.org/issues/30747)
+
 ### 2.1.0 (2020-05-14)
 * Hammer full-help returns correct output, [#29697](http://projects.theforeman.org/issues/29697)
 * Add fuzzy subcommand matching, [#29413](http://projects.theforeman.org/issues/29413)
