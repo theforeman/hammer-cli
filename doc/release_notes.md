@@ -1,5 +1,8 @@
 Release notes
 =============
+### 2.1.2 (2020-09-04)
+* Make fuzzy search work in hammer shell ([PR #335](https://github.com/theforeman/hammer-cli/pull/335)), [#30747](http://projects.theforeman.org/issues/30747)
+
 ### 2.1.1 (2020-05-29)
 * Clean gem_release.ipynb up
 * Replace awesome_print with amazing_print ([PR #330](https://github.com/theforeman/hammer-cli/pull/330)), [#29846](http://projects.theforeman.org/issues/29846)
