@@ -121,7 +121,7 @@ module HammerCLI
     bits = path.split(' ')
     parent_command = HammerCLI::MainCommand
     new_path = (bits[1..-1] || []).each_with_object([]) do |bit, names|
-      subcommand = parent_command.find_subcommand(bit)
+      subcommand = parent_command.find_subcommand(bit, fuzzy: false)
       next if subcommand.nil?
 
       names << if subcommand.names.size > 1
