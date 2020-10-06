@@ -10,11 +10,11 @@ module HammerCLI::Apipie
       opts = {}
 
       params.each do |p|
-        if p.expected_type == :hash
+        if p.expected_type == :hash && !p.params.empty?
           opts[p.name] = method_options_for_params(p.params, options)
         else
           p_name = HammerCLI.option_accessor_name(p.name)
-          if options.has_key?(p_name)
+          if options.key?(p_name)
             opts[p.name] = options[p_name]
           elsif respond_to?(p_name, true)
             opt = send(p_name)
