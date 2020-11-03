@@ -5,17 +5,17 @@
 # Translators:
 # Dominic Cleal <dcleal@redhat.com>, 2014
 # Fabio Dias <fabioqos@gmail.com>, 2015
-# Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2018
+# Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2014,2018
 # Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2014
 # Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2014
 # Valeria S Silva <valeriassilva@live.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.2.0\n"
+"Project-Id-Version: hammer-cli 2.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-14 11:10+0300\n"
-"PO-Revision-Date: 2020-05-14 08:46+0000\n"
-"Last-Translator: Transifex Bot <>\n"
+"POT-Creation-Date: 2020-08-11 16:35+0300\n"
+"PO-Revision-Date: 2020-09-03 07:45+0000\n"
+"Last-Translator: Amit Upadhye <aupadhye@redhat.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/foreman/foreman/"
 "language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -25,18 +25,21 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 msgid "Option details"
-msgstr ""
+msgstr "Detalhes da opção"
 
 msgid ""
 "Following parameters accept format defined by its schema (bold are required; "
 "<> contain acceptable type; [] contain acceptable value):"
 msgstr ""
+"Os seguintes parâmetros aceitam um formato definido pelo seu esquema "
+"(negrito são os necessários; <> contém o tipo aceitável; [] contém o valor "
+"aceitável):"
 
 msgid "Predefined field sets"
-msgstr ""
+msgstr "Conjuntos de campos predefinidos"
 
 msgid "Command extensions should be inherited from %s."
-msgstr ""
+msgstr "As extensões de comando devem ser herdadas de %s."
 
 msgid "Unfortunately the server does not support such operation."
 msgstr "Infelizmente o servidor não suporta tal operação."
@@ -45,7 +48,7 @@ msgid "The server does not support such operation."
 msgstr "O servidor não suporta tal operação"
 
 msgid "Prepare map of options and subcommands for Bash completion"
-msgstr ""
+msgstr "Preparar mapa de opções e subcomandos para a conclusão do Bash"
 
 msgid "Unable to find hostname in %s."
 msgstr "Não foi possível encontrar o nome de host em %s."
@@ -163,7 +166,7 @@ msgid "List all the providers"
 msgstr "Listar todos os fornecedores"
 
 msgid "Provider"
-msgstr "Provedor"
+msgstr "Fornecedor"
 
 msgid "Supported defaults"
 msgstr "Padrões com suporte"
@@ -265,7 +268,7 @@ msgid "Could not load the API description from the server"
 msgstr "Não foi possível carregar a descrição do API do servidor"
 
 msgid "Missing arguments for %s."
-msgstr ""
+msgstr "Argumentos ausentes para %s"
 
 msgid "Format output in markdown"
 msgstr "Formatar saída no markdown"
@@ -277,7 +280,7 @@ msgid "Print help for all hammer commands"
 msgstr "Imprimir ajuda para todos os comandos do martelo"
 
 msgid "NOTE"
-msgstr ""
+msgstr "OBSERVAÇÃO"
 
 msgid "No permissions to create log dir %s."
 msgstr "Não há permissão para criar o diretório do log %s."
@@ -307,7 +310,7 @@ msgid "Username to access the remote system"
 msgstr "Nome de usuário para acessar o sistema remoto"
 
 msgid "Password to access the remote system"
-msgstr "Senha para acessar o sistema remoto"
+msgstr "Senha para acessar sistema remoto"
 
 msgid "Remote system address"
 msgstr "Endereço do sistema remoto"
@@ -350,10 +353,10 @@ msgid "Hide headers from output"
 msgstr "Ocultar cabe;alhos da saída"
 
 msgid "Output as CSV (same as --output=csv)"
-msgstr "Resultado como CSV (mesmo que  --output=csv)"
+msgstr "Resultado como CSV (mesmo que --output=csv)"
 
 msgid "Set output format"
-msgstr ""
+msgstr "Definir formato de saída"
 
 msgid "Path to custom output file"
 msgstr "Caminho para o arquivo de saída personalizado"
@@ -375,23 +378,27 @@ msgid "Comma-separated list of key=value."
 msgstr "Lista da chave=valor separada por vírgulas."
 
 msgid "JSON is acceptable and preferred way for complex parameters"
-msgstr ""
+msgstr "O JSON é a forma aceitável e preferencial para parâmetros complexos"
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
 msgstr ""
-"O valor deve ser definido como uma lista separada por vírgulas de  key=value "
+"O valor deve ser definido como uma lista separada por vírgulas de key=value "
 "ou JSON válido."
 
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
 "escaped with backslash."
 msgstr ""
+"Lista de valores separados por vírgulas. Valores contendo vírgulas devem "
+"estar entre aspas ou ter uma barra invertida."
 
 msgid ""
 "Comma separated list of values defined by a schema. See Option details "
 "section below."
 msgstr ""
+"Lista de valores separados por vírgulas definida por um esquema. Veja a "
+"seção de detalhes da opção abaixo."
 
 msgid "Numeric value is required."
 msgstr "O valor numérico é necessário."
@@ -421,7 +428,7 @@ msgid "Any combination (comma separated list) of '%s'"
 msgstr "Qualquer combinação (lista separada por vírgula) de '%s'"
 
 msgid "Value must be a combination of '%s'."
-msgstr "O valor deve ser uma combinação de  '%s'."
+msgstr "O valor deve ser uma combinação de '%s'."
 
 msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr "Aviso: Opção %{option} foi preterida. %{message}"
@@ -444,11 +451,11 @@ msgstr "Padrão:"
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr "A variável de ambiente HAMMER_NIL não pode estar vazia."
 
-msgid "Show specified fileds or predefined filed sets only. (See below)"
+msgid "Show specified fields or predefined field sets only. (See below)"
 msgstr ""
 
 msgid "There is no such predefined option %s."
-msgstr ""
+msgstr "Não há a opção predefinida %s."
 
 msgid "Unknown option name '%s'."
 msgstr "Nome da opção '%s' desconhecida."
@@ -490,12 +497,14 @@ msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr "Página %{page} de %{total} (use --page e --per-page para navegação)."
 
 msgid "Fields"
-msgstr ""
+msgstr "Campos"
 
 msgid ""
 "Method %{tags} for field formatters and output adapters is deprecated. "
 "Please use %{feat} or %{req_feat} instead."
 msgstr ""
+"O método %{tags} para formatadores de campos e adaptadores de saída foi "
+"preterido. Em vez disso, use %{feat} ou %{req_feat}."
 
 msgid "no"
 msgstr "não"

@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the hammer-cli package.
 #
 # Translators:
+# 0868a4d1af5275b3f70b0a6dac4c99a4, 2014
 # Baptiste Agasse <baptiste.agasse@gmail.com>, 2019
 # Claer <transiblu@claer.hammock.fr>, 2014-2016
 # 0868a4d1af5275b3f70b0a6dac4c99a4, 2014
@@ -10,11 +11,11 @@
 # ty breizh <tybreizh29@free.fr>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.2.0\n"
+"Project-Id-Version: hammer-cli 2.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-14 11:10+0300\n"
-"PO-Revision-Date: 2020-06-22 17:21+0000\n"
-"Last-Translator: Amit Upadhye <aupadhye@redhat.com>\n"
+"POT-Creation-Date: 2020-08-11 16:35+0300\n"
+"PO-Revision-Date: 2020-08-11 19:33+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: French (http://www.transifex.com/foreman/foreman/language/"
 "fr/)\n"
 "MIME-Version: 1.0\n"
@@ -465,10 +466,8 @@ msgstr "Valeur par défaut :"
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr "La variable d'environnement HAMMER_NIL ne peut pas être vide."
 
-msgid "Show specified fileds or predefined filed sets only. (See below)"
+msgid "Show specified fields or predefined field sets only. (See below)"
 msgstr ""
-"Afficher uniquement les fichiers spécifiés ou les ensembles de fichiers "
-"prédéfinis. (Voir ci-dessous)"
 
 msgid "There is no such predefined option %s."
 msgstr "Il n'existe pas d'options prédéfinis %s."

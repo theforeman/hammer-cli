@@ -13,10 +13,10 @@
 # Ulrich Habel <rhaen@pkgbox.de>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.2.0\n"
+"Project-Id-Version: hammer-cli 2.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-14 11:10+0300\n"
-"PO-Revision-Date: 2020-05-14 08:46+0000\n"
+"POT-Creation-Date: 2020-08-11 16:35+0300\n"
+"PO-Revision-Date: 2020-08-11 19:33+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: German (http://www.transifex.com/foreman/foreman/language/"
 "de/)\n"
@@ -435,7 +435,7 @@ msgstr "Standard: "
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr "Umgebungsvariable HAMMER_NIL kann nicht leer sein."
 
-msgid "Show specified fileds or predefined filed sets only. (See below)"
+msgid "Show specified fields or predefined field sets only. (See below)"
 msgstr ""
 
 msgid "There is no such predefined option %s."

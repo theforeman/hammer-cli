@@ -5,13 +5,14 @@
 # Translators:
 # Kazuki Omo <kazuki.omo@gmail.com>, 2019
 # 山田 修司 🍣 Shuji Yamada <uzy.exe@gmail.com>, 2015
+# 山田 修司 🍣 Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.2.0\n"
+"Project-Id-Version: hammer-cli 2.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-14 11:10+0300\n"
-"PO-Revision-Date: 2020-06-22 17:24+0000\n"
-"Last-Translator: Amit Upadhye <aupadhye@redhat.com>\n"
+"POT-Creation-Date: 2020-08-11 16:35+0300\n"
+"PO-Revision-Date: 2020-08-11 19:33+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/"
 "ja/)\n"
 "MIME-Version: 1.0\n"
@@ -445,10 +446,8 @@ msgstr "デフォルト:"
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr "環境変数 HAMMER_NIL は空欄にできません。"
 
-msgid "Show specified fileds or predefined filed sets only. (See below)"
+msgid "Show specified fields or predefined field sets only. (See below)"
 msgstr ""
-"指定したフィールドまたは定義済みのフィールドセットのみを表示します (下記参"
-"照)。"
 
 msgid "There is no such predefined option %s."
 msgstr "このような事前定義されたオプション ％s はありません。"
