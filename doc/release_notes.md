@@ -1,5 +1,19 @@
 Release notes
 =============
+### 2.3.0 (2020-11-03)
+* Stop sending empty compute attrs param, [#30815](http://projects.theforeman.org/issues/30815)
+* Make fuzzy search work in hammer shell ([PR #335](https://github.com/theforeman/hammer-cli/pull/335)), [#30747](http://projects.theforeman.org/issues/30747)
+* Add details to installation from source doc ([PR #334](https://github.com/theforeman/hammer-cli/pull/334)), [#30666](http://projects.theforeman.org/issues/30666)
+* Bump to 2.3.0-develop
+* Bump to 2.2.0
+
+### 2.3.0 (2020-11-03)
+* Stop sending empty compute attrs param, [#30815](http://projects.theforeman.org/issues/30815)
+* Make fuzzy search work in hammer shell ([PR #335](https://github.com/theforeman/hammer-cli/pull/335)), [#30747](http://projects.theforeman.org/issues/30747)
+* Add details to installation from source doc ([PR #334](https://github.com/theforeman/hammer-cli/pull/334)), [#30666](http://projects.theforeman.org/issues/30666)
+* Bump to 2.3.0-develop
+* Bump to 2.2.0
+
 ### 2.2.0 (2020-08-11)
 * Update installation_rpm.md ([PR #333](https://github.com/theforeman/hammer-cli/pull/333))
 * Clean gem_release.ipynb up
