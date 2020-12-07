@@ -45,7 +45,7 @@
 #:log_pattern: '[%5l %d %c] %m'
 
 # Location of cache for bash completion
-:completion_cache_file: '~/.cache/hammer_completion.yml'
+:completion_cache_file: '~/.cache/hammer_completion.json'
 
 # SSL auth options
 #:ssl:
