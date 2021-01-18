@@ -97,7 +97,7 @@ module HammerCLI
           history.push(line)
 
           line = HammerCLI::CompleterLine.new(line)
-          ShellMainCommand.run('', line, context) unless line.empty?
+          ShellMainCommand.run('hammer', line, context) unless line.empty?
         end
       rescue Interrupt; end
 
