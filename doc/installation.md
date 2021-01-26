@@ -144,7 +144,7 @@ executable specified in `/etc/bash_completion.d/hammer`.
 
 Bash completion for hammer needs pre-built cache that holds description of
 all subcommands and its parameters. The cache is located by default in
-`~/.cache/hammer_completion.yml`. The location can be changed in hammer's
+`~/.cache/hammer_completion.json`. The location can be changed in hammer's
 config file. The cache can be built manually with
 `hammer prebuild-bash-completion` or is built automatically when completion is
 used and the cache is missing (this may cause slight delay). The cache expires

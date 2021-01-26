@@ -5,9 +5,7 @@ require 'English'
 $LOAD_PATH.unshift(File.join(@project_root, 'lib'))
 HAMMER = ENV['HAMMER'] || File.join(@project_root, 'bin/hammer')
 
-require 'yaml'
-
-completion_cache_file = ENV['HAMMER_COMPLETION_CACHE'] || '~/.cache/hammer_completion.yml'
+completion_cache_file = ENV['HAMMER_COMPLETION_CACHE'] || '~/.cache/hammer_completion.json'
 completion_cache_file = File.expand_path(completion_cache_file)
 
 # build the cache if it does not exist
