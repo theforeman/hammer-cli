@@ -1,5 +1,10 @@
 Release notes
 =============
+### 2.4.0 (2021-02-01)
+* Expand path for bash completion file, [#30639](http://projects.theforeman.org/issues/30639)
+* Remove release notes written twice
+* Bump to 2.4.0-develop
+
 ### 2.3.0 (2020-11-03)
 * Stop sending empty compute attrs param, [#30815](http://projects.theforeman.org/issues/30815)
 * Make fuzzy search work in hammer shell ([PR #335](https://github.com/theforeman/hammer-cli/pull/335)), [#30747](http://projects.theforeman.org/issues/30747)
