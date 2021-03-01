@@ -66,7 +66,7 @@ module HammerCLI::Output
 
     def include_by_label?(labels, label)
       labels.any? do |l|
-        l.start_with?("#{label}/") || label.match(%r{^#{l.gsub(/\*/, '.*')}(|\/.*)$})
+        l.start_with?("#{label}/") || label.match(%r{^#{l.gsub(/\*/, '.*')}(|\/.*)$}) || l == label
       end
     end
 
