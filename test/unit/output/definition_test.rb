@@ -269,9 +269,9 @@ describe HammerCLI::Output::Definition do
       sets_table = "---------|-----|---------|----\n" \
                    "FIELDS   | ALL | DEFAULT | SET\n" \
                    "---------|-----|---------|----\n" \
-                   "newfield | x   | x       |    \n" \
-                   "cf/abc   |     |         | x  \n" \
-                   "cf/bca   |     |         | x  \n" \
+                   "Newfield | x   | x       |    \n" \
+                   "Cf/abc   |     |         | x  \n" \
+                   "Cf/bca   |     |         | x  \n" \
                    "---------|-----|---------|----\n"
 
       definition.sets_table.must_equal sets_table
