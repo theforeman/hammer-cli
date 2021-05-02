@@ -190,18 +190,9 @@ module HammerCLI
 
       option_builder.build(builder_params).each do |option|
         # skip switches that are already defined
-        next if option.nil? or option.switches.any? {|s| find_option(s) }
+        next if option.nil? || option.switches.any? { |s| find_option(s) }
 
-        if option.respond_to?(:referenced_resource)
-          # Collect options that don't have family, but related to this parent.
-          children = find_options(
-            referenced_resource: option.referenced_resource.to_s,
-            aliased_resource: option.aliased_resource.to_s
-          ).select { |o| o.family.nil? || o.family.head.nil? }
-          children.each do |child|
-            option.family.adopt(child) if option.family
-          end
-        end
+        adjust_family(option) if option.respond_to?(:family)
         declared_options << option
         block ||= option.default_conversion_block
         define_accessors_for(option, &block)
@@ -410,6 +401,32 @@ module HammerCLI
     end
 
     private
+
+    def self.adjust_family(option)
+      # Collect options that should share the same family
+      # If those options have family, adopt the current one
+      # Else adopt those options to the family of the current option
+      # NOTE: this shouldn't rewrite any options,
+      # although options from similar family could be adopted (appended)
+      options = find_options(
+        aliased_resource: option.aliased_resource.to_s
+      ).select { |o| o.family.nil? || o.family.formats.include?(option.value_formatter.class) }.group_by do |o|
+        next :to_skip if option.family.children.include?(o)
+        next :to_adopt if o.family.nil? || o.family.head.nil?
+        next :to_skip if o.family.children.include?(option)
+        # If both family heads handle the same switch
+        # then `option` is probably from similar family and can be adopted
+        next :adopt_by if option.family.head.nil? || o.family.head.handles?(option.family.head.long_switch)
+
+        :to_skip
+      end
+      options[:to_adopt]&.each do |child|
+        option.family&.adopt(child)
+      end
+      options[:adopt_by]&.map(&:family)&.uniq&.each do |family|
+        family.adopt(option)
+      end
+    end
 
     def self.inherited_output_definition
       od = nil
