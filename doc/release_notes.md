@@ -1,5 +1,8 @@
 Release notes
 =============
+### 2.3.1 (2021-05-04)
+* Better family assignment for options, [#30996](http://projects.theforeman.org/issues/30996)
+
 ### 2.3.0 (2020-11-03)
 * Stop sending empty compute attrs param, [#30815](http://projects.theforeman.org/issues/30815)
 * Make fuzzy search work in hammer shell ([PR #335](https://github.com/theforeman/hammer-cli/pull/335)), [#30747](http://projects.theforeman.org/issues/30747)
