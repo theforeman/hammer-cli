@@ -1,5 +1,10 @@
 Release notes
 =============
+### 2.5.0 (2021-05-04)
+* Better family assignment for options, [#30996](http://projects.theforeman.org/issues/30996)
+* Bump to 2.5.0-develop
+* Right usage in help output for aliases, [#31563](http://projects.theforeman.org/issues/31563)
+
 ### 2.4.0 (2021-02-01)
 * Expand path for bash completion file, [#30639](http://projects.theforeman.org/issues/30639)
 * Remove release notes written twice
