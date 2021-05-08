@@ -72,7 +72,9 @@ module HammerCLI::Apipie
       elsif param.expected_type.to_s == 'boolean' || param.validator.to_s == 'boolean'
         opts[:format] = HammerCLI::Options::Normalizers::Bool.new
       elsif param.expected_type.to_s == 'string' && param.validator =~ /Must be one of: (.*)\./
-        allowed = $1.split(/,\ ?/).map { |val| val.gsub(/<[^>]*>/i,'') }
+        allowed = $1.split(/,\ ?/).map { |val| val.gsub(/<[^>]*>/i, '') }.map do |item|
+          CGI.unescapeHTML(item)
+        end
         opts[:format] = HammerCLI::Options::Normalizers::Enum.new(allowed)
       elsif param.expected_type.to_s == 'numeric'
         opts[:format] = HammerCLI::Options::Normalizers::Number.new
