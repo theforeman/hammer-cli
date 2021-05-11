@@ -73,7 +73,7 @@ module HammerCLI::Output
 
         data << sets.each_with_object({}) do |set, res|
           mark = field.sets.include?(set) ? 'x' : ''
-          value = set == sets.first ? field.full_label : mark
+          value = set == sets.first ? field.full_label.capitalize : mark
           res.update(set => value)
         end
       end
