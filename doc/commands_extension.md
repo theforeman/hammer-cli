@@ -16,11 +16,11 @@ Each command can be easily extended with one ore more `HammerCLI::CommandExtensi
       child option_params
     end
     # Extend hash with data returned from server before it is printed
-    before_print do |data|
+    before_print do |data, command_object, command_class|
       # data modifications
     end
     # Extend command's output definition
-    output do |definition|
+    output do |definition, command_object, command_class|
       # output definition modifications
     end
     # Extend command's help definition
@@ -28,19 +28,19 @@ Each command can be easily extended with one ore more `HammerCLI::CommandExtensi
       # help modifications
     end
     # Extend hash with headers before request is sent
-    request_headers do |headers|
+    request_headers do |headers, command_object, command_class|
       # headers modifications
     end
     # Extend hash with options before request is sent
-    request_options do |options|
+    request_options do |options, command_object, command_class|
       # options modifications
     end
     # Extend hash with params before request is sent
-    request_params do |params|
+    request_params do |params, command_object, command_class|
       # params modifications
     end
     # Extend option sources
-    option_sources do |sources, command|
+    option_sources do |sources, command_object, command_class|
       # no need to call super method
       # simply add your sources to sources variable
     end
@@ -63,6 +63,8 @@ __NOTE:__
   - `request_*` extensions are applied before sending a request to the server
   - `option`, `output`, `help` extensions are applied right away after the command is extended with `extend_with`
   - `before_print` extensions are applied right away after the server returns the data
+  - `request_*`, `output`, `before_print` extensions have access to the command object
+    after the command with the extension was initialized
 
 #### Example
 ```ruby

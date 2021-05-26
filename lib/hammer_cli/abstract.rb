@@ -20,6 +20,8 @@ module HammerCLI
   class AbstractCommand < Clamp::Command
     include HammerCLI::Subcommand
 
+    attr_reader :context
+
     class << self
       attr_accessor :validation_blocks
 
@@ -75,7 +77,7 @@ module HammerCLI
       begin
         begin
           exit_code = super
-          context.delete(:fields)
+          clean_up_context
           raise "exit code must be integer" unless exit_code.is_a? Integer
         rescue => e
           exit_code = handle_exception(e)
@@ -97,6 +99,10 @@ module HammerCLI
       HammerCLI::EX_OK
     end
 
+    def clean_up_context
+      context.delete(:fields)
+    end
+
     def self.validate_options(mode=:append, target_name=nil, validator: nil, &block)
       validator ||= HammerCLI::Options::Validators::DSLBlockValidator.new(&block)
       self.validation_blocks ||= []
@@ -115,6 +121,9 @@ module HammerCLI
       super
       context[:path] ||= []
       context[:path] << self
+      self.class.command_extensions.each do |extension|
+        extension.command_object(self)
+      end
     end
 
     def parent_command
@@ -207,11 +216,12 @@ module HammerCLI
           raise ArgumentError, _('Command extensions should be inherited from %s.') % HammerCLI::CommandExtensions
         end
         extension.delegatee(self)
-        extension.extend_predefined_options(self)
-        extension.extend_options(self)
-        extension.extend_option_family(self)
-        extension.extend_output(self)
-        extension.extend_help(self)
+        extension.command_class(self)
+        extension.extend_predefined_options
+        extension.extend_options
+        extension.extend_option_family
+        extension.extend_output
+        extension.extend_help
         logger('Extensions').info "Applied #{extension.details} on #{self}."
         command_extensions << extension
       end
@@ -359,7 +369,7 @@ module HammerCLI
 
       sources = HammerCLI::Options::ProcessorList.new([sources])
       self.class.command_extensions.each do |extension|
-        extension.extend_option_sources(sources, self)
+        extension.extend_option_sources(sources)
       end
       sources
     end

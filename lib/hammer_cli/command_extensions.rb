@@ -93,78 +93,86 @@ module HammerCLI
 
     # Object
 
-    def extend_options(command_class)
+    def extend_options
       allowed = @only & %i[command_options option]
       return if allowed.empty? || (allowed & @except).any?
 
-      self.class.extend_options(command_class)
+      self.class.extend_options(@command_class)
     end
 
-    def extend_predefined_options(command_class)
+    def extend_predefined_options
       allowed = @only & %i[predefined_options use_option]
       return if allowed.empty? || (allowed & @except).any?
 
-      self.class.extend_predefined_options(command_class)
+      self.class.extend_predefined_options(@command_class)
     end
 
     def extend_before_print(data)
       allowed = @only & %i[before_print data]
       return if allowed.empty? || (allowed & @except).any?
 
-      self.class.extend_before_print(data)
+      self.class.extend_before_print(data, @command_object, @command_class)
     end
 
-    def extend_output(command_class)
+    def extend_output
       allowed = @only & %i[output]
       return if allowed.empty? || (allowed & @except).any?
 
-      self.class.extend_output(command_class)
+      self.class.extend_output(@command_class, @command_object)
     end
 
-    def extend_help(command_class)
+    def extend_help
       allowed = @only & %i[help]
       return if allowed.empty? || (allowed & @except).any?
 
-      self.class.extend_help(command_class)
+      self.class.extend_help(@command_class)
     end
 
     def extend_request_headers(headers)
       allowed = @only & %i[request_headers headers request]
       return if allowed.empty? || (allowed & @except).any?
 
-      self.class.extend_request_headers(headers)
+      self.class.extend_request_headers(headers, @command_object, @command_class)
     end
 
     def extend_request_options(options)
       allowed = @only & %i[request_options options request]
       return if allowed.empty? || (allowed & @except).any?
 
-      self.class.extend_request_options(options)
+      self.class.extend_request_options(options, @command_object, @command_class)
     end
 
     def extend_request_params(params)
       allowed = @only & %i[request_params params request]
       return if allowed.empty? || (allowed & @except).any?
 
-      self.class.extend_request_params(params)
+      self.class.extend_request_params(params, @command_object, @command_class)
     end
 
-    def extend_option_sources(sources, command = nil)
+    def extend_option_sources(sources)
       allowed = @only & %i[option_sources]
       return if allowed.empty? || (allowed & @except).any?
 
-      self.class.extend_option_sources(sources, command)
+      self.class.extend_option_sources(sources, @command_object, @command_class)
     end
 
-    def extend_option_family(command_class)
+    def extend_option_family
       allowed = @only & %i[option_family]
       return if allowed.empty? || (allowed & @except).any?
 
-      self.class.extend_option_family(command_class)
+      self.class.extend_option_family(@command_class)
     end
 
     def delegatee(command_class)
       self.class.delegatee = command_class
+    end
+
+    def command_class(command_class)
+      @command_class = command_class
+    end
+
+    def command_object(command_object)
+      @command_object = command_object
     end
 
     def details
@@ -198,17 +206,17 @@ module HammerCLI
       logger.debug("Added predefined options for #{command_class}: #{@predefined_option_names}")
     end
 
-    def self.extend_before_print(data)
+    def self.extend_before_print(data, command_object, command_class)
       return if @before_print_block.nil?
 
-      @before_print_block.call(data)
+      @before_print_block.call(data, command_object, command_class)
       logger.debug("Called block for #{@delegatee} data:\n\t#{@before_print_block}")
     end
 
-    def self.extend_output(command_class)
+    def self.extend_output(command_class, command_object)
       return if @output_extension_block.nil?
 
-      @output_extension_block.call(command_class.output_definition)
+      @output_extension_block.call(command_class.output_definition, command_object, command_class)
       logger.debug("Called block for #{@delegatee} output definition:\n\t#{@output_extension_block}")
     end
 
@@ -219,31 +227,31 @@ module HammerCLI
       logger.debug("Saved block for #{@delegatee} help definition:\n\t#{@help_extension_block}")
     end
 
-    def self.extend_request_headers(headers)
+    def self.extend_request_headers(headers, command_object, command_class)
       return if @request_headers_block.nil?
 
-      @request_headers_block.call(headers)
+      @request_headers_block.call(headers, command_object, command_class)
       logger.debug("Called block for #{@delegatee} request headers:\n\t#{@request_headers_block}")
     end
 
-    def self.extend_request_options(options)
+    def self.extend_request_options(options, command_object, command_class)
       return if @request_options_block.nil?
 
-      @request_options_block.call(options)
+      @request_options_block.call(options, command_object, command_class)
       logger.debug("Called block for #{@delegatee} request options:\n\t#{@request_options_block}")
     end
 
-    def self.extend_request_params(params)
+    def self.extend_request_params(params, command_object, command_class)
       return if @request_params_block.nil?
 
-      @request_params_block.call(params)
+      @request_params_block.call(params, command_object, command_class)
       logger.debug("Called block for #{@delegatee} request params:\n\t#{@request_params_block}")
     end
 
-    def self.extend_option_sources(sources, command = nil)
+    def self.extend_option_sources(sources, command_object, command_class)
       return if @option_sources_block.nil?
 
-      @option_sources_block.call(sources, command)
+      @option_sources_block.call(sources, command_object, command_class)
       logger.debug("Called block for #{@delegatee} option sources:\n\t#{@option_sources_block}")
     end
 
