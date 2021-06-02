@@ -11,7 +11,7 @@ module HammerCLI::Output
 
     def fields=(fields)
       @fields = fields || []
-      @filtered_fields = Marshal.load(Marshal.dump(@fields))
+      @filtered_fields = @fields.dup
     end
 
     def filter_by_classes(classes = nil)
