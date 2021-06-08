@@ -1,5 +1,11 @@
 Release notes
 =============
+### 2.5.1 (2021-06-08)
+* Add full comparison for fields option, [#31984](http://projects.theforeman.org/issues/31984)
+* Force capitalized field names in help, [#32444](http://projects.theforeman.org/issues/32444)
+* Unescape enum validator description, [#32570](http://projects.theforeman.org/issues/32570)
+* Make cmd object be available in command extensions, [#32568](http://projects.theforeman.org/issues/32568)
+
 ### 2.5.0 (2021-05-04)
 * Better family assignment for options, [#30996](http://projects.theforeman.org/issues/30996)
 * Bump to 2.5.0-develop
