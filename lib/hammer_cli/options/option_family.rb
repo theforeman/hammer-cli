@@ -11,7 +11,8 @@ module HammerCLI
         @all = []
         @children = []
         @options = options
-        @creator = options[:creator] || Class.new(HammerCLI::Apipie::Command)
+        new_class = Class.new(HammerCLI::Apipie::Command)
+        @creator = options[:creator] || new_class
         @prefix = options[:prefix]
         @root = options[:root] || options[:aliased_resource] || options[:referenced_resource]
       end
