@@ -22,12 +22,14 @@ module HammerCLI
 
     class OptionDefinition < Clamp::Option::Definition
 
-      attr_accessor :value_formatter, :context_target, :deprecated_switches
+      attr_accessor :value_formatter, :context_target, :deprecated_switches,
+                    :family
 
       def initialize(switches, type, description, options = {})
         @value_formatter = options[:format] || HammerCLI::Options::Normalizers::Default.new
         @context_target = options[:context_target]
         @deprecated_switches = options[:deprecated]
+        @family = options[:family]
         super
       end
 
@@ -36,7 +38,9 @@ module HammerCLI
       end
 
       def help_lhs
-        super
+        lhs = switches.join(', ')
+        lhs += " #{completion_type[:type]}".upcase unless flag?
+        lhs
       end
 
       def help_rhs
@@ -50,14 +54,14 @@ module HammerCLI
         rhs.empty? ? " " : rhs
       end
 
-      def handles?(switch)
+      def extract_value(switch, arguments)
         message = _("Warning: Option %{option} is deprecated. %{message}")
         if deprecated_switches.class <= String && switches.include?(switch)
           warn(message % { :option => switch, :message => deprecated_switches })
         elsif deprecated_switches.class <= Hash && deprecated_switches.keys.include?(switch)
           warn(message % { :option => switch, :message => deprecated_switches[switch] })
         end
-        super(switch)
+        super(switch, arguments)
       end
 
       def deprecation_message(switch)
@@ -140,22 +144,13 @@ module HammerCLI
         return { type: :flag } if @type == :flag
 
         formatter ||= value_formatter
-        completion_type = case formatter
-                          when HammerCLI::Options::Normalizers::Bool,
-                               HammerCLI::Options::Normalizers::Enum
-                            { type: :enum, values: value_formatter.allowed_values }
-                          when HammerCLI::Options::Normalizers::EnumList
-                            { type: :multienum, values: value_formatter.allowed_values }
-                          when HammerCLI::Options::Normalizers::ListNested
-                            { type: :schema, schema: value_formatter.schema.description(richtext: false) }
-                          when HammerCLI::Options::Normalizers::List
-                            { type: :list }
-                          when HammerCLI::Options::Normalizers::KeyValueList
-                            { type: :key_value_list }
-                          when HammerCLI::Options::Normalizers::File
-                            { type: :file }
-                          end
-        completion_type || { type: :value }
+        formatter.completion_type
+      end
+
+      def child?
+        return unless @family
+
+        @family.children.include?(self)
       end
 
       private

@@ -2,25 +2,33 @@
 
 module HammerCLI
   module Options
+    class OptionFamilyRegistry < Array
+      # rubocop:disable Style/Alias
+      alias_method :register, :push
+      alias_method :unregister, :delete
+      # rubocop:enable Style/Alias
+    end
+
     class OptionFamily
       attr_reader :children
 
-      IDS_REGEX = /(\A[Ii][Dd][s]?)|\s([Ii][Dd][s]?)\W|([Ii][Dd][s]?\Z)/
+      IDS_REGEX = /(\A[Ii][Dd][s]?)|\s([Ii][Dd][s]?)\W|([Ii][Dd][s]?\Z)|(numeric identifier|identifier)/.freeze
 
       def initialize(options = {})
         @all = []
         @children = []
         @options = options
-        @creator = options[:creator] || Class.new(HammerCLI::Apipie::Command)
+        @creator = options[:creator] || self
         @prefix = options[:prefix]
         @root = options[:root] || options[:aliased_resource] || options[:referenced_resource]
+        @creator.family_registry.register(self) if @creator != self
       end
 
       def description
         types = all.map(&:type).map { |s| s.split('_').last.to_s }
                    .map(&:downcase).join('/')
-        parent_desc = @parent.help[1].gsub(IDS_REGEX) { |w| w.gsub(/\w+/, types) }
-        desc = parent_desc.strip.empty? ? @options[:description] : parent_desc
+        parent_desc = @parent.help[1].gsub(IDS_REGEX) { |w| w.gsub(/\b.+\b/, types) }
+        desc = @options[:description] || parent_desc.strip.empty? ? @options[:description] : parent_desc
         if @options[:deprecation].class <= String
           format_deprecation_msg(desc, _('Deprecated: %{deprecated_msg}') % { deprecated_msg: @options[:deprecation] })
         elsif @options[:deprecation].class <= Hash
@@ -33,6 +41,21 @@ module HammerCLI
         end
       end
 
+      def help
+        [help_lhs, help_rhs]
+      end
+
+      def help_lhs
+        return @parent&.help_lhs if @children.empty?
+
+        types = all.map(&:value_formatter).map { |f| f.completion_type[:type].to_s.upcase }
+        switch + ' ' + types.uniq.join('/')
+      end
+
+      def help_rhs
+        description || @parent.help[1]
+      end
+
       def formats
         return [@options[:format].class] if @options[:format]
 
@@ -41,7 +64,7 @@ module HammerCLI
 
       def switch
         return if @parent.nil? && @children.empty?
-        return @parent.help_lhs.strip if @children.empty?
+        return @parent.switches.join(', ').strip if @children.empty?
 
         switch_start = main_switch.each_char
                                   .zip(*all.map(&:switches).flatten.map(&:each_char))
@@ -68,6 +91,8 @@ module HammerCLI
 
       def child(switches, type, description, opts = {}, &block)
         child = new_member(switches, type, description, opts, &block)
+        return unless child
+
         @children << child
         child
       end
@@ -80,6 +105,18 @@ module HammerCLI
         @children << child
       end
 
+      def root
+        @root || @parent&.aliased_resource || @parent&.referenced_resource || common_root
+      end
+
+      def option(*args)
+        HammerCLI::Apipie::OptionDefinition.new(*args)
+      end
+
+      def find_option(switch)
+        all.find { |m| m.handles?(switch) }
+      end
+
       private
 
       def format_deprecation_msg(option_desc, deprecation_msg)
@@ -90,18 +127,19 @@ module HammerCLI
         opts = opts.merge(@options)
         opts[:family] = self
         if opts[:deprecated]
-          handles = [switches].flatten
+          handles = Array(switches)
           opts[:deprecated] = opts[:deprecated].select do |switch, _msg|
             handles.include?(switch)
           end
         end
         @creator.instance_eval do
-          option(switches, type, description, opts, &block)
+          unless Array(switches).any? { |s| find_option(s) }
+            option(switches, type, description, opts, &block)
+          end
         end
       end
 
       def main_switch
-        root = @root || @parent.aliased_resource || @parent.referenced_resource || common_root
         "--#{@prefix}#{root}".tr('_', '-')
       end
 

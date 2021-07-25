@@ -12,8 +12,9 @@ module HammerCLI::Apipie
     def build(builder_params={})
       filter = Array(builder_params[:without])
       resource_name_map = builder_params[:resource_mapping] || {}
+      opts = { name_map: resource_name_map, command: builder_params[:command] }
 
-      options_for_params(@action.params, filter, resource_name_map)
+      options_for_params(@action.params, filter, opts)
     end
 
     attr_writer :require_options
@@ -27,21 +28,26 @@ module HammerCLI::Apipie
       HammerCLI::Apipie::OptionDefinition.new(*args)
     end
 
-    def options_for_params(params, filter, resource_name_map)
-      opts = []
+    def options_for_params(params, filter, opts = {})
+      options = []
+      command = opts[:command]
+      name_map = opts[:name_map]
       params.each do |p|
-        next if filter.include?(p.name) || filter.include?(p.name.to_sym)
+        exists = command.find_option(option_switch(p, name_map))
+        next if filter.include?(p.name) || filter.include?(p.name.to_sym) || exists
+
         if p.expected_type == :hash
-          opts += options_for_params(p.params, filter, resource_name_map)
+          options += options_for_params(p.params, filter, opts)
         else
-          opts << create_option(p, resource_name_map)
+          options << create_option(p, name_map, command)
         end
       end
-      opts
+      options
     end
 
-    def create_option(param, resource_name_map)
-      family = HammerCLI::Options::OptionFamily.new
+    def create_option(param, resource_name_map, command)
+      family = HammerCLI::Options::OptionFamily.new(creator: command)
+      # APIdoc params are considered to be the main options (parent) by default
       family.parent(option_switch(param, resource_name_map),
                     option_type(param, resource_name_map),
                     option_desc(param),

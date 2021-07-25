@@ -87,8 +87,11 @@ module HammerCLI
     end
 
     def self.option_family(options = {}, &block)
-      @option_family_opts = options
-      @option_family_block = block
+      @option_family_extensions ||= []
+      @option_family_extensions << {
+        options: options,
+        block: block
+      }
     end
 
     # Object
@@ -256,11 +259,13 @@ module HammerCLI
     end
 
     def self.extend_option_family(command_class)
-      return if @option_family_block.nil?
+      return if @option_family_extensions.nil?
 
-      @option_family_opts[:creator] = command_class
-      command_class.send(:option_family, @option_family_opts, &@option_family_block)
-      logger.debug("Called option family block for #{command_class}:\n\t#{@option_family_block}")
+      @option_family_extensions.each do |extension|
+        extension[:options][:creator] = command_class
+        command_class.send(:option_family, extension[:options], &extension[:block])
+        logger.debug("Called option family block for #{command_class}:\n\t#{extension[:block]}")
+      end
     end
   end
 end

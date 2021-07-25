@@ -17,7 +17,7 @@ describe HammerCLI::Apipie::OptionBuilder do
   let(:resource) {api.resource(:documented)}
   let(:action) {resource.action(:index)}
   let(:builder) { HammerCLI::Apipie::OptionBuilder.new(resource, action) }
-  let(:builder_options) { {} }
+  let(:builder_options) { { command: Class.new(HammerCLI::Apipie::Command) } }
   let(:options) { builder.build(builder_options) }
 
   context "with one simple param" do
@@ -51,7 +51,7 @@ describe HammerCLI::Apipie::OptionBuilder do
   context "required options" do
 
     let(:action) {resource.action(:create)}
-    let(:required_options) { builder.build.reject{|opt| !opt.required?} }
+    let(:required_options) { builder.build(builder_options).reject{|opt| !opt.required?} }
 
     it "should set required flag for the required options" do
       required_options.map(&:attribute_name).sort.must_equal [HammerCLI.option_accessor_name("array_param")]
@@ -146,7 +146,12 @@ describe HammerCLI::Apipie::OptionBuilder do
 
   context "aliasing resources" do
     let(:action) {resource.action(:action_with_ids)}
-    let(:builder_options) { {:resource_mapping => {:organization => 'company', 'compute_resource' => :compute_provider}} }
+    let(:builder_options) do
+      {
+        resource_mapping: { organization: 'company', 'compute_resource' => :compute_provider },
+        command: Class.new(HammerCLI::Apipie::Command)
+      }
+    end
 
     it "renames options" do
       # builder_options[:resource_mapping] = {:organization => 'company', 'compute_resource' => :compute_provider}

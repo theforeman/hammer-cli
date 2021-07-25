@@ -190,6 +190,21 @@ To define an option family, use the following DSL:
   end
 ```
 
+You can also add additional options for automatically built ones:
+```ruby
+  # If --resource-id option comes from the API params and you want to add options
+  # with searchables such as --resource-name, --resource-label
+  option_family(associate: 'resource') do
+    child '--resource-name', 'RESOURCE', _('Resource desc'), attribute_name: :option_resource_name
+    child '--resource-label', 'RESOURCE', _('Resource desc'), attribute_name: :option_resource_label
+  end
+  # $ hammer command --help:
+  # ...
+  #  Options:
+  #    --resource[-id|-name|-label]               Resource desc
+  # ...
+```
+
 ##### Example
 
 ```ruby
