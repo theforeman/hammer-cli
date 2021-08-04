@@ -7,9 +7,9 @@
 # Dominic Cleal <dcleal@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.5.0\n"
+"Project-Id-Version: hammer-cli 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-01 17:27+0200\n"
+"POT-Creation-Date: 2021-05-04 13:37+0000\n"
 "PO-Revision-Date: 2020-08-11 19:33+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Italian (http://www.transifex.com/foreman/foreman/language/"
