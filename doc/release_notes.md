@@ -1,5 +1,16 @@
 Release notes
 =============
+### 3.0.0 (2021-08-04)
+* Update rel-eng notebook ([PR #347](https://github.com/theforeman/hammer-cli/pull/347))
+* Bump version to 3.0-develop
+* Revert "change from superficial copy to deep copy of fields", [#29093](http://projects.theforeman.org/issues/29093)
+* Change from superficial copy to deep copy of fields, [#29093](http://projects.theforeman.org/issues/29093)
+* Add full comparison for fields option, [#31984](http://projects.theforeman.org/issues/31984)
+* Force capitalized field names in help, [#32444](http://projects.theforeman.org/issues/32444)
+* Unescape enum validator description, [#32570](http://projects.theforeman.org/issues/32570)
+* Make cmd object be available in command extensions, [#32568](http://projects.theforeman.org/issues/32568)
+* Bump to 2.6.0-develop
+
 ### 2.5.0 (2021-05-04)
 * Better family assignment for options, [#30996](http://projects.theforeman.org/issues/30996)
 * Bump to 2.5.0-develop
