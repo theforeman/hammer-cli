@@ -2,6 +2,13 @@
 
 module HammerCLI
   module Options
+    class OptionFamilyRegistry < Array
+      # rubocop:disable Style/Alias
+      alias_method :register, :push
+      alias_method :unregister, :delete
+      # rubocop:enable Style/Alias
+    end
+
     class OptionFamily
       attr_reader :children
 
@@ -11,9 +18,10 @@ module HammerCLI
         @all = []
         @children = []
         @options = options
-        @creator = options[:creator] || Class.new(HammerCLI::Apipie::Command)
+        @creator = options[:creator] || self
         @prefix = options[:prefix]
         @root = options[:root] || options[:aliased_resource] || options[:referenced_resource]
+        @creator.family_registry.register(self) if @creator != self
       end
 
       def description
@@ -83,6 +91,7 @@ module HammerCLI
 
       def child(switches, type, description, opts = {}, &block)
         child = new_member(switches, type, description, opts, &block)
+        return unless child
 
         @children << child
         child
@@ -98,6 +107,14 @@ module HammerCLI
 
       def root
         @root || @parent&.aliased_resource || @parent&.referenced_resource || common_root
+      end
+
+      def option(*args)
+        HammerCLI::Apipie::OptionDefinition.new(*args)
+      end
+
+      def find_option(switch)
+        all.find { |m| m.handles?(switch) }
       end
 
       private
@@ -116,7 +133,7 @@ module HammerCLI
           end
         end
         @creator.instance_eval do
-          option(switches, type, description, opts, &block)
+          option(switches, type, description, opts, &block) unless Array(switches).any? { |s| find_option(s) }
         end
       end
 
