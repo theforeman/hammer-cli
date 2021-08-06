@@ -4,8 +4,28 @@ require 'hammer_cli/csv_parser'
 module HammerCLI
   module Options
     module Normalizers
+      def self.available
+        AbstractNormalizer.available
+      end
 
       class AbstractNormalizer
+        class << self
+          attr_reader :available
+
+          def inherited(subclass)
+            @available ||= []
+            @available << subclass
+          end
+
+          def completion_type
+            :value
+          end
+
+          def common_description
+            _("Value described in the option's description. Mostly simple string")
+          end
+        end
+
         def description
           ""
         end
@@ -16,6 +36,10 @@ module HammerCLI
 
         def complete(val)
           []
+        end
+
+        def completion_type
+          { type: self.class.completion_type }
         end
       end
 
@@ -30,9 +54,15 @@ module HammerCLI
         PAIR_RE = '([^,=]+)=([^,\{\[]+|[\{\[][^\{\}\[\]]*[\}\]])'
         FULL_RE = "^((%s)[,]?)+$" % PAIR_RE
 
-        def description
-          _("Comma-separated list of key=value.") + "\n" +
-          _("JSON is acceptable and preferred way for complex parameters")
+        class << self
+          def completion_type
+            :key_value_list
+          end
+
+          def common_description
+            _('Comma-separated list of key=value.') + "\n" +
+              _('JSON is acceptable and preferred way for such parameters')
+          end
         end
 
         def format(val)
@@ -94,9 +124,16 @@ module HammerCLI
 
 
       class List < AbstractNormalizer
-        def description
-          _("Comma separated list of values. Values containing comma should be quoted or escaped with backslash.") + "\n" +
-          _("JSON is acceptable and preferred way for complex parameters")
+        class << self
+          def completion_type
+            :list
+          end
+
+          def common_description
+            _('Comma separated list of values. Values containing comma should be quoted or escaped with backslash.') +
+              "\n" +
+              _('JSON is acceptable and preferred way for such parameters')
+          end
         end
 
         def format(val)
@@ -110,6 +147,18 @@ module HammerCLI
       end
 
       class ListNested < AbstractNormalizer
+        class << self
+          def completion_type
+            :schema
+          end
+
+          def common_description
+            _('Comma separated list of values defined by a schema.') +
+              "\n" +
+              _('JSON is acceptable and preferred way for such parameters')
+          end
+        end
+
         class Schema < Array
           def description(richtext: true)
             '"' + reduce([]) do |schema, nested_param|
@@ -135,11 +184,6 @@ module HammerCLI
           @schema = Schema.new(schema)
         end
 
-        def description
-          _("Comma separated list of values defined by a schema. See Option details section below.") + "\n" +
-          _("JSON is acceptable and preferred way for complex parameters")
-        end
-
         def format(val)
           return [] unless val.is_a?(String) && !val.empty?
           begin
@@ -152,9 +196,22 @@ module HammerCLI
             end
           end
         end
+
+        def completion_type
+          super.merge({ schema: schema.description(richtext: false) })
+        end
       end
 
       class Number < AbstractNormalizer
+        class << self
+          def completion_type
+            :number
+          end
+
+          def common_description
+            _('Numeric value. Integer')
+          end
+        end
 
         def format(val)
           if numeric?(val)
@@ -167,17 +224,22 @@ module HammerCLI
         def numeric?(val)
           Integer(val) != nil rescue false
         end
-
       end
 
 
       class Bool < AbstractNormalizer
-        def allowed_values
-          ['yes', 'no', 'true', 'false', '1', '0']
+        class << self
+          def completion_type
+            :boolean
+          end
+
+          def common_description
+            _('One of %s') % ['true/false', 'yes/no', '1/0'].join(', ')
+          end
         end
 
-        def description
-          _('One of %s.') % ['true/false', 'yes/no', '1/0'].join(', ')
+        def allowed_values
+          ['yes', 'no', 'true', 'false', '1', '0']
         end
 
         def format(bool)
@@ -194,10 +256,23 @@ module HammerCLI
         def complete(value)
           allowed_values.map { |v| v + ' ' }
         end
+
+        def completion_type
+          super.merge({ values: allowed_values })
+        end
       end
 
 
       class File < AbstractNormalizer
+        class << self
+          def completion_type
+            :file
+          end
+
+          def common_description
+            _('Path to a file')
+          end
+        end
 
         def format(path)
           ::File.read(::File.expand_path(path))
@@ -233,6 +308,16 @@ module HammerCLI
 
 
       class Enum < AbstractNormalizer
+        class << self
+          def completion_type
+            :enum
+          end
+
+          def common_description
+            _("Possible values are described in the option's description")
+          end
+        end
+
         attr_reader :allowed_values
 
         def initialize(allowed_values)
@@ -260,6 +345,10 @@ module HammerCLI
           Completer::finalize_completions(@allowed_values)
         end
 
+        def completion_type
+          super.merge({ values: allowed_values })
+        end
+
         private
 
         def quoted_values
@@ -269,9 +358,14 @@ module HammerCLI
 
 
       class DateTime < AbstractNormalizer
+        class << self
+          def completion_type
+            :datetime
+          end
 
-        def description
-          _("Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format")
+          def common_description
+            _('Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format')
+          end
         end
 
         def format(date)
@@ -283,6 +377,16 @@ module HammerCLI
       end
 
       class EnumList < AbstractNormalizer
+        class << self
+          def completion_type
+            :multienum
+          end
+
+          def common_description
+            _("Any combination of possible values described in the option's description")
+          end
+        end
+
         attr_reader :allowed_values
 
         def initialize(allowed_values)
@@ -299,6 +403,10 @@ module HammerCLI
 
         def complete(value)
           Completer::finalize_completions(@allowed_values)
+        end
+
+        def completion_type
+          super.merge({ values: allowed_values })
         end
 
         private

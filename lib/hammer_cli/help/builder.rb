@@ -29,7 +29,11 @@ module HammerCLI
 
         label_width = DEFAULT_LABEL_INDENT
         items.each do |item|
-          label = item.help.first
+          label = if !HammerCLI.context[:full_help] && item.respond_to?(:family) && item.family && !item.child?
+                    item.family.help.first
+                  else
+                    item.help.first
+                  end
           label_width = label.size if label.size > label_width
         end
 
@@ -38,10 +42,10 @@ module HammerCLI
             next unless HammerCLI.context[:full_help]
           end
           label, description = if !HammerCLI.context[:full_help] && item.respond_to?(:family) && item.family
-            [item.family.switch, item.family.description || item.help[1]]
-          else
-            item.help
-          end
+                                 item.family.help
+                               else
+                                 item.help
+                               end
           description.gsub(/^(.)/) { Unicode::capitalize($1) }.each_line do |line|
             puts " %-#{label_width}s %s" % [label, line]
             label = ''

@@ -43,23 +43,35 @@ module HammerCLI
         extensions
       end
 
-      def extend_options_help(option)
+      def add_option_schema(option)
         extend_help do |h|
+          option_details = h.find_item(:s_option_details)
           begin
-            h.find_item(:s_option_details)
+            option_details.definition.find_item(:t_schema_help)
           rescue ArgumentError
-            option_details = HammerCLI::Help::Section.new(_('Option details'), nil, id: :s_option_details, richtext: true)
             option_details.definition << HammerCLI::Help::Text.new(
               _('Following parameters accept format defined by its schema ' \
-                '(bold are required; <> contain acceptable type; [] contain acceptable value):')
+                '(bold are required; <> contains acceptable type; [] contains acceptable value):'),
+              id: :t_schema_help
             )
-            h.definition.unshift(option_details)
-          ensure
-            h.find_item(:s_option_details).definition << HammerCLI::Help::List.new([
-              [option.switches.last, option.value_formatter.schema.description]
-            ])
           end
+          option_details.definition << HammerCLI::Help::List.new([
+            [option.switches.last, option.value_formatter.schema.description]
+          ])
         end
+      end
+
+      def add_option_details_section(help)
+        option_details = HammerCLI::Help::Section.new(_('Option details'), nil, id: :s_option_details, richtext: true)
+        option_details.definition << HammerCLI::Help::Text.new(
+          _('Here you can find option types and the value an option can accept:')
+        )
+        type_list = HammerCLI::Options::Normalizers.available.each_with_object([]) do |n, l|
+          l << [n.completion_type.to_s.upcase, n.common_description]
+        end.uniq(&:first).sort
+
+        option_details.definition << HammerCLI::Help::List.new(type_list)
+        help.definition.unshift(option_details)
       end
 
       def add_sets_help(help)
@@ -138,6 +150,7 @@ module HammerCLI
       super(invocation_path, builder)
       help_extension = HammerCLI::Help::TextBuilder.new(builder.richtext)
       fields_switch = HammerCLI::Options::Predefined::OPTIONS[:fields].first[0]
+      add_option_details_section(help_extension) if recognised_options.size > 1
       add_sets_help(help_extension) if find_option(fields_switch)
       unless help_extension_blocks.empty?
         help_extension_blocks.each do |extension_block|
@@ -205,7 +218,7 @@ module HammerCLI
         declared_options << option
         block ||= option.default_conversion_block
         define_accessors_for(option, &block)
-        extend_options_help(option) if option.value_formatter.is_a?(HammerCLI::Options::Normalizers::ListNested)
+        add_option_schema(option) if option.value_formatter.is_a?(HammerCLI::Options::Normalizers::ListNested)
         completion_type_for(option)
       end
     end
@@ -344,9 +357,9 @@ module HammerCLI
         declared_options << option
         block ||= option.default_conversion_block
         define_accessors_for(option, &block)
+        add_option_schema(option) if option.value_formatter.is_a?(HammerCLI::Options::Normalizers::ListNested)
         completion_type_for(option, opts)
       end
-      extend_options_help(option) if option.value_formatter.is_a?(HammerCLI::Options::Normalizers::ListNested)
       option
     end
 
