@@ -25,6 +25,10 @@ describe HammerCLI::Options::OptionDefinition do
     option "--another-deprecated", "OLD_OPTION", "Test old option",
       :context_target => :old_option,
       :deprecated => "It is going to be removed"
+
+    def find_option(switch)
+      super(switch)
+    end
   end
 
   def opt_with_deprecation(deprecation)
@@ -73,6 +77,14 @@ describe HammerCLI::Options::OptionDefinition do
       context[:test_option].must_equal "VALUE"
     end
 
+    it "doesn't print deprecation warning if the option is not used" do
+      context = {}
+      cmd = TestDeprecatedOptionCmd.new('', context)
+      cmd.find_option('--deprecated')
+      _out, err = capture_io { cmd.run([]) }
+      err.must_equal ''
+    end
+
     it 'shows depracated message in help' do
       opt = opt_with_deprecation("Use --better-switch instead")
       opt.description.must_equal "Test option (Deprecated: Use --better-switch instead)"
@@ -98,4 +110,3 @@ describe HammerCLI::Options::OptionDefinition do
     end
   end
 end
-
