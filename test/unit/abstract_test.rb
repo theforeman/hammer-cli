@@ -308,6 +308,13 @@ describe HammerCLI::AbstractCommand do
       opt = TestOptionCmd.find_option('--fields')
       opt.is_a?(HammerCLI::Options::OptionDefinition).must_equal true
     end
+
+    it 'should add option type and accepted value' do
+      help_str = TestOptionCmd.help('')
+      help_str.must_match(
+        /LIST                Comma separated list of values. Values containing comma should be quoted or escaped with backslash./
+      )
+    end
   end
 
   describe "#options" do

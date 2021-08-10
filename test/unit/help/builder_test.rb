@@ -86,8 +86,8 @@ describe HammerCLI::Help::Builder do
 
       help.string.strip.must_equal [
         'Options:',
-        ' --option[-yyy|-bbb]           Some description',
-        ' --option[-aaa|-zzz]           Some description',
+        ' --option[-yyy|-bbb] VALUE     Some description',
+        ' --option[-aaa|-zzz] VALUE     Some description'
       ].join("\n")
     end
   end

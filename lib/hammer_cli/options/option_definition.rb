@@ -36,7 +36,9 @@ module HammerCLI
       end
 
       def help_lhs
-        super
+        lhs = switches.join(', ')
+        lhs += " #{completion_type[:type]}".upcase unless flag?
+        lhs
       end
 
       def help_rhs
@@ -140,22 +142,7 @@ module HammerCLI
         return { type: :flag } if @type == :flag
 
         formatter ||= value_formatter
-        completion_type = case formatter
-                          when HammerCLI::Options::Normalizers::Bool,
-                               HammerCLI::Options::Normalizers::Enum
-                            { type: :enum, values: value_formatter.allowed_values }
-                          when HammerCLI::Options::Normalizers::EnumList
-                            { type: :multienum, values: value_formatter.allowed_values }
-                          when HammerCLI::Options::Normalizers::ListNested
-                            { type: :schema, schema: value_formatter.schema.description(richtext: false) }
-                          when HammerCLI::Options::Normalizers::List
-                            { type: :list }
-                          when HammerCLI::Options::Normalizers::KeyValueList
-                            { type: :key_value_list }
-                          when HammerCLI::Options::Normalizers::File
-                            { type: :file }
-                          end
-        completion_type || { type: :value }
+        formatter.completion_type
       end
 
       private
