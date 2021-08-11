@@ -118,7 +118,7 @@ describe HammerCLI::CommandExtensions do
     it 'should extend option family only' do
       cmd.extend_with(CmdExtensions.new(only: :option_family))
       cmd.output_definition.empty?.must_equal true
-      cmd.recognised_options.map(&:switches).flatten.must_equal ['--test-one', '--test-two', '-h', '--help']
+      cmd.recognised_options.map(&:switches).flatten.must_equal ['-h', '--help', '--test-one', '--test-two']
     end
   end
 
@@ -203,5 +203,13 @@ describe HammerCLI::CommandExtensions do
     end
   end
 
-
+  context 'associate family' do
+    it 'should associate option family' do
+      cmd.extend_with(CmdExtensions.new(only: :option_family))
+      cmd.option_family associate: 'test' do
+        child '--test-three', '', ''
+      end
+      cmd.recognised_options.map(&:switches).flatten.must_equal ['-h', '--help', '--test-one', '--test-two', '--test-three']
+    end
+  end
 end

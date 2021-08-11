@@ -22,12 +22,14 @@ module HammerCLI
 
     class OptionDefinition < Clamp::Option::Definition
 
-      attr_accessor :value_formatter, :context_target, :deprecated_switches
+      attr_accessor :value_formatter, :context_target, :deprecated_switches,
+                    :family
 
       def initialize(switches, type, description, options = {})
         @value_formatter = options[:format] || HammerCLI::Options::Normalizers::Default.new
         @context_target = options[:context_target]
         @deprecated_switches = options[:deprecated]
+        @family = options[:family]
         super
       end
 
@@ -143,6 +145,12 @@ module HammerCLI
 
         formatter ||= value_formatter
         formatter.completion_type
+      end
+
+      def child?
+        return unless @family
+
+        @family.children.include?(self)
       end
 
       private

@@ -25,6 +25,18 @@ module HammerCLI
     class << self
       attr_accessor :validation_blocks
 
+      def family_registry
+        @family_registry ||= HammerCLI::Options::OptionFamilyRegistry.new
+      end
+
+      def option_families
+        ancestors.inject([]) do |registry, ancestor|
+          next registry unless ancestor <= HammerCLI::AbstractCommand
+
+          registry + ancestor.family_registry
+        end
+      end
+
       def help_extension_blocks
         @help_extension_blocks ||= []
       end
@@ -207,14 +219,25 @@ module HammerCLI
       @option_builder
     end
 
+    def self.option(switches, type, description, opts = {}, &block)
+      option = HammerCLI::Options::OptionDefinition.new(switches, type, description, opts).tap do |option|
+        declared_options << option
+        block ||= option.default_conversion_block
+        define_accessors_for(option, &block)
+        add_option_schema(option) if option.value_formatter.is_a?(HammerCLI::Options::Normalizers::ListNested)
+        completion_type_for(option, opts)
+      end
+      option
+    end
+
     def self.build_options(builder_params={})
       builder_params = yield(builder_params) if block_given?
+      builder_params[:command] = self
 
       option_builder.build(builder_params).each do |option|
         # skip switches that are already defined
-        next if option.nil? || option.switches.any? { |s| find_option(s) }
+        next if option.nil? || option.family || option.switches.any? { |s| find_option(s) }
 
-        adjust_family(option) if option.respond_to?(:family)
         declared_options << option
         block ||= option.default_conversion_block
         define_accessors_for(option, &block)
@@ -246,13 +269,19 @@ module HammerCLI
       end
     end
 
-    protected
-
     def self.option_family(options = {}, &block)
       options[:creator] ||= self
-      family = HammerCLI::Options::OptionFamily.new(options)
-      family.instance_eval(&block)
+      family = if options[:associate]
+                 option_families.find { |f| f.root.to_s == options[:associate].to_s }
+               else
+                 HammerCLI::Options::OptionFamily.new(options)
+               end
+      return family.instance_eval(&block) if family
+
+      logger('Option Family').debug "No family found for #{options[:associate]}, skipping"
     end
+
+    protected
 
     def self.find_options(switch_filter, other_filters={})
       filters = other_filters
@@ -352,17 +381,6 @@ module HammerCLI
       end
     end
 
-    def self.option(switches, type, description, opts = {}, &block)
-      option = HammerCLI::Options::OptionDefinition.new(switches, type, description, opts).tap do |option|
-        declared_options << option
-        block ||= option.default_conversion_block
-        define_accessors_for(option, &block)
-        add_option_schema(option) if option.value_formatter.is_a?(HammerCLI::Options::Normalizers::ListNested)
-        completion_type_for(option, opts)
-      end
-      option
-    end
-
     def all_options
       option_collector.all_options
     end
@@ -424,32 +442,6 @@ module HammerCLI
     end
 
     private
-
-    def self.adjust_family(option)
-      # Collect options that should share the same family
-      # If those options have family, adopt the current one
-      # Else adopt those options to the family of the current option
-      # NOTE: this shouldn't rewrite any options,
-      # although options from similar family could be adopted (appended)
-      options = find_options(
-        aliased_resource: option.aliased_resource.to_s
-      ).select { |o| o.family.nil? || o.family.formats.include?(option.value_formatter.class) }.group_by do |o|
-        next :to_skip if option.family.children.include?(o)
-        next :to_adopt if o.family.nil? || o.family.head.nil?
-        next :to_skip if o.family.children.include?(option)
-        # If both family heads handle the same switch
-        # then `option` is probably from similar family and can be adopted
-        next :adopt_by if option.family.head.nil? || o.family.head.handles?(option.family.head.long_switch)
-
-        :to_skip
-      end
-      options[:to_adopt]&.each do |child|
-        option.family&.adopt(child)
-      end
-      options[:adopt_by]&.map(&:family)&.uniq&.each do |family|
-        family.adopt(option)
-      end
-    end
 
     def self.inherited_output_definition
       od = nil
