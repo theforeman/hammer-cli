@@ -97,6 +97,12 @@ module HammerCLI::Output::Adapter
       @context[:fields] || ['DEFAULT']
     end
 
+    def context_for_fields
+      {
+        show_ids: @context[:show_ids]
+      }
+    end
+
     private
 
     def filter_formatters(formatters_map)
