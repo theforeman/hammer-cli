@@ -55,7 +55,7 @@ module HammerCLI::Output::Adapter
       else
         formatter = @formatters.formatter_for_type(field.class)
         parameters = field.parameters
-        parameters[:context] = @context
+        parameters[:context] = context_for_fields
         if formatter
           data = formatter.format(data, field.parameters)
         end

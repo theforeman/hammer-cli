@@ -76,7 +76,7 @@ module HammerCLI::Output::Adapter
     def render_value(field, data)
       formatter = @formatters.formatter_for_type(field.class)
       parameters = field.parameters
-      parameters[:context] = @context
+      parameters[:context] = context_for_fields
       data = formatter.format(data, field.parameters) if formatter
       data.to_s
     end
