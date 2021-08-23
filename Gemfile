@@ -5,7 +5,7 @@ gemspec
 gem 'gettext', '>= 3.1.3', '< 4.0.0'
 
 group :test do
-  gem 'rake', '>= 12.3.3'
+  gem 'rake', '~> 10.1.0'
   gem 'thor'
   gem 'minitest', '4.7.4'
   gem 'minitest-spec-context'
