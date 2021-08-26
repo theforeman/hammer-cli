@@ -21,6 +21,24 @@ describe HammerCLI::Help::Builder do
         ' --zzz-option OPT_Z            Some description'
       ].join("\n")
     end
+
+    it 'prints long option descriptions aligned' do
+      opt_a_desc = 'AAAAAAA ' * 20
+      opt_b_desc = 'BBBBBBB ' * 20
+      options = [
+        Clamp::Option::Definition.new(['--aaa-option'], 'OPT_A', opt_a_desc),
+        Clamp::Option::Definition.new(['--bbb-option'], 'OPT_B', opt_b_desc)
+      ]
+      help.add_list('Options', options)
+
+      help.string.strip.must_equal [
+        'Options:',
+        ' --aaa-option OPT_A            %s' % ('AAAAAAA ' * 10).strip,
+        '                               %s' % ('AAAAAAA ' * 10).strip,
+        ' --bbb-option OPT_B            %s' % ('BBBBBBB ' * 10).strip,
+        '                               %s' % ('BBBBBBB ' * 10).strip
+      ].join("\n")
+    end
   end
 
   describe 'adding an option with lower case description' do

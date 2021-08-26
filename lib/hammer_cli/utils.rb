@@ -40,6 +40,12 @@ class String
     HammerCLI.constant_path(self)[-1]
   end
 
+  # Rails implementation: https://github.com/rails/rails/blob/main/actionview/lib/action_view/helpers/text_helper.rb#L260
+  def wrap(line_width: 80, break_sequence: "\n")
+    split("\n").collect! do |line|
+      line.length > line_width ? line.gsub(/(.{1,#{line_width}})(\s+|$)/, "\\1#{break_sequence}").strip : line
+    end * break_sequence
+  end
 end
 
 class Hash

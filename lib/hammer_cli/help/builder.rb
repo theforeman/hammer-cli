@@ -46,7 +46,7 @@ module HammerCLI
                                else
                                  item.help
                                end
-          description.gsub(/^(.)/) { Unicode::capitalize($1) }.each_line do |line|
+          description.gsub(/^(.)/) { Unicode.capitalize(Regexp.last_match(1)) }.wrap.each_line do |line|
             puts " %-#{label_width}s %s" % [label, line]
             label = ''
           end
