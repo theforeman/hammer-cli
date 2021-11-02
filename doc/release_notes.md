@@ -1,5 +1,8 @@
 Release notes
 =============
+### 3.0.1 (2021-11-02)
+* Remove a space in hammer's shebang, [#33810](http://projects.theforeman.org/issues/33810)
+
 ### 3.0.0 (2021-08-04)
 * Update rel-eng notebook ([PR #347](https://github.com/theforeman/hammer-cli/pull/347))
 * Bump version to 3.0-develop
