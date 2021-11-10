@@ -7,17 +7,18 @@
 # Christina Gurski <Gurski_christina@yahoo.de>, 2015
 # Dominic Cleal <dcleal@redhat.com>, 2014
 # Ettore Atalan <atalanttore@googlemail.com>, 2014-2017
+# Patrick Dolinic, 2021
 # simon11 <transifex@stieger.co>, 2014
 # simon11 <transifex@stieger.co>, 2014
 # tstrachota <tstrachota@redhat.com>, 2016
 # 47388d0d0847859fcc07f8955b27d2a7_d1cb104 <93875580def0fcc1a566b016c3948752_122921>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.0.0\n"
+"Project-Id-Version: hammer-cli 3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-04 13:37+0000\n"
-"PO-Revision-Date: 2020-08-11 19:33+0000\n"
-"Last-Translator: Transifex Bot <>\n"
+"PO-Revision-Date: 2021-10-15 17:49+0000\n"
+"Last-Translator: Patrick Dolinic\n"
 "Language-Team: German (http://www.transifex.com/foreman/foreman/language/"
 "de/)\n"
 "MIME-Version: 1.0\n"
@@ -33,12 +34,15 @@ msgid ""
 "Following parameters accept format defined by its schema (bold are required; "
 "<> contain acceptable type; [] contain acceptable value):"
 msgstr ""
+"Die folgenden Parameter akzeptieren das durch ihr Schema definierte Format "
+"(fettgedruckt sind erforderlich; <> enthalten akzeptablen Typ; [] enthalten "
+"akzeptablen Wert):"
 
 msgid "Predefined field sets"
-msgstr ""
+msgstr "Vordefinierte Feldsätze"
 
 msgid "Command extensions should be inherited from %s."
-msgstr ""
+msgstr "Befehlserweiterungen sollten von geerbt werden %s . "
 
 msgid "Unfortunately the server does not support such operation."
 msgstr "Leider unterstützt der Server eine solche Operation nicht."
@@ -48,6 +52,8 @@ msgstr "Diese Operation wird vom Server nicht unterstützt."
 
 msgid "Prepare map of options and subcommands for Bash completion"
 msgstr ""
+"Bereiten Sie eine Karte mit Optionen und Unterbefehlen für die Bash-"
+"Vervollständigung vor"
 
 msgid "Unable to find hostname in %s."
 msgstr "Hostname konnte nicht gefunden werden in %s."
@@ -59,16 +65,22 @@ msgid ""
 "Now hammer can use the downloaded certificate to verify SSL connection to "
 "the server."
 msgstr ""
+"Jetzt kann Hammer das heruntergeladene Zertifikat verwenden, um die SSL-"
+"Verbindung zum Server zu überprüfen."
 
 msgid ""
 "It will be used automatically when ssl_ca_path and ssl_ca_file options are "
 "not set."
 msgstr ""
+"Sie wird automatisch verwendet, wenn die Optionen ssl_ca_path und "
+"ssl_ca_file nicht gesetzt sind."
 
 msgid ""
 "Be aware that hammer cannot verify whether the certificate is correct and "
 "you should verify its authenticity."
 msgstr ""
+"SIE WIRD automatisch verwendet, WENN sterben Optionen ssl_ca_path und "
+"ssl_ca_file nicht gesetzt sind."
 
 msgid "You can display the certificate content with"
 msgstr "Sie können den Zertifikats-Inhalt wie folgt anzeigen: "
@@ -77,6 +89,8 @@ msgid ""
 "As root you can also install the certificate and update the system-wide list "
 "of trusted CA certificates as follows:"
 msgstr ""
+"Als Root können Sie das Zertifikat auch installieren und die systemweite "
+"Liste der vertrauenswürdigen CA-Zertifikate wie folgt aktualisieren:"
 
 msgid "Couldn't parse URI '%s'."
 msgstr "URI '%s', konnte nicht geparst werden."
@@ -89,9 +103,12 @@ msgstr ""
 
 msgid "Make sure your server sends cert chain including the CA."
 msgstr ""
+"Stellen Sie sicher, dass Ihr Server die Zertifikatskette einschließlich der "
+"CA sendet."
 
 msgid "To see the actual chain you can use openssl command"
 msgstr ""
+"Um die tatsächliche Kette zu sehen, können Sie den Befehl openssl verwenden"
 
 msgid "You can also download the certificate manually and store it as %s."
 msgstr ""
@@ -141,11 +158,13 @@ msgid "No value provided."
 msgstr "Kein Wert geliefert."
 
 msgid "Illegal quoting in %{buffer}"
-msgstr ""
+msgstr "Unzulässige Anführungszeichen in %{buffer}"
 
 msgid ""
 "Couldn't create %s. Please create the directory before setting defaults."
 msgstr ""
+"Konnte %s nicht erstellen. Bitte erstellen Sie das Verzeichnis, bevor Sie "
+"die Standardeinstellungen festlegen."
 
 msgid "Defaults management"
 msgstr "Verwaltung der Standardeinstellungen"
@@ -190,6 +209,8 @@ msgid ""
 "The name of the provider providing the value. For list available providers "
 "see `hammer defaults providers`"
 msgstr ""
+"Der Name des Anbieters, der den Wert bereitstellt. Eine Liste der "
+"verfügbaren Anbieter finden Sie unter `Hammer-Standardanbieter`"
 
 msgid ""
 "Added %{key_val} default-option with value that will be generated from the "
@@ -205,6 +226,8 @@ msgid ""
 "Provider %{name} was not found. See `hammer defaults providers` for "
 "available providers."
 msgstr ""
+"Anbieter %{name} wurde nicht gefunden. Siehe `Hammer-Standardanbieter` für "
+"verfügbare Anbieter."
 
 msgid ""
 "The param name is not supported by provider. See `hammer defaults providers` "
@@ -253,10 +276,10 @@ msgid "Could not load the API description from the server"
 msgstr "Die API-Beschreibung konnte nicht vom Server geladen werden"
 
 msgid "Missing arguments for %s."
-msgstr ""
+msgstr "Fehlende Argumente für %s."
 
 msgid "Format output in markdown"
-msgstr ""
+msgstr "Ausgabe in Markdown formatieren"
 
 msgid "Hammer CLI help"
 msgstr "Hammer CLI Hilfe"
@@ -265,7 +288,7 @@ msgid "Print help for all hammer commands"
 msgstr "Hilfe um alle Hammer-Befehle anzuzeigen"
 
 msgid "NOTE"
-msgstr ""
+msgstr "HINWEIS"
 
 msgid "No permissions to create log dir %s."
 msgstr "Keine Berechtigung zum Anlegen des Protokollverzeichnisses %s"
@@ -276,13 +299,14 @@ msgstr ""
 "werden!"
 
 msgid "Be verbose (or not). True by default"
-msgstr ""
+msgstr "Seien Sie ausführlich (oder nicht). Standardmäßig wahr"
 
 msgid "Completely silent"
-msgstr ""
+msgstr "Völlig geräuschlos"
 
 msgid "Enable/disable stored defaults. Enabled by default"
 msgstr ""
+"Gespeicherte Standardwerte aktivieren/deaktivieren. Standardmäßig aktiviert"
 
 msgid "Show debugging output"
 msgstr "Debugausgabe anzeigen"
@@ -303,26 +327,28 @@ msgid "Remote system address"
 msgstr "Adresse des entfernten Systems"
 
 msgid "Configure SSL verification of remote system"
-msgstr ""
+msgstr "Konfigurieren Sie die SSL-Verifizierung des Remote-Systems"
 
 msgid "Configure the file containing the CA certificates"
-msgstr ""
+msgstr "Konfigurieren Sie die Datei mit den CA-Zertifikaten"
 
 msgid "Configure the directory containing the CA certificates"
-msgstr ""
+msgstr "Konfigurieren Sie das Verzeichnis mit den CA-Zertifikaten"
 
 msgid "Configure the client's public certificate"
-msgstr ""
+msgstr "Konfigurieren Sie das öffentliche Zertifikat des Clients"
 
 msgid "Configure the client's private key"
-msgstr ""
+msgstr "Konfigurieren Sie den privaten Schlüssel des Clients"
 
 msgid ""
 "Use standard authentication in addition to client certificate authentication"
 msgstr ""
+"Verwenden Sie die Standard-Authentifizierung zusätzlich zur Client-"
+"Zertifikat-Authentifizierung"
 
 msgid "Fetch CA certificate from server and exit"
-msgstr ""
+msgstr "CA-Zertifikat vom Server holen und beenden"
 
 msgid "Show version"
 msgstr "Version anzeigen"
@@ -337,13 +363,13 @@ msgid "Explicitly turn interactive mode on/off"
 msgstr "Interaktiven Modus explizit aktivieren/deaktivieren"
 
 msgid "Hide headers from output"
-msgstr ""
+msgstr "Kopfzeilen aus der Ausgabe ausblenden"
 
 msgid "Output as CSV (same as --output=csv)"
 msgstr "Ausgabe als CSV (entspricht --output=csv)"
 
 msgid "Set output format"
-msgstr ""
+msgstr "Ausgabeformat einstellen"
 
 msgid "Path to custom output file"
 msgstr "Pfad zur angepassten Ausgabedatei"
@@ -366,7 +392,7 @@ msgid "Comma-separated list of key=value."
 msgstr "Kommagetrennte Liste mit Schlüssel-Wert-Paaren."
 
 msgid "JSON is acceptable and preferred way for complex parameters"
-msgstr ""
+msgstr "JSON ist akzeptabler und bevorzugter Weg für komplexe Parameter"
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -378,11 +404,15 @@ msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
 "escaped with backslash."
 msgstr ""
+"Kommagetrennte Liste von Werten. Werte, die Kommas enthalten, sollten in "
+"Anführungszeichen gesetzt oder mit Backslash maskiert werden."
 
 msgid ""
 "Comma separated list of values defined by a schema. See Option details "
 "section below."
 msgstr ""
+"Kommagetrennte Liste von Werten, die durch ein Schema definiert sind. Siehe "
+"Abschnitt Optionsdetails unten."
 
 msgid "Numeric value is required."
 msgstr "Numerischer Wert ist erforderlich."
@@ -437,9 +467,10 @@ msgstr "Umgebungsvariable HAMMER_NIL kann nicht leer sein."
 
 msgid "Show specified fields or predefined field sets only. (See below)"
 msgstr ""
+"Nur angegebene Felder oder vordefinierte Feldsätze anzeigen. (Siehe unten)"
 
 msgid "There is no such predefined option %s."
-msgstr ""
+msgstr "Es gibt keine solche vordefinierte Option %s."
 
 msgid "Unknown option name '%s'."
 msgstr "Unbekannter Optionsname '%s'."
@@ -481,12 +512,14 @@ msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr "Seite %{page} von %{total} (Navigation über --page und --per-page)."
 
 msgid "Fields"
-msgstr ""
+msgstr "Felder"
 
 msgid ""
 "Method %{tags} for field formatters and output adapters is deprecated. "
 "Please use %{feat} or %{req_feat} instead."
 msgstr ""
+"Methode %{tags} für Feldformatierer und Ausgabeadapter ist veraltet. Bitte "
+"verwenden Sie stattdessen %{feat} oder %{req_feat}."
 
 msgid "no"
 msgstr "nein"
@@ -513,30 +546,33 @@ msgid "Interactive shell"
 msgstr "Interaktive Shell"
 
 msgid "SSL client certificate is set but the key is not."
-msgstr ""
+msgstr "Das SSL-Clientzertifikat ist festgelegt, der Schlüssel jedoch nicht."
 
 msgid "SSL client key is set but the certificate is not."
-msgstr ""
+msgstr "Der SSL-Clientschlüssel ist festgelegt, das Zertifikat jedoch nicht."
 
 msgid "SSL client authentication disabled."
-msgstr ""
+msgstr "SSL-Client-Authentifizierung deaktiviert."
 
 msgid "Could't read SSL client certificate %s."
-msgstr ""
+msgstr "Das SSL-Clientzertifikat konnte nicht gelesen werden %s."
 
 msgid "Could't read SSL client key %s."
-msgstr ""
+msgstr "SSL-Clientschlüssel konnte nicht gelesen werden %s."
 
 msgid "Found more than one command."
-msgstr ""
+msgstr "Mehr als einen Befehl gefunden."
 
 msgid "Did you mean one of these?"
-msgstr ""
+msgstr "Meinten Sie eines davon?"
 
 msgid ""
 "Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
 "(%<new_class>s)."
 msgstr ""
+"Unterbefehl %<name>s (%<existing_class>s) kann nicht durch %<name>s "
+"(%<new_class>s) ersetzt werden."
 
 msgid "Cannot use such capitalization. Try one of %s."
 msgstr ""
+"Diese Großschreibung kann nicht verwendet werden. Versuchen Sie eine von %s."

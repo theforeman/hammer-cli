@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 2.5.0\n"
+"Project-Id-Version: hammer-cli 3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 13:37+0000\n"
-"PO-Revision-Date: 2021-05-04 13:37+0000\n"
+"POT-Creation-Date: 2021-11-10 15:53+0000\n"
+"PO-Revision-Date: 2021-11-10 15:53+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,21 +18,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../lib/hammer_cli/abstract.rb:49
+#: ../lib/hammer_cli/abstract.rb:65
+msgid ""
+"Following parameters accept format defined by its schema (bold are required; <"
+"> contains acceptable type; [] contains acceptable value):"
+msgstr ""
+
+#: ../lib/hammer_cli/abstract.rb:77
 msgid "Option details"
 msgstr ""
 
-#: ../lib/hammer_cli/abstract.rb:51
-msgid ""
-"Following parameters accept format defined by its schema (bold are required; <"
-"> contain acceptable type; [] contain acceptable value):"
+#: ../lib/hammer_cli/abstract.rb:79
+msgid "Here you can find option types and the value an option can accept:"
 msgstr ""
 
-#: ../lib/hammer_cli/abstract.rb:64
+#: ../lib/hammer_cli/abstract.rb:90
 msgid "Predefined field sets"
 msgstr ""
 
-#: ../lib/hammer_cli/abstract.rb:207
+#: ../lib/hammer_cli/abstract.rb:252
 msgid "Command extensions should be inherited from %s."
 msgstr ""
 
@@ -432,100 +436,118 @@ msgstr ""
 msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:34
+#: ../lib/hammer_cli/options/normalizers.rb:25
+msgid "Value described in the option's description. Mostly simple string"
+msgstr ""
+
+#: ../lib/hammer_cli/options/normalizers.rb:63
 msgid "Comma-separated list of key=value."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:35
-#: ../lib/hammer_cli/options/normalizers.rb:99
-#: ../lib/hammer_cli/options/normalizers.rb:140
-msgid "JSON is acceptable and preferred way for complex parameters"
+#: ../lib/hammer_cli/options/normalizers.rb:64
+#: ../lib/hammer_cli/options/normalizers.rb:135
+#: ../lib/hammer_cli/options/normalizers.rb:158
+msgid "JSON is acceptable and preferred way for such parameters"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:49
+#: ../lib/hammer_cli/options/normalizers.rb:79
 msgid "Value must be defined as a comma-separated list of key=value or valid JSON."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:98
+#: ../lib/hammer_cli/options/normalizers.rb:133
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or es"
 "caped with backslash."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:139
-msgid ""
-"Comma separated list of values defined by a schema. See Option details section"
-" below."
+#: ../lib/hammer_cli/options/normalizers.rb:156
+msgid "Comma separated list of values defined by a schema."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:163
+#: ../lib/hammer_cli/options/normalizers.rb:212
+msgid "Numeric value. Integer"
+msgstr ""
+
+#: ../lib/hammer_cli/options/normalizers.rb:220
 msgid "Numeric value is required."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:180
-msgid "One of %s."
+#: ../lib/hammer_cli/options/normalizers.rb:237
+msgid "One of %s"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:190
-#: ../lib/hammer_cli/options/normalizers.rb:253
+#: ../lib/hammer_cli/options/normalizers.rb:252
+#: ../lib/hammer_cli/options/normalizers.rb:338
 msgid "Value must be one of %s."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:229
+#: ../lib/hammer_cli/options/normalizers.rb:273
+msgid "Path to a file"
+msgstr ""
+
+#: ../lib/hammer_cli/options/normalizers.rb:304
 msgid "Unable to parse JSON input."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:243
+#: ../lib/hammer_cli/options/normalizers.rb:317
+msgid "Possible values are described in the option's description"
+msgstr ""
+
+#: ../lib/hammer_cli/options/normalizers.rb:328
 msgid "Possible value(s): %s"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:251
+#: ../lib/hammer_cli/options/normalizers.rb:336
 msgid "Value must be %s."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:274
+#: ../lib/hammer_cli/options/normalizers.rb:367
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:281
+#: ../lib/hammer_cli/options/normalizers.rb:375
 msgid "'%s' is not a valid date."
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:293
+#: ../lib/hammer_cli/options/normalizers.rb:386
+msgid "Any combination of possible values described in the option's description"
+msgstr ""
+
+#: ../lib/hammer_cli/options/normalizers.rb:397
 msgid "Any combination (comma separated list) of '%s'"
 msgstr ""
 
-#: ../lib/hammer_cli/options/normalizers.rb:313
+#: ../lib/hammer_cli/options/normalizers.rb:421
 msgid "Value must be a combination of '%s'."
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:54
+#: ../lib/hammer_cli/options/option_definition.rb:58
 msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:73
-#: ../lib/hammer_cli/options/option_family.rb:25
+#: ../lib/hammer_cli/options/option_definition.rb:77
+#: ../lib/hammer_cli/options/option_family.rb:33
 msgid "Deprecated: %{deprecated_msg}"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:76
-#: ../lib/hammer_cli/options/option_family.rb:28
+#: ../lib/hammer_cli/options/option_definition.rb:80
+#: ../lib/hammer_cli/options/option_family.rb:36
 msgid "%{flag} is deprecated: %{deprecated_msg}"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:96
+#: ../lib/hammer_cli/options/option_definition.rb:100
 msgid "Can be specified multiple times."
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:100
+#: ../lib/hammer_cli/options/option_definition.rb:104
 msgid ", or"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:102
+#: ../lib/hammer_cli/options/option_definition.rb:106
 msgid "Default:"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:127
+#: ../lib/hammer_cli/options/option_definition.rb:131
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr ""
 
@@ -665,6 +687,6 @@ msgid ""
 "ass>s)."
 msgstr ""
 
-#: ../lib/hammer_cli/utils.rb:86
+#: ../lib/hammer_cli/utils.rb:92
 msgid "Cannot use such capitalization. Try one of %s."
 msgstr ""

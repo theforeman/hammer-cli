@@ -11,7 +11,7 @@
 # ty breizh <tybreizh29@free.fr>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.0.0\n"
+"Project-Id-Version: hammer-cli 3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-04 13:37+0000\n"
 "PO-Revision-Date: 2021-05-18 14:58+0000\n"
