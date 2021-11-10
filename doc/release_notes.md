@@ -1,5 +1,17 @@
 Release notes
 =============
+### 3.1.0 (2021-11-10)
+* Remove a space in hammer's shebang, [#33810](http://projects.theforeman.org/issues/33810)
+* Revert fix rake version
+* Fix rake version
+* Wrap option descriptions to 80 chars, [#33129](http://projects.theforeman.org/issues/33129)
+* Don't store @context in field params, [#33259](http://projects.theforeman.org/issues/33259)
+* Change from superficial copy to deep copy of fields ([PR #348](https://github.com/theforeman/hammer-cli/pull/348)), [#29093](http://projects.theforeman.org/issues/29093)
+* Make api docs params to be the main options, [#33226](http://projects.theforeman.org/issues/33226)
+* Show depr warning only on option usage, [#33225](http://projects.theforeman.org/issues/33225)
+* Extract descs to option details section, [#32783](http://projects.theforeman.org/issues/32783)
+* Bump to 3.1.0-develop
+
 ### 3.0.0 (2021-08-04)
 * Update rel-eng notebook ([PR #347](https://github.com/theforeman/hammer-cli/pull/347))
 * Bump version to 3.0-develop
