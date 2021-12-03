@@ -104,15 +104,13 @@ module HammerCLI
 
         def strip_value(value)
           if value.is_a? Array
-            value.map do |item|
-              strip_chars(item.strip, '"\'')
-            end
+            value.map(&:strip)
           elsif value.is_a? Hash
             value.map do |key, val|
-              [strip_chars(key.strip, '"\''), strip_chars(val.strip, '"\'')]
+              [strip_chars(key.strip, '"\''), val.strip]
             end.to_h
           else
-            strip_chars(value.strip, '"\'')
+            value.strip
           end
         end
 
