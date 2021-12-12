@@ -177,16 +177,20 @@ describe HammerCLI::Options::Normalizers do
         formatter.format("a= 1 , b = 2 ,c =3").must_equal({'a' => '1', 'b' => '2', 'c' => '3'})
       end
 
-      it "should parse a comma separated string with spaces using single quotes" do
-        formatter.format("a= ' 1 ' , b =' 2',c ='3'").must_equal({'a' => ' 1 ', 'b' => ' 2', 'c' => '3'})
+      it 'should parse a comma separated string with spaces using single quotes' do
+        formatter.format("a= ' 1 ' , b =' 2',c ='3'").must_equal({ 'a' => "' 1 '", 'b' => "' 2'", 'c' => "'3'" })
       end
 
-      it "should parse a comma separated string with spaces using double quotes" do
-        formatter.format("a= \" 1 \" , b =\" 2\",c =\"3\"").must_equal({'a' => ' 1 ', 'b' => ' 2', 'c' => '3'})
+      it 'should parse a comma separated string with spaces using double quotes' do
+        formatter.format('a= " 1 " , b =" 2",c ="3"').must_equal({ 'a' => '" 1 "', 'b' => '" 2"', 'c' => '"3"' })
       end
 
-      it "should deal with equal sign in value" do
-        formatter.format("a=1,b='2=2',c=3").must_equal({'a' => '1', 'b' => '2=2', 'c' => '3'})
+      it 'should deal with equal sign in string value' do
+        formatter.format("a=1,b='2=2',c=3").must_equal({ 'a' => '1', 'b' => "'2=2'", 'c' => '3' })
+      end
+
+      it 'should deal with equal sign in value' do
+        formatter.format('a=1,b=2=2,c=3').must_equal({ 'a' => '1', 'b' => '2=2', 'c' => '3' })
       end
 
       it "should parse arrays" do
@@ -197,12 +201,20 @@ describe HammerCLI::Options::Normalizers do
         formatter.format("a=1,b=[1, 2, 3],c=3").must_equal({'a' => '1', 'b' => ['1', '2', '3'], 'c' => '3'})
       end
 
-      it "should parse arrays with spaces using by single quotes" do
-        formatter.format("a=1,b=['1 1', ' 2 ', ' 3 3'],c=3").must_equal({'a' => '1', 'b' => ['1 1', ' 2 ', ' 3 3'], 'c' => '3'})
+      it 'should parse arrays with spaces using by single quotes' do
+        formatter.format("a=1,b=['1 1', ' 2 ', ' 3 3'],c=3").must_equal(
+          { 'a' => '1', 'b' => ["'1 1'", "' 2 '", "' 3 3'"], 'c' => '3' }
+        )
       end
 
-      it "should parse arrays with spaces using by double quotes" do
-        formatter.format("a=1,b=[\"1 1\", \" 2 \", \" 3 3\"],c=3").must_equal({'a' => '1', 'b' => ['1 1', ' 2 ', ' 3 3'], 'c' => '3'})
+      it 'should parse arrays with spaces using by double quotes' do
+        formatter.format('a=1,b=["1 1", " 2 ", " 3 3"],c=3').must_equal(
+          { 'a' => '1', 'b' => ['"1 1"', '" 2 "', '" 3 3"'], 'c' => '3' }
+        )
+      end
+
+      it 'should parse arrays with spaces' do
+        formatter.format('a=1,b=[1 1,  2 ,  3 3],c=3').must_equal({ 'a' => '1', 'b' => ['1 1', '2', '3 3'], 'c' => '3' })
       end
 
       it "should parse array with one item" do
@@ -225,6 +237,10 @@ describe HammerCLI::Options::Normalizers do
 
       it "should parse a comma separated string 2" do
         proc { formatter.format("a=1,b,c=3") }.must_raise ArgumentError
+      end
+
+      it 'should parse explicit strings' do
+        formatter.format('name="*"').must_equal({ 'name' => '"*"' })
       end
     end
 
