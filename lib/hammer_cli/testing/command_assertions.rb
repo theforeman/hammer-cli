@@ -94,6 +94,20 @@ module HammerCLI
         end
       end
 
+      def missing_args_error(command, opts, heading = nil)
+        opts = Array(opts).map { |o| "'#{o}'" }.join(', ')
+        message = "  Missing arguments for #{opts}."
+        if heading.nil?
+          ["Could not #{command[-1]} the #{command[-2]}:",
+           message,
+           ''].join("\n")
+        else
+          ["#{heading}:",
+           message,
+           ''].join("\n")
+        end
+      end
+
       def usage_error_result(command, message, heading=nil)
         expected_result = CommandExpectation.new
         expected_result.expected_err = usage_error(command, message, heading)
@@ -112,6 +126,13 @@ module HammerCLI
         expected_result = CommandExpectation.new
         expected_result.expected_err = common_error(command, message, heading)
         expected_result.expected_exit_code = HammerCLI::EX_NOT_FOUND
+        expected_result
+      end
+
+      def missing_args_error_result(command, opts, heading = nil)
+        expected_result = CommandExpectation.new
+        expected_result.expected_err = missing_args_error(command, opts, heading)
+        expected_result.expected_exit_code = HammerCLI::EX_USAGE
         expected_result
       end
 
