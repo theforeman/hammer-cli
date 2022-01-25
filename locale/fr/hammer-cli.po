@@ -135,10 +135,10 @@ msgid "Option '%s' is required."
 msgstr "L'option %s est obligatoire."
 
 msgid "Option '%{opt}' (or env %{env}) is required."
-msgstr "L'option '%%s' (ou env %{file}) est obligatoire."
+msgstr "L'option '%{opt}' (ou env %{env}) est obligatoire."
 
 msgid "Option '%{swt}': %{msg}."
-msgstr "Option %s' : %{file}."
+msgstr "Option %{swt}': %{msg}."
 
 msgid "Parameter '%{pmt}': %{msg}."
 msgstr "Paramètre '%{pmt}': %{msg}."
