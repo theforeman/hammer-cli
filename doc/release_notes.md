@@ -1,5 +1,8 @@
 Release notes
 =============
+### 3.1.1 (2022-02-01)
+* Fix fr translation ([PR #358](https://github.com/theforeman/hammer-cli/pull/358)), [#34204](http://projects.theforeman.org/issues/34204)
+
 ### 3.1.0 (2021-11-10)
 * Remove a space in hammer's shebang, [#33810](http://projects.theforeman.org/issues/33810)
 * Revert fix rake version
