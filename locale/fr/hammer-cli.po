@@ -4,6 +4,7 @@
 #
 # Translators:
 # 0868a4d1af5275b3f70b0a6dac4c99a4, 2014
+# Amit Upadhye <aupadhye@redhat.com>, 2022
 # Baptiste Agasse <baptiste.agasse@gmail.com>, 2019
 # Claer <transiblu@claer.hammock.fr>, 2014-2016
 # 0868a4d1af5275b3f70b0a6dac4c99a4, 2014
@@ -11,10 +12,10 @@
 # ty breizh <tybreizh29@free.fr>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.1.0\n"
+"Project-Id-Version: hammer-cli 3.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 13:37+0000\n"
-"PO-Revision-Date: 2021-05-18 14:58+0000\n"
+"POT-Creation-Date: 2021-11-10 15:53+0000\n"
+"PO-Revision-Date: 2022-02-10 16:23+0000\n"
 "Last-Translator: Amit Upadhye <aupadhye@redhat.com>\n"
 "Language-Team: French (http://www.transifex.com/foreman/foreman/language/"
 "fr/)\n"
@@ -24,16 +25,16 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+msgid ""
+"Following parameters accept format defined by its schema (bold are required; "
+"<> contains acceptable type; [] contains acceptable value):"
+msgstr ""
+
 msgid "Option details"
 msgstr "Détails de l'option"
 
-msgid ""
-"Following parameters accept format defined by its schema (bold are required; "
-"<> contain acceptable type; [] contain acceptable value):"
+msgid "Here you can find option types and the value an option can accept:"
 msgstr ""
-"Les paramètres suivants acceptent le format défini par son schéma (les "
-"caractères gras sont obligatoires ; <> contient le type acceptable ; [] "
-"contient la valeur acceptable) :"
 
 msgid "Predefined field sets"
 msgstr "Ensembles de champs prédéfinis"
@@ -385,12 +386,14 @@ msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr ""
 "Erreur : certains modules requis sont désactivés dans la configuration : %s."
 
+msgid "Value described in the option's description. Mostly simple string"
+msgstr ""
+
 msgid "Comma-separated list of key=value."
 msgstr "Liste de clef=valeur séparées par des virgules."
 
-msgid "JSON is acceptable and preferred way for complex parameters"
+msgid "JSON is acceptable and preferred way for such parameters"
 msgstr ""
-"JSON est une méthode acceptable et privilégiée pour les paramètres complexes"
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -405,24 +408,29 @@ msgstr ""
 "Liste de valeurs séparées par des virgules. Les valeurs contenant une "
 "virgule doivent être indiquées ou échappées par une barre oblique inversée."
 
-msgid ""
-"Comma separated list of values defined by a schema. See Option details "
-"section below."
+msgid "Comma separated list of values defined by a schema."
 msgstr ""
-"Liste de valeurs séparées par des virgules et définies par un schéma. Voir "
-"la section Détails des options ci-dessous."
+
+msgid "Numeric value. Integer"
+msgstr ""
 
 msgid "Numeric value is required."
 msgstr "Valeur numérique obligatoire."
 
-msgid "One of %s."
-msgstr "Un sur %s."
+msgid "One of %s"
+msgstr "Choisir parmi %s"
 
 msgid "Value must be one of %s."
 msgstr "La valeur doit être choisie parmi %s."
 
+msgid "Path to a file"
+msgstr ""
+
 msgid "Unable to parse JSON input."
 msgstr "Impossible d'analyser l'entrée JSON."
+
+msgid "Possible values are described in the option's description"
+msgstr ""
 
 msgid "Possible value(s): %s"
 msgstr "Valeurs possible(s) : %s"
@@ -435,6 +443,10 @@ msgstr "Date et heure suivant YYYY-MM-DD HH:MM:SS ou format ISO 8601"
 
 msgid "'%s' is not a valid date."
 msgstr "'%s' n'est pas une date correcte."
+
+msgid ""
+"Any combination of possible values described in the option's description"
+msgstr ""
 
 msgid "Any combination (comma separated list) of '%s'"
 msgstr "Toute combinaison (liste séparée par des virgules) de '%s'"

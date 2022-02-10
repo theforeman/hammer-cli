@@ -9,11 +9,11 @@
 # Sergio Ocón-Cárdenas <sergio.ocon@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.1.0\n"
+"Project-Id-Version: hammer-cli 3.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 13:37+0000\n"
-"PO-Revision-Date: 2020-09-03 07:45+0000\n"
-"Last-Translator: Amit Upadhye <aupadhye@redhat.com>\n"
+"POT-Creation-Date: 2021-11-10 15:53+0000\n"
+"PO-Revision-Date: 2021-11-10 16:19+0000\n"
+"Last-Translator: Sergio Ocón-Cárdenas <sergio.ocon@redhat.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/foreman/foreman/language/"
 "es/)\n"
 "MIME-Version: 1.0\n"
@@ -22,16 +22,16 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid ""
+"Following parameters accept format defined by its schema (bold are required; "
+"<> contains acceptable type; [] contains acceptable value):"
+msgstr ""
+
 msgid "Option details"
 msgstr "Detalles de la opción"
 
-msgid ""
-"Following parameters accept format defined by its schema (bold are required; "
-"<> contain acceptable type; [] contain acceptable value):"
+msgid "Here you can find option types and the value an option can accept:"
 msgstr ""
-"Los siguientes parámetros aceptan el formato definido por su esquema (se "
-"requiere la negrita; <> contienen el tipo aceptable; [] contienen el valor "
-"aceptable):"
 
 msgid "Predefined field sets"
 msgstr "Conjuntos de campos predefinidos"
@@ -380,11 +380,14 @@ msgstr ""
 "Error: Algunos de los módulos requeridos están desactivados en la "
 "configuración: %s. "
 
+msgid "Value described in the option's description. Mostly simple string"
+msgstr ""
+
 msgid "Comma-separated list of key=value."
 msgstr "Lista de pares llave=valor separados por comas."
 
-msgid "JSON is acceptable and preferred way for complex parameters"
-msgstr "JSON es la forma aceptable y preferida para parámetros complejos"
+msgid "JSON is acceptable and preferred way for such parameters"
+msgstr ""
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -399,24 +402,29 @@ msgstr ""
 "Lista de valores separados por comas. Los valores que contienen coma deben "
 "estar entre comillas o separados barra invertida."
 
-msgid ""
-"Comma separated list of values defined by a schema. See Option details "
-"section below."
+msgid "Comma separated list of values defined by a schema."
 msgstr ""
-"Lista separada por comas de valores definidos por un esquema. Consulte la "
-"sección Detalles de la opción a continuación."
+
+msgid "Numeric value. Integer"
+msgstr ""
 
 msgid "Numeric value is required."
 msgstr "El valor numérico es obligatorio."
 
-msgid "One of %s."
-msgstr "Uno de %s."
+msgid "One of %s"
+msgstr "Uno de %s"
 
 msgid "Value must be one of %s."
 msgstr "El valor debe ser uno de %s."
 
+msgid "Path to a file"
+msgstr ""
+
 msgid "Unable to parse JSON input."
 msgstr "No se puede analizar la entrada JSON."
+
+msgid "Possible values are described in the option's description"
+msgstr ""
 
 msgid "Possible value(s): %s"
 msgstr "Valores posibles: %s"
@@ -429,6 +437,10 @@ msgstr "Fecha y hora en AAAA-MM-DD HH:MM:SS o formato ISO 8601"
 
 msgid "'%s' is not a valid date."
 msgstr "'%s' no es una fecha válida."
+
+msgid ""
+"Any combination of possible values described in the option's description"
+msgstr ""
 
 msgid "Any combination (comma separated list) of '%s'"
 msgstr "Cualquier combinación (lista separada por comas) de '%s'"

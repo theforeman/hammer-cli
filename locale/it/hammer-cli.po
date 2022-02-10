@@ -7,11 +7,11 @@
 # Dominic Cleal <dcleal@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.1.0\n"
+"Project-Id-Version: hammer-cli 3.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 13:37+0000\n"
-"PO-Revision-Date: 2020-08-11 19:33+0000\n"
-"Last-Translator: Transifex Bot <>\n"
+"POT-Creation-Date: 2021-11-10 15:53+0000\n"
+"PO-Revision-Date: 2021-11-10 16:19+0000\n"
+"Last-Translator: 0868a4d1af5275b3f70b0a6dac4c99a4\n"
 "Language-Team: Italian (http://www.transifex.com/foreman/foreman/language/"
 "it/)\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,15 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid ""
+"Following parameters accept format defined by its schema (bold are required; "
+"<> contains acceptable type; [] contains acceptable value):"
+msgstr ""
+
 msgid "Option details"
 msgstr ""
 
-msgid ""
-"Following parameters accept format defined by its schema (bold are required; "
-"<> contain acceptable type; [] contain acceptable value):"
+msgid "Here you can find option types and the value an option can accept:"
 msgstr ""
 
 msgid "Predefined field sets"
@@ -343,10 +346,13 @@ msgstr ""
 msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr ""
 
+msgid "Value described in the option's description. Mostly simple string"
+msgstr ""
+
 msgid "Comma-separated list of key=value."
 msgstr "Elenco separato da virgole di key=value."
 
-msgid "JSON is acceptable and preferred way for complex parameters"
+msgid "JSON is acceptable and preferred way for such parameters"
 msgstr ""
 
 msgid ""
@@ -358,21 +364,28 @@ msgid ""
 "escaped with backslash."
 msgstr ""
 
-msgid ""
-"Comma separated list of values defined by a schema. See Option details "
-"section below."
+msgid "Comma separated list of values defined by a schema."
+msgstr ""
+
+msgid "Numeric value. Integer"
 msgstr ""
 
 msgid "Numeric value is required."
 msgstr ""
 
-msgid "One of %s."
-msgstr ""
+msgid "One of %s"
+msgstr "Uno di %s"
 
 msgid "Value must be one of %s."
 msgstr ""
 
+msgid "Path to a file"
+msgstr ""
+
 msgid "Unable to parse JSON input."
+msgstr ""
+
+msgid "Possible values are described in the option's description"
 msgstr ""
 
 msgid "Possible value(s): %s"
@@ -386,6 +399,10 @@ msgstr ""
 "Data e ora con un formato ANNO-MESE-GIORNO ORA:MINUTI:SECONDI o ISO 8601"
 
 msgid "'%s' is not a valid date."
+msgstr ""
+
+msgid ""
+"Any combination of possible values described in the option's description"
 msgstr ""
 
 msgid "Any combination (comma separated list) of '%s'"

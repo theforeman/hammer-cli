@@ -14,11 +14,11 @@
 # 47388d0d0847859fcc07f8955b27d2a7_d1cb104 <93875580def0fcc1a566b016c3948752_122921>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.1.0\n"
+"Project-Id-Version: hammer-cli 3.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 13:37+0000\n"
-"PO-Revision-Date: 2021-10-15 17:49+0000\n"
-"Last-Translator: Patrick Dolinic\n"
+"POT-Creation-Date: 2021-11-10 15:53+0000\n"
+"PO-Revision-Date: 2021-11-10 16:19+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/foreman/foreman/language/"
 "de/)\n"
 "MIME-Version: 1.0\n"
@@ -27,16 +27,16 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid ""
+"Following parameters accept format defined by its schema (bold are required; "
+"<> contains acceptable type; [] contains acceptable value):"
+msgstr ""
+
 msgid "Option details"
 msgstr "Optionsdetails"
 
-msgid ""
-"Following parameters accept format defined by its schema (bold are required; "
-"<> contain acceptable type; [] contain acceptable value):"
+msgid "Here you can find option types and the value an option can accept:"
 msgstr ""
-"Die folgenden Parameter akzeptieren das durch ihr Schema definierte Format "
-"(fettgedruckt sind erforderlich; <> enthalten akzeptablen Typ; [] enthalten "
-"akzeptablen Wert):"
 
 msgid "Predefined field sets"
 msgstr "Vordefinierte Feldsätze"
@@ -388,11 +388,14 @@ msgstr ""
 "Fehler: Einige der erforderlichen Module sind in der Konfiguration "
 "deaktiviert: %s."
 
+msgid "Value described in the option's description. Mostly simple string"
+msgstr ""
+
 msgid "Comma-separated list of key=value."
 msgstr "Kommagetrennte Liste mit Schlüssel-Wert-Paaren."
 
-msgid "JSON is acceptable and preferred way for complex parameters"
-msgstr "JSON ist akzeptabler und bevorzugter Weg für komplexe Parameter"
+msgid "JSON is acceptable and preferred way for such parameters"
+msgstr ""
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -407,24 +410,29 @@ msgstr ""
 "Kommagetrennte Liste von Werten. Werte, die Kommas enthalten, sollten in "
 "Anführungszeichen gesetzt oder mit Backslash maskiert werden."
 
-msgid ""
-"Comma separated list of values defined by a schema. See Option details "
-"section below."
+msgid "Comma separated list of values defined by a schema."
 msgstr ""
-"Kommagetrennte Liste von Werten, die durch ein Schema definiert sind. Siehe "
-"Abschnitt Optionsdetails unten."
+
+msgid "Numeric value. Integer"
+msgstr ""
 
 msgid "Numeric value is required."
 msgstr "Numerischer Wert ist erforderlich."
 
-msgid "One of %s."
-msgstr "Einer von %s."
+msgid "One of %s"
+msgstr "Einer von %s"
 
 msgid "Value must be one of %s."
 msgstr "Wert muss einer von '%s' sein."
 
+msgid "Path to a file"
+msgstr ""
+
 msgid "Unable to parse JSON input."
 msgstr "JSON-Eingabe nicht analysierbar."
+
+msgid "Possible values are described in the option's description"
+msgstr ""
 
 msgid "Possible value(s): %s"
 msgstr "Mögliche(r) Wert(e): %s"
@@ -437,6 +445,10 @@ msgstr "Datum und Uhrzeit im Format JJJJ-MM-TT HH:MM:SS oder ISO-8601-Format"
 
 msgid "'%s' is not a valid date."
 msgstr "'%s' ist kein gültiges Datum."
+
+msgid ""
+"Any combination of possible values described in the option's description"
+msgstr ""
 
 msgid "Any combination (comma separated list) of '%s'"
 msgstr "Eine Kombination (kommagetrennte Liste) aus '%s'"

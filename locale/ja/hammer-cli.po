@@ -8,10 +8,10 @@
 # 山田 修司 🍣 Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.1.0\n"
+"Project-Id-Version: hammer-cli 3.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 13:37+0000\n"
-"PO-Revision-Date: 2021-05-18 14:58+0000\n"
+"POT-Creation-Date: 2021-11-10 15:53+0000\n"
+"PO-Revision-Date: 2021-11-25 10:29+0000\n"
 "Last-Translator: Amit Upadhye <aupadhye@redhat.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/"
 "ja/)\n"
@@ -21,15 +21,18 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "Option details"
-msgstr "オプションの詳細"
-
 msgid ""
 "Following parameters accept format defined by its schema (bold are required; "
-"<> contain acceptable type; [] contain acceptable value):"
+"<> contains acceptable type; [] contains acceptable value):"
 msgstr ""
 "以下のパラメーターは、スキーマで定義された形式を使用できます (太字の項目は必"
 "須。<> には使用可能なタイプが、[] には使用可能な値が含まれます。):"
+
+msgid "Option details"
+msgstr "オプションの詳細"
+
+msgid "Here you can find option types and the value an option can accept:"
+msgstr "ここでは、オプションの種類と、オプションで使用できる値を確認できます。"
 
 msgid "Predefined field sets"
 msgstr "事前定義済みのフィールドセット"
@@ -369,11 +372,14 @@ msgstr "警告: モジュール %s のロード中にエラーが発生しまし
 msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr "エラー: 必須モジュールの一部が設定で無効になっています: %s 。"
 
+msgid "Value described in the option's description. Mostly simple string"
+msgstr "オプションの説明に記載されている値。ほとんどの場合、単純な文字列です"
+
 msgid "Comma-separated list of key=value."
 msgstr "key=value のコンマ区切りの一覧です。"
 
-msgid "JSON is acceptable and preferred way for complex parameters"
-msgstr "JSON は、複雑なパラメーターで使用でき、推奨の方法です"
+msgid "JSON is acceptable and preferred way for such parameters"
+msgstr "JSON は、このようなパラメーターで使用でき、推奨される方法です"
 
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
@@ -388,24 +394,29 @@ msgstr ""
 "値のコンマ区切りの一覧。コンマを含む値は引用符で囲むか、円記号でエスケープす"
 "る必要があります。"
 
-msgid ""
-"Comma separated list of values defined by a schema. See Option details "
-"section below."
-msgstr ""
-"スキーマで定義し値のコンマ区切りの一覧。以下のオプションの詳細セクションを参"
-"照してください。"
+msgid "Comma separated list of values defined by a schema."
+msgstr "スキーマで定義された値のコンマ区切りリスト。"
+
+msgid "Numeric value. Integer"
+msgstr "数値。整数"
 
 msgid "Numeric value is required."
 msgstr "数値が必要です。"
 
-msgid "One of %s."
+msgid "One of %s"
 msgstr "%s の 1 つ"
 
 msgid "Value must be one of %s."
 msgstr "値は '%s' のいずれかに指定する必要があります。"
 
+msgid "Path to a file"
+msgstr "ファイルへのパス"
+
 msgid "Unable to parse JSON input."
 msgstr "JSON 入力を解析できません。"
+
+msgid "Possible values are described in the option's description"
+msgstr "使用できる値は、オプションの説明に記載されています。"
 
 msgid "Possible value(s): %s"
 msgstr "許容値: %s"
@@ -418,6 +429,10 @@ msgstr "日時 (YYYY-MM-DD HH:MM:SS または ISO 8601 形式)"
 
 msgid "'%s' is not a valid date."
 msgstr "%s は有効な日付ではありません。"
+
+msgid ""
+"Any combination of possible values described in the option's description"
+msgstr "オプションの説明に記載されている、使用できる値の組み合わせ"
 
 msgid "Any combination (comma separated list) of '%s'"
 msgstr "%s の任意の組み合わせ (コンマ区切りの一覧)"
