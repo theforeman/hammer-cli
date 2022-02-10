@@ -1,5 +1,11 @@
 Release notes
 =============
+### 3.2.0 (2022-02-10)
+* Fix fr translation ([PR #358](https://github.com/theforeman/hammer-cli/pull/358)), [#34204](http://projects.theforeman.org/issues/34204)
+* Add missing_args_error_result test helper ([PR #357](https://github.com/theforeman/hammer-cli/pull/357))
+* Allow explicit strings in key=value options ([PR #356](https://github.com/theforeman/hammer-cli/pull/356)), [#34079](http://projects.theforeman.org/issues/34079)
+* Bump to 3.2.0-develop
+
 ### 3.1.0 (2021-11-10)
 * Remove a space in hammer's shebang, [#33810](http://projects.theforeman.org/issues/33810)
 * Revert fix rake version
