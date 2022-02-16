@@ -47,6 +47,10 @@
 # Location of cache for bash completion
 :completion_cache_file: '~/.cache/hammer_completion.json'
 
+# Location of cache for hammer plugin versions
+# Needed to automatically detect if hammer needs to reload API documentation
+:checksum_cache_file: '~/.cache/hammer_modules_checksum'
+
 # SSL auth options
 #:ssl:
   # Path to a CA file in PEM format, mutually exclusive with :ssl_ca_path:

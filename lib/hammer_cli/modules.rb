@@ -76,7 +76,8 @@ module HammerCLI
     end
 
     def self.load_all
-      HammerCLI::Modules.names.each do |m|
+      module_names = HammerCLI::Modules.names
+      module_names.each do |m|
         Modules.load(m)
       end
       loaded_for_deps = loaded_modules & disabled_modules
@@ -84,6 +85,36 @@ module HammerCLI
         message = _("Error: Some of the required modules are disabled in configuration: %s.") % loaded_for_deps.join(', ')
         raise HammerCLI::ModuleDisabledButRequired.new(message)
       end
+      return if modules_checksum
+
+      File.open(checksum_file_path, 'w') do |f|
+        f.write(compute_modules_checksum(module_names))
+      end
+    end
+
+    def self.module_version(mod)
+      Gem.loaded_specs[mod]&.version&.to_s
+    end
+
+    def self.compute_modules_checksum(names)
+      mods_with_version = names.map do |m|
+        "#{m}-#{module_version(m)}"
+      end.join(',')
+      Digest::SHA1.hexdigest(mods_with_version)
+    end
+
+    def self.modules_checksum
+      return unless File.exist?(checksum_file_path)
+
+      File.read(checksum_file_path)
+    end
+
+    def self.changed?
+      modules_checksum != compute_modules_checksum(HammerCLI::Modules.names)
+    end
+
+    def self.checksum_file_path
+      @checksum_file_path ||= File.expand_path(HammerCLI::Settings.get(:checksum_cache_file))
     end
 
     protected
@@ -95,7 +126,5 @@ module HammerCLI
     def self.logger
       Logging.logger['Modules']
     end
-
   end
-
 end

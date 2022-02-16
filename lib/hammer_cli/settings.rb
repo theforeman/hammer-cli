@@ -66,8 +66,9 @@ module HammerCLI
 
     def self.default_settings
       {
-        :use_defaults => true,
-        :completion_cache_file => '~/.cache/hammer_completion.json'
+        use_defaults: true,
+        completion_cache_file: '~/.cache/hammer_completion.json',
+        checksum_cache_file: '~/.cache/hammer_modules_checksum'
       }
     end
 

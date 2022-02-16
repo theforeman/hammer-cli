@@ -67,8 +67,10 @@ module HammerCLI
   end
 
   def self.clear_cache
-    cache_file = File.expand_path(HammerCLI::Settings.get(:completion_cache_file))
-    File.delete(cache_file) if File.exist?(cache_file)
+    %i[checksum_cache_file completion_cache_file].each do |f|
+      cache_file = File.expand_path(HammerCLI::Settings.get(f))
+      File.delete(cache_file) if File.exist?(cache_file)
+    end
   end
 
   def self.interactive?

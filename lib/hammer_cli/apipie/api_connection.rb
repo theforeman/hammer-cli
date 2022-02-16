@@ -8,7 +8,7 @@ module HammerCLI::Apipie
     def initialize(params, options = {})
       @logger = options[:logger]
       @api = ApipieBindings::API.new(params, HammerCLI::SSLOptions.new.get_options(params[:uri]))
-      if options[:reload_cache]
+      if options[:reload_cache] || (options[:use_modules_checksum] && HammerCLI::Modules.changed?)
         @api.clean_cache
         HammerCLI.clear_cache
         unless @logger.nil?
