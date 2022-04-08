@@ -86,7 +86,7 @@ module HammerCLI
       Readline.completer_word_break_characters = ' ='
       Readline.completion_proc = complete_proc
 
-      stty_save = `stty -g`.chomp
+      stty_save = `stty -g`.chomp if $stdin.tty?
 
       history = ShellHistory.new(Settings.get(:ui, :history_file) || DEFAULT_HISTORY_FILE)
 
@@ -102,7 +102,8 @@ module HammerCLI
       rescue Interrupt; end
 
       puts
-      system('stty', stty_save) # Restore
+      # Restore
+      system('stty', stty_save) if $stdin.tty?
       HammerCLI::EX_OK
     end
 
