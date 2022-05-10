@@ -1,5 +1,9 @@
 Release notes
 =============
+### 3.3.0 (2022-05-10)
+* Fix hammer shell with pipe as stdin ([PR #360](https://github.com/theforeman/hammer-cli/pull/360)), [#34724](http://projects.theforeman.org/issues/34724)
+* Bump to 3.3.0-develop
+
 ### 3.2.0 (2022-02-10)
 * Fix fr translation ([PR #358](https://github.com/theforeman/hammer-cli/pull/358)), [#34204](http://projects.theforeman.org/issues/34204)
 * Add missing_args_error_result test helper ([PR #357](https://github.com/theforeman/hammer-cli/pull/357))
