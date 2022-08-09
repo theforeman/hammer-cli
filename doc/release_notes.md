@@ -1,5 +1,8 @@
 Release notes
 =============
+### 3.4.0 (2022-08-09)
+* Bump to 3.4.0-develop
+
 ### 3.3.0 (2022-05-10)
 * Fix hammer shell with pipe as stdin ([PR #360](https://github.com/theforeman/hammer-cli/pull/360)), [#34724](http://projects.theforeman.org/issues/34724)
 * Bump to 3.3.0-develop
