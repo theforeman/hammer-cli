@@ -8,9 +8,9 @@
 # 山田 修司 🍣 Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.3.0\n"
+"Project-Id-Version: hammer-cli 3.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-10 15:53+0000\n"
+"POT-Creation-Date: 2022-05-10 13:02+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: 山田 修司 🍣 Shuji Yamada <uzy.exe@gmail.com>, 2015\n"
 "Language-Team: Japanese (http://www.transifex.com/foreman/foreman/language/"
@@ -35,19 +35,19 @@ msgid "Here you can find option types and the value an option can accept:"
 msgstr "ここでは、オプションの種類と、オプションで使用できる値を確認できます。"
 
 msgid "Predefined field sets"
-msgstr "事前定義済みのフィールドセット"
+msgstr "定義済みのフィールドセット"
 
 msgid "Command extensions should be inherited from %s."
 msgstr "コマンド拡張は %s から継承する必要があります。"
 
 msgid "Unfortunately the server does not support such operation."
-msgstr "残念ですがサーバーはその操作をサポートしていません。"
+msgstr "残念ですがサーバはその操作をサポートしていません。"
 
 msgid "The server does not support such operation."
-msgstr "サーバーはその操作をサポートしていません。"
+msgstr "サーバーはこの操作に対応していません。"
 
 msgid "Prepare map of options and subcommands for Bash completion"
-msgstr "Bash 補完向けのオプションおよびサブコマンドのマップを準備します"
+msgstr "bash-completion のオプションおよびサブコマンドのマッピングを準備する"
 
 msgid "Unable to find hostname in %s."
 msgstr "%s でホスト名が見つかりません。"
@@ -401,7 +401,7 @@ msgid "Numeric value. Integer"
 msgstr "数値。整数"
 
 msgid "Numeric value is required."
-msgstr "数値が必要です。"
+msgstr "数値が必要。"
 
 msgid "One of %s"
 msgstr "%s の 1 つ"
@@ -459,7 +459,7 @@ msgid "Default:"
 msgstr "デフォルト:"
 
 msgid "Environment variable HAMMER_NIL can not be empty."
-msgstr "環境変数 HAMMER_NIL を空にすることはできません。"
+msgstr "環境変数 HAMMER_NIL は空欄にできません。"
 
 msgid "Show specified fields or predefined field sets only. (See below)"
 msgstr ""
@@ -529,7 +529,7 @@ msgid "Warning: Couldn't load configuration file %{path}: %{message}."
 msgstr "警告: 設定ファイル %{path} をロードできませんでした: %{message}。"
 
 msgid "Print help for commands"
-msgstr "コマンドの help を出力"
+msgstr "コマンドについての help を出力"
 
 msgid "Exit interactive shell"
 msgstr "インタラクティブシェルの終了"
@@ -572,4 +572,4 @@ msgstr ""
 "換えることはできません。"
 
 msgid "Cannot use such capitalization. Try one of %s."
-msgstr "そのような大文字の使用は出来ません。次のなかから使用してください。"
+msgstr "そのような大文字の使用は出来ません。%s から 1 つ選択してください。"

@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the hammer-cli package.
 #
 # Translators:
-# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2017
-# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2015
+# Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2017
+# Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.3.0\n"
+"Project-Id-Version: hammer-cli 3.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-10 15:53+0000\n"
+"POT-Creation-Date: 2022-05-10 13:02+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
-"Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2017\n"
+"Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2017\n"
 "Language-Team: Catalan (http://www.transifex.com/foreman/foreman/language/"
 "ca/)\n"
 "MIME-Version: 1.0\n"
