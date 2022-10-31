@@ -6,9 +6,9 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.4.0\n"
+"Project-Id-Version: hammer-cli 3.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-10 13:02+0000\n"
+"POT-Creation-Date: 2022-08-09 15:14+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Automatically generated, 2014\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/foreman/foreman/"
@@ -33,7 +33,7 @@ msgid "Here you can find option types and the value an option can accept:"
 msgstr "您可以在此处找到选项类型，选项可接受的值："
 
 msgid "Predefined field sets"
-msgstr "预定义字段集"
+msgstr "预定义的字段集"
 
 msgid "Command extensions should be inherited from %s."
 msgstr "命令扩展名应从%s 继承。"
@@ -42,7 +42,7 @@ msgid "Unfortunately the server does not support such operation."
 msgstr "服务器不支持这样的操作。"
 
 msgid "The server does not support such operation."
-msgstr "伺服器不支援此類型的操作。"
+msgstr "服务器不支持这样的操作。"
 
 msgid "Prepare map of options and subcommands for Bash completion"
 msgstr "准备用于 Bash 完成功能的选项和子命令映射"
@@ -74,14 +74,14 @@ msgstr "您可以通过以下方式显示证书内容"
 msgid ""
 "As root you can also install the certificate and update the system-wide list "
 "of trusted CA certificates as follows:"
-msgstr "您还可以用  root 账户安装证书、更新系统级受信 CA 证书列表，如下所示："
+msgstr "您还可以用 root 账户安装证书、更新系统级受信 CA 证书列表，如下所示："
 
 msgid "Couldn't parse URI '%s'."
 msgstr "无法解析 URI '%s'。"
 
 msgid ""
 "The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
-msgstr "无法为 %{uri} 下载 CA 证书。未找到 CA 证书。"
+msgstr "无法为 %%{uri} 下载 CA 证书。未找到 CA 证书。"
 
 msgid "Make sure your server sends cert chain including the CA."
 msgstr "确保您的服务器发送了包括 CA 在内的证书链。"
@@ -120,10 +120,10 @@ msgid "Option '%{swt}': %{msg}."
 msgstr "选项 '%{swt} '：%{msg} 。"
 
 msgid "Parameter '%{pmt}': %{msg}."
-msgstr "参数 '%{pmt}': %{msg}。"
+msgstr "参数 '%{pmt}': %{msg}."
 
 msgid "%{env}: %{msg}."
-msgstr "%{env}: %{msg}。"
+msgstr "%{env}: %{msg}."
 
 msgid "Unrecognised option '%s'."
 msgstr "无法识别的选项 '%s'。"
@@ -142,7 +142,7 @@ msgid ""
 msgstr "无法创建 %s。请先创建目录，然后设置默认值。"
 
 msgid "Defaults management"
-msgstr "預設值管理"
+msgstr "默认管理"
 
 msgid "List all the providers"
 msgstr "列出所有供應者"
@@ -205,8 +205,7 @@ msgid ""
 "The param name is not supported by provider. See `hammer defaults providers` "
 "for supported params."
 msgstr ""
-"供應者並不支援此參數名稱。欲知支援的參數名稱，請參閱 `hammer defaults "
-"providers`。"
+"供应商不支持参数名称。有关支持的参数，请参见“ hammer defaults provider”。"
 
 msgid "%{param} was deleted successfully."
 msgstr "已成功刪除 %{param}。"
@@ -233,7 +232,7 @@ msgid "SSL certificate verification failed"
 msgstr "SSL 证书验证失败"
 
 msgid "is the server down?"
-msgstr "伺服器是否沒有在運作？"
+msgstr "服务器是否已下线？"
 
 msgid ""
 "was '%s' run on the server when using apipie cache? (typical production "
@@ -242,13 +241,13 @@ msgstr ""
 "在使用 apipie 缓存时（典型的生产环境设置），'%s' 是否有在服务器上运行？"
 
 msgid "Could not load the API description from the server"
-msgstr "無法從伺服器載入 API 描述"
+msgstr "无法从服务器加载 API 描述"
 
 msgid "Missing arguments for %s."
 msgstr "缺少 %s 参数"
 
 msgid "Format output in markdown"
-msgstr "格式输出下降"
+msgstr "格式输出的 markdown 格式"
 
 msgid "Hammer CLI help"
 msgstr "Hammer CLI 帮助"
@@ -342,7 +341,7 @@ msgid "Character to separate the values"
 msgstr "用來隔開值的字元"
 
 msgid "Get list of possible endings"
-msgstr "取得一列可能的結尾"
+msgstr "取得可能的结尾列表"
 
 msgid "Warning: An error occured while loading module %s."
 msgstr "警告：载入模块 %s 时出错。"
@@ -354,7 +353,7 @@ msgid "Value described in the option's description. Mostly simple string"
 msgstr "选项描述项中描述的值。大多数为简单的字符串"
 
 msgid "Comma-separated list of key=value."
-msgstr "逗號區隔開的一列 key=value。"
+msgstr "逗号分隔的 key=value 列表。"
 
 msgid "JSON is acceptable and preferred way for such parameters"
 msgstr "JSON 可用，且是此类参数的首选格式"
@@ -375,7 +374,7 @@ msgid "Numeric value. Integer"
 msgstr "数值。整数"
 
 msgid "Numeric value is required."
-msgstr "需要提供数值。"
+msgstr "需要数字值。"
 
 msgid "One of %s"
 msgstr "%s 之一"
@@ -399,7 +398,7 @@ msgid "Value must be %s."
 msgstr "值必须是 %s。"
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
-msgstr "日期與時間，格式為 YYYY-MM-DD HH:MM:SS 或是 ISO 8601 格式"
+msgstr "日期和时间，格式为 YYYY-MM-DD HH:MM:SS 或 ISO 8601"
 
 msgid "'%s' is not a valid date."
 msgstr "'%s' 不是有效日期。"
@@ -415,7 +414,7 @@ msgid "Value must be a combination of '%s'."
 msgstr "值必须是 '%s' 的组合。"
 
 msgid "Warning: Option %{option} is deprecated. %{message}"
-msgstr "警告：选项 %{option}已弃用。%{message}"
+msgstr "警告：选项%{option}已弃用。%{message}"
 
 msgid "Deprecated: %{deprecated_msg}"
 msgstr "弃用：％{deprecated_msg}"
