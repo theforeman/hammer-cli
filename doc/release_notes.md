@@ -1,5 +1,8 @@
 Release notes
 =============
+### 3.5.0 (2022-10-31)
+* Bump to 3.5.0-develop
+
 ### 3.4.0 (2022-08-09)
 * Bump to 3.4.0-develop
 
