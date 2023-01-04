@@ -40,9 +40,14 @@ uniq-po: ## Unify duplicate translations in .po files
 %.edit.po:
 	touch $@
 
-# Pull translaions from transifex
+# Pull in all languages with at least 50%
+.PHONY: tx-new
+tx-new:
+	tx pull --minimum-perc 50 --all
+
+# Pull translations from transifex
 .PHONY: tx-pull
-tx-pull: $(EDITFILES)
+tx-pull: tx-new $(EDITFILES)
 	@command -v tx >/dev/null 2>&1 || { echo "Command tx not found. Make sure you have transifex-client installed and configured." >&2; exit 1; }
 	tx pull -f
 	for f in $(EDITFILES); do \
