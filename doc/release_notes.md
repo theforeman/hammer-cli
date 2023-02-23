@@ -1,5 +1,11 @@
 Release notes
 =============
+### 3.6.0 (2023-02-23)
+* Update apipie-bindings to 0.6.0
+* Include makefile.def in the gem
+* Correct mocha inclusion in tests
+* Bump to 3.6.0-develop
+
 ### 3.5.0 (2022-10-31)
 * Bump to 3.5.0-develop
 
