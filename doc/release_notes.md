@@ -1,5 +1,8 @@
 Release notes
 =============
+### 3.5.1 (2023-02-28)
+* Update apipie-bindings to 0.6.0
+
 ### 3.5.0 (2022-10-31)
 * Bump to 3.5.0-develop
 
