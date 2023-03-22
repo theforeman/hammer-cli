@@ -73,7 +73,7 @@ module HammerCLI
     end
 
     def read_key(path)
-      OpenSSL::PKey::RSA.new(File.read(path)) unless path.nil?
+      OpenSSL::PKey.read(File.read(path)) unless path.nil?
     rescue SystemCallError => e
       warn _("Could't read SSL client key %s.") % path
     end
