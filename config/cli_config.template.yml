@@ -7,7 +7,7 @@
   # Location of shell history file
   :history_file: '~/.hammer/history'
   # Mark translated strings with X characters (for developers)
-  #:mark_translated: false
+  # :mark_translated: false
   # Hide headers from output of list actions
   # :no_headers: true
   # Choose capitalization for JSON/YAML output.
@@ -75,5 +75,5 @@
   # Certs from the local storage are used only when neither :ssl_ca_file: nor :ssl_ca_path: is cofigured.
   #:local_ca_store_path: '~/.hammer/certs'
 
- # Allows setting the SSL version to use when making API calls
+  # Allows setting the SSL version to use when making API calls
   #:ssl_version: 'TLSv1_2'
