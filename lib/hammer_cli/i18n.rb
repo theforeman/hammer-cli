@@ -137,6 +137,10 @@ module HammerCLI
       File.expand_path(File.join(File.dirname(__FILE__), '../../locale/Makefile.def'))
     end
 
+    def self.find_by_name(name)
+      domains.find { |domain| domain.class.to_s.split('::').first.underscore == name }
+    end
+
     init
   end
 end

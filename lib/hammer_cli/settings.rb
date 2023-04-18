@@ -4,6 +4,8 @@ require 'logging'
 module HammerCLI
 
   class Settings
+    CFG_PATH = ['~/.hammer/', '/etc/hammer/', "#{::RbConfig::CONFIG['sysconfdir']}/hammer/"].uniq
+    CFG_PATH_LOCAL = ['./config/']
 
     def self.get(*keys)
       keys.inject(settings) do |value, key|
@@ -39,6 +41,11 @@ module HammerCLI
           warn _("Warning: Couldn't load configuration file %{path}: %{message}.") % { path: file_path, message: e.message }
         end
       end
+    end
+
+    def self.load_from_defaults
+      load_from_paths CFG_PATH
+      load_from_paths CFG_PATH_LOCAL
     end
 
     def self.load(settings_hash)
