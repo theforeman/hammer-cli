@@ -3,7 +3,19 @@
 #
 # Run make help to list available targets
 #
-
+define DOMAIN_CMD
+require "rubygems";
+require "hammer_cli";
+HammerCLI::Settings.load_from_defaults;
+HammerCLI::Modules.load_all;
+spec = Gem::Specification::load(Dir.glob("../*.gemspec").first);
+i18n_domain = spec.respond_to?(:metadata) && spec.metadata["i18n_domain"];
+puts i18n_domain || HammerCLI::I18n.find_by_name(spec.name)&.domain_name || spec.name
+endef
+ifeq ($(origin DOMAIN), undefined)
+DOMAIN := $(shell bundle exec ruby -e '$(DOMAIN_CMD)')
+endif
+VERSION = $(shell ruby -rrubygems -e 'puts Gem::Specification::load(Dir.glob("../*.gemspec").first).version')
 POTFILE = $(DOMAIN).pot
 MOFILE = $(DOMAIN).mo
 POFILES = $(shell find . -name '$(DOMAIN).po')
@@ -12,12 +24,17 @@ POXFILES = $(patsubst %.po,%.pox,$(POFILES))
 EDITFILES = $(patsubst %.po,%.edit.po,$(POFILES))
 TIMESTAMPFILES = $(patsubst %.po,%.po.time_stamp,$(POFILES))
 
-%.mo: %.po
-	mkdir -p $(shell dirname $@)/LC_MESSAGES
-	msgfmt -o $(shell dirname $@)/LC_MESSAGES/$(MOFILE) $<
+.PHONY: vars
+vars:
+	@echo VERSION: $(VERSION)
+	@echo DOMAIN: $(DOMAIN)
 
 .PHONY: all-mo
-all-mo: $(MOFILES) ## Generate MO files from PO files (default)
+all-mo: ## Generate MO files from PO files (default)
+	for po_file in $(POFILES); do \
+		mkdir -p $$(dirname $$po_file)/LC_MESSAGES; \
+		msgfmt -o $$(dirname $$po_file)/LC_MESSAGES/$(MOFILE) $$po_file; \
+	done
 
 # Check for malformed strings
 %.pox: %.po
@@ -44,7 +61,7 @@ uniq-po: ## Unify duplicate translations in .po files
 .PHONY: tx-pull
 tx-pull: $(EDITFILES)
 	@command -v tx >/dev/null 2>&1 || { echo "Command tx not found. Make sure you have transifex-client installed and configured." >&2; exit 1; }
-	tx pull -f
+	cd .. && tx pull -f foreman.$(DOMAIN)
 	for f in $(EDITFILES); do \
 		sed -i 's/^\("Project-Id-Version: \).*$$/\1$(DOMAIN) $(VERSION)\\n"/' $$f; \
 	done
@@ -61,8 +78,13 @@ update-po:
 extract-strings:
 	bundle exec rake gettext:find
 
+# Check languages with 50% or more coverage and create needed files
+.PHONY: find-new
+find-new:
+	bundle exec rake gettext:find_new
+
 .PHONY: tx-update
-tx-update: extract-strings tx-pull update-po $(MOFILES) ## Download and merge translations from Transifex
+tx-update: find-new extract-strings tx-pull update-po all-mo ## Download and merge translations from Transifex
 	git add ../locale
 	git commit -m "i18n - extracting new, pulling from tx"
 	@echo Changes commited!

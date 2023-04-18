@@ -56,12 +56,7 @@ end
 # load user's settings
 require 'hammer_cli/settings'
 
-CFG_PATH = ['~/.hammer/', '/etc/hammer/', "#{::RbConfig::CONFIG['sysconfdir']}/hammer/"].uniq
-HammerCLI::Settings.load_from_paths CFG_PATH
-
-CFG_PATH_LOCAL = ['./config/']
-
-HammerCLI::Settings.load_from_paths CFG_PATH_LOCAL
+HammerCLI::Settings.load_from_defaults
 
 if preparser.config
   if File.file? preparser.config

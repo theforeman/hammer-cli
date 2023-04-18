@@ -1,4 +1,6 @@
 require 'rake'
+require 'fileutils'
+require_relative '../task_helper'
 
 module HammerCLI
   module I18n
@@ -29,6 +31,20 @@ module HammerCLI
           desc "Update pot file"
           task :find => [:setup] do
             Rake::Task["gettext:po:update"].invoke
+          end
+
+          desc 'Check languages with 50% or more coverage and create needed files'
+          task :find_new => [:setup] do
+            client = HammerCLI::TaskHelper::I18n::TxApiClient.new(domain: @domain)
+            stats = client.language_stats_collection
+            lang_percentages = stats['data'].each_with_object({}) do |lang, res|
+              res[lang['id'].split(':').last] = (lang['attributes']['translated_strings'] * 100.0 / lang['attributes']['total_strings']).round
+            end
+            lang_percentages.select { |_, v| v >= 50 }.each_key do |lang|
+              lang_dir = File.expand_path("#{@domain.locale_dir}/#{lang}")
+              FileUtils.mkpath(lang_dir)
+              FileUtils.cp(File.expand_path("#{@domain.locale_dir}/#{@domain.domain_name}.pot", __dir__), "#{lang_dir}/#{@domain.domain_name}.po")
+            end
           end
         end
       end
