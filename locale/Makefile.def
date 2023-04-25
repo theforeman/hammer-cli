@@ -61,7 +61,7 @@ uniq-po: ## Unify duplicate translations in .po files
 .PHONY: tx-pull
 tx-pull: $(EDITFILES)
 	@command -v tx >/dev/null 2>&1 || { echo "Command tx not found. Make sure you have transifex-client installed and configured." >&2; exit 1; }
-	cd .. && tx pull -f foreman.$(DOMAIN)
+	cd .. && tx pull -f
 	for f in $(EDITFILES); do \
 		sed -i 's/^\("Project-Id-Version: \).*$$/\1$(DOMAIN) $(VERSION)\\n"/' $$f; \
 	done
