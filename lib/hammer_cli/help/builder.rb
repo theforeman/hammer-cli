@@ -14,7 +14,7 @@ module HammerCLI
       def add_usage(invocation_path, usage_descriptions)
         heading(Clamp.message(:usage_heading))
         usage_descriptions.each do |usage|
-          puts "    #{HammerCLI.expand_invocation_path(invocation_path)} #{usage}".rstrip
+          line "    #{HammerCLI.expand_invocation_path(invocation_path)} #{usage}".rstrip
         end
       end
 
@@ -24,7 +24,7 @@ module HammerCLI
         end
         items.reject! {|item| item.respond_to?(:hidden?) && item.hidden?}
 
-        puts
+        line
         heading(heading)
 
         label_width = DEFAULT_LABEL_INDENT
@@ -47,15 +47,15 @@ module HammerCLI
                                  item.help
                                end
           description.gsub(/^(.)/) { Unicode.capitalize(Regexp.last_match(1)) }.wrap.each_line do |line|
-            puts " %-#{label_width}s %s" % [label, line]
+            line " %-#{label_width}s %s" % [label, line]
             label = ''
           end
         end
       end
 
       def add_text(content)
-        puts
-        puts content
+        line
+        line content
       end
 
       protected
@@ -63,7 +63,7 @@ module HammerCLI
       def heading(label)
         label = "#{label}:"
         label = HighLine.color(label, :bold) if @richtext
-        puts label
+        line label
       end
     end
   end
