@@ -59,14 +59,14 @@ describe HammerCLI::Output::Adapter::CSValues do
       }]}
 
       it "should ommit column of type Id by default" do
-        out, err = capture_io { adapter.print_collection(fields, data) }
+        out, _ = capture_io { adapter.print_collection(fields, data) }
         out.wont_match(/.*Id.*/)
         out.wont_match(/.*2000,.*/)
       end
 
       it "should print column of type Id when --show-ids is set" do
         adapter = HammerCLI::Output::Adapter::CSValues.new( { :show_ids => true } )
-        out, err = capture_io { adapter.print_collection(fields, data) }
+        out, _ = capture_io { adapter.print_collection(fields, data) }
         out.must_match(/.*Id.*/)
       end
     end
@@ -75,12 +75,12 @@ describe HammerCLI::Output::Adapter::CSValues do
       let(:empty_data) { HammerCLI::Output::RecordCollection.new [] }
 
       it "should print headers by default" do
-        out, err = capture_io { adapter.print_collection(fields, data) }
+        out, _ = capture_io { adapter.print_collection(fields, data) }
         out.must_match(/.*Name.*/)
       end
 
       it "should print headers by default even if there is no data" do
-        out, err = capture_io { adapter.print_collection(fields, empty_data) }
+        out, _ = capture_io { adapter.print_collection(fields, empty_data) }
         out.must_match(/.*Name.*/)
       end
 
@@ -202,7 +202,7 @@ describe HammerCLI::Output::Adapter::CSValues do
         end
 
         adapter = HammerCLI::Output::Adapter::CSValues.new({}, { :Field => [ DotFormatter.new ]})
-        out, err = capture_io { adapter.print_collection(fields, data) }
+        out, _ = capture_io { adapter.print_collection(fields, data) }
         out.must_match(/.*-DOT-.*/)
       end
 
@@ -215,7 +215,7 @@ describe HammerCLI::Output::Adapter::CSValues do
 
         adapter = HammerCLI::Output::Adapter::CSValues.new({}, { :Field => [ NilFormatter.new ]})
         nil_data = HammerCLI::Output::RecordCollection.new [{ :name => nil }]
-        out, err = capture_io { adapter.print_collection([field_name], nil_data) }
+        out, _ = capture_io { adapter.print_collection([field_name], nil_data) }
         out.must_match(/.*NIL.*/)
       end
     end

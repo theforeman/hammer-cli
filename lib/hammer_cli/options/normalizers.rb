@@ -298,7 +298,7 @@ module HammerCLI
           json_string = ::File.exist?(::File.expand_path(val)) ? super(val) : val
           ::JSON.parse(json_string)
 
-        rescue ::JSON::ParserError => e
+        rescue ::JSON::ParserError
           raise ArgumentError, _("Unable to parse JSON input.")
         end
 

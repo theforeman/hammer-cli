@@ -67,7 +67,7 @@ module HammerCLI
 
     def self.load(name)
       load! name
-    rescue Exception => e
+    rescue Exception
       false
     end
 

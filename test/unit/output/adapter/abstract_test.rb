@@ -27,7 +27,7 @@ describe HammerCLI::Output::Adapter::Abstract do
   it "should filter formatters with incompatible features" do
 
     HammerCLI::Output::Formatters::FormatterLibrary.expects(:new).with({ :type => [] })
-    adapter = adapter_class.new({}, {:type => [UnknownTestFormatter.new]})
+    adapter_class.new({}, {:type => [UnknownTestFormatter.new]})
   end
 
   it "should keep compatible formatters" do
@@ -35,7 +35,7 @@ describe HammerCLI::Output::Adapter::Abstract do
     HammerCLI::Output::Formatters::FormatterLibrary.expects(:new).with({ :type => [formatter] })
     # set :unknown tag to abstract
     adapter_class.any_instance.stubs(:features).returns([:unknown])
-    adapter = adapter_class.new({}, {:type => [formatter]})
+    adapter_class.new({}, {:type => [formatter]})
   end
 
   it "should put serializers first" do
@@ -46,7 +46,7 @@ describe HammerCLI::Output::Adapter::Abstract do
     HammerCLI::Output::Formatters::FormatterLibrary.expects(:new).with({ :type => [formatter2, formatter1] })
     # set :unknown tag to abstract
     adapter_class.any_instance.stubs(:features).returns([:serialized])
-    adapter = adapter_class.new({}, {:type => [formatter1, formatter2]})
+    adapter_class.new({}, {:type => [formatter1, formatter2]})
   end
 
 

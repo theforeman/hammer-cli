@@ -48,18 +48,6 @@ class String
   end
 end
 
-class Hash
-  # for ruby < 2.5.0
-  def transform_keys
-    result = {}
-    each do |key, value|
-      new_key = yield key
-      result[new_key] = value
-    end
-    result
-  end
-end
-
 module HammerCLI
 
   def self.tty?

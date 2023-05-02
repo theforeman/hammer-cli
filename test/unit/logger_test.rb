@@ -4,7 +4,7 @@ require 'tempfile'
 describe Logging::LogEvent do
 
   describe '#initialize_logger' do
-    let (:logger) { Logging::Logger.new(File.open('/dev/null')) }
+    let(:logger) { Logging::Logger.new(File.open('/dev/null')) }
 
     it "prints message to stderr when log dir can't be created" do
         log_dir = "/nonexistant/dir/logs"
@@ -12,7 +12,7 @@ describe Logging::LogEvent do
 
         HammerCLI::Settings.load({:log_dir => log_dir})
 
-        out, err = capture_io do
+        _, err = capture_io do
           HammerCLI::Logger::initialize_logger(logger)
         end
 

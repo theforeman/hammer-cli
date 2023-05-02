@@ -84,8 +84,8 @@ module HammerCLI::Output
         tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
       end
 
-      def format(data, field_params={})
-        c = HighLine.color(data.to_s, @color)
+      def format(data, _={})
+        HighLine.color(data.to_s, @color)
       end
     end
 
@@ -97,7 +97,7 @@ module HammerCLI::Output
         tags.map { |t| HammerCLI::Output::Utils.tag_to_feature(t) }
       end
 
-      def format(string_date, field_params={})
+      def format(string_date, _={})
         t = DateTime.parse(string_date.to_s)
         t.strftime("%Y/%m/%d %H:%M:%S")
       rescue ArgumentError
