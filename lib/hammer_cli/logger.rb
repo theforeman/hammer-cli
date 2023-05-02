@@ -54,7 +54,7 @@ module HammerCLI
       log_dir = File.expand_path(HammerCLI::Settings.get(:log_dir) || DEFAULT_LOG_DIR)
       begin
         FileUtils.mkdir_p(log_dir, :mode => 0750)
-      rescue Errno::EACCES => e
+      rescue Errno::EACCES
         $stderr.puts _("No permissions to create log dir %s.") % log_dir
       end
 
@@ -68,7 +68,7 @@ module HammerCLI
                                                             :size     => (HammerCLI::Settings.get(:log_size) || 1)*1024*1024) # 1MB
         # set owner and group (it's ignored if attribute is nil)
         FileUtils.chown HammerCLI::Settings.get(:log_owner), HammerCLI::Settings.get(:log_group), filename
-      rescue ArgumentError => e
+      rescue ArgumentError
         $stderr.puts _("File %s not writeable, won't log anything to the file!") % filename
       end
 

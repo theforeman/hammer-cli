@@ -24,7 +24,6 @@ describe 'commands' do
     let(:cmd) { ['defaults', 'list'] }
 
     it 'prints all defaults' do
-      header = 'Parameter,Value'
       default_values = {
         :organization_id => {
           :value => 3,

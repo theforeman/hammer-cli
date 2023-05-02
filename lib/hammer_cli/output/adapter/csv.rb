@@ -94,7 +94,6 @@ module HammerCLI::Output::Adapter
         @name = nil
         @prefixes = []
         @suffixes = []
-        @data
       end
 
       def append_suffix(suffix)

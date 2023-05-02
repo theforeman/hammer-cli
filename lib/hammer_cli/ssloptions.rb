@@ -68,13 +68,13 @@ module HammerCLI
 
     def read_certificate(path)
       OpenSSL::X509::Certificate.new(File.read(path)) unless path.nil?
-    rescue SystemCallError => e
+    rescue SystemCallError
       warn _("Could't read SSL client certificate %s.") % path
     end
 
     def read_key(path)
       OpenSSL::PKey.read(File.read(path)) unless path.nil?
-    rescue SystemCallError => e
+    rescue SystemCallError
       warn _("Could't read SSL client key %s.") % path
     end
   end

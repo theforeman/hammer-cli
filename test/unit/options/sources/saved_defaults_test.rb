@@ -20,10 +20,6 @@ describe HammerCLI::Options::Sources::SavedDefaults do
       @defaults.expects(:get_defaults).with('--test-multi1').returns(:first_value)
 
       current_result = {}
-      expected_result = {
-        :different_attr_name => 1,
-        :multiple_switches_option => :first_value
-      }
 
       @logger.expects(:info).with('Custom default value 1 was used for attribute --test')
       @logger.expects(:info).with('Custom default value first_value was used for attribute --test-multi1')

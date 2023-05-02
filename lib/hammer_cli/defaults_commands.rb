@@ -1,4 +1,3 @@
-require 'hammer_cli'
 require 'yaml'
 module HammerCLI
   class BaseDefaultsProvider

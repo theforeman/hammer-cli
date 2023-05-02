@@ -20,13 +20,13 @@ describe HammerCLI::ShellHistory do
   describe "loading old history" do
 
     it "skips loading if the file does not exist" do
-      history = HammerCLI::ShellHistory.new(new_file.path)
+      HammerCLI::ShellHistory.new(new_file.path)
 
       Readline::HISTORY.to_a.must_equal []
     end
 
     it "preseeds readline's history" do
-      history = HammerCLI::ShellHistory.new(history_file.path)
+      HammerCLI::ShellHistory.new(history_file.path)
 
       Readline::HISTORY.to_a.must_equal ["line 1", "line 2"]
     end
