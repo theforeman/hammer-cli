@@ -11,6 +11,7 @@ module HammerCLI
         @subcommand_class = subcommand_class
         @hidden = options[:hidden]
         @warning = options[:warning]
+        super(@names, @description, @subcommand_class)
       end
 
       def hidden?
