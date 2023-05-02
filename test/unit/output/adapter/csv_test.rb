@@ -24,28 +24,28 @@ describe HammerCLI::Output::Adapter::CSValues do
 
     it "should print column name" do
       out, err = capture_io { adapter.print_collection(fields, data) }
-      out.must_match /.*Name,Started At.*/
-      err.must_match //
+      out.must_match(/.*Name,Started At.*/)
+      err.must_match(//)
     end
 
     it "should print field value" do
       out, err = capture_io { adapter.print_collection(fields, data) }
-      out.must_match /.*John Doe.*/
-      err.must_match //
+      out.must_match(/.*John Doe.*/)
+      err.must_match(//)
     end
 
     it "does not print fields which data are missing from api by default" do
       fields << field_login
       out, err = capture_io { adapter.print_collection(fields, data) }
-      out.wont_match /.*Login.*/
-      err.must_match //
+      out.wont_match(/.*Login.*/)
+      err.must_match(//)
     end
 
     it "prints fields which data are missing from api when field has hide_missing flag set to false" do
       fields << field_missing
       out, err = capture_io { adapter.print_collection(fields, data) }
-      out.must_match /.*Missing.*/
-      err.must_match //
+      out.must_match(/.*Missing.*/)
+      err.must_match(//)
     end
 
     context "handle ids" do
@@ -127,14 +127,14 @@ describe HammerCLI::Output::Adapter::CSValues do
 
       it "should print column names" do
         out, err = capture_io { adapter.print_collection(fields, data) }
-        out.must_match /.*Demographics::Age,Demographics::Gender,Biometrics::Weight,Biometrics::Height*/
-        err.must_match //
+        out.must_match(/.*Demographics::Age,Demographics::Gender,Biometrics::Weight,Biometrics::Height*/)
+        err.must_match(//)
       end
 
       it "should print data" do
         out, err = capture_io { adapter.print_collection(fields, data) }
-        out.must_match /.*2000,22,m,123,155*/
-        err.must_match //
+        out.must_match(/.*2000,22,m,123,155*/)
+        err.must_match(//)
       end
     end
 
@@ -169,7 +169,7 @@ describe HammerCLI::Output::Adapter::CSValues do
         lines = out.split("\n")
         lines[0].must_equal 'Name,Started At,Items::Item Name::1,Items::Item Quantity::1,Items::Item Name::2,Items::Item Quantity::2'
 
-        err.must_match //
+        err.must_match(//)
       end
 
       it "should print collection data" do
@@ -179,7 +179,7 @@ describe HammerCLI::Output::Adapter::CSValues do
         lines[1].must_equal 'John Doe,2000,hammer,100,"",""'
         lines[2].must_equal 'Jane Roe,2001,cleaver,1,sledge,50'
 
-        err.must_match //
+        err.must_match(//)
       end
 
       it "should handle empty collection" do
@@ -188,7 +188,7 @@ describe HammerCLI::Output::Adapter::CSValues do
 
         lines[0].must_equal 'Name,Started At,Items'
 
-        err.must_match //
+        err.must_match(//)
       end
 
     end

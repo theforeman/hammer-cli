@@ -12,7 +12,7 @@ module HammerCLI::Output
     end
 
     def build(&block)
-      self.instance_eval &block
+      self.instance_eval(&block)
     end
 
     protected
