@@ -64,7 +64,7 @@ describe HammerCLI::Options::OptionDefinition do
       cmd = TestDeprecatedOptionCmd.new("", context)
 
       out, err = capture_io { cmd.run(["--another-deprecated=VALUE"]) }
-      err.must_match /Warning: Option --another-deprecated is deprecated. It is going to be removed/
+      err.must_match(/Warning: Option --another-deprecated is deprecated. It is going to be removed/)
       context[:old_option].must_equal "VALUE"
     end
 
@@ -73,7 +73,7 @@ describe HammerCLI::Options::OptionDefinition do
       cmd = TestDeprecatedOptionCmd.new("", context)
 
       out, err = capture_io { cmd.run(["--deprecated=VALUE"]) }
-      err.must_match /Warning: Option --deprecated is deprecated. Use --test-option instead/
+      err.must_match(/Warning: Option --deprecated is deprecated. Use --test-option instead/)
       context[:test_option].must_equal "VALUE"
     end
 

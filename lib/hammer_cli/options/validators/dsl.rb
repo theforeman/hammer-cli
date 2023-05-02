@@ -152,7 +152,7 @@ module HammerCLI
         end
 
         def run(&block)
-          self.instance_eval &block
+          self.instance_eval(&block)
         end
       end
     end

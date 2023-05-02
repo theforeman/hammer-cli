@@ -42,7 +42,7 @@ describe HammerCLI::Apipie::Command do
     let(:cmd_class) { CommandUnsupp.dup }
     let(:cmd) { cmd_class.new("unsupported", ctx) }
     it "should print help for unsupported command" do
-      assert_match /.*Unfortunately the server does not support such operation.*/, cmd.help
+      assert_match(/.*Unfortunately the server does not support such operation.*/, cmd.help)
     end
 
   end

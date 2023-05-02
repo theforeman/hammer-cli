@@ -13,7 +13,7 @@ module HammerCLI::Output
 
       def register_formatter(type, *formatters)
         if @_formatters[type].nil?
-          @_formatters[type] = FormatterContainer.new *formatters
+          @_formatters[type] = FormatterContainer.new(*formatters)
         else
           formatters.each { |f| @_formatters[type].add_formatter(f) }
         end

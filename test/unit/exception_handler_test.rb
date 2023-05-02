@@ -30,7 +30,7 @@ describe HammerCLI::ExceptionHandler do
   end
 
   it "should handle help request" do
-    output.expects(:print_message).with(cmd.help, {}, verbosity: HammerCLI::V_QUIET)
+    output.expects(:print_message).with(cmd.help, {}, { verbosity: HammerCLI::V_QUIET })
     handler.handle_exception(Clamp::HelpWanted.new(cmd), :heading => heading)
 
   end
@@ -51,8 +51,8 @@ describe HammerCLI::ExceptionHandler do
     ex = RestClient::ResourceNotFound.new
     output.default_adapter = :silent
     handler.handle_exception(ex)
-    assert_match /Using exception handler HammerCLI::ExceptionHandler#handle_not_found/, @log_output.readline.strip
-    assert_match /ERROR  Exception : (Resource )?Not Found/, @log_output.readline.strip
+    assert_match(/Using exception handler HammerCLI::ExceptionHandler#handle_not_found/, @log_output.readline.strip)
+    assert_match(/ERROR  Exception : (Resource )?Not Found/, @log_output.readline.strip)
   end
 
   it "should print default prompts for standard missing arguments" do

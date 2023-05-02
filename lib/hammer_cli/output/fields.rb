@@ -72,7 +72,7 @@ module Fields
     def initialize(options={}, &block)
       super(options)
       dsl = HammerCLI::Output::Dsl.new
-      dsl.build &block if block_given?
+      dsl.build(&block) if block_given?
       dsl.fields.each { |f| f.parent = self }
       self.output_definition.append dsl.fields
     end
