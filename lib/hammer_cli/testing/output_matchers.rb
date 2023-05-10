@@ -2,7 +2,7 @@ module HammerCLI
   module Testing
     module OutputMatchers
       class MatcherBase
-        include MiniTest::Assertions
+        include Minitest::Assertions
 
         def initialize(expected="")
           @expected = expected

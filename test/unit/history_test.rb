@@ -22,13 +22,13 @@ describe HammerCLI::ShellHistory do
     it "skips loading if the file does not exist" do
       HammerCLI::ShellHistory.new(new_file.path)
 
-      Readline::HISTORY.to_a.must_equal []
+      _(Readline::HISTORY.to_a).must_equal []
     end
 
     it "preseeds readline's history" do
       HammerCLI::ShellHistory.new(history_file.path)
 
-      Readline::HISTORY.to_a.must_equal ["line 1", "line 2"]
+      _(Readline::HISTORY.to_a).must_equal ["line 1", "line 2"]
     end
   end
 
@@ -37,7 +37,7 @@ describe HammerCLI::ShellHistory do
       history = HammerCLI::ShellHistory.new(new_file.path)
       history.push("some command ")
 
-      File.exist?(new_file.path).must_equal true
+      _(File.exist?(new_file.path)).must_equal true
     end
 
     it "appends history to the given file" do
@@ -45,21 +45,21 @@ describe HammerCLI::ShellHistory do
       history.push("some command ")
       history.push("another command ")
 
-      new_file.read.must_equal "some command\nanother command\n"
+      _(new_file.read).must_equal "some command\nanother command\n"
     end
 
     it "appends to readline's history" do
       history = HammerCLI::ShellHistory.new(history_file.path)
       history.push("line 3")
 
-      Readline::HISTORY.to_a.must_equal ["line 1", "line 2", "line 3"]
+      _(Readline::HISTORY.to_a).must_equal ["line 1", "line 2", "line 3"]
     end
 
     it "doesn't save exit command" do
       history = HammerCLI::ShellHistory.new(history_file.path)
       history.push("exit ")
 
-      Readline::HISTORY.to_a.must_equal ["line 1", "line 2"]
+      _(Readline::HISTORY.to_a).must_equal ["line 1", "line 2"]
     end
   end
 

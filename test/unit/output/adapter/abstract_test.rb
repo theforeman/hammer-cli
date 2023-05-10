@@ -7,7 +7,7 @@ describe HammerCLI::Output::Adapter::Abstract do
 
 
   it "should have features" do
-    adapter.features.must_be_kind_of Array
+    _(adapter.features).must_be_kind_of Array
   end
 
   class UnknownTestFormatter < HammerCLI::Output::Formatters::FieldFormatter
@@ -21,7 +21,7 @@ describe HammerCLI::Output::Adapter::Abstract do
   end
 
   it "allows default pagination" do
-    adapter.paginate_by_default?.must_equal true
+    _(adapter.paginate_by_default?).must_equal true
   end
 
   it "should filter formatters with incompatible features" do
@@ -52,25 +52,25 @@ describe HammerCLI::Output::Adapter::Abstract do
 
   context "messages" do
     it "should print message to stdout" do
-      proc { adapter.print_message("MESSAGE") }.must_output(/.*MESSAGE.*/, "")
+      _{ adapter.print_message("MESSAGE") }.must_output(/.*MESSAGE.*/, "")
     end
 
     it "should print formatted message with parameters" do
-      proc { adapter.print_message("MESSAGE %{a}, %{b}", :a => 'A', :b => 'B') }.must_output(/.*MESSAGE A, B.*/, "")
+      _{ adapter.print_message("MESSAGE %{a}, %{b}", :a => 'A', :b => 'B') }.must_output(/.*MESSAGE A, B.*/, "")
     end
 
     it 'should print message with nil params' do
-      proc { adapter.print_message('MESSAGE', nil) }.must_output(/.*MESSAGE.*/, '')
+      _{ adapter.print_message('MESSAGE', nil) }.must_output(/.*MESSAGE.*/, '')
     end
   end
 
   it "should raise not implemented on print_collection" do
-    proc { adapter.print_collection([], HammerCLI::Output::RecordCollection.new([])) }.must_raise NotImplementedError
+    _{ adapter.print_collection([], HammerCLI::Output::RecordCollection.new([])) }.must_raise NotImplementedError
   end
 
   context "error messages" do
     it "should print error message to stderr" do
-      proc { adapter.print_error("MESSAGE") }.must_output("", /.*MESSAGE.*/)
+      _{ adapter.print_error("MESSAGE") }.must_output("", /.*MESSAGE.*/)
     end
 
     let(:expected_output) { "MESSAGE:\n"+
@@ -85,15 +85,15 @@ describe HammerCLI::Output::Adapter::Abstract do
     }
 
     it "should print list details of error to stderr" do
-      proc { adapter.print_error("MESSAGE", ["error", "message", "details"]) }.must_output("", expected_output)
+      _{ adapter.print_error("MESSAGE", ["error", "message", "details"]) }.must_output("", expected_output)
     end
 
     it "should print string details of error to stderr" do
-      proc { adapter.print_error("MESSAGE", "error\nmessage\ndetails") }.must_output("", expected_output)
+      _{ adapter.print_error("MESSAGE", "error\nmessage\ndetails") }.must_output("", expected_output)
     end
 
     it "should print formatted message with parameters" do
-      proc {
+      _{
         adapter.print_error("MESSAGE %{a}, %{b}", ["error %{a}", "error %{b}"], :a => 'A', :b => 'B')
       }.must_output("", expected_formatted_output)
     end

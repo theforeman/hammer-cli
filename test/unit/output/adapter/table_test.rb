@@ -5,7 +5,7 @@ describe HammerCLI::Output::Adapter::Table do
   let(:adapter) { HammerCLI::Output::Adapter::Table.new }
 
   it "allows default pagination" do
-    adapter.paginate_by_default?.must_equal true
+    _(adapter.paginate_by_default?).must_equal true
   end
 
   context "print_collection" do
@@ -40,11 +40,11 @@ describe HammerCLI::Output::Adapter::Table do
     let(:empty_data) { HammerCLI::Output::RecordCollection.new [] }
 
     it "should print column name " do
-      proc { adapter.print_collection(fields, data) }.must_output(/.*NAME.*/, "")
+      _{ adapter.print_collection(fields, data) }.must_output(/.*NAME.*/, "")
     end
 
     it "should print field value" do
-      proc { adapter.print_collection(fields, data) }.must_output(/.*John Doe.*/, "")
+      _{ adapter.print_collection(fields, data) }.must_output(/.*John Doe.*/, "")
     end
 
     it "does not print fields which data are missing from api by default" do
@@ -58,7 +58,7 @@ describe HammerCLI::Output::Adapter::Table do
         ''
       ].join("\n")
 
-      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      _{ adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
     it "prints fields which data are missing from api when field has hide_missing flag set to false" do
@@ -72,18 +72,18 @@ describe HammerCLI::Output::Adapter::Table do
         ''
       ].join("\n")
 
-      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      _{ adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
     context "pagination" do
       it "should print pagination info if data are not complete" do
         data = HammerCLI::Output::RecordCollection.new([record], { :total => 2, :page => 1, :per_page => 1, :subtotal => 2 })
-        proc { adapter.print_collection(fields, data) }.must_output(/.*Page 1 of 2 (use --page and --per-page for navigation)*/, "")
+        _{ adapter.print_collection(fields, data) }.must_output(/.*Page 1 of 2 (use --page and --per-page for navigation)*/, "")
       end
 
       it "should print pagination info if data are complete" do
         data = HammerCLI::Output::RecordCollection.new([record], { :total => 1, :page => 1, :per_page => 1, :subtotal => 1 })
-        proc { adapter.print_collection(fields, data) }.must_output("--------\nNAME    \n--------\nJohn Doe\n--------\n", "")
+        _{ adapter.print_collection(fields, data) }.must_output("--------\nNAME    \n--------\nJohn Doe\n--------\n", "")
       end
     end
 
@@ -95,7 +95,7 @@ describe HammerCLI::Output::Adapter::Table do
 
       it "should ommit column of type Id by default" do
         out, _ = capture_io { adapter.print_collection(fields, data) }
-        out.wont_match(/.*ID.*/)
+        _(out).wont_match(/.*ID.*/)
       end
 
       it "should ommit column of type Id by default but no data" do
@@ -105,13 +105,13 @@ describe HammerCLI::Output::Adapter::Table do
                            "----",
                            ""
                           ].join("\n")
-        proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, empty_data) }.must_output(expected_output)
       end
 
       it "should print column of type Id when --show-ids is set" do
         adapter = HammerCLI::Output::Adapter::Table.new( { :show_ids => true } )
         out, _ = capture_io { adapter.print_collection(fields, data) }
-        out.must_match(/.*ID.*/)
+        _(out).must_match(/.*ID.*/)
       end
 
       it "should print column of type ID when --show-ids is set but no data" do
@@ -122,19 +122,19 @@ describe HammerCLI::Output::Adapter::Table do
                            "",
                           ].join("\n")
         adapter = HammerCLI::Output::Adapter::Table.new( { :show_ids => true } )
-        proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, empty_data) }.must_output(expected_output)
       end
     end
 
     context "handle headers" do
       it "should print headers by default" do
         out, _ = capture_io { adapter.print_collection(fields, data) }
-        out.must_match(/.*NAME.*/)
+        _(out).must_match(/.*NAME.*/)
       end
 
       it "should print headers by default even if there is no data" do
         out, _ = capture_io { adapter.print_collection(fields, empty_data) }
-        out.must_match(/.*NAME.*/)
+        _(out).must_match(/.*NAME.*/)
       end
 
       it "should print data only when --no-headers is set" do
@@ -143,13 +143,13 @@ describe HammerCLI::Output::Adapter::Table do
                            "",
                           ].join("\n")
         adapter = HammerCLI::Output::Adapter::Table.new( { :no_headers => true } )
-        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
       it "should print nothing when --no-headers is set but no data" do
         expected_output = ""
         adapter = HammerCLI::Output::Adapter::Table.new( { :no_headers => true } )
-        proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, empty_data) }.must_output(expected_output)
       end
     end
 
@@ -168,7 +168,7 @@ describe HammerCLI::Output::Adapter::Table do
           ""
         ].join("\n")
 
-        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
       it "calculates correct width of czech characters" do
@@ -184,7 +184,7 @@ describe HammerCLI::Output::Adapter::Table do
           ""
         ].join("\n")
 
-        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
       it "calculates correct width of colorized strings" do
@@ -200,7 +200,7 @@ describe HammerCLI::Output::Adapter::Table do
           ""
         ].join("\n").gsub('John', "#{red}John#{reset}")
 
-        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
       it "truncates two-column characters when it exceeds maximum width" do
@@ -216,7 +216,7 @@ describe HammerCLI::Output::Adapter::Table do
           ""
         ].join("\n")
 
-        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
       it "truncates colorized string string when it exceeds maximum width" do
@@ -232,7 +232,7 @@ describe HammerCLI::Output::Adapter::Table do
           ""
         ].join("\n").gsub('SomeVer', "#{red}SomeVer#{reset}")
 
-        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
       it "truncates string when it exceeds maximum width" do
@@ -248,7 +248,7 @@ describe HammerCLI::Output::Adapter::Table do
           ""
         ].join("\n")
 
-        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
       it "truncates string when it exceeds width" do
@@ -264,7 +264,7 @@ describe HammerCLI::Output::Adapter::Table do
           ""
         ].join("\n")
 
-        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
       it "sets width to the longest column name when no data" do
@@ -277,7 +277,7 @@ describe HammerCLI::Output::Adapter::Table do
                            "------------------------|---------",
                            ""
                           ].join("\n")
-        proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, empty_data) }.must_output(expected_output)
       end
 
       it "sets certain width" do
@@ -293,7 +293,7 @@ describe HammerCLI::Output::Adapter::Table do
           ""
         ].join("\n")
 
-        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
       it "sets certain width when no data" do
@@ -307,7 +307,7 @@ describe HammerCLI::Output::Adapter::Table do
           ""
         ].join("\n")
 
-        proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, empty_data) }.must_output(expected_output)
       end
 
 
@@ -324,7 +324,7 @@ describe HammerCLI::Output::Adapter::Table do
           ""
         ].join("\n")
 
-        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
       it "gives preference to width over maximal width when no data" do
@@ -338,7 +338,7 @@ describe HammerCLI::Output::Adapter::Table do
           ""
         ].join("\n")
 
-        proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, empty_data) }.must_output(expected_output)
       end
 
 
@@ -354,7 +354,7 @@ describe HammerCLI::Output::Adapter::Table do
 
         adapter = HammerCLI::Output::Adapter::Table.new({}, { :Field => [ DotFormatter.new ]})
         out, _ = capture_io { adapter.print_collection(fields, data) }
-        out.must_match(/.*-DOT-.*/)
+        _(out).must_match(/.*-DOT-.*/)
       end
 
       it "should not break formatting" do
@@ -375,7 +375,7 @@ describe HammerCLI::Output::Adapter::Table do
           ""
         ].join("\n")
 
-        proc { adapter.print_collection([field_long], data) }.must_output(expected_output)
+        _{ adapter.print_collection([field_long], data) }.must_output(expected_output)
       end
 
     end
@@ -401,9 +401,7 @@ describe HammerCLI::Output::Adapter::Table do
           "---|------------",
         ).join("\n") + "\n---|------------\n"
 
-        proc do
-          adapter.print_collection(fields, collection_data)
-        end.must_output(expected_output)
+        _{adapter.print_collection(fields, collection_data)}.must_output(expected_output)
       end
 
       it 'prints first chunk' do
@@ -417,11 +415,9 @@ describe HammerCLI::Output::Adapter::Table do
           "---|-----------",
         ).join("\n") + "\n"
 
-        proc do
-          adapter.print_collection(
-            fields, collection_data[0...10], current_chunk: :first
-          )
-        end.must_output(expected_output)
+        _{adapter.print_collection(
+          fields, collection_data[0...10], current_chunk: :first
+        )}.must_output(expected_output)
       end
 
       it 'prints another chunk' do
@@ -429,11 +425,9 @@ describe HammerCLI::Output::Adapter::Table do
           r << ["#{t} | John Doe #{t}"]
         end.flatten(1).join("\n") + "\n"
 
-        proc do
-          adapter.print_collection(
-            fields, collection_data[10...20], current_chunk: :another
-          )
-        end.must_output(expected_output)
+        _{adapter.print_collection(
+          fields, collection_data[10...20], current_chunk: :another
+        )}.must_output(expected_output)
       end
       #
       it 'prints last chunk' do
@@ -441,11 +435,9 @@ describe HammerCLI::Output::Adapter::Table do
           r << ["#{t} | John Doe #{t}"]
         end.flatten(1).join("\n") + "\n---|------------\n"
 
-        proc do
-          adapter.print_collection(
-            fields, collection_data[20...30], current_chunk: :last
-          )
-        end.must_output(expected_output)
+        _{adapter.print_collection(
+          fields, collection_data[20...30], current_chunk: :last
+        )}.must_output(expected_output)
       end
     end
 
@@ -458,7 +450,7 @@ describe HammerCLI::Output::Adapter::Table do
       it "should not print to stdout when --output-file is set" do
         fields = [field_firstname]
 
-        proc { adapter.print_collection(fields, data) }.must_output("")
+        _{ adapter.print_collection(fields, data) }.must_output("")
       end
 
       it "should print to file if --output-file is set" do
@@ -474,14 +466,14 @@ describe HammerCLI::Output::Adapter::Table do
 
         adapter.print_collection(fields, data)
         tempfile.close
-        IO.read(tempfile.path).must_equal(expected_output)
+        _(IO.read(tempfile.path)).must_equal(expected_output)
       end
 
     end
 
     context 'print_message' do
       it 'should print message with nil params' do
-        proc { adapter.print_message('MESSAGE', nil) }.must_output(/.*MESSAGE.*/, '')
+        _{ adapter.print_message('MESSAGE', nil) }.must_output(/.*MESSAGE.*/, '')
       end
     end
   end

@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '../test_helper')
+require File.join(File.dirname(__FILE__), './test_helper')
 
 # require 'hammer_cli/options/option_definition'
 
@@ -8,17 +8,17 @@ describe HammerCLI::Apipie::OptionDefinition do
 
   describe "referenced resource" do
     it "should be nil by default" do
-      opt.referenced_resource.must_equal nil
+      assert_nil opt.referenced_resource
     end
 
     it "should set referenced resource" do
       @referenced_resource = "organization"
-      opt.referenced_resource.must_equal "organization"
+      _(opt.referenced_resource).must_equal "organization"
     end
 
     it "should convert referenced resource name to string" do
       @referenced_resource = :organization
-      opt.referenced_resource.must_equal "organization"
+      _(opt.referenced_resource).must_equal "organization"
     end
 
   end
@@ -27,7 +27,7 @@ describe HammerCLI::Apipie::OptionDefinition do
 
   describe "Option Description should be converted" do
     it "should be converted" do
-      opt2.description.must_equal "'OPT2'"
+      _(opt2.description).must_equal "'OPT2'"
     end
 
   end

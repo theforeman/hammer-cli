@@ -5,7 +5,7 @@ describe HammerCLI::Output::Adapter::CSValues do
   let(:adapter) { HammerCLI::Output::Adapter::CSValues.new }
 
   it "forbids default pagination" do
-    adapter.paginate_by_default?.must_equal false
+    _(adapter.paginate_by_default?).must_equal false
   end
 
   context "print_collection" do
@@ -24,28 +24,28 @@ describe HammerCLI::Output::Adapter::CSValues do
 
     it "should print column name" do
       out, err = capture_io { adapter.print_collection(fields, data) }
-      out.must_match(/.*Name,Started At.*/)
-      err.must_match(//)
+      _(out).must_match(/.*Name,Started At.*/)
+      _(err).must_match(//)
     end
 
     it "should print field value" do
       out, err = capture_io { adapter.print_collection(fields, data) }
-      out.must_match(/.*John Doe.*/)
-      err.must_match(//)
+      _(out).must_match(/.*John Doe.*/)
+      _(err).must_match(//)
     end
 
     it "does not print fields which data are missing from api by default" do
       fields << field_login
       out, err = capture_io { adapter.print_collection(fields, data) }
-      out.wont_match(/.*Login.*/)
-      err.must_match(//)
+      _(out).wont_match(/.*Login.*/)
+      _(err).must_match(//)
     end
 
     it "prints fields which data are missing from api when field has hide_missing flag set to false" do
       fields << field_missing
       out, err = capture_io { adapter.print_collection(fields, data) }
-      out.must_match(/.*Missing.*/)
-      err.must_match(//)
+      _(out).must_match(/.*Missing.*/)
+      _(err).must_match(//)
     end
 
     context "handle ids" do
@@ -60,14 +60,14 @@ describe HammerCLI::Output::Adapter::CSValues do
 
       it "should ommit column of type Id by default" do
         out, _ = capture_io { adapter.print_collection(fields, data) }
-        out.wont_match(/.*Id.*/)
-        out.wont_match(/.*2000,.*/)
+        _(out).wont_match(/.*Id.*/)
+        _(out).wont_match(/.*2000,.*/)
       end
 
       it "should print column of type Id when --show-ids is set" do
         adapter = HammerCLI::Output::Adapter::CSValues.new( { :show_ids => true } )
         out, _ = capture_io { adapter.print_collection(fields, data) }
-        out.must_match(/.*Id.*/)
+        _(out).must_match(/.*Id.*/)
       end
     end
 
@@ -76,12 +76,12 @@ describe HammerCLI::Output::Adapter::CSValues do
 
       it "should print headers by default" do
         out, _ = capture_io { adapter.print_collection(fields, data) }
-        out.must_match(/.*Name.*/)
+        _(out).must_match(/.*Name.*/)
       end
 
       it "should print headers by default even if there is no data" do
         out, _ = capture_io { adapter.print_collection(fields, empty_data) }
-        out.must_match(/.*Name.*/)
+        _(out).must_match(/.*Name.*/)
       end
 
       it "should print data only when --no-headers is set" do
@@ -90,13 +90,13 @@ describe HammerCLI::Output::Adapter::CSValues do
                            "",
                           ].join("\n")
         adapter = HammerCLI::Output::Adapter::CSValues.new( { :no_headers => true } )
-        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
       it "should print nothing when --no-headers is set but no data" do
         expected_output = "\n"
         adapter = HammerCLI::Output::Adapter::CSValues.new( { :no_headers => true } )
-        proc { adapter.print_collection(fields, empty_data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, empty_data) }.must_output(expected_output)
       end
     end
 
@@ -127,14 +127,14 @@ describe HammerCLI::Output::Adapter::CSValues do
 
       it "should print column names" do
         out, err = capture_io { adapter.print_collection(fields, data) }
-        out.must_match(/.*Demographics::Age,Demographics::Gender,Biometrics::Weight,Biometrics::Height*/)
-        err.must_match(//)
+        _(out).must_match(/.*Demographics::Age,Demographics::Gender,Biometrics::Weight,Biometrics::Height*/)
+        _(err).must_match(//)
       end
 
       it "should print data" do
         out, err = capture_io { adapter.print_collection(fields, data) }
-        out.must_match(/.*2000,22,m,123,155*/)
-        err.must_match(//)
+        _(out).must_match(/.*2000,22,m,123,155*/)
+        _(err).must_match(//)
       end
     end
 
@@ -167,28 +167,28 @@ describe HammerCLI::Output::Adapter::CSValues do
         out, err = capture_io { adapter.print_collection(fields, data) }
 
         lines = out.split("\n")
-        lines[0].must_equal 'Name,Started At,Items::Item Name::1,Items::Item Quantity::1,Items::Item Name::2,Items::Item Quantity::2'
+        _(lines[0]).must_equal 'Name,Started At,Items::Item Name::1,Items::Item Quantity::1,Items::Item Name::2,Items::Item Quantity::2'
 
-        err.must_match(//)
+        _(err).must_match(//)
       end
 
       it "should print collection data" do
         out, err = capture_io { adapter.print_collection(fields, data) }
         lines = out.split("\n")
 
-        lines[1].must_equal 'John Doe,2000,hammer,100,"",""'
-        lines[2].must_equal 'Jane Roe,2001,cleaver,1,sledge,50'
+        _(lines[1]).must_equal 'John Doe,2000,hammer,100,"",""'
+        _(lines[2]).must_equal 'Jane Roe,2001,cleaver,1,sledge,50'
 
-        err.must_match(//)
+        _(err).must_match(//)
       end
 
       it "should handle empty collection" do
         out, err = capture_io { adapter.print_collection(fields, []) }
         lines = out.split("\n")
 
-        lines[0].must_equal 'Name,Started At,Items'
+        _(lines[0]).must_equal 'Name,Started At,Items'
 
-        err.must_match(//)
+        _(err).must_match(//)
       end
 
     end
@@ -203,7 +203,7 @@ describe HammerCLI::Output::Adapter::CSValues do
 
         adapter = HammerCLI::Output::Adapter::CSValues.new({}, { :Field => [ DotFormatter.new ]})
         out, _ = capture_io { adapter.print_collection(fields, data) }
-        out.must_match(/.*-DOT-.*/)
+        _(out).must_match(/.*-DOT-.*/)
       end
 
       it "should not replace nil with empty string before it applies formatters" do
@@ -216,7 +216,7 @@ describe HammerCLI::Output::Adapter::CSValues do
         adapter = HammerCLI::Output::Adapter::CSValues.new({}, { :Field => [ NilFormatter.new ]})
         nil_data = HammerCLI::Output::RecordCollection.new [{ :name => nil }]
         out, _ = capture_io { adapter.print_collection([field_name], nil_data) }
-        out.must_match(/.*NIL.*/)
+        _(out).must_match(/.*NIL.*/)
       end
     end
 
@@ -239,7 +239,7 @@ describe HammerCLI::Output::Adapter::CSValues do
         out, _err = capture_io do
           adapter.print_collection(fields, collection_data)
         end
-        out.must_equal(expected_output)
+        _(out).must_equal(expected_output)
       end
 
       it 'prints first chunk' do
@@ -252,7 +252,7 @@ describe HammerCLI::Output::Adapter::CSValues do
             fields, collection_data[0...10], current_chunk: :first
           )
         end
-        out.must_equal(expected_output)
+        _(out).must_equal(expected_output)
       end
 
       it 'prints another chunk' do
@@ -265,7 +265,7 @@ describe HammerCLI::Output::Adapter::CSValues do
             fields, collection_data[10...20], current_chunk: :another
           )
         end
-        out.must_equal(expected_output)
+        _(out).must_equal(expected_output)
       end
 
       it 'prints last chunk' do
@@ -278,7 +278,7 @@ describe HammerCLI::Output::Adapter::CSValues do
             fields, collection_data[20...30], current_chunk: :last
           )
         end
-        out.must_equal(expected_output)
+        _(out).must_equal(expected_output)
       end
     end
 
@@ -291,7 +291,7 @@ describe HammerCLI::Output::Adapter::CSValues do
       it "should not print to stdout when --output-file is set" do
         fields = [field_name]
 
-        proc { adapter.print_collection(fields, data) }.must_output("")
+        _{ adapter.print_collection(fields, data) }.must_output("")
       end
 
       it "should print to file if --output-file is set" do
@@ -300,7 +300,7 @@ describe HammerCLI::Output::Adapter::CSValues do
 
         adapter.print_collection(fields, data)
         tempfile.close
-        IO.read(tempfile.path).must_equal(expected_output)
+        _(IO.read(tempfile.path)).must_equal(expected_output)
       end
 
     end
@@ -310,17 +310,17 @@ describe HammerCLI::Output::Adapter::CSValues do
   context "print message" do
 
     it "shoud print a message" do
-      proc { adapter.print_message("SOME MESSAGE") }.must_output("Message\nSOME MESSAGE\n", "")
+      _{ adapter.print_message("SOME MESSAGE") }.must_output("Message\nSOME MESSAGE\n", "")
     end
 
     it "should print message, id and name of created/updated record" do
-      proc {
+      _{
         adapter.print_message("SOME MESSAGE", "id" => 83, "name" => "new_record")
       }.must_output("Message,Id,Name\nSOME MESSAGE,83,new_record\n", "")
     end
 
     it 'should print message with nil params' do
-      proc { adapter.print_message('MESSAGE', nil) }.must_output("Message\nMESSAGE\n", '')
+      _{ adapter.print_message('MESSAGE', nil) }.must_output("Message\nMESSAGE\n", '')
     end
   end
 

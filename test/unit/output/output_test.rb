@@ -79,27 +79,27 @@ describe HammerCLI::Output::Output do
   context "adapters" do
     it "should register adapter" do
       out_class.register_adapter(:test, HammerCLI::Output::Adapter::Silent)
-      out_class.adapters[:test].must_equal(HammerCLI::Output::Adapter::Silent)
+      _(out_class.adapters[:test]).must_equal(HammerCLI::Output::Adapter::Silent)
     end
 
     it "should return required default adapter" do
       out = out_class.new({}, {:default_adapter => :silent})
-      out.adapter.must_be_instance_of HammerCLI::Output::Adapter::Silent
+      _(out.adapter).must_be_instance_of HammerCLI::Output::Adapter::Silent
     end
 
     it "should use adapter form context" do
       out = out_class.new({:adapter => :silent})
-      out.adapter.must_be_instance_of HammerCLI::Output::Adapter::Silent
+      _(out.adapter).must_be_instance_of HammerCLI::Output::Adapter::Silent
     end
 
     it "should prioritize adapter from the context" do
       out = out_class.new({:adapter => :table}, {:default_adapter => :silent})
-      out.adapter.must_be_instance_of HammerCLI::Output::Adapter::Table
+      _(out.adapter).must_be_instance_of HammerCLI::Output::Adapter::Table
     end
 
     it "should use base adapter if the requested default was not found" do
       out = out_class.new({}, {:default_adapter => :unknown})
-      out.adapter.must_be_instance_of HammerCLI::Output::Adapter::Base
+      _(out.adapter).must_be_instance_of HammerCLI::Output::Adapter::Base
     end
   end
 
@@ -107,8 +107,8 @@ describe HammerCLI::Output::Output do
     it "should register formatter" do
       formatter = HammerCLI::Output::Formatters::FieldFormatter.new
       out_class.register_formatter(formatter, :type1, :type2)
-      out_class.formatters[:type1].must_equal([formatter])
-      out_class.formatters[:type2].must_equal([formatter])
+      _(out_class.formatters[:type1]).must_equal([formatter])
+      _(out_class.formatters[:type2]).must_equal([formatter])
     end
   end
 
@@ -128,7 +128,7 @@ describe HammerCLI::Output::Output do
       )
     end
     let(:id)         { Fields::Id.new(:path => [:id], :label => 'Id') }
-    let(:name)       { Fields::Field.new(:path => [:name], :label => 'Name') }
+    let(:firstname)  { Fields::Field.new(:path => [:name], :label => 'Name') }
     let(:surname)    { Fields::Field.new(:path => [:surname], :label => 'Surname') }
     let(:definition) { HammerCLI::Output::Definition.new }
     let(:expected_record_output) do
@@ -174,14 +174,14 @@ describe HammerCLI::Output::Output do
       end
 
       it 'should not print record data' do
-        definition.append([id, name, surname])
+        definition.append([id, firstname, surname])
         assert_output('', nil) do
           output.print_record(definition, data.first)
         end
       end
 
       it 'should not print collection data' do
-        definition.append([id, name, surname])
+        definition.append([id, firstname, surname])
         assert_output('', nil) do
           output.print_record(definition, data)
         end
@@ -223,14 +223,14 @@ describe HammerCLI::Output::Output do
       end
 
       it 'should print record data' do
-        definition.append([id, name, surname])
+        definition.append([id, firstname, surname])
         assert_output(expected_record_output, nil) do
           output.print_record(definition, data.first)
         end
       end
 
       it 'should print collection data' do
-        definition.append([id, name, surname])
+        definition.append([id, firstname, surname])
         assert_output(expected_record_output, nil) do
           output.print_record(definition, data)
         end
@@ -271,14 +271,14 @@ describe HammerCLI::Output::Output do
       end
 
       it 'should print record data' do
-        definition.append([id, name, surname])
+        definition.append([id, firstname, surname])
         assert_output(expected_record_output, nil) do
           output.print_record(definition, data.first)
         end
       end
 
       it 'should print collection data' do
-        definition.append([id, name, surname])
+        definition.append([id, firstname, surname])
         assert_output(expected_record_output, nil) do
           output.print_record(definition, data)
         end

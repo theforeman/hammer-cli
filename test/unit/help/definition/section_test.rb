@@ -7,7 +7,7 @@ describe HammerCLI::Help::Section do
     let(:second_text) { HammerCLI::Help::Text.new('second') }
 
     it 'builds string without definition' do
-      section.build_string.must_equal "section:\n\n"
+      _(section.build_string).must_equal "section:\n\n"
     end
 
     it 'builds string with definition' do
@@ -19,7 +19,7 @@ describe HammerCLI::Help::Section do
         '  second',
         ''
       ].join("\n")
-      section.build_string.must_equal expected_output
+      _(section.build_string).must_equal expected_output
     end
   end
 end
