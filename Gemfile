@@ -11,7 +11,7 @@ group :test do
   gem 'minitest-spec-context'
   gem 'simplecov'
   gem 'mocha'
-  gem 'ci_reporter', '>= 1.6.3', "< 2.0.0", :require => false
+  gem 'ci_reporter_minitest', '~> 1.0', :require => false
 end
 
 # load local gemfile
