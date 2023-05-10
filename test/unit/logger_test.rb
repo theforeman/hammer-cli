@@ -31,7 +31,7 @@ describe Logging::LogEvent do
       Logging::LogEvent.add_data_filter(/pat/, 'mat')
       Logging.logger.root.debug "pat"
       Logging::LogEvent.data_filters.pop # clean the last filter
-      @log_output.read.must_include 'mat'
+      _(@log_output.read).must_include 'mat'
     end
   end
 end

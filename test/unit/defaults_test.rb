@@ -26,7 +26,7 @@ describe HammerCLI::Defaults do
     it "Should update dashed default when underscored default is set" do
       defaults_result = @defaults.add_defaults_to_conf({"location-id"=> 3}, nil)
       assert_equal '3', defaults_result[:defaults][:'location-id'][:value]
-      assert_equal nil, defaults_result[:defaults][:location_id]
+      assert_nil defaults_result[:defaults][:location_id]
     end
 
     context "dashed" do
@@ -34,13 +34,13 @@ describe HammerCLI::Defaults do
       it "Should update underscored default when dashed default is set" do
         defaults_result = @defaults.add_defaults_to_conf({"location_id"=> 3}, nil)
         assert_equal '3', defaults_result[:defaults][:location_id][:value]
-        assert_equal nil, defaults_result[:defaults][:'location-id']
+        assert_nil defaults_result[:defaults][:'location-id']
       end
 
       it "should update underscored default with option syntax when dashed default is set" do
         defaults_result = @defaults.add_defaults_to_conf({"--location-id"=> 3}, nil)
         assert_equal '3', defaults_result[:defaults][:'location-id'][:value]
-        assert_equal nil, defaults_result[:defaults][:location_id]
+        assert_nil defaults_result[:defaults][:location_id]
       end
     end
 

@@ -7,7 +7,7 @@ gem 'gettext', '>= 3.1.3', '< 4.0.0'
 group :test do
   gem 'rake'
   gem 'thor'
-  gem 'minitest', '4.7.4'
+  gem 'minitest', '~> 5.18'
   gem 'minitest-spec-context'
   gem 'simplecov'
   gem 'mocha'

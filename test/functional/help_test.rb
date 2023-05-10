@@ -45,7 +45,7 @@ describe 'help' do
 
   it 'prints additional help' do
     result = run_cmd(['-h'], {}, CmdWithHelp)
-    result.out.must_equal [
+    _(result.out).must_equal [
       'Usage:',
       '    hammer [OPTIONS]',
       '',

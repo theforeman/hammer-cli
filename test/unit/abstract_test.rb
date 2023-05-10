@@ -8,15 +8,15 @@ describe HammerCLI::AbstractCommand do
     let(:cmd_class) { Class.new(HammerCLI::AbstractCommand) }
     let(:cmd) { cmd_class.new("", { :adapter => :silent }) }
     it "should define adapter" do
-      cmd.adapter.must_equal :base
+      _(cmd.adapter).must_equal :base
     end
 
     it "should provide instance of output with default adapter set" do
-      cmd.output.default_adapter.must_equal cmd.adapter
+      _(cmd.output.default_adapter).must_equal cmd.adapter
     end
 
     it "should hold instance of output definition" do
-      cmd.output_definition.must_be_instance_of HammerCLI::Output::Definition
+      _(cmd.output_definition).must_be_instance_of HammerCLI::Output::Definition
     end
 
     it "can append existing definition" do
@@ -26,7 +26,7 @@ describe HammerCLI::AbstractCommand do
 
       cmd_class.output(definition) do
       end
-      cmd_class.output_definition.fields.length.must_equal definition.fields.length
+      _(cmd_class.output_definition.fields.length).must_equal definition.fields.length
     end
 
     it "can append existing definition without passing a block" do
@@ -35,7 +35,7 @@ describe HammerCLI::AbstractCommand do
       definition.fields << Fields::Field.new
 
       cmd_class.output(definition)
-      cmd_class.output_definition.fields.length.must_equal definition.fields.length
+      _(cmd_class.output_definition.fields.length).must_equal definition.fields.length
     end
 
     it "can define fields" do
@@ -43,7 +43,7 @@ describe HammerCLI::AbstractCommand do
         field :test_1, "test 1"
         field :test_2, "test 2"
       end
-      cmd_class.output_definition.fields.length.must_equal 2
+      _(cmd_class.output_definition.fields.length).must_equal 2
     end
   end
 
@@ -66,19 +66,19 @@ describe HammerCLI::AbstractCommand do
 
     it "should return instance of hammer cli exception handler by default" do
       cmd = ModA::ModB::TestCmd.new ""
-      cmd.exception_handler.must_be_instance_of HammerCLI::ExceptionHandler
+      _(cmd.exception_handler).must_be_instance_of HammerCLI::ExceptionHandler
     end
 
     it "should return instance of exception handler class defined in a module" do
       ModA::ModB.expects(:exception_handler_class).returns(Handler)
       cmd = ModA::ModB::TestCmd.new ""
-      cmd.exception_handler.must_be_instance_of Handler
+      _(cmd.exception_handler).must_be_instance_of Handler
     end
 
     it "should return instance of exception handler class defined deeper in a module hierrarchy" do
       ModA.expects(:exception_handler_class).returns(Handler)
       cmd = ModA::ModB::TestCmd.new ""
-      cmd.exception_handler.must_be_instance_of Handler
+      _(cmd.exception_handler).must_be_instance_of Handler
     end
   end
 
@@ -94,7 +94,7 @@ describe HammerCLI::AbstractCommand do
     it "should log what has been executed" do
       test_command = Class.new(HammerCLI::AbstractCommand).new("")
       test_command.run []
-      @log_output.readline.strip.must_equal "INFO  HammerCLI::AbstractCommand : Called with options: {}"
+      _(@log_output.readline.strip).must_equal "INFO  HammerCLI::AbstractCommand : Called with options: {}"
     end
 
 
@@ -108,7 +108,7 @@ describe HammerCLI::AbstractCommand do
     it "should have logger named by the class by default" do
       test_command = Class.new(TestLogCmd).new("")
       test_command.run []
-      @log_output.read.must_include "ERROR  TestLogCmd : Test"
+      _(@log_output.read).must_include "ERROR  TestLogCmd : Test"
     end
 
     class TestLogCmd2 < HammerCLI::AbstractCommand
@@ -121,7 +121,7 @@ describe HammerCLI::AbstractCommand do
     it "should have logger that accepts custom name" do
       test_command = Class.new(TestLogCmd2).new("")
       test_command.run []
-      @log_output.read.must_include "ERROR  My logger : Test"
+      _(@log_output.read).must_include "ERROR  My logger : Test"
     end
 
     class TestLogCmd3 < HammerCLI::AbstractCommand
@@ -134,7 +134,7 @@ describe HammerCLI::AbstractCommand do
     it "should have logger that can inspect object" do
       test_command = Class.new(TestLogCmd3).new("")
       test_command.run []
-      @log_output.read.must_include "DEBUG  TestLogCmd3 : Test\n{}"
+      _(@log_output.read).must_include "DEBUG  TestLogCmd3 : Test\n{}"
     end
 
     class TestLogCmd4 < HammerCLI::AbstractCommand
@@ -147,7 +147,7 @@ describe HammerCLI::AbstractCommand do
     it "should have logger.watch output without colors" do
       test_command = Class.new(TestLogCmd4).new("")
       test_command.run []
-      @log_output.read.must_include "DEBUG  TestLogCmd4 : Test\n{\n  :a => \"a\"\n}"
+      _(@log_output.read).must_include "DEBUG  TestLogCmd4 : Test\n{\n  :a => \"a\"\n}"
     end
 
     class TestLogCmd5 < HammerCLI::AbstractCommand
@@ -162,7 +162,7 @@ describe HammerCLI::AbstractCommand do
       HammerCLI::Settings.clear
       HammerCLI::Settings.load(:watch_plain => true)
       test_command.run []
-      @log_output.read.must_include "DEBUG  TestLogCmd5 : Test\n{\n  :a => \"a\"\n}"
+      _(@log_output.read).must_include "DEBUG  TestLogCmd5 : Test\n{\n  :a => \"a\"\n}"
     end
 
     class TestLogCmd6 < HammerCLI::AbstractCommand
@@ -177,7 +177,7 @@ describe HammerCLI::AbstractCommand do
       HammerCLI::Settings.clear
       HammerCLI::Settings.load(:watch_plain => true)
       test_command.run []
-      @log_output.read.must_include "DEBUG  TestLogCmd6 : Test\n{\n  :password  => \"***\",\n  \"password\" => \"***\"\n}"
+      _(@log_output.read).must_include "DEBUG  TestLogCmd6 : Test\n{\n  :password  => \"***\",\n  \"password\" => \"***\"\n}"
     end
 
     it "password parameters should be hidden in logs" do
@@ -185,7 +185,7 @@ describe HammerCLI::AbstractCommand do
       test_command_class.option(['--password'], 'PASSWORD', 'Password')
       test_command = test_command_class.new("")
       test_command.run ['--password=pass']
-      @log_output.readline.strip.must_equal "INFO  HammerCLI::AbstractCommand : Called with options: {\"option_password\"=>\"***\"}"
+      _(@log_output.readline.strip).must_equal "INFO  HammerCLI::AbstractCommand : Called with options: {\"option_password\"=>\"***\"}"
     end
   end
 
@@ -209,24 +209,24 @@ describe HammerCLI::AbstractCommand do
 
       it "should replace commands with the same name" do
         main_cmd.subcommand!("ping", "description", Subcommand2)
-        main_cmd.find_subcommand("some_command").wont_be_nil
-        main_cmd.find_subcommand("ping").wont_be_nil
-        main_cmd.find_subcommand("ping").subcommand_class.must_equal Subcommand2
-        main_cmd.recognised_subcommands.count.must_equal 2
+        _(main_cmd.find_subcommand("some_command")).wont_be_nil
+        _(main_cmd.find_subcommand("ping")).wont_be_nil
+        _(main_cmd.find_subcommand("ping").subcommand_class).must_equal Subcommand2
+        _(main_cmd.recognised_subcommands.count).must_equal 2
       end
 
       it "should write a message to log when replacing subcommand" do
         main_cmd.subcommand!("ping", "description", Subcommand2)
-        @log_output.readline.strip.must_equal "INFO  Clamp::Command : subcommand ping (Subcommand1) was removed."
-        @log_output.readline.strip.must_equal "INFO  Clamp::Command : subcommand ping (Subcommand2) was created."
+        _(@log_output.readline.strip).must_equal "INFO  Clamp::Command : subcommand ping (Subcommand1) was removed."
+        _(@log_output.readline.strip).must_equal "INFO  Clamp::Command : subcommand ping (Subcommand2) was created."
       end
 
       it "should add the subcommand" do
         main_cmd.subcommand!("new_command", "description", Subcommand2)
-        main_cmd.find_subcommand("new_command").wont_be_nil
-        main_cmd.find_subcommand("some_command").wont_be_nil
-        main_cmd.find_subcommand("ping").wont_be_nil
-        main_cmd.recognised_subcommands.count.must_equal 3
+        _(main_cmd.find_subcommand("new_command")).wont_be_nil
+        _(main_cmd.find_subcommand("some_command")).wont_be_nil
+        _(main_cmd.find_subcommand("ping")).wont_be_nil
+        _(main_cmd.recognised_subcommands.count).must_equal 3
       end
 
     end
@@ -235,17 +235,17 @@ describe HammerCLI::AbstractCommand do
     describe "subcommand" do
 
       it "should throw an exception for conflicting commands" do
-        proc do
+        _{
           main_cmd.subcommand("ping", "description", Subcommand2)
-        end.must_raise HammerCLI::CommandConflict
+        }.must_raise HammerCLI::CommandConflict
       end
 
       it "should add the subcommand" do
         main_cmd.subcommand("new_command", "description", Subcommand2)
-        main_cmd.find_subcommand("new_command").wont_be_nil
-        main_cmd.find_subcommand("some_command").wont_be_nil
-        main_cmd.find_subcommand("ping").wont_be_nil
-        main_cmd.recognised_subcommands.count.must_equal 3
+        _(main_cmd.find_subcommand("new_command")).wont_be_nil
+        _(main_cmd.find_subcommand("some_command")).wont_be_nil
+        _(main_cmd.find_subcommand("ping")).wont_be_nil
+        _(main_cmd.recognised_subcommands.count).must_equal 3
       end
 
     end
@@ -253,34 +253,34 @@ describe HammerCLI::AbstractCommand do
     describe "remove_subcommand" do
       it "should remove the subcommand" do
         main_cmd.remove_subcommand('ping')
-        main_cmd.find_subcommand("ping").must_be_nil
+        _(main_cmd.find_subcommand("ping")).must_be_nil
       end
 
       it "should write a message to log when removing subcommand" do
         main_cmd.remove_subcommand('ping')
-        @log_output.readline.strip.must_equal "INFO  Clamp::Command : subcommand ping (Subcommand1) was removed."
+        _(@log_output.readline.strip).must_equal "INFO  Clamp::Command : subcommand ping (Subcommand1) was removed."
       end
 
     end
 
     describe 'find_subcommand' do
       it 'should find by full name' do
-        main_cmd.find_subcommand('some_command').wont_be_nil
+        _(main_cmd.find_subcommand('some_command')).wont_be_nil
       end
 
       it 'should find by partial name' do
-        main_cmd.find_subcommand('some_').wont_be_nil
+        _(main_cmd.find_subcommand('some_')).wont_be_nil
       end
 
       it 'should not find by wrong name' do
-        main_cmd.find_subcommand('not_existing').must_be_nil
+        _(main_cmd.find_subcommand('not_existing')).must_be_nil
       end
 
       it 'should raise if more than one were found' do
         main_cmd.subcommand('pong', 'description', Subcommand2)
-        proc do
+        _{
           main_cmd.find_subcommand('p')
-        end.must_raise HammerCLI::CommandConflict
+        }.must_raise HammerCLI::CommandConflict
       end
     end
   end
@@ -296,22 +296,22 @@ describe HammerCLI::AbstractCommand do
 
     it "should create instances of hammer options" do
       opt = TestOptionCmd.find_option("--test")
-      opt.kind_of?(HammerCLI::Options::OptionDefinition).must_equal true
+      _(opt.kind_of?(HammerCLI::Options::OptionDefinition)).must_equal true
     end
 
     it "should set options' formatters" do
       opt = TestOptionCmd.find_option("--test-format")
-      opt.value_formatter.kind_of?(HammerCLI::Options::Normalizers::List).must_equal true
+      _(opt.value_formatter.kind_of?(HammerCLI::Options::Normalizers::List)).must_equal true
     end
 
     it 'should allow using of predefined options' do
       opt = TestOptionCmd.find_option('--fields')
-      opt.is_a?(HammerCLI::Options::OptionDefinition).must_equal true
+      _(opt.is_a?(HammerCLI::Options::OptionDefinition)).must_equal true
     end
 
     it 'should add option type and accepted value' do
       help_str = TestOptionCmd.help('')
-      help_str.must_match(
+      _(help_str).must_match(
         /LIST                Comma separated list of values. Values containing comma should be quoted or escaped with backslash./
       )
     end
@@ -330,11 +330,11 @@ describe HammerCLI::AbstractCommand do
   describe "option builder" do
 
     it "uses builder container as default" do
-      HammerCLI::AbstractCommand.option_builder.class.must_equal HammerCLI::OptionBuilderContainer
+      _(HammerCLI::AbstractCommand.option_builder.class).must_equal HammerCLI::OptionBuilderContainer
     end
 
     it "Default builder container is empty" do
-      HammerCLI::AbstractCommand.option_builder.builders.empty?.must_equal true
+      _(HammerCLI::AbstractCommand.option_builder.builders.empty?).must_equal true
     end
 
   end
@@ -368,13 +368,13 @@ describe HammerCLI::AbstractCommand do
 
     it "should use option builder" do
       TestBuilderCmd.build_options
-      TestBuilderCmd.recognised_options.map(&:switches).flatten.sort.must_equal ["--test", "--test2"].sort
+      _(TestBuilderCmd.recognised_options.map(&:switches).flatten.sort).must_equal ["--test", "--test2"].sort
     end
 
     it "should skip options that already exist" do
       TestBuilderCmd.option(["--test"], "TEST", "original_test")
       TestBuilderCmd.build_options
-      TestBuilderCmd.recognised_options.map(&:description).flatten.sort.must_equal ["original_test", "test2"].sort
+      _(TestBuilderCmd.recognised_options.map(&:description).flatten.sort).must_equal ["original_test", "test2"].sort
     end
 
     it "passes params to the builders" do
@@ -441,7 +441,7 @@ describe HammerCLI::AbstractCommand do
     class CmdName2 < CmdName1
     end
 
-    CmdName2.command_name.must_equal ['cmd']
+    _(CmdName2.command_name).must_equal ['cmd']
   end
 
   it "should inherit output definition" do
@@ -455,7 +455,7 @@ describe HammerCLI::AbstractCommand do
     class CmdOD2 < CmdOD1
     end
 
-    CmdOD2.output_definition.fields.length.must_equal 1
+    _(CmdOD2.output_definition.fields.length).must_equal 1
   end
 
   describe 'validate_options' do
@@ -551,14 +551,14 @@ describe HammerCLI::AbstractCommand do
     it 'should extend command with option, output, help right away' do
       cmd.extend_with(extension)
       opt = cmd.find_option('--flag')
-      opt.is_a?(HammerCLI::Options::OptionDefinition).must_equal true
-      cmd.output_definition.empty?.must_equal false
-      cmd.new('', {}).help.must_match(/.*text.*/)
+      _(opt.is_a?(HammerCLI::Options::OptionDefinition)).must_equal true
+      _(cmd.output_definition.empty?).must_equal false
+      _(cmd.new('', {}).help).must_match(/.*text.*/)
     end
 
     it 'should store more than one extension' do
       cmd.extend_with(extension, output_extension)
-      cmd.command_extensions.size.must_equal 2
+      _(cmd.command_extensions.size).must_equal 2
     end
   end
 end

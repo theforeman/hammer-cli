@@ -42,7 +42,7 @@ describe HammerCLI::I18n do
 
   describe 'with fast_gettext >= 1.2.0' do
     it 'creates base merge repository' do
-      HammerCLI::I18n.translation_repository.class.must_equal FastGettext::TranslationRepository::Merge
+      _(HammerCLI::I18n.translation_repository.class).must_equal FastGettext::TranslationRepository::Merge
     end
 
     it 'registers available domains at gettext' do
@@ -60,7 +60,7 @@ describe HammerCLI::I18n do
       HammerCLI::I18n.add_domain(domain1)
       HammerCLI::I18n.add_domain(domain2)
       HammerCLI::I18n.add_domain(unavailable_domain)
-      HammerCLI::I18n.domains.must_equal [domain1, domain2]
+      _(HammerCLI::I18n.domains).must_equal [domain1, domain2]
     end
   end
 end

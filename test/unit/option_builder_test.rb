@@ -17,7 +17,7 @@ describe HammerCLI::OptionBuilderContainer do
     builder.stubs(:build).returns(options)
 
     container.builders = [builder, builder]
-    container.build.must_equal options+options
+    _(container.build).must_equal options+options
   end
 
   it "passes build parameters from contained builders" do

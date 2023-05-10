@@ -9,13 +9,13 @@ describe HammerCLI::Help::Definition do
     describe 'text' do
       it 'prints text via definition' do
         definition << HammerCLI::Help::Text.new('Lorem ipsum')
-        definition.build_string.must_equal "Lorem ipsum\n"
+        _(definition.build_string).must_equal "Lorem ipsum\n"
       end
 
       it 'prints multiple blocks with spaces via definition' do
         definition << HammerCLI::Help::Text.new('Lorem ipsum')
         definition << HammerCLI::Help::Text.new('Dolor sit amet')
-        definition.build_string.must_equal [
+        _(definition.build_string).must_equal [
           'Lorem ipsum',
           '',
           'Dolor sit amet',
@@ -27,7 +27,7 @@ describe HammerCLI::Help::Definition do
     describe 'section' do
       it 'prints section heading via definition' do
         definition << HammerCLI::Help::Section.new('Heading')
-        definition.build_string.must_equal "Heading:\n\n"
+        _(definition.build_string).must_equal "Heading:\n\n"
       end
 
       it 'indents section content via definition' do
@@ -35,7 +35,7 @@ describe HammerCLI::Help::Definition do
         sub_definition << HammerCLI::Help::Text.new('Lorem ipsum')
         sub_definition << HammerCLI::Help::Text.new('Dolor sit amet')
         definition << HammerCLI::Help::Section.new('Heading', sub_definition)
-        definition.build_string.must_equal [
+        _(definition.build_string).must_equal [
           'Heading:',
           '  Lorem ipsum',
           '',
@@ -49,7 +49,7 @@ describe HammerCLI::Help::Definition do
       it 'prints empty list via definition' do
         builder = HammerCLI::Help::TextBuilder.new
         builder.list([])
-        builder.definition.build_string.must_equal ''
+        _(builder.definition.build_string).must_equal ''
       end
 
       it 'prints single column list' do
@@ -58,7 +58,7 @@ describe HammerCLI::Help::Definition do
           :bb,
           :ccc
         ])
-        definition.build_string.must_equal [
+        _(definition.build_string).must_equal [
           'a',
           'bb',
           'ccc',
@@ -72,7 +72,7 @@ describe HammerCLI::Help::Definition do
           [:bb,  'This is line B'],
           [:ccc]
         ])
-        definition.build_string.must_equal [
+        _(definition.build_string).must_equal [
           'a                   This is line A',
           'bb                  This is line B',
           'ccc',
@@ -86,7 +86,7 @@ describe HammerCLI::Help::Definition do
           [:bb,  'This is line B'],
           [:ccc, 'This is line C']
         ])
-        definition.build_string.must_equal [
+        _(definition.build_string).must_equal [
           'a                   This is line A',
           '                    This is line A part two',
           'bb                  This is line B',
@@ -101,7 +101,7 @@ describe HammerCLI::Help::Definition do
           ['This line B is too long for the first column',   'This is line B'],
           ['ccc', 'This is line C']
         ])
-        definition.build_string.must_equal [
+        _(definition.build_string).must_equal [
           'a                                             This is line A',
           'This line B is too long for the first column  This is line B',
           'ccc                                           This is line C',
@@ -115,7 +115,7 @@ describe HammerCLI::Help::Definition do
     it 'finds an item' do
       definition << old_text_item
       definition << new_text_item
-      definition.find_item(:new).must_equal new_text_item
+      _(definition.find_item(:new)).must_equal new_text_item
     end
   end
 
@@ -127,22 +127,22 @@ describe HammerCLI::Help::Definition do
       it 'should insert new help item before the old one' do
         definition << old_text_item
         definition.insert_definition(:before, :old, new_text_item.definition)
-        definition.first.id.must_equal new_text_item.id
-        definition.count.must_equal 2
+        _(definition.first.id).must_equal new_text_item.id
+        _(definition.count).must_equal 2
       end
 
       it 'should insert multiple items before old item' do
         definition << old_text_item
         definition.insert_definition(:before, :old, new_definition)
-        definition.first.id.must_equal new_text_item.id
-        definition.count.must_equal 3
+        _(definition.first.id).must_equal new_text_item.id
+        _(definition.count).must_equal 3
       end
 
       it 'should work with labels' do
         definition << section_item
         definition.insert_definition(:before, 'section', new_definition)
-        definition.first.id.must_equal new_text_item.id
-        definition.count.must_equal 3
+        _(definition.first.id).must_equal new_text_item.id
+        _(definition.count).must_equal 3
       end
     end
 
@@ -150,25 +150,25 @@ describe HammerCLI::Help::Definition do
       it 'should insert new help item after the old one' do
         definition << old_text_item
         definition.insert_definition(:after, :old, new_text_item.definition)
-        definition[0].id.must_equal old_text_item.id
-        definition[1].id.must_equal new_text_item.id
-        definition.count.must_equal 2
+        _(definition[0].id).must_equal old_text_item.id
+        _(definition[1].id).must_equal new_text_item.id
+        _(definition.count).must_equal 2
       end
 
       it 'should insert multiple items after old item' do
         definition << old_text_item
         definition.insert_definition(:after, :old, new_definition)
-        definition[0].id.must_equal old_text_item.id
-        definition[1].id.must_equal new_text_item.id
-        definition[2].id.must_equal new_text_item.id
-        definition.count.must_equal 3
+        _(definition[0].id).must_equal old_text_item.id
+        _(definition[1].id).must_equal new_text_item.id
+        _(definition[2].id).must_equal new_text_item.id
+        _(definition.count).must_equal 3
       end
 
       it 'should work with labels' do
         definition << section_item
         definition.insert_definition(:after, 'section', new_text_item.definition)
-        definition[1].id.must_equal new_text_item.id
-        definition.count.must_equal 2
+        _(definition[1].id).must_equal new_text_item.id
+        _(definition.count).must_equal 2
       end
     end
 
@@ -176,23 +176,23 @@ describe HammerCLI::Help::Definition do
       it 'should replace the old help item with new one' do
         definition << old_text_item
         definition.insert_definition(:replace, :old, new_text_item.definition)
-        definition.first.id.must_equal new_text_item.id
-        definition.count.must_equal 1
+        _(definition.first.id).must_equal new_text_item.id
+        _(definition.count).must_equal 1
       end
 
       it 'should replace the old help item with new ones' do
         definition << old_text_item
         definition.insert_definition(:replace, :old, new_definition)
-        definition[0].id.must_equal new_text_item.id
-        definition[1].id.must_equal new_text_item.id
-        definition.count.must_equal 2
+        _(definition[0].id).must_equal new_text_item.id
+        _(definition[1].id).must_equal new_text_item.id
+        _(definition.count).must_equal 2
       end
 
       it 'should work with labels' do
         definition << section_item
         definition.insert_definition(:replace, 'section', new_text_item.definition)
-        definition.first.id.must_equal new_text_item.id
-        definition.count.must_equal 1
+        _(definition.first.id).must_equal new_text_item.id
+        _(definition.count).must_equal 1
       end
     end
   end
@@ -201,7 +201,7 @@ describe HammerCLI::Help::Definition do
     it 'should return self if path is empty' do
       definition << old_text_item
       definition.at([]) do |h|
-        h.definition.first.id.must_equal old_text_item.id
+        _(h.definition.first.id).must_equal old_text_item.id
       end
     end
 
@@ -209,7 +209,7 @@ describe HammerCLI::Help::Definition do
       definition << old_text_item
       definition << new_text_item
       definition.at(1) do |h|
-        h.definition.first.id.must_equal new_text_item.id
+        _(h.definition.first.id).must_equal new_text_item.id
       end
     end
 
@@ -220,7 +220,7 @@ describe HammerCLI::Help::Definition do
       definition << HammerCLI::Help::Section.new('first', sub_definition, id: :first_section)
       definition << HammerCLI::Help::Section.new('second', sub_definition, id: :second_section)
       definition.at(:first_section).definition << HammerCLI::Help::Section.new('nested', sub_definition, id: :nested_section)
-      definition.at([:first_section, :nested_section]).definition.first.id.must_equal old_text_item.id
+      _(definition.at([:first_section, :nested_section]).definition.first.id).must_equal old_text_item.id
     end
 
     it 'should work with labels' do
@@ -230,7 +230,7 @@ describe HammerCLI::Help::Definition do
       definition << HammerCLI::Help::Section.new('first', sub_definition)
       definition << HammerCLI::Help::Section.new('second', sub_definition)
       definition.at('first').definition << HammerCLI::Help::Section.new('nested', sub_definition)
-      definition.at(['first', 'nested']).definition.first.id.must_equal old_text_item.id
+      _(definition.at(['first', 'nested']).definition.first.id).must_equal old_text_item.id
     end
   end
 end

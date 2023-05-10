@@ -6,13 +6,13 @@ describe HammerCLI::Output::Adapter::Base do
   let(:adapter) { HammerCLI::Output::Adapter::Base.new(context, HammerCLI::Output::Output.formatters) }
 
   it "allows default pagination" do
-    adapter.paginate_by_default?.must_equal true
+    _(adapter.paginate_by_default?).must_equal true
   end
 
   context "print_collection" do
 
     let(:id)            { Fields::Id.new(:path => [:id], :label => "Id") }
-    let(:name)          { Fields::Field.new(:path => [:name], :label => "Name") }
+    let(:firstname)     { Fields::Field.new(:path => [:name], :label => "Name") }
     let(:unlabeled)     { Fields::Field.new(:path => [:name]) }
     let(:surname)       { Fields::Field.new(:path => [:surname], :label => "Surname") }
     let(:address_city)  { Fields::Field.new(:path => [:address, :city], :label => "City") }
@@ -59,13 +59,13 @@ describe HammerCLI::Output::Adapter::Base do
     }]}
 
     it "should print one field" do
-      fields = [name]
+      fields = [firstname]
       expected_output = [
         "Name: John",
         "\n"
       ].join("\n")
 
-      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      _{ adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
     it "doesn't print label when it's nil" do
@@ -75,11 +75,11 @@ describe HammerCLI::Output::Adapter::Base do
         "\n"
       ].join("\n")
 
-      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      _{ adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
     it "aligns multiple fields" do
-      fields = [name, surname, unlabeled]
+      fields = [firstname, surname, unlabeled]
       expected_output = [
         "Name:    John",
         "Surname: Doe",
@@ -87,7 +87,7 @@ describe HammerCLI::Output::Adapter::Base do
         "\n"
       ].join("\n")
 
-      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      _{ adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
     it "should field with nested data" do
@@ -97,7 +97,7 @@ describe HammerCLI::Output::Adapter::Base do
         "\n"
       ].join("\n")
 
-      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      _{ adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
     it "should print labeled fields" do
@@ -110,7 +110,7 @@ describe HammerCLI::Output::Adapter::Base do
         "\n"
       ].join("\n")
 
-      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      _{ adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
 
@@ -127,7 +127,7 @@ describe HammerCLI::Output::Adapter::Base do
         "\n"
       ].join("\n")
 
-      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      _{ adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
     it "should print unnumbered collection" do
@@ -143,46 +143,46 @@ describe HammerCLI::Output::Adapter::Base do
         "\n"
       ].join("\n")
 
-      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      _{ adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
     it "hides ids by default" do
-      fields = [id, name]
+      fields = [id, firstname]
       expected_output = [
         "Name: John",
         "\n"
       ].join("\n")
 
-      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      _{ adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
     it "skips blank values" do
-      fields = [name, blank]
+      fields = [firstname, blank]
       expected_output = [
         "Name: John",
         "\n"
       ].join("\n")
 
-      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      _{ adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
     it "does not print fields which data are missing from api by default" do
-      fields = [name, login]
+      fields = [firstname, login]
       expected_output = [
         "Name: John",
         "\n"
       ].join("\n")
-      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      _{ adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
     it "prints fields which data are missing from api when field has hide_missing flag set to false" do
-      fields = [name, missing]
+      fields = [firstname, missing]
       expected_output = [
         "Name:    John",
         "Missing:",
         "\n"
       ].join("\n")
-      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      _{ adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
     it "should print key -> value" do
@@ -196,7 +196,7 @@ describe HammerCLI::Output::Adapter::Base do
         "\n"
       ].join("\n")
 
-      proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+      _{ adapter.print_collection(fields, data) }.must_output(expected_output)
     end
 
     context 'printing by chunks' do
@@ -208,16 +208,16 @@ describe HammerCLI::Output::Adapter::Base do
         end
         HammerCLI::Output::RecordCollection.new(collection)
       end
-      let(:fields) { [id, name] }
+      let(:fields) { [id, firstname] }
 
       it 'prints single chunk' do
         expected_output = collection_count.times.each_with_object([]) do |t, r|
           r << ["Id:   #{t}", "Name: John #{t}", "\n"].join("\n")
         end.flatten(1).join
 
-        proc do
+        _{
           adapter.print_collection(fields, collection_data)
-        end.must_output(expected_output)
+        }.must_output(expected_output)
       end
 
       it 'prints first chunk' do
@@ -225,11 +225,11 @@ describe HammerCLI::Output::Adapter::Base do
           r << ["Id:   #{t}", "Name: John #{t}", "\n"].join("\n")
         end.flatten(1).join
 
-        proc do
+        _{
           adapter.print_collection(
             fields, collection_data[0...10], current_chunk: :first
           )
-        end.must_output(expected_output)
+        }.must_output(expected_output)
       end
 
       it 'prints another chunk' do
@@ -237,11 +237,11 @@ describe HammerCLI::Output::Adapter::Base do
           r << ["Id:   #{t}", "Name: John #{t}", "\n"].join("\n")
         end.flatten(1).join
 
-        proc do
+        _{
           adapter.print_collection(
             fields, collection_data[10...20], current_chunk: :another
           )
-        end.must_output(expected_output)
+        }.must_output(expected_output)
       end
 
       it 'prints last chunk' do
@@ -249,11 +249,11 @@ describe HammerCLI::Output::Adapter::Base do
           r << ["Id:   #{t}", "Name: John #{t}", "\n"].join("\n")
         end.flatten(1).join
 
-        proc do
+        _{
           adapter.print_collection(
             fields, collection_data[20...30], current_chunk: :last
           )
-        end.must_output(expected_output)
+        }.must_output(expected_output)
       end
     end
 
@@ -262,14 +262,14 @@ describe HammerCLI::Output::Adapter::Base do
       let(:context) { {:show_ids => true} }
 
       it "shows ids if it's required in the context" do
-        fields = [id, name]
+        fields = [id, firstname]
         expected_output = [
           "Id:   112",
           "Name: John",
           "\n"
         ].join("\n")
 
-        proc { adapter.print_collection(fields, data) }.must_output(expected_output)
+        _{ adapter.print_collection(fields, data) }.must_output(expected_output)
       end
 
     end
@@ -280,13 +280,13 @@ describe HammerCLI::Output::Adapter::Base do
       let(:context) { {:output_file => tempfile} }
 
       it "should not print to stdout when --output-file is set" do
-        fields = [name]
+        fields = [firstname]
 
-        proc { adapter.print_collection(fields, data) }.must_output("")
+        _{ adapter.print_collection(fields, data) }.must_output("")
       end
 
       it "should print to file if --output-file is set" do
-        fields = [name]
+        fields = [firstname]
         expected_output = [
           "Name: John",
           "\n"
@@ -294,14 +294,14 @@ describe HammerCLI::Output::Adapter::Base do
 
         adapter.print_collection(fields, data)
         tempfile.close
-        IO.read(tempfile.path).must_equal(expected_output)
+        _(IO.read(tempfile.path)).must_equal(expected_output)
       end
 
     end
 
     context 'print_message' do
       it 'should print message with nil params' do
-        proc { adapter.print_message('MESSAGE', nil) }.must_output(/.*MESSAGE.*/, '')
+        _{ adapter.print_message('MESSAGE', nil) }.must_output(/.*MESSAGE.*/, '')
       end
     end
   end

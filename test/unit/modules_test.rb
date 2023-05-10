@@ -28,26 +28,26 @@ describe HammerCLI::Modules do
 
   describe "names" do
     it "must return list of modules" do
-      HammerCLI::Modules.names.must_equal ["hammer_cli_jerry", "hammer_cli_tom"]
+      _(HammerCLI::Modules.names).must_equal ["hammer_cli_jerry", "hammer_cli_tom"]
     end
 
     it "must return empty array by default" do
       HammerCLI::Settings.clear
-      HammerCLI::Modules.names.must_equal []
+      _(HammerCLI::Modules.names).must_equal []
     end
   end
 
   describe "find by name" do
     it "must return nil if the module does not exist" do
-      HammerCLI::Modules.find_by_name("hammer_cli_unknown").must_equal nil
+      assert_nil HammerCLI::Modules.find_by_name("hammer_cli_unknown")
     end
 
     it "must must find the module" do
-      HammerCLI::Modules.find_by_name("hammer_cli_jerry").must_equal HammerCliJerry
+      _(HammerCLI::Modules.find_by_name("hammer_cli_jerry")).must_equal HammerCliJerry
     end
 
     it "must find the module with capital CLI in it's name" do
-      HammerCLI::Modules.find_by_name("hammer_cli_tom").must_equal HammerCLITom
+      _(HammerCLI::Modules.find_by_name("hammer_cli_tom")).must_equal HammerCLITom
     end
   end
 
@@ -67,7 +67,7 @@ describe HammerCLI::Modules do
       })
       HammerCLI::Modules.stubs(:load).returns(nil)
       HammerCLI::Modules.stubs(:loaded_modules).returns(['hammer_cli_jerry', 'hammer_cli_tom'])
-      proc { HammerCLI::Modules.load_all }.must_raise HammerCLI::ModuleDisabledButRequired
+      assert_raises(HammerCLI::ModuleDisabledButRequired) { HammerCLI::Modules.load_all }
     end
   end
 
@@ -85,15 +85,15 @@ describe HammerCLI::Modules do
       it "must log module's name and version" do
         HammerCLI::Modules.expects(:require_module).with("hammer_cli_tom")
         HammerCLI::Modules.load("hammer_cli_tom")
-        @log_output.readline.strip.must_equal "INFO  Modules : Extension module hammer_cli_tom (0.0.1) loaded."
+        _(@log_output.readline.strip).must_equal "INFO  Modules : Extension module hammer_cli_tom (0.0.1) loaded."
       end
 
       it "must return true when load succeeds" do
-        HammerCLI::Modules.load("hammer_cli_tom").must_equal true
+        _(HammerCLI::Modules.load("hammer_cli_tom")).must_equal true
       end
 
       it "must return true when load! succeeds" do
-        HammerCLI::Modules.load!("hammer_cli_tom").must_equal true
+        _(HammerCLI::Modules.load!("hammer_cli_tom")).must_equal true
       end
     end
 
@@ -105,21 +105,21 @@ describe HammerCLI::Modules do
 
       it "must log an error if the load! fails" do
         capture_io do
-          proc { HammerCLI::Modules.load!("hammer_cli_tom") }.must_raise LoadError
+          assert_raises(LoadError) { HammerCLI::Modules.load!("hammer_cli_tom") }
         end
-        @log_output.readline.strip.must_equal @error_msg
+        _(@log_output.readline.strip).must_equal @error_msg
       end
 
       it "must log an error if the load fails" do
         capture_io do
           HammerCLI::Modules.load("hammer_cli_tom")
         end
-        @log_output.readline.strip.must_equal @error_msg
+        _(@log_output.readline.strip).must_equal @error_msg
       end
 
       it "must return false when load fails" do
         capture_io do
-          HammerCLI::Modules.load("hammer_cli_tom").must_equal false
+          _(HammerCLI::Modules.load("hammer_cli_tom")).must_equal false
         end
       end
     end
@@ -132,25 +132,24 @@ describe HammerCLI::Modules do
       end
 
       it "must log an error if the load! fails" do
-        proc {
-          proc {
-            HammerCLI::Modules.load!("hammer_cli_tom")
-          }.must_output("#{@warning_msg}\n", "")
-        }.must_raise RuntimeError
-        @log_output.readline.strip.must_equal @error_msg
+        out, _ = capture_io do
+          assert_raises(RuntimeError) { HammerCLI::Modules.load!('hammer_cli_tom') }
+        end
+        _(out).must_equal "#{@warning_msg}\n"
+        _(@log_output.readline.strip).must_equal @error_msg
       end
 
       it "must log an error if the load fails" do
-        proc {
+        assert_output("#{@warning_msg}\n", "") do
           HammerCLI::Modules.load("hammer_cli_tom")
-        }.must_output("#{@warning_msg}\n", "")
-        @log_output.readline.strip.must_equal @error_msg
+        end
+        _(@log_output.readline.strip).must_equal @error_msg
       end
 
       it "must return false when load fails" do
-        proc {
-          HammerCLI::Modules.load("hammer_cli_tom").must_equal false
-        }.must_output("#{@warning_msg}\n", "")
+        assert_output("#{@warning_msg}\n", "") do
+          _(HammerCLI::Modules.load("hammer_cli_tom")).must_equal false
+        end
       end
     end
 

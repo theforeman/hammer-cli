@@ -11,15 +11,15 @@ describe Fields::Field do
 
 
   it "stores label from constructor" do
-    field.label.must_equal label
+    _(field.label).must_equal label
   end
 
   it "stores path from constructor" do
-    field.path.must_equal path
+    _(field.path).must_equal path
   end
 
   it "default path should be empty array" do
-    Fields::Field.new.path.must_equal []
+    _(Fields::Field.new.path).must_equal []
   end
 
   describe "parameters" do
@@ -30,7 +30,7 @@ describe Fields::Field do
         :path => path,
         :some => :parameter
       }
-      field.parameters.must_equal expected_params
+      _(field.parameters).must_equal expected_params
     end
 
   end
@@ -40,11 +40,11 @@ describe Fields::Field do
     context "blank is allowed" do
 
       it "returns false the value is nil" do
-        field.display?(nil).must_equal true
+        _(field.display?(nil)).must_equal true
       end
 
       it "returns true when there is some data under the path" do
-        field.display?("some value").must_equal true
+        _(field.display?("some value")).must_equal true
       end
     end
 
@@ -52,11 +52,11 @@ describe Fields::Field do
     context "blank is not allowed" do
 
       it "returns false the value is nil" do
-        blank_field.display?(nil).must_equal false
+        _(blank_field.display?(nil)).must_equal false
       end
 
       it "returns true when there is some data under the path" do
-        blank_field.display?("some value").must_equal true
+        _(blank_field.display?("some value")).must_equal true
       end
     end
 
@@ -65,11 +65,11 @@ describe Fields::Field do
   describe "hide_blank?" do
 
     it "defaults to false" do
-      Fields::Field.new.hide_blank?.must_equal false
+      _(Fields::Field.new.hide_blank?).must_equal false
     end
 
     it "can be set to true in the constructor" do
-      blank_field.hide_blank?.must_equal true
+      _(blank_field.hide_blank?).must_equal true
     end
 
   end
@@ -85,19 +85,19 @@ describe Fields::ContainerField do
       let(:field) { Fields::ContainerField.new :label => "Label" }
 
       it "returns false the value is nil" do
-        field.display?(nil).must_equal true
+        _(field.display?(nil)).must_equal true
       end
 
       it "returns false the value is empty array" do
-        field.display?([]).must_equal true
+        _(field.display?([])).must_equal true
       end
 
       it "returns false the value is empty hash" do
-        field.display?({}).must_equal true
+        _(field.display?({})).must_equal true
       end
 
       it "returns true when there is some data under the path" do
-        field.display?(["some value"]).must_equal true
+        _(field.display?(["some value"])).must_equal true
       end
 
     end
@@ -106,19 +106,19 @@ describe Fields::ContainerField do
       let(:field) { Fields::ContainerField.new :label => "Label", :hide_blank => true }
 
       it "returns false the value is nil" do
-        field.display?(nil).must_equal false
+        _(field.display?(nil)).must_equal false
       end
 
       it "returns false the value is empty array" do
-        field.display?([]).must_equal false
+        _(field.display?([])).must_equal false
       end
 
       it "returns false the value is empty hash" do
-        field.display?({}).must_equal false
+        _(field.display?({})).must_equal false
       end
 
       it "returns true when there is some data under the path" do
-        field.display?(["some value"]).must_equal true
+        _(field.display?(["some value"])).must_equal true
       end
 
     end
@@ -141,19 +141,19 @@ describe Fields::Label do
       end
 
       it "returns true when all the keys are present" do
-        field.display?({:a => 1, :b => 2}).must_equal true
+        _(field.display?({:a => 1, :b => 2})).must_equal true
       end
 
       it "returns true when some of the keys are present" do
-        field.display?({:a => 1}).must_equal true
+        _(field.display?({:a => 1})).must_equal true
       end
 
       it "returns true the hash is empty" do
-        field.display?({}).must_equal true
+        _(field.display?({})).must_equal true
       end
 
       it "returns true the hash does not contain the required keys" do
-        field.display?({:c => 3}).must_equal true
+        _(field.display?({:c => 3})).must_equal true
       end
 
     end
@@ -167,23 +167,23 @@ describe Fields::Label do
       end
 
       it "returns true when all subfields are displayed" do
-        field.display?({:a => 1, :b => 2}).must_equal true
+        _(field.display?({:a => 1, :b => 2})).must_equal true
       end
 
       it "returns true when at least one or the subfields is displayed" do
-        field.display?({:a => 1}).must_equal true
+        _(field.display?({:a => 1})).must_equal true
       end
 
       it "returns false when none of the subfieldsis displayed" do
-        field.display?({:c => 3}).must_equal false
+        _(field.display?({:c => 3})).must_equal false
       end
 
       it "returns false when the value is empty hash" do
-        field.display?({}).must_equal false
+        _(field.display?({})).must_equal false
       end
 
       it "returns false when the value is nil" do
-        field.display?(nil).must_equal false
+        _(field.display?(nil)).must_equal false
       end
     end
 
