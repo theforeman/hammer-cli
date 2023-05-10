@@ -41,7 +41,7 @@ describe HammerCLI::Options::OptionDefinition do
       opt = TestOptionFormattersCmd.find_option("--test-format")
 
       opt_instance = opt.of(TestOptionFormattersCmd.new([]))
-      opt_instance.read.must_equal '>>>A<<<'
+      _(opt_instance.read).must_equal '>>>A<<<'
     end
 
     it "should use formatter as a conversion block" do
@@ -54,7 +54,7 @@ describe HammerCLI::Options::OptionDefinition do
       else
         opt_instance.take('B')
       end
-      opt_instance.read.must_equal '>>>B<<<'
+      _(opt_instance.read).must_equal '>>>B<<<'
     end
   end
 
@@ -64,8 +64,8 @@ describe HammerCLI::Options::OptionDefinition do
       cmd = TestDeprecatedOptionCmd.new("", context)
 
       _, err = capture_io { cmd.run(["--another-deprecated=VALUE"]) }
-      err.must_match(/Warning: Option --another-deprecated is deprecated. It is going to be removed/)
-      context[:old_option].must_equal "VALUE"
+      _(err).must_match(/Warning: Option --another-deprecated is deprecated. It is going to be removed/)
+      _(context[:old_option]).must_equal "VALUE"
     end
 
     it "prints deprecation warning (extended version)" do
@@ -73,8 +73,8 @@ describe HammerCLI::Options::OptionDefinition do
       cmd = TestDeprecatedOptionCmd.new("", context)
 
       _, err = capture_io { cmd.run(["--deprecated=VALUE"]) }
-      err.must_match(/Warning: Option --deprecated is deprecated. Use --test-option instead/)
-      context[:test_option].must_equal "VALUE"
+      _(err).must_match(/Warning: Option --deprecated is deprecated. Use --test-option instead/)
+      _(context[:test_option]).must_equal "VALUE"
     end
 
     it "doesn't print deprecation warning if the option is not used" do
@@ -82,22 +82,22 @@ describe HammerCLI::Options::OptionDefinition do
       cmd = TestDeprecatedOptionCmd.new('', context)
       cmd.find_option('--deprecated')
       _out, err = capture_io { cmd.run([]) }
-      err.must_equal ''
+      _(err).must_equal ''
     end
 
     it 'shows depracated message in help' do
       opt = opt_with_deprecation("Use --better-switch instead")
-      opt.description.must_equal "Test option (Deprecated: Use --better-switch instead)"
+      _(opt.description).must_equal "Test option (Deprecated: Use --better-switch instead)"
     end
 
     it 'shows flag specific depracated message in help' do
       opt = opt_with_deprecation('--test-option' => "Use --better-switch instead")
-      opt.description.must_equal "Test option (--test-option is deprecated: Use --better-switch instead)"
+      _(opt.description).must_equal "Test option (--test-option is deprecated: Use --better-switch instead)"
     end
 
     it 'shows multiple flag specific depracated messages in help' do
       opt = opt_with_deprecation('--test-option' => "Use --better-switch instead", '--test-option2' => 'This is deprecated too')
-      opt.description.must_equal "Test option (--test-option is deprecated: Use --better-switch instead, --test-option2 is deprecated: This is deprecated too)"
+      _(opt.description).must_equal "Test option (--test-option is deprecated: Use --better-switch instead, --test-option2 is deprecated: This is deprecated too)"
     end
   end
 
@@ -106,7 +106,7 @@ describe HammerCLI::Options::OptionDefinition do
       context = {}
       cmd = TestOptionFormattersCmd.new("", context)
       cmd.run(["--test-context=VALUE"])
-      context[:test_option].must_equal "VALUE"
+      _(context[:test_option]).must_equal "VALUE"
     end
   end
 end

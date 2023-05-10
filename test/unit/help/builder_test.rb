@@ -13,7 +13,7 @@ describe HammerCLI::Help::Builder do
       ]
       help.add_list('Options', options)
 
-      help.string.strip.must_equal [
+      _(help.string.strip).must_equal [
         'Options:',
         ' --aaa-option OPT_A            Some description',
         ' --bbb-option OPT_B            Some description',
@@ -31,7 +31,7 @@ describe HammerCLI::Help::Builder do
       ]
       help.add_list('Options', options)
 
-      help.string.strip.must_equal [
+      _(help.string.strip).must_equal [
         'Options:',
         ' --aaa-option OPT_A            %s' % ('AAAAAAA ' * 10).strip,
         '                               %s' % ('AAAAAAA ' * 10).strip,
@@ -49,7 +49,7 @@ describe HammerCLI::Help::Builder do
       ]
       help.add_list('Options',options)
 
-      help.string.strip.must_equal [
+      _(help.string.strip).must_equal [
         'Options:',
         ' --alpha-option OPT_ALPHA      Alpha description',
         ' --beta-option OPT_BETA        BETA description'
@@ -69,12 +69,12 @@ describe HammerCLI::Help::Builder do
 
     it 'prints paragraphs without headings' do
       help.add_text(content_1.join("\n"))
-      help.string.strip.must_equal content_1.join("\n")
+      _(help.string.strip).must_equal content_1.join("\n")
     end
 
     it 'prints paragraphs with headings' do
       help.add_text(content_1.join("\n"))
-      help.string.strip.must_equal content_1.join("\n")
+      _(help.string.strip).must_equal content_1.join("\n")
     end
 
     it 'prints multiple paragraphs divided with empty line' do
@@ -84,7 +84,7 @@ describe HammerCLI::Help::Builder do
       expected_output = content_1 + [''] + content_2
       expected_output = expected_output.join("\n")
 
-      help.string.strip.must_equal expected_output
+      _(help.string.strip).must_equal expected_output
     end
   end
 
@@ -102,7 +102,7 @@ describe HammerCLI::Help::Builder do
       options = fm1.all + fm2.all
       help.add_list('Options', options)
 
-      help.string.strip.must_equal [
+      _(help.string.strip).must_equal [
         'Options:',
         ' --option[-yyy|-bbb] VALUE     Some description',
         ' --option[-aaa|-zzz] VALUE     Some description'

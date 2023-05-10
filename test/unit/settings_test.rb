@@ -10,83 +10,83 @@ describe HammerCLI::Settings do
   let(:settings) { HammerCLI::Settings }
 
   it "returns nil when nothing is loaded" do
-    settings.get(:a).must_be_nil
-    settings.get(:a, :b).must_be_nil
+    _(settings.get(:a)).must_be_nil
+    _(settings.get(:a, :b)).must_be_nil
   end
 
   it "returns nil on unknown key" do
     settings.load({:a => 1})
-    settings.get(:b).must_be_nil
+    _(settings.get(:b)).must_be_nil
   end
 
   it "returns correct value" do
     settings.load({:a => 1})
-    settings.get(:a).must_equal 1
+    _(settings.get(:a)).must_equal 1
   end
 
   it "takes both strings and symbols" do
     settings.load({:a => 1, 'b' => 2})
-    settings.get('a').must_equal 1
-    settings.get(:b).must_equal 2
+    _(settings.get('a')).must_equal 1
+    _(settings.get(:b)).must_equal 2
   end
 
   it "finds nested settings" do
     settings.load({:a => {:b => 1}})
-    settings.get(:a, :b).must_equal 1
-    settings.get(:a, 'b').must_equal 1
-    settings.get('a', :b).must_equal 1
+    _(settings.get(:a, :b)).must_equal 1
+    _(settings.get(:a, 'b')).must_equal 1
+    _(settings.get('a', :b)).must_equal 1
   end
 
   it "loads all settings" do
     settings.load({:a => 1, :b => 2})
-    settings.get(:a).must_equal 1
-    settings.get(:b).must_equal 2
+    _(settings.get(:a)).must_equal 1
+    _(settings.get(:b)).must_equal 2
   end
 
   it "dumps all settings" do
     settings.empty
     data = {:a => 1, :b => 2}
     settings.load(data)
-    settings.dump.must_equal data
+    _(settings.dump).must_equal data
   end
 
   it "merges hash settings on second load" do
     settings.load({:a => 1, :b => 2, :d => {:e => 4, :f => 5}})
     settings.load({:b => 'B', :c => 'C', :d => {:e => 'E'}})
-    settings.get(:a).must_equal 1
-    settings.get(:b).must_equal 'B'
-    settings.get(:c).must_equal 'C'
-    settings.get(:d, :e).must_equal 'E'
-    settings.get(:d, :f).must_equal 5
+    _(settings.get(:a)).must_equal 1
+    _(settings.get(:b)).must_equal 'B'
+    _(settings.get(:c)).must_equal 'C'
+    _(settings.get(:d, :e)).must_equal 'E'
+    _(settings.get(:d, :f)).must_equal 5
   end
 
   it "merges array settings on second load" do
     settings.load({:x => [:a, :b]})
     settings.load({:x => [:c, :d]})
-    settings.get(:x)[0].must_equal :a
-    settings.get(:x)[1].must_equal :b
-    settings.get(:x)[2].must_equal :c
-    settings.get(:x)[3].must_equal :d
-    settings.get(:x).size.must_equal 4
+    _(settings.get(:x)[0]).must_equal :a
+    _(settings.get(:x)[1]).must_equal :b
+    _(settings.get(:x)[2]).must_equal :c
+    _(settings.get(:x)[3]).must_equal :d
+    _(settings.get(:x).size).must_equal 4
   end
 
   it "clear wipes all settings but default values" do
     settings.load({:a => 1, :b => 2})
     settings.clear
-    settings.get(:a).must_be_nil
-    settings.get(:b).must_be_nil
-    settings.default_settings.each { |key, val| settings.get(key).must_equal val }
+    _(settings.get(:a)).must_be_nil
+    _(settings.get(:b)).must_be_nil
+    settings.default_settings.each { |key, val| _(settings.get(key)).must_equal val }
   end
 
   it "empty wipes all settings including default values" do
     settings.load({:a => 1, :b => 2})
     settings.empty
-    settings.dump.must_equal({})
+    _(settings.dump).must_equal({})
   end
 
   it "initializes settings with default settings" do
     settings.instance_variable_set(:@settings_hash, nil)
-    settings.dump.must_equal settings.default_settings
+    _(settings.dump).must_equal settings.default_settings
   end
 
   context "load from paths" do
@@ -115,19 +115,19 @@ describe HammerCLI::Settings do
 
     it "loads settings from file" do
       [config1.path, config2.path].each { |config| settings.load_from_file config }
-      settings.get(:host).must_equal 'https://localhost.localdomain/'
-      settings.get(:username).must_equal 'admin'
+      _(settings.get(:host)).must_equal 'https://localhost.localdomain/'
+      _(settings.get(:username)).must_equal 'admin'
     end
 
     it "clears path history on clear invokation" do
       settings.load_from_paths [config2.path]
       settings.clear
-      settings.path_history.must_equal []
+      _(settings.path_history).must_equal []
     end
 
     it "store config path history" do
       [config1.path, config2.path].each { |config| settings.load_from_file config }
-      settings.path_history.must_equal [config1.path, config2.path]
+      _(settings.path_history).must_equal [config1.path, config2.path]
     end
 
     it "loads settings from dir" do
@@ -146,10 +146,10 @@ describe HammerCLI::Settings do
         settings.load_from_paths [dir]
         settings.load_from_file config1.path
 
-        settings.get(:host).must_equal 'https://localhost/'
-        settings.get(:username).must_equal 'admin'
-        settings.get(:param1).must_equal 'value1'
-        settings.get(:module, :param2).must_equal 'value2'
+        _(settings.get(:host)).must_equal 'https://localhost/'
+        _(settings.get(:username)).must_equal 'admin'
+        _(settings.get(:param1)).must_equal 'value1'
+        _(settings.get(:module, :param2)).must_equal 'value2'
 
       ensure
         FileUtils.remove_entry dir

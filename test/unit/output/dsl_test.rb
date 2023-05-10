@@ -17,7 +17,7 @@ describe HammerCLI::Output::Dsl do
   let(:last_field) { dsl.fields[-1] }
 
   it "should be empty after initialization" do
-    dsl.fields.length.must_equal 0
+    _(dsl.fields.length).must_equal 0
   end
 
   describe "fields" do
@@ -25,14 +25,14 @@ describe HammerCLI::Output::Dsl do
       dsl.build do
         field :f, "F"
       end
-      first_field.class.must_equal Fields::Field
+      _(first_field.class).must_equal Fields::Field
     end
 
     it "should create field of desired type" do
       dsl.build do
         field :f, "F", CustomFieldType
       end
-      first_field.class.must_equal CustomFieldType
+      _(first_field.class).must_equal CustomFieldType
     end
 
     it "should store all field details" do
@@ -40,9 +40,9 @@ describe HammerCLI::Output::Dsl do
         field :f, "F"
        end
 
-      first_field.must_equal last_field
-      first_field.path.must_equal [:f]
-      first_field.label.must_equal "F"
+      _(first_field).must_equal last_field
+      _(first_field.path).must_equal [:f]
+      _(first_field.label).must_equal "F"
     end
 
     it "can define multiple fields" do
@@ -52,7 +52,7 @@ describe HammerCLI::Output::Dsl do
         field :email, "Email"
       end
 
-      dsl.fields.length.must_equal 3
+      _(dsl.fields.length).must_equal 3
     end
   end
 
@@ -64,14 +64,14 @@ describe HammerCLI::Output::Dsl do
       dsl.build do
         custom_field CustomFieldType, :a => 1, :b => 2
       end
-      first_field.class.must_equal CustomFieldType
+      _(first_field.class).must_equal CustomFieldType
     end
 
     it "passes all options to the field instance" do
       dsl.build do
         custom_field CustomFieldType, :a => 1, :b => 2
       end
-      first_field.options.must_equal options
+      _(first_field.options).must_equal options
     end
 
   end
@@ -84,7 +84,7 @@ describe HammerCLI::Output::Dsl do
           field :email, "Email"
         end
       end
-      last_field.path.must_equal [:key1, :email]
+      _(last_field.path).must_equal [:key1, :email]
     end
 
     it "path can be nil to handle the parent structure" do
@@ -93,7 +93,7 @@ describe HammerCLI::Output::Dsl do
           field nil, "Email"
         end
       end
-      last_field.path.must_equal [:key1]
+      _(last_field.path).must_equal [:key1]
     end
 
     it "from can be nested" do
@@ -107,8 +107,8 @@ describe HammerCLI::Output::Dsl do
           end
         end
       end
-      first_field.path.must_equal [:key1, :key2, :key3, :name]
-      last_field.path.must_equal [:key1, :key2, :email]
+      _(first_field.path).must_equal [:key1, :key2, :key3, :name]
+      _(last_field.path).must_equal [:key1, :key2, :email]
     end
 
   end
@@ -120,7 +120,7 @@ describe HammerCLI::Output::Dsl do
       dsl.build do
         label "Label"
       end
-      first_field.class.must_equal Fields::Label
+      _(first_field.class).must_equal Fields::Label
     end
 
     it "allows to define subfields with dsl" do
@@ -131,7 +131,7 @@ describe HammerCLI::Output::Dsl do
         end
       end
 
-      first_field.fields.map(&:label).must_equal ["A", "B"]
+      _(first_field.fields.map(&:label)).must_equal ["A", "B"]
     end
 
     it "sets correct path to subfields" do
@@ -144,7 +144,7 @@ describe HammerCLI::Output::Dsl do
         end
       end
 
-      first_field.fields.map(&:path).must_equal [[:a], [:b]]
+      _(first_field.fields.map(&:path)).must_equal [[:a], [:b]]
     end
 
   end
@@ -156,7 +156,7 @@ describe HammerCLI::Output::Dsl do
       dsl.build do
         collection :f, "F"
       end
-      first_field.class.must_equal Fields::Collection
+      _(first_field.class).must_equal Fields::Collection
     end
 
     it "allows to define subfields with dsl" do
@@ -167,7 +167,7 @@ describe HammerCLI::Output::Dsl do
         end
       end
 
-      first_field.fields.map(&:label).must_equal ["A", "B"]
+      _(first_field.fields.map(&:label)).must_equal ["A", "B"]
     end
 
     it "sets correct path to subfields" do
@@ -178,7 +178,7 @@ describe HammerCLI::Output::Dsl do
         end
       end
 
-      first_field.fields.map(&:path).must_equal [[:a], [:b]]
+      _(first_field.fields.map(&:path)).must_equal [[:a], [:b]]
     end
 
   end

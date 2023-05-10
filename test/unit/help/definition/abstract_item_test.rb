@@ -15,7 +15,7 @@ describe HammerCLI::Help::AbstractItem do
         '   Dolor sit amet',
         ''
       ].join("\n")
-      section.build_string.must_equal(expected_result)
+      _(section.build_string).must_equal(expected_result)
     end
 
     it 'indents text with custom padding' do
@@ -27,7 +27,7 @@ describe HammerCLI::Help::AbstractItem do
         '** Dolor sit amet',
         ''
       ].join("\n")
-      section.build_string.must_equal(expected_result)
+      _(section.build_string).must_equal(expected_result)
     end
   end
 end

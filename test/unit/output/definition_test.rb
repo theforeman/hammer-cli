@@ -15,19 +15,19 @@ describe HammerCLI::Output::Definition do
   describe "empty?" do
 
     it "returns true for empty definition" do
-      definition.empty?.must_equal true
+      _(definition.empty?).must_equal true
     end
 
     it "returns false for definition with fields" do
       definition.fields << Fields::Field.new
-      definition.empty?.must_equal false
+      _(definition.empty?).must_equal false
     end
 
   end
 
   it "should be able to add field" do
     definition.fields << Fields::Field.new
-    field_count.must_equal 1
+    _(field_count).must_equal 1
   end
 
   it "append should allow to add data from another definition" do
@@ -36,14 +36,14 @@ describe HammerCLI::Output::Definition do
     another_def.fields << Fields::Field.new
 
     definition.append another_def.fields
-    field_count.must_equal another_def.fields.length
-    definition.fields.must_equal another_def.fields
+    _(field_count).must_equal another_def.fields.length
+    _(definition.fields).must_equal another_def.fields
   end
 
   it 'clear should delete all fields' do
     definition.fields << Fields::Field.new
     definition.clear
-    definition.empty?.must_equal true
+    _(definition.empty?).must_equal true
   end
 
   describe 'insert' do
@@ -56,23 +56,23 @@ describe HammerCLI::Output::Definition do
           definition.insert(:before, :id1, new_field)
         end
 
-        field_count.must_equal 0
+        _(field_count).must_equal 0
       end
 
       it 'should insert new specified field before the old one' do
         definition.fields << Fields::Field.new(id: :id1, label: 'oldfield')
         definition.insert(:before, :id1, new_field)
 
-        definition.fields.first.label.must_equal new_field.label
-        field_count.must_equal 2
+        _(definition.fields.first.label).must_equal new_field.label
+        _(field_count).must_equal 2
       end
 
       it 'should insert before field with few new specified' do
         definition.fields << Fields::Field.new(id: :id1, label: 'oldfield')
         definition.insert(:before, :id1, new_fields)
 
-        definition.fields.first.label.must_equal new_field.label
-        field_count.must_equal 3
+        _(definition.fields.first.label).must_equal new_field.label
+        _(field_count).must_equal 3
       end
 
       it 'should accept block with new fields' do
@@ -82,8 +82,8 @@ describe HammerCLI::Output::Definition do
           field nil, 'newfield2'
         end
 
-        definition.fields.first.label.must_equal new_field.label
-        field_count.must_equal 3
+        _(definition.fields.first.label).must_equal new_field.label
+        _(field_count).must_equal 3
       end
 
       it 'should accept both block and new fields' do
@@ -93,8 +93,8 @@ describe HammerCLI::Output::Definition do
           field nil, 'newfield4'
         end
 
-        definition.fields.first.label.must_equal new_field.label
-        field_count.must_equal 5
+        _(definition.fields.first.label).must_equal new_field.label
+        _(field_count).must_equal 5
       end
 
       it 'should work with labels' do
@@ -102,8 +102,8 @@ describe HammerCLI::Output::Definition do
         definition.fields << label_field
         definition.insert(:before, label_field.label, new_fields)
 
-        definition.fields.first.label.must_equal new_field.label
-        field_count.must_equal 3
+        _(definition.fields.first.label).must_equal new_field.label
+        _(field_count).must_equal 3
       end
     end
 
@@ -114,23 +114,23 @@ describe HammerCLI::Output::Definition do
           definition.insert(:after, :id1, new_field)
         end
 
-        field_count.must_equal 0
+        _(field_count).must_equal 0
       end
 
       it 'should insert new specified field after the old one' do
         definition.fields << Fields::Field.new(id: :id1, label: 'oldfield')
         definition.insert(:after, :id1, new_field)
 
-        definition.fields.first.label.must_equal 'oldfield'
-        field_count.must_equal 2
+        _(definition.fields.first.label).must_equal 'oldfield'
+        _(field_count).must_equal 2
       end
 
       it 'should insert after field with few new specified' do
         definition.fields << Fields::Field.new(id: :id1, label: 'oldfield')
         definition.insert(:after, :id1, new_fields)
 
-        definition.fields.first.label.must_equal 'oldfield'
-        field_count.must_equal 3
+        _(definition.fields.first.label).must_equal 'oldfield'
+        _(field_count).must_equal 3
       end
 
       it 'should accept block with new fields' do
@@ -140,8 +140,8 @@ describe HammerCLI::Output::Definition do
           field nil, 'newfield2'
         end
 
-        definition.fields.first.label.must_equal 'oldfield'
-        field_count.must_equal 3
+        _(definition.fields.first.label).must_equal 'oldfield'
+        _(field_count).must_equal 3
       end
 
       it 'should accept both block and new fields' do
@@ -151,8 +151,8 @@ describe HammerCLI::Output::Definition do
           field nil, 'newfield4'
         end
 
-        definition.fields.first.label.must_equal 'oldfield'
-        field_count.must_equal 5
+        _(definition.fields.first.label).must_equal 'oldfield'
+        _(field_count).must_equal 5
       end
 
       it 'should work with labels' do
@@ -160,8 +160,8 @@ describe HammerCLI::Output::Definition do
         definition.fields << label_field
         definition.insert(:after, label_field.label, new_fields)
 
-        definition.fields.first.label.must_equal label_field.label
-        field_count.must_equal 3
+        _(definition.fields.first.label).must_equal label_field.label
+        _(field_count).must_equal 3
       end
     end
 
@@ -172,23 +172,23 @@ describe HammerCLI::Output::Definition do
           definition.insert(:replace, :id1, new_field)
         end
 
-        field_count.must_equal 0
+        _(field_count).must_equal 0
       end
 
       it 'should replace field with new specified' do
         definition.fields << Fields::Field.new(id: :id1, label: 'oldfield')
         definition.insert(:replace, :id1, new_field)
 
-        definition.fields.first.label.must_equal new_field.label
-        field_count.must_equal 1
+        _(definition.fields.first.label).must_equal new_field.label
+        _(field_count).must_equal 1
       end
 
       it 'should replace field with few new specified' do
         definition.fields << Fields::Field.new(id: :id1, label: 'oldfield')
         definition.insert(:replace, :id1, new_fields)
 
-        definition.fields.first.label.must_equal new_field.label
-        field_count.must_equal 2
+        _(definition.fields.first.label).must_equal new_field.label
+        _(field_count).must_equal 2
       end
 
       it 'should accept block with new fields' do
@@ -198,7 +198,7 @@ describe HammerCLI::Output::Definition do
           field nil, 'newfield2'
         end
 
-        definition.fields.first.label.must_equal new_field.label
+        _(definition.fields.first.label).must_equal new_field.label
       end
 
       it 'should accept both block and new fields' do
@@ -208,7 +208,7 @@ describe HammerCLI::Output::Definition do
           field nil, 'newfield4'
         end
 
-        field_count.must_equal 4
+        _(field_count).must_equal 4
       end
 
       it 'should work with labels' do
@@ -216,7 +216,7 @@ describe HammerCLI::Output::Definition do
         definition.fields << label_field
         definition.insert(:replace, label_field.label, new_fields)
 
-        field_count.must_equal 2
+        _(field_count).must_equal 2
       end
     end
   end
@@ -224,21 +224,21 @@ describe HammerCLI::Output::Definition do
   describe 'find_field' do
     it 'should find a field' do
       definition.fields += [new_field, label_field]
-      definition.find_field(:new_id).must_equal new_field
+      _(definition.find_field(:new_id)).must_equal new_field
     end
 
     it 'should find a field in field output definition' do
       definition.fields += [label_field, cont_field]
       nested_definition = definition.find_field(:id1).output_definition
       nested_definition.fields << new_field
-      nested_definition.find_field(:new_id).must_equal new_field
+      _(nested_definition.find_field(:new_id)).must_equal new_field
     end
   end
 
   describe 'at' do
     it 'should return self if no specified path or empty' do
-      definition.at.must_equal definition
-      definition.at([]).must_equal definition
+      _(definition.at).must_equal definition
+      _(definition.at([])).must_equal definition
     end
 
     it 'should return output definition of specified field with path' do
@@ -246,7 +246,7 @@ describe HammerCLI::Output::Definition do
       definition.fields << cont_field
       path = [cont_field.id]
 
-      definition.at(path).must_equal cont_field.output_definition
+      _(definition.at(path)).must_equal cont_field.output_definition
     end
 
     it 'should work with labels' do
@@ -254,7 +254,7 @@ describe HammerCLI::Output::Definition do
       definition.fields << label_field
       path = ['labelfield']
 
-      definition.at(path).must_equal label_field.output_definition
+      _(definition.at(path)).must_equal label_field.output_definition
     end
   end
 
@@ -274,7 +274,7 @@ describe HammerCLI::Output::Definition do
                    "Cf/bca   |     |         | x  \n" \
                    "---------|-----|---------|----\n"
 
-      definition.sets_table.must_equal sets_table
+      _(definition.sets_table).must_equal sets_table
     end
   end
 end
