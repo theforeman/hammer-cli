@@ -368,7 +368,7 @@ module HammerCLI
 
         def format(date)
           raise ArgumentError unless date
-          ::DateTime.parse(date).to_s
+          ::Time.parse(date).iso8601
         rescue ArgumentError
           raise ArgumentError, _("'%s' is not a valid date.") % date
         end
