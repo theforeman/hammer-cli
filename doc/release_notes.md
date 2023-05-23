@@ -1,5 +1,14 @@
 Release notes
 =============
+### 3.7.0 (2023-05-23)
+* Honor tz in datetime normalizer ([PR #369](https://github.com/theforeman/hammer-cli/pull/369)), [#36418](http://projects.theforeman.org/issues/36418)
+* Remove unused code, [#36337](http://projects.theforeman.org/issues/36337)
+* Fix ambiguous operator warnings, [#36337](http://projects.theforeman.org/issues/36337)
+* Update rake and clamp deps, [#36337](http://projects.theforeman.org/issues/36337)
+* Fix config template typos ([PR #365](https://github.com/theforeman/hammer-cli/pull/365))
+* Load ssl key using openssl::pkey.read ([PR #364](https://github.com/theforeman/hammer-cli/pull/364)), [#34853](http://projects.theforeman.org/issues/34853)
+* Bump to 3.7.0-develop
+
 ### 3.6.0 (2023-02-23)
 * Update apipie-bindings to 0.6.0
 * Include makefile.def in the gem
