@@ -9,12 +9,12 @@
 # Sergio Ocón-Cárdenas <sergio.ocon@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.6.0\n"
+"Project-Id-Version: hammer-cli 3.8.0.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 15:09+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Sergio Ocón-Cárdenas <sergio.ocon@redhat.com>, 2014-2015\n"
-"Language-Team: Spanish (http://www.transifex.com/foreman/foreman/language/"
+"Language-Team: Spanish (http://app.transifex.com/foreman/foreman/language/"
 "es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -507,10 +507,10 @@ msgid "Message"
 msgstr "Mensaje"
 
 msgid "Id"
-msgstr "ID"
+msgstr "Id"
 
 msgid "Name"
-msgstr "名前"
+msgstr "Nom"
 
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr ""
