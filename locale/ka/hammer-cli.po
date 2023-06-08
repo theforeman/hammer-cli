@@ -1,0 +1,578 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the hammer-cli package.
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: hammer-cli 3.8.0.pre.develop\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-31 15:09+0000\n"
+"PO-Revision-Date: 2014-03-14 09:46+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Georgian (http://app.transifex.com/foreman/foreman/language/"
+"ka/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ka\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid ""
+"Following parameters accept format defined by its schema (bold are required; "
+"<> contains acceptable type; [] contains acceptable value):"
+msgstr ""
+"შემდეგი პარამეტრები მიიღება მისი სქემით განსაზღვრულ ფორმატს (აუცილებელია "
+"თამამი; <> შეიცავს მისაღებ ტიპს; [] შეიცავს მისაღებ მნიშვნელობას):"
+
+msgid "Option details"
+msgstr "პარამეტრის დეტალები"
+
+msgid "Here you can find option types and the value an option can accept:"
+msgstr ""
+"აქ შეგიძლიათ იპოვოთ პარამეტრის ტიპები და მნიშვნელობა, რომელიც მას შეუძლია "
+"მიიღოს:"
+
+msgid "Predefined field sets"
+msgstr "ველების წინასწარ აღწერილი ნაკრებები"
+
+msgid "Command extensions should be inherited from %s."
+msgstr "ბრძანების გაფართოებების %s-დან მემკვიდრეობით მიღება შეუძლებელია."
+
+msgid "Unfortunately the server does not support such operation."
+msgstr "სამწუხაროდ სერვერს ამ ოპერაციის მხარდაჭერა არ გააჩნია."
+
+msgid "The server does not support such operation."
+msgstr "სერვერს ამ ოპერაციის მხარდაჭერა არ გააჩნია."
+
+msgid "Prepare map of options and subcommands for Bash completion"
+msgstr "მოამზადეთ პარამეტრებისა და ქვებრძანებების რუკა Bash-ის დასრულებისთვის"
+
+msgid "Unable to find hostname in %s."
+msgstr "%s-ში ჰოსტების სახელის მოძებნა შეუძლებელია."
+
+msgid "CA certificate for %{uri} was stored to %{file}."
+msgstr "%{uri}-ის CA სერტიფიკატი %{file}-შია შენახული."
+
+msgid ""
+"Now hammer can use the downloaded certificate to verify SSL connection to "
+"the server."
+msgstr ""
+"ახლა hammer-ს სერვერთან SSL კავშირის დასადასტურებლად გადმოწერილი "
+"სერთიფიკატის გამოყენებაც შეუძლია."
+
+msgid ""
+"It will be used automatically when ssl_ca_path and ssl_ca_file options are "
+"not set."
+msgstr ""
+"ის ავტომატურად იქნება გამოყენებული, როდესაც ssl_ca_path და ssl_ca_file "
+"პარამეტრები არ არის დაყენებული."
+
+msgid ""
+"Be aware that hammer cannot verify whether the certificate is correct and "
+"you should verify its authenticity."
+msgstr ""
+"გაითვალისწინეთ, რომ Hammer ვერ ამოწმებს სერთიფიკატის სისწორეს და მისი "
+"სინამდვილე თქვენ უნდა შეამოწმოთ."
+
+msgid "You can display the certificate content with"
+msgstr "თქვენ შეგიძლიათ აჩვენოთ სერტიფიკატის შინაარსი"
+
+msgid ""
+"As root you can also install the certificate and update the system-wide list "
+"of trusted CA certificates as follows:"
+msgstr ""
+"როგორც root, შეგიძლიათ დააყენოთ სერთიფიკატი და განაახლოთ სანდო CA "
+"სერთიფიკატების სისტემური სია შემდეგნაირად:"
+
+msgid "Couldn't parse URI '%s'."
+msgstr "URI-ის დამუშავების შეცდომა: %s."
+
+msgid ""
+"The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
+msgstr ""
+"CA სერთიფიკატი %{uri}-ისთვის ვერ ჩამოიტვირთა. CA სერთიფიკატი არ მოიძებნა."
+
+msgid "Make sure your server sends cert chain including the CA."
+msgstr ""
+"დარწმუნდით, რომ სერვერი სერტიფიკატების მთელ ჯაჭვს აგზავნის, CA-ის ჩათვლით."
+
+msgid "To see the actual chain you can use openssl command"
+msgstr "ჯაჭვის ახლოდან სანახავად შეგიძლიათ openssl ბრძანება გამოიყენოთ"
+
+msgid "You can also download the certificate manually and store it as %s."
+msgstr ""
+"ასევე შეგიძლიათ სერტიფიკატი ხელით გადმოწეროთ და როგორც %s, ისე შეინახოთ."
+
+msgid ""
+"If you choose any other location set the ssl_ca_path or ssl_ca_file "
+"configuration options appropriately."
+msgstr ""
+"თუ თქვენ აირჩევთ ნებისმიერ სხვა ადგილს, დააყენეთ ssl_ca_path ან ssl_ca_file "
+"კონფიგურაციის პარამეტრები სათანადოდ."
+
+msgid "Fetching the CA certificate failed:"
+msgstr "CA სერტიფიკატის მოთხოვნის შეცდომა:"
+
+msgid "The service at the given URI does not accept SSL connections."
+msgstr "მითითებულ URI-ზე მყოფ სერვისს SSL -ის მხარდაჭერა არ გააჩნია."
+
+msgid "Perhaps you meant to connect to '%s'?"
+msgstr "შესაძლოა %s-სთან მიერთებას გულისხმობდით?"
+
+msgid "Too many arguments."
+msgstr "მეტისმეტად ბევრი არგუმენტი."
+
+msgid "Option '%s' is required."
+msgstr "პარამეტრი %s აუცილებელია."
+
+msgid "Option '%{opt}' (or env %{env}) is required."
+msgstr "აუცილებელია პარამეტრი '%{opt}' (ან ცვლადი %{env})."
+
+msgid "Option '%{swt}': %{msg}."
+msgstr "მორგება '%{swt}': %{msg}."
+
+msgid "Parameter '%{pmt}': %{msg}."
+msgstr "პარამეტრი '%{pmt}': %{msg}."
+
+msgid "%{env}: %{msg}."
+msgstr "%{env}: %{msg}."
+
+msgid "Unrecognised option '%s'."
+msgstr "უცნობი პარამეტრი: %s."
+
+msgid "No such sub-command '%s'."
+msgstr "უცნობი ქვებრძანება: %s."
+
+msgid "No value provided."
+msgstr "მნიშვნელობა მითითებული არაა."
+
+msgid "Illegal quoting in %{buffer}"
+msgstr "არასწორი ბრჭყალები %{buffer} -ში"
+
+msgid ""
+"Couldn't create %s. Please create the directory before setting defaults."
+msgstr ""
+"%s-ის შექმნის შეცდომა. ნაგულისხმები მნიშვნელობების დაყენებამდე საჭიროა "
+"საქაღალდის შექმნა."
+
+msgid "Defaults management"
+msgstr "ნაგულისხმები მნიშვნელობების მართვა"
+
+msgid "List all the providers"
+msgstr "მომწოდებლების სია"
+
+msgid "Provider"
+msgstr "სერვისის მომწოდებელი"
+
+msgid "Supported defaults"
+msgstr "მხარდაჭერილი ნაგულისხმები მნიშვნელობები"
+
+msgid "Description"
+msgstr "აღწერილობა"
+
+msgid "List all the default parameters"
+msgstr "ყველა ნაგულისხმები მნიშვნელობა"
+
+msgid "Parameter"
+msgstr "პარამეტრი"
+
+msgid "Value"
+msgstr "მნიშვნელობა"
+
+msgid "Delete a default param"
+msgstr "ნაგულისხმები პარამეტრის წაშლა"
+
+msgid "The name of the default option"
+msgstr "ნაგულისხმები პარამეტრის სახელი"
+
+msgid "Add a default parameter to config"
+msgstr "კონფიგურაციაში ნაგულისხმები პარამეტრის დამატება"
+
+msgid "The name of the default option (e.g. organization_id)"
+msgstr "ნაგულისხმები პარამეტრის სახელი (მაგ. organization_id)"
+
+msgid "The value for the default option"
+msgstr "ნაგულისხმები პარამეტრის მნიშვნელობა"
+
+msgid ""
+"The name of the provider providing the value. For list available providers "
+"see `hammer defaults providers`"
+msgstr ""
+"მომწოდებლის სახელი, რომელიც უზრუნველყოფს მნიშვნელობას. ხელმისაწვდომი "
+"მომწოდებლების სიისთვის იხილეთ `Hammer-ის ნაგულისხმები მომწდოდებლები`"
+
+msgid ""
+"Added %{key_val} default-option with value that will be generated from the "
+"server."
+msgstr ""
+"დამატებულია %{key_val} ნაგულისხმები პარამეტრი მნიშვნელობით, რომელიც "
+"სერვერიდან იქნება გენერირებული."
+
+msgid "Added %{key_val} default-option with value %{val_val}."
+msgstr "დამატებულია %{key_val} ნაგულისხმები პარამეტრი მნიშვნელობით %{val_val}."
+
+msgid ""
+"Provider %{name} was not found. See `hammer defaults providers` for "
+"available providers."
+msgstr ""
+"მომწოდებელი %{name} ვერ მოიძებნა. ხელმისაწვდომი მომწოდებლებისათვის იხილეთ "
+"`Hammer_ის ნაგულისხმები მომწოდებლები`."
+
+msgid ""
+"The param name is not supported by provider. See `hammer defaults providers` "
+"for supported params."
+msgstr ""
+"პარამეტრის სახელი არ არის მხარდაჭერილი მომწოდებლის მიერ. მხარდაჭერილი "
+"პარამეტრებისთვის იხილეთ `Hammer-ის ნაგულისხმები მომწოდებლები`."
+
+msgid "%{param} was deleted successfully."
+msgstr "%{param} წარმატებით წაიშალა."
+
+msgid "You must specify value or a provider name, can't specify both."
+msgstr "შეგიძლიათ მიუთითოთ მნიშვნელობა ან მომწოდებელი. არა ორივე."
+
+msgid "Couldn't find the requested param in %s."
+msgstr "%s-ში მოთხოვნილი პარამეტრი არ არსებობს."
+
+msgid "Error: %s"
+msgstr "შეცდომა: %s"
+
+msgid "Error: %{message}"
+msgstr "შეცდომა: %{message}"
+
+msgid "See: '%{path} --help'."
+msgstr "იხილეთ: '%{path} --help'."
+
+msgid "SSL error"
+msgstr "SSL-ის სეცდომა"
+
+msgid "SSL certificate verification failed"
+msgstr "SSL სერტიფიკატის შემოწმების შეცდომა"
+
+msgid "is the server down?"
+msgstr "სერვერი გამორთულია?"
+
+msgid ""
+"was '%s' run on the server when using apipie cache? (typical production "
+"settings)"
+msgstr ""
+"გაშვებული იყო „%s“ სერვერზე apipie cache-ის გამოყენებისას? (ტიპიური "
+"წარმოების პარამეტრები)"
+
+msgid "Could not load the API description from the server"
+msgstr "API აღწერის სერვერიდან ჩატვირთვის პრობლემა"
+
+msgid "Missing arguments for %s."
+msgstr "%s-ს არგუმენტები აკლია."
+
+msgid "Format output in markdown"
+msgstr "გამომავალი ფორმატირება ჩანაწერში"
+
+msgid "Hammer CLI help"
+msgstr "Hammer CLI დახმარება"
+
+msgid "Print help for all hammer commands"
+msgstr "Hammer-ის ბრძანებების სიის მისაღებად აკრიფეთ help"
+
+msgid "NOTE"
+msgstr "შენიშვნა"
+
+msgid "No permissions to create log dir %s."
+msgstr "ჟურნალის საქაღალდის შექმნის წვდომა აკრძალულია: %s."
+
+msgid "File %s not writeable, won't log anything to the file!"
+msgstr "ფაილი %s ჩაწერადი არაა. ჟურნალი ამ ფაილში არ ჩაიწერება!"
+
+msgid "Be verbose (or not). True by default"
+msgstr "დამატებითი შეტყობინებები (ან გამორთვა). ნაგულისხმებად: ჩართულია"
+
+msgid "Completely silent"
+msgstr "სრულად გაჩუმება"
+
+msgid "Enable/disable stored defaults. Enabled by default"
+msgstr "შენახული ნაგულისხმების ჩართვა/გამორთვა. ნაგულისხმებად ჩართულია"
+
+msgid "Show debugging output"
+msgstr "გამართვის დამატებითი ინფორმაციის ჩვენება"
+
+msgid "Force reload of Apipie cache"
+msgstr "Apipie-ის ქეშის ძალთ გადატვირთვა"
+
+msgid "Path to custom config file"
+msgstr "ბილიკი კონფიგურაციის ფაილამდე"
+
+msgid "Username to access the remote system"
+msgstr "დაშორებულ სისტემაზე წვდომის მომხმარებლის სახელი"
+
+msgid "Password to access the remote system"
+msgstr "დაშორებულ სისტემაზე წვდომის პაროლი"
+
+msgid "Remote system address"
+msgstr "დაშორებუი სისტემის მისამართი"
+
+msgid "Configure SSL verification of remote system"
+msgstr "დაშორებული სისტემის SSL-ის შემოწმების მორება"
+
+msgid "Configure the file containing the CA certificates"
+msgstr "CA სერტიფიკატების შემცველი ფაილის მორგება"
+
+msgid "Configure the directory containing the CA certificates"
+msgstr "CA სერტიფიკატების შემცველი საქაღალდის მორგება"
+
+msgid "Configure the client's public certificate"
+msgstr "კლიენტის საჯარო გასაღების მორგება"
+
+msgid "Configure the client's private key"
+msgstr "კლიენტის პირადი გასაღების მორგება"
+
+msgid ""
+"Use standard authentication in addition to client certificate authentication"
+msgstr ""
+"სტანდარტული ავთენტიფიკაციის გამოყენებასთან ერთად კლიენტის სერტიფიკატის "
+"ავტორიზაციის სისწორეც შემოწმდება"
+
+msgid "Fetch CA certificate from server and exit"
+msgstr "სერვერიდან CA სერტიფიკატის გამოთხოვა და გასვლა"
+
+msgid "Show version"
+msgstr "ვერსიის ჩვენება"
+
+msgid "unknown version"
+msgstr "უცნობი ვერსია"
+
+msgid "Show ids of associated resources"
+msgstr "ასოცირებული რესურსების ID-ების ჩვენება"
+
+msgid "Explicitly turn interactive mode on/off"
+msgstr "ინტერაქტიური რეჟიმის ჩართ/გამორთ"
+
+msgid "Hide headers from output"
+msgstr "გამოტანიდან თავსართების დამალვა"
+
+msgid "Output as CSV (same as --output=csv)"
+msgstr "CSV-ში გამოტანა (იგივე, რაც --output=csv)"
+
+msgid "Set output format"
+msgstr "გამოტანის ფორმატის დაყენება"
+
+msgid "Path to custom output file"
+msgstr "ბილიკი ხელით მითითებულ გამოტანის ფაილამდე"
+
+msgid "Character to separate the values"
+msgstr "მნიშვნელობების გამყოფი სიმბოლო"
+
+msgid "Get list of possible endings"
+msgstr "შესაძლო დასასრულების სიის მიღება"
+
+msgid "Warning: An error occured while loading module %s."
+msgstr "გაფრთხილება: შეცდომა მოდულის (%s) ჩატვირთვისას."
+
+msgid "Error: Some of the required modules are disabled in configuration: %s."
+msgstr "შეცდომა: ზოგიერთი საჭირო მოდული გამორთულია კონფიგურაციაში: %s."
+
+msgid "Value described in the option's description. Mostly simple string"
+msgstr "პარამეტრის აღწერაში აღწერილი მნიშვნელობა. მარტივი სტრიქონი"
+
+msgid "Comma-separated list of key=value."
+msgstr "მძიმით გამოყოფილი სია ცვლადი=მნიშვნელობა."
+
+msgid "JSON is acceptable and preferred way for such parameters"
+msgstr "JSON ასეთი პარამეტრებისთვის მისაღები ფორმაა"
+
+msgid ""
+"Value must be defined as a comma-separated list of key=value or valid JSON."
+msgstr ""
+"მნიშვნელობა მძიმით გამოყოფილ გასაღები=მნიშვნელობა ტიპის სიას ან სწორ JSON-ის "
+"უნდა წარმოადგენდეს."
+
+msgid ""
+"Comma separated list of values. Values containing comma should be quoted or "
+"escaped with backslash."
+msgstr ""
+"მძიმით გამოყოფილი მნიშვნელობების სია. მძიმების შემცველი მნიშვნელობები "
+"ბრჭყალებში უნდა იყოს ჩასმული, ან \\-ით სრულდებოდეს."
+
+msgid "Comma separated list of values defined by a schema."
+msgstr "სქემის მიერ აღწერილი მძიმით გამოყოფილი მნიშვნელობების სია."
+
+msgid "Numeric value. Integer"
+msgstr "რიცხვითი მნიშვნელობა: მთელი რიცხვი"
+
+msgid "Numeric value is required."
+msgstr "საჭიროა რიცხვითი მნიშვნელობა."
+
+msgid "One of %s"
+msgstr "ერთი %s-დან"
+
+msgid "Value must be one of %s."
+msgstr "მნიშვნელობა ერთი %s-დან ერთი უნდა იყოს."
+
+msgid "Path to a file"
+msgstr "ბილიკი ფაილამდე"
+
+msgid "Unable to parse JSON input."
+msgstr "შეყვანილი JSON-ის დამუშავების შეცდომა."
+
+msgid "Possible values are described in the option's description"
+msgstr "შესაძლო მნიშვნელობები პარამეტრის აღწერაშია"
+
+msgid "Possible value(s): %s"
+msgstr "შესაძლო მნიშვნელობები: %s"
+
+msgid "Value must be %s."
+msgstr "მნიშვნელობა უნდა იყოს %s."
+
+msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
+msgstr "თარიღი და დრო წწწწ-თთ-დდ სს:წწ:წწ ან ISO 8601 ფორმატში უნდა იყოს"
+
+msgid "'%s' is not a valid date."
+msgstr "'%s' სწორ თარიღს არ წარმოადგენს."
+
+msgid ""
+"Any combination of possible values described in the option's description"
+msgstr ""
+"შესაძლო მნიშვნელობების ნებისმიერი კომბინაცია, რომელიც პარამეტრის აღწერაშია "
+"აღწერილი"
+
+msgid "Any combination (comma separated list) of '%s'"
+msgstr "'%s'-ის ნებისმიერი კომბინაცია (მძიმით გამოყოფილი სია"
+
+msgid "Value must be a combination of '%s'."
+msgstr "მნიშვნელობა \"%s\"-ის კომბინაცია უნდა იყოს."
+
+msgid "Warning: Option %{option} is deprecated. %{message}"
+msgstr "გაფრთხილება: %{option} მოძველებულია. %{message}"
+
+msgid "Deprecated: %{deprecated_msg}"
+msgstr "მოძველებულია: %{deprecated_msg}"
+
+msgid "%{flag} is deprecated: %{deprecated_msg}"
+msgstr "%{flag} მოძველებულია: %{deprecated_msg}"
+
+msgid "Can be specified multiple times."
+msgstr "შეიძლება მრავალჯერ იყოს მითითებული."
+
+msgid ", or"
+msgstr ", ან"
+
+msgid "Default:"
+msgstr "ნაგულისხმები:"
+
+msgid "Environment variable HAMMER_NIL can not be empty."
+msgstr "გარემოს ცვლადი HAMMER_NIL არ შეიძლება ცარიელი იყოს."
+
+msgid "Show specified fields or predefined field sets only. (See below)"
+msgstr ""
+"მხოლოდ მითითებული ველების ან წინასწარ განსაზღვრული ველების ნაკრების ჩვენება. "
+"(იხილეთ ქვემოთ)"
+
+msgid "There is no such predefined option %s."
+msgstr "წინასწარ აღწერილი პარამეტრი %s არ არსებობს."
+
+msgid "Unknown option name '%s'."
+msgstr "პარამეტრის არასწორი სახელი: %s."
+
+msgid "You can't set all options %s at one time."
+msgstr "ყველა პარამეტრის %s ერთდროულად დაყენება არ შეგიძლიათ."
+
+msgid "Options %s are required."
+msgstr "პარამეტრი %s აუცილებელია."
+
+msgid "You can't set option %s."
+msgstr "პარამეტრი %s-ის დაყენება არ შეგიძლიათ."
+
+msgid "Option %s is required."
+msgstr "პარამეტრი %s აუცილებელია."
+
+msgid "You can't set any of options %s."
+msgstr "პარამეტრი %s-ის დაყენება არ შეგიძლიათ."
+
+msgid "At least one of options %s is required."
+msgstr "საჭიროა პარამეტრებიდან ერთერთი მაინც: %s."
+
+msgid "One of options %s is required."
+msgstr "საჭიროა პარამეტრებიდან ერთერთი: %s."
+
+msgid "Only one of options %s can be set."
+msgstr "შეიძლება მხოლოდ ერთის მითითება: %s."
+
+msgid "Message"
+msgstr "შეტყობინება"
+
+msgid "Id"
+msgstr "ID"
+
+msgid "Name"
+msgstr "სახელი"
+
+msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
+msgstr ""
+"%{page}-ე გვერდი %{total}-დან (ნავიგაციისთვის გამოიყენეთ --page და --per-"
+"page)."
+
+msgid "Fields"
+msgstr "ველები"
+
+msgid ""
+"Method %{tags} for field formatters and output adapters is deprecated. "
+"Please use %{feat} or %{req_feat} instead."
+msgstr ""
+"მეთოდი %{tags} ველის ფორმატორებისა და გამომავალი ადაპტერებისთვის "
+"მოძველებულია. გთხოვთ, გამოიყენოთ %{feat} ან %{req_feat}."
+
+msgid "no"
+msgstr "არა"
+
+msgid "yes"
+msgstr "დიახ"
+
+msgid "Warning: Couldn't load configuration file %{path}: %{message}."
+msgstr ""
+"გაფრთხილება: კონფიგურაციის ფაილის ჩატვირთვის შეცდომა %{path}: %{message}."
+
+msgid "Print help for commands"
+msgstr "ბრძანებების სიის მისაღებად აკრიფეთ help"
+
+msgid "Exit interactive shell"
+msgstr "ინტერაქტიული გარსიდან გასვლა"
+
+msgid "Welcome to the hammer interactive shell."
+msgstr "მოგესალმებით Hammer-ის ინტერაქტიურ გარსში."
+
+msgid "Type 'help' for usage information."
+msgstr "გამოყენების დახმარების სანახავად აკრიფეთ 'help'."
+
+msgid "Interactive shell"
+msgstr "ინტერაქტიული გარსი"
+
+msgid "SSL client certificate is set but the key is not."
+msgstr "SSL კლიენტის სერტიფიკატი დაყენებულია, მაგრამ გასაღები არა."
+
+msgid "SSL client key is set but the certificate is not."
+msgstr "SSL კლიენტის გასაღები დაყენებულია, მაგრამ სერტიფიკატი არა."
+
+msgid "SSL client authentication disabled."
+msgstr "SSL კლიენტის ავთენტიკაცია გათიშულია."
+
+msgid "Could't read SSL client certificate %s."
+msgstr "SSL კლიენტის სერტიფიკატის წაკითხვის შეცდომა: %s."
+
+msgid "Could't read SSL client key %s."
+msgstr "SSL კლიენტის გასაღების წაკითხვის შეცდომა: %s."
+
+msgid "Found more than one command."
+msgstr "ნაპოვნია ერთზე მეტი ბრძანება."
+
+msgid "Did you mean one of these?"
+msgstr "ერთ-ერთ ამათგანს გულისხმობდით?"
+
+msgid ""
+"Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
+"(%<new_class>s)."
+msgstr ""
+"ქვებრძანების % ჩანაცვლება შეუძლებელია<name> ს (%<existing_class> ს) %-"
+"ით<name> ს (%<new_class> ს)."
+
+msgid "Cannot use such capitalization. Try one of %s."
+msgstr "ასოების ზომის ამ ვარიანტს ვერ გამოვიყენებ. სცადეთ ერთ-ერთი %s-დან."

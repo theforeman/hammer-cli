@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.5.0\n"
+"Project-Id-Version: hammer-cli 3.8.0.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-31 15:09+0000\n"
-"PO-Revision-Date: 2022-10-31 15:09+0000\n"
+"POT-Creation-Date: 2023-06-08 15:03+0000\n"
+"PO-Revision-Date: 2023-06-08 15:03+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -174,91 +174,91 @@ msgstr ""
 msgid "Defaults management"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:25
+#: ../lib/hammer_cli/defaults_commands.rb:24
 msgid "List all the providers"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:37
+#: ../lib/hammer_cli/defaults_commands.rb:36
 msgid "Provider"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:38
+#: ../lib/hammer_cli/defaults_commands.rb:37
 msgid "Supported defaults"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:39
+#: ../lib/hammer_cli/defaults_commands.rb:38
 msgid "Description"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:56
+#: ../lib/hammer_cli/defaults_commands.rb:55
 msgid "List all the default parameters"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:67
+#: ../lib/hammer_cli/defaults_commands.rb:66
 msgid "Parameter"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:68
+#: ../lib/hammer_cli/defaults_commands.rb:67
 msgid "Value"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:86
+#: ../lib/hammer_cli/defaults_commands.rb:85
 msgid "Delete a default param"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:87
+#: ../lib/hammer_cli/defaults_commands.rb:86
 msgid "The name of the default option"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:103
+#: ../lib/hammer_cli/defaults_commands.rb:102
 msgid "Add a default parameter to config"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:104
+#: ../lib/hammer_cli/defaults_commands.rb:103
 msgid "The name of the default option (e.g. organization_id)"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:105
+#: ../lib/hammer_cli/defaults_commands.rb:104
 msgid "The value for the default option"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:106
+#: ../lib/hammer_cli/defaults_commands.rb:105
 msgid ""
 "The name of the provider providing the value. For list available providers see"
 " `hammer defaults providers`"
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:134
+#: ../lib/hammer_cli/defaults_commands.rb:133
 msgid ""
 "Added %{key_val} default-option with value that will be generated from the ser"
 "ver."
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:135
+#: ../lib/hammer_cli/defaults_commands.rb:134
 msgid "Added %{key_val} default-option with value %{val_val}."
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:139
+#: ../lib/hammer_cli/defaults_commands.rb:138
 msgid ""
 "Provider %{name} was not found. See `hammer defaults providers` for available "
 "providers."
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:143
+#: ../lib/hammer_cli/defaults_commands.rb:142
 msgid ""
 "The param name is not supported by provider. See `hammer defaults providers` f"
 "or supported params."
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:147
+#: ../lib/hammer_cli/defaults_commands.rb:146
 msgid "%{param} was deleted successfully."
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:151
+#: ../lib/hammer_cli/defaults_commands.rb:150
 msgid "You must specify value or a provider name, can't specify both."
 msgstr ""
 
-#: ../lib/hammer_cli/defaults_commands.rb:155
+#: ../lib/hammer_cli/defaults_commands.rb:154
 msgid "Couldn't find the requested param in %s."
 msgstr ""
 
@@ -595,15 +595,15 @@ msgstr ""
 msgid "Only one of options %s can be set."
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:175
+#: ../lib/hammer_cli/output/adapter/csv.rb:174
 msgid "Message"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:182
+#: ../lib/hammer_cli/output/adapter/csv.rb:181
 msgid "Id"
 msgstr ""
 
-#: ../lib/hammer_cli/output/adapter/csv.rb:186
+#: ../lib/hammer_cli/output/adapter/csv.rb:185
 msgid "Name"
 msgstr ""
 
@@ -629,7 +629,7 @@ msgstr ""
 msgid "yes"
 msgstr ""
 
-#: ../lib/hammer_cli/settings.rb:39
+#: ../lib/hammer_cli/settings.rb:41
 msgid "Warning: Couldn't load configuration file %{path}: %{message}."
 msgstr ""
 
@@ -673,20 +673,20 @@ msgstr ""
 msgid "Could't read SSL client key %s."
 msgstr ""
 
-#: ../lib/hammer_cli/subcommand.rb:110
+#: ../lib/hammer_cli/subcommand.rb:111
 msgid "Found more than one command."
 msgstr ""
 
-#: ../lib/hammer_cli/subcommand.rb:111
+#: ../lib/hammer_cli/subcommand.rb:112
 msgid "Did you mean one of these?"
 msgstr ""
 
-#: ../lib/hammer_cli/subcommand.rb:120
+#: ../lib/hammer_cli/subcommand.rb:121
 msgid ""
 "Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s (%<new_cl"
 "ass>s)."
 msgstr ""
 
-#: ../lib/hammer_cli/utils.rb:92
+#: ../lib/hammer_cli/utils.rb:80
 msgid "Cannot use such capitalization. Try one of %s."
 msgstr ""

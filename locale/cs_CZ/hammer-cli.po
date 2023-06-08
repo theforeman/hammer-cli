@@ -3,26 +3,23 @@
 # This file is distributed under the same license as the hammer-cli package.
 #
 # Translators:
-# Automatically generated, 2014
-# Dominic Cleal <dcleal@redhat.com>, 2014
-# Vladimir Pavlov <v.pavlov@i-teco.ru>, 2015
-# Yulia <yulia.poyarkova@redhat.com>, 2016
+# mbacovsky <martin.bacovsky@gmail.com>, 2014
+# Pavel Borecki <pavel.borecki@gmail.com>, 2018-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: hammer-cli 3.8.0.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 15:09+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
-"Last-Translator: Dominic Cleal <dcleal@redhat.com>, 2014\n"
-"Language-Team: Russian (http://app.transifex.com/foreman/foreman/language/"
-"ru/)\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018-2020\n"
+"Language-Team: Czech (Czech Republic) (http://app.transifex.com/foreman/"
+"foreman/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: cs_CZ\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 msgid ""
 "Following parameters accept format defined by its schema (bold are required; "
@@ -45,16 +42,16 @@ msgid "Unfortunately the server does not support such operation."
 msgstr ""
 
 msgid "The server does not support such operation."
-msgstr "Сервер не поддерживает эту операцию."
+msgstr "Server nepodporuje takovou operaci."
 
 msgid "Prepare map of options and subcommands for Bash completion"
 msgstr ""
 
 msgid "Unable to find hostname in %s."
-msgstr ""
+msgstr "V %s se nedaří najít název stroje."
 
 msgid "CA certificate for %{uri} was stored to %{file}."
-msgstr ""
+msgstr "Certifikát cert. autority pro %{uri} byl uložen do %{file}."
 
 msgid ""
 "Now hammer can use the downloaded certificate to verify SSL connection to "
@@ -72,7 +69,7 @@ msgid ""
 msgstr ""
 
 msgid "You can display the certificate content with"
-msgstr ""
+msgstr "Obsah certifikátu je možné zobrazit použitím"
 
 msgid ""
 "As root you can also install the certificate and update the system-wide list "
@@ -93,7 +90,7 @@ msgid "To see the actual chain you can use openssl command"
 msgstr ""
 
 msgid "You can also download the certificate manually and store it as %s."
-msgstr ""
+msgstr "Je také možné stáhnout certifikát ručně a uložit ho jako %s."
 
 msgid ""
 "If you choose any other location set the ssl_ca_path or ssl_ca_file "
@@ -101,40 +98,40 @@ msgid ""
 msgstr ""
 
 msgid "Fetching the CA certificate failed:"
-msgstr ""
+msgstr "Získání certifikátu cert. autority se nezdařilo:"
 
 msgid "The service at the given URI does not accept SSL connections."
-msgstr ""
+msgstr "Služba na zadané URI nepřijímá SSL spojení."
 
 msgid "Perhaps you meant to connect to '%s'?"
 msgstr ""
 
 msgid "Too many arguments."
-msgstr ""
+msgstr "Příliš mnoho argumentů."
 
 msgid "Option '%s' is required."
-msgstr ""
+msgstr "Volba „%s“ je vyžadována."
 
 msgid "Option '%{opt}' (or env %{env}) is required."
 msgstr ""
 
 msgid "Option '%{swt}': %{msg}."
-msgstr ""
+msgstr "Volba „%{swt}“: %{msg}."
 
 msgid "Parameter '%{pmt}': %{msg}."
-msgstr ""
+msgstr "Parametr „%{pmt}“: %{msg}."
 
 msgid "%{env}: %{msg}."
-msgstr ""
+msgstr "%{env}: %{msg}."
 
 msgid "Unrecognised option '%s'."
-msgstr ""
+msgstr "Nerozpoznaná volba „%s“."
 
 msgid "No such sub-command '%s'."
 msgstr ""
 
 msgid "No value provided."
-msgstr ""
+msgstr "Nezadána žádná hodnota."
 
 msgid "Illegal quoting in %{buffer}"
 msgstr ""
@@ -144,43 +141,43 @@ msgid ""
 msgstr ""
 
 msgid "Defaults management"
-msgstr "Управление стандартными параметрами"
+msgstr "Správa výchozích hodnot"
 
 msgid "List all the providers"
-msgstr "Список всех поставщиков"
+msgstr "Seznam všech poskytovatelů"
 
 msgid "Provider"
-msgstr "Поставщик"
+msgstr "Poskytovatel"
 
 msgid "Supported defaults"
-msgstr "По умолчанию поддерживаются параметры"
+msgstr "Podporované výchozí hodnoty"
 
 msgid "Description"
-msgstr "Описание"
+msgstr "Popis"
 
 msgid "List all the default parameters"
-msgstr "Список всех стандартных параметров"
+msgstr "Vypsat všechny výchozí parametry"
 
 msgid "Parameter"
-msgstr "Параметр"
+msgstr "Parametr"
 
 msgid "Value"
-msgstr "Значение"
+msgstr "Hodnota"
 
 msgid "Delete a default param"
-msgstr "Удалить стандартный параметр"
+msgstr "Smazat výchozí parametr"
 
 msgid "The name of the default option"
-msgstr "Имя стандартного параметра"
+msgstr "Název výchozí volby"
 
 msgid "Add a default parameter to config"
-msgstr "Добавить стандартный параметр в конфигурацию"
-
-msgid "The name of the default option (e.g. organization_id)"
 msgstr ""
 
+msgid "The name of the default option (e.g. organization_id)"
+msgstr "Název výchozí volby (např. organization_id)"
+
 msgid "The value for the default option"
-msgstr "Значение параметра"
+msgstr "Hodnota pro výchozí volbu"
 
 msgid ""
 "The name of the provider providing the value. For list available providers "
@@ -191,11 +188,9 @@ msgid ""
 "Added %{key_val} default-option with value that will be generated from the "
 "server."
 msgstr ""
-"Стандартный параметр %{key_val} добавлен. Его значение будет генерироваться "
-"сервером."
 
 msgid "Added %{key_val} default-option with value %{val_val}."
-msgstr "Добавлен стандартный параметр %{key_val} со значением %{val_val}."
+msgstr ""
 
 msgid ""
 "Provider %{name} was not found. See `hammer defaults providers` for "
@@ -206,51 +201,47 @@ msgid ""
 "The param name is not supported by provider. See `hammer defaults providers` "
 "for supported params."
 msgstr ""
-"Поставщик не поддерживает параметр с таким именем. Для просмотра списка "
-"доступных параметров выполните `hammer defaults providers`."
 
 msgid "%{param} was deleted successfully."
-msgstr "%{param} успешно удален."
+msgstr "%{param} bylo úspěšně smazáno."
 
 msgid "You must specify value or a provider name, can't specify both."
 msgstr ""
 
 msgid "Couldn't find the requested param in %s."
-msgstr "Не удалось обнаружить запрашиваемый параметр в %s."
+msgstr ""
 
 msgid "Error: %s"
-msgstr "Ошибка: %s"
+msgstr "Chyba: %s"
 
 msgid "Error: %{message}"
-msgstr "Ошибка: %{message}"
+msgstr "Chyba: %{message}"
 
 msgid "See: '%{path} --help'."
-msgstr ""
+msgstr "Viz: „%{path} --help“."
 
 msgid "SSL error"
-msgstr ""
+msgstr "Chyba SSL"
 
 msgid "SSL certificate verification failed"
-msgstr ""
+msgstr "SSL certifikát se nepodařilo ověřit"
 
 msgid "is the server down?"
-msgstr "сервер отключен?"
+msgstr "je server vypnutý?"
 
 msgid ""
 "was '%s' run on the server when using apipie cache? (typical production "
 "settings)"
 msgstr ""
-"возможно, «%s» выполнялся на сервере, использующем кэш apipe (стандартные "
-"настройки)"
 
 msgid "Could not load the API description from the server"
-msgstr "Не удалось загрузить описание API с сервера"
+msgstr ""
 
 msgid "Missing arguments for %s."
 msgstr ""
 
 msgid "Format output in markdown"
-msgstr ""
+msgstr "Formátovat výstup v markdown"
 
 msgid "Hammer CLI help"
 msgstr ""
@@ -265,98 +256,98 @@ msgid "No permissions to create log dir %s."
 msgstr ""
 
 msgid "File %s not writeable, won't log anything to the file!"
-msgstr "Запись в файл %s не разрешена."
+msgstr "Soubor %s není přístupný pro zápis, nic do něj nebude zaznamenáno!"
 
 msgid "Be verbose (or not). True by default"
 msgstr ""
 
 msgid "Completely silent"
-msgstr ""
+msgstr "Naprosto tiché"
 
 msgid "Enable/disable stored defaults. Enabled by default"
 msgstr ""
 
 msgid "Show debugging output"
-msgstr ""
+msgstr "Zobrazit ladící výstup"
 
 msgid "Force reload of Apipie cache"
 msgstr ""
 
 msgid "Path to custom config file"
-msgstr ""
+msgstr "Popis umístění uživatelsky určeného souboru s nastaveními"
 
 msgid "Username to access the remote system"
-msgstr ""
+msgstr "Uživatelské jméno pro přístup ke vzdálenému systému"
 
 msgid "Password to access the remote system"
-msgstr ""
+msgstr "Heslo pro přístup ke vzdálenému systému"
 
 msgid "Remote system address"
-msgstr ""
+msgstr "Adresa vzdáleného systému"
 
 msgid "Configure SSL verification of remote system"
-msgstr ""
+msgstr "Nastavit SSL ověřování vzdáleného systému"
 
 msgid "Configure the file containing the CA certificates"
-msgstr ""
+msgstr "Nastavit soubor obsahující certifikáty cert. autority"
 
 msgid "Configure the directory containing the CA certificates"
-msgstr ""
+msgstr "Nastavit složku obsahující certifikáty cert. autority"
 
 msgid "Configure the client's public certificate"
-msgstr ""
+msgstr "Nastavit veřejnou část certifikátu klienta"
 
 msgid "Configure the client's private key"
-msgstr ""
+msgstr "Nastavit soukromou část klíče klienta"
 
 msgid ""
 "Use standard authentication in addition to client certificate authentication"
 msgstr ""
 
 msgid "Fetch CA certificate from server and exit"
-msgstr ""
+msgstr "Získat ze serveru certifikát cert. autority a skončit"
 
 msgid "Show version"
-msgstr ""
+msgstr "Zobrazit verzi"
 
 msgid "unknown version"
-msgstr "неизвестная версия"
+msgstr "neznámá verze"
 
 msgid "Show ids of associated resources"
-msgstr "Показать идентификаторы связанных ресурсов"
+msgstr "Zobrazit identifikátory souvisejících prostředků"
 
 msgid "Explicitly turn interactive mode on/off"
-msgstr "Напрямую включить/выключить интерактивный режим"
+msgstr "Výslovně vyp/zap interaktivní režim"
 
 msgid "Hide headers from output"
-msgstr ""
+msgstr "Ve výstupu skrýt záhlaví"
 
 msgid "Output as CSV (same as --output=csv)"
-msgstr "Вывод в CSV (аналогично --output=csv)"
+msgstr "Výstup do CSV (stejné jako --output=csv)"
 
 msgid "Set output format"
-msgstr ""
+msgstr "Nastavit výstupní formát"
 
 msgid "Path to custom output file"
 msgstr ""
 
 msgid "Character to separate the values"
-msgstr "Разделительный символ"
+msgstr "Znak pro oddělování hodnot"
 
 msgid "Get list of possible endings"
-msgstr "Получить список возможных окончаний"
+msgstr "Získat seznam možných zakončení"
 
 msgid "Warning: An error occured while loading module %s."
-msgstr ""
+msgstr "Varování: Došlo k chybě při načítání modulu %s."
 
 msgid "Error: Some of the required modules are disabled in configuration: %s."
-msgstr ""
+msgstr "Chyba: Některé z vyžadovaných modulů jsou v nastavení vypnuté: %s."
 
 msgid "Value described in the option's description. Mostly simple string"
 msgstr ""
 
 msgid "Comma-separated list of key=value."
-msgstr "Список пар «ключ=значение» через запятую."
+msgstr "Čárkou oddělovaný seznam klíč=hodnota."
 
 msgid "JSON is acceptable and preferred way for such parameters"
 msgstr ""
@@ -364,11 +355,16 @@ msgstr ""
 msgid ""
 "Value must be defined as a comma-separated list of key=value or valid JSON."
 msgstr ""
+"Je třeba, aby hodnota byla definovaná jako čárkou oddělovaný seznam "
+"klíč=hodnota nebo platný JSON."
 
 msgid ""
 "Comma separated list of values. Values containing comma should be quoted or "
 "escaped with backslash."
 msgstr ""
+"Čárkou oddělovaný seznam hodnot. Hodnoty, které obsahují čárky, by měly být "
+"obklopeny uvozovkami nebo význam čárek zrušen (escape) pomocí zpětného "
+"lomítka."
 
 msgid "Comma separated list of values defined by a schema."
 msgstr ""
@@ -377,13 +373,13 @@ msgid "Numeric value. Integer"
 msgstr ""
 
 msgid "Numeric value is required."
-msgstr ""
+msgstr "Je třeba číselné hodnoty."
 
 msgid "One of %s"
-msgstr "Одно из %s"
+msgstr ""
 
 msgid "Value must be one of %s."
-msgstr ""
+msgstr "Je třeba, aby hodnota byla jedna z %s."
 
 msgid "Path to a file"
 msgstr ""
@@ -395,29 +391,29 @@ msgid "Possible values are described in the option's description"
 msgstr ""
 
 msgid "Possible value(s): %s"
-msgstr "Возможные значения: %s"
+msgstr "Možné hodnoty: %s"
 
 msgid "Value must be %s."
-msgstr ""
+msgstr "Je třeba, aby hodnota byla %s."
 
 msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
-msgstr "Дата и время в виде  ГГГГ-ММ-ДД:ЧЧ:СС или в формате ISO 8601"
+msgstr "Datum a čas ve formátu RRRR-MM-DD HH:MM:SS nebo ISO 8601"
 
 msgid "'%s' is not a valid date."
-msgstr ""
+msgstr "„%s“ není platné datum."
 
 msgid ""
 "Any combination of possible values described in the option's description"
 msgstr ""
 
 msgid "Any combination (comma separated list) of '%s'"
-msgstr "Любые комбинации «%s» через запятую"
-
-msgid "Value must be a combination of '%s'."
 msgstr ""
 
+msgid "Value must be a combination of '%s'."
+msgstr "Je třeba, aby hodnota byla kombinací „%s“."
+
 msgid "Warning: Option %{option} is deprecated. %{message}"
-msgstr "Параметр %{option} является устаревшим. %{message}"
+msgstr ""
 
 msgid "Deprecated: %{deprecated_msg}"
 msgstr ""
@@ -426,16 +422,16 @@ msgid "%{flag} is deprecated: %{deprecated_msg}"
 msgstr ""
 
 msgid "Can be specified multiple times."
-msgstr ""
+msgstr "Může být uvedeno vícekrát."
 
 msgid ", or"
-msgstr ""
+msgstr ", nebo"
 
 msgid "Default:"
-msgstr ""
+msgstr "Výchozí:"
 
 msgid "Environment variable HAMMER_NIL can not be empty."
-msgstr ""
+msgstr "Proměnnou prostředí HAMMER_NIL je třeba vyplnit."
 
 msgid "Show specified fields or predefined field sets only. (See below)"
 msgstr ""
@@ -450,19 +446,19 @@ msgid "You can't set all options %s at one time."
 msgstr ""
 
 msgid "Options %s are required."
-msgstr ""
+msgstr "Volby %s jsou vyžadované."
 
 msgid "You can't set option %s."
-msgstr ""
+msgstr "Volbu %s nemůžete nastavit."
 
 msgid "Option %s is required."
-msgstr ""
+msgstr "Volba %s je potřebná."
 
 msgid "You can't set any of options %s."
-msgstr ""
+msgstr "Nemůžete nastavit žádnou z voleb %s."
 
 msgid "At least one of options %s is required."
-msgstr ""
+msgstr "Je zapotřebí alespoň jedna z voleb %s."
 
 msgid "One of options %s is required."
 msgstr ""
@@ -471,19 +467,19 @@ msgid "Only one of options %s can be set."
 msgstr ""
 
 msgid "Message"
-msgstr "Сообщение"
+msgstr "Zpráva"
 
 msgid "Id"
-msgstr "ID"
+msgstr "Identifikátor"
 
 msgid "Name"
-msgstr "Имя"
+msgstr "Název"
 
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
 msgstr ""
 
 msgid "Fields"
-msgstr ""
+msgstr "Kolonky"
 
 msgid ""
 "Method %{tags} for field formatters and output adapters is deprecated. "
@@ -491,43 +487,43 @@ msgid ""
 msgstr ""
 
 msgid "no"
-msgstr "нет"
+msgstr "ne"
 
 msgid "yes"
-msgstr "да"
+msgstr "ano"
 
 msgid "Warning: Couldn't load configuration file %{path}: %{message}."
-msgstr ""
+msgstr "Varování: Nedaří se načíst soubor s nastaveními %{path}: %{message}."
 
 msgid "Print help for commands"
-msgstr "Справка по командам"
+msgstr "Vypsat nápovědu pro příkazy"
 
 msgid "Exit interactive shell"
-msgstr "Выход из интерактивной оболочки"
+msgstr "Opustit interaktivní shell"
 
 msgid "Welcome to the hammer interactive shell."
-msgstr ""
+msgstr "Vítejte v interaktivním shellu hammer."
 
 msgid "Type 'help' for usage information."
-msgstr ""
+msgstr "Pro nápovědu k používání zadejte „help“."
 
 msgid "Interactive shell"
-msgstr "Интерактивная оболочка"
+msgstr "Interaktivní shell"
 
 msgid "SSL client certificate is set but the key is not."
-msgstr ""
+msgstr "SSL klientský certifikát je nastavený ale klíč nikoli."
 
 msgid "SSL client key is set but the certificate is not."
-msgstr ""
+msgstr "SSL klientský klíč je nastavený ale certifikát nikoli."
 
 msgid "SSL client authentication disabled."
 msgstr ""
 
 msgid "Could't read SSL client certificate %s."
-msgstr ""
+msgstr "Nedaří se načíst SSL klientský certifikát %s."
 
 msgid "Could't read SSL client key %s."
-msgstr ""
+msgstr "Nedaří se načíst SSL klientský klíč %s."
 
 msgid "Found more than one command."
 msgstr ""

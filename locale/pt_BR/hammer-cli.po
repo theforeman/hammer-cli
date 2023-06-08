@@ -4,19 +4,19 @@
 #
 # Translators:
 # Dominic Cleal <dcleal@redhat.com>, 2014
-# Fabio Dias <fabioqos@gmail.com>, 2015
+# Fabio Dias, 2015
 # Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2014,2018
 # Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2014
 # Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2014
 # Valeria S Silva <valeriassilva@live.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.6.0\n"
+"Project-Id-Version: hammer-cli 3.8.0.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 15:09+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Valeria S Silva <valeriassilva@live.com>, 2015\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/foreman/foreman/"
+"Language-Team: Portuguese (Brazil) (http://app.transifex.com/foreman/foreman/"
 "language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -52,10 +52,10 @@ msgid "Prepare map of options and subcommands for Bash completion"
 msgstr "Preparar mapa de opções e subcomandos para a conclusão do Bash"
 
 msgid "Unable to find hostname in %s."
-msgstr "Não foi possível encontrar o nome de host em %s."
+msgstr "Não foi possível encontrar o nome da hostname em %s."
 
 msgid "CA certificate for %{uri} was stored to %{file}."
-msgstr "O certificado CA para %{uri} foi armazenado em %{file}."
+msgstr "O certificado da CA para %{uri} foi armazenado para %{file}."
 
 msgid ""
 "Now hammer can use the downloaded certificate to verify SSL connection to "
@@ -89,13 +89,13 @@ msgstr ""
 "todo o sistema de certificados CA confiáveis da seguinte forma:"
 
 msgid "Couldn't parse URI '%s'."
-msgstr "Não foi possível analisar a URI '%s'."
+msgstr "Não foi possível analisar o URI '%s'."
 
 msgid ""
 "The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
 msgstr ""
-"Não foi possível fazer o download do certificado CA para %{uri}. Nenhum "
-"certificado CA encontrado."
+"O certificado do CA para %{uri} não pôde ser baixado. Não foi encontrado "
+"nenhum certificado do CA."
 
 msgid "Make sure your server sends cert chain including the CA."
 msgstr ""
@@ -107,8 +107,7 @@ msgstr "Para ver a cadeia real, você pode usar o comando openssl"
 
 msgid "You can also download the certificate manually and store it as %s."
 msgstr ""
-"Você também pode fazer download do certificado manualmente e armazená-lo "
-"como %s."
+"Você também pode baixar o certificado manualmente e armazená-lo como %s."
 
 msgid ""
 "If you choose any other location set the ssl_ca_path or ssl_ca_file "
@@ -124,7 +123,7 @@ msgid "The service at the given URI does not accept SSL connections."
 msgstr "O serviço na URI especificada não aceita conexões SSL."
 
 msgid "Perhaps you meant to connect to '%s'?"
-msgstr "Talvez você quisesse se conectar a '%s'?"
+msgstr "Talvez você quisesse se conectar com '%s'?"
 
 msgid "Too many arguments."
 msgstr "Muitos argumentos."
@@ -154,11 +153,13 @@ msgid "No value provided."
 msgstr "Nenhum valor fornecido. "
 
 msgid "Illegal quoting in %{buffer}"
-msgstr "Aspas incorretas em %{buffer}"
+msgstr "Citação ilegal em %{buffer}"
 
 msgid ""
 "Couldn't create %s. Please create the directory before setting defaults."
-msgstr "Não foi possível criar %s. Crie o diretório antes de definir padrões."
+msgstr ""
+"Não foi possível criar %s. Por favor, crie o diretório antes de definir as "
+"configurações padrão."
 
 msgid "Defaults management"
 msgstr "Gerenciamento de padrões"
@@ -210,17 +211,18 @@ msgid ""
 "Added %{key_val} default-option with value that will be generated from the "
 "server."
 msgstr ""
-" default-option %{key_val} adicionada com valor que será gerado do servidor. "
+"Adicionado %{key_val} opção padrão com valor que será gerado a partir do "
+"servidor."
 
 msgid "Added %{key_val} default-option with value %{val_val}."
-msgstr "default-option %{key_val} adicionada com valor %{val_val}."
+msgstr "Adicionado %{key_val} opção padrão com valor %{val_val}."
 
 msgid ""
 "Provider %{name} was not found. See `hammer defaults providers` for "
 "available providers."
 msgstr ""
-"O provedor %{name} não foi encontrado. Consulte os provedores disponíveis em "
-"\"provedores de padrões Hammer\"."
+"O fornecedor %{name} não foi encontrado. Veja \"fornecedores com martelo por "
+"defeito\" para os fornecedores disponíveis."
 
 msgid ""
 "The param name is not supported by provider. See `hammer defaults providers` "
@@ -230,7 +232,7 @@ msgstr ""
 "de padrões hammer`para parâmetros com suporte."
 
 msgid "%{param} was deleted successfully."
-msgstr "%{param} foi removido com êxito."
+msgstr "%{param} foi excluída com sucesso."
 
 msgid "You must specify value or a provider name, can't specify both."
 msgstr ""
@@ -238,7 +240,7 @@ msgstr ""
 "especificar ambos."
 
 msgid "Couldn't find the requested param in %s."
-msgstr "Não foi possível localizar o parâmetro solicitado %s."
+msgstr "Não foi possível encontrar o paramédico solicitado em %s."
 
 msgid "Error: %s"
 msgstr "Erro: %s"
@@ -247,7 +249,7 @@ msgid "Error: %{message}"
 msgstr "Erro: %{message}"
 
 msgid "See: '%{path} --help'."
-msgstr "Consulte: '%{path} --help'."
+msgstr "Ver: '%{path} --ajuda'."
 
 msgid "SSL error"
 msgstr "Erro SSL"
@@ -262,14 +264,14 @@ msgid ""
 "was '%s' run on the server when using apipie cache? (typical production "
 "settings)"
 msgstr ""
-"o '%s' foi executado no servidor ao utilizar o apipie cache? (configurações "
-"de produção típicas)"
+"foi '%s' executado no servidor ao usar o cache apipie? (configurações "
+"típicas de produção)"
 
 msgid "Could not load the API description from the server"
 msgstr "Não foi possível carregar a descrição do API do servidor"
 
 msgid "Missing arguments for %s."
-msgstr "Argumentos ausentes para %s"
+msgstr "Argumentos em falta para %s."
 
 msgid "Format output in markdown"
 msgstr "Formatar saída no markdown"
@@ -284,10 +286,10 @@ msgid "NOTE"
 msgstr "OBSERVAÇÃO"
 
 msgid "No permissions to create log dir %s."
-msgstr "Não há permissão para criar o diretório do log %s."
+msgstr "Nenhuma permissão para criar log dir %s."
 
 msgid "File %s not writeable, won't log anything to the file!"
-msgstr "Arquivo %s não pode ser gravado, não gravará nada no arquivo!"
+msgstr "Arquivo %s não gravável, não registrará nada no arquivo!"
 
 msgid "Be verbose (or not). True by default"
 msgstr "Ser detalhado (ou não). Verdadeiro por padrão"
@@ -369,11 +371,11 @@ msgid "Get list of possible endings"
 msgstr "Obtenha uma lista de finais possíveis"
 
 msgid "Warning: An error occured while loading module %s."
-msgstr "Aviso: ocorreu um erro ao carregar o módulo %s."
+msgstr "Advertência: Ocorreu um erro durante o carregamento do módulo %s."
 
 msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr ""
-"Erro: alguns dos modelos necessários estão desabilitados na configuração: %s."
+"Erro: Alguns dos módulos necessários estão desabilitados na configuração: %s."
 
 msgid "Value described in the option's description. Mostly simple string"
 msgstr ""
@@ -407,10 +409,10 @@ msgid "Numeric value is required."
 msgstr "O valor numérico é necessário."
 
 msgid "One of %s"
-msgstr "Um entre %s"
+msgstr "Uma das %s"
 
 msgid "Value must be one of %s."
-msgstr "O valor deve ser um dos %s."
+msgstr "O valor deve ser um de %s."
 
 msgid "Path to a file"
 msgstr ""
@@ -431,26 +433,26 @@ msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "Data e hora em formato YYYY-MM-DD HH:MM:SS ou ISO 8601"
 
 msgid "'%s' is not a valid date."
-msgstr "'%s' não é uma data válida."
+msgstr "%s' não é uma data válida."
 
 msgid ""
 "Any combination of possible values described in the option's description"
 msgstr ""
 
 msgid "Any combination (comma separated list) of '%s'"
-msgstr "Qualquer combinação (lista separada por vírgula) de '%s'"
+msgstr "Qualquer combinação (lista separada por vírgulas) de '%s'"
 
 msgid "Value must be a combination of '%s'."
 msgstr "O valor deve ser uma combinação de '%s'."
 
 msgid "Warning: Option %{option} is deprecated. %{message}"
-msgstr "Aviso: Opção %{option} foi preterida. %{message}"
+msgstr "Advertência: A opção %{option} é depreciada. %{message}"
 
 msgid "Deprecated: %{deprecated_msg}"
-msgstr "Preterido: %{deprecated_msg}"
+msgstr "Depreciado: %{deprecated_msg}"
 
 msgid "%{flag} is deprecated: %{deprecated_msg}"
-msgstr "%{flag} foi preterido: %{deprecated_msg}"
+msgstr "%{flag} é depreciado: %{deprecated_msg}"
 
 msgid "Can be specified multiple times."
 msgstr "Pode ser especificado diversas vezes."
@@ -468,10 +470,10 @@ msgid "Show specified fields or predefined field sets only. (See below)"
 msgstr ""
 
 msgid "There is no such predefined option %s."
-msgstr "Não há a opção predefinida %s."
+msgstr "Não existe essa opção pré-definida %s."
 
 msgid "Unknown option name '%s'."
-msgstr "Nome da opção '%s' desconhecida."
+msgstr "Nome da opção desconhecida '%s'."
 
 msgid "You can't set all options %s at one time."
 msgstr "Você não pode definir todas as opções %s de uma só vez."
@@ -480,13 +482,13 @@ msgid "Options %s are required."
 msgstr "As opções %s são necessárias."
 
 msgid "You can't set option %s."
-msgstr "Não é possível definir a opção %s."
+msgstr "Você não pode definir a opção %s."
 
 msgid "Option %s is required."
-msgstr "A opção '%s' é necessária."
+msgstr "A opção %s é necessária."
 
 msgid "You can't set any of options %s."
-msgstr "Não é possível definir nenhuma das opções %s."
+msgstr "Você não pode definir nenhuma das opções %s."
 
 msgid "At least one of options %s is required."
 msgstr "Pelo menos uma das opções %s é necessária."
@@ -495,7 +497,7 @@ msgid "One of options %s is required."
 msgstr "Uma das opções %s é necessária."
 
 msgid "Only one of options %s can be set."
-msgstr "Somente é possível definir uma das opções %s."
+msgstr "Apenas uma das opções %s pode ser definida."
 
 msgid "Message"
 msgstr "Mensagem"
@@ -507,7 +509,8 @@ msgid "Name"
 msgstr "Nome"
 
 msgid "Page %{page} of %{total} (use --page and --per-page for navigation)."
-msgstr "Página %{page} de %{total} (use --page e --per-page para navegação)."
+msgstr ""
+"Página %{page} de %{total} (uso --página e --por-página para navegação)."
 
 msgid "Fields"
 msgstr "Campos"
@@ -516,8 +519,8 @@ msgid ""
 "Method %{tags} for field formatters and output adapters is deprecated. "
 "Please use %{feat} or %{req_feat} instead."
 msgstr ""
-"O método %{tags} para formatadores de campos e adaptadores de saída foi "
-"preterido. Em vez disso, use %{feat} ou %{req_feat}."
+"O método %{tags} para formatadores de campo e adaptadores de saída é "
+"depreciado. Favor usar %{feat} ou %{req_feat} em seu lugar."
 
 msgid "no"
 msgstr "não"
@@ -527,7 +530,7 @@ msgstr "sim"
 
 msgid "Warning: Couldn't load configuration file %{path}: %{message}."
 msgstr ""
-"Aviso: não foi possível carregar o arquivo de configuração %{path}: "
+"Advertência: Não foi possível carregar o arquivo de configuração %{path}: "
 "%{message}."
 
 msgid "Print help for commands"
@@ -555,7 +558,7 @@ msgid "SSL client authentication disabled."
 msgstr "Autenticação do cliente SSL desativada."
 
 msgid "Could't read SSL client certificate %s."
-msgstr "Não foi possível ler o certificado do cliente SSL %s."
+msgstr "Não foi possível ler o certificado de cliente SSL %s."
 
 msgid "Could't read SSL client key %s."
 msgstr "Não foi possível ler a chave do cliente SSL %s."
@@ -570,8 +573,8 @@ msgid ""
 "Can't replace subcommand %<name>s (%<existing_class>s) with %<name>s "
 "(%<new_class>s)."
 msgstr ""
-"Não foi possível substituir o subcomando %<name>s (%<existing_class>s) por "
+"Não é possível substituir o subcomando %<name>s (%<existing_class>s) por "
 "%<name>s (%<new_class>s)."
 
 msgid "Cannot use such capitalization. Try one of %s."
-msgstr "Não é possível usar essa capitalização. Tente uma das %s."
+msgstr "Não é possível utilizar tal capitalização. Experimente um dos %s."
