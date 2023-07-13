@@ -33,6 +33,9 @@ describe String do
     it 'should not fail due to presence of percent chars in string' do
       _(str_with_percent.format({})).must_equal 'Error: AA BB <%# template error %> verify this %>'
     end
+    it 'should consider false values' do
+      _(curly_str.format(:a => false, 'b' => false)).must_equal 'AAfalse BBfalse'
+    end
   end
 
   context "camelize" do
