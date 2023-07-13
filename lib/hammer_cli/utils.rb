@@ -6,7 +6,7 @@ class String
     if params.is_a? Hash
       array_params = self.scan(/%[<{]([^>}]*)[>}]/).collect do |name|
         name = name[0]
-        params[name.to_s] || params[name.to_sym]
+        !params[name.to_s].nil? ? params[name.to_s].to_s : params[name.to_sym].to_s
       end
       self.gsub(/%[<]([^>]*)[>]/, '%')
           .gsub(/%[{]([^}]*)[}]/, '%s')
