@@ -1,5 +1,4 @@
-require File.join(File.dirname(__FILE__), './test_helper')
-
+require_relative 'test_helper'
 
 describe HammerCLI::Apipie::Command do
 
@@ -34,12 +33,12 @@ describe HammerCLI::Apipie::Command do
   end
 
   let(:ctx) { { :adapter => :silent, :interactive => false } }
-  let(:cmd_class) { HammerCLI::Apipie::Command.dup }
+  let(:cmd_class) { Class.new(HammerCLI::Apipie::Command) }
   let(:cmd) { cmd_class.new("", ctx) }
   let(:cmd_run) { cmd.run([]) }
 
   context "unsupported commands" do
-    let(:cmd_class) { CommandUnsupp.dup }
+    let(:cmd_class) { Class.new(CommandUnsupp) }
     let(:cmd) { cmd_class.new("unsupported", ctx) }
     it "should print help for unsupported command" do
       assert_match(/.*Unfortunately the server does not support such operation.*/, cmd.help)
@@ -148,7 +147,7 @@ describe HammerCLI::Apipie::Command do
         ''
       ].join("\n")
       expected_result = success_result(expected_messages)
-      result = run_cmd([], { :verbosity => HammerCLI::V_QUIET }, MessagesCommand)
+      result = run_cmd([], { :verbosity => HammerCLI::V_QUIET }, Class.new(MessagesCommand))
       assert_cmd(expected_result, result)
     end
 
