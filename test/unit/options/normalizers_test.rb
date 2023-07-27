@@ -169,6 +169,10 @@ describe HammerCLI::Options::Normalizers do
     end
 
     describe 'key=value format' do
+      it 'should parse values with commas' do
+        _(formatter.format('a=1,2,b=3,4')).must_equal({ 'a' => '1,2', 'b' => '3,4'})
+      end
+
       it "should parse a comma separated string" do
         _(formatter.format("a=1,b=2,c=3")).must_equal({'a' => '1', 'b' => '2', 'c' => '3'})
       end
@@ -236,7 +240,7 @@ describe HammerCLI::Options::Normalizers do
       end
 
       it "should parse a comma separated string 2" do
-        _{ formatter.format("a=1,b,c=3") }.must_raise ArgumentError
+        _(formatter.format("a=1,b,c=3")).must_equal({ 'a' => '1,b', 'c' => '3' })
       end
 
       it 'should parse explicit strings' do
