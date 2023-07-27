@@ -9,6 +9,7 @@ end
 SimpleCov.root Pathname.new(File.dirname(__FILE__) + "../../../")
 
 require 'minitest/autorun'
+require 'minitest/unit'
 require "minitest-spec-context"
 require "mocha/minitest"
 
