@@ -50,9 +50,7 @@ module HammerCLI
       end
 
       class KeyValueList < AbstractNormalizer
-
-        PAIR_RE = '([^,=]+)=([^,\{\[]+|[\{\[][^\{\}\[\]]*[\}\]])'
-        FULL_RE = "^((%s)[,]?)+$" % PAIR_RE
+        FULL_RE = '([^=,]+)=([\{\[][^\{\}\[\]]*[\}\]]|[^\0]+?)(?=,[^,]+=|$)'
 
         class << self
           def completion_type
@@ -68,7 +66,6 @@ module HammerCLI
         def format(val)
           return {} unless val.is_a?(String)
           return {} if val.empty?
-
           if valid_key_value?(val)
             parse_key_value(val)
           else
@@ -89,7 +86,7 @@ module HammerCLI
 
         def parse_key_value(val)
           result = {}
-          val.scan(Regexp.new(PAIR_RE)) do |key, value|
+          val.scan(Regexp.new(FULL_RE)) do |key, value|
             value = value.strip
             if value.start_with?('[')
               value = value.scan(/[^,\[\]]+/)
