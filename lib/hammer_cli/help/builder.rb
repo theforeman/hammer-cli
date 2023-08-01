@@ -1,4 +1,3 @@
-require 'unicode'
 module HammerCLI
   module Help
     class Builder < Clamp::Help::Builder
@@ -46,7 +45,7 @@ module HammerCLI
                                else
                                  item.help
                                end
-          description.gsub(/^(.)/) { Unicode.capitalize(Regexp.last_match(1)) }.wrap.each_line do |line|
+          description.gsub(/^(.)/) { Regexp.last_match(1).capitalize }.wrap.each_line do |line|
             line " %-#{label_width}s %s" % [label, line]
             label = ''
           end
