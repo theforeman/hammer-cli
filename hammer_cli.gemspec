@@ -32,7 +32,6 @@ EOF
   s.add_dependency 'clamp', '>= 1.3.1', '< 2.0.0'
   s.add_dependency 'logging'
   s.add_dependency 'unicode-display_width'
-  s.add_dependency 'unicode'
   s.add_dependency 'amazing_print'
   s.add_dependency 'highline'
   s.add_dependency 'fast_gettext'
