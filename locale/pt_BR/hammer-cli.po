@@ -5,15 +5,16 @@
 # Translators:
 # Dominic Cleal <dcleal@redhat.com>, 2014
 # Fabio Dias, 2015
+# Fabio Dias, 2015
 # Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2014,2018
 # Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2014
 # Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2014
 # Valeria S Silva <valeriassilva@live.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.8.0.pre.develop\n"
+"Project-Id-Version: hammer-cli 3.8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-31 15:09+0000\n"
+"POT-Creation-Date: 2023-06-08 15:03+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Valeria S Silva <valeriassilva@live.com>, 2015\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/foreman/foreman/"
@@ -52,7 +53,7 @@ msgid "Prepare map of options and subcommands for Bash completion"
 msgstr "Preparar mapa de opções e subcomandos para a conclusão do Bash"
 
 msgid "Unable to find hostname in %s."
-msgstr "Não foi possível encontrar o nome da hostname em %s."
+msgstr "Não foi possível encontrar o nome de host em %s."
 
 msgid "CA certificate for %{uri} was stored to %{file}."
 msgstr "O certificado da CA para %{uri} foi armazenado para %{file}."
@@ -89,13 +90,13 @@ msgstr ""
 "todo o sistema de certificados CA confiáveis da seguinte forma:"
 
 msgid "Couldn't parse URI '%s'."
-msgstr "Não foi possível analisar o URI '%s'."
+msgstr "Não foi possível analisar a URI '%s'."
 
 msgid ""
 "The CA certificate for %{uri} couldn't be downloaded. No CA cert was found."
 msgstr ""
-"O certificado do CA para %{uri} não pôde ser baixado. Não foi encontrado "
-"nenhum certificado do CA."
+"Não foi possível fazer o download do certificado CA para %{uri}. Nenhum "
+"certificado CA encontrado."
 
 msgid "Make sure your server sends cert chain including the CA."
 msgstr ""
@@ -107,7 +108,8 @@ msgstr "Para ver a cadeia real, você pode usar o comando openssl"
 
 msgid "You can also download the certificate manually and store it as %s."
 msgstr ""
-"Você também pode baixar o certificado manualmente e armazená-lo como %s."
+"Você também pode fazer download do certificado manualmente e armazená-lo "
+"como %s."
 
 msgid ""
 "If you choose any other location set the ssl_ca_path or ssl_ca_file "
@@ -123,7 +125,7 @@ msgid "The service at the given URI does not accept SSL connections."
 msgstr "O serviço na URI especificada não aceita conexões SSL."
 
 msgid "Perhaps you meant to connect to '%s'?"
-msgstr "Talvez você quisesse se conectar com '%s'?"
+msgstr "Talvez você quisesse se conectar a '%s'?"
 
 msgid "Too many arguments."
 msgstr "Muitos argumentos."
@@ -138,7 +140,7 @@ msgid "Option '%{swt}': %{msg}."
 msgstr "Opção '%{swt}': %{msg}."
 
 msgid "Parameter '%{pmt}': %{msg}."
-msgstr "Parâmetro '%{pmt}': %{msg}."
+msgstr "Parâmetro"
 
 msgid "%{env}: %{msg}."
 msgstr "%{env}: %{msg}."
@@ -157,9 +159,7 @@ msgstr "Citação ilegal em %{buffer}"
 
 msgid ""
 "Couldn't create %s. Please create the directory before setting defaults."
-msgstr ""
-"Não foi possível criar %s. Por favor, crie o diretório antes de definir as "
-"configurações padrão."
+msgstr "Não foi possível criar %s. Crie o diretório antes de definir padrões."
 
 msgid "Defaults management"
 msgstr "Gerenciamento de padrões"
@@ -221,8 +221,8 @@ msgid ""
 "Provider %{name} was not found. See `hammer defaults providers` for "
 "available providers."
 msgstr ""
-"O fornecedor %{name} não foi encontrado. Veja \"fornecedores com martelo por "
-"defeito\" para os fornecedores disponíveis."
+"O provedor %{name} não foi encontrado. Consulte os provedores disponíveis em "
+"\"provedores de padrões Hammer\"."
 
 msgid ""
 "The param name is not supported by provider. See `hammer defaults providers` "
@@ -240,13 +240,13 @@ msgstr ""
 "especificar ambos."
 
 msgid "Couldn't find the requested param in %s."
-msgstr "Não foi possível encontrar o paramédico solicitado em %s."
+msgstr "Não foi possível localizar o parâmetro solicitado %s."
 
 msgid "Error: %s"
-msgstr "Erro: %s"
+msgstr "Erro!"
 
 msgid "Error: %{message}"
-msgstr "Erro: %{message}"
+msgstr "Erro!"
 
 msgid "See: '%{path} --help'."
 msgstr "Ver: '%{path} --ajuda'."
@@ -264,14 +264,14 @@ msgid ""
 "was '%s' run on the server when using apipie cache? (typical production "
 "settings)"
 msgstr ""
-"foi '%s' executado no servidor ao usar o cache apipie? (configurações "
-"típicas de produção)"
+"o '%s' foi executado no servidor ao utilizar o apipie cache? (configurações "
+"de produção típicas)"
 
 msgid "Could not load the API description from the server"
 msgstr "Não foi possível carregar a descrição do API do servidor"
 
 msgid "Missing arguments for %s."
-msgstr "Argumentos em falta para %s."
+msgstr "Argumentos ausentes para %s."
 
 msgid "Format output in markdown"
 msgstr "Formatar saída no markdown"
@@ -286,10 +286,10 @@ msgid "NOTE"
 msgstr "OBSERVAÇÃO"
 
 msgid "No permissions to create log dir %s."
-msgstr "Nenhuma permissão para criar log dir %s."
+msgstr "Não há permissão para criar o diretório do log %s."
 
 msgid "File %s not writeable, won't log anything to the file!"
-msgstr "Arquivo %s não gravável, não registrará nada no arquivo!"
+msgstr "Arquivo %s não pode ser gravado, não gravará nada no arquivo!"
 
 msgid "Be verbose (or not). True by default"
 msgstr "Ser detalhado (ou não). Verdadeiro por padrão"
@@ -371,11 +371,11 @@ msgid "Get list of possible endings"
 msgstr "Obtenha uma lista de finais possíveis"
 
 msgid "Warning: An error occured while loading module %s."
-msgstr "Advertência: Ocorreu um erro durante o carregamento do módulo %s."
+msgstr "Aviso: ocorreu um erro ao carregar o módulo %s."
 
 msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr ""
-"Erro: Alguns dos módulos necessários estão desabilitados na configuração: %s."
+"Erro: alguns dos modelos necessários estão desabilitados na configuração: %s."
 
 msgid "Value described in the option's description. Mostly simple string"
 msgstr ""
@@ -412,7 +412,7 @@ msgid "One of %s"
 msgstr "Uma das %s"
 
 msgid "Value must be one of %s."
-msgstr "O valor deve ser um de %s."
+msgstr "O valor deve ser um dos %s."
 
 msgid "Path to a file"
 msgstr ""
@@ -433,14 +433,14 @@ msgid "Date and time in YYYY-MM-DD HH:MM:SS or ISO 8601 format"
 msgstr "Data e hora em formato YYYY-MM-DD HH:MM:SS ou ISO 8601"
 
 msgid "'%s' is not a valid date."
-msgstr "%s' não é uma data válida."
+msgstr "'%s' não é uma data válida."
 
 msgid ""
 "Any combination of possible values described in the option's description"
 msgstr ""
 
 msgid "Any combination (comma separated list) of '%s'"
-msgstr "Qualquer combinação (lista separada por vírgulas) de '%s'"
+msgstr "Qualquer combinação (lista separada por vírgula) de '%s'"
 
 msgid "Value must be a combination of '%s'."
 msgstr "O valor deve ser uma combinação de '%s'."
@@ -470,10 +470,10 @@ msgid "Show specified fields or predefined field sets only. (See below)"
 msgstr ""
 
 msgid "There is no such predefined option %s."
-msgstr "Não existe essa opção pré-definida %s."
+msgstr "Não há a opção predefinida %s."
 
 msgid "Unknown option name '%s'."
-msgstr "Nome da opção desconhecida '%s'."
+msgstr "Nome da opção '%s' desconhecida."
 
 msgid "You can't set all options %s at one time."
 msgstr "Você não pode definir todas as opções %s de uma só vez."
@@ -482,13 +482,13 @@ msgid "Options %s are required."
 msgstr "As opções %s são necessárias."
 
 msgid "You can't set option %s."
-msgstr "Você não pode definir a opção %s."
+msgstr "Não é possível definir a opção %s."
 
 msgid "Option %s is required."
 msgstr "A opção %s é necessária."
 
 msgid "You can't set any of options %s."
-msgstr "Você não pode definir nenhuma das opções %s."
+msgstr "Não é possível definir nenhuma das opções %s."
 
 msgid "At least one of options %s is required."
 msgstr "Pelo menos uma das opções %s é necessária."
@@ -558,7 +558,7 @@ msgid "SSL client authentication disabled."
 msgstr "Autenticação do cliente SSL desativada."
 
 msgid "Could't read SSL client certificate %s."
-msgstr "Não foi possível ler o certificado de cliente SSL %s."
+msgstr "Não foi possível ler o certificado do cliente SSL %s."
 
 msgid "Could't read SSL client key %s."
 msgstr "Não foi possível ler a chave do cliente SSL %s."
@@ -577,4 +577,4 @@ msgstr ""
 "%<name>s (%<new_class>s)."
 
 msgid "Cannot use such capitalization. Try one of %s."
-msgstr "Não é possível utilizar tal capitalização. Experimente um dos %s."
+msgstr "Não é possível usar essa capitalização. Tente uma das %s."

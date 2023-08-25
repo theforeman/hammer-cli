@@ -12,9 +12,9 @@
 # ty breizh <tybreizh29@free.fr>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.8.0.pre.develop\n"
+"Project-Id-Version: hammer-cli 3.8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-31 15:09+0000\n"
+"POT-Creation-Date: 2023-06-08 15:03+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: ty breizh <tybreizh29@free.fr>, 2018\n"
 "Language-Team: French (http://app.transifex.com/foreman/foreman/language/"
@@ -49,7 +49,7 @@ msgid "Command extensions should be inherited from %s."
 msgstr "Les extensions de commande doivent être héritées de %s."
 
 msgid "Unfortunately the server does not support such operation."
-msgstr "Malheureusement le serveur ne supporte pas cette opération"
+msgstr "Malheureusement le serveur ne supporte pas cette opération."
 
 msgid "The server does not support such operation."
 msgstr "Le serveur ne supporte pas cette opération."
@@ -118,7 +118,7 @@ msgstr ""
 msgid "You can also download the certificate manually and store it as %s."
 msgstr ""
 " Vous pouvez également télécharger le certificat manuellement et le stocker "
-"sous %s"
+"sous %s."
 
 msgid ""
 "If you choose any other location set the ssl_ca_path or ssl_ca_file "
@@ -146,7 +146,7 @@ msgid "Option '%{opt}' (or env %{env}) is required."
 msgstr "L'option '%{opt}' (ou env %{env}) est obligatoire."
 
 msgid "Option '%{swt}': %{msg}."
-msgstr "Option {swt}' : %{msg}."
+msgstr "Option %{swt}' : %{msg}."
 
 msgid "Parameter '%{pmt}': %{msg}."
 msgstr "Paramètre '%{pmt}': %{msg}."
@@ -206,7 +206,7 @@ msgid "Add a default parameter to config"
 msgstr "Ajouter un paramètre par défaut"
 
 msgid "The name of the default option (e.g. organization_id)"
-msgstr "Le nom de l'option par défaut  (par ex. organization_id)"
+msgstr "Le nom de l'option par défaut (par ex. organization_id)"
 
 msgid "The value for the default option"
 msgstr "La valeur de l'option par défaut"
@@ -223,11 +223,11 @@ msgid ""
 "Added %{key_val} default-option with value that will be generated from the "
 "server."
 msgstr ""
-"A ajouté l'option par défaut %{key_val} default-option avec la valeur qui "
+"A ajouté l'option par défaut %%{key_val} default-option avec la valeur qui "
 "sera générée à partir du serveur."
 
 msgid "Added %{key_val} default-option with value %{val_val}."
-msgstr "Ajout de l'option par défaut %{key_val} avec la valeur %{val_val}."
+msgstr "Ajout de l'option par défaut %%{key_val} avec la valeur %%{val_val}."
 
 msgid ""
 "Provider %{name} was not found. See `hammer defaults providers` for "
@@ -244,7 +244,7 @@ msgstr ""
 "fournisseurs hammer par défaut » pour param pris en charge."
 
 msgid "%{param} was deleted successfully."
-msgstr "%{param} a été détecté."
+msgstr "%{param} a été supprimé."
 
 msgid "You must specify value or a provider name, can't specify both."
 msgstr ""
@@ -255,7 +255,7 @@ msgid "Couldn't find the requested param in %s."
 msgstr "Vous devez spécifier le paramètre demandé dans %s."
 
 msgid "Error: %s"
-msgstr "Erreur - %%s"
+msgstr "Erreur - %s"
 
 msgid "Error: %{message}"
 msgstr "Erreur - %{message}"
@@ -283,7 +283,7 @@ msgid "Could not load the API description from the server"
 msgstr "Impossible de charger la description de l'API depuis le serveur"
 
 msgid "Missing arguments for %s."
-msgstr "Arguments manquants pour %%s"
+msgstr "Arguments manquants pour %s"
 
 msgid "Format output in markdown"
 msgstr "Formater la sortie dans markdown"
@@ -420,13 +420,13 @@ msgid "Comma separated list of values defined by a schema."
 msgstr "Liste de valeurs séparées par des virgules et définies par un schéma."
 
 msgid "Numeric value. Integer"
-msgstr "Valeur numérique. Entier relatif."
+msgstr "Valeur numérique. Entier relatif"
 
 msgid "Numeric value is required."
 msgstr "Valeur numérique obligatoire."
 
 msgid "One of %s"
-msgstr "Un sur %s."
+msgstr "Un sur %s"
 
 msgid "Value must be one of %s."
 msgstr "La valeur doit être choisie parmi %s."
@@ -468,10 +468,10 @@ msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr "Avertissement : Option %{option} est dépréciée. %{message}"
 
 msgid "Deprecated: %{deprecated_msg}"
-msgstr "Déprécié : %{deprecated_msg}"
+msgstr "Déprécié : %%{deprecated_msg}"
 
 msgid "%{flag} is deprecated: %{deprecated_msg}"
-msgstr "%{flag} est déprécié : %{deprecated_msg}"
+msgstr "%{flag} est déprécié : %%{deprecated_msg}"
 
 msgid "Can be specified multiple times."
 msgstr "Peut être spécifié plusieurs fois."
@@ -541,7 +541,7 @@ msgid ""
 "Please use %{feat} or %{req_feat} instead."
 msgstr ""
 "La méthode %{tags} pour les formateurs de champs et les adaptateurs de "
-"sortie est obsolète. Veuillez utiliser %{feat} ou %{req_feat} à la place."
+"sortie est obsolète. Veuillez utiliser %{feat} ou %%{req_feat} à la place."
 
 msgid "no"
 msgstr "non"

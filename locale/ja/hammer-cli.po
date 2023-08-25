@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the hammer-cli package.
 #
 # Translators:
+# 山田 修司 🍣 Shuji Yamada <uzy.exe@gmail.com>, 2015
 # Kazuki Omo <kazuki.omo@gmail.com>, 2019
 # 山田 修司 🍣 Shuji Yamada <uzy.exe@gmail.com>, 2015
 # 山田 修司 🍣 Shuji Yamada <uzy.exe@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.8.0.pre.develop\n"
+"Project-Id-Version: hammer-cli 3.8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-31 15:09+0000\n"
+"POT-Creation-Date: 2023-06-08 15:03+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: 山田 修司 🍣 Shuji Yamada <uzy.exe@gmail.com>, 2015\n"
 "Language-Team: Japanese (http://app.transifex.com/foreman/foreman/language/"
@@ -35,19 +36,19 @@ msgid "Here you can find option types and the value an option can accept:"
 msgstr "ここでは、オプションの種類と、オプションで使用できる値を確認できます。"
 
 msgid "Predefined field sets"
-msgstr "定義済みのフィールドセット"
+msgstr "事前定義済みのフィールドセット"
 
 msgid "Command extensions should be inherited from %s."
 msgstr "コマンド拡張は %s から継承する必要があります。"
 
 msgid "Unfortunately the server does not support such operation."
-msgstr "残念ですがサーバはその操作をサポートしていません。"
+msgstr "残念ですがサーバーはその操作をサポートしていません。"
 
 msgid "The server does not support such operation."
 msgstr "サーバーはこの操作に対応していません。"
 
 msgid "Prepare map of options and subcommands for Bash completion"
-msgstr "bash-completion のオプションおよびサブコマンドのマッピングを準備する"
+msgstr "Bash 補完向けのオプションおよびサブコマンドのマップを準備します"
 
 msgid "Unable to find hostname in %s."
 msgstr "%s でホスト名が見つかりません。"
@@ -136,7 +137,7 @@ msgid "Parameter '%{pmt}': %{msg}."
 msgstr "パラメーター '%{pmt}': %{msg}。"
 
 msgid "%{env}: %{msg}."
-msgstr "%{env} %{msg}。"
+msgstr "%{env}: %{msg}。"
 
 msgid "Unrecognised option '%s'."
 msgstr "認識されないオプション '%s'。"
@@ -206,10 +207,10 @@ msgid ""
 "Added %{key_val} default-option with value that will be generated from the "
 "server."
 msgstr ""
-"サーバーから生成される値で %{key_val} デフォルトオプションが追加されました。"
+"サーバーから生成される値で %%{key_val} デフォルトオプションが追加されました。"
 
 msgid "Added %{key_val} default-option with value %{val_val}."
-msgstr "値が %{val_val} の %{key_val} のデフォルトオプションを追加しました。"
+msgstr "値が %%{val_val} の %%{key_val} のデフォルトオプションを追加しました。"
 
 msgid ""
 "Provider %{name} was not found. See `hammer defaults providers` for "
@@ -243,7 +244,7 @@ msgid "Error: %{message}"
 msgstr "エラー: %{message}"
 
 msgid "See: '%{path} --help'."
-msgstr "参照: '%{path} --help'"
+msgstr "参照: '%{path} --help'."
 
 msgid "SSL error"
 msgstr "SSL エラー"
@@ -401,7 +402,7 @@ msgid "Numeric value. Integer"
 msgstr "数値。整数"
 
 msgid "Numeric value is required."
-msgstr "数値が必要。"
+msgstr "数値が必要です。"
 
 msgid "One of %s"
 msgstr "%s の 1 つ"
@@ -444,10 +445,10 @@ msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr "警告: オプション %{option} は非推奨です。%{message}"
 
 msgid "Deprecated: %{deprecated_msg}"
-msgstr "非推奨: ％{deprecated_msg}"
+msgstr "非推奨: ％%{deprecated_msg}"
 
 msgid "%{flag} is deprecated: %{deprecated_msg}"
-msgstr "%{flag} は非推奨です: ％{deprecated_msg}"
+msgstr "%%{flag} は非推奨です: ％%{deprecated_msg}"
 
 msgid "Can be specified multiple times."
 msgstr "複数回指定することができます。"
@@ -459,7 +460,7 @@ msgid "Default:"
 msgstr "デフォルト:"
 
 msgid "Environment variable HAMMER_NIL can not be empty."
-msgstr "環境変数 HAMMER_NIL は空欄にできません。"
+msgstr "環境変数 HAMMER_NIL を空にすることはできません。"
 
 msgid "Show specified fields or predefined field sets only. (See below)"
 msgstr ""
@@ -516,8 +517,8 @@ msgid ""
 "Method %{tags} for field formatters and output adapters is deprecated. "
 "Please use %{feat} or %{req_feat} instead."
 msgstr ""
-"フィールドフォーマッターおよび出力アダプターのメソッド %{tags} は非推奨となり"
-"ました。代わりに %{feat} または %{req_feat} を使用してください。"
+"フィールドフォーマッターおよび出力アダプターのメソッド %%{tags} は非推奨とな"
+"りました。代わりに %%{feat} または %%{req_feat} を使用してください。"
 
 msgid "no"
 msgstr "no"
@@ -529,7 +530,7 @@ msgid "Warning: Couldn't load configuration file %{path}: %{message}."
 msgstr "警告: 設定ファイル %{path} をロードできませんでした: %{message}。"
 
 msgid "Print help for commands"
-msgstr "コマンドについての help を出力"
+msgstr "コマンドの help を出力"
 
 msgid "Exit interactive shell"
 msgstr "インタラクティブシェルの終了"
