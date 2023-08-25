@@ -1,5 +1,20 @@
 Release notes
 =============
+### 3.8.0 (2023-08-25)
+* Consider false values in string#format, [#36588](http://projects.theforeman.org/issues/36588)
+* Drop unicode gem ([PR #376](https://github.com/theforeman/hammer-cli/pull/376))
+* Improve regex for keyvaluelist normalizer, [#36258](http://projects.theforeman.org/issues/36258)
+* Fix minitest ([PR #375](https://github.com/theforeman/hammer-cli/pull/375))
+* Add ga to run tests on ruby 3+
+* Wrap commands with class.new to clone, [#36592](http://projects.theforeman.org/issues/36592)
+* Try to upgrade ci_reporter, [#36592](http://projects.theforeman.org/issues/36592)
+* Update minitest version, [#36592](http://projects.theforeman.org/issues/36592)
+* Improve rakefile tx commands, [#36283](http://projects.theforeman.org/issues/36283)
+* Move makefile targets to rakefile, [#36283](http://projects.theforeman.org/issues/36283)
+* Update transifex automation, [#36283](http://projects.theforeman.org/issues/36283)
+* Add packit config ([PR #370](https://github.com/theforeman/hammer-cli/pull/370))
+* Bump to 3.8.0-develop
+
 ### 3.7.0 (2023-05-23)
 * Honor tz in datetime normalizer ([PR #369](https://github.com/theforeman/hammer-cli/pull/369)), [#36418](http://projects.theforeman.org/issues/36418)
 * Remove unused code, [#36337](http://projects.theforeman.org/issues/36337)
