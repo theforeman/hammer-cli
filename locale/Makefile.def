@@ -70,7 +70,8 @@ tx-pull: $(EDITFILES)
 .PHONY: update-po
 update-po:
 	for f in $(EDITFILES); do \
-		msgcat --use-first --no-location $$f $${f//.edit/} > $${f//.edit/}; \
+		base=$$(basename $$f .edit); \
+		msgcat --use-first --no-location $$f $${base} > $${base}; \
 	done
 
 # Extract strings and update the .pot, prepare .edit.po files
