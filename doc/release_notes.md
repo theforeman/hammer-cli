@@ -1,5 +1,11 @@
 Release notes
 =============
+### 3.9.0 (2023-11-29)
+* Use strings for ruby versions in gha ([PR #380](https://github.com/theforeman/hammer-cli/pull/380))
+* Update packit
+* Update rel-eng
+* Bump to 3.9.0-develop
+
 ### 3.8.0 (2023-08-25)
 * Consider false values in string#format, [#36588](http://projects.theforeman.org/issues/36588)
 * Drop unicode gem ([PR #376](https://github.com/theforeman/hammer-cli/pull/376))
