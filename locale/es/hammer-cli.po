@@ -10,7 +10,7 @@
 # Sergio Ocón-Cárdenas <sergio.ocon@redhat.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.9.0.pre.develop\n"
+"Project-Id-Version: hammer-cli 3.9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-25 17:32+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
