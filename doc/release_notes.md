@@ -1,5 +1,9 @@
 Release notes
 =============
+### 3.10.0 (2024-02-21)
+* Update packit ([PR #382](https://github.com/theforeman/hammer-cli/pull/382))
+* Bump to 3.10.0-develop
+
 ### 3.9.0 (2023-11-29)
 * Use strings for ruby versions in gha ([PR #380](https://github.com/theforeman/hammer-cli/pull/380))
 * Update packit
