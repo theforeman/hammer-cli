@@ -1,5 +1,8 @@
 Release notes
 =============
+### 3.11.0 (2024-05-22)
+* Bump to 3.11.0-develop
+
 ### 3.10.0 (2024-02-21)
 * Update packit ([PR #382](https://github.com/theforeman/hammer-cli/pull/382))
 * Bump to 3.10.0-develop
