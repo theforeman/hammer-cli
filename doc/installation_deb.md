@@ -2,26 +2,29 @@
 
 #### Step 1: setup apt repositories
 
-For Foreman 1.3 stable the hammer packages are part of your installation repo and you can skip this step.
+Since Foreman 1.3 the hammer packages are part of your installation repo.
+It is only necessary to setup apt repositories if you are installing Hammer separatly from Foreman.
 
-You can choose from stable or nightly repo. Nightly has more recent version of hammer packages, but it was subject to less testing so there is a highr risk of issues.
+You can choose from a specific version or nightly repo.
+Nightly has more recent version of hammer packages that have only had limited testing so there is a higher risk of issues.
 
-Choose stable (don't forget to replace "squeeze" with version name of your system)
+Here are a few examples for combinations of Linux-distributions and Foreman releases.
+Remember to adjust these as necessary, visit http://deb.theforeman.org/ for up to date information.
+
+##### Ubuntu Focal (20.04) with Foreman 3.10
 
 ```bash
-echo "deb http://deb.theforeman.org/ squeeze stable" > /etc/apt/sources.list.d/foreman.list
+mkdir -p /etc/apt/keyrings
+wget -qO- https://deb.theforeman.org/foreman.asc > /etc/apt/keyrings/foreman.asc
+echo "deb [signed-by=/etc/apt/keyrings/foreman.asc] http://deb.theforeman.org/ focal 3.10" > /etc/apt/sources.list.d/foreman.list
 ```
 
-or nightly
+##### Debian Bullseye (11) with Foreman nightly
 
 ```bash
-echo "deb http://deb.theforeman.org/ squeeze nightly" > /etc/apt/sources.list.d/foreman.list
-```
-
-and update the keys
-
-```bash
-wget -q https://deb.theforeman.org/foreman.asc -O- | apt-key add -
+mkdir -p /etc/apt/keyrings
+wget -qO- https://deb.theforeman.org/foreman.asc > /etc/apt/keyrings/foreman.asc
+echo "deb [signed-by=/etc/apt/keyrings/foreman.asc] http://deb.theforeman.org/ bullseye nightly" > /etc/apt/sources.list.d/foreman.list
 ```
 
 #### Step 2: install hammer core
@@ -46,3 +49,4 @@ $ apt-get install ruby-hammer-cli-katello
 ```
 
 To install any other hammer plugin just make sure the appropriate gem is installed and follow with the [configuration](installation.md#configuration).
+
