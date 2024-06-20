@@ -416,6 +416,16 @@ describe HammerCLI::Options::Normalizers do
 
   end
 
+  def mock_env(partial_env_hash)
+    old_env = ENV.to_hash
+    ENV.update partial_env_hash
+    begin
+      yield
+    ensure
+      ENV.replace old_env
+    end
+  end
+
   describe 'datetime' do
 
     let(:formatter) { HammerCLI::Options::Normalizers::DateTime.new }
@@ -429,15 +439,45 @@ describe HammerCLI::Options::Normalizers do
     end
 
     it "should accept and parse iso8601" do
-      _(formatter.format("1986-01-01T08:30:20")).must_equal("1986-01-01T08:30:20+00:00")
+      mock_env("TZ" => "UTC") do
+        _(formatter.format("1986-01-01T08:30:20")).must_equal("1986-01-01T08:30:20+00:00")
+      end
     end
 
     it "should accept and parse YYYY-MM-DD HH:MM:SS" do
-      _(formatter.format("1986-01-01 08:30:20")).must_equal("1986-01-01T08:30:20+00:00")
+      mock_env("TZ" => "UTC") do
+        _(formatter.format("1986-01-01 08:30:20")).must_equal("1986-01-01T08:30:20+00:00")
+      end
     end
 
     it "should accept and parse YYYY/MM/DD HH:MM:SS" do
-      _(formatter.format("1986/01/01 08:30:20")).must_equal("1986-01-01T08:30:20+00:00")
+      mock_env("TZ" => "UTC") do
+        _(formatter.format("1986/01/01 08:30:20")).must_equal("1986-01-01T08:30:20+00:00")
+      end
+    end
+
+    it "should parse iso8601 compliant timezones" do
+      mock_env("TZ" => "UTC") do
+        _(formatter.format("1986-01-01 08:30:20 +04:00")).must_equal("1986-01-01T08:30:20+04:00")
+      end
+    end
+
+    it "should not parse non iso8601 formatted timezones" do
+      mock_env("TZ" => "Asia/Tokyo") do
+        _(formatter.format("1986-01-01 08:30:20 foo")).must_equal("1986-01-01T08:30:20+09:00")
+      end
+    end
+
+    it "should use system provided timezone" do
+      mock_env("TZ" => "Asia/Tokyo") do
+        _(formatter.format("1986-01-01 08:30:20")).must_equal("1986-01-01T08:30:20+09:00")
+      end
+    end
+
+    it "should overwrite default timezone" do
+      mock_env("TZ" => "Asia/Tokyo") do
+        _(formatter.format("1986-01-01 08:30:20 +04:00")).must_equal("1986-01-01T08:30:20+04:00")
+      end
     end
 
   end
