@@ -128,26 +128,25 @@ describe HammerCLI::Modules do
       before :each do
         HammerCLI::Modules.stubs(:require_module).raises(RuntimeError)
         @error_msg = "ERROR  Modules : Error while loading module hammer_cli_tom."
-        @warning_msg = "Warning: An error occured while loading module hammer_cli_tom."
+        @warning_msg = "Warning: An error occurred while loading module hammer_cli_tom."
       end
 
       it "must log an error if the load! fails" do
-        out, _ = capture_io do
+        assert_output("", "#{@warning_msg}\n") do
           assert_raises(RuntimeError) { HammerCLI::Modules.load!('hammer_cli_tom') }
         end
-        _(out).must_equal "#{@warning_msg}\n"
         _(@log_output.readline.strip).must_equal @error_msg
       end
 
       it "must log an error if the load fails" do
-        assert_output("#{@warning_msg}\n", "") do
+        assert_output("", "#{@warning_msg}\n") do
           HammerCLI::Modules.load("hammer_cli_tom")
         end
         _(@log_output.readline.strip).must_equal @error_msg
       end
 
       it "must return false when load fails" do
-        assert_output("#{@warning_msg}\n", "") do
+        assert_output("", "#{@warning_msg}\n") do
           _(HammerCLI::Modules.load("hammer_cli_tom")).must_equal false
         end
       end

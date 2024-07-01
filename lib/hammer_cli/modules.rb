@@ -54,7 +54,7 @@ module HammerCLI
         require_module(name)
       rescue Exception => e
         logger.error "Error while loading module #{name}."
-        puts _("Warning: An error occured while loading module %s.") % name
+        $stderr.puts _("Warning: An error occurred while loading module %s.") % name
         # with ModuleLoadingError we assume the error is already logged by the issuer
         logger.error e unless e.is_a?(HammerCLI::ModuleLoadingError)
         raise e
