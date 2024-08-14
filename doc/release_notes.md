@@ -1,5 +1,12 @@
 Release notes
 =============
+### 3.12.0 (2024-08-14)
+* Log module loading warning to stderr ([PR #385](https://github.com/theforeman/hammer-cli/pull/385))
+* Make clear_cache safe if no completion file is set ([PR #386](https://github.com/theforeman/hammer-cli/pull/386))
+* Define correct timezone behavior in unittest, [#37579](http://projects.theforeman.org/issues/37579)
+* Update deb install instructions ([PR #383](https://github.com/theforeman/hammer-cli/pull/383))
+* Bump to 3.12.0-develop
+
 ### 3.11.0 (2024-05-22)
 * Bump to 3.11.0-develop
 
