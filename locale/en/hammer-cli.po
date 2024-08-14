@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.11.0\n"
+"Project-Id-Version: hammer-cli 3.12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-22 14:39+0000\n"
-"PO-Revision-Date: 2024-02-21 13:06+0000\n"
+"POT-Creation-Date: 2024-08-14 13:56+0000\n"
+"PO-Revision-Date: 2024-05-22 14:39+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -333,7 +333,7 @@ msgstr ""
 msgid "Get list of possible endings"
 msgstr ""
 
-msgid "Warning: An error occured while loading module %s."
+msgid "Warning: An error occurred while loading module %s."
 msgstr ""
 
 msgid "Error: Some of the required modules are disabled in configuration: %s."

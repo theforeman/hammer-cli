@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.11.0\n"
+"Project-Id-Version: hammer-cli 3.12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-22 14:39+0000\n"
-"PO-Revision-Date: 2024-05-22 14:39+0000\n"
+"POT-Creation-Date: 2024-08-14 13:56+0000\n"
+"PO-Revision-Date: 2024-08-14 13:56+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -429,7 +429,7 @@ msgid "Get list of possible endings"
 msgstr ""
 
 #: ../lib/hammer_cli/modules.rb:57
-msgid "Warning: An error occured while loading module %s."
+msgid "Warning: An error occurred while loading module %s."
 msgstr ""
 
 #: ../lib/hammer_cli/modules.rb:84
@@ -687,6 +687,6 @@ msgid ""
 "ass>s)."
 msgstr ""
 
-#: ../lib/hammer_cli/utils.rb:80
+#: ../lib/hammer_cli/utils.rb:81
 msgid "Cannot use such capitalization. Try one of %s."
 msgstr ""

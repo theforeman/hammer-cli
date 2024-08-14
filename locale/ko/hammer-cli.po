@@ -6,9 +6,9 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.11.0\n"
+"Project-Id-Version: hammer-cli 3.12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-21 13:06+0000\n"
+"POT-Creation-Date: 2024-05-22 14:39+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Automatically generated, 2014\n"
 "Language-Team: Korean (http://app.transifex.com/foreman/foreman/language/"
@@ -533,4 +533,7 @@ msgid ""
 msgstr ""
 
 msgid "Cannot use such capitalization. Try one of %s."
+msgstr ""
+
+msgid "Warning: An error occurred while loading module %s."
 msgstr ""
