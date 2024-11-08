@@ -1,5 +1,8 @@
 Release notes
 =============
+### 3.13.0 (2024-11-08)
+* Bump to 3.13.0-develop
+
 ### 3.12.0 (2024-08-14)
 * Log module loading warning to stderr ([PR #385](https://github.com/theforeman/hammer-cli/pull/385))
 * Make clear_cache safe if no completion file is set ([PR #386](https://github.com/theforeman/hammer-cli/pull/386))
