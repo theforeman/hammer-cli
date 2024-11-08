@@ -12,9 +12,9 @@
 # Valeria S Silva <valeriassilva@live.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.12.0\n"
+"Project-Id-Version: hammer-cli 3.13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-22 14:39+0000\n"
+"POT-Creation-Date: 2024-08-14 13:56+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Valeria S Silva <valeriassilva@live.com>, 2015\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/foreman/foreman/"
@@ -370,8 +370,8 @@ msgstr "Caractere para separar valores"
 msgid "Get list of possible endings"
 msgstr "Obtenha uma lista de finais possíveis"
 
-msgid "Warning: An error occured while loading module %s."
-msgstr "Aviso: ocorreu um erro ao carregar o módulo %s."
+msgid "Warning: An error occurred while loading module %s."
+msgstr ""
 
 msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr ""
@@ -578,6 +578,3 @@ msgstr ""
 
 msgid "Cannot use such capitalization. Try one of %s."
 msgstr "Não é possível usar essa capitalização. Tente uma das %s."
-
-msgid "Warning: An error occurred while loading module %s."
-msgstr ""

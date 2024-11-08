@@ -5,9 +5,9 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.12.0\n"
+"Project-Id-Version: hammer-cli 3.13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-22 14:39+0000\n"
+"POT-Creation-Date: 2024-08-14 13:56+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Georgian (http://app.transifex.com/foreman/foreman/language/"
@@ -365,8 +365,8 @@ msgstr "მნიშვნელობების გამყოფი სი�
 msgid "Get list of possible endings"
 msgstr "შესაძლო დასასრულების სიის მიღება"
 
-msgid "Warning: An error occured while loading module %s."
-msgstr "გაფრთხილება: შეცდომა მოდულის (%s) ჩატვირთვისას."
+msgid "Warning: An error occurred while loading module %s."
+msgstr ""
 
 msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr "შეცდომა: ზოგიერთი საჭირო მოდული გამორთულია კონფიგურაციაში: %s."
@@ -576,6 +576,3 @@ msgstr ""
 
 msgid "Cannot use such capitalization. Try one of %s."
 msgstr "ასოების ზომის ამ ვარიანტს ვერ გამოვიყენებ. სცადეთ ერთ-ერთი %s-დან."
-
-msgid "Warning: An error occurred while loading module %s."
-msgstr ""

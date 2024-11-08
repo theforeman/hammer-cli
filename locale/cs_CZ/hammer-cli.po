@@ -7,9 +7,9 @@
 # Pavel Borecki <pavel.borecki@gmail.com>, 2018-2020
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.12.0\n"
+"Project-Id-Version: hammer-cli 3.13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-22 14:39+0000\n"
+"POT-Creation-Date: 2024-08-14 13:56+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018-2020\n"
 "Language-Team: Czech (Czech Republic) (http://app.transifex.com/foreman/"
@@ -337,8 +337,8 @@ msgstr "Znak pro oddělování hodnot"
 msgid "Get list of possible endings"
 msgstr "Získat seznam možných zakončení"
 
-msgid "Warning: An error occured while loading module %s."
-msgstr "Varování: Došlo k chybě při načítání modulu %s."
+msgid "Warning: An error occurred while loading module %s."
+msgstr ""
 
 msgid "Error: Some of the required modules are disabled in configuration: %s."
 msgstr "Chyba: Některé z vyžadovaných modulů jsou v nastavení vypnuté: %s."
@@ -537,7 +537,4 @@ msgid ""
 msgstr ""
 
 msgid "Cannot use such capitalization. Try one of %s."
-msgstr ""
-
-msgid "Warning: An error occurred while loading module %s."
 msgstr ""

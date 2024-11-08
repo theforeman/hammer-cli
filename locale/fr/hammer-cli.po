@@ -12,9 +12,9 @@
 # ty breizh <tybreizh29@free.fr>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.12.0\n"
+"Project-Id-Version: hammer-cli 3.13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-22 14:39+0000\n"
+"POT-Creation-Date: 2024-08-14 13:56+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: ty breizh <tybreizh29@free.fr>, 2018\n"
 "Language-Team: French (http://app.transifex.com/foreman/foreman/language/"
@@ -385,7 +385,7 @@ msgstr "Caractère de séparation des valeurs"
 msgid "Get list of possible endings"
 msgstr "Lister les fins possibles"
 
-msgid "Warning: An error occured while loading module %s."
+msgid "Warning: An error occurred while loading module %s."
 msgstr ""
 "Avertissement : une erreur est survenue lors du chargement du module %s."
 
@@ -599,6 +599,3 @@ msgstr ""
 
 msgid "Cannot use such capitalization. Try one of %s."
 msgstr "Impossible d'utiliser une telle mise en majuscules. Essayez un sur %s."
-
-msgid "Warning: An error occurred while loading module %s."
-msgstr ""

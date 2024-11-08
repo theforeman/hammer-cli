@@ -7,9 +7,9 @@
 # Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.12.0\n"
+"Project-Id-Version: hammer-cli 3.13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-22 14:39+0000\n"
+"POT-Creation-Date: 2024-08-14 13:56+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2017\n"
 "Language-Team: Catalan (http://app.transifex.com/foreman/foreman/language/"
@@ -363,7 +363,7 @@ msgstr "Caràcter per separar els valors"
 msgid "Get list of possible endings"
 msgstr "Obtén la llista dels finals possibles"
 
-msgid "Warning: An error occured while loading module %s."
+msgid "Warning: An error occurred while loading module %s."
 msgstr ""
 
 msgid "Error: Some of the required modules are disabled in configuration: %s."
@@ -558,7 +558,4 @@ msgid ""
 msgstr ""
 
 msgid "Cannot use such capitalization. Try one of %s."
-msgstr ""
-
-msgid "Warning: An error occurred while loading module %s."
 msgstr ""
