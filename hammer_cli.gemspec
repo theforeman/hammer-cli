@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.authors       = ["Martin Bačovský", "Tomáš Strachota"]
   s.email         = "mbacovsk@redhat.com"
   s.homepage      = "https://github.com/theforeman/hammer-cli"
-  s.license       = "GPL-3.0"
+  s.license       = "GPL-3.0-only"
 
   s.summary       = %q{Universal command-line interface}
   s.description   = <<EOF
