@@ -30,6 +30,7 @@ module HammerCLI::Apipie
     def options_for_params(params, filter, resource_name_map, opts = {})
       options = []
       params.each do |p|
+        next unless p.show?
         exists = opts[:command].find_option(option_switch(p, resource_name_map))
         next if filter.include?(p.name) || filter.include?(p.name.to_sym) || exists
 
@@ -85,6 +86,7 @@ module HammerCLI::Apipie
       opts[:attribute_name] = HammerCLI.option_accessor_name(param.name)
       opts[:referenced_resource] = resource_name(param)
       opts[:aliased_resource] = aliased_name(resource_name(param), resource_name_map)
+      opts[:show] = param.show?
 
       return opts
     end

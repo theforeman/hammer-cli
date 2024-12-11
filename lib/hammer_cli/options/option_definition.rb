@@ -30,6 +30,8 @@ module HammerCLI
         @context_target = options[:context_target]
         @deprecated_switches = options[:deprecated]
         @family = options[:family]
+        # We expect a value from API param docs, but in case it's not there, we want to show it in help by default
+        @show = options.fetch(:show, true)
         super
       end
 
@@ -151,6 +153,10 @@ module HammerCLI
         return unless @family
 
         @family.children.include?(self)
+      end
+
+      def show?
+        @show
       end
 
       private

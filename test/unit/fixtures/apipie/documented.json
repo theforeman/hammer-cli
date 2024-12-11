@@ -77,6 +77,16 @@
                         "params": [
                             {
                                 "allow_null": false,
+                                "name": "documented_scope",
+                                "full_name": "documented_scope",
+                                "validator": "Must be String",
+                                "description": "",
+                                "expected_type": "string",
+                                "required": false,
+                                "show": false
+                            },
+                            {
+                                "allow_null": false,
                                 "name": "documented",
                                 "full_name": "documented",
                                 "validator": "Must be a Hash",
@@ -110,6 +120,16 @@
                                         "expected_type": "array",
                                         "description": "",
                                         "required": true
+                                    },
+                                    {
+                                        "name": "hidden",
+                                        "allow_null": false,
+                                        "full_name": "documented[hidden]",
+                                        "validator": "Must be number",
+                                        "expected_type": "number",
+                                        "description": "",
+                                        "required": false,
+                                        "show": false
                                     }
                                 ]
                             }
