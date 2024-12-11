@@ -19,10 +19,19 @@ jobs:
           - '3.1'
 
     steps:
+      - name: Get apipie-bindings
+        uses: actions/checkout@v2
+        with:
+          repository: Apipie/apipie-bindings
+          ref: master
+          path: apipie-bindings
       - name: Get hammer-cli
         uses: actions/checkout@v2
         with:
           path: hammer-cli
+      - name: Configure local gem dependencies
+        run: |
+          echo "gemspec path: '../apipie-bindings', name: 'apipie-bindings'" > Gemfile.local.rb
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
