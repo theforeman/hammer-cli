@@ -178,4 +178,14 @@ describe HammerCLI::Apipie::OptionBuilder do
     end
   end
 
+  context "hidden parameters" do
+    let(:action) { resource.action(:create) }
+
+    it "should skip options for params with show? false" do
+      option_switches = options.map(&:long_switch)
+      refute_includes(option_switches, "--hidden")
+      refute_includes(option_switches, "--documented-scope")
+    end
+  end
+
 end
