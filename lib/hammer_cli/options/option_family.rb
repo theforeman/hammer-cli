@@ -27,7 +27,7 @@ module HammerCLI
       def description
         types = all.map(&:type).map { |s| s.split('_').last.to_s }
                    .map(&:downcase).join('/')
-        parent_desc = @parent.help[1].gsub(IDS_REGEX) { |w| w.gsub(/\b.+\b/, types) }
+        parent_desc = @parent.help[1].gsub(IDS_REGEX) { |w| types.include?(w.strip.downcase) ? w.gsub(/\b.+\b/, types) : w }
         desc = @options[:description] || parent_desc.strip.empty? ? @options[:description] : parent_desc
         if @options[:deprecation].class <= String
           format_deprecation_msg(desc, _('Deprecated: %{deprecated_msg}') % { deprecated_msg: @options[:deprecation] })
