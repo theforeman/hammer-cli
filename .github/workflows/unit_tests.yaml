@@ -20,13 +20,13 @@ jobs:
 
     steps:
       - name: Get apipie-bindings
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: Apipie/apipie-bindings
           ref: master
           path: apipie-bindings
       - name: Get hammer-cli
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           path: hammer-cli
       - name: Configure local gem dependencies
