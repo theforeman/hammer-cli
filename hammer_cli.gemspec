@@ -29,13 +29,12 @@ EOF
 
   s.required_ruby_version = '>= 2.7'
 
+  s.add_dependency 'amazing_print'
+  s.add_dependency 'apipie-bindings', '>= 0.7.0'
   s.add_dependency 'clamp', '>= 1.3.1', '< 2.0.0'
+  s.add_dependency 'fast_gettext'
+  s.add_dependency 'highline'
+  s.add_dependency 'locale', '>= 2.0.6'
   s.add_dependency 'logging'
   s.add_dependency 'unicode-display_width'
-  s.add_dependency 'amazing_print'
-  s.add_dependency 'highline'
-  s.add_dependency 'fast_gettext'
-  s.add_dependency 'locale', '>= 2.0.6'
-  s.add_dependency 'apipie-bindings', '>= 0.7.0'
-
 end
