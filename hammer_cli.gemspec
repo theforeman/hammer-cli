@@ -31,7 +31,9 @@ EOF
 
   s.add_dependency 'amazing_print'
   s.add_dependency 'apipie-bindings', '>= 0.7.0'
+  s.add_dependency 'base64' # oauth requires this but doesn't depend on it
   s.add_dependency 'clamp', '>= 1.3.1', '< 2.0.0'
+  s.add_dependency 'csv'
   s.add_dependency 'fast_gettext'
   s.add_dependency 'highline'
   s.add_dependency 'locale', '>= 2.0.6'
