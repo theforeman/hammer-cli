@@ -1,5 +1,15 @@
 Release notes
 =============
+### 3.14.0 (2025-02-20)
+* Check better for parent option desc injection, [#38126](http://projects.theforeman.org/issues/38126)
+* Bump apipie-bindings to 0.7.0
+* Don't build hidden params as options ([PR #390](https://github.com/theforeman/hammer-cli/pull/390)), [#38077](http://projects.theforeman.org/issues/38077)
+* Use master branch of apipie-bindings in ci
+* Drop el 8 from packit config
+* Use non-deprecated gpl-3.0-only license tag
+* Pin ffi to < 1.17 for ruby 2.7 ([PR #387](https://github.com/theforeman/hammer-cli/pull/387))
+* Bump to 3.14.0-develop
+
 ### 3.13.0 (2024-11-08)
 * Bump to 3.13.0-develop
 
