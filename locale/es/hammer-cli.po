@@ -5,16 +5,16 @@
 # Translators:
 # Dominic Cleal <dcleal@redhat.com>, 2014
 # francis <hackgo@gmail.com>, 2014
-# Sergio Ocón-Cárdenas <sergio.ocon@redhat.com>, 2014
-# Sergio Ocón-Cárdenas <sergio.ocon@redhat.com>, 2014-2015
-# Sergio Ocón-Cárdenas <sergio.ocon@redhat.com>, 2014
+# Sergio Ocón-Cárdenas, 2014
+# Sergio Ocón-Cárdenas, 2014-2015
+# Sergio Ocón-Cárdenas, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.13.0\n"
+"Project-Id-Version: hammer-cli 3.14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-14 13:56+0000\n"
+"POT-Creation-Date: 2024-11-08 15:39+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
-"Last-Translator: Sergio Ocón-Cárdenas <sergio.ocon@redhat.com>, 2014\n"
+"Last-Translator: Sergio Ocón-Cárdenas, 2014\n"
 "Language-Team: Spanish (http://app.transifex.com/foreman/foreman/language/"
 "es/)\n"
 "MIME-Version: 1.0\n"

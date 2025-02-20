@@ -6,9 +6,9 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.13.0\n"
+"Project-Id-Version: hammer-cli 3.14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-14 13:56+0000\n"
+"POT-Creation-Date: 2024-11-08 15:39+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Automatically generated, 2014\n"
 "Language-Team: Korean (http://app.transifex.com/foreman/foreman/language/"
@@ -160,7 +160,7 @@ msgid "Supported defaults"
 msgstr "지원되는 기본값"
 
 msgid "Description"
-msgstr "설명"
+msgstr "설명 "
 
 msgid "List all the default parameters"
 msgstr "기본 매개 변수 모두 나열"
@@ -482,7 +482,7 @@ msgid "Message"
 msgstr "메세지 "
 
 msgid "Id"
-msgstr "ID "
+msgstr "ID"
 
 msgid "Name"
 msgstr "이름 "
@@ -501,7 +501,7 @@ msgstr ""
 "%{feat} 또는 %{req_feat}을 사용하세요."
 
 msgid "no"
-msgstr "아니요"
+msgstr "no"
 
 msgid "yes"
 msgstr "예"

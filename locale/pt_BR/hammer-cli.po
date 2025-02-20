@@ -12,9 +12,9 @@
 # Valeria S Silva <valeriassilva@live.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.13.0\n"
+"Project-Id-Version: hammer-cli 3.14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-14 13:56+0000\n"
+"POT-Creation-Date: 2024-11-08 15:39+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Valeria S Silva <valeriassilva@live.com>, 2015\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/foreman/foreman/"

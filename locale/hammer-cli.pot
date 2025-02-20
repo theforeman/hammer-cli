@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.13.0\n"
+"Project-Id-Version: hammer-cli 3.14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-08 15:39+0000\n"
-"PO-Revision-Date: 2024-11-08 15:39+0000\n"
+"POT-Creation-Date: 2025-02-20 11:40+0000\n"
+"PO-Revision-Date: 2025-02-20 11:40+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -521,33 +521,33 @@ msgstr ""
 msgid "Value must be a combination of '%s'."
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:58
+#: ../lib/hammer_cli/options/option_definition.rb:60
 msgid "Warning: Option %{option} is deprecated. %{message}"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:77
+#: ../lib/hammer_cli/options/option_definition.rb:79
 #: ../lib/hammer_cli/options/option_family.rb:33
 msgid "Deprecated: %{deprecated_msg}"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:80
+#: ../lib/hammer_cli/options/option_definition.rb:82
 #: ../lib/hammer_cli/options/option_family.rb:36
 msgid "%{flag} is deprecated: %{deprecated_msg}"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:100
+#: ../lib/hammer_cli/options/option_definition.rb:102
 msgid "Can be specified multiple times."
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:104
+#: ../lib/hammer_cli/options/option_definition.rb:106
 msgid ", or"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:106
+#: ../lib/hammer_cli/options/option_definition.rb:108
 msgid "Default:"
 msgstr ""
 
-#: ../lib/hammer_cli/options/option_definition.rb:131
+#: ../lib/hammer_cli/options/option_definition.rb:133
 msgid "Environment variable HAMMER_NIL can not be empty."
 msgstr ""
 
