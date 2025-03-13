@@ -185,7 +185,7 @@ describe HammerCLI::AbstractCommand do
       test_command_class.option(['--password'], 'PASSWORD', 'Password')
       test_command = test_command_class.new("")
       test_command.run ['--password=pass']
-      _(@log_output.readline.strip).must_equal "INFO  HammerCLI::AbstractCommand : Called with options: {\"option_password\"=>\"***\"}"
+      _(@log_output.readline.strip).must_match(%r{INFO  HammerCLI::AbstractCommand : Called with options: {\"option_password\"\s*=>\s*\"\*\*\*\"}})
     end
   end
 
