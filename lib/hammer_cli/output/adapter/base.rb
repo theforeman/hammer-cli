@@ -42,6 +42,12 @@ module HammerCLI::Output::Adapter
     end
 
     def render_field(field, data, label_width)
+      if field.replaced_by
+        warn "WARNING: Field '#{field.full_label}' is deprecated. Consider using '#{field.replaced_by}' instead."
+      elsif field.deprecated
+        warn "WARNING: Field '#{field.full_label}' is deprecated and may be removed in future versions."
+      end
+
       if field.is_a? Fields::ContainerField
         output = ""
 

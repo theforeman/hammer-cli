@@ -28,6 +28,9 @@ describe HammerCLI::Output::Adapter::Base do
     let(:blank)             { Fields::Field.new(:path => [:blank], :label => "Blank", :hide_blank => true) }
     let(:login)             { Fields::Field.new(:path => [:login], :label => "Login") }
     let(:missing)           { Fields::Field.new(:path => [:login], :label => "Missing", :hide_missing => false) }
+    let (:deprecated_a) { Fields::Field.new(:path => [:deprecated_a], :label => "Deprecated", :deprecated => true) }
+    let (:new_field) { Fields::Field.new(:path => [:new_field], :label => "New field") }
+    let (:deprecated_b) { Fields::Field.new(:path => [:deprecated_b], :label => "Replaced by", :replaced_by => 'New field') }
 
     let(:data) { HammerCLI::Output::RecordCollection.new [{
       :id => 112,
@@ -55,7 +58,10 @@ describe HammerCLI::Output::Adapter::Base do
           :name => 'size',
           :value => '32'
         }
-      ]
+      ],
+      deprecated_a: 'deprecated_a',
+      deprecated_b: 'deprecated_b',
+      new_field: 'new_field'
     }]}
 
     it "should print one field" do
@@ -197,6 +203,31 @@ describe HammerCLI::Output::Adapter::Base do
       ].join("\n")
 
       _{ adapter.print_collection(fields, data) }.must_output(expected_output)
+    end
+
+    it "should warn about deprecated fields" do
+      fields = [deprecated_a]
+
+      expected_stdout= [
+        "Deprecated: deprecated_a",
+        "\n"
+      ].join("\n")
+      expected_stderr = "WARNING: Field 'Deprecated' is deprecated and may be removed in future versions.\n"
+
+      _{ adapter.print_collection(fields, data) }.must_output(stdout=expected_stdout, stderr=expected_stderr)
+    end
+
+    it "should warn about replaced fields" do
+      fields = [new_field, deprecated_b]
+
+      expected_stdout= [
+        "New field:   new_field",
+        "Replaced by: deprecated_b",
+        "\n"
+      ].join("\n")
+      expected_stderr = "WARNING: Field 'Replaced by' is deprecated. Consider using 'New field' instead.\n"
+
+      _{ adapter.print_collection(fields, data) }.must_output(stdout=expected_stdout, stderr=expected_stderr)
     end
 
     context 'printing by chunks' do
