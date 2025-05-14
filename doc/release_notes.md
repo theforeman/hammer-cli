@@ -1,5 +1,14 @@
 Release notes
 =============
+### 3.15.0 (2025-05-14)
+* Translate warning message ([PR #396](https://github.com/theforeman/hammer-cli/pull/396)), [#38410](http://projects.theforeman.org/issues/38410)
+* Add mechanism for deprecating displayed fields ([PR #395](https://github.com/theforeman/hammer-cli/pull/395)), [#38410](http://projects.theforeman.org/issues/38410)
+* Fix test using #inspect on a hash
+* Add base64 and csv dependencies for ruby 3.4 compatibility
+* Fix gemspec/ordereddependencies cop
+* Use actions/checkout@v4
+* Bump to 3.15.0-develop
+
 ### 3.14.0 (2025-02-20)
 * Check better for parent option desc injection, [#38126](http://projects.theforeman.org/issues/38126)
 * Bump apipie-bindings to 0.7.0
