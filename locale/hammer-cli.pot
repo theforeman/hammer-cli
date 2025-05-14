@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.14.0\n"
+"Project-Id-Version: hammer-cli 3.15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-20 11:40+0000\n"
-"PO-Revision-Date: 2025-02-20 11:40+0000\n"
+"POT-Creation-Date: 2025-05-14 14:54+0000\n"
+"PO-Revision-Date: 2025-05-14 14:54+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -593,6 +593,16 @@ msgstr ""
 
 #: ../lib/hammer_cli/options/validators/dsl.rb:117
 msgid "Only one of options %s can be set."
+msgstr ""
+
+#: ../lib/hammer_cli/output/adapter/base.rb:46
+msgid ""
+"Warning: Field '%{field}' is deprecated. Consider using '%{replacement}' inste"
+"ad."
+msgstr ""
+
+#: ../lib/hammer_cli/output/adapter/base.rb:48
+msgid "Warning: Field '%{field}' is deprecated and may be removed in future versions."
 msgstr ""
 
 #: ../lib/hammer_cli/output/adapter/csv.rb:174

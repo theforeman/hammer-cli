@@ -6,9 +6,9 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.14.0\n"
+"Project-Id-Version: hammer-cli 3.15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-08 15:39+0000\n"
+"POT-Creation-Date: 2025-02-20 11:40+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Automatically generated, 2014\n"
 "Language-Team: Korean (http://app.transifex.com/foreman/foreman/language/"
@@ -554,3 +554,13 @@ msgstr ""
 
 msgid "Cannot use such capitalization. Try one of %s."
 msgstr "대문자를 사용할 수 없습니다. %s 중 하나를 시도해 보세요."
+
+msgid ""
+"Warning: Field '%{field}' is deprecated. Consider using '%{replacement}' "
+"instead."
+msgstr ""
+
+msgid ""
+"Warning: Field '%{field}' is deprecated and may be removed in future "
+"versions."
+msgstr ""

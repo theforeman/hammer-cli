@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.14.0\n"
+"Project-Id-Version: hammer-cli 3.15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-20 11:40+0000\n"
-"PO-Revision-Date: 2024-11-08 15:39+0000\n"
+"POT-Creation-Date: 2025-05-14 14:54+0000\n"
+"PO-Revision-Date: 2025-02-20 11:40+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -455,6 +455,16 @@ msgid "One of options %s is required."
 msgstr ""
 
 msgid "Only one of options %s can be set."
+msgstr ""
+
+msgid ""
+"Warning: Field '%{field}' is deprecated. Consider using '%{replacement}' "
+"instead."
+msgstr ""
+
+msgid ""
+"Warning: Field '%{field}' is deprecated and may be removed in future "
+"versions."
 msgstr ""
 
 msgid "Message"
