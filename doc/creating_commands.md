@@ -755,6 +755,35 @@ def adapter
 end
 ```
 
+#### Deprecating fields
+To deprecate a field, add `:deprecated => true` as an option for the field. This will print a warning message to stderr whenever the field is displayed. Consider removing this field from the default set so it is not displayed without a `--fields` param:
+
+```
+field :dep_fld, _("Deprecated field"), Fields::Field, :sets => ['ALL'], :deprecated => true
+```
+
+Example output:
+
+```
+$ hammer foo info --fields "Deprecated field"
+Warning: Field 'Deprecated field' is deprecated and may be removed in future versions.
+Deprecated field: bar
+```
+
+Additionally, a field may be 'replaced by' another field using `:replaced_by => "Path/To/New/Field"`. This will mark the field as deprecated and print a similar warning message to stderr whenever the field is displayed:
+
+```
+field :rep_fld, _("Replaced field"), Fields::Field, :sets => ['ALL'], :replaced_by => "Path/New field"
+```
+
+Example output:
+
+```
+$ hammer foo info --fields "Replaced field"
+Warning: Field 'Replaced field' is deprecated. Consider using 'Path/New field' instead.
+Replaced field: bar
+```
+
 #### Verbosity
 Currently Hammer [defines](https://github.com/theforeman/hammer-cli/blob/master/lib/hammer_cli/verbosity.rb) three basic verbose modes:
   * __QUIET__ - Prints nothing
