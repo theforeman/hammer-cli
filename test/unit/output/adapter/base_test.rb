@@ -212,7 +212,7 @@ describe HammerCLI::Output::Adapter::Base do
         "Deprecated: deprecated_a",
         "\n"
       ].join("\n")
-      expected_stderr = "WARNING: Field 'Deprecated' is deprecated and may be removed in future versions.\n"
+      expected_stderr = "Warning: Field 'Deprecated' is deprecated and may be removed in future versions.\n"
 
       _{ adapter.print_collection(fields, data) }.must_output(stdout=expected_stdout, stderr=expected_stderr)
     end
@@ -225,7 +225,7 @@ describe HammerCLI::Output::Adapter::Base do
         "Replaced by: deprecated_b",
         "\n"
       ].join("\n")
-      expected_stderr = "WARNING: Field 'Replaced by' is deprecated. Consider using 'New field' instead.\n"
+      expected_stderr = "Warning: Field 'Replaced by' is deprecated. Consider using 'New field' instead.\n"
 
       _{ adapter.print_collection(fields, data) }.must_output(stdout=expected_stdout, stderr=expected_stderr)
     end
