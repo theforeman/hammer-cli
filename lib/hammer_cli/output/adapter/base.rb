@@ -42,11 +42,7 @@ module HammerCLI::Output::Adapter
     end
 
     def render_field(field, data, label_width)
-      if field.replaced_by
-        warn _("Warning: Field '%{field}' is deprecated. Consider using '%{replacement}' instead.") % { field: field.full_label, replacement: field.replaced_by }
-      elsif field.deprecated
-        warn _("Warning: Field '%{field}' is deprecated and may be removed in future versions.") % { field: field.full_label }
-      end
+      warn_deprecated_field(field)
 
       if field.is_a? Fields::ContainerField
         output = ""
@@ -94,6 +90,34 @@ module HammerCLI::Output::Adapter
       end
     end
 
+    # Print warnings to stderr for deprecated or replaced fields.
+    def warn_deprecated_field(field)
+      new_path = nil
+      if field.replaced_by_path
+        new_path = resolve_full_label_from_path(field, field.replaced_by_path)
+      end
+
+      if new_path
+        warn _("Warning: Field '%{field}' is deprecated. Consider using '%{replacement}' instead.") % { field: field.full_label, replacement: new_path }
+      elsif field.deprecated
+        warn _("Warning: Field '%{field}' is deprecated and may be removed in future versions.") % { field: field.full_label }
+      end
+    end
+
+    # Returns the full label (translated) for a replaced field given a array of steps relative to the replacement field.
+    # Use "!p" to go up one level in the hierarchy. If the field is not found, this method returns nil.
+    def resolve_full_label_from_path(field, steps)
+      current = field
+      steps.each do |step|
+        if step == "!p"
+          current = current.parent
+        else
+          current = current.fields.find { |f| f.id.to_s == step }
+        end
+        return nil unless current
+      end
+      current.full_label
+    end
   end
 
   HammerCLI::Output::Output.register_adapter(:base, Base)

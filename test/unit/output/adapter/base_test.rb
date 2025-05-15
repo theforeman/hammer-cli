@@ -29,8 +29,7 @@ describe HammerCLI::Output::Adapter::Base do
     let(:login)             { Fields::Field.new(:path => [:login], :label => "Login") }
     let(:missing)           { Fields::Field.new(:path => [:login], :label => "Missing", :hide_missing => false) }
     let (:deprecated_a) { Fields::Field.new(:path => [:deprecated_a], :label => "Deprecated", :deprecated => true) }
-    let (:new_field) { Fields::Field.new(:path => [:new_field], :label => "New field") }
-    let (:deprecated_b) { Fields::Field.new(:path => [:deprecated_b], :label => "Replaced by", :replaced_by => 'New field') }
+    let (:deprecated_b) { Fields::Field.new(:path => [:deprecated_b], :label => "Replaced by", :replaced_by_path => ["!p", "New field"]) }
 
     let(:data) { HammerCLI::Output::RecordCollection.new [{
       :id => 112,
@@ -59,9 +58,8 @@ describe HammerCLI::Output::Adapter::Base do
           :value => '32'
         }
       ],
-      deprecated_a: 'deprecated_a',
-      deprecated_b: 'deprecated_b',
-      new_field: 'new_field'
+      :deprecated_a => 'deprecated_a',
+      :deprecated_b => 'deprecated_b'
     }]}
 
     it "should print one field" do
@@ -218,16 +216,18 @@ describe HammerCLI::Output::Adapter::Base do
     end
 
     it "should warn about replaced fields" do
-      fields = [new_field, deprecated_b]
+      fields = [deprecated_b]
 
-      expected_stdout= [
-        "New field:   new_field",
-        "Replaced by: deprecated_b",
-        "\n"
-      ].join("\n")
-      expected_stderr = "Warning: Field 'Replaced by' is deprecated. Consider using 'New field' instead.\n"
+      # Stubbing because parent/child relationship is not set up; covered in other tests
+      adapter.stub(:resolve_full_label_from_path, "Parent field/New field") do
+        expected_stdout= [
+          "Replaced by: deprecated_b",
+          "\n"
+        ].join("\n")
+        expected_stderr = "Warning: Field 'Replaced by' is deprecated. Consider using 'Parent field/New field' instead.\n"
 
-      _{ adapter.print_collection(fields, data) }.must_output(stdout=expected_stdout, stderr=expected_stderr)
+        _{ adapter.print_collection(fields, data) }.must_output(stdout=expected_stdout, stderr=expected_stderr)
+      end
     end
 
     context 'printing by chunks' do

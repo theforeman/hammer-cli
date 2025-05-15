@@ -4,7 +4,7 @@ module Fields
   class Field
     attr_reader :path
     attr_writer :sets
-    attr_accessor :label, :parent, :replaced_by, :deprecated
+    attr_accessor :label, :parent, :replaced_by_path, :deprecated
 
     def initialize(options={})
       @hide_blank = options[:hide_blank].nil? ? false : options[:hide_blank]
@@ -12,8 +12,8 @@ module Fields
       @path = options[:path] || []
       @label = options[:label]
       @sets = options[:sets]
-      @replaced_by = options[:replaced_by]
-      @deprecated = (options[:deprecated].nil?) ? !@replaced_by.nil? : options[:deprecated]
+      @replaced_by_path = options[:replaced_by_path]
+      @deprecated = (options[:deprecated].nil?) ? !@replaced_by_path.nil? : options[:deprecated]
       @options = options
     end
 

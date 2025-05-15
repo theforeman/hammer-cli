@@ -755,7 +755,7 @@ def adapter
 end
 ```
 
-#### Deprecating fields
+#### Deprecating and replacing fields
 To deprecate a field, add `:deprecated => true` as an option for the field. This will print a warning message to stderr whenever the field is displayed. Consider removing this field from the default set so it is not displayed without a `--fields` param:
 
 ```
@@ -770,18 +770,22 @@ Warning: Field 'Deprecated field' is deprecated and may be removed in future ver
 Deprecated field: bar
 ```
 
-Additionally, a field may be 'replaced by' another field using `:replaced_by => "Path/To/New/Field"`. This will mark the field as deprecated and print a similar warning message to stderr whenever the field is displayed:
+Additionally, a field may be 'replaced by' another field using `:replaced_by_path => ["relative","path","to","new","field"]`. Use "!p" to indicate the parent field/list/collection and other strings to indicate the id of child field/list/collections. This will mark the field as deprecated and print a similar warning message to stderr whenever the field is displayed.
+
+For example, to replace 'Foo/Bar/Old field' with 'Foo/Baz/New field', do the following:
 
 ```
-field :rep_fld, _("Replaced field"), Fields::Field, :sets => ['ALL'], :replaced_by => "Path/New field"
+field :old_fld, _("Old Field"), Fields::Field, :sets => ['ALL'], :replaced_by => ["!p","!p","baz","new_fld"]
 ```
 
 Example output:
 
 ```
-$ hammer foo info --fields "Replaced field"
-Warning: Field 'Replaced field' is deprecated. Consider using 'Path/New field' instead.
-Replaced field: bar
+$ hammer foo info --fields "Foo/Bar/Old field"
+Warning: Field 'Foo/Bar/Old field' is deprecated. Consider using 'Foo/Baz/New field' instead.
+Foo:
+  Bar:
+    Old field: data
 ```
 
 #### Verbosity
