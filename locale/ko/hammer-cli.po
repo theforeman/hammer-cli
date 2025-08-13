@@ -6,9 +6,9 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.15.0\n"
+"Project-Id-Version: hammer-cli 3.16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-20 11:40+0000\n"
+"POT-Creation-Date: 2025-05-14 14:54+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Automatically generated, 2014\n"
 "Language-Team: Korean (http://app.transifex.com/foreman/foreman/language/"
@@ -478,6 +478,16 @@ msgstr "옵션 %s중 하나가 필요합니다."
 msgid "Only one of options %s can be set."
 msgstr "옵션 %s 중 하나만 설정할 수 있습니다."
 
+msgid ""
+"Warning: Field '%{field}' is deprecated. Consider using '%{replacement}' "
+"instead."
+msgstr ""
+
+msgid ""
+"Warning: Field '%{field}' is deprecated and may be removed in future "
+"versions."
+msgstr ""
+
 msgid "Message"
 msgstr "메세지 "
 
@@ -497,8 +507,8 @@ msgid ""
 "Method %{tags} for field formatters and output adapters is deprecated. "
 "Please use %{feat} or %{req_feat} instead."
 msgstr ""
-"필드 형식 및 출력 어댑터에 대한 방법 %{tags}은 사용되지 않습니다. 대신 "
-"%{feat} 또는 %{req_feat}을 사용하세요."
+"필드 형식 및 출력 어댑터에 대한 방법 %{tags}은 사용되지 않습니다. 대신 %"
+"{feat} 또는 %{req_feat}을 사용하세요."
 
 msgid "no"
 msgstr "no"
@@ -554,13 +564,3 @@ msgstr ""
 
 msgid "Cannot use such capitalization. Try one of %s."
 msgstr "대문자를 사용할 수 없습니다. %s 중 하나를 시도해 보세요."
-
-msgid ""
-"Warning: Field '%{field}' is deprecated. Consider using '%{replacement}' "
-"instead."
-msgstr ""
-
-msgid ""
-"Warning: Field '%{field}' is deprecated and may be removed in future "
-"versions."
-msgstr ""

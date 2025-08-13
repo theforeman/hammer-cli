@@ -6,9 +6,9 @@
 # Andi Chandler <andi@gowling.com>, 2015-2017
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.15.0\n"
+"Project-Id-Version: hammer-cli 3.16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-20 11:40+0000\n"
+"POT-Creation-Date: 2025-05-14 14:54+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Andi Chandler <andi@gowling.com>, 2015-2017\n"
 "Language-Team: English (United Kingdom) (http://app.transifex.com/foreman/"
@@ -480,6 +480,16 @@ msgstr ""
 msgid "Only one of options %s can be set."
 msgstr ""
 
+msgid ""
+"Warning: Field '%{field}' is deprecated. Consider using '%{replacement}' "
+"instead."
+msgstr ""
+
+msgid ""
+"Warning: Field '%{field}' is deprecated and may be removed in future "
+"versions."
+msgstr ""
+
 msgid "Message"
 msgstr "Message"
 
@@ -551,14 +561,4 @@ msgid ""
 msgstr ""
 
 msgid "Cannot use such capitalization. Try one of %s."
-msgstr ""
-
-msgid ""
-"Warning: Field '%{field}' is deprecated. Consider using '%{replacement}' "
-"instead."
-msgstr ""
-
-msgid ""
-"Warning: Field '%{field}' is deprecated and may be removed in future "
-"versions."
 msgstr ""

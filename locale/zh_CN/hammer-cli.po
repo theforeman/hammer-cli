@@ -6,9 +6,9 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.15.0\n"
+"Project-Id-Version: hammer-cli 3.16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-20 11:40+0000\n"
+"POT-Creation-Date: 2025-05-14 14:54+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Automatically generated, 2014\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/foreman/foreman/"
@@ -467,6 +467,16 @@ msgstr "%s 选项中的一个是必需的。"
 msgid "Only one of options %s can be set."
 msgstr "仅可设置 %s 选项中的一个。"
 
+msgid ""
+"Warning: Field '%{field}' is deprecated. Consider using '%{replacement}' "
+"instead."
+msgstr ""
+
+msgid ""
+"Warning: Field '%{field}' is deprecated and may be removed in future "
+"versions."
+msgstr ""
+
 msgid "Message"
 msgstr "信息"
 
@@ -486,8 +496,8 @@ msgid ""
 "Method %{tags} for field formatters and output adapters is deprecated. "
 "Please use %{feat} or %{req_feat} instead."
 msgstr ""
-"字段格式化程序和输出适配器的方法 %{tags} 已弃用。请改用 %{feat} 或 "
-"%{req_feat}。"
+"字段格式化程序和输出适配器的方法 %{tags} 已弃用。请改用 %{feat} 或 %"
+"{req_feat}。"
 
 msgid "no"
 msgstr "否"
@@ -543,13 +553,3 @@ msgstr ""
 
 msgid "Cannot use such capitalization. Try one of %s."
 msgstr "不能使用这样的大写。请尝试 %s 之一。"
-
-msgid ""
-"Warning: Field '%{field}' is deprecated. Consider using '%{replacement}' "
-"instead."
-msgstr ""
-
-msgid ""
-"Warning: Field '%{field}' is deprecated and may be removed in future "
-"versions."
-msgstr ""
