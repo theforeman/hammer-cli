@@ -1,5 +1,9 @@
 Release notes
 =============
+### 3.16.0 (2025-08-13)
+* Update field documentation to reflect replaced_by translation ([PR #398](https://github.com/theforeman/hammer-cli/pull/398)), [#38427](http://projects.theforeman.org/issues/38427)
+* Bump to 3.16.0-develop
+
 ### 3.15.0 (2025-05-14)
 * Translate warning message ([PR #396](https://github.com/theforeman/hammer-cli/pull/396)), [#38410](http://projects.theforeman.org/issues/38410)
 * Add mechanism for deprecating displayed fields ([PR #395](https://github.com/theforeman/hammer-cli/pull/395)), [#38410](http://projects.theforeman.org/issues/38410)
