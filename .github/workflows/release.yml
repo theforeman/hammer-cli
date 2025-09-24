@@ -1,0 +1,20 @@
+---
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    name: Release gem
+    runs-on: ubuntu-latest
+    environment: release
+    if: github.repository_owner == 'theforeman'
+
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: voxpupuli/ruby-release@v0
