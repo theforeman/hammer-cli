@@ -147,7 +147,11 @@ describe HammerCLI::AbstractCommand do
     it "should have logger.watch output without colors" do
       test_command = Class.new(TestLogCmd4).new("")
       test_command.run []
-      _(@log_output.read).must_include "DEBUG  TestLogCmd4 : Test\n{\n  :a => \"a\"\n}"
+      if Gem::Version.new(RUBY_VERSION) < Gem::Version.new('3.1') # TODO: remove when Ruby 3.0 is not supported
+        _(@log_output.read).must_include "DEBUG  TestLogCmd4 : Test\n{\n  :a => \"a\"\n}"
+      else
+        _(@log_output.read).must_include "DEBUG  TestLogCmd4 : Test\n{\n  a: \"a\"\n}"
+      end
     end
 
     class TestLogCmd5 < HammerCLI::AbstractCommand
@@ -162,7 +166,11 @@ describe HammerCLI::AbstractCommand do
       HammerCLI::Settings.clear
       HammerCLI::Settings.load(:watch_plain => true)
       test_command.run []
-      _(@log_output.read).must_include "DEBUG  TestLogCmd5 : Test\n{\n  :a => \"a\"\n}"
+      if Gem::Version.new(RUBY_VERSION) < Gem::Version.new('3.1') # TODO: remove when Ruby 3.0 is not supported
+        _(@log_output.read).must_include "DEBUG  TestLogCmd5 : Test\n{\n  :a => \"a\"\n}"
+      else
+        _(@log_output.read).must_include "DEBUG  TestLogCmd5 : Test\n{\n  a: \"a\"\n}"
+      end
     end
 
     class TestLogCmd6 < HammerCLI::AbstractCommand
@@ -177,7 +185,11 @@ describe HammerCLI::AbstractCommand do
       HammerCLI::Settings.clear
       HammerCLI::Settings.load(:watch_plain => true)
       test_command.run []
-      _(@log_output.read).must_include "DEBUG  TestLogCmd6 : Test\n{\n  :password  => \"***\",\n  \"password\" => \"***\"\n}"
+      if Gem::Version.new(RUBY_VERSION) < Gem::Version.new('3.1') # TODO: remove when Ruby 3.0 is not supported
+        _(@log_output.read).must_include "DEBUG  TestLogCmd6 : Test\n{\n  :password  => \"***\",\n  \"password\" => \"***\"\n}"
+      else
+        _(@log_output.read).must_include "DEBUG  TestLogCmd6 : Test\n{\n  password:  \"***\",\n  \"password\" => \"***\"\n}"
+      end
     end
 
     it "password parameters should be hidden in logs" do
