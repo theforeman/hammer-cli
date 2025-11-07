@@ -28,7 +28,7 @@ module Logging
 end
 
 # add password filter: *password => "***"
-Logging::LogEvent.add_data_filter(/(password(\e\[0;\d{2}m|\e\[0m|\s|=>|")+\")[^\"]*\"/, '\1***"')
+Logging::LogEvent.add_data_filter(/(password(\e\[0;\d{2}m|\e\[0m|\s|=>|:|")+\")[^\"]*\"/, '\1***"')
 
 module HammerCLI
   module Logger
