@@ -1,5 +1,11 @@
 Release notes
 =============
+### 3.17.0 (2025-11-11)
+* Update logger for #inspect of ruby 3.1+, [#38894](http://projects.theforeman.org/issues/38894)
+* Add packit commit trigger job
+* Add github actions workflow for release process
+* Bump to 3.17.0-develop
+
 ### 3.16.0 (2025-08-13)
 * Update field documentation to reflect replaced_by translation ([PR #398](https://github.com/theforeman/hammer-cli/pull/398)), [#38427](http://projects.theforeman.org/issues/38427)
 * Bump to 3.16.0-develop
