@@ -10,9 +10,9 @@
 # Sergio Ocón-Cárdenas, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.16.0\n"
+"Project-Id-Version: hammer-cli 3.17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-14 14:54+0000\n"
+"POT-Creation-Date: 2025-08-13 10:51+0200\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Sergio Ocón-Cárdenas, 2014\n"
 "Language-Team: Spanish (http://app.transifex.com/foreman/foreman/language/"
@@ -545,8 +545,8 @@ msgstr "sí"
 
 msgid "Warning: Couldn't load configuration file %{path}: %{message}."
 msgstr ""
-"Advertencia: no se pudo cargar el archivo de configuración %{path}: %"
-"{message}."
+"Advertencia: no se pudo cargar el archivo de configuración %{path}: "
+"%{message}."
 
 msgid "Print help for commands"
 msgstr "Imprimir ayuda para comandos"

@@ -14,9 +14,9 @@
 # 47388d0d0847859fcc07f8955b27d2a7_d1cb104 <93875580def0fcc1a566b016c3948752_122921>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.16.0\n"
+"Project-Id-Version: hammer-cli 3.17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-14 14:54+0000\n"
+"POT-Creation-Date: 2025-08-13 10:51+0200\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: pdolinic, 2021\n"
 "Language-Team: German (http://app.transifex.com/foreman/foreman/language/"
