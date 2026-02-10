@@ -12,9 +12,9 @@
 # Valeria S Silva <valeriassilva@live.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.17.0\n"
+"Project-Id-Version: hammer-cli 3.18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-13 10:51+0200\n"
+"POT-Creation-Date: 2025-11-11 15:34+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Valeria S Silva <valeriassilva@live.com>, 2015\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/foreman/foreman/"
@@ -540,8 +540,8 @@ msgstr "sim"
 
 msgid "Warning: Couldn't load configuration file %{path}: %{message}."
 msgstr ""
-"Advertência: Não foi possível carregar o arquivo de configuração %{path}: "
-"%{message}."
+"Advertência: Não foi possível carregar o arquivo de configuração %{path}: %"
+"{message}."
 
 msgid "Print help for commands"
 msgstr "Exibe help para os comandos"
