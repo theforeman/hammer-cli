@@ -6,9 +6,9 @@
 # Automatically generated, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.17.0\n"
+"Project-Id-Version: hammer-cli 3.18.0.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-13 10:51+0200\n"
+"POT-Creation-Date: 2025-11-11 15:34+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: Automatically generated, 2014\n"
 "Language-Team: Korean (http://app.transifex.com/foreman/foreman/language/"

@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the hammer-cli package.
 #
 # Translators:
-# Crited <Alexander.Stoll@netways.de>, 2019
+# Alexander Stoll <Alexander.Stoll@netways.de>, 2019
 # Christina Gurski <Gurski_christina@yahoo.de>, 2015
 # Dominic Cleal <dcleal@redhat.com>, 2014
 # Ettore Atalan <atalanttore@googlemail.com>, 2014-2017
@@ -14,9 +14,9 @@
 # 47388d0d0847859fcc07f8955b27d2a7_d1cb104 <93875580def0fcc1a566b016c3948752_122921>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.17.0\n"
+"Project-Id-Version: hammer-cli 3.18.0.pre.develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-13 10:51+0200\n"
+"POT-Creation-Date: 2025-11-11 15:34+0000\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: pdolinic, 2021\n"
 "Language-Team: German (http://app.transifex.com/foreman/foreman/language/"
