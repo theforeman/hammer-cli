@@ -1,5 +1,8 @@
 Release notes
 =============
+### 3.18.0 (2026-02-10)
+* Bump to 3.18.0-develop
+
 ### 3.17.0 (2025-11-11)
 * Update logger for #inspect of ruby 3.1+, [#38894](http://projects.theforeman.org/issues/38894)
 * Add packit commit trigger job
