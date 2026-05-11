@@ -1,5 +1,8 @@
 Release notes
 =============
+### 3.19.0 (2026-05-11)
+* Bump to 3.19.0-develop
+
 ### 3.18.0 (2026-02-10)
 * Bump to 3.18.0-develop
 
