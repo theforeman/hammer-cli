@@ -1,5 +1,10 @@
 Release notes
 =============
+### 5.0.0 (2026-08-11)
+* Fix release tag pattern and drop redundant manual gem push
+* Bump to 5.0.0-develop
+* Bump to 3.20.0-develop
+
 ### 3.19.0 (2026-05-11)
 * Bump to 3.19.0-develop
 
