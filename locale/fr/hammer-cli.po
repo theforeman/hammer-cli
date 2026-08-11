@@ -12,9 +12,9 @@
 # ty breizh <tybreizh29@free.fr>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: hammer-cli 3.19.0\n"
+"Project-Id-Version: hammer-cli 5.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-10 13:56+0100\n"
+"POT-Creation-Date: 2026-05-11 14:15+0200\n"
 "PO-Revision-Date: 2014-03-14 09:46+0000\n"
 "Last-Translator: ty breizh <tybreizh29@free.fr>, 2018\n"
 "Language-Team: French (http://app.transifex.com/foreman/foreman/language/"
