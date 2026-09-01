@@ -1,4 +1,5 @@
 require 'highline'
+require 'shellwords'
 require 'tempfile'
 
 class String
@@ -91,7 +92,8 @@ module HammerCLI
     Tempfile.open([content_type, suffix], tempdir) do |f|
       f.write(content)
       f.rewind
-      system("#{ENV['EDITOR'] || 'vi'} #{f.path}")
+      editor = Shellwords.split(ENV['EDITOR'] || 'vi')
+      system(*editor, f.path)
       result = f.read
     end
     result
