@@ -195,4 +195,39 @@ describe HammerCLI do
       assert_equal(arr, [:a, 1, 2, 3, :b, :c])
     end
   end
+
+  describe 'open_in_editor' do
+    it 'uses array-based system call to prevent shell injection' do
+      ENV.stubs(:[]).with('EDITOR').returns('vi')
+      HammerCLI.expects(:system).with('vi', anything).once.returns(true)
+      HammerCLI.open_in_editor('test content')
+    end
+
+    it 'splits EDITOR with arguments into array form' do
+      ENV.stubs(:[]).with('EDITOR').returns('code --wait')
+      HammerCLI.expects(:system).with('code', '--wait', anything).once.returns(true)
+      HammerCLI.open_in_editor('test content')
+    end
+
+    it 'falls back to vi when EDITOR is not set' do
+      ENV.stubs(:[]).with('EDITOR').returns(nil)
+      HammerCLI.expects(:system).with('vi', anything).once.returns(true)
+      HammerCLI.open_in_editor('test content')
+    end
+
+    it 'does not pass shell metacharacters to a shell interpreter' do
+      ENV.stubs(:[]).with('EDITOR').returns('vi; echo INJECTED')
+      # Shellwords.split treats the semicolon as a literal character,
+      # producing ["vi;", "echo", "INJECTED"] - no shell is invoked
+      HammerCLI.expects(:system).with('vi;', 'echo', 'INJECTED', anything).once.returns(true)
+      HammerCLI.open_in_editor('test content')
+    end
+
+    it 'returns original content when editor does not modify the file' do
+      ENV.stubs(:[]).with('EDITOR').returns('true')
+      HammerCLI.stubs(:system).returns(true)
+      result = HammerCLI.open_in_editor('original content')
+      assert_equal 'original content', result
+    end
+  end
 end
