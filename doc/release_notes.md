@@ -1,5 +1,8 @@
 Release notes
 =============
+### 3.19.1 (2026-10-01)
+* Pass editor args as an array ([PR #406](https://github.com/theforeman/hammer-cli/pull/406)), [#39842](http://projects.theforeman.org/issues/39842)
+
 ### 3.19.0 (2026-05-11)
 * Bump to 3.19.0-develop
 
