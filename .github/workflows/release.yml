@@ -6,15 +6,59 @@ on:
     tags:
       - '*'
 
+permissions: {}
+
 jobs:
+  build:
+    name: Build gem
+    runs-on: ubuntu-24.04
+    if: github.repository_owner == 'theforeman'
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+      - name: Build man page
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends \
+            asciidoc-base docbook-xml docbook-xsl xsltproc libxml2-utils
+          a2x -d manpage -f manpage -D man/ man/hammer.1.asciidoc
+          gzip -f9 man/hammer.1
+      - name: Build gem
+        run: gem build --verbose hammer_cli.gemspec
+      - name: Check that the gem version matches the tag
+        run: test -f "hammer_cli-${GITHUB_REF_NAME}.gem"
+      - uses: actions/upload-artifact@v7
+        with:
+          name: gem-artifact
+          path: hammer_cli-*.gem
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+
   release:
     name: Release gem
-    runs-on: ubuntu-latest
+    needs: build
+    runs-on: ubuntu-24.04
     environment: release
-    if: github.repository_owner == 'theforeman'
-
     permissions:
       id-token: write
-
     steps:
-      - uses: voxpupuli/ruby-release@v0
+      - uses: actions/download-artifact@v8
+        with:
+          name: gem-artifact
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+      - uses: rubygems/configure-rubygems-credentials@v2.1.0
+      - name: Publish gem to rubygems.org
+        run: gem push hammer_cli-*.gem
+      - name: Wait for release to propagate
+        run: |
+          gem install rubygems-await
+          gem await hammer_cli-*.gem
