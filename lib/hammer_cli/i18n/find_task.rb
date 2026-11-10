@@ -43,8 +43,11 @@ module HammerCLI
             end
             lang_percentages.select { |_, v| v >= MIN_TRANSLATION_PERC }.each_key do |lang|
               lang_dir = File.join(@domain.locale_dir, lang)
+              po_file = File.join(lang_dir, "#{@domain.domain_name}.po")
+              next if File.exist?(po_file)
+
               FileUtils.mkpath(lang_dir)
-              FileUtils.cp(File.join(@domain.locale_dir, "#{@domain.domain_name}.pot"), File.join(lang_dir, "#{@domain.domain_name}.po"))
+              FileUtils.cp(File.join(@domain.locale_dir, "#{@domain.domain_name}.pot"), po_file)
             end
           end
         end
