@@ -1,5 +1,11 @@
 Release notes
 =============
+### 5.1.0 (2026-11-10)
+* Build the man page before publishing the gem.
+
+### 5.0.1 (2026-10-02)
+* Pass editor arguments as an array ([PR #405](https://github.com/theforeman/hammer-cli/pull/405)), [#39842](https://projects.theforeman.org/issues/39842).
+
 ### 5.0.0 (2026-08-11)
 * Fix release tag pattern and drop redundant manual gem push
 * Bump to 5.0.0-develop
